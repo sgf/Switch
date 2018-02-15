@@ -3,6 +3,7 @@ ________________________________________________________________________________
 
 [![build status](https://travis-ci.org/gammasoft71/Switch.svg)](https://travis-ci.org/gammasoft71/Switch) 
 [![Build status](https://ci.appveyor.com/api/projects/status/kjfq2sl5bc99kut6?svg=true)](https://ci.appveyor.com/project/gammasoft71/switch)
+[![Documentation](https://codedocs.xyz/gammasoft71/Switch.svg)](https://codedocs.xyz/gammasoft71/Switch/)
 [![codecov](https://codecov.io/gh/gammasoft71/switch/branch/master/graph/badge.svg)](https://codecov.io/gh/gammasoft71/switch)
 [![license GPL v3](https://img.shields.io/badge/license-GPL%20v3-004080.svg)](docs/License.md) 
 [![© Gammasoft](https://img.shields.io/badge/©-Gammasoft-004080.svg)](https://gammasoft71.wixsite.com/gammasoft) 
