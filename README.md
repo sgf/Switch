@@ -5,15 +5,14 @@ ________________________________________________________________________________
 [![Build status](https://ci.appveyor.com/api/projects/status/kjfq2sl5bc99kut6?svg=true)](https://ci.appveyor.com/project/gammasoft71/switch)
 [![Documentation](https://codedocs.xyz/gammasoft71/Switch.svg)](https://codedocs.xyz/gammasoft71/Switch/)
 [![codecov](https://codecov.io/gh/gammasoft71/switch/branch/master/graph/badge.svg)](https://codecov.io/gh/gammasoft71/switch)
-[![license GPL v3](https://img.shields.io/badge/license-GPL%20v3-004080.svg)](docs/License.md) 
+[![HitCount](http://hits.dwyl.io/gammasoft71/switch.svg)](http://hits.dwyl.io/gammasoft71/switch)
+[![Download Switch](https://img.shields.io/sourceforge/dt/switchpro.svg)](https://sourceforge.net/projects/switchpro/files/latest/download)
 [![© Gammasoft](https://img.shields.io/badge/©-Gammasoft-004080.svg)](https://gammasoft71.wixsite.com/gammasoft) 
+[![license GPL v3](https://img.shields.io/badge/license-GPL%20v3-004080.svg)](docs/License.md) 
 [![std c++17 ready](https://img.shields.io/badge/std-c++14-004080.svg)](docs/C++17Ready.md) 
 [![os Windows, macOS, linux](https://img.shields.io/badge/os-high%20portability-004080.svg)](docs/Portability.md)
 [![development status](https://img.shields.io/badge/dev-status-004080.svg)](docs/SwitchStatus.md) 
 <!--[![Coverage Status](https://coveralls.io/repos/github/gammasoft71/Switch/badge.svg?branch=master)](https://coveralls.io/github/gammasoft71/Switch?branch=master)-->
-<!--[![language c++](https://img.shields.io/badge/language-c++-004080.svg)](https://gammasoft71.github.io/Switch-doc)-->
-<!--[![Download Switch](https://img.shields.io/sourceforge/dt/switchpro.svg)](https://sourceforge.net/projects/switchpro/files/latest/download)-->
-<!--[![HitCount](http://hits.dwyl.io/gammasoft71/switch.svg)](http://hits.dwyl.io/gammasoft71/switch)-->
 
 # The Switch framework is...
 * a collection of native C++ classes libraries, similar to the .NET Framework;
