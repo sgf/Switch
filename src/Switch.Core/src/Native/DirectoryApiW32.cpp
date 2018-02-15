@@ -105,23 +105,18 @@ int32 Native::DirectoryApi::GetFileTime(const string& path, int64& creationTime,
   return 0;
 }
 
-
 string Native::DirectoryApi::GetFullPath(const string& relPath) {
-  char buffer[MAX_PATH];
-  if (_fullpath(buffer, relPath.Data(), MAX_PATH) == null)
-    return string::Empty;
-  return buffer;
+  char fullPath[MAX_PATH];
+  return _fullpath(fullPath, relPath.Data(), MAX_PATH) ? fullPath : "";
 }
 
 string Native::DirectoryApi::GetCurrentDirectory() {
-  char buffer[MAX_PATH];
-  if (_getcwd(buffer, MAX_PATH) == null)
-    return string::Empty;
-  return buffer;
+  char path[MAX_PATH];
+  return _getcwd(buffer, MAX_PATH) ? path : "";
 }
 
 int32 Native::DirectoryApi::SetCurrentDirectory(const string& directoryName) {
-  return _chdir(directoryName.Data());
+  return _chdir(directoryName.c_str());
 }
 
 int64 Native::DirectoryApi::GetFileSize(const string& path) {
@@ -158,9 +153,7 @@ int32 Native::DirectoryApi::RenameFile(const string& oldPath, const string& newP
 
 string Native::DirectoryApi::GetKnowFolderPath(System::Environment::SpecialFolder id) {
   char path[MAX_PATH];
-  if (SHGetFolderPathA(null, static_cast<int>(id), null, SHGFP_TYPE_CURRENT, path) != S_OK)
-    return string::Empty;
-  return path;
+  return SHGetFolderPathA(null, static_cast<int>(id), null, SHGFP_TYPE_CURRENT, path) == S_OK ? path : "";
 }
 
 string Native::DirectoryApi::GetTempPath() {

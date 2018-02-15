@@ -161,14 +161,12 @@ string Native::DirectoryApi::GetFullPath(const string& relativePath) {
 }
 
 string Native::DirectoryApi::GetCurrentDirectory() {
-  char buffer[PATH_MAX];
-  if (getcwd(buffer, PATH_MAX) == null)
-    return string::Empty;
-  return buffer;
+  char path[PATH_MAX];
+  return getcwd(path, PATH_MAX) ? path : "";
 }
 
 int32 Native::DirectoryApi::SetCurrentDirectory(const string& directoryName) {
-  return chdir(directoryName.Data());
+  return chdir(directoryName.c_str());
 }
 
 int64 Native::DirectoryApi::GetFileSize(const string& path) {
