@@ -112,7 +112,7 @@ string Native::DirectoryApi::GetFullPath(const string& relPath) {
 
 string Native::DirectoryApi::GetCurrentDirectory() {
   char path[MAX_PATH];
-  return _getcwd(buffer, MAX_PATH) ? path : "";
+  return _getcwd(path, MAX_PATH) ? path : "";
 }
 
 int32 Native::DirectoryApi::SetCurrentDirectory(const string& directoryName) {
