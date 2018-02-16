@@ -11,7 +11,6 @@ cd ..
 
 # ________________________________________________________________________________________
 #                                                     check file changed and display error
-rm -f scripts/reference_guide/doxygen.txt
 if [[ -n $(git diff) ]]; then
   echo "You must run make format before submitting a pull request"
   echo ""
