@@ -27,7 +27,7 @@ int32  Native::RegistryApi::DeleteSubKey(intptr hKey, const string& subkeyName) 
 }
 
 int32 Native::RegistryApi::DeleteValue(intptr hKey, const string& subkeyName) {
-  return RegDeleteValueW((HKEY)hKey, subkeyName.w_str().c_str());
+  return RegDeleteValue((HKEY)hKey, subkeyName.w_str().c_str());
 }
 
 int32  Native::RegistryApi::EnumKey(intptr key, int32 index, string& keyName) {
@@ -80,21 +80,21 @@ int32 Native::RegistryApi::GetValue(intptr hkey, const string& subKey, Microsoft
 }
 
 int32 Native::RegistryApi::NumberOfSubKey(intptr key) {
-  LPSTR className = null;
+  LPWSTR className = null;
   DWORD classNameSize = MAX_PATH, subKey = 0, maxSubKey, maxClass, value, maxValue, maxValueData, securityDescriptor;
   FILETIME ftLastWriteTime;
 
-  if (RegQueryInfoKeyA((HKEY)key, className, &classNameSize, null, &subKey, &maxSubKey, &maxClass, &value, &maxValue, &maxValueData, &securityDescriptor, &ftLastWriteTime) == ERROR_SUCCESS)
+  if (RegQueryInfoKey((HKEY)key, className, &classNameSize, null, &subKey, &maxSubKey, &maxClass, &value, &maxValue, &maxValueData, &securityDescriptor, &ftLastWriteTime) == ERROR_SUCCESS)
     return subKey;
   return -1;
 }
 
 int32 Native::RegistryApi::NumberOfValue(intptr key) {
-  LPSTR className = null;
+  LPWSTR className = null;
   DWORD classNameSize = MAX_PATH, subKey = 0, maxSubKey, maxClass, value, maxValue, maxValueData, securityDescriptor;
   FILETIME ftLastWriteTime;
 
-  if (RegQueryInfoKeyA((HKEY)key, className, &classNameSize, null, &subKey, &maxSubKey, &maxClass, &value, &maxValue, &maxValueData, &securityDescriptor, &ftLastWriteTime) == ERROR_SUCCESS)
+  if (RegQueryInfoKey((HKEY)key, className, &classNameSize, null, &subKey, &maxSubKey, &maxClass, &value, &maxValue, &maxValueData, &securityDescriptor, &ftLastWriteTime) == ERROR_SUCCESS)
     return value;
   return -1;
 }
@@ -104,11 +104,11 @@ int32 Native::RegistryApi::OpenSubKey(intptr rootKey, const string& subKey, intp
 }
 
 int32  Native::RegistryApi::QueryInfoKey(intptr hkey, int32& subKey, int32& value) {
-  LPSTR className = null;
+  LPWSTR className = null;
   DWORD classNameSize = MAX_PATH, subKeyResultQuery = 0, maxSubKey, maxClass, valueResultQuery, maxValue, maxValueData, securityDescriptor;
   FILETIME ftLastWriteTime;
 
-  if (RegQueryInfoKeyA((HKEY)hkey, className, &classNameSize, null, &subKeyResultQuery, &maxSubKey, &maxClass, &valueResultQuery, &maxValue, &maxValueData, &securityDescriptor, &ftLastWriteTime) != ERROR_SUCCESS)
+  if (RegQueryInfoKey((HKEY)hkey, className, &classNameSize, null, &subKeyResultQuery, &maxSubKey, &maxClass, &valueResultQuery, &maxValue, &maxValueData, &securityDescriptor, &ftLastWriteTime) != ERROR_SUCCESS)
     return -1;
 
   subKey = subKeyResultQuery;

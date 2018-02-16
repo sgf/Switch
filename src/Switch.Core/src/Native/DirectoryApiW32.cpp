@@ -1,5 +1,7 @@
 #if defined(_WIN32)
 
+#define UNICODE
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <direct.h>
@@ -27,11 +29,11 @@ namespace {
     ~Enumerator() { Reset(); }
 
     bool MoveNext() override {
-      WIN32_FIND_DATAA item;
+      WIN32_FIND_DATA item;
       string searchPattern = string::Format("{0}{1}{2}", this->path, this->path.EndsWith('\\') ? "" : System::Char('\\').ToString(), this->pattern);
-      bool result = this->handle == null ? (this->handle = FindFirstFileA(searchPattern.Data(), &item)) != null : FindNextFileA(this->handle, &item) != FALSE;
+      bool result = this->handle == null ? (this->handle = FindFirstFile(searchPattern.w_str().c_str(), &item)) != null : FindNextFile(this->handle, &item) != FALSE;
       while (result == true && (((this->fileType == FileType::Directory && (item.dwFileAttributes & 0x0010) != 0x0010) || (this->fileType == FileType::File && (item.dwFileAttributes & 0x0010) == 0x0010)) || string(item.cFileName) == "." || string(item.cFileName) == ".."))
-        result = FindNextFileA(this->handle, &item) != FALSE;
+        result = FindNextFile(this->handle, &item) != FALSE;
 
       if (result)
         this->current = string::Format("{0}{1}{2}", this->path, this->path.EndsWith('\\') ? "" : System::Char('\\').ToString(), item.cFileName);
@@ -89,7 +91,7 @@ System::Collections::Generic::Enumerator<string> Native::DirectoryApi::Enumerate
 }
 
 int32 Native::DirectoryApi::GetFileAttributes(const string& path, System::IO::FileAttributes& attributes) {
-  attributes = (System::IO::FileAttributes)GetFileAttributesA(path.Data());
+  attributes = (System::IO::FileAttributes)GetFileAttributesW(path.w_str().c_str());
   if (attributes == (System::IO::FileAttributes)INVALID_FILE_ATTRIBUTES)
     return -1;
   return 0;
@@ -120,8 +122,8 @@ int32 Native::DirectoryApi::SetCurrentDirectory(const string& directoryName) {
 }
 
 int64 Native::DirectoryApi::GetFileSize(const string& path) {
-  WIN32_FIND_DATAA file;
-  void* handle = FindFirstFileA(path.Data(), &file);
+  WIN32_FIND_DATA file;
+  void* handle = FindFirstFile(path.w_str().c_str(), &file);
   if (handle == INVALID_HANDLE_VALUE)
     return 0;
 
@@ -133,11 +135,11 @@ int64 Native::DirectoryApi::GetFileSize(const string& path) {
 }
 
 int32 Native::DirectoryApi::CreateDirectory(const string& directoryName) {
-  return CreateDirectoryA(directoryName.Data(), null) != FALSE ? 0 : -1;
+  return CreateDirectoryW(directoryName.w_str().c_str(), null) != FALSE ? 0 : -1;
 }
 
 int32 Native::DirectoryApi::RemoveDirectory(const string& directoryName) {
-  return RemoveDirectoryA(directoryName.Data()) != FALSE ? 0 : -1;
+  return RemoveDirectoryW(directoryName.w_str().c_str()) != FALSE ? 0 : -1;
 }
 
 int32 Native::DirectoryApi::RemoveFile(const string& path) {
@@ -152,8 +154,8 @@ int32 Native::DirectoryApi::RenameFile(const string& oldPath, const string& newP
 }
 
 string Native::DirectoryApi::GetKnowFolderPath(System::Environment::SpecialFolder id) {
-  char path[MAX_PATH];
-  return SHGetFolderPathA(null, static_cast<int>(id), null, SHGFP_TYPE_CURRENT, path) == S_OK ? path : "";
+  wchar path[MAX_PATH];
+  return SHGetFolderPath(null, static_cast<int>(id), null, SHGFP_TYPE_CURRENT, path) == S_OK ? path : L"";
 }
 
 string Native::DirectoryApi::GetTempPath() {
