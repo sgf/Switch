@@ -3,7 +3,9 @@
 #pragma once
 
 #include "../../../SystemWindowsFormsExport.hpp"
+#include "Button.hpp"
 #include "ContainerControl.hpp"
+#include "DialogResult.hpp"
 #include "FormBorderStyle.hpp"
 #include "FormClosedEventHandler.hpp"
 #include "FormClosingEventHandler.hpp"
@@ -30,6 +32,32 @@ namespace Switch {
           Form(const Form& form) : ContainerControl(form), formBorderStyle(form.formBorderStyle), maximizeBox(form.maximizeBox), minimizeBox(form.minimizeBox), startPosition(form.startPosition), messageActions(form.messageActions) {}
           /// @endcond
 
+          property_<ref<System::Windows::Forms::Button>> AccpetButton {
+            get_ {return this->acceptButton;},
+            set_ {
+              if (value != this->acceptButton) {
+                if (this->acceptButton != null)
+                  this->acceptButton().Click -= {*this, &Form::OnButtonAccecptClick};
+                this->acceptButton = value;
+                if (this->acceptButton != null)
+                  this->acceptButton().Click += {*this, &Form::OnButtonAccecptClick};
+              }
+            }
+          };
+          
+          property_<ref<System::Windows::Forms::Button>> CancelButton {
+            get_ {return this->cancelButton;},
+            set_ {
+              if (value != this->cancelButton) {
+                if (this->cancelButton != null)
+                  this->cancelButton().Click -= {*this, &Form::OnButtonCancelClick};
+                this->cancelButton = value;
+                if (this->cancelButton != null)
+                  this->cancelButton().Click += {*this, &Form::OnButtonCancelClick};
+              }
+            }
+          };
+          
           property_<System::Windows::Forms::FormBorderStyle> FormBorderStyle {
             get_{return this->formBorderStyle;},
             set_{this->formBorderStyle = value;}
@@ -51,7 +79,11 @@ namespace Switch {
           };
 
           void Close() override;
-
+          
+          void Show() const;
+          
+          DialogResult ShowDialog() const;
+          
           void WndProc(Message& message) override;
 
           FormClosedEventHandler FormClosed;
@@ -74,7 +106,20 @@ namespace Switch {
           /// @endcond
 
         private:
+          void OnButtonAccecptClick(const object& sender, const EventArgs& e) {
+            this->dialogResult = DialogResult::OK;
+            this->Close();
+          }
+          
+          void OnButtonCancelClick(const object& sender, const EventArgs& e) {
+            this->dialogResult = DialogResult::Cancel;
+            this->Close();
+          }
+
           void WmClose(Message& message);
+          DialogResult dialogResult = DialogResult::Cancel;
+          ref<Button> acceptButton;
+          ref<Button> cancelButton;
         };
       }
     }

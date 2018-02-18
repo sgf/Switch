@@ -27,7 +27,7 @@ find_package(PNG REQUIRED)
 #_________________________________________________________________________________________
 #                                                                            set libraries
 set(SWITCH_LIBRARY Switch.TUnit.Core Switch.System.Windows.Forms
-  Switch.System.Drawing Switch.System Switch.Core)
+  Switch.System.Drawing Switch.System.Core Switch.System Switch.Core)
 set(SWITCH_LIBRARIES ${SWITCH_LIBRARY})
 set(SWITCH_WITH_TUNIT_MAIN_LIBRARY Switch.TUnit.Main ${SWITCH_LIBRARIES})
 set(SWITCH_WITH_TUNIT_MAIN_LIBRARIES ${SWITCH_WITH_TUNIT_MAIN_LIBRARY})
