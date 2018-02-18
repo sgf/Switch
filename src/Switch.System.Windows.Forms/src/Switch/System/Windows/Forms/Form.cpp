@@ -27,6 +27,21 @@ void Form::CreateHandle() {
   this->Control::CreateHandle();
 }
 
+void Form::Show() const {
+  Application::Init();
+  Application::mainForm = *this;
+  Application::mainForm().Visible = true;
+  Application::mainForm().FormClosed += delegate_(const object & sender, const FormClosedEventArgs & e) {
+    Application::Exit();
+  };
+  Application::MessageLoop();
+}
+
+DialogResult Form::ShowDialog() const {
+  this->Show();
+  return this->dialogResult;
+}
+
 void Form::WndProc(Message& message) {
   if (message.Msg == WM_CLOSE)
     this->messageActions[message.Msg](message);

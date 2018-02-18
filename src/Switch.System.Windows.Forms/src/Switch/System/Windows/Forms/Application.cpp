@@ -15,8 +15,12 @@ void Application::Exit() {
   Native::ApplicationApi::Exit();
 }
 
-void Application::Start() {
-  Native::ApplicationApi::Start();
+void Application::Init() {
+  static bool runOnce = true;
+  if (runOnce) {
+    runOnce = false;
+    Native::ApplicationApi::Start();
+  }
 }
 
 void Application::MessageLoop() {

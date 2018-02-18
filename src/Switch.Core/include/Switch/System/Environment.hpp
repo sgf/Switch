@@ -20,7 +20,7 @@ class __start_up__;
 /// @cond
 namespace Switch {
   namespace System {
-    namespace Diagnoastics {
+    namespace Diagnostics {
       class Process;
     }
   }
@@ -556,7 +556,7 @@ namespace Switch {
       static void SetEnvironmentVariable(const String& name, const String& value, EnvironmentVariableTarget target);
 
     private:
-      friend class System::Diagnoastics::Process;
+      friend class System::Diagnostics::Process;
       void SetUserInteractive(bool userInteractive);
     };
   }

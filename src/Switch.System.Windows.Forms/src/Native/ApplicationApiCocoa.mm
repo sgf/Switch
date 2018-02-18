@@ -193,6 +193,7 @@ bool Native::ApplicationApi::visualStylesEnabled = false;
 
 void Native::ApplicationApi::Exit() {
   Environment::Exit(0);
+  //ControlApi::SendMessage(__mainForm->Handle(), WM_QUIT, 0, 0);
 }
 
 void Native::ApplicationApi::MessageLoop(const System::Windows::Forms::Form& mainForm, EventHandler idle) {
