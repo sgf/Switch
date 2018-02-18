@@ -168,11 +168,12 @@ The file will be named to *FormClosingEventHandler.hpp*.
 # Editor
 
 **√ DO** Replace tab character with double spaces in your editor or IDE properties. 
+**√ DO** Use two space for indentation. 
 
 ```c++
 class MyCLass : public object {
 public:
-  MyCLass() {}
+  MyCLass() default;
   MyCLass(const MyCLass&) = default;
 };
 ```
@@ -189,11 +190,11 @@ public:
 class MyClass : public object {
 public:
   /// @brief Return a string that represents the current object.
-  string ToString() const {return NameGenerator();}
+  string ToString() const override {return this->NameGenerator();}
 
 protected:
   /// @brief 
-  virtual string NameGenerator() const {return baseName;}
+  virtual string NameGenerator() const {return this->baseName;}
 
 private:
   string baseName = "BaseName";
@@ -208,7 +209,7 @@ private:
 
 ### header file :
 ```c++
-class MyCLass : public object {
+class MyClass : public object {
 public:
   static constexpr int maxValue = System::Int32::MaxValue;
   static const System::TimeSpan maxDuration;
@@ -221,13 +222,14 @@ int MyClass::MaxValue;
 const System::Timespan MyClass::MaxDuration = 12_s;
 ```
 
-**√ DO** But instead use template method for macros.
+**√ Do** All macro can be replaced by template method.
 
 ```c++
 class Arithmetics static_ {
 public:
+  // equivalent : #define Max(value1, value2) (value1 >= value2 ? value1 : value2)
   template<typename T>
-  T Max(T value1, T value2) {return value1 >= value2 ? value1 : value2;} // equivalent : #define Max(value1, value2) (value1 >= value2 1 value1 : value2)
+  T Max(T value1, T value2) {return value1 >= value2 ? value1 : value2;}
 };
 ```
 
@@ -235,13 +237,13 @@ public:
 
 ## Global methods
 
-**X DO NOT** Use glabal methods. All methods are in class. If necessary creates class contener like System::Console or System::Math to group static methods. 
+**X DO NOT** Use glabal methods. All methods are in class. If necessary creates container class like System::Console or System::Math to group static methods. 
 
 ## Gloabal variables
 
 **X DO NOT** Use glabal variables. All variables are in class. If necessary a global or static variable can create in a source files (.cpp) but it can't visible in the header file (.hpp). 
 
-**√ DO** Uses [factoryMethod](FactoryMethod.md), [Builder](Builder.md) or [Singleton](Singleton.md) patterns to create objects
+**√ DO** Uses [factoryMethod](FactoryMethod.md), [Builder](Builder.md) or [Singleton](Singleton.md) patterns to create unique object.
 
 # Comments
 
