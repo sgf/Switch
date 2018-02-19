@@ -24,7 +24,7 @@ namespace {
 bool Native::ApplicationApi::visualStylesEnabled = false;
 
 void Native::ApplicationApi::Exit() {
-  as<Gtk::Window>(((Native::IWidget*)mainForm.Handle())->ToWidget()).hide();
+    __application__->get_windows()[0]->hide();
 }
 
 void Native::ApplicationApi::MessageLoop(const System::Windows::Forms::Form& mainForm, EventHandler idle) {
