@@ -44,7 +44,7 @@ namespace Switch {
               }
             }
           };
-          
+
           property_<ref<System::Windows::Forms::Button>> CancelButton {
             get_ {return this->cancelButton;},
             set_ {
@@ -57,7 +57,7 @@ namespace Switch {
               }
             }
           };
-          
+
           property_<System::Windows::Forms::FormBorderStyle> FormBorderStyle {
             get_{return this->formBorderStyle;},
             set_{this->formBorderStyle = value;}
@@ -79,11 +79,11 @@ namespace Switch {
           };
 
           void Close() override;
-          
+
           void Show() const;
-          
+
           DialogResult ShowDialog() const;
-          
+
           void WndProc(Message& message) override;
 
           FormClosedEventHandler FormClosed;
@@ -110,7 +110,7 @@ namespace Switch {
             this->dialogResult = DialogResult::OK;
             this->Close();
           }
-          
+
           void OnButtonCancelClick(const object& sender, const EventArgs& e) {
             this->dialogResult = DialogResult::Cancel;
             this->Close();
