@@ -24,7 +24,7 @@ namespace {
 bool Native::ApplicationApi::visualStylesEnabled = false;
 
 void Native::ApplicationApi::Exit() {
-    __application__->get_windows()[0]->hide();
+  __application__->get_windows()[0]->hide();
 }
 
 void Native::ApplicationApi::MessageLoop(const System::Windows::Forms::Form& mainForm, EventHandler idle) {
