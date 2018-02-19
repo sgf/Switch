@@ -4,6 +4,7 @@
 
 #include<cstdlib>
 #include "CoreExport.hpp"
+#include "Static.hpp"
 #include "System/Environment.hpp"
 
 /// @cond
@@ -14,8 +15,8 @@ core_export_ extern HINSTANCE __instance;
 core_export_ extern int __commandShow;
 
 #if !defined(_WIN32)
-core_export_ extern int __argc;
-core_export_ extern char** __argv;
+#define __argc 0
+#define __argv null
 #endif
 /// @endcond
 
@@ -37,13 +38,13 @@ namespace Switch {
   /// @ingroup Keywords
 #define startup_(mainClass) \
   int main(int argc, char* argv[]) {\
-    struct Startup {\
-      int operator()(void (*startup)(), const System::Array<System::String>& args) {startup(); return System::Environment::ExitCode;}\
-      int operator()(int (*startup)(), const System::Array<System::String>& args) {return startup();}\
-      int operator()(void (*startup)(const System::Array<System::String>&), const System::Array<System::String>& args) {startup(args); return System::Environment::ExitCode;}\
-      int operator()(int (*startup)(const System::Array<System::String>&), const System::Array<System::String>& args) {return startup(args);}\
+    struct Startup static_ {\
+      static int Run(void (*startup)(), const System::Array<System::String>& args) {startup(); return System::Environment::ExitCode;}\
+      static int Run(int (*startup)(), const System::Array<System::String>& args) {return startup();}\
+      static int Run(void (*startup)(const System::Array<System::String>&), const System::Array<System::String>& args) {startup(args); return System::Environment::ExitCode;}\
+      static int Run(int (*startup)(const System::Array<System::String>&), const System::Array<System::String>& args) {return startup(args);}\
     };\
-    return Startup()(mainClass::Main, System::Environment::SetCommandLineArgs(argv, argc));\
+    return Startup::Run(mainClass::Main, System::Environment::SetCommandLineArgs(argv, argc));\
   } \
   \
   int WinMain(HINSTANCE instance, HINSTANCE previousInstance, char* commandLine, int commandShow) {\

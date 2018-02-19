@@ -11,6 +11,8 @@ namespace ManualTests {
   class Program {
   public:
     static void Main() {
+      Application::EnableVisualStyles();
+
       TabPage tabPage1;
       tabPage1.Text = "tabPage1";
 
@@ -21,16 +23,10 @@ namespace ManualTests {
       tabControl.Location = Point(10, 10);
       //tabControl.TabPages().AddRange({tabPage1, tabPage2});
 
-      Button button;
-      //button.Size = Size(200, 100);
-      button.Text = "Button";
-      button.Location = Point(10, 10);
-
       Form form;
-      form.Controls().AddRange({button});
-
-      Application::EnableVisualStyles();
-      Application::Run(form);
+      form.Text = "ManualTests";
+      //form.Controls().Add(tabControl);
+      form.ShowDialog();
     }
   };
 }
