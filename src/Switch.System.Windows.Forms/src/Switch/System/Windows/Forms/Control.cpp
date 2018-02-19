@@ -140,6 +140,10 @@ bool Control::Focus() {
   return true;
 }
 
+void Control::Hide() {
+  this->Visible = false;
+}
+
 void Control::Invalidate(bool invalidateChildren) {
   if (this->IsHandleCreated)
     Native::ControlApi::Invalidate(*this, invalidateChildren);
@@ -240,6 +244,10 @@ bool Control::ReflectMessage(intptr hWnd, Message& message) {
 
 intptr Control::SendMessage(int32 msg, intptr wparam, intptr lparam) const {
   return Native::ControlApi::SendMessage(this->handle, msg, wparam, lparam);
+}
+
+void Control::Show() {
+  this->Visible = true;
 }
 
 void Control::WndProc(Message& message) {

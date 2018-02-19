@@ -27,7 +27,7 @@ void Form::CreateHandle() {
   this->Control::CreateHandle();
 }
 
-void Form::Show() const {
+DialogResult Form::ShowDialog() const {
   Application::Init();
   Application::mainForm = *this;
   Application::mainForm().Visible = true;
@@ -35,10 +35,6 @@ void Form::Show() const {
     Application::Exit();
   };
   Application::MessageLoop();
-}
-
-DialogResult Form::ShowDialog() const {
-  this->Show();
   return this->dialogResult;
 }
 

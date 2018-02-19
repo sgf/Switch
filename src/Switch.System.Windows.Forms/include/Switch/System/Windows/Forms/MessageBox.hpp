@@ -21,19 +21,19 @@ namespace Switch {
         /// @brief Represents a window or dialog box that makes up an application's user interface.
         class system_windows_forms_export_ MessageBox : public Form {
         public:
-          static DialogResult Show(const string& message) {return MessageBox::Show(message, "", MessageBoxButtons::OK, MessageBoxIcon::None, MessageBoxDefaultButton::Button1, (MessageBoxOptions)0, false);}
+          static System::Windows::Forms::DialogResult Show(const string& message) {return MessageBox::Show(message, "", MessageBoxButtons::OK, MessageBoxIcon::None, MessageBoxDefaultButton::Button1, (MessageBoxOptions)0, false);}
 
-          static DialogResult Show(const string& message, const string& caption) {return Show(message, caption, MessageBoxButtons::OK, MessageBoxIcon::None, MessageBoxDefaultButton::Button1, (MessageBoxOptions)0, false);}
+          static System::Windows::Forms::DialogResult Show(const string& message, const string& caption) {return Show(message, caption, MessageBoxButtons::OK, MessageBoxIcon::None, MessageBoxDefaultButton::Button1, (MessageBoxOptions)0, false);}
 
-          static DialogResult Show(const string& message, const string& caption, MessageBoxButtons buttons) {return Show(message, caption, buttons, MessageBoxIcon::None, MessageBoxDefaultButton::Button1, (MessageBoxOptions)0, false);}
+          static System::Windows::Forms::DialogResult Show(const string& message, const string& caption, MessageBoxButtons buttons) {return Show(message, caption, buttons, MessageBoxIcon::None, MessageBoxDefaultButton::Button1, (MessageBoxOptions)0, false);}
 
-          static DialogResult Show(const string& message, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon) {return Show(message, caption, buttons, icon, MessageBoxDefaultButton::Button1, (MessageBoxOptions)0, false);}
+          static System::Windows::Forms::DialogResult Show(const string& message, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon) {return Show(message, caption, buttons, icon, MessageBoxDefaultButton::Button1, (MessageBoxOptions)0, false);}
 
-          static DialogResult Show(const string& message, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton) {return Show(message, caption, buttons, icon, defaultButton, (MessageBoxOptions)0, false);}
+          static System::Windows::Forms::DialogResult Show(const string& message, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton) {return Show(message, caption, buttons, icon, defaultButton, (MessageBoxOptions)0, false);}
 
-          static DialogResult Show(const string& message, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options) {return Show(message, caption, buttons, icon, defaultButton, options, false);}
+          static System::Windows::Forms::DialogResult Show(const string& message, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options) {return Show(message, caption, buttons, icon, defaultButton, options, false);}
 
-          static DialogResult Show(const string& message, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool displayHelpButton);
+          static System::Windows::Forms::DialogResult Show(const string& message, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool displayHelpButton);
 
         private:
           MessageBox() = delete;

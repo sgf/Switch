@@ -147,7 +147,10 @@ void Native::ControlApi::SetText(const System::Windows::Forms::Control& control)
 }
 
 void Native::ControlApi::SetVisible(const System::Windows::Forms::Control& control) {
-  ((Gtk::Widget*)control.Handle())->show();
+  if (control.Visible)
+    ((Gtk::Widget*)control.Handle())->show();
+  else
+    ((Gtk::Widget*)control.Handle())->hide();
 }
 
 #endif

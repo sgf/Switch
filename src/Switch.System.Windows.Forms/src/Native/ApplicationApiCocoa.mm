@@ -7,6 +7,7 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 ref<System::Windows::Forms::Form> __mainForm;
+bool __quit = false;
 
 namespace {
   class ApplicationCocoaApi static_ {
@@ -14,7 +15,7 @@ namespace {
     static void MessageLoop(EventHandler idle) {
       @autoreleasepool {
         messageLoopRunning = true;
-        while (messageLoopRunning) {
+        while (messageLoopRunning && !__quit) {
           NSEvent* event = idle.IsEmpty() ? GetMessage() : PeekMessage();
           if (event != nil)
             DispatchMessage(event);
@@ -192,8 +193,7 @@ namespace {
 bool Native::ApplicationApi::visualStylesEnabled = false;
 
 void Native::ApplicationApi::Exit() {
-  Environment::Exit(0);
-  //ControlApi::SendMessage(__mainForm->Handle(), WM_QUIT, 0, 0);
+  __quit = true;
 }
 
 void Native::ApplicationApi::MessageLoop(const System::Windows::Forms::Form& mainForm, EventHandler idle) {

@@ -63,6 +63,11 @@ namespace Switch {
             set_{this->formBorderStyle = value;}
           };
 
+          property_<System::Windows::Forms::DialogResult> DialogResult {
+            get_{return this->dialogResult;},
+            set_{this->dialogResult = value;}
+          };
+
           property_<bool> MaximizeBox {
             get_ {return this->maximizeBox;},
             set_ {this->maximizeBox = value;}
@@ -80,9 +85,7 @@ namespace Switch {
 
           void Close() override;
 
-          void Show() const;
-
-          DialogResult ShowDialog() const;
+          System::Windows::Forms::DialogResult ShowDialog() const;
 
           void WndProc(Message& message) override;
 
@@ -107,17 +110,17 @@ namespace Switch {
 
         private:
           void OnButtonAccecptClick(const object& sender, const EventArgs& e) {
-            this->dialogResult = DialogResult::OK;
+            this->dialogResult = System::Windows::Forms::DialogResult::OK;
             this->Close();
           }
 
           void OnButtonCancelClick(const object& sender, const EventArgs& e) {
-            this->dialogResult = DialogResult::Cancel;
+            this->dialogResult = System::Windows::Forms::DialogResult::Cancel;
             this->Close();
           }
 
           void WmClose(Message& message);
-          DialogResult dialogResult = DialogResult::Cancel;
+          System::Windows::Forms::DialogResult dialogResult = DialogResult::Cancel;
           ref<Button> acceptButton;
           ref<Button> cancelButton;
         };

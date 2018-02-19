@@ -354,6 +354,8 @@ namespace Switch {
             }
           }
 
+          void Hide();
+
           void Invalidate() { Invalidate(false); }
 
           void Invalidate(bool invalidateChildren);
@@ -367,6 +369,8 @@ namespace Switch {
           System::Drawing::Point PointToScreen(System::Drawing::Point point) const;
 
           bool PreProcessMessage(const Message& msg);
+
+          void Show();
 
           /// @brief Sets the bounds of the control to the specified location and size.
           /// @param x The new Left property value of the control.
