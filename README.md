@@ -81,8 +81,7 @@ namespace HelloWorld {
       Form form;
       form.Text = "Hello World Form";
       form.Controls().Add(button);
-      
-      Application::Run(form);
+      form.ShowDialog();
     }
   };
 }
