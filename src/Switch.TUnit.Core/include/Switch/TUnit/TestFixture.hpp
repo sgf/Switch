@@ -55,8 +55,6 @@ namespace Switch {
 #define IgnoreTest_(name) \
   name()
 
-#define AddTestFixture_(name)
-
     /// @brief Add spacified unit test to execute at the unit test suit.
     /// @param fixture The class inerited from TestFixture class that contains the unit test method to execute
     /// @param method The method that contains the unit test to execute
@@ -71,7 +69,8 @@ namespace Switch {
     } catch(const TUnit::AssertionException) { \
       return ; \
     } \
-  }
+  } \
+  int __add_##fixture##_##method##_force_to_use_semicolon__ = 0
 
     /// @brief Add specified ignored unit test to execute at the unit test suit.
     /// @param fixture The class inerited from TestFixture class that contains the unit test method to execute
@@ -87,7 +86,8 @@ namespace Switch {
     } catch(const TUnit::AssertionException) { \
       return ; \
     } \
-  }
+  } \
+  int __add_##fixture##_##method##_force_to_use_semicolon__ = 0
   }
 }
 

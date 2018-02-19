@@ -1,5 +1,5 @@
+#include <Switch/System/Diagnostics/Debug.hpp>
 #include <Switch/System/Windows/Forms/Application.hpp>
-#include <Switch/System/Windows/Forms/Button.hpp>
 #include <Switch/System/Windows/Forms/TabControl.hpp>
 #include <Switch/Startup.hpp>
 
