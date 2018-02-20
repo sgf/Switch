@@ -29,7 +29,6 @@ namespace UnitTests {
   };
 
   // Used Test_ to add unit test to execute at the unit test suit.
-  AddTestFixture_(DirectoryTest);
   AddTest_(DirectoryTest, ChangeCurrentDirectoryWithDownloads);
   AddTest_(DirectoryTest, ChangeCurrentDirectoryWithPotatoes);
 }

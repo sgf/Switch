@@ -48,16 +48,13 @@ namespace UnitTests {
   };
 
   // Used Test_ to add unit test to execute at the unit test suit.
-  AddTestFixture_(TeastCase1);
   AddTest_(TeastCase1, TestOne);
   AddTest_(TeastCase1, TestTwo);
   AddTest_(TeastCase1, TestThree);
-  AddTestFixture_(TeastCase2);
   AddTest_(TeastCase2, TestOne);
   AddTest_(TeastCase2, TestTwo);
   AddTest_(TeastCase2, TestThree);
   AddTest_(TeastCase2, TestFour);
-  AddTestFixture_(TeastCase3);
   AddTest_(TeastCase3, TestOne);
   AddTest_(TeastCase3, TestTwo);
 }

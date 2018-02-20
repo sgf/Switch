@@ -27,7 +27,6 @@ namespace UnitTests {
   };
 
   // Used Test_ to add unit test to execute at the unit test suit.
-  AddTestFixture_(TimeSpanTest);
   AddTest_(TimeSpanTest, CreateTimeSpanFromDateTime);
   AddTest_(TimeSpanTest, TimeSpanIsEqualToAnotherTimeSpan);
   AddTest_(TimeSpanTest, DefaultTimeSpanIsEqualToZero);

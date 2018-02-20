@@ -16,7 +16,6 @@ namespace UnitTests {
     }
   };
 
-  AddTestFixture_(UserTest);
   AddTest_(UserTest, TestWithCurrentInformation);
   AddTest_(UserTest, TestWithoutCurrentInformation);
 }
