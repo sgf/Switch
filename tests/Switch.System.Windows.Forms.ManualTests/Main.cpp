@@ -12,7 +12,7 @@ namespace ManualTests {
       Button button;
       button.Text = "Close";
       button.Location = System::Drawing::Point(10, 10);
-      button.Click += delegate_(const object& sender, const EventArgs& e) {
+      button.Click += delegate_(const object & sender, const EventArgs & e) {
         Application::Exit();
       };
 
