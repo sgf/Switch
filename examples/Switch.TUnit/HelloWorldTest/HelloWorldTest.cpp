@@ -16,7 +16,6 @@ namespace UnitTests {
     }
   };
 
-  AddTestFixture_(HelloWorldTest);
   AddTest_(HelloWorldTest, CreateStringFromLiteral);
   AddTest_(HelloWorldTest, CreateStringFromChars);
 }

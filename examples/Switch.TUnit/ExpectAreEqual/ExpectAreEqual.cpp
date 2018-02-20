@@ -16,7 +16,6 @@ namespace UnitTests {
     }
   };
 
-  AddTestFixture_(UserTest);
   AddTest_(UserTest, PassedTestAreEqual);
   AddTest_(UserTest, FailedTestAreEqual);
 }
