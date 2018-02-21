@@ -12,9 +12,9 @@ namespace ManualTests {
       Button button;
       button.Text = "Create";
       button.Location = System::Drawing::Point(10, 10);
-      Form form;
-      form.Text = "ManualTests";
-      form.Controls().Add(button);
+      Form mainForm;
+      mainForm.Text = "ManualTests";
+      mainForm.Controls().Add(button);
 
       System::Collections::Generic::List < $<Form >> forms;
       int number = 1;
@@ -25,7 +25,7 @@ namespace ManualTests {
         forms.Add(form);
       };
 
-      form.ShowDialog();
+      mainForm.ShowDialog();
     }
   };
 }
