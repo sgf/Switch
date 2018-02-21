@@ -42,7 +42,7 @@ namespace Switch {
           /// @remarks Typically, the main function of an application calls this method and passes to it the main window of the application.
           /// @remarks This method adds an event handler to the mainForm parameter for the Closed event. The event handler calls ExitThread to clean up the application.
           template <typename TForm>
-          static void Run(const TForm& mainForm) {mainForm.ShowDialog();}
+          static void Run(const TForm& mainForm) {as<System::Windows::Forms::Form>(mainForm).ShowDialog();}
 
           /// @brief Occurs when the application finishes processing and is about to enter the idle state.
           static EventHandler Idle;

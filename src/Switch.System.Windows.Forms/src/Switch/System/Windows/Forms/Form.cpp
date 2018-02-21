@@ -27,8 +27,8 @@ void Form::CreateHandle() {
   this->Control::CreateHandle();
 }
 
-DialogResult Form::ShowDialog() {
-  this->Visible = true;
+DialogResult Form::ShowDialog() const {
+  const_cast<Form*>(this)->Visible = true;
   if (Application::mainForm == null) {
     Application::Init();
     Application::mainForm = *this;

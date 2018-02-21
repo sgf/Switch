@@ -85,7 +85,7 @@ namespace Switch {
 
           void Close() override;
 
-          System::Windows::Forms::DialogResult ShowDialog();
+          System::Windows::Forms::DialogResult ShowDialog() const;
 
           void WndProc(Message& message) override;
 
