@@ -16,7 +16,7 @@ namespace ManualTests {
       form.Text = "ManualTests";
       form.Controls().Add(button);
 
-      System::Collections::Generic::List<$<Form>> forms;
+      System::Collections::Generic::List < $<Form >> forms;
       int number = 1;
       button.Click += delegate_(const object & sender, const EventArgs & e) {
         $<Form> form = new_<Form>();
@@ -24,7 +24,7 @@ namespace ManualTests {
         form->Visible = true;
         forms.Add(form);
       };
-    
+
       form.ShowDialog();
     }
   };

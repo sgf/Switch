@@ -55,14 +55,14 @@ intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
 
   System::Drawing::Rectangle bounds = form.Bounds;
   switch (form.StartPosition) {
-    case FormStartPosition::Manual: bounds = form.Bounds; break;
-    case FormStartPosition::WindowsDefaultBounds: bounds = System::Drawing::Rectangle(location, location, 800, 600); break;
-    case FormStartPosition::WindowsDefaultLocation: bounds = System::Drawing::Rectangle(location, location, form.Width, form.Height); break;
-    default: break;
+  case FormStartPosition::Manual: bounds = form.Bounds; break;
+  case FormStartPosition::WindowsDefaultBounds: bounds = System::Drawing::Rectangle(location, location, 800, 600); break;
+  case FormStartPosition::WindowsDefaultLocation: bounds = System::Drawing::Rectangle(location, location, form.Width, form.Height); break;
+  default: break;
   }
-  form.Location= System::Drawing::Point(bounds.Left, bounds.Top);
-  form.Size= System::Drawing::Size(bounds.Width, bounds.Height);
-  
+  form.Location = System::Drawing::Point(bounds.Left, bounds.Top);
+  form.Size = System::Drawing::Size(bounds.Width, bounds.Height);
+
   if (form.StartPosition == FormStartPosition::WindowsDefaultBounds || form.StartPosition == FormStartPosition::WindowsDefaultLocation) {
     location = location < 300 ? location + 20 : 20;
     key.SetValue("DefaultLocation", location, Microsoft::Win32::RegistryValueKind::DWord);
