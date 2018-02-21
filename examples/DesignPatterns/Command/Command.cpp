@@ -53,9 +53,9 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Create receiver, command, and invoker
-        refptr<Receiver> receiver = ref_new<Receiver>();
-        refptr<Command> command = ref_new<ConcreteCommand>(receiver);
-        refptr<Invoker> invoker = ref_new<Invoker>();
+        refptr<Receiver> receiver = new_<Receiver>();
+        refptr<Command> command = new_<ConcreteCommand>(receiver);
+        refptr<Invoker> invoker = new_<Invoker>();
 
         // Set and execute command
         invoker->SetCommand(command);

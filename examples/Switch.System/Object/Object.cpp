@@ -35,7 +35,7 @@ namespace ObjectTest {
   public:
     static void Main() {
       // Construct a Point object.
-      refptr<Point> p1 = ref_new<Point>(1, 2);
+      refptr<Point> p1 = new_<Point>(1, 2);
 
       // Make another Point object that is a copy of the first.
       refptr<Point> p2 = p1->Copy();

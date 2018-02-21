@@ -29,7 +29,7 @@ namespace Switch {
             void Serialize(const refptr<System::IO::Stream>& serializationStream, const Object& graph) override {
               System::Runtime::Serialization::SerializationInfo serializationInfo;
               as<System::Runtime::Serialization::ISerializable>(graph).GetObjectData(serializationInfo);
-              this->writer = ref_new<IO::StreamWriter>(serializationStream);
+              this->writer = new_<IO::StreamWriter>(serializationStream);
               Serialize(serializationInfo);
               this->writer->WriteLine();
             }
@@ -116,7 +116,7 @@ namespace Test {
     }
 
     static refptr<Role> Deserialize(const System::Runtime::Serialization::SerializationInfo& info) {
-      refptr<Role> role = ref_new<Role>();
+      refptr<Role> role = new_<Role>();
       role->Name = info.GetString("Name");
       role->Info = info.GetByte("Info");
       return role;
@@ -145,7 +145,7 @@ namespace Test {
     }
 
     static refptr<Person> Deserialize(const System::Runtime::Serialization::SerializationInfo& info) {
-      refptr<Person> person = ref_new<Person>();
+      refptr<Person> person = new_<Person>();
       person->FirstName = info.GetString("FirstName");
       person->LastName = info.GetString("LastName");
       person->Age = info.GetInt32("Age");
@@ -225,7 +225,7 @@ namespace Test {
 int main(int argc, char* argv[]) {
   Test::Person person("Robert", "March", 45, {"Meg", "Jo", "Beth", "Amy"}, Test::Role("Doctor", 42));
   Console::WriteLine("person = {0}", person);
-  refptr<System::IO::Stream> stream = ref_new<System::IO::MemoryStream>();
+  refptr<System::IO::Stream> stream = new_<System::IO::MemoryStream>();
 
   Test::TestSerializer serializer;
   serializer.Serialize(stream, person);
@@ -233,7 +233,7 @@ int main(int argc, char* argv[]) {
   /*
    Test::Person person("Robert", "March", 45, {"Meg", "Jo", "Beth", "Amy"}, Test::Role("Doctor", 42));
    Console::WriteLine("person = {0}", person);
-   Sp<System::IO::Stream> stream = ref_new<System::IO::MemoryStream>();
+   Sp<System::IO::Stream> stream = new_<System::IO::MemoryStream>();
 
    System::Runtime::Serialization::Json::JSonSerializer serializer;
    serializer.Serialize(stream, person);

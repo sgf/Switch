@@ -47,7 +47,7 @@ refptr<Image> Image::FromFile(const string& fileName) {
 }
 
 refptr<Image> Image::FromData(const char* data[]) {
-  refptr<Image> image = ref_new<Image>();
+  refptr<Image> image = new_<Image>();
 
   Array<string> infos = string(data[0]).Split(' ');
   int32 columns = Int32::Parse(infos[0]);

@@ -51,7 +51,7 @@ namespace DesignPatterns {
     class ConcreteAggregate : public Aggregate {
     public:
       refptr<Iterator> CreateIterator() override {
-        return ref_new<ConcreteIterator>(*this);
+        return new_<ConcreteIterator>(*this);
       }
 
       // Gets item count
@@ -113,7 +113,7 @@ namespace DesignPatterns {
         a.Insert(3, "Item D");
 
         // Create Iterator and provide aggregate
-        refptr<Iterator> i = ref_new<ConcreteIterator>(a);
+        refptr<Iterator> i = new_<ConcreteIterator>(a);
 
         Console::WriteLine("Iterating over collection:");
 

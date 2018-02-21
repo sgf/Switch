@@ -60,9 +60,9 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Create ConcreteComponent and two Decorators
-        refptr<ConcreteComponent> c = ref_new<ConcreteComponent>();
-        refptr<ConcreteDecoratorA> d1 = ref_new<ConcreteDecoratorA>();
-        refptr<ConcreteDecoratorB> d2 = ref_new<ConcreteDecoratorB>();
+        refptr<ConcreteComponent> c = new_<ConcreteComponent>();
+        refptr<ConcreteDecoratorA> d1 = new_<ConcreteDecoratorA>();
+        refptr<ConcreteDecoratorB> d2 = new_<ConcreteDecoratorB>();
 
         // Link decorators
         d1->SetComponent(as<Component>(c));

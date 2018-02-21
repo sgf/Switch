@@ -67,7 +67,7 @@ namespace Switch {
             bool started = false;
             bool finished = false;
           };
-          refptr<WebRequestStreamData> data = ref_new<WebRequestStreamData>();
+          refptr<WebRequestStreamData> data = new_<WebRequestStreamData>();
         };
 
         property_<int64> ContentLength {

@@ -1005,7 +1005,7 @@ string String::ToString() const {
 }
 
 refptr<object> String::Clone() const {
-  return ref_new<String>(*this);
+  return new_<String>(*this);
 }
 
 int32 String::CompareTo(const String& value) const {

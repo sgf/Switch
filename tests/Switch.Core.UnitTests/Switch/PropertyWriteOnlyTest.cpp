@@ -49,16 +49,16 @@ namespace SwitchUnitTests {
   };
 
   TEST(PropertyWriteOnlyTest, PropertyCopyConstructor) {
-    refptr<PropertyWriteTestClass> p1 = ref_new<PropertyWriteTestClass>();
-    refptr<PropertyWriteTestClass> p2 = ref_new<PropertyWriteTestClass>(*p1);
+    refptr<PropertyWriteTestClass> p1 = new_<PropertyWriteTestClass>();
+    refptr<PropertyWriteTestClass> p2 = new_<PropertyWriteTestClass>(*p1);
     p2->Name = "Other Value";
     p1 = null;
     ASSERT_EQ("Other Value", p2->name);
   }
 
   TEST(PropertyWriteOnlyTest, PropertyEqualOperator) {
-    refptr<PropertyWriteTestClass> p1 = ref_new<PropertyWriteTestClass>();
-    refptr<PropertyWriteTestClass> p2 = ref_new<PropertyWriteTestClass>();
+    refptr<PropertyWriteTestClass> p1 = new_<PropertyWriteTestClass>();
+    refptr<PropertyWriteTestClass> p2 = new_<PropertyWriteTestClass>();
     *p2 = *p1;
     p2->Name = "Other Value";
     p1 = null;

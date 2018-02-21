@@ -26,9 +26,9 @@ namespace DesignPatterns {
     public:
       // Constructor
       FlyweightFactory() {
-        flyweights.Add("X", ref_new<ConcreteFlyweight>());
-        flyweights.Add("Y", ref_new<ConcreteFlyweight>());
-        flyweights.Add("Z", ref_new<ConcreteFlyweight>());
+        flyweights.Add("X", new_<ConcreteFlyweight>());
+        flyweights.Add("Y", new_<ConcreteFlyweight>());
+        flyweights.Add("Z", new_<ConcreteFlyweight>());
       }
 
       refptr<Flyweight> GetFlyweight(const string& key) const {return flyweights[key];}
@@ -64,7 +64,7 @@ namespace DesignPatterns {
         refptr<Flyweight> fz = factory.GetFlyweight("Z");
         fz->Operation(--extrinsicstate);
 
-        refptr<UnsharedConcreteFlyweight> fu = ref_new<UnsharedConcreteFlyweight>();
+        refptr<UnsharedConcreteFlyweight> fu = new_<UnsharedConcreteFlyweight>();
         fu->Operation(--extrinsicstate);
       }
     };

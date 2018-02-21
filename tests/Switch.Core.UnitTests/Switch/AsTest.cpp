@@ -328,52 +328,52 @@ namespace SwitchUnitTests {
   }
 
   TEST(AsTest, RefPtrStringAsString) {
-    refptr<string> s = ref_new<string>("Test");
+    refptr<string> s = new_<string>("Test");
     refptr<string> r = as<string>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrStringAsObject) {
-    refptr<string> s = ref_new<string>("Test");
+    refptr<string> s = new_<string>("Test");
     refptr<object> r = as<object>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrStringAsIComparable) {
-    refptr<string> s = ref_new<string>("Test");
+    refptr<string> s = new_<string>("Test");
     refptr<IComparable> r = as<IComparable>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrStringAsInt32) {
-    refptr<string> s = ref_new<string>("Test");
+    refptr<string> s = new_<string>("Test");
     refptr<Int32> r = as<Int32>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, RefPtrObjectFromStringAsString) {
-    refptr<string> s = ref_new<string>("Test");
+    refptr<string> s = new_<string>("Test");
     refptr<object> o = as<object>(s);
     refptr<string> r = as<string>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrObjectFromStringAsObject) {
-    refptr<string> s = ref_new<string>("Test");
+    refptr<string> s = new_<string>("Test");
     refptr<object> o = as<object>(s);
     refptr<object> r = as<object>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrObjectFromStringAsIComparable) {
-    refptr<string> s = ref_new<string>("Test");
+    refptr<string> s = new_<string>("Test");
     refptr<object> o = as<object>(s);
     refptr<IComparable> r = as<IComparable>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrObjectFromStringAsInt32) {
-    refptr<string> s = ref_new<string>("Test");
+    refptr<string> s = new_<string>("Test");
     refptr<object> o = as<object>(s);
     refptr<Int32> r = as<Int32>(o);
     ASSERT_TRUE(r == null);
@@ -432,52 +432,52 @@ namespace SwitchUnitTests {
   }
 
   TEST(AsTest, ConstSpStringAsString) {
-    const refptr<string> s = ref_new<string>("Test");
+    const refptr<string> s = new_<string>("Test");
     const refptr<string> r = as<string>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpStringAsObject) {
-    const refptr<string> s = ref_new<string>("Test");
+    const refptr<string> s = new_<string>("Test");
     const refptr<object> r = as<object>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpStringAsIComparable) {
-    const refptr<string> s = ref_new<string>("Test");
+    const refptr<string> s = new_<string>("Test");
     const refptr<IComparable> r = as<IComparable>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpStringAsInt32) {
-    const refptr<string> s = ref_new<string>("Test");
+    const refptr<string> s = new_<string>("Test");
     const refptr<Int32> r = as<Int32>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, ConstSpObjectFromStringAsString) {
-    const refptr<string> s = ref_new<string>("Test");
+    const refptr<string> s = new_<string>("Test");
     const refptr<object> o = as<object>(s);
     const refptr<string> r = as<string>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpObjectFromStringAsObject) {
-    const refptr<string> s = ref_new<string>("Test");
+    const refptr<string> s = new_<string>("Test");
     const refptr<object> o = as<object>(s);
     const refptr<object> r = as<object>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpObjectFromStringAsIComparable) {
-    const refptr<string> s = ref_new<string>("Test");
+    const refptr<string> s = new_<string>("Test");
     const refptr<object> o = as<object>(s);
     const refptr<IComparable> r = as<IComparable>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpObjectFromStringAsInt32) {
-    const refptr<string> s = ref_new<string>("Test");
+    const refptr<string> s = new_<string>("Test");
     const refptr<object> o = as<object>(s);
     const refptr<Int32> r = as<Int32>(o);
     ASSERT_TRUE(r == null);

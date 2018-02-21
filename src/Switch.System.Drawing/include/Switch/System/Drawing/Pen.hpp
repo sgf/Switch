@@ -51,9 +51,9 @@ namespace Switch {
 
         Pen(const Brush& brush, float width) : brush(as<System::Drawing::Brush>(brush.Clone())), width(width) { this->Create(); }
 
-        Pen(System::Drawing::Color color) : brush(as<System::Drawing::Brush>(ref_new<SolidBrush>(color))) { this->Create(); }
+        Pen(System::Drawing::Color color) : brush(as<System::Drawing::Brush>(new_<SolidBrush>(color))) { this->Create(); }
 
-        Pen(System::Drawing::Color color, float width) : brush(as<System::Drawing::Brush>(ref_new<SolidBrush>(color))), width(width) { this->Create(); }
+        Pen(System::Drawing::Color color, float width) : brush(as<System::Drawing::Brush>(new_<SolidBrush>(color))), width(width) { this->Create(); }
 
         property_<const System::Drawing::Brush&> Brush{
           get_->const System::Drawing::Brush& { return this->brush(); },
@@ -85,7 +85,7 @@ namespace Switch {
         intptr GetNativePen() const { return this->pen; }
         void Create();
         void Destroy();
-        refptr<System::Drawing::Brush> brush  = as<System::Drawing::Brush>(ref_new<SolidBrush>(System::Drawing::Color::Black()));
+        refptr<System::Drawing::Brush> brush  = as<System::Drawing::Brush>(new_<SolidBrush>(System::Drawing::Color::Black()));
         System::Drawing::Drawing2D::DashStyle dashStyle = System::Drawing::Drawing2D::DashStyle::Solid;
         float width = 1;
         intptr pen = IntPtr::Zero;

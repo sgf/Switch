@@ -19,8 +19,8 @@ namespace {
     return output;
   }
 
-  refptr<System::Text::Encoding> inputEncoding = ref_new<System::Text::UTF8Encoding>(false);
-  refptr<System::Text::Encoding> outputEncoding = ref_new<System::Text::UTF8Encoding>(false);
+  refptr<System::Text::Encoding> inputEncoding = new_<System::Text::UTF8Encoding>(false);
+  refptr<System::Text::Encoding> outputEncoding = new_<System::Text::UTF8Encoding>(false);
 
   bool treatControlCAsInput = false;
 }

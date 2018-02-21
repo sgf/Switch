@@ -157,13 +157,13 @@ refptr<object> Socket::GetSocketOption(SocketOptionLevel socketOptionLevel, Sock
 
   if (socketOptionName == SocketOptionName::Linger) {
     /// @todo
-    //return ref_new<LingerOption>(false, 0);
+    //return new_<LingerOption>(false, 0);
     throw NotImplementedException(caller_);
   }
 
   if (socketOptionName == SocketOptionName::AddMembership || socketOptionName == SocketOptionName::DropMembership) {
     /// @todo
-    //return ref_new<MulticastOption>(IPAddress());
+    //return new_<MulticastOption>(IPAddress());
     throw NotImplementedException(caller_);
   }
 
@@ -171,7 +171,7 @@ refptr<object> Socket::GetSocketOption(SocketOptionLevel socketOptionLevel, Sock
   int32 size = sizeof(int32);
   if (Native::SocketApi::GetSocketOption(this->data->socket, socketOptionLevel, socketOptionName, &socketOption, &size) == -1)
     throw SocketException(Native::SocketApi::GetLastError(), caller_);
-  return ref_new<Int32>(socketOption);
+  return new_<Int32>(socketOption);
 }
 
 int32 Socket::IOControl(System::Net::Sockets::IOControlCode /*ioControlCode*/, const Array<byte>& /*optionInValue*/, Array<byte>& /*optionOutValue*/) {

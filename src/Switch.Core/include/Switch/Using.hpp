@@ -8,7 +8,7 @@ namespace Switch {
   /// @par Examples
   /// @code
   /// // sr is released automatically after the end cosure }.
-  /// using_(refptr<StreamReader> sr = ref_new<StreamReader>(path)) {
+  /// using_(refptr<StreamReader> sr = new_<StreamReader>(path)) {
   ///   Console::WriteLine(sr->ReadToEnd());
   /// }
   /// @endcode

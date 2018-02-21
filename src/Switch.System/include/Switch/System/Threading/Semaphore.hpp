@@ -36,7 +36,7 @@ namespace Switch {
         /// @param initialCount The initial number of requests for the semaphore that can be granted concurrently.
         /// @param maximumCount The maximum number of requests for the semaphore that can be granted concurrently.
         /// @exception IO::IOException An Io error occurred.
-        Semaphore(int32 initialCount, int32 maximumCount) : count(ref_new<int32>(initialCount)), maxCount(ref_new<int32>(maximumCount)) {}
+        Semaphore(int32 initialCount, int32 maximumCount) : count(new_<int32>(initialCount)), maxCount(new_<int32>(maximumCount)) {}
 
         /// @brief Initializes a new instance of the System::Threading::Semaphore class, specifying the maximum number of concurrent entries, optionally reserving some entries
         /// for the calling thread, and optionally specifying the name of a system semaphore
@@ -143,11 +143,11 @@ namespace Switch {
           return true;
         }
 
-        refptr<std::mutex> guard = ref_new<std::mutex>();
-        refptr<std::condition_variable> signal = ref_new<std::condition_variable>();
-        refptr<int32> count = ref_new<int32>(0);
-        refptr<int32> maxCount = ref_new<int32>(Int32::MaxValue);
-        refptr<string> name = ref_new<string>();
+        refptr<std::mutex> guard = new_<std::mutex>();
+        refptr<std::condition_variable> signal = new_<std::condition_variable>();
+        refptr<int32> count = new_<int32>(0);
+        refptr<int32> maxCount = new_<int32>(Int32::MaxValue);
+        refptr<string> name = new_<string>();
       };
     }
   }

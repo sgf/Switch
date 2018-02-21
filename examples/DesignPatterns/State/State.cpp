@@ -51,11 +51,11 @@ namespace DesignPatterns {
     };
 
     inline void ConcreteStateA::Handle(Context& context) {
-      context.State = ref_new<ConcreteStateB>();
+      context.State = new_<ConcreteStateB>();
     }
 
     inline void ConcreteStateB::Handle(Context& context) {
-      context.State = ref_new<ConcreteStateA>();
+      context.State = new_<ConcreteStateA>();
     }
 
     // MainApp startup_ class for Behavioral
@@ -65,7 +65,7 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Setup context in a state
-        Context c(ref_new<ConcreteStateA>());
+        Context c(new_<ConcreteStateA>());
 
         // Issue requests, which toggles state
         c.Request();

@@ -482,13 +482,10 @@ namespace Switch {
   using refptr = $<T>;
 
   template<typename T, typename ...Args>
-  refptr<T> new_(Args&& ... args) {return refptr<T>(new T(args...));}
+  $<T> new_(Args&& ... args) {return $<T>(new T(args...));}
 
   template<typename T, typename ...Args>
-  refptr<T> ref_new(Args&& ... args) {return refptr<T>(new T(args...));}
-
-  template<typename T, typename ...Args>
-  refptr<T> gcnew(Args&& ... args) {return refptr<T>(new T(args...));}
+  $<T> gcnew(Args&& ... args) {return $<T>(new T(args...));}
 }
 
 using namespace Switch;

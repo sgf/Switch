@@ -78,11 +78,11 @@ UTF8Encoding& UTF8Encoding::operator =(const UTF8Encoding& encoding) {
 }
 
 refptr<Encoding::Decoder> UTF8Encoding::CreateDecoder() const {
-  return ref_new<Decoder>();
+  return new_<Decoder>();
 }
 
 refptr<Encoding::Encoder> UTF8Encoding::CreateEncoder() const {
-  return ref_new<Encoder>();
+  return new_<Encoder>();
 }
 
 int32 UTF8Encoding::GetByteCount(char32 c) const {

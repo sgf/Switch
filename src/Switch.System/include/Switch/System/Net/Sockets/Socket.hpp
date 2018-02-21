@@ -997,7 +997,7 @@ namespace Switch {
             bool nonBlocking = false;
             bool bound = false;
           };
-          refptr<SocketData> data = ref_new<SocketData>();
+          refptr<SocketData> data = new_<SocketData>();
 
         };
       }

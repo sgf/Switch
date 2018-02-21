@@ -7,7 +7,7 @@ namespace Test {
   public:
     /// @brief The main entry point for the application.
     static void Main() {
-      refptr<string> p1 = ref_new<string>("First string****");
+      refptr<string> p1 = new_<string>("First string****");
 
       if (p1 == null)
         Console::WriteLine("p1 == null");

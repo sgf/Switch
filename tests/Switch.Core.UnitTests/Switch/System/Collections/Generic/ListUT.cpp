@@ -841,7 +841,7 @@ namespace {
     refptr<IEnumerator<string>> enumerators[50];
 
     for (Int32 index = 0; index < 50; index++) {
-      enumerators[index] = ref_new<Enumerator<string>>(dinosaurs.GetEnumerator());
+      enumerators[index] = new_<Enumerator<string>>(dinosaurs.GetEnumerator());
       enumerators[index]->MoveNext();
       ASSERT_EQ("Tyrannosaurus", enumerators[index]->Current());
     }

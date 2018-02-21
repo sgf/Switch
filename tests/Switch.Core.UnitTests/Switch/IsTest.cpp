@@ -274,17 +274,17 @@ namespace {
   }
 
   TEST(IsTest, SpStringIsString) {
-    refptr<string> s = ref_new<String>("Test");
+    refptr<string> s = new_<String>("Test");
     ASSERT_TRUE(is<string>(s));
   }
 
   TEST(IsTest, SpStringIsObject) {
-    refptr<string> s = ref_new<String>("Test");
+    refptr<string> s = new_<String>("Test");
     ASSERT_TRUE(is<object>(s));
   }
 
   TEST(IsTest, SpStringIsIComparable) {
-    refptr<string> s = ref_new<String>("Test");
+    refptr<string> s = new_<String>("Test");
     ASSERT_TRUE(is<IComparable>(s));
   }
 
@@ -294,22 +294,22 @@ namespace {
   }
 
   TEST(IsTest, SpObjectFromSpStringIsString) {
-    refptr<object> o = ref_new<string>("Test");
+    refptr<object> o = new_<string>("Test");
     ASSERT_TRUE(is<string>(o));
   }
 
   TEST(IsTest, SpObjectFromSpStringIsObject) {
-    refptr<object> o = ref_new<string>("Test");
+    refptr<object> o = new_<string>("Test");
     ASSERT_TRUE(is<object>(o));
   }
 
   TEST(IsTest, SpObjectFormSpStringIsIComparable) {
-    refptr<object> o = ref_new<string>("Test");
+    refptr<object> o = new_<string>("Test");
     ASSERT_TRUE(is<IComparable>(o));
   }
 
   TEST(IsTest, SpObjectFormSpStringIsInt32) {
-    refptr<object> o = ref_new<string>("Test");
+    refptr<object> o = new_<string>("Test");
     ASSERT_FALSE(is<Int32>(o));
   }
 
@@ -354,42 +354,42 @@ namespace {
   }
 
   TEST(IsTest, ConstSpStringIsString) {
-    const refptr<string> s = ref_new<String>("Test");
+    const refptr<string> s = new_<String>("Test");
     ASSERT_TRUE(is<string>(s));
   }
 
   TEST(IsTest, ConstSpStringIsObject) {
-    const refptr<string> s = ref_new<String>("Test");
+    const refptr<string> s = new_<String>("Test");
     ASSERT_TRUE(is<object>(s));
   }
 
   TEST(IsTest, ConstSpStringIsIComparable) {
-    const refptr<string> s = ref_new<String>("Test");
+    const refptr<string> s = new_<String>("Test");
     ASSERT_TRUE(is<IComparable>(s));
   }
 
   TEST(IsTest, ConstSpStringIsInt32) {
-    const refptr<string> s = ref_new<String>("Test");
+    const refptr<string> s = new_<String>("Test");
     ASSERT_FALSE(is<Int32>(s));
   }
 
   TEST(IsTest, ConstSpObjectFromConstSpStringIsString) {
-    const refptr<object> o = ref_new<string>("Test");
+    const refptr<object> o = new_<string>("Test");
     ASSERT_TRUE(is<string>(o));
   }
 
   TEST(IsTest, ConstSpObjectFromConstSpStringIsObject) {
-    const refptr<object> o = ref_new<string>("Test");
+    const refptr<object> o = new_<string>("Test");
     ASSERT_TRUE(is<object>(o));
   }
 
   TEST(IsTest, ConstSpObjectFormConstSpStringIsIComparable) {
-    const refptr<object> o = ref_new<string>("Test");
+    const refptr<object> o = new_<string>("Test");
     ASSERT_TRUE(is<IComparable>(o));
   }
 
   TEST(IsTest, ConstSpObjectFormConstSpStringIsInt32) {
-    const refptr<object> o = ref_new<string>("Test");
+    const refptr<object> o = new_<string>("Test");
     ASSERT_FALSE(is<Int32>(o));
   }
 

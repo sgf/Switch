@@ -13,7 +13,7 @@ namespace {
   class Semaphore: public WaitHandle {
   public:
     Semaphore() {}
-    Semaphore(int32 initialCount, int32 maximumCount) : count(ref_new<int32>(initialCount)), maxCount(ref_new<int32>(maximumCount)) {}
+    Semaphore(int32 initialCount, int32 maximumCount) : count(new_<int32>(initialCount)), maxCount(new_<int32>(maximumCount)) {}
     Semaphore(const Semaphore& semaphore) : guard(semaphore.guard), signal(semaphore.signal), count(semaphore.count), maxCount(semaphore.maxCount), name(semaphore.name) {}
     ~Semaphore() {this->Close();}
     Semaphore& operator =(const Semaphore& semaphore) {
@@ -75,11 +75,11 @@ namespace {
       return true;
     }
 
-    refptr<std::mutex> guard = ref_new<std::mutex>();
-    refptr<std::condition_variable> signal = ref_new<std::condition_variable>();
-    refptr<int32> count = ref_new<int32>(0);
-    refptr<int32> maxCount = ref_new<int32>(Int32::MaxValue);
-    refptr<string> name = ref_new<string>();
+    refptr<std::mutex> guard = new_<std::mutex>();
+    refptr<std::condition_variable> signal = new_<std::condition_variable>();
+    refptr<int32> count = new_<int32>(0);
+    refptr<int32> maxCount = new_<int32>(Int32::MaxValue);
+    refptr<string> name = new_<string>();
   };
 }
 

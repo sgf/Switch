@@ -57,11 +57,11 @@ ASCIIEncoding& ASCIIEncoding::operator=(const ASCIIEncoding& encoding) {
 }
 
 refptr<Encoding::Decoder> ASCIIEncoding::CreateDecoder() const {
-  return ref_new<Decoder>();
+  return new_<Decoder>();
 }
 
 refptr<Encoding::Encoder> ASCIIEncoding::CreateEncoder() const {
-  return ref_new<Encoder>();
+  return new_<Encoder>();
 }
 
 int32 ASCIIEncoding::GetByteCount(char32) const {

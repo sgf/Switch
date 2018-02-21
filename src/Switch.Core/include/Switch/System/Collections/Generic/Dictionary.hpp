@@ -330,7 +330,7 @@ public:
               if (IsFinished())
                 return false;
 
-              this->currentKeyValuePair = ref_new<Item>((*this->iterator).first, (*this->iterator).second);
+              this->currentKeyValuePair = new_<Item>((*this->iterator).first, (*this->iterator).second);
               return true;
             }
 

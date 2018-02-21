@@ -7,8 +7,8 @@ namespace Examples {
   public:
     // The main entry point for the application.
     static void Main() {
-      refptr<Object> object1 = ref_new<Object>();
-      refptr<Object> object2 = ref_new<Object>();
+      refptr<Object> object1 = new_<Object>();
+      refptr<Object> object2 = new_<Object>();
 
       refptr<Object> object3 = object2;
       Console::WriteLine(object1->Equals(*object3));

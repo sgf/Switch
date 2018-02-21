@@ -57,9 +57,9 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Setup Chain of Responsibility
-        refptr<Handler> h1 = ref_new<ConcreteHandler1>();
-        refptr<Handler> h2 = ref_new<ConcreteHandler2>();
-        refptr<Handler> h3 = ref_new<ConcreteHandler3>();
+        refptr<Handler> h1 = new_<ConcreteHandler1>();
+        refptr<Handler> h2 = new_<ConcreteHandler2>();
+        refptr<Handler> h3 = new_<ConcreteHandler3>();
         h1->SetSuccessor(h2);
         h2->SetSuccessor(h3);
 

@@ -13,21 +13,21 @@ refptr<System::Collections::Generic::Dictionary<int32, string>> Encoding::names;
 refptr<System::Collections::Generic::Dictionary<string, int32>> Encoding::codePagesFromName;
 refptr<System::Collections::Generic::Dictionary<int32, string>> Encoding::displayNames;
 
-const refptr<Encoding> Encoding::ASCII = ref_new<ASCIIEncoding>();
+const refptr<Encoding> Encoding::ASCII = new_<ASCIIEncoding>();
 
-const refptr<Encoding> Encoding::UTF8 = ref_new<UTF8Encoding>(true);
+const refptr<Encoding> Encoding::UTF8 = new_<UTF8Encoding>(true);
 
-const refptr<Encoding> Encoding::Unicode = ref_new<UnicodeEncoding>(false, true);
+const refptr<Encoding> Encoding::Unicode = new_<UnicodeEncoding>(false, true);
 
-const refptr<Encoding> Encoding::BigEndianUnicode = ref_new<UnicodeEncoding>(true, true);
+const refptr<Encoding> Encoding::BigEndianUnicode = new_<UnicodeEncoding>(true, true);
 
-const refptr<Encoding> Encoding::UTF16LE = ref_new<UnicodeEncoding>(false, true);
+const refptr<Encoding> Encoding::UTF16LE = new_<UnicodeEncoding>(false, true);
 
-const refptr<Encoding> Encoding::UTF16BE = ref_new<UnicodeEncoding>(true, true);
+const refptr<Encoding> Encoding::UTF16BE = new_<UnicodeEncoding>(true, true);
 
-const refptr<Encoding> Encoding::UTF32 = ref_new<UTF32Encoding>(false, true);
+const refptr<Encoding> Encoding::UTF32 = new_<UTF32Encoding>(false, true);
 
-const refptr<Encoding> Encoding::Default = ref_new<UTF8Encoding>(true);
+const refptr<Encoding> Encoding::Default = new_<UTF8Encoding>(true);
 
 Encoding::Encoding() {
   this->codePage = 0;
@@ -68,15 +68,15 @@ string Encoding::GetEncodingName() const {
 
 refptr<Encoding> Encoding::CreateEncoding(int32 codePage) {
   switch (codePage) {
-  case 437   : { return ref_new<CodePage437Encoding>(); }
-  case 1200  : { return ref_new<UnicodeEncoding>(false, true); }
-  case 1201  : { return ref_new<UnicodeEncoding>(true, true); }
-  case 12000 : { return ref_new<UTF32Encoding>(false, true); }
-  case 12001 : { return ref_new<UTF32Encoding>(true, true); }
-  case 20127 : { return ref_new<ASCIIEncoding>(); }
-  case 28591 : { return ref_new<CodePage28591Encoding>(); }
-  case 28592 : { return ref_new<CodePage28592Encoding>(); }
-  case 65001 : { return ref_new<UTF8Encoding>(); }
+  case 437   : { return new_<CodePage437Encoding>(); }
+  case 1200  : { return new_<UnicodeEncoding>(false, true); }
+  case 1201  : { return new_<UnicodeEncoding>(true, true); }
+  case 12000 : { return new_<UTF32Encoding>(false, true); }
+  case 12001 : { return new_<UTF32Encoding>(true, true); }
+  case 20127 : { return new_<ASCIIEncoding>(); }
+  case 28591 : { return new_<CodePage28591Encoding>(); }
+  case 28592 : { return new_<CodePage28592Encoding>(); }
+  case 65001 : { return new_<UTF8Encoding>(); }
   }
   throw NotSupportedException(caller_);
 }

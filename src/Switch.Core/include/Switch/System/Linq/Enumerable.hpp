@@ -134,7 +134,7 @@ namespace Switch {
         /// The following code example demonstrates how to use AsEnumerable<TSource>(IEnumerable<TSource>) to hide a type's custom Where method when the standard query operator implementation is desired.
         /// @include EnumerableAsEnumerable.cpp
         template<typename TSource>
-        static refptr<EnumerableCollection<TSource>> AsEnumerable(const Collections::Generic::IEnumerable<TSource>& source) {return ref_new<EnumerableCollection<TSource>>(source);}
+        static refptr<EnumerableCollection<TSource>> AsEnumerable(const Collections::Generic::IEnumerable<TSource>& source) {return new_<EnumerableCollection<TSource>>(source);}
 
         /// @brief Returns the input typed as IEnumerable<T>.
         /// @param source The sequence to type as IEnumerable<T>.
@@ -145,7 +145,7 @@ namespace Switch {
         /// The following code example demonstrates how to use AsEnumerable<TSource>(IEnumerable<TSource>) to hide a type's custom Where method when the standard query operator implementation is desired.
         /// @include EnumerableAsEnumerable.cpp
         template<typename TSource>
-        static refptr<EnumerableCollection<TSource>> AsEnumerable(const InitializerList<TSource>& source) {return ref_new<EnumerableCollection<TSource>>(source);}
+        static refptr<EnumerableCollection<TSource>> AsEnumerable(const InitializerList<TSource>& source) {return new_<EnumerableCollection<TSource>>(source);}
 
         /// @brief Returns the input typed as IEnumerable<T>.
         /// @param source The sequence to type as IEnumerable<T>.
@@ -156,7 +156,7 @@ namespace Switch {
         /// The following code example demonstrates how to use AsEnumerable<TSource>(IEnumerable<TSource>) with native c++ array.
         /// @include EnumerableAsEnumerable2.cpp
         template<typename TSource, int32 len>
-        static refptr<EnumerableCollection<TSource>> AsEnumerable(const TSource(&source)[len]) {return ref_new<EnumerableCollection<TSource>>(source);}
+        static refptr<EnumerableCollection<TSource>> AsEnumerable(const TSource(&source)[len]) {return new_<EnumerableCollection<TSource>>(source);}
 
         /// @brief Computes the average of a sequence of Double values.
         /// @param source A sequence of Double values to calculate the average of.
@@ -240,7 +240,7 @@ namespace Switch {
         /// @include EnumerableCast.cpp
         template<typename TSource, typename TResult>
         static refptr<EnumerableCollection<TResult>> Cast(const Collections::Generic::IEnumerable<TSource>& source) {
-          refptr<EnumerableCollection<TResult>> list = ref_new<EnumerableCollection<TResult>>();
+          refptr<EnumerableCollection<TResult>> list = new_<EnumerableCollection<TResult>>();
           for (TSource item : source)
             list->Add(as<TResult>(item));
           return list;
@@ -255,7 +255,7 @@ namespace Switch {
         /// @include EnumerableConcat.cpp
         template<typename TSource>
         static refptr<EnumerableCollection<TSource>> Concat(const Collections::Generic::IEnumerable<TSource>& first, const Collections::Generic::IEnumerable<TSource>& second) {
-          refptr<EnumerableCollection<TSource>> list = ref_new<EnumerableCollection<TSource>>();
+          refptr<EnumerableCollection<TSource>> list = new_<EnumerableCollection<TSource>>();
           for (TSource item : first)
             list->Add(item);
           for (TSource item : second)
@@ -272,7 +272,7 @@ namespace Switch {
         /// @include EnumerableConcat.cpp
         template<typename TSource>
         static refptr<EnumerableCollection<TSource>> Concat(const Collections::Generic::IEnumerable<TSource>& first, const InitializerList<TSource>& second) {
-          refptr<EnumerableCollection<TSource>> list = ref_new<EnumerableCollection<TSource>>();
+          refptr<EnumerableCollection<TSource>> list = new_<EnumerableCollection<TSource>>();
           for (TSource item : first)
             list->Add(item);
           for (TSource item : second)
@@ -289,7 +289,7 @@ namespace Switch {
         /// @include EnumerableConcat.cpp
         template<typename TSource, int32 len>
         static refptr<EnumerableCollection<TSource>> Concat(const Collections::Generic::IEnumerable<TSource>& first, const TSource(&second)[len]) {
-          refptr<EnumerableCollection<TSource>> list = ref_new<EnumerableCollection<TSource>>();
+          refptr<EnumerableCollection<TSource>> list = new_<EnumerableCollection<TSource>>();
           for (TSource item : first)
             list->Add(item);
           for (TSource item : second)
@@ -306,7 +306,7 @@ namespace Switch {
         /// @include EnumerableIntersect.cpp
         template<typename TSource>
         static refptr<EnumerableCollection<TSource>> Intersect(const Collections::Generic::IEnumerable<TSource>& first, const Collections::Generic::IEnumerable<TSource>& second) {
-          refptr<EnumerableCollection<TSource>> list = ref_new<EnumerableCollection<TSource>>();
+          refptr<EnumerableCollection<TSource>> list = new_<EnumerableCollection<TSource>>();
           for (TSource item : first)
             if (second.Contains(item))
               list->Add(item);
@@ -322,7 +322,7 @@ namespace Switch {
         /// @include EnumerableIntersect.cpp
         template<typename TSource>
         static refptr<EnumerableCollection<TSource>> Intersect(const InitializerList<TSource>& first, const Collections::Generic::IEnumerable<TSource>& second) {
-          refptr<EnumerableCollection<TSource>> list = ref_new<EnumerableCollection<TSource>>();
+          refptr<EnumerableCollection<TSource>> list = new_<EnumerableCollection<TSource>>();
           for (TSource item : first)
             if (second.Contains(item))
               list->Add(item);
@@ -338,7 +338,7 @@ namespace Switch {
         /// @include EnumerableIntersect.cpp
         template<typename TSource, int32 len>
         static refptr<EnumerableCollection<TSource>> Intersect(const Collections::Generic::IEnumerable<TSource>& first, const TSource(&second)[len]) {
-          refptr<EnumerableCollection<TSource>> list = ref_new<EnumerableCollection<TSource>>();
+          refptr<EnumerableCollection<TSource>> list = new_<EnumerableCollection<TSource>>();
           Array<TSource> array(second);
           for (TSource item : first)
             if (array.Contains(item))
@@ -385,7 +385,7 @@ namespace Switch {
         /// @include EnumerableOrderBy.cpp
         template<typename TSource, typename TKey>
         static refptr<EnumerableCollection<TSource>> OrderBy(const Collections::Generic::IEnumerable<TSource>& source, const System::Func<const TSource&, TKey>& keySelector) {
-          refptr<EnumerableCollection<TSource>> list = ref_new<EnumerableCollection<TSource>>(source);
+          refptr<EnumerableCollection<TSource>> list = new_<EnumerableCollection<TSource>>(source);
           System::Comparison<const TSource&> comparer = delegate_(const TSource & x, const TSource & y) {
             if (keySelector(x) < keySelector(y)) return -1;
             if (keySelector(x) == keySelector(y)) return 0;
@@ -400,7 +400,7 @@ namespace Switch {
         /// @include EnumerableCast.cpp
         template<typename TSource, typename TKey>
         static refptr<EnumerableCollection<TSource>> OrderByDescending(const Collections::Generic::IEnumerable<TSource>& source, const System::Func<const TSource&, TKey>& keySelector) {
-          refptr<EnumerableCollection<TSource>> list = ref_new<EnumerableCollection<TSource>>(source);
+          refptr<EnumerableCollection<TSource>> list = new_<EnumerableCollection<TSource>>(source);
           System::Comparison<const TSource&> comparer = delegate_(const TSource & x, const TSource & y) {
             if (keySelector(x) < keySelector(y)) return 1;
             if (keySelector(x) == keySelector(y)) return 0;
@@ -416,7 +416,7 @@ namespace Switch {
         /// @include EnumerableReverse.cpp
         template<typename TSource>
         static refptr<EnumerableCollection<TSource>> Reverse(const Collections::Generic::IEnumerable<TSource>& source) {
-          refptr<EnumerableCollection<TSource>> list = ref_new<EnumerableCollection<TSource>>();
+          refptr<EnumerableCollection<TSource>> list = new_<EnumerableCollection<TSource>>();
           for (TSource item : source)
             list->Insert(0, item);
           return list;
@@ -426,7 +426,7 @@ namespace Switch {
         /// @include EnumerableCast.cpp
         template<typename TSource, typename TResult>
         static refptr<EnumerableCollection<TResult>> Select(const Collections::Generic::IEnumerable<TSource>& source, const System::Func<const TSource&, TResult>& selector) {
-          refptr<EnumerableCollection<TResult>> list = ref_new<EnumerableCollection<TResult>>();
+          refptr<EnumerableCollection<TResult>> list = new_<EnumerableCollection<TResult>>();
           for (TSource item : source)
             list->Add(selector(item));
           return list;
@@ -450,7 +450,7 @@ namespace Switch {
         /// @include EnumerableCast.cpp
         template<typename TSource>
         static refptr<EnumerableCollection<TSource>> Where(const Collections::Generic::IEnumerable<TSource>& source, const System::Func<const TSource&, bool>& predicate) {
-          refptr<EnumerableCollection<TSource>> list = ref_new<EnumerableCollection<TSource>>();
+          refptr<EnumerableCollection<TSource>> list = new_<EnumerableCollection<TSource>>();
           for (TSource item : source)
             if (predicate(item))
               list->Add(item);

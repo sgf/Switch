@@ -74,11 +74,11 @@ UTF32Encoding& UTF32Encoding::operator=(const UTF32Encoding& encoding) {
 }
 
 refptr<Encoding::Decoder> UTF32Encoding::CreateDecoder() const {
-  return ref_new<Decoder>(this->bigEndian);
+  return new_<Decoder>(this->bigEndian);
 }
 
 refptr<Encoding::Encoder> UTF32Encoding::CreateEncoder() const {
-  return ref_new<Encoder>(this->bigEndian);
+  return new_<Encoder>(this->bigEndian);
 }
 
 int32 UTF32Encoding::GetByteCount(char32) const {

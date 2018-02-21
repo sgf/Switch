@@ -81,7 +81,7 @@ namespace SwitchUnitTests {
   }
 
   TEST(ObjectTest, MemberwiseCloneOnString) {
-    refptr<string> str = ref_new<string>("First");
+    refptr<string> str = new_<string>("First");
     refptr<object> clonedStr = str->MemberwiseClone<string>();
     *str = "Second";
     ASSERT_EQ("Second", str->ToString());
@@ -89,7 +89,7 @@ namespace SwitchUnitTests {
   }
 
   TEST(ObjectTest, MemberwiseCloneOnStringAsString) {
-    refptr<string> str = ref_new<string>("First");
+    refptr<string> str = new_<string>("First");
     refptr<string> clonedStr = str->MemberwiseClone<string>().As<string>();
     *str = "Second";
     ASSERT_EQ("Second", *str);

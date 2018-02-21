@@ -92,11 +92,11 @@ UnicodeEncoding& UnicodeEncoding::operator=(const UnicodeEncoding& encoding)  {
 }
 
 refptr<Encoding::Decoder> UnicodeEncoding::CreateDecoder() const {
-  return ref_new<Decoder>(this->bigEndian);
+  return new_<Decoder>(this->bigEndian);
 }
 
 refptr<Encoding::Encoder> UnicodeEncoding::CreateEncoder() const {
-  return ref_new<Encoder>(this->bigEndian);
+  return new_<Encoder>(this->bigEndian);
 }
 
 int32 UnicodeEncoding::GetByteCount(char32 c) const {

@@ -66,7 +66,7 @@ namespace Switch {
             int32 bufferSize = 0;
             int32 bufferOffset = 0;
           };
-          refptr<WebRequestStreamData> data = ref_new<WebRequestStreamData>();
+          refptr<WebRequestStreamData> data = new_<WebRequestStreamData>();
         };
 
 

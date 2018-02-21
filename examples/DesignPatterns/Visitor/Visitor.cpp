@@ -98,12 +98,12 @@ namespace DesignPatterns {
       static void Main() {
         // Setup structure
         ObjectStructure o;
-        o.Attach(ref_new<ConcreteElementA>());
-        o.Attach(ref_new<ConcreteElementB>());
+        o.Attach(new_<ConcreteElementA>());
+        o.Attach(new_<ConcreteElementB>());
 
         // Create visitor objects
-        refptr<ConcreteVisitor1> v1 = ref_new<ConcreteVisitor1>();
-        refptr<ConcreteVisitor2> v2 = ref_new<ConcreteVisitor2>();
+        refptr<ConcreteVisitor1> v1 = new_<ConcreteVisitor1>();
+        refptr<ConcreteVisitor2> v2 = new_<ConcreteVisitor2>();
 
         // Structure accepting visitors
         o.Accept(v1);

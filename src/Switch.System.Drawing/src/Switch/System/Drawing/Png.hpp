@@ -34,9 +34,9 @@ namespace Switch {
       class Png : public object {
       public:
         template<typename TStream>
-        Png(const TStream& stream) : reader(ref_new<System::IO::BinaryReader>(stream)) {}
+        Png(const TStream& stream) : reader(new_<System::IO::BinaryReader>(stream)) {}
 
-        Png(refptr<System::IO::Stream> stream) : reader(ref_new<System::IO::BinaryReader>(stream)) {}
+        Png(refptr<System::IO::Stream> stream) : reader(new_<System::IO::BinaryReader>(stream)) {}
 
         void Read(Image& image) {
           png_infop info = null;

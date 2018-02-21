@@ -29,7 +29,7 @@ namespace Examples {
       Array<refptr<Thread>> actions(4);
 
       for (int i = 0; i < 4; i++)
-        actions[i] = ref_new<Thread>((ThreadStart)&Program::ActionTryDequeue);
+        actions[i] = new_<Thread>((ThreadStart)&Program::ActionTryDequeue);
 
       // Start 4 concurrent consuming actions.
       for (int i = 0; i < 4; i++)

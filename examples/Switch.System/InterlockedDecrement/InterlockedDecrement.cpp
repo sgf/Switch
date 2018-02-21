@@ -39,7 +39,7 @@ namespace Examples {
 
       // Create 100000 instances of CountClass.
       for (int i = 0; i < 100000; i++)
-        coutClass = ref_new<CountClass>();
+        coutClass = new_<CountClass>();
     }
   };
 

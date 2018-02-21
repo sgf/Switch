@@ -31,7 +31,7 @@ namespace Switch {
         /// @param initialState true to set the initial state to signaled if the named event is created as a result of this call; false to set it to nonsignaled.
         /// @param mode One of the System::Threading::EventResetMode values that determines whether the event resets automatically or manually.
         /// @exception IO::IOException A Win32 error occurred.
-        EventWaitHandle(bool initialState, EventResetMode mode) : mode(ref_new<EventResetMode>(mode)) {
+        EventWaitHandle(bool initialState, EventResetMode mode) : mode(new_<EventResetMode>(mode)) {
           if (initialState)
             this->Set();
         }
@@ -134,11 +134,11 @@ namespace Switch {
           return true;
         }
 
-        refptr<std::mutex> guard = ref_new<std::mutex>();
-        refptr<std::condition_variable> signal = ref_new<std::condition_variable>();
-        refptr<bool> event = ref_new<bool>(false);
-        refptr<EventResetMode> mode = ref_new<EventResetMode>(EventResetMode::ManualReset);
-        refptr<string> name = ref_new<string>();
+        refptr<std::mutex> guard = new_<std::mutex>();
+        refptr<std::condition_variable> signal = new_<std::condition_variable>();
+        refptr<bool> event = new_<bool>(false);
+        refptr<EventResetMode> mode = new_<EventResetMode>(EventResetMode::ManualReset);
+        refptr<string> name = new_<string>();
       };
     }
   }

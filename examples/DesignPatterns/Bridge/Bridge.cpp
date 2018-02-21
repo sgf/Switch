@@ -58,14 +58,14 @@ namespace DesignPatterns {
     public:
       // Entry point into console application.
       static void Main() {
-        refptr<Abstraction> ab = ref_new<RefinedAbstraction>();
+        refptr<Abstraction> ab = new_<RefinedAbstraction>();
 
         // Set implementation and call
-        ab->Implementor = ref_new<ConcreteImplementorA>();
+        ab->Implementor = new_<ConcreteImplementorA>();
         ab->Operation();
 
         // Change implemention and call
-        ab->Implementor = ref_new<ConcreteImplementorB>();
+        ab->Implementor = new_<ConcreteImplementorB>();
         ab->Operation();
       }
     };

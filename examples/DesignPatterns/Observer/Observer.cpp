@@ -72,11 +72,11 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Configure Observer pattern
-        refptr<ConcreteSubject> s = ref_new<ConcreteSubject>();
+        refptr<ConcreteSubject> s = new_<ConcreteSubject>();
 
-        s->Attach(ref_new<ConcreteObserver>(s, "X"));
-        s->Attach(ref_new<ConcreteObserver>(s, "Y"));
-        s->Attach(ref_new<ConcreteObserver>(s, "Z"));
+        s->Attach(new_<ConcreteObserver>(s, "X"));
+        s->Attach(new_<ConcreteObserver>(s, "Y"));
+        s->Attach(new_<ConcreteObserver>(s, "Z"));
 
         // Change subject and notify observers
         s->SubjectState = "ABC";

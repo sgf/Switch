@@ -40,7 +40,7 @@ namespace Examples {
         List<refptr<Reader>> readers;
         while (true) {
           // create reader for each client
-          readers.Add(ref_new<Reader>(tcpListener.AcceptTcpClient().GetStream()));
+          readers.Add(new_<Reader>(tcpListener.AcceptTcpClient().GetStream()));
         }
       }));
       server.Start();

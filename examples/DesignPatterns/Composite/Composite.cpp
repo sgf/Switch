@@ -63,19 +63,19 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Create a tree structure
-        refptr<Composite> root = ref_new<Composite>("root");
-        root->Add(ref_new<Leaf>("Leaf A"));
-        root->Add(ref_new<Leaf>("Leaf B"));
+        refptr<Composite> root = new_<Composite>("root");
+        root->Add(new_<Leaf>("Leaf A"));
+        root->Add(new_<Leaf>("Leaf B"));
 
-        refptr<Composite> comp = ref_new<Composite>("Composite X");
-        comp->Add(ref_new<Leaf>("Leaf XA"));
-        comp->Add(ref_new<Leaf>("Leaf XB"));
+        refptr<Composite> comp = new_<Composite>("Composite X");
+        comp->Add(new_<Leaf>("Leaf XA"));
+        comp->Add(new_<Leaf>("Leaf XB"));
 
         root->Add(as<Component>(comp));
-        root->Add(ref_new<Leaf>("Leaf C"));
+        root->Add(new_<Leaf>("Leaf C"));
 
         // Add and remove a leaf
-        refptr<Leaf> leaf = ref_new<Leaf>("Leaf D");
+        refptr<Leaf> leaf = new_<Leaf>("Leaf D");
         root->Add(as<Component>(leaf));
         root->Remove(as<Component>(leaf));
 

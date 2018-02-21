@@ -17,7 +17,7 @@ namespace SwitchUnitTests {
       ~NotInheritedFromAnAbstract() {result += "~NotInheritedFromAnAbstract";}
     };
 
-    using_(refptr<NotAnAbstract> value = ref_new<NotInheritedFromAnAbstract>());
+    using_($<NotAnAbstract> value = new_<NotInheritedFromAnAbstract>());
     GTEST_ASSERT_EQ("~NotAnAbstract", result);
   }
 
@@ -32,7 +32,7 @@ namespace SwitchUnitTests {
       ~InheritedFromAnAbstract() {result += "~InheritedFromAnAbstract";}
     };
 
-    using_(refptr<AnAbstract> value = ref_new<InheritedFromAnAbstract>());
+    using_($<AnAbstract> value = new_<InheritedFromAnAbstract>());
     GTEST_ASSERT_EQ("~InheritedFromAnAbstract~AnAbstract", result);
   }
 }

@@ -33,7 +33,7 @@ namespace Examples {
     // Add item of polymorphic objects
     template<typename T>
     static void Add(const T& obj) {
-      items.Add(ref_new<T>(obj));
+      items.Add(new_<T>(obj));
     }
 
     static System::Collections::Generic::List<refptr<object>> items;

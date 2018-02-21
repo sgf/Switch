@@ -68,7 +68,7 @@ RegistryKey::RegistryKey(RegistryHive rhive)  : name(ToName(rhive)), permission(
     ::CreateDefaultFile(Path::Combine(this->path, "Values.xml"));
   }
 
-  this->handle = ref_new<RegistryHandle>();
+  this->handle = new_<RegistryHandle>();
   this->Load();
 }
 
@@ -91,7 +91,7 @@ RegistryKey RegistryKey::CreateSubKey(const System::String& subKey, RegistryKeyP
   if (this->permission != RegistryKeyPermissionCheck::ReadWriteSubTree)
     throw UnauthorizedAccessException(caller_);
 
-  key.handle = ref_new<RegistryHandle>();
+  key.handle = new_<RegistryHandle>();
   key.path = ::MakePath(this->path, subKey);
   Directory::CreateDirectory(key.path);
   ::CreateDefaultFile(Path::Combine(key.path, "Values.xml"));

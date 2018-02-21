@@ -59,11 +59,11 @@ CodePage437Encoding::CodePage437Encoding() : ANSIEncoding(437) {
 }
 
 refptr<Encoding::Decoder> CodePage437Encoding::CreateDecoder() const {
-  return ref_new<Decoder>();
+  return new_<Decoder>();
 }
 
 refptr<Encoding::Encoder> CodePage437Encoding::CreateEncoder() const {
-  return ref_new<Encoder>();
+  return new_<Encoder>();
 }
 
 int32 CodePage437Encoding::GetBytes(char32 c, byte bytes[], int32 bytesLength, int32 index) const {
@@ -83,11 +83,11 @@ CodePage28591Encoding::CodePage28591Encoding() : ANSIEncoding(28591) {
 }
 
 refptr<Encoding::Decoder> CodePage28591Encoding::CreateDecoder() const {
-  return ref_new<Decoder>();
+  return new_<Decoder>();
 }
 
 refptr<Encoding::Encoder> CodePage28591Encoding::CreateEncoder() const {
-  return ref_new<Encoder>();
+  return new_<Encoder>();
 }
 
 int32 CodePage28591Encoding::GetBytes(char32 c, byte bytes[], int32 bytesLength, int32 index) const {
@@ -109,11 +109,11 @@ CodePage28592Encoding::CodePage28592Encoding() : ANSIEncoding(28592) {
 }
 
 refptr<Encoding::Decoder> CodePage28592Encoding::CreateDecoder() const {
-  return ref_new<Decoder>();
+  return new_<Decoder>();
 }
 
 refptr<Encoding::Encoder> CodePage28592Encoding::CreateEncoder() const {
-  return ref_new<Encoder>();
+  return new_<Encoder>();
 }
 
 int32 CodePage28592Encoding::GetBytes(char32 c, byte bytes[], int32 bytesLength, int32 index) const {

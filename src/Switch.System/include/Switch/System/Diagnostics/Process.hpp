@@ -110,7 +110,7 @@ namespace Switch {
           refptr<System::IO::Stream> outputStream;
           ProcessStartInfo startInfo;
         };
-        refptr<ProcessData> data = ref_new<ProcessData>();
+        refptr<ProcessData> data = new_<ProcessData>();
       };
     }
   }

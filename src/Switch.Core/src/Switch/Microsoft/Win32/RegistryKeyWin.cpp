@@ -25,7 +25,7 @@ RegistryKey::RegistryHandle::~RegistryHandle() {
 }
 
 RegistryKey::RegistryKey(RegistryHive rhive) : name(ToName(rhive)), permission(RegistryKeyPermissionCheck::ReadWriteSubTree) {
-  handle = ref_new<RegistryHandle>(rhive);
+  handle = new_<RegistryHandle>(rhive);
   this->Load();
 }
 

@@ -65,13 +65,13 @@ namespace DesignPatterns {
         Context context;
 
         // Three contexts following different strategies
-        context = Context(ref_new<ConcreteStrategyA>());
+        context = Context(new_<ConcreteStrategyA>());
         context.ContextInterface();
 
-        context = Context(ref_new<ConcreteStrategyB>());
+        context = Context(new_<ConcreteStrategyB>());
         context.ContextInterface();
 
-        context = Context(ref_new<ConcreteStrategyC>());
+        context = Context(new_<ConcreteStrategyC>());
         context.ContextInterface();
       }
     };

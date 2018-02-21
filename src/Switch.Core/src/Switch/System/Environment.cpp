@@ -344,12 +344,12 @@ Array<string> Environment::SetCommandLineArgs(char* argv[], int argc) {
   if (commandLineArgs != null)
     throw InvalidOperationException("Can be called only once", caller_);
 
-  socketInit = ref_new<SocketInit>();
-  consoleChangeCodePage = ref_new<ConsoleChangeCodePage>();
-  consoleInterceptSignals = ref_new<ConsoleInterceptSignals>();
-  signalCatcher = ref_new<SignalCatcher>();
+  socketInit = new_<SocketInit>();
+  consoleChangeCodePage = new_<ConsoleChangeCodePage>();
+  consoleInterceptSignals = new_<ConsoleInterceptSignals>();
+  signalCatcher = new_<SignalCatcher>();
   System::Threading::Thread::RegisterCurrentThread();
-  commandLineArgs = ref_new<Array<string>>(std::vector<string>(argv, argv + argc));
+  commandLineArgs = new_<Array<string>>(std::vector<string>(argv, argv + argc));
   return Array<string>(std::vector<string>(argv + 1, argv + argc));
 }
 

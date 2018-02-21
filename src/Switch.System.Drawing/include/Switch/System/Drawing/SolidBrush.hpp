@@ -22,7 +22,7 @@ namespace Switch {
           get_ {return this->color;}
         };
 
-        refptr<object> Clone() const override {return ref_new<SolidBrush>(this->color);};
+        refptr<object> Clone() const override {return new_<SolidBrush>(this->color);};
 
       private:
         System::Drawing::Color color;

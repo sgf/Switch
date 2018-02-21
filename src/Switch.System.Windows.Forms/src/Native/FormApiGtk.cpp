@@ -5,7 +5,7 @@
 #include <gtkmm/window.h>
 
 #include "WidgetGtk.hpp"
-#include <Switch/System/Random.hpp>
+#include <Switch/Microsoft/Win32/Registry.hpp>
 
 using namespace System;
 using namespace System::Drawing;
@@ -50,7 +50,7 @@ void Native::FormApi::Close(System::Windows::Forms::Form& form) {
 }
 
 intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
-  static Microsoft::Win32::RegistryKey key = Microsoft::Win32::Registry::CurrentUser().CreateSubKey("Gammasoft71\\Switch\\Forms");
+  static Microsoft::Win32::RegistryKey key = Microsoft::Win32::Registry::CurrentUser().CreateSubKey("Gammasoft71").CreateSubKey("Switch").CreateSubKey("Forms");
   static int location = as<Int32>(key.GetValue("DefaultLocation", 20));
 
   System::Drawing::Rectangle bounds = form.Bounds;
@@ -63,9 +63,13 @@ intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
   form.Location = System::Drawing::Point(bounds.Left, bounds.Top);
   form.Size = System::Drawing::Size(bounds.Width, bounds.Height);
 
+  static bool nextLocation = true; // Strangely, on Windows the first location is used 2 times; this boolean simumate it.
   if (form.StartPosition == FormStartPosition::WindowsDefaultBounds || form.StartPosition == FormStartPosition::WindowsDefaultLocation) {
-    location = location < 300 ? location + 20 : 20;
-    key.SetValue("DefaultLocation", location, Microsoft::Win32::RegistryValueKind::DWord);
+    nextLocation = !(nextLocation == true && location == 20);
+    if (nextLocation) {
+      location = location < 180 ? location + 20 : 20;
+      key.SetValue("DefaultLocation", location, Microsoft::Win32::RegistryValueKind::DWord);
+    }
   }
 
   Native::Form* handle = new Native::Form();

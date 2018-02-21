@@ -82,15 +82,15 @@ namespace SwitchUnitTests {
   };
 
   TEST(PropertyTest, PropertyReadOnlyAndCopyConstructor) {
-    refptr<PropertyReadOnly> propertyReadOnly1 = ref_new<PropertyReadOnly>();
-    refptr<PropertyReadOnly> propertyReadOnly2 = ref_new<PropertyReadOnly>(*propertyReadOnly1);
+    refptr<PropertyReadOnly> propertyReadOnly1 = new_<PropertyReadOnly>();
+    refptr<PropertyReadOnly> propertyReadOnly2 = new_<PropertyReadOnly>(*propertyReadOnly1);
     propertyReadOnly1 = null;
     ASSERT_EQ("Test property", propertyReadOnly2->Name);
   }
 
   TEST(PropertyTest, PropertyReadOnlyAndEqualOperator) {
-    refptr<PropertyReadOnly> propertyReadOnly1 = ref_new<PropertyReadOnly>();
-    refptr<PropertyReadOnly> propertyReadOnly2 = ref_new<PropertyReadOnly>();
+    refptr<PropertyReadOnly> propertyReadOnly1 = new_<PropertyReadOnly>();
+    refptr<PropertyReadOnly> propertyReadOnly2 = new_<PropertyReadOnly>();
     *propertyReadOnly2 = *propertyReadOnly1;
     propertyReadOnly1 = null;
     ASSERT_EQ("Test property", propertyReadOnly2->Name);
@@ -109,16 +109,16 @@ namespace SwitchUnitTests {
   };
 
   TEST(PropertyTest, PropertyWriteOnlyAndCopyConstructor) {
-    refptr<PropertyWriteOnly> propertyWriteOnly1 = ref_new<PropertyWriteOnly>();
-    refptr<PropertyWriteOnly> propertyWriteOnly2 = ref_new<PropertyWriteOnly>(*propertyWriteOnly1);
+    refptr<PropertyWriteOnly> propertyWriteOnly1 = new_<PropertyWriteOnly>();
+    refptr<PropertyWriteOnly> propertyWriteOnly2 = new_<PropertyWriteOnly>(*propertyWriteOnly1);
     propertyWriteOnly1 = null;
     propertyWriteOnly2->Name = "Other thing";
     ASSERT_EQ("Other thing", propertyWriteOnly2->name);
   }
 
   TEST(PropertyTest, PropertyWriteOnlyAndEqualOperator) {
-    refptr<PropertyWriteOnly> propertyWriteOnly1 = ref_new<PropertyWriteOnly>();
-    refptr<PropertyWriteOnly> propertyWriteOnly2 = ref_new<PropertyWriteOnly>();
+    refptr<PropertyWriteOnly> propertyWriteOnly1 = new_<PropertyWriteOnly>();
+    refptr<PropertyWriteOnly> propertyWriteOnly2 = new_<PropertyWriteOnly>();
     *propertyWriteOnly2 = *propertyWriteOnly1;
     propertyWriteOnly1 = null;
     propertyWriteOnly2->Name = "Other thing";
@@ -140,8 +140,8 @@ namespace SwitchUnitTests {
   };
 
   TEST(PropertyTest, PropertyReadWriteAndCopyConstructor) {
-    refptr<PropertyReadWrite> propertyReadWrite1 = ref_new<PropertyReadWrite>();
-    refptr<PropertyReadWrite> propertyReadWrite2 = ref_new<PropertyReadWrite>(*propertyReadWrite1);
+    refptr<PropertyReadWrite> propertyReadWrite1 = new_<PropertyReadWrite>();
+    refptr<PropertyReadWrite> propertyReadWrite2 = new_<PropertyReadWrite>(*propertyReadWrite1);
     propertyReadWrite1 = null;
     ASSERT_EQ("Test property", propertyReadWrite2->Name);
     propertyReadWrite2->Name = "Other thing";
@@ -149,8 +149,8 @@ namespace SwitchUnitTests {
   }
 
   TEST(PropertyTest, PropertyReadWriteAndEqualOperator) {
-    refptr<PropertyReadWrite> propertyReadWrite1 = ref_new<PropertyReadWrite>();
-    refptr<PropertyReadWrite> propertyReadWrite2 = ref_new<PropertyReadWrite>();
+    refptr<PropertyReadWrite> propertyReadWrite1 = new_<PropertyReadWrite>();
+    refptr<PropertyReadWrite> propertyReadWrite2 = new_<PropertyReadWrite>();
     *propertyReadWrite2 = *propertyReadWrite1;
     propertyReadWrite1 = null;
     ASSERT_EQ("Test property", propertyReadWrite2->Name);

@@ -330,12 +330,12 @@ namespace Switch {
               toParse = toParse.Substring(toParse.IndexOf("\">") + 2);
 
               switch (rkv.kind) {
-              case RegistryValueKind::DWord: rkv.value = ref_new<System::Int32>(System::Int32::Parse(toParse)); break;
-              case RegistryValueKind::QWord: rkv.value = ref_new<System::Int64>(System::Int64::Parse(toParse)); break;
-              case RegistryValueKind::String: rkv.value = ref_new<string>(toParse); break;
-              case RegistryValueKind::ExpandString: rkv.value = ref_new<string>(toParse); break;
-              case RegistryValueKind::Binary: rkv.value = ref_new<System::Array<byte>>(ParseBytes(toParse)); break;
-              case RegistryValueKind::MultiString: rkv.value = ref_new<System::Array<System::String>>(ParseStrings(toParse)); break;
+              case RegistryValueKind::DWord: rkv.value = new_<System::Int32>(System::Int32::Parse(toParse)); break;
+              case RegistryValueKind::QWord: rkv.value = new_<System::Int64>(System::Int64::Parse(toParse)); break;
+              case RegistryValueKind::String: rkv.value = new_<string>(toParse); break;
+              case RegistryValueKind::ExpandString: rkv.value = new_<string>(toParse); break;
+              case RegistryValueKind::Binary: rkv.value = new_<System::Array<byte>>(ParseBytes(toParse)); break;
+              case RegistryValueKind::MultiString: rkv.value = new_<System::Array<System::String>>(ParseStrings(toParse)); break;
               default:
                 break;
               }

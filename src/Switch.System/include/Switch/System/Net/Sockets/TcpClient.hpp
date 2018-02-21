@@ -249,7 +249,7 @@ namespace Switch {
             Socket clientSocket {AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp};
             bool active = false;
           };
-          refptr<TcpClientData> data = ref_new<TcpClientData>();
+          refptr<TcpClientData> data = new_<TcpClientData>();
         };
       }
     }

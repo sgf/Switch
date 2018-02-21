@@ -111,7 +111,7 @@ namespace Switch {
 namespace Switch {
   namespace System {
     template<typename T>
-    refptr<Object> Object::MemberwiseClone() const {return ref_new<T>(as<T>(*this));}
+    refptr<Object> Object::MemberwiseClone() const {return new_<T>(as<T>(*this));}
   }
 }
 

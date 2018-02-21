@@ -145,7 +145,7 @@ namespace Switch {
         /// @return object A new object that is a copy of this instance.
         /// @return @see object
         refptr<object> Clone() const override {
-          return ref_new<BitArray>(*this);
+          return new_<BitArray>(*this);
         }
 
         /// @brief Determines whether this instance of BitArray and a specified object, which must also be a BitArray object, have the same value.

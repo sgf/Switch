@@ -97,13 +97,13 @@ string Exception::GetDefaultMessage() const {
 
 void Exception::SetStackTrace(const Exception& exception) {
   if (Exception::StackTraceEnabled == false) {
-    this->stackTrace = ref_new<Array<string>>(1);
+    this->stackTrace = new_<Array<string>>(1);
     this->stackTrace()[0] = String::Format("  in {0}:{1}{2}", this->caller.FilePath, this->caller.LineNumber, Environment::NewLine);
     return;
   }
 
   Diagnostics::StackTrace stackTrace(1, true);
-  this->stackTrace = ref_new<Array<string>>(stackTrace.FrameCount() + 1);
+  this->stackTrace = new_<Array<string>>(stackTrace.FrameCount() + 1);
 
   if (stackTrace.FrameCount() == 0)
     this->stackTrace()[0] = String::Format("  in {0}:{1}{2}", this->caller.FilePath, this->caller.LineNumber, Environment::NewLine);

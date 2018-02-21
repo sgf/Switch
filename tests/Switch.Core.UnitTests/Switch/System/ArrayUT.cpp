@@ -332,10 +332,10 @@ namespace SwitchUnitTests {
 
   TEST(Array, PolymorphicArray) {
     Array<refptr<Object>> PolymorphicList(50);
-    PolymorphicList[0] = ref_new<Int32>(1024);
-    PolymorphicList[1] = ref_new<String>("Polymorphic");
-    PolymorphicList[2] = ref_new<Boolean>(true);
-    PolymorphicList[3] = ref_new<Char>('P');
+    PolymorphicList[0] = new_<Int32>(1024);
+    PolymorphicList[1] = new_<String>("Polymorphic");
+    PolymorphicList[2] = new_<Boolean>(true);
+    PolymorphicList[3] = new_<Char>('P');
 
     ASSERT_TRUE(is<Int32>(*(PolymorphicList[0])));
     ASSERT_TRUE(is<string>(*(PolymorphicList[1])));

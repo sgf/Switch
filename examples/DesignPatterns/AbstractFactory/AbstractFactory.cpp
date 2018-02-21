@@ -50,15 +50,15 @@ namespace DesignPatterns {
     // The 'ConcreteFactory1' class
     class ConcreteFactory1 : public AbstractFactory {
     public:
-      refptr<AbstractProductA> CreateProductA() const override {return ref_new<ProductA1>();}
-      refptr<AbstractProductB> CreateProductB() const override {return ref_new<ProductB1>();}
+      refptr<AbstractProductA> CreateProductA() const override {return new_<ProductA1>();}
+      refptr<AbstractProductB> CreateProductB() const override {return new_<ProductB1>();}
     };
 
     // The 'ConcreteFactory2' class
     class ConcreteFactory2 : public AbstractFactory {
     public:
-      refptr<AbstractProductA> CreateProductA() const override {return ref_new<ProductA2>();}
-      refptr<AbstractProductB> CreateProductB() const override {return ref_new<ProductB2>();}
+      refptr<AbstractProductA> CreateProductA() const override {return new_<ProductA2>();}
+      refptr<AbstractProductB> CreateProductB() const override {return new_<ProductB2>();}
     };
 
     // The 'Client' class. Interaction environment for the products.
@@ -84,12 +84,12 @@ namespace DesignPatterns {
       // The main entry point for the application.
       static void Main() {
         // Abstract factory #1
-        refptr<AbstractFactory> factory1 = ref_new<ConcreteFactory1>();
+        refptr<AbstractFactory> factory1 = new_<ConcreteFactory1>();
         Client client1(*factory1);
         client1.Run();
 
         // Abstract factory #2
-        refptr<AbstractFactory> factory2 = ref_new<ConcreteFactory2>();
+        refptr<AbstractFactory> factory2 = new_<ConcreteFactory2>();
         Client client2(*factory2);
         client2.Run();
       }
