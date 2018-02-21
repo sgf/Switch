@@ -23,14 +23,14 @@
 #define AddTestFixture_(className) \
   TUnit::Framework::TestFixtureAttribute<className> __##className##Attribute {#className}
 
-#define _OneTimeSetUp(methodName) \
+#define OneTimeSetUp_(methodName) \
   __##methodName##_unused() {} \
   struct methodName##Attribute : public TUnit::Framework::OneTimeSetUpAttribute { \
     template<typename TestFixture> methodName##Attribute(TestFixture& test) : OneTimeSetUpAttribute(#methodName, test, &TestFixture::methodName, caller_) {} \
   } __##methodName##Attribute {*this}; \
   void methodName()
 
-#define _OneTimeTearDown(methodName) \
+#define OneTimeTearDown_(methodName) \
   __##methodName##_unused() {} \
   struct methodName##Attribute : public TUnit::Framework::OneTimeTearDownAttribute { \
     template<typename TestFixture> methodName##Attribute(TestFixture& test) : OneTimeTearDownAttribute(#methodName, test, &TestFixture::methodName, caller_) {} \
