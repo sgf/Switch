@@ -27,14 +27,17 @@ void Form::CreateHandle() {
   this->Control::CreateHandle();
 }
 
-DialogResult Form::ShowDialog() const {
-  Application::Init();
-  Application::mainForm = *this;
-  Application::mainForm().Visible = true;
-  Application::mainForm().FormClosed += delegate_(const object & sender, const FormClosedEventArgs & e) {
-    Application::Exit();
-  };
-  Application::MessageLoop();
+DialogResult Form::ShowDialog() {
+  this->Visible = true;
+  if (Application::mainForm == null) {
+    Application::Init();
+    Application::mainForm = *this;
+    Application::mainForm().FormClosed += delegate_(const object & sender, const FormClosedEventArgs & e) {
+      Application::Exit();
+    };
+    Application::MessageLoop();
+    Application::mainForm = null;
+  }
   return this->dialogResult;
 }
 
