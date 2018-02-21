@@ -97,7 +97,10 @@ namespace Switch {
           void CreateHandle() override;
           System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(300, 300); }
 
-          virtual void OnFormClosed(const FormClosedEventArgs& e) { this->FormClosed(*this, e); }
+          virtual void OnFormClosed(const FormClosedEventArgs& e) {
+            this->Visible = false;
+            this->FormClosed(*this, e);
+          }
           virtual void OnFormClosing(FormClosingEventArgs& e) { this->FormClosing(*this, e); }
 
           /// @cond

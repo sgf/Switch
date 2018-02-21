@@ -11,8 +11,6 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 void Form::Close() {
-  //this->Visible = false;
-  //Native::FormApi::Close(*this);
   FormClosingEventArgs e;
   this->OnFormClosing(e);
   if (e.Cancel != true)

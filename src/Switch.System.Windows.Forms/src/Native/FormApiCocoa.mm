@@ -1,6 +1,7 @@
 #if defined(__APPLE__)
 #include "WindowProcedureApiCocoa.hpp"
 #include <Switch/System/Random.hpp>
+#include <Switch/Microsoft/Win32/Registry.hpp>
 
 using namespace System;
 using namespace System::Collections::Generic;
@@ -52,16 +53,23 @@ void Native::FormApi::Close(System::Windows::Forms::Form& form) {
 
 intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
   @autoreleasepool {
+    static Microsoft::Win32::RegistryKey key = Microsoft::Win32::Registry::CurrentUser().CreateSubKey("Gammasoft71\\Switch\\Forms");
+    static int location = as<Int32>(key.GetValue("DefaultLocation", 20));
+
     System::Drawing::Rectangle bounds = form.Bounds;
-    Random random;
     switch (form.StartPosition) {
       case FormStartPosition::Manual: bounds = form.Bounds; break;
-      case FormStartPosition::WindowsDefaultBounds: bounds = System::Drawing::Rectangle(random.Next(50, 300), random.Next(50, 200), random.Next(640, 800), random.Next(480, 600)); break;
-      case FormStartPosition::WindowsDefaultLocation: bounds = System::Drawing::Rectangle(random.Next(50, 300), random.Next(50, 200), form.Width, form.Height); break;
+      case FormStartPosition::WindowsDefaultBounds: bounds = System::Drawing::Rectangle(location, location, 800, 600); break;
+      case FormStartPosition::WindowsDefaultLocation: bounds = System::Drawing::Rectangle(location, location, form.Width, form.Height); break;
       default: break;
     }
     form.Location= System::Drawing::Point(bounds.Left, bounds.Top);
     form.Size= System::Drawing::Size(bounds.Width, bounds.Height);
+
+    if (form.StartPosition == FormStartPosition::WindowsDefaultBounds || form.StartPosition == FormStartPosition::WindowsDefaultLocation) {
+      location = location < 300 ? location + 20 : 20;
+      key.SetValue("DefaultLocation", location, Microsoft::Win32::RegistryValueKind::DWord);
+    }
 
     FormCocoa* handle = [[FormCocoa alloc] init];
     [handle setStyleMask: CocoaApi::FormToNSWindowStyleMask(form)];

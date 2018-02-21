@@ -10,15 +10,21 @@ namespace ManualTests {
   public:
     static void Main() {
       Button button;
-      button.Text = "Close";
+      button.Text = "Create";
       button.Location = System::Drawing::Point(10, 10);
-      button.Click += delegate_(const object & sender, const EventArgs & e) {
-        Application::Exit();
-      };
-
       Form form;
       form.Text = "ManualTests";
       form.Controls().Add(button);
+
+      System::Collections::Generic::List<$<Form>> forms;
+      int number = 1;
+      button.Click += delegate_(const object & sender, const EventArgs & e) {
+        $<Form> form = new_<Form>();
+        form->Text = string::Format("Form {0}", number++);
+        form->Visible = true;
+        forms.Add(form);
+      };
+    
       form.ShowDialog();
     }
   };
