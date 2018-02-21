@@ -24,28 +24,28 @@
   TUnit::Framework::TestFixtureAttribute<className> __##className##Attribute {#className}
 
 #define OneTimeSetUp_(methodName) \
-  __##methodName##_unused() {} \
+  __##methodName##_unused() = delete; \
   struct methodName##Attribute : public TUnit::Framework::OneTimeSetUpAttribute { \
     template<typename TestFixture> methodName##Attribute(TestFixture& test) : OneTimeSetUpAttribute(#methodName, test, &TestFixture::methodName, caller_) {} \
   } __##methodName##Attribute {*this}; \
   void methodName()
 
 #define OneTimeTearDown_(methodName) \
-  __##methodName##_unused() {} \
+  __##methodName##_unused() = delete; \
   struct methodName##Attribute : public TUnit::Framework::OneTimeTearDownAttribute { \
     template<typename TestFixture> methodName##Attribute(TestFixture& test) : OneTimeTearDownAttribute(#methodName, test, &TestFixture::methodName, caller_) {} \
   } __##methodName##Attribute {*this}; \
   void methodName()
 
 #define SetUp_(methodName) \
-  __##methodName##_unused() {} \
+  __##methodName##_unused() = delete; \
   struct methodName##Attribute : public TUnit::Framework::SetUpAttribute { \
     template<typename TestFixture> methodName##Attribute(TestFixture& test) : SetUpAttribute(#methodName, test, &TestFixture::methodName, caller_) {} \
   } __##methodName##Attribute {*this}; \
   void methodName()
 
 #define TearDown_(methodName) \
-  __##methodName##_unused() {} \
+  __##methodName##_unused() = delete; \
   struct methodName##Attribute : public TUnit::Framework::TearDownAttribute { \
     template<typename TestFixture> methodName##Attribute(TestFixture& test) : TearDownAttribute(#methodName, test, &TestFixture::methodName, caller_) {} \
   } __##methodName##Attribute {*this}; \
@@ -55,14 +55,14 @@
   className : public TUnit::Framework::TestFixture
 
 #define Test_(methodName) \
-  __##methodName##_unused() {} \
+  __##methodName##_unused() = delete; \
   struct methodName##Attribute : public TUnit::Framework::TestAttribute { \
     template<typename TestFixture> methodName##Attribute(TestFixture& test) : TestAttribute(#methodName, test, &TestFixture::methodName, caller_) {} \
   } __##methodName##Attribute {*this}; \
   void methodName()
 
 #define IgnoreTest_(methodName) \
-  __##methodName##_unused() {} \
+  __##methodName##_unused() = delete; \
   struct methodName##Attribute : public TUnit::Framework::TestAttribute { \
     template<typename TestFixture> methodName##Attribute(TestFixture& test) : TestAttribute(#methodName, test, &TestFixture::methodName, TUnit::Framework::TestState::Ignored, caller_) {} \
   } __##methodName##Attribute {*this}; \

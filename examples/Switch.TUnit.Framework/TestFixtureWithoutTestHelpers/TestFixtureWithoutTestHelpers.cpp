@@ -46,7 +46,6 @@ namespace UnitTests {
       return UnitTest(args).Run();
     }
   };
-
 }
 
-startup_(UnitTests::Program)
+startup_(UnitTests::Program);

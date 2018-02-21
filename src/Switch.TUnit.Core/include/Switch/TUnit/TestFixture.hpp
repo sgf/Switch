@@ -70,7 +70,7 @@ namespace Switch {
       return ; \
     } \
   } \
-  int __add_##fixture##_##method##_force_to_use_semicolon__ = 0
+  int __add_##fixture##_##method##_force_to_end_with_semicolon__ = 0
 
     /// @brief Add specified ignored unit test to execute at the unit test suit.
     /// @param fixture The class inerited from TestFixture class that contains the unit test method to execute
@@ -87,7 +87,7 @@ namespace Switch {
       return ; \
     } \
   } \
-  int __add_##fixture##_##method##_force_to_use_semicolon__ = 0
+  int __add_##fixture##_##method##_force_to_end_witch_semicolon__ = 0
   }
 }
 

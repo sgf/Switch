@@ -52,5 +52,5 @@ namespace Switch {
     __commandShow = commandShow;\
     return main(__argc, __argv);\
   }\
-  int __startup_force_to_use_semicolon__ = 0
+  int __startup_force_to_end_with_semicolon__ = 0
 }
