@@ -23,7 +23,7 @@ else()
   option(BUILD_SWITCH_SYSTEM_WINDOWS_FORMS "Build Switch.System.Windows.Forms library" ON)
 endif()
 option(BUILD_SWITCH_TUNIT_CORE "Build Switch.TUnit.Core library" ON)
-option(BUILD_SWITCH_TUNIT_FRAMEWORK "Build Switch.TUnit.Framework library" OFF)
+option(BUILD_SWITCH_TUNIT_FRAMEWORK "Build Switch.TUnit.Framework library" ON)
 option(BUILD_SWITCH_TUNIT_MAIN "Build Switch.TUnit.Main library" ON)
 option(BUILD_SWITCH_TESTS "Build Switch tests" OFF)
 
