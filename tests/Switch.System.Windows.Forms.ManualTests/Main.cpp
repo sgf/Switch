@@ -12,7 +12,7 @@ namespace ManualTests {
       Button button;
       button.Text = "Create";
       button.Location = System::Drawing::Point(10, 10);
-      
+
       Form mainForm;
       mainForm.Text = "ManualTests";
       mainForm.Controls().Add(button);
