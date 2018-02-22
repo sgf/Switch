@@ -1,3 +1,4 @@
+#include <Switch/System/Diagnostics/ConsoleTraceListener.hpp>
 #include <Switch/System/Diagnostics/Debug.hpp>
 #include <Switch/System/Windows/Forms/Application.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
@@ -11,6 +12,7 @@ namespace ManualTests {
   class Program {
   public:
     static void Main() {
+      System::Diagnostics::Debug::Listeners().Add(System::Diagnostics::ConsoleTraceListener());
       for (Screen screen : Screen::AllScreens()) {
         System::Diagnostics::Debug::WriteLine(string::Format("DeviceName = {0}", screen.DeviceName));
         System::Diagnostics::Debug::WriteLine(string::Format("  Bounds = {0}", screen.Bounds));

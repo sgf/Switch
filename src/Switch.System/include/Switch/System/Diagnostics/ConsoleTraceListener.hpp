@@ -3,7 +3,7 @@
 #pragma once
 
 #include "../../SystemExport.hpp"
-#include "../Console.hpp"
+#include <Switch/System/Console.hpp>
 #include "TextWriterTraceListener.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
