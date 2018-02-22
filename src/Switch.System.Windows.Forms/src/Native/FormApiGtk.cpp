@@ -34,7 +34,7 @@ namespace Native {
     Gtk::Container& Container() override {return this->fixed;}
 
     void Move(int32 x, int32 y) override {
-      this->Gtk::Window::move(x, y);
+      this->Gtk::Window::move(x, y + Screen::AllScreens()[0].WorkingArea().Y);
     }
 
     void Text(const string& text) override {this->set_title(text.c_str());}
