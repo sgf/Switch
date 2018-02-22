@@ -36,6 +36,7 @@ namespace ManualTests {
       button.Click += delegate_(const object & sender, const EventArgs & e) {
         $<Form> form = new_<Form>();
         form->Text = string::Format("Form {0}", number++);
+        form->StartPosition = FormStartPosition::CenterParent;
         form->Visible = true;
         forms.Add(form);
       };
