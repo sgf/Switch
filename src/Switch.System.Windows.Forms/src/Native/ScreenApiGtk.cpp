@@ -4,6 +4,7 @@
 #include "Api.hpp"
 
 using namespace System;
+using namespace System::Collections::Generic;
 using namespace System::Windows::Forms;
 
 Array<Screen> __screens__::__get_screens__() {
