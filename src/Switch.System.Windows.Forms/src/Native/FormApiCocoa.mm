@@ -1,6 +1,8 @@
 #if defined(__APPLE__)
 #include "WindowProcedureApiCocoa.hpp"
 #include <Switch/Microsoft/Win32/Registry.hpp>
+#include <Switch/System/Boolean.hpp>
+#include <Switch/System/Convert.hpp>
 
 using namespace System;
 using namespace System::Collections::Generic;
@@ -54,7 +56,8 @@ intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
   @autoreleasepool {
     static Microsoft::Win32::RegistryKey key = Microsoft::Win32::Registry::CurrentUser().CreateSubKey("Gammasoft71").CreateSubKey("Switch").CreateSubKey("Forms");
     static int32 location = as<Int32>(key.GetValue("DefaultLocation", 20));
-    
+    static bool nextLocation = Convert::ToBoolean(as<Int32>(key.GetValue("NextLocation", 1))); // Strangely, on Windows the first location is used 2 times; this boolean simumate it.
+
     System::Drawing::Rectangle bounds = form.Bounds;
     switch (form.StartPosition) {
       case FormStartPosition::CenterScreen: bounds = System::Drawing::Rectangle((Screen::AllScreens()[0].WorkingArea().Width + Screen::AllScreens()[0].WorkingArea().X - form.Width) / 2, (Screen::AllScreens()[0].WorkingArea().Height + Screen::AllScreens()[0].WorkingArea().Y - form.Height) / 2, form.Width, form.Height); break;
@@ -67,13 +70,12 @@ intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
     form.Location= System::Drawing::Point(bounds.Left, bounds.Top);
     form.Size= System::Drawing::Size(bounds.Width, bounds.Height);
     
-    static bool nextLocation = true; // Strangely, on Windows the first location is used 2 times; this boolean simumate it.
     if (form.StartPosition == FormStartPosition::WindowsDefaultBounds || form.StartPosition == FormStartPosition::CenterParent || form.StartPosition == FormStartPosition::WindowsDefaultLocation) {
       nextLocation = !(nextLocation == true && location == 20);
-      if (nextLocation) {
+      if (nextLocation)
         location = location < 180 ? location + 20 : 20;
-        key.SetValue("DefaultLocation", location, Microsoft::Win32::RegistryValueKind::DWord);
-      }
+      key.SetValue("DefaultLocation", as<int32>(location), Microsoft::Win32::RegistryValueKind::DWord);
+      key.SetValue("NextLocation", nextLocation, Microsoft::Win32::RegistryValueKind::DWord);
     }
     
     FormCocoa* handle = [[FormCocoa alloc] init];
