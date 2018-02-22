@@ -31,9 +31,9 @@ void Native::CheckBoxApi::SetAutoCheck(const System::Windows::Forms::CheckBox& c
 void Native::CheckBoxApi::SetChecked(const System::Windows::Forms::CheckBox& checkBox) {
   if (checkBox.CheckState == System::Windows::Forms::CheckState::Indeterminate) {
     ((Native::CheckBox*)checkBox.Handle())->set_active(false);
-    ((Native::CheckBox *) checkBox.Handle())->set_inconsistent(true);
+    ((Native::CheckBox*) checkBox.Handle())->set_inconsistent(true);
   } else {
-    ((Native::CheckBox *) checkBox.Handle())->set_inconsistent(false);
+    ((Native::CheckBox*) checkBox.Handle())->set_inconsistent(false);
     ((Native::CheckBox*)checkBox.Handle())->set_active(checkBox.Checked);
   }
 }
