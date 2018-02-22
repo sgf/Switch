@@ -1,3 +1,4 @@
+#include <Switch/System/Windows/Forms/Application.hpp>
 #include <Switch/System/Windows/Forms/CheckBox.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
 #include <Switch/Startup.hpp>
@@ -9,6 +10,8 @@ namespace ManualTests {
   class Program {
   public:
     static void Main() {
+      Application::EnableVisualStyles();
+
       CheckBox checkBox;
       checkBox.Location = System::Drawing::Point(10, 10);
       checkBox.Text = "Validate";
