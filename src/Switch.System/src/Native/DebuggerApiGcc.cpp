@@ -26,12 +26,12 @@ void Native::DebuggerApi::Log(int32 level, const string& category, const string&
     syslog(LevelToNative(level) | LOG_USER, "%s", message.c_str());
   else
     syslog(LevelToNative(level) | LOG_USER, "%.256s: %s", category.c_str(), message.c_str());
-#if !defined(__APPLE__)
+  #if !defined(__APPLE__)
   if (string::IsNullOrEmpty(category))
     std::cout << message.c_str();
   else
     std::cout << category.c_str() << ": " << message.c_str();
-#endif
+  #endif
 }
 
 #endif
