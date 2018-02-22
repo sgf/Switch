@@ -1,3 +1,4 @@
+#include <Switch/System/Windows/Forms/CheckBox.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
 #include <Switch/Startup.hpp>
 
@@ -8,7 +9,13 @@ namespace ManualTests {
   class Program {
   public:
     static void Main() {
+      CheckBox checkBox;
+      checkBox.Location = System::Drawing::Point(10, 10);
+      checkBox.Text = "Validate";
+      checkBox.CheckState = CheckState::Indeterminate;
+
       Form mainForm;
+      mainForm.Controls().Add(checkBox);
       mainForm.ShowDialog();
     }
   };
