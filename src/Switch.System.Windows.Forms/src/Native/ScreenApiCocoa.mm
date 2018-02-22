@@ -35,8 +35,3 @@ Array<Screen> Native::ScreenApi::GetScreens() {
 }
 
 #endif
-
-/*
- Fl::screen_xywh
- Fl::screen_work_area
- */

@@ -51,8 +51,8 @@ namespace Native {
 
         if (events.ContainsKey(event->type))
           events[event->type](*event);
-        else
-          System::Diagnostics::Debug::WriteLine("Event : {0}, Name : {1}", EventToString(event->type), System::Windows::Forms::Control::FromHandle((intptr)this)().Name);
+        //else
+        //  System::Diagnostics::Debug::WriteLine("Event : {0}, Name : {1}", EventToString(event->type), System::Windows::Forms::Control::FromHandle((intptr)this)().Name);
 
         return false; //this->ToWidget().event(event);
       });

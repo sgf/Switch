@@ -1,5 +1,6 @@
 #if defined(__linux__) || defined(__APPLE__)
 
+#include <iostream>
 #include <syslog.h>
 
 #include "Api.hpp"
@@ -22,9 +23,15 @@ namespace {
 
 void Native::DebuggerApi::Log(int32 level, const string& category, const string& message) {
   if (string::IsNullOrEmpty(category))
-    syslog(LevelToNative(level) | LOG_USER, "%s", message.Data());
+    syslog(LevelToNative(level) | LOG_USER, "%s", message.c_str());
   else
-    syslog(LevelToNative(level) | LOG_USER, "%.256s: %s", category.Data(), message.Data());
+    syslog(LevelToNative(level) | LOG_USER, "%.256s: %s", category.c_str(), message.c_str());
+#if !defined(__APPLE__)
+  if (string::IsNullOrEmpty(category))
+    std::cout << message.c_str();
+  else
+    std::cout << category.c_str() << ": " << message.c_str();
+#endif
 }
 
 #endif
