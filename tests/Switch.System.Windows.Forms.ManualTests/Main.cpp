@@ -27,6 +27,8 @@ namespace ManualTests {
 
       Form mainForm;
       mainForm.Text = "ManualTests";
+      mainForm.StartPosition = FormStartPosition::Manual;
+      mainForm.Location = System::Drawing::Point(600, 0);
       mainForm.Controls().Add(button);
 
       System::Collections::Generic::List < $<Form >> forms;

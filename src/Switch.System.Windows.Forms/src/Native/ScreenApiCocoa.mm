@@ -18,12 +18,14 @@ Array<Screen> __screens__::__get_screens__() {
   for(int32 index = 0; index < as<int32>(count); index++) {
     Screen screen;
     screen.bitsPerPixel = 32;
-    CGRect rect = CGDisplayBounds(activeDisplays[index]);
-    screen.bounds = {int(rect.origin.x), int(rect.origin.y), int(rect.size.width), int(rect.size.height)};
+    CGRect bounds = CGDisplayBounds(activeDisplays[index]);
+    screen.bounds = {int(bounds.origin.x), int(bounds.origin.y), int(bounds.size.width), int(bounds.size.height)};
     screen.deviceName = string::Format("\\\\.\\DISPLAY{0}", index + 1);
     screen.primary = index == 0;
-    NSRect area = [[[NSScreen screens] objectAtIndex:index] visibleFrame];
-    screen.workingArea = {int(area.origin.x), int(area.origin.y), int(area.size.width), int(area.size.height)};
+    NSRect workArea = [[[NSScreen screens] objectAtIndex:index] visibleFrame];
+    // Do not used workArea.origin.y : this is the eight of Dock and height coordonate is inverted (start on bottom).
+    const int menuHaight = 23;
+    screen.workingArea = {int(workArea.origin.x), menuHaight, int(workArea.size.width), int(workArea.size.height)-menuHaight};
     screens.Add(screen);
   }
   

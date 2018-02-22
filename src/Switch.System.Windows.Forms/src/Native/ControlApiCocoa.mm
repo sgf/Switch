@@ -15,8 +15,8 @@ namespace {
     
     static System::Drawing::Rectangle GetBounds(const System::Windows::Forms::Control& control) {
       if (is<System::Windows::Forms::Form>(control)) {
-        int32 screenHeight = 1050 - Native::SystemInformationApi::GetMenuHeight(); // TO DO : Get Screen height...
-        return System::Drawing::Rectangle(control.Left, screenHeight - control.Top - control.Height , control.Width, control.Height);
+        int32 screenHeight = Screen::AllScreens()[0].Bounds().Height - Screen::AllScreens()[0].WorkingArea().Y;
+        return System::Drawing::Rectangle(control.Left, screenHeight - control.Top - control.Height, control.Width, control.Height);
       }
       int32 captionHeight = !is<Form>(control.Parent()) || as<Form>(control.Parent())().FormBorderStyle == FormBorderStyle::None ? 0 : Native::SystemInformationApi::GetCaptionHeight();
       return System::Drawing::Rectangle(control.Left, control.Parent()().Height - control.Height - control.Top - captionHeight, control.Width, control.Height);
