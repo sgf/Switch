@@ -21,7 +21,10 @@ void Native::FormApi::Close(System::Windows::Forms::Form& form) {
 intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
   System::Drawing::Rectangle bounds = form.Bounds;
   switch (form.StartPosition) {
+  case FormStartPosition::CenterScreen: bounds = System::Drawing::Rectangle((Screen::AllScreens()[0].WorkingArea().Width + Screen::AllScreens()[0].WorkingArea().X - form.Width) / 2, (Screen::AllScreens()[0].WorkingArea().Height + Screen::AllScreens()[0].WorkingArea().Y - form.Height) / 2, form.Width, form.Height); break;
+  case FormStartPosition::Manual: bounds = form.Bounds; break;
   case FormStartPosition::WindowsDefaultBounds: bounds = Drawing::Rectangle(CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT); break;
+  case FormStartPosition::CenterParent:
   case FormStartPosition::WindowsDefaultLocation: bounds = Drawing::Rectangle(CW_USEDEFAULT, CW_USEDEFAULT, form.Width, form.Height); break;
   }
 
