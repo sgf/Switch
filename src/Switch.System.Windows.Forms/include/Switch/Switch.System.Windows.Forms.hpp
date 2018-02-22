@@ -87,7 +87,7 @@
 #include "System/Windows/Forms/RadioButton.hpp"
 //#include "System/Windows/Forms/RichTextBox.hpp"
 //#include "System/Windows/Forms/SaveFileDialog.hpp"
-//#include "System/Windows/Forms/Screen.hpp"
+#include "System/Windows/Forms/Screen.hpp"
 #include "System/Windows/Forms/ScrollableControl.hpp"
 #include "System/Windows/Forms/Shortcut.hpp"
 #include "System/Windows/Forms/SystemInformation.hpp"

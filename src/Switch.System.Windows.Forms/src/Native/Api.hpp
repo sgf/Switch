@@ -20,6 +20,7 @@
 #include "../../include/Switch/System/Windows/Forms/Panel.hpp"
 #include "../../include/Switch/System/Windows/Forms/ProgressBar.hpp"
 #include "../../include/Switch/System/Windows/Forms/RadioButton.hpp"
+#include "../../include/Switch/System/Windows/Forms/Screen.hpp"
 #include "../../include/Switch/System/Windows/Forms/TabControl.hpp"
 #include "../../include/Switch/System/Windows/Forms/TabPage.hpp"
 #include "../../include/Switch/System/Windows/Forms/TrackBar.hpp"
@@ -124,6 +125,11 @@ namespace Native {
     static intptr Create(const System::Windows::Forms::RadioButton& radioButton);
     static void SetChecked(const System::Windows::Forms::RadioButton& radioButton);
     static void SetGroup(const System::Windows::Forms::RadioButton& radioButton);
+  };
+
+  class ScreenApi static_ {
+  public:
+    static System::Array<System::Windows::Forms::Screen> GetScreens();
   };
 
   class SystemInformationApi static_ {

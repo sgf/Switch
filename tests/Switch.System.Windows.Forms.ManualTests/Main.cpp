@@ -1,5 +1,7 @@
+#include <Switch/System/Diagnostics/Debug.hpp>
 #include <Switch/System/Windows/Forms/Application.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
+#include <Switch/System/Windows/Forms/Screen.hpp>
 #include <Switch/Startup.hpp>
 
 using namespace System;
@@ -9,6 +11,14 @@ namespace ManualTests {
   class Program {
   public:
     static void Main() {
+      for (Screen screen : Screen::AllScreens()) {
+        System::Diagnostics::Debug::WriteLine(string::Format("DeviceName = {0}", screen.DeviceName));
+        System::Diagnostics::Debug::WriteLine(string::Format("  Bounds = {0}", screen.Bounds));
+        System::Diagnostics::Debug::WriteLine(string::Format("  WorkingArea = {0}", screen.WorkingArea));
+        System::Diagnostics::Debug::WriteLine(string::Format("  Primary = {0}", screen.Primary));
+        System::Diagnostics::Debug::WriteLine(string::Format("  BitsPerPixel = {0}", screen.BitsPerPixel));
+      }
+
       Button button;
       button.Text = "Create";
       button.Location = System::Drawing::Point(10, 10);
