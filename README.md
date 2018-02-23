@@ -2,16 +2,21 @@
 ____________________________________________________________________________________
 
 [![build status](https://travis-ci.org/gammasoft71/Switch.svg)](https://travis-ci.org/gammasoft71/Switch) 
-[![Build status](https://ci.appveyor.com/api/projects/status/kjfq2sl5bc99kut6?svg=true)](https://ci.appveyor.com/project/gammasoft71/switch)
-[![Documentation](https://codedocs.xyz/gammasoft71/Switch.svg)](https://codedocs.xyz/gammasoft71/Switch/)
-[![codecov](https://codecov.io/gh/gammasoft71/switch/branch/master/graph/badge.svg)](https://codecov.io/gh/gammasoft71/switch)
-[![HitCount](http://hits.dwyl.io/gammasoft71/switch.svg)](http://hits.dwyl.io/gammasoft71/switch)
-[![Download Switch](https://img.shields.io/sourceforge/dt/switchpro.svg)](https://sourceforge.net/projects/switchpro/files/latest/download)
-[![© Gammasoft](https://img.shields.io/badge/©-Gammasoft-004080.svg)](https://gammasoft71.wixsite.com/gammasoft) 
-[![license GPL v3](https://img.shields.io/badge/license-GPL%20v3-004080.svg)](docs/License.md) 
-[![std c++17 ready](https://img.shields.io/badge/std-c++14-004080.svg)](docs/C++17Ready.md) 
-[![os Windows, macOS, linux](https://img.shields.io/badge/os-high%20portability-004080.svg)](docs/Portability.md)
-[![development status](https://img.shields.io/badge/dev-status-004080.svg)](docs/SwitchStatus.md) 
+[![Build status](https://ci.appveyor.com/api/projects/status/kjfq2sl5bc99kut6?svg=true)](https://ci.appveyor.com/project/gammasoft71/Switch)
+[![Documentation](https://img.shields.io/badge/code-documented-brightgreen.svg)](https://gammasoft71.github.io/Switch-doc) 
+[![codecov](https://codecov.io/gh/gammasoft71/switch/branch/master/graph/badge.svg)](https://codecov.io/gh/gammasoft71/Switch)
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=my-website)](https://gammasoft71.wixsite.com/switch)
+[![license](https://img.shields.io/github/license/gammasoft71/Switch.svg)](docs/License.md)
+[![GitHub top language](https://img.shields.io/github/languages/top/gammasoft71/Switch.svg)](docs/C++17Ready.md)
+
+[![os Windows](https://img.shields.io/badge/os-Windows-004080.svg)](docs/Portability.md)
+[![os macOS](https://img.shields.io/badge/os-macOS-004080.svg)](docs/Portability.md)
+[![os Linux](https://img.shields.io/badge/os-Linux-004080.svg)](docs/Portability.md)
+[![os iOS](https://img.shields.io/badge/os-iOS-004080.svg)](docs/Portability.md)
+[![os android](https://img.shields.io/badge/os-android-004080.svg)](docs/Portability.md)
+[![development status](https://img.shields.io/badge/dev-status-004080.svg)](docs/SwitchStatus.md)
+<!--[![SourceForge Download Switch](https://img.shields.io/sourceforge/dt/switchpro.svg)](https://sourceforge.net/projects/switchpro/files/latest/download)-->
+<!--[![HitCount](http://hits.dwyl.io/gammasoft71/switch.svg)](http://hits.dwyl.io/gammasoft71/Switch)-->
 <!--[![Coverage Status](https://coveralls.io/repos/github/gammasoft71/Switch/badge.svg?branch=master)](https://coveralls.io/github/gammasoft71/Switch?branch=master)-->
 
 # The Switch framework is...
