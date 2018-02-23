@@ -1,6 +1,7 @@
 #include <Switch/System/Windows/Forms/Application.hpp>
 #include <Switch/System/Windows/Forms/CheckBox.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
+#include <Switch/System/Windows/Forms/GroupBox.hpp>
 #include <Switch/Startup.hpp>
 
 using namespace System;
@@ -17,8 +18,13 @@ namespace ManualTests {
       checkBox.Text = "Validate";
       checkBox.CheckState = CheckState::Indeterminate;
 
+      GroupBox groupBox;
+      groupBox.Location = System::Drawing::Point(10, 10);
+      groupBox.Text = "GroupBox";
+      groupBox.Controls().Add(checkBox);
+      
       Form mainForm;
-      mainForm.Controls().Add(checkBox);
+      mainForm.Controls().Add(groupBox);
       mainForm.ShowDialog();
     }
   };
