@@ -10,7 +10,7 @@ using namespace System::ComponentModel;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-GroupBox::GroupBox() {
+GroupBox::GroupBox() : ContainerControl("", 0, 0, 200, 100) {
   if (System::Environment::OSVersion().Platform == System::PlatformID::MacOSX)
     this->backColor = System::Drawing::Color::FromArgb(255, 228, 228, 228);
 }

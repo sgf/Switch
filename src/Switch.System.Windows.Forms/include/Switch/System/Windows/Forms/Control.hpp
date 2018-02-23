@@ -97,6 +97,7 @@ namespace Switch {
           Control(const Control& parent, const string& text) : Control() {
             this->Parent = parent;
             this->Text = text;
+            this->size = GetDefaultSize();
           }
 
           /// @brief Initializes a new instance of the Control class with specific text, size, and location.
@@ -110,7 +111,8 @@ namespace Switch {
           /// @note To maintain better performance, do not set the size of a control in its constructor. The preferred method is to virtual the DefaultSize property.
           Control(const string& text, int32 left, int32 top, int32 width, int32 height) : Control() {
             this->Text = text;
-            this->Bounds = System::Drawing::Rectangle(left, top, width, height);
+            this->location = {left, top};
+            this->size = {width, height};
           }
 
           /// @brief Initializes a new instance of the Control class as a child control, with specific text, size, and location.
@@ -129,9 +131,7 @@ namespace Switch {
           }
 
           /// @cond
-          Control(const Control& control) : backColor(control.backColor), backBrush(control.backBrush), clientSize(control.clientSize), controls(control.controls), defaultBackColor(control.defaultBackColor),
-            defaultForeColor(control.defaultForeColor), enabled(control.enabled), foreColor(control.foreColor), /*handle(control.handle),*/ location(control.location), messageActions(control.messageActions),
-            name(control.name), parent(control.parent), size(control.size), state(control.state), style(control.style), tabStop(control.tabStop), text(control.text), visible(control.visible) {}
+          Control(const Control& control) = delete;
           ~Control() {
             if (this->Parent() != null)
               this->Parent()().controls.Remove(*this);

@@ -27,10 +27,6 @@ namespace Switch {
             this->TabStop = false;
           }
 
-          /// @cond
-          TrackBar(const TrackBar& trackBar) : Control(trackBar), largeChange(trackBar.largeChange), maximum(trackBar.maximum), minimum(trackBar.minimum), smallChange(trackBar.smallChange), tickStyle(trackBar.tickStyle), tickFrequency(trackBar.tickFrequency), value(trackBar.value) {}
-          /// @endcond
-
           property_<int32> LargeChange {
             get_{ return this->largeChange; },
             set_{ this->SetLargeChange(value); },

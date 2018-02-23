@@ -24,10 +24,6 @@ namespace Switch {
             this->TabStop = false;
           }
 
-          /// @cond
-          Label(const Label& label) : Control(label) {}
-          /// @endcond
-
         protected:
           void CreateHandle() override;
           System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(100, 23); }

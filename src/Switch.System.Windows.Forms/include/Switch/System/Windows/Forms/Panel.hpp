@@ -17,13 +17,9 @@ namespace Switch {
         /// @brief Used to group collections of controls.
         class system_windows_forms_export_ Panel : public ContainerControl {
         public:
-          Panel() {
+          Panel() : ContainerControl("", 0, 0, 200, 100) {
             this->SetStyle(ControlStyles::UserPaint, false);
           }
-
-          /// @cond
-          Panel(const Panel& panel) : ContainerControl(panel), borderStyle(panel.borderStyle) {}
-          /// @endcond
 
           property_<System::Windows::Forms::BorderStyle> BorderStyle {
             get_{return this->borderStyle;},
@@ -31,6 +27,10 @@ namespace Switch {
           };
 
         protected:
+          Panel(const string& text, int32 left, int32 top, int32 width, int32 height) : ContainerControl(text, left, top, width, height) {
+            this->SetStyle(ControlStyles::UserPaint, false);
+          }
+          
           void CreateHandle() override;
           System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(200, 100); }
           void SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle);

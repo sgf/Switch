@@ -20,11 +20,7 @@ namespace Switch {
         public:
           using TabPageCollection = ControlCollection;
 
-          TabControl() {this->SetStyle(ControlStyles::UserPaint, false);}
-
-          /// @cond
-          TabControl(const TabControl& tabControl) : ContainerControl(tabControl), alignment(tabControl.alignment) {}
-          /// @endcond
+          TabControl() : ContainerControl("", 0, 0, 200, 100) {this->SetStyle(ControlStyles::UserPaint, false);}
 
           property_<TabAlignment> Alignment{
             get_ {return this->alignment;},

@@ -19,10 +19,6 @@ namespace Switch {
           ButtonBase() : autoElipsis(false) {}
           ButtonBase(const string& text, int32 left, int32 top, int32 height, int32 width) : Control(text, left, top, height, width), autoElipsis(false) {}
 
-          /// @cond
-          ButtonBase(const ButtonBase& buttonBase) : Control(buttonBase) {}
-          /// @endcond
-
           bool AutoElispis() const {
             return this->autoElipsis;
           }

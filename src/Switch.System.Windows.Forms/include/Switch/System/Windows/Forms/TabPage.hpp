@@ -16,13 +16,9 @@ namespace Switch {
         /// @brief Used to group collections of controls.
         class system_windows_forms_export_ TabPage : public Panel {
         public:
-          TabPage() {
+          TabPage() : Panel("", 0, 0, 200, 100) {
             this->SetStyle(ControlStyles::UserPaint, false);
           }
-
-          /// @cond
-          TabPage(const TabPage& tabPage) : Panel(tabPage) {}
-          /// @endcond
 
         protected:
           void CreateHandle() override;

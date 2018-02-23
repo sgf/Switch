@@ -76,6 +76,7 @@ Control::Control() {
   // For message : WM_HSCROLL, WM_VSCROLL, WM_DELETEITEM, WM_VKEYTOITEM, WM_CHARTOITEM, WM_COMPAREITEM do create reflect message internal ?
   // For message : WM_NOTIFYFORMAT do create reflect message internal ?
   SetStyle(ControlStyles((int32)ControlStyles::AllPaintingInWmPaint | (int32)ControlStyles::UserPaint | (int32)ControlStyles::StandardClick | (int32)ControlStyles::StandardDoubleClick | (int32)ControlStyles::UseTextForAccessibility | (int32)ControlStyles::Selectable), true);
+  this->size = GetDefaultSize();
 }
 
 property_<System::Drawing::Color, readonly_> Control::DefaultBackColor {

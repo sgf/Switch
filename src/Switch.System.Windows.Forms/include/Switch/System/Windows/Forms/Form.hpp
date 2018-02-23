@@ -28,10 +28,6 @@ namespace Switch {
             //this->BackColor = System::Drawing::SystemColors::Window;
           }
 
-          /// @cond
-          Form(const Form& form) : ContainerControl(form), formBorderStyle(form.formBorderStyle), maximizeBox(form.maximizeBox), minimizeBox(form.minimizeBox), startPosition(form.startPosition), messageActions(form.messageActions) {}
-          /// @endcond
-
           property_<ref<System::Windows::Forms::Button>> AccpetButton {
             get_ {return this->acceptButton;},
             set_ {
