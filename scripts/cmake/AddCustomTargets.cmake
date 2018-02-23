@@ -42,9 +42,9 @@ macro(AddCustomTargets)
   #_______________________________________________________________________________________
   #                                                                  Switch.ReferenceGuide
   print("  [X] ${PROJECT_NAME}.ReferenceGuide")
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.doxygen.txt ${CMAKE_CURRENT_SOURCE_DIR}/scripts/reference_guide/doxygen.txt @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.doxygen.txt ${CMAKE_CURRENT_BINARY_DIR}/doxygen.txt @ONLY)
   file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/ReferenceGuide)
-  add_custom_target(${PROJECT_NAME}.ReferenceGuide ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/reference_guide/doxygen.txt WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/ReferenceGuide COMMENT "Doxygen Reference Guide generation" DEPENDS ${DOXYGEN_PROJECT} VERBATIM)
+  add_custom_target(${PROJECT_NAME}.ReferenceGuide ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/doxygen.txt WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/ReferenceGuide COMMENT "Doxygen Reference Guide generation" DEPENDS ${DOXYGEN_PROJECT} VERBATIM)
 
   #_______________________________________________________________________________________
   #                                                                           Switch.Tests
