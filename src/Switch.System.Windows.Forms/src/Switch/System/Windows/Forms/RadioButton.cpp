@@ -30,7 +30,8 @@ void RadioButton::SetChecked(bool checked) {
 
 void RadioButton::OnParentChanged(const EventArgs& e) {
   this->ButtonBase::OnParentChanged(e);
-  Native::RadioButtonApi::SetGroup(*this);
+  if (this->IsHandleCreated)
+    Native::RadioButtonApi::SetGroup(*this);
 }
 
 
