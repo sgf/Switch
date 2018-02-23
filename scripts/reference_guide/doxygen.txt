@@ -51,7 +51,7 @@ PROJECT_BRIEF          = "Native C++ port of .Net Framework on Windows, macOS, L
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           = /home/yves/Projects/Switch/docs/Pictures/Switch80x80.png
+PROJECT_LOGO           = /Users/yves/Projects/Switch/docs/Pictures/Switch80x80.png
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -791,14 +791,14 @@ WARN_LOGFILE           = doxygen_warnings.txt
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = . \
-                         /home/yves/Projects/Switch/src/Switch/include \
-                         /home/yves/Projects/Switch/src/Switch.Core/include \
-                         /home/yves/Projects/Switch/src/Switch.System/include \
-                         /home/yves/Projects/Switch/src/Switch.System.Core/include \
-                         /home/yves/Projects/Switch/src/Switch.System.Drawing/include \
-                         /home/yves/Projects/Switch/src/Switch.System.ServiceModel/include \
-                         /home/yves/Projects/Switch/src/Switch.System.Windows.Forms/include \
-                         /home/yves/Projects/Switch/src/Switch.TUnit.Core/include
+                         /Users/yves/Projects/Switch/src/Switch/include \
+                         /Users/yves/Projects/Switch/src/Switch.Core/include \
+                         /Users/yves/Projects/Switch/src/Switch.System/include \
+                         /Users/yves/Projects/Switch/src/Switch.System.Core/include \
+                         /Users/yves/Projects/Switch/src/Switch.System.Drawing/include \
+                         /Users/yves/Projects/Switch/src/Switch.System.ServiceModel/include \
+                         /Users/yves/Projects/Switch/src/Switch.System.Windows.Forms/include \
+                         /Users/yves/Projects/Switch/src/Switch.TUnit.Core/include
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -875,7 +875,7 @@ EXCLUDE_SYMBOLS        =
 # that contain example code fragments that are included (see the \include
 # command).
 
-EXAMPLE_PATH           = /home/yves/Projects/Switch/examples
+EXAMPLE_PATH           = /Users/yves/Projects/Switch/examples
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and
@@ -895,7 +895,7 @@ EXAMPLE_RECURSIVE      = YES
 # that contain images that are to be included in the documentation (see the
 # \image command).
 
-IMAGE_PATH             = /home/yves/Projects/Switch/docs/Pictures
+IMAGE_PATH             = /Users/yves/Projects/Switch/docs/Pictures
 
 # The INPUT_FILTER tag can be used to specify a program that doxygen should
 # invoke to filter for each input file. Doxygen will invoke the filter program
