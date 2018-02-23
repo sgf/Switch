@@ -31,7 +31,7 @@ namespace ManualTests {
       groupBox.Text = "GroupBox";
       groupBox.Height = 200;
       groupBox.Controls().AddRange({radioButton1, radioButton2, radioButton3});
-      
+
       Form mainForm;
       mainForm.Controls().Add(groupBox);
       mainForm.ShowDialog();

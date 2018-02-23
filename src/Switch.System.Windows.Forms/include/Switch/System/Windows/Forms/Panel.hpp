@@ -30,7 +30,7 @@ namespace Switch {
           Panel(const string& text, int32 left, int32 top, int32 width, int32 height) : ContainerControl(text, left, top, width, height) {
             this->SetStyle(ControlStyles::UserPaint, false);
           }
-          
+
           void CreateHandle() override;
           System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(200, 100); }
           void SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle);
