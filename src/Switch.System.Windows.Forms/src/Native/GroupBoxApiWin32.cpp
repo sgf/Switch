@@ -19,7 +19,7 @@ intptr Native::GroupBoxApi::Create(const System::Windows::Forms::GroupBox& group
   WindowProcedure::SetWindowTheme(handle);
   //WindowProcedure::DefWindowProcs[(intptr)handle] = (WNDPROC)SetWindowLongPtr(handle, GWLP_WNDPROC, (LONG_PTR)WindowProcedure::WndProc);
   /// @todo to remove after create SetFont method...
-  PostMessage(handle, WM_SETFONT, WPARAM((HFONT)GetStockObject(DEFAULT_GUI_FONT)), TRUE);
+  //PostMessage(handle, WM_SETFONT, WPARAM((HFONT)GetStockObject(DEFAULT_GUI_FONT)), TRUE);
   return (intptr)handle;
 }
 
