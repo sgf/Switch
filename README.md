@@ -5,7 +5,7 @@ ________________________________________________________________________________
 [![Build status](https://ci.appveyor.com/api/projects/status/kjfq2sl5bc99kut6?svg=true)](https://ci.appveyor.com/project/gammasoft71/Switch)
 [![Documentation](https://img.shields.io/badge/code-documented-brightgreen.svg)](https://gammasoft71.github.io/Switch-doc) 
 [![codecov](https://codecov.io/gh/gammasoft71/switch/branch/master/graph/badge.svg)](https://codecov.io/gh/gammasoft71/Switch)
-[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=my-website)](https://gammasoft71.wixsite.com/switch)
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=Switch%20website)](https://gammasoft71.wixsite.com/switch)
 [![license](https://img.shields.io/github/license/gammasoft71/Switch.svg)](docs/License.md)
 [![GitHub top language](https://img.shields.io/github/languages/top/gammasoft71/Switch.svg)](docs/C++17Ready.md)
 
