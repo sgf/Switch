@@ -1,5 +1,5 @@
 #include <Switch/System/Windows/Forms/Application.hpp>
-#include <Switch/System/Windows/Forms/CheckBox.hpp>
+#include <Switch/System/Windows/Forms/RadioButton.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
 #include <Switch/System/Windows/Forms/GroupBox.hpp>
 #include <Switch/Startup.hpp>
@@ -13,15 +13,24 @@ namespace ManualTests {
     static void Main() {
       Application::EnableVisualStyles();
 
-      CheckBox checkBox;
-      checkBox.Location = System::Drawing::Point(10, 10);
-      checkBox.Text = "Validate";
-      checkBox.CheckState = CheckState::Indeterminate;
+      RadioButton radioButton1;
+      radioButton1.Location = System::Drawing::Point(10, 30);
+      radioButton1.Text = "Radio 1";
+
+      RadioButton radioButton2;
+      radioButton2.Location = System::Drawing::Point(10, 60);
+      radioButton2.Text = "Radio 2";
+      radioButton2.Checked = true;
+
+      RadioButton radioButton3;
+      radioButton3.Location = System::Drawing::Point(10, 90);
+      radioButton3.Text = "Radio 1";
 
       GroupBox groupBox;
       groupBox.Location = System::Drawing::Point(10, 10);
       groupBox.Text = "GroupBox";
-      groupBox.Controls().Add(checkBox);
+      groupBox.Height = 200;
+      groupBox.Controls().AddRange({radioButton1, radioButton2, radioButton3});
       
       Form mainForm;
       mainForm.Controls().Add(groupBox);

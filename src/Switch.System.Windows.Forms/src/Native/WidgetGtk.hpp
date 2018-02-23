@@ -1,6 +1,7 @@
 #if defined(__linux__)
 
 #include <gtkmm/fixed.h>
+#include <gtkmm/frame.h>
 #include <gtkmm/radiobuttongroup.h>
 #include <gtkmm/widget.h>
 #include <Switch/System/Diagnostics/Debug.hpp>
@@ -31,8 +32,11 @@ namespace Native {
 
     virtual void Move(int32 x, int32 y) {
       if (is<Gtk::Fixed>(this->ToWidget().get_parent())) {
+        int offset = 0;
+        if (is<Gtk::Frame>(as<Gtk::Fixed>(this->ToWidget().get_parent())->get_parent()))
+          offset = -10;
         as<Gtk::Fixed>(this->ToWidget().get_parent())->child_property_x(this->ToWidget()) = x;
-        as<Gtk::Fixed>(this->ToWidget().get_parent())->child_property_y(this->ToWidget()) = y;
+        as<Gtk::Fixed>(this->ToWidget().get_parent())->child_property_y(this->ToWidget()) = y + offset;
       }
     }
 

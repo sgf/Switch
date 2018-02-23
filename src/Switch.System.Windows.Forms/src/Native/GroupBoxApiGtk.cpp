@@ -14,11 +14,9 @@ namespace Native {
   public:
     GroupBox() {
       this->RegisterEvent();
-      this->add(this->scrolledWindow);
-      this->scrolledWindow.add(this->fixed);
+      this->add(this->fixed);
 
       this->signal_show().connect(delegate_ {
-        this->scrolledWindow.show();
         this->fixed.show();
       });
     }
@@ -30,7 +28,6 @@ namespace Native {
     void Text(const string& text) override {this->set_label(text.c_str());}
 
   private:
-    Gtk::ScrolledWindow scrolledWindow;
     Gtk::Fixed fixed;
   };
 }
