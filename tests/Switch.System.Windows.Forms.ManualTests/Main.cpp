@@ -29,10 +29,12 @@ namespace ManualTests {
       GroupBox groupBox;
       groupBox.Location = System::Drawing::Point(10, 10);
       groupBox.Text = "GroupBox";
-      groupBox.Height = 200;
+      groupBox.Width = 120;
+      groupBox.Height = 120;
       groupBox.Controls().AddRange({radioButton1, radioButton2, radioButton3});
 
       Form mainForm;
+      mainForm.BackColor = System::Drawing::Color::LightGreen;
       mainForm.Controls().Add(groupBox);
       mainForm.ShowDialog();
     }
