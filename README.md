@@ -8,6 +8,7 @@ ________________________________________________________________________________
 [![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=Switch%20website)](https://gammasoft71.wixsite.com/switch)
 [![license](https://img.shields.io/github/license/gammasoft71/Switch.svg)](docs/License.md)
 [![GitHub top language](https://img.shields.io/github/languages/top/gammasoft71/Switch.svg)](docs/C++17Ready.md)
+[![SourceForge Download Switch](https://img.shields.io/sourceforge/dt/switchpro.svg)](https://sourceforge.net/projects/switchpro/files/latest/download)
 
 [![os Windows](https://img.shields.io/badge/os-Windows-004080.svg)](docs/Portability.md)
 [![os macOS](https://img.shields.io/badge/os-macOS-004080.svg)](docs/Portability.md)
@@ -15,7 +16,6 @@ ________________________________________________________________________________
 [![os iOS](https://img.shields.io/badge/os-iOS-004080.svg)](docs/Portability.md)
 [![os android](https://img.shields.io/badge/os-android-004080.svg)](docs/Portability.md)
 [![development status](https://img.shields.io/badge/dev-status-004080.svg)](docs/SwitchStatus.md)
-<!--[![SourceForge Download Switch](https://img.shields.io/sourceforge/dt/switchpro.svg)](https://sourceforge.net/projects/switchpro/files/latest/download)-->
 <!--[![HitCount](http://hits.dwyl.io/gammasoft71/switch.svg)](http://hits.dwyl.io/gammasoft71/Switch)-->
 <!--[![Coverage Status](https://coveralls.io/repos/github/gammasoft71/Switch/badge.svg?branch=master)](https://coveralls.io/github/gammasoft71/Switch?branch=master)-->
 
