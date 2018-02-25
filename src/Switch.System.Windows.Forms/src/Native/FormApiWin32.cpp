@@ -20,6 +20,8 @@ void Native::FormApi::Close(System::Windows::Forms::Form& form) {
 
 intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
   System::Drawing::Rectangle bounds = form.Bounds;
+  bounds.Left + Screen::AllScreens()[0].WorkingArea().X;
+  bounds.Top + Screen::AllScreens()[0].WorkingArea().Y;
   switch (form.StartPosition) {
   case FormStartPosition::CenterScreen: bounds = System::Drawing::Rectangle((Screen::AllScreens()[0].WorkingArea().Width + Screen::AllScreens()[0].WorkingArea().X - form.Width) / 2, (Screen::AllScreens()[0].WorkingArea().Height + Screen::AllScreens()[0].WorkingArea().Y - form.Height) / 2, form.Width, form.Height); break;
   case FormStartPosition::Manual: bounds = form.Bounds; break;
