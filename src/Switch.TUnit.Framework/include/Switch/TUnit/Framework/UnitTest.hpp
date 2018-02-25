@@ -9,6 +9,10 @@
 namespace Switch {
   namespace TUnit {
     namespace Framework {
+      /// @cond
+      template <typename TestFixture>
+      struct TestFixtureAttribute;
+      /// @endcond
       /// @brief UnitTest is...
       class tunit_framework_export_ UnitTest {
       public:
@@ -35,7 +39,7 @@ namespace Switch {
 
       private:
         template <typename TestFixture>
-        friend struct TestFixtureAttribute;
+        friend struct Switch::TUnit::Framework::TestFixtureAttribute;
 
         static void Add(const RegisteredTestFixture& registeredTestFixture) {RegisteredTestFixtures().Add(registeredTestFixture);}
 

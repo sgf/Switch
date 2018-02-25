@@ -20,12 +20,12 @@ namespace Switch {
         void AddTest(const RegisteredMethod& registeredMethod) {this->tests.Add(registeredMethod);}
 
       private:
-        friend class UnitTest;
-        friend struct OneTimeSetUpAttribute;
-        friend struct OneTimeTearDownAttribute;
-        friend struct SetUpAttribute;
-        friend struct TearDownAttribute;
-        friend struct TestAttribute;
+        friend class Switch::TUnit::Framework::UnitTest;
+        friend struct Switch::TUnit::Framework::OneTimeSetUpAttribute;
+        friend struct Switch::TUnit::Framework::OneTimeTearDownAttribute;
+        friend struct Switch::TUnit::Framework::SetUpAttribute;
+        friend struct Switch::TUnit::Framework::TearDownAttribute;
+        friend struct Switch::TUnit::Framework::TestAttribute;
 
         void AddOneTimeSetUp(const RegisteredMethod& registeredMethod) {this->oneTimeSetUps.Add(registeredMethod);}
 

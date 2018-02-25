@@ -12,7 +12,7 @@ namespace Switch {
         RegisteredTestFixture(const string& name, refptr<TUnit::Framework::TestFixture> testFixture) : name(name), testFixture(testFixture) {}
 
       private:
-        friend class UnitTest;
+        friend class Switch::TUnit::Framework::UnitTest;
         string name;
         refptr<TestFixture> testFixture;
       };
