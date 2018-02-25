@@ -14,10 +14,8 @@ namespace {
     }
     
     static System::Drawing::Rectangle GetBounds(const System::Windows::Forms::Control& control) {
-      if (is<System::Windows::Forms::Form>(control)) {
-        int32 screenHeight = Screen::AllScreens()[0].Bounds().Height - Screen::AllScreens()[0].WorkingArea().Y;
-        return System::Drawing::Rectangle(control.Left, screenHeight - control.Top - control.Height, control.Width, control.Height);
-      }
+      if (is<System::Windows::Forms::Form>(control))
+        return System::Drawing::Rectangle(control.Left + Screen::AllScreens()[0].WorkingArea().X, Screen::AllScreens()[0].Bounds().Height - Screen::AllScreens()[0].WorkingArea().Y - control.Top - control.Height, control.Width, control.Height);
       int32 captionHeight = !is<Form>(control.Parent()) || as<Form>(control.Parent())().FormBorderStyle == FormBorderStyle::None ? 0 : Native::SystemInformationApi::GetCaptionHeight();
       return System::Drawing::Rectangle(control.Left, control.Parent()().Height - control.Height - control.Top - captionHeight, control.Width, control.Height);
     }
@@ -175,9 +173,7 @@ void Native::ControlApi::SetForeColor(const System::Windows::Forms::Control& con
 void Native::ControlApi::SetLocation(const System::Windows::Forms::Control& control) {
   @autoreleasepool {
     System::Drawing::Rectangle bounds = CocoaApi::GetBounds(control);
-    if (is<System::Windows::Forms::Form>(control))
-      [(NSControl*)control.Handle() setFrameOrigin:NSMakePoint(bounds.Left + Screen::AllScreens()[0].WorkingArea().X, bounds.Top + Screen::AllScreens()[0].WorkingArea().Y)];
-    else if (is<System::Windows::Forms::Button>(control))
+    if (is<System::Windows::Forms::Button>(control))
       [(NSControl*)control.Handle() setFrameOrigin:NSMakePoint(bounds.Left - 1, bounds.Top - 1)];
     else
       [(NSControl*)control.Handle() setFrameOrigin:NSMakePoint(bounds.Left, bounds.Top)];
