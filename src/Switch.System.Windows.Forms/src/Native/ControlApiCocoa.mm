@@ -175,7 +175,9 @@ void Native::ControlApi::SetForeColor(const System::Windows::Forms::Control& con
 void Native::ControlApi::SetLocation(const System::Windows::Forms::Control& control) {
   @autoreleasepool {
     System::Drawing::Rectangle bounds = CocoaApi::GetBounds(control);
-    if (is<System::Windows::Forms::Button>(control))
+    if (is<System::Windows::Forms::Form>(control))
+      [(NSControl*)control.Handle() setFrameOrigin:NSMakePoint(bounds.Left + Screen::AllScreens()[0].WorkingArea().X, bounds.Top + Screen::AllScreens()[0].WorkingArea().Y)];
+    else if (is<System::Windows::Forms::Button>(control))
       [(NSControl*)control.Handle() setFrameOrigin:NSMakePoint(bounds.Left - 1, bounds.Top - 1)];
     else
       [(NSControl*)control.Handle() setFrameOrigin:NSMakePoint(bounds.Left, bounds.Top)];
