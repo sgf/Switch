@@ -3,13 +3,13 @@
 | [Home](Home.md) | [Gallery](Gallery.md) | [Examples](Examples.md) | [Downloads](Downloads.md) | [Documentation](Documentation.md) | [Project](https://sourceforge.net/projects/switchpro) | [Source](https://github.com/gammasoft71/switch) | [License](License.md) | [Gammasoft](https://gammasoft71.wixsite.com/gammasoft) |
 |-----------------|-----------------------|-------------------------|-------------------------|-----------------------------------|-------------------------------------------------------|-------------------------------------------------|-----------------------|---------------------------------------------------------|
 
-# Download Switch 0.6.2
+# Download the latest stable Switch version
 
 You can download latest stable version on [SourceForge](https://sourceforge.net/projects/switchpro)
 
 [![Download Portable C++ Framework](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/switchpro/files/latest/download)
 
-# Switch latest commit
+# Clone the latest Switch commit
 
 Or clone latest development version on [GitHub](https://github.com/gammasoft71/Switch).
 
