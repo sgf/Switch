@@ -1,7 +1,7 @@
 language: cpp
 dist: trusty
 
-# 1. make sure travis client installed : 
+# 1. make sure travis client installed :
 #.     https://github.com/travis-ci/travis.rb#installation
 # 2. generate new token repo_public in github
 # 3. add the 3 following lines with the command :
