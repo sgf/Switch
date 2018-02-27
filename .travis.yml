@@ -29,7 +29,7 @@ addons:
       - valgrind
       - zlibc
 
-before_script:scripts/
+before_script: scripts/travis/install_3rd_parties.sh
 
 matrix:
   include:  
