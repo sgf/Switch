@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -ev
-
 # ________________________________________________________________________________________
 #                                                       generate, build and install Switch
 pushd build
