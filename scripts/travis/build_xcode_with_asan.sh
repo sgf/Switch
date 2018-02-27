@@ -4,14 +4,14 @@ set -ev
 
 # ________________________________________________________________________________________
 #                                                       generate, build and install Switch
-cd build
+pushd build
 #cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SWITCH_TESTS=ON -DENABLE_ASAN=ON -DCMAKE_INSTALL_PREFIX=~/usr/local
 cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SWITCH_TESTS=ON -DENABLE_ASAN=OFF -DCMAKE_INSTALL_PREFIX=~/usr/local
 cmake --build . -- -j8
-cd ..
+popd
 
 # ________________________________________________________________________________________
 #                                                                run registered unit tests
-cd build
+pushd build
 ctest --output-on-failure --build-config Release
-cd ..
+popd

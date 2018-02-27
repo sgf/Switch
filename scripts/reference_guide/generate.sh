@@ -7,13 +7,15 @@ git clone https://github.com/gammasoft71/switch-doc build/ReferenceGuide
 
 # ________________________________________________________________________________________
 #                                                                 Generating documentation
-cd build
+mkdir -p build
+pushd build
 cmake --build . --target Switch.ReferenceGuide
-cd ..
+popd
 
 # ________________________________________________________________________________________
 #                                                                 Publishing documentation
-cd build/ReferenceGuide
+pushd build/ReferenceGuide
 git add --all
 git commit -m "Generate Reference Guide"
 git push
+popd

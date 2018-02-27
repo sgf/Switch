@@ -16,4 +16,3 @@ namespace Examples {
 }
 
 startup_(Examples::Program);
-

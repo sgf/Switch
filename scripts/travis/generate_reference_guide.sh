@@ -13,10 +13,10 @@ git clone https://github.com/gammasoft71/Switch-doc.git build/ReferenceGuide
 
 # ________________________________________________________________________________________
 #                                                                 Generating documentation
-cd build
+pushd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=~/usr/local -DCMAKE_CXX_COMPILER=clang++-3.9
 cmake --build . --target Switch.ReferenceGuide
-cd ..
+popd
 
 # ________________________________________________________________________________________
 #                                                  check doxygen results and display error
@@ -29,9 +29,9 @@ cd ..
 
 # ________________________________________________________________________________________
 #                                                                 Publishing documentation
-cd build/ReferenceGuide
+pushd build/ReferenceGuide
 if [[ -e doxygen_warnings.txt ]]; then rm doxygen_warnings.txt; fi
 git add --all
 git commit -m "Travis CI - Generate Reference Guide - build [$TRAVIS_BUILD_NUMBER]"
 git push "https://${GH_TOKEN}@github.com/gammasoft71/Switch-doc.git" master > /dev/null 2>&1 
-cd ../..
+popd

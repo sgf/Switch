@@ -9,6 +9,7 @@ git clone https://github.com/gammasoft71/switch-doc build/ReferenceGuide
 
 rem ______________________________________________________________________________________
 rem                                                               Generating documentation
+mkdir build
 cd build
 cmake --build . --target Switch.ReferenceGuide
 cd ..
@@ -19,3 +20,4 @@ cd build/ReferenceGuide
 git add --all
 git commit -m "Generate Reference Guide"
 git push
+cd ../..

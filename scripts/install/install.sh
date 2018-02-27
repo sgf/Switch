@@ -19,7 +19,7 @@ esac
 # ________________________________________________________________________________________
 #                                                       generate, build and install Switch
 mkdir -p build/examples
-cd build
+pushd build
 if [[ "$OSTYPE" == *"MSYS"* ]] || [[ "$OSTYPE" == *"MINGW64"* ]]; then
   cmake .. -DCMAKE_INSTALL_PREFIX=/c/usr/local "$@"
   cmake --build . --target install --config Debug
@@ -36,11 +36,11 @@ else
   cmake --build . -- -j 8
   sudo cmake --build . --target install
 fi
-cd ..
+popd
 
 # ________________________________________________________________________________________
 #                                                             generate and launch examples
-cd build/examples
+pushd build/examples
 if [[ "$OSTYPE" == *"MSYS"* ]] || [[ "$OSTYPE" == *"MINGW"* ]]; then
   cmake ../../examples -DCMAKE_INSTALL_PREFIX=/c/usr/local "$@"
   start Examples.sln
@@ -66,4 +66,4 @@ else
   echo cmake --build . --target help
   echo
 fi
-cd ../..
+popd
