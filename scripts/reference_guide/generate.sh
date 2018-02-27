@@ -1,19 +1,19 @@
 #!/usr/bin/env sh
 
-# ________________________________________________________________________________________
-#                                                                         Clone switch-doc
+# ______________________________________________________________________________
+#                                                               Clone switch-doc
 if [ -d "build/ReferenceGuide" ]; then rm -r -f build/ReferenceGuide; fi
 git clone https://github.com/gammasoft71/switch-doc build/ReferenceGuide
 
-# ________________________________________________________________________________________
-#                                                                 Generating documentation
+# ______________________________________________________________________________
+#                                                       Generating documentation
 mkdir -p build
 pushd build
-cmake --build . --target Switch.ReferenceGuide
+cmake --build . --target ReferenceGuide
 popd
 
-# ________________________________________________________________________________________
-#                                                                 Publishing documentation
+# ______________________________________________________________________________
+#                                                       Publishing documentation
 pushd build/ReferenceGuide
 git add --all
 git commit -m "Generate Reference Guide"
