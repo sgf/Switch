@@ -54,10 +54,10 @@ matrix:
       cache: ccache
       script: scripts/travis/generate_reference_guide.sh
 
-#    - env: TEST="clang build and run unittests"
-#      os: linux
-#      cache: ccache
-#      script: scripts/travis/build_clang.sh
+    - env: TEST="clang build and run unittests"
+      os: linux
+      cache: ccache
+      script: scripts/travis/build_clang.sh
 
     - env: TEST="Xcode build, run unittests and publish to codecov"
       os: osx
