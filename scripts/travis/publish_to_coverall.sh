@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ________________________________________________________________________________________
-#                                                                     install cpp-coverall
+# ______________________________________________________________________________
+#                                                           install cpp-coverall
 brew update
 brew install pyenv
 eval "$(pyenv init -)"
@@ -11,6 +11,6 @@ pyenv rehash
 pip install cpp-coveralls
 pyenv rehash
 
-# ________________________________________________________________________________________
-#                                                                      publish to coverall
+# ______________________________________________________________________________
+#                                                            publish to coverall
 coveralls --build-root build --gcov-options '\-lp' -e build/3rdparty -e build/astyle-prefix -e build/cppcheck-prefix -e build/examples -e build/ReferenceGuide -e build/include -e build/CMakeFiles/3.9.4 -e build/CMakeFiles/feature_tests.c -e build/CMakeFiles/feature_tests.cxx

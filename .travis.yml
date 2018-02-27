@@ -1,7 +1,8 @@
 language: cpp
 dist: trusty
 
-# 1. make sure travis client installed : https://github.com/travis-ci/travis.rb#installation
+# 1. make sure travis client installed : 
+#.     https://github.com/travis-ci/travis.rb#installation
 # 2. generate new token repo_public in github
 # 3. add the 3 following lines with the command :
 #      echo GH_TOKEN=token_generated_by_github | travis encrypt --add
@@ -33,48 +34,43 @@ before_script: scripts/travis/install_3rd_parties.sh
 
 matrix:
   include:  
-    - env: TEST="Xcode build, run unittests and publish to codecov"
-      os: osx
-      cache: ccache
-      osx_image: xcode9.1
-      script: scripts/travis/build_xcode.sh
-      after_success: scripts/travis/publish_to_codecov.sh
-
-#    - env: TEST="Xcode build, run unittests with Google Address Sanitizer"
-#      os: osx
-#      cache: ccache
-#      osx_image: xcode9.1
-#      script: scripts/travis/build_xcode_with_asan.sh
-
-#    - env: TEST="Xcode build, run unittests with Google Thread Sanitizer"
-#      os: osx
-#      cache: ccache
-#      osx_image: xcode9.1
-#      script: scripts/travis/build_xcode_with_tsan.sh
-
-#    - env: TEST="Xcode build, run unittests with Google Undefined Sanitizer"
-#      os: osx
-#      cache: ccache
-#      osx_image: xcode9.1
-#      script: scripts/travis/build_xcode_with_usan.sh
-
-    - env: TEST="clang build and run unittests"
+    - env: TEST="AStyle format"
       os: linux
-      cache: ccache
-      script: scripts/travis/build_clang.sh
-
-    - env: TEST="Git check"
-      os: linux
-      script: scripts/travis/git_check.sh
+      script: scripts/travis/astyle_format.sh
 
 #    - env: TEST="cppcheck analyse"
 #      os: linux
 #      script: scripts/travis/cppcheck_analyse.sh
 
-    - env: TEST="AStyle format"
+    - env: TEST="Git check"
       os: linux
-      script: scripts/travis/astyle_format.sh
+      script: scripts/travis/git_check.sh
 
     - env: TEST="Generate reference guide and publish on git properties-doc"
       os: linux
       script: scripts/travis/generate_reference_guide.sh
+
+#    - env: TEST="clang build and run unittests"
+#      os: linux
+#      script: scripts/travis/build_clang.sh
+
+    - env: TEST="Xcode build, run unittests and publish to codecov"
+      os: osx
+      osx_image: xcode9.1
+      script: scripts/travis/build_xcode.sh
+#      after_success: scripts/travis/publish_to_codecov.sh
+
+#    - env: TEST="Xcode build, run unittests with Google Address Sanitizer"
+#      os: osx
+#      osx_image: xcode9.1
+#      script: scripts/travis/build_xcode_with_asan.sh
+
+#    - env: TEST="Xcode build, run unittests with Google Thread Sanitizer"
+#      os: osx
+#      osx_image: xcode9.1
+#      script: scripts/travis/build_xcode_with_tsan.sh
+
+#    - env: TEST="Xcode build, run unittests with Google Undefined Sanitizer"
+#      os: osx
+#      osx_image: xcode9.1
+#      script: scripts/travis/build_xcode_with_usan.sh

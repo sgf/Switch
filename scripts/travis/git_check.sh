@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ________________________________________________________________________________________
-#                                                                                git check
+# ______________________________________________________________________________
+#                                                                      git check
 if [[ -n $(git diff --check HEAD^) ]]; then
   echo "You must remove whitespace before submitting a pull request"
   echo ""

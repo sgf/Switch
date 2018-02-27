@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ________________________________________________________________________________________
-#                                                                                setup git
+# ______________________________________________________________________________
+#                                                                      setup git
 git config --global user.email "gammasoft71@gmail.com"
 git config --global user.name "gammasoft71"
 
@@ -9,15 +9,15 @@ git config --global user.name "gammasoft71"
 if [ -d "build/ReferenceGuide" ]; then rm -r -f build/ReferenceGuide; fi
 git clone https://github.com/gammasoft71/Switch-doc.git build/ReferenceGuide
 
-# ________________________________________________________________________________________
-#                                                                 Generating documentation
+# ______________________________________________________________________________
+#                                                       Generating documentation
 pushd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=~/usr/local -DCMAKE_CXX_COMPILER=clang++-3.9
 cmake --build . --target Switch.ReferenceGuide
 popd
 
-# ________________________________________________________________________________________
-#                                                  check doxygen results and display error
+# ______________________________________________________________________________
+#                                        check doxygen results and display error
 #if [[ -s build/reference_guide/doxygen_warnings.txt ]]; then
 #  echo "You must fix doxygen before submitting a pull request"
 #  echo ""
@@ -25,8 +25,8 @@ popd
 #  exit -1
 #fi
 
-# ________________________________________________________________________________________
-#                                                                 Publishing documentation
+# ______________________________________________________________________________
+#                                                       Publishing documentation
 pushd build/ReferenceGuide
 if [[ -e doxygen_warnings.txt ]]; then rm doxygen_warnings.txt; fi
 git add --all

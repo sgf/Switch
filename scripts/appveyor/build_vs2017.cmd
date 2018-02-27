@@ -7,7 +7,7 @@ if DEFINED SWITCH_BUILD_WIN32 (
   rem generate, build Switch
   cd build32
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/32 -DBUILD_SWITCH_TESTS=ON
-  cmake --build . --config Release
+  cmake --build . --config Debug
   cd ..
 )
 
@@ -20,6 +20,6 @@ if DEFINED SWITCH_BUILD_WIN64 (
   rem generate, build and install Switch
   cd build64
   cmake -G "Visual Studio 15 2017 Win64" .. -DCMAKE_INSTALL_PREFIX=/usr/local/64 -DBUILD_SWITCH_TESTS=ON
-  cmake --build . --config Release
+  cmake --build . --config Debug
   cd ..
 )
