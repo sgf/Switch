@@ -42,7 +42,7 @@ option(DOWNLOAD_DOXYGEN "Download and build doxygen from Github" OFF)
 option(ENABLE_VERBOSE "Enable verbose" OFF)
 
 #_______________________________________________________________________________
-#                                                                Coverage Option 
+#                                                                Coverage Option
 option(ENABLE_COVERAGE "Enable code coverage" OFF)
 
 #_______________________________________________________________________________
@@ -255,7 +255,7 @@ list(APPEND CPPCHECK_ARGS_SWITCH_TUNIT_MAIN
   )
 
 #_______________________________________________________________________________
-#                       enable CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE variable 
+#                       enable CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE variable
 set(CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE ON)
 
 #_______________________________________________________________________________
