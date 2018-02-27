@@ -34,6 +34,11 @@ before_script: scripts/travis/install_3rd_parties.sh
 
 matrix:
   include:  
+    - env: TEST="Git check"
+      os: linux
+      cache: ccache
+      script: scripts/travis/git_check.sh
+
     - env: TEST="AStyle format"
       os: linux
       cache: ccache
@@ -44,11 +49,6 @@ matrix:
 #      cache: ccache
 #      script: scripts/travis/cppcheck_analyse.sh
 
-    - env: TEST="Git check"
-      os: linux
-      cache: ccache
-      script: scripts/travis/git_check.sh
-
     - env: TEST="Generate reference guide and publish on git properties-doc"
       os: linux
       cache: ccache
@@ -57,29 +57,29 @@ matrix:
     - env: TEST="clang build and run unittests"
       os: linux
       cache: ccache
-      script: scripts/travis/build_clang.sh
+      script: scripts/travis/build_linux.sh
 
     - env: TEST="Xcode build, run unittests and publish to codecov"
       os: osx
       cache: ccache
       osx_image: xcode9.1
-      script: scripts/travis/build_xcode.sh
+      script: scripts/travis/build_macos.sh
 #      after_success: scripts/travis/publish_to_codecov.sh
 
 #    - env: TEST="Xcode build, run unittests with Google Address Sanitizer"
 #      os: osx
 #      cache: ccache
 #      osx_image: xcode9.1
-#      script: scripts/travis/build_xcode_with_asan.sh
+#      script: scripts/travis/build_macos_with_asan.sh
 
 #    - env: TEST="Xcode build, run unittests with Google Thread Sanitizer"
 #      os: osx
 #      cache: ccache
 #      osx_image: xcode9.1
-#      script: scripts/travis/build_xcode_with_tsan.sh
+#      script: scripts/travis/build_macos_with_tsan.sh
 
 #    - env: TEST="Xcode build, run unittests with Google Undefined Sanitizer"
 #      os: osx
 #      cache: ccache
 #      osx_image: xcode9.1
-#      script: scripts/travis/build_xcode_with_usan.sh
+#      script: scripts/travis/build_macos_with_usan.sh
