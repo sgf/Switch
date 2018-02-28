@@ -589,7 +589,7 @@ namespace Switch {
         int32 GetHashCode() const override { return this->argb; }
 
       private :
-        Color(int32 argb) : argb(argb), knownColor((KnownColor)0) {}
+        explicit Color(int32 argb) : argb(argb), knownColor((KnownColor)0) {}
         Color(int32 argb, const KnownColor& color) : argb(argb), knownColor(color) {}
 
         bool GetIsSystemColor() const;

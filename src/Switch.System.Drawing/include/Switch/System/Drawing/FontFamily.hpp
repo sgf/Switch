@@ -19,13 +19,14 @@ namespace Switch {
       /// Switch.System.Drawing
       class system_drawing_export_ FontFamily final : public object {
       public:
-        FontFamily(const string& name);
-        FontFamily(System::Drawing::Text::GenericFontFamilies genericFamily);
+        explicit FontFamily(const string& name);
+        explicit FontFamily(System::Drawing::Text::GenericFontFamilies genericFamily);
 
         /// @cond
-        FontFamily()  = default;
+        FontFamily() = default;
+        explicit FontFamily(intptr handle) { this->data().handle = handle; }
         FontFamily(const FontFamily& fontFamily) : data(fontFamily.data) {}
-        FontFamily(intptr handle) { this->data().handle = handle; }
+        FontFamily& operator=(const FontFamily&) = default;
         ~FontFamily();
         /// @endcond
 

@@ -26,6 +26,7 @@ namespace Switch {
         public:
           /// @cond
           ColorPalette(const ColorPalette& colorPalette) : entries(colorPalette.entries), flags(colorPalette.flags) {}
+          ColorPalette& operator=(const ColorPalette&) = default;
           /// @endcond
           property_<Array<Color>, readonly_> Entries {
             get_ {return this->entries;}

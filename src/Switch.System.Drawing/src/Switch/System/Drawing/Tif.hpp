@@ -12,9 +12,9 @@ namespace Switch {
       class Tif : public object {
       public:
         template<typename TStream>
-        Tif(const TStream& stream) : reader(stream) {}
+        explicit Tif(const TStream& stream) : reader(stream) {}
 
-        Tif(refptr<System::IO::Stream> stream) : reader(stream) {}
+        explicit Tif(refptr<System::IO::Stream> stream) : reader(stream) {}
 
         void Read(Image& image) {
         }

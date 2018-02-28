@@ -29,15 +29,19 @@ namespace Switch {
         /// @brief Initializes a new instance of the Point class that has a X and Y value of 0.
         Point() = default;
 
-        /// @brief Initializes a new instance of the Point class from the specified Point class.
-        /// @param point The Point class from which to initialize this Point class
-        /// @exception ArgumentNullException point is null.
+        /// @cond
         Point(const Point& point) : x(point.x), y(point.y) {}
+        Point& operator=(const Point&) = default;
+        Point operator +(const Size& sz) const;
+        Point operator -(const Size& sz) const;
+        Point& operator +=(const Size& sz);
+        Point& operator -=(const Size& sz);
+        /// @endcond
 
         /// @brief Initializes a new instance of the Point class from the specified Size class.
         /// @param size The Size class from which to initialize this Point class
         /// @exception ArgumentNullException size is null.
-        Point(const Size& size);
+        explicit Point(const Size& size);
 
         static Point Ceiling(const PointF& pt);
 
@@ -124,15 +128,6 @@ namespace Switch {
       private :
         int32 x = 0;
         int32 y = 0;
-
-      public:
-        /// @cond
-        Point& operator=(const Point& pt);
-        Point operator +(const Size& sz) const;
-        Point operator -(const Size& sz) const;
-        Point& operator +=(const Size& sz);
-        Point& operator -=(const Size& sz);
-        /// @endcond
       };
     }
   }

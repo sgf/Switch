@@ -25,7 +25,7 @@ namespace Switch {
         refptr<object> Clone() const override {return new_<SolidBrush>(this->color);};
 
       private:
-        System::Drawing::Color color;
+        System::Drawing::Color color = System::Drawing::Color::Black;
       };
     }
   }

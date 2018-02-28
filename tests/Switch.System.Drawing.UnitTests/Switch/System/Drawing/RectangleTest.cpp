@@ -58,7 +58,7 @@ namespace SwitchUnitTests {
 
   TEST(RectangleTest, CreateRectangleFromPointAndSize) {
     Drawing::Point p(123, 456);
-    Drawing::Point s(244, 578);
+    Drawing::Size s(244, 578);
     Drawing::Rectangle rect(p, s);
     ASSERT_EQ(123, rect.X());
     ASSERT_EQ(456, rect.Y());

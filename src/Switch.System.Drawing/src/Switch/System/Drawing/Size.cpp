@@ -31,12 +31,6 @@ Size Size::Subtract(const Size& sz1, const Size& sz2) {
   return Size(sz1.width - sz2.width, sz1.height - sz2.height);
 }
 
-Size& Size::operator=(const Size& sz) {
-  this->width = sz.width;
-  this->height = sz.height;
-  return *this;
-}
-
 Size Size::operator +(const Size& sz) const {
   return Add(*this, sz);
 }

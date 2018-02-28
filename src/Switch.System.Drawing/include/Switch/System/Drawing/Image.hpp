@@ -149,8 +149,8 @@ namespace Switch {
         friend Png;
         friend Gif;
         friend Resources::Image;
-        Image(const string& fileName);
-        Image(refptr<System::IO::Stream> stream);
+        explicit Image(const string& fileName);
+        explicit Image(refptr<System::IO::Stream> stream);
 
         void ReadStream(refptr<System::IO::Stream> stream);
         void ReadWindowsBmp(refptr<System::IO::Stream> stream);

@@ -19,17 +19,18 @@ namespace Switch {
       /// Switch.System.Drawing
       class system_drawing_export_ Font : public object {
       public:
-        Font(const string& name) {this->FromName(name, this->data().size, this->data().fontStyle);}
+        explicit Font(const string& name) {this->FromName(name, this->data().size, this->data().fontStyle);}
 
         Font(const string& name, float size) {this->FromName(name, size, this->data().fontStyle);}
 
         Font(const string& name, float size, const System::Drawing::FontStyle& style) {this->FromName(name, size, style);}
 
-        Font(const System::Drawing::FontFamily& fontFamily) {this->FromName(fontFamily.Name, this->data().size, this->data().fontStyle);}
+        explicit Font(const System::Drawing::FontFamily& fontFamily) {this->FromName(fontFamily.Name, this->data().size, this->data().fontStyle);}
 
         /// @cond
-        Font() {}
-        Font(const System::Drawing::Font& font) : data(font.data) {}
+        Font() = default;
+        Font(const Switch::System::Drawing::Font& font) : data(font.data) {}
+        Font& operator=(const Switch::System::Drawing::Font&) = default;
         /// @endcond
 
         property_<bool, readonly_> Bold{

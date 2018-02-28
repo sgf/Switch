@@ -42,7 +42,7 @@ namespace Switch {
       class Bmp : public object {
       public:
         template<typename TStream>
-        Bmp(const TStream& stream) : reader(stream) {}
+        explicit Bmp(const TStream& stream) : reader(stream) {}
 
         void Read(Image& image) {
           BitmapFileHeader bmpFile = ReadBitmapFileHeader();

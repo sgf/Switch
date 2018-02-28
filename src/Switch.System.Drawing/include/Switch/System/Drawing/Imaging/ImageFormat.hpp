@@ -38,10 +38,14 @@ namespace Switch {
           static property_<ImageFormat, readonly_> Wmf;
 
           ImageFormat() = default;
-          ImageFormat(const Guid& guid) : guid(guid) {}
+          explicit ImageFormat(const Guid& guid) : guid(guid) {}
           ImageFormat(const string name, const Guid& guid) : name(name), guid(guid) {}
           ImageFormat(const string name, const string& guid) : name(name), guid(guid) {}
+
+          /// @cond
           ImageFormat(const ImageFormat& format) : name(format.name), guid(format.guid) {}
+          ImageFormat& operator=(const ImageFormat&) = default;
+          /// @endcond
 
           property_<System::Guid, readonly_> Guid {
             get_ {return this->guid;}

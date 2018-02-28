@@ -76,29 +76,29 @@ void Native::ControlApi::Invalidate(const System::Windows::Forms::Control& contr
 }
 
 System::Drawing::Point Native::ControlApi::PointToClient(const System::Windows::Forms::Control& control, const System::Drawing::Point& point) {
-  System::Drawing::Point pointToClient = point - control.Location();
+  System::Drawing::Point pointToClient = point - System::Drawing::Size(control.Location);
   ref<System::Windows::Forms::Control> workControl = control;
   while (workControl().Parent() != null && !is<System::Windows::Forms::Form>(workControl().Parent())) {
     workControl = workControl().Parent();
-    pointToClient -= workControl().Location();
+    pointToClient -= System::Drawing::Size(workControl().Location);
   }
   
   if (workControl().Parent != null)
-    pointToClient -= workControl().Parent()().Location();
+    pointToClient -= System::Drawing::Size(workControl().Parent()().Location);
   
   return pointToClient;
 }
 
 System::Drawing::Point Native::ControlApi::PointToScreen(const System::Windows::Forms::Control& control, const System::Drawing::Point& point) {
-  System::Drawing::Point pointToScreen = point + control.Location();
+  System::Drawing::Point pointToScreen = point + System::Drawing::Size(control.Location);
   ref<System::Windows::Forms::Control> workControl = control;
   while (workControl().Parent != null && !is<System::Windows::Forms::Form>(workControl().Parent())) {
     workControl = workControl().Parent();
-    pointToScreen += workControl().Location();
+    pointToScreen += System::Drawing::Size(workControl().Location);
   }
   
   if (workControl().Parent != null)
-    pointToScreen += workControl().Parent()().Location();
+    pointToScreen += System::Drawing::Size(workControl().Parent()().Location);
   
   return pointToScreen;
 }

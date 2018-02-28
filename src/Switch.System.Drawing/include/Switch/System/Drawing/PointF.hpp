@@ -28,15 +28,17 @@ namespace Switch {
         /// @brief Initializes a new instance of the PointF class that has a X and Y value of 0.0f.
         PointF() = default;
 
-        /// @brief Initializes a new instance of the PointF class from the specified PointF class.
-        /// @param point The PointF class from which to initialize this PointF class
-        /// @exception ArgumentNullException point is null.
+        /// @cond
         PointF(const PointF& point) : x(point.x), y(point.y) {}
+        PointF& operator=(const PointF&) = default;
+        PointF operator +(const SizeF& sz) const;
+        PointF operator -(const SizeF& sz) const;
+        /// @endcond
 
         /// @brief Initializes a new instance of the PointF class from the specified SizeF class.
         /// @param size The SizeF class from which to initialize this PointF class
         /// @exception ArgumentNullException size is null.
-        PointF(const SizeF& size);
+        explicit PointF(const SizeF& size);
 
         /// @brief Initializes a new instance of the PointF class from the specified dimensions.
         /// @param x The X component of the new SizeF
@@ -113,15 +115,6 @@ namespace Switch {
       private :
         float x = .0f;
         float y = .0f;
-
-      public:
-        /// @cond
-        PointF& operator=(const PointF& pt);
-
-        PointF operator +(const SizeF& sz) const;
-
-        PointF operator -(const SizeF& sz) const;
-        /// @endcond
       };
     }
   }

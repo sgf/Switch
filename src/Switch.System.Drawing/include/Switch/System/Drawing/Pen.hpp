@@ -38,20 +38,14 @@ namespace Switch {
         /// @cond
         ~Pen() { this->Destroy(); }
         Pen(const Pen& pen) : brush(pen.brush), dashStyle(pen.dashStyle), width(pen.width) { this->Create(); }
-        Pen& operator=(const Pen& pen) {
-          this->brush = pen.brush;
-          this->dashStyle = pen.dashStyle;
-          this->width = pen.width;
-          this->Create();
-          return *this;
-        }
+        Pen& operator=(const Pen&) = default;
         /// @endcond
 
-        Pen(const Brush& brush) : brush(as<System::Drawing::Brush>(brush.Clone())) { this->Create(); }
+        explicit Pen(const Brush& brush) : brush(as<System::Drawing::Brush>(brush.Clone())) { this->Create(); }
 
         Pen(const Brush& brush, float width) : brush(as<System::Drawing::Brush>(brush.Clone())), width(width) { this->Create(); }
 
-        Pen(System::Drawing::Color color) : brush(as<System::Drawing::Brush>(new_<SolidBrush>(color))) { this->Create(); }
+        explicit Pen(System::Drawing::Color color) : brush(as<System::Drawing::Brush>(new_<SolidBrush>(color))) { this->Create(); }
 
         Pen(System::Drawing::Color color, float width) : brush(as<System::Drawing::Brush>(new_<SolidBrush>(color))), width(width) { this->Create(); }
 

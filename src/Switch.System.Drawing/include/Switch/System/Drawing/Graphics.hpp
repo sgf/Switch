@@ -44,6 +44,7 @@ namespace Switch {
       public:
         StringFormat() {}
         StringFormat(const StringFormat& stringFormat) : alignment(stringFormat.alignment), lineAlignment(stringFormat.lineAlignment) {}
+        StringFormat& operator=(const StringFormat&) = default;
 
         property_<StringAlignment> Alignment {
           get_ {return this->alignment;},
@@ -98,7 +99,7 @@ namespace Switch {
 
         void FillEllipse(const Brush& brush, int32 x, int32 y, int32 w, int32 h) {this->FillPie(brush, x, y, w, h, 0.0f, 360.0f);}
 
-        void FillEllipse(const Brush& brush, const Rectangle& rectangle) {this->DrawEllipse(brush, rectangle.X(), rectangle.Y(), rectangle.Width(), rectangle.Height());}
+        void FillEllipse(const Brush& brush, const Rectangle& rectangle) {this->DrawEllipse(Pen(brush), rectangle.X(), rectangle.Y(), rectangle.Width(), rectangle.Height());}
 
         void DrawString(const string& str, const Font& font, const Brush& brush, const float x, float y) {
           SizeF size = MeasureString(str, font);
@@ -134,6 +135,7 @@ namespace Switch {
         Graphics(intptr hdc, const Rectangle& clipRectangle) : hdc(hdc), clipRectangle(clipRectangle) {}
         Graphics(intptr hwnd, intptr hdc, const Rectangle& clipRectangle) : hwnd(hwnd), hdc(hdc), clipRectangle(clipRectangle) {}
         Graphics(const Graphics& graphics) : clipRectangle(graphics.clipRectangle) {}
+        Graphics& operator=(const Graphics&) = default;
         static void SetColor(const System::Drawing::Color& color);
 
         intptr hwnd = IntPtr::Zero;

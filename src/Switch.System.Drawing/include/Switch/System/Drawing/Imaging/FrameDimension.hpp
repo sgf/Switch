@@ -23,10 +23,14 @@ namespace Switch {
 
           static property_<FrameDimension, readonly_> Time;
 
-          FrameDimension(const Guid& guid) : guid(guid) {}
+          explicit FrameDimension(const Guid& guid) : guid(guid) {}
           FrameDimension(const Guid& guid, const string name) : guid(guid), name(name) {}
           FrameDimension(const string& guid, const string name) : guid(guid), name(name) {}
+
+          /// @cond
           FrameDimension(const FrameDimension& fd) : guid(fd.guid), name(fd.name) {}
+          FrameDimension& operator=(const FrameDimension& fd) = default;
+          /// @endcond
 
           property_<System::Guid, readonly_> Guid {
             get_ {return this->guid;}

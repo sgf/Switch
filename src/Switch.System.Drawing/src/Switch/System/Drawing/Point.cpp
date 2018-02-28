@@ -44,12 +44,6 @@ Point Point::Subtract(const Point& pt, const Size& sz) {
   return Point(pt.x - sz.Width(), pt.y - sz.Height());
 }
 
-Point& Point::operator=(const Point& pt) {
-  this->x = pt.x;
-  this->y = pt.y;
-  return *this;
-}
-
 Point Point::operator +(const Size& sz) const {
   return Add(*this, sz);
 }

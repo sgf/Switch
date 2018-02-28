@@ -27,3 +27,7 @@ noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/RefPtr.h
 unusedStructMember:@CMAKE_SOURCE_DIR@/src/Switch/Startup.cpp
 
 exceptRethrowCopy:@CMAKE_SOURCE_DIR@/src/Switch.System/src/Switch/System/Net/Sockets/TcpListener.cpp
+
+noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.System.Drawing/include/Switch/System/Drawing/Font.hpp
+cstyleCast:@CMAKE_SOURCE_DIR@/src/Switch.System.Drawing/src/Switch/System/Drawing/Jpg.hpp
+cstyleCast:@CMAKE_SOURCE_DIR@/src/Switch.System.Drawing/src/Switch/System/Drawing/Png.hpp

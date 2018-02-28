@@ -12,9 +12,9 @@ namespace Switch {
       class Gif : public object {
       public:
         template<typename TStream>
-        Gif(const TStream& stream) : reader(stream) {}
+        explicit Gif(const TStream& stream) : reader(stream) {}
 
-        Gif(refptr<System::IO::Stream> stream) : reader(stream) {}
+        explicit Gif(refptr<System::IO::Stream> stream) : reader(stream) {}
 
         void Read(Image& image) {
         }

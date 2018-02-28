@@ -28,14 +28,18 @@ namespace Switch {
         /// @brief Initializes a new instance of the Size class that has a Height and Width value of 0.
         Size() = default;
 
-        /// @brief Initializes a new instance of the Size class from the specified Size class.
-        /// @param size The Size class from which to initialize this Size class
-        /// @exception ArgumentNullException size is null.
+        /// @cond
         Size(const Size& size) : width(size.width), height(size.height) {}
+        Size& operator=(const Size&) = default;
+        Size operator+(const Size& sz) const;
+        Size operator-(const Size& sz) const;
+        Size& operator+=(const Size& sz);
+        Size& operator-=(const Size& sz);
+        /// @endcond
 
         /// @brief IInitializes a new instance of the Size class from the specified Point class.
         /// @param point The Point class from which to initialize this Size class
-        Size(const Point& point);
+        explicit Size(const Point& point);
 
         /// @brief Initializes a new instance of the Size class from the specified dimensions.
         /// @param width The width component of the new Size
@@ -92,15 +96,6 @@ namespace Switch {
       private :
         int32 width = 0;
         int32 height = 0;
-
-      public:
-        /// @cond
-        Size& operator=(const Size& sz);
-        Size operator+(const Size& sz) const;
-        Size operator-(const Size& sz) const;
-        Size& operator+=(const Size& sz);
-        Size& operator-=(const Size& sz);
-        /// @endcond
       };
     }
   }

@@ -30,12 +30,14 @@ namespace Switch {
         /// @brief Initializes a new instance of the SizeF class that has a Height and Width value of 0.0f.
         SizeF() {}
 
-        /// @brief Initializes a new instance of the SizeF class that has a Height and Width value of 0.0f.
+        /// @cond
         SizeF(const SizeF& size) : width(size.width), height(size.height) {}
+        SizeF& operator=(const SizeF&) = default;
+        /// @endcond
 
         /// @brief IInitializes a new instance of the SizeF class from the specified PointF class.
         /// @param point The PointF class from which to initialize this SizeF class
-        SizeF(const PointF& point);
+        explicit SizeF(const PointF& point);
 
         /// @brief Initializes a new instance of the SizeF class from the specified dimensions.
         /// @param width The width component of the new SizeF
@@ -97,10 +99,7 @@ namespace Switch {
 
       public:
         /// @cond
-        SizeF& operator=(const SizeF& sz);
-
         SizeF operator +(const SizeF& sz) const;
-
         SizeF operator -(const SizeF& sz) const;
         /// @endcond
       };
