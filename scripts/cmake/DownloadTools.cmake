@@ -1,8 +1,8 @@
 macro(DownloadTools)
   print("Tools:")
 
-  #_______________________________________________________________________________________
-  #                                                                                    Git
+  #_____________________________________________________________________________
+  #                                                                          Git
   #find_package(Git QUIET)
   if (Git_FOUND)
     print("  [X] Git ${GIT_VERSION_STRING}")
@@ -10,8 +10,8 @@ macro(DownloadTools)
     print("  [ ] Git")
   endif()
 
-  #_______________________________________________________________________________________
-  #                                                                                 astyle
+  #_____________________________________________________________________________
+  #                                                                       astyle
   if (DOWNLOAD_ASTYLE)
     print("  [X] astyle 3.0.1 (*)")
     ExternalProject_Add(astyle GIT_REPOSITORY https://github.com/Bareflank/astyle.git GIT_TAG v1.2 GIT_SHALLOW 1 CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR})
@@ -22,8 +22,8 @@ macro(DownloadTools)
     print("  [ ] astyle")
   endif()
 
-  #_______________________________________________________________________________________
-  #                                                                               cppcheck
+  #_____________________________________________________________________________
+  #                                                                     cppcheck
   if (DOWNLOAD_CPPCHECK)
     print("  [X] cppcheck 1.81 (*)")
     ExternalProject_Add(cppcheck GIT_REPOSITORY https://github.com/danmar/cppcheck.git GIT_TAG 1.81 GIT_SHALLOW 1 CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR})
@@ -34,8 +34,8 @@ macro(DownloadTools)
     print("  [ ] cppcheck")
   endif()
 
-  #_______________________________________________________________________________________
-  #                                                                                Doxygen
+  #_____________________________________________________________________________
+  #                                                                      Doxygen
   find_package(Doxygen QUIET)
   if (Doxygen_FOUND)
     print("  [X] Doxygen ${DOXYGEN_VERSION}")

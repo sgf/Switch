@@ -1,17 +1,17 @@
-#_________________________________________________________________________________________
-#                                                                             standard C++
+#_______________________________________________________________________________
+#                                                                   standard C++
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#_________________________________________________________________________________________
-#                                                                        add compile flags
+#_______________________________________________________________________________
+#                                                              add compile flags
 if (MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4251 /wd4275")
   set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /bigobj")
 endif()
 
-#_________________________________________________________________________________________
-#                                                                    add external packages
+#_______________________________________________________________________________
+#                                                          add external packages
 if(NOT APPLE AND NOT ANDROID AND NOT CMAKE_HOST_SOLARIS AND UNIX)
   find_package(PkgConfig REQUIRED)
   pkg_check_modules(GTKMM gtkmm-3.0)
@@ -22,8 +22,8 @@ if(NOT APPLE AND NOT ANDROID AND NOT CMAKE_HOST_SOLARIS AND UNIX)
   link_directories(${GTKMM_LIBRARY_DIRS})
 endif ()
 
-#_________________________________________________________________________________________
-#                                                                           set SWITCH_GUI
+#_______________________________________________________________________________
+#                                                                 set SWITCH_GUI
 if(MSVC)
   set(SWITCH_GUI WIN32)
 elseif (APPLE)
@@ -32,8 +32,8 @@ elseif(UNIX)
   set(SWITCH_GUI)
 endif ()
 
-#_________________________________________________________________________________________
-#                                                           set SWITCH_CORE_LINK_LIBRARIES
+#_______________________________________________________________________________
+#                                                 set SWITCH_CORE_LINK_LIBRARIES
 if(MSVC)
   set(SWITCH_CORE_LINK_LIBRARIES ws2_32 iphlpapi rpcrt4)
 elseif (APPLE)
@@ -44,16 +44,16 @@ elseif(UNIX)
   set(SWITCH_CORE_LINK_LIBRARIES dl rt uuid pthread)
 endif ()
 
-#_________________________________________________________________________________________
-#                                                        set SWITCH_SYSTEM_LINK_FRAMEWORKS
+#_______________________________________________________________________________
+#                                              set SWITCH_SYSTEM_LINK_FRAMEWORKS
 if (APPLE)
   set(SWITCH_SYSTEM_LINK_FRAMEWORKS "-framework Cocoa -framework Foundation")
 else ()
   set(SWITCH_SYSTEM_LINK_FRAMEWORKS)
 endif ()
 
-#_________________________________________________________________________________________
-#                                                 set SWITCH_SYSTEM_DRAWING_LINK_LIBRARIES
+#_______________________________________________________________________________
+#                                       set SWITCH_SYSTEM_DRAWING_LINK_LIBRARIES
 if(MSVC)
   set(SWITCH_SYSTEM_DRAWING_LINK_LIBRARIES uxtheme comctl32)
 elseif (APPLE)

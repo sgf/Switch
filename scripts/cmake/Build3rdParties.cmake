@@ -1,8 +1,8 @@
 macro(Build3rdParties)
   print("3rd parties")
 
-  #_______________________________________________________________________________________
-  #                                                                             call_stack
+  #_____________________________________________________________________________
+  #                                                                   call_stack
   if (BUILD_SWITCH_CORE)
     find_package(call_stack QUIET)
     if (call_stack_FOUND)
@@ -19,8 +19,8 @@ macro(Build3rdParties)
     print("  [ ] call_stack")
   endif()
 
-  #_______________________________________________________________________________________
-  #                                                                           easywsclient
+  #_____________________________________________________________________________
+  #                                                                 easywsclient
   if (BUILD_SWITCH_CORE)
     find_package(easywsclient QUIET)
     if (easywsclient_FOUND)
@@ -37,8 +37,8 @@ macro(Build3rdParties)
     print("  [ ] easywsclient")
   endif()
 
-  #_______________________________________________________________________________________
-  #                                                                                  RS232
+  #_____________________________________________________________________________
+  #                                                                        RS232
   if (BUILD_SWITCH_CORE)
     find_package(RS232 QUIET)
     if (RS232_FOUND)
@@ -53,8 +53,8 @@ macro(Build3rdParties)
     print("  [ ] RS232")
   endif()
 
-  #_______________________________________________________________________________________
-  #                                                                                   ZLIB
+  #_____________________________________________________________________________
+  #                                                                         ZLIB
   if (BUILD_SWITCH_CORE)
     find_package(ZLIB QUIET)
     if (ZLIB_FOUND)
@@ -73,8 +73,8 @@ macro(Build3rdParties)
     print("  [ ] ZLIB")
   endif()
 
-  #_______________________________________________________________________________________
-  #                                                                                   CURL
+  #_____________________________________________________________________________
+  #                                                                         CURL
   if (NOT IOS AND NOT ANDROID AND BUILD_SWITCH_SYSTEM)
     find_package(CURL QUIET)
     if (CURL_FOUND)
@@ -95,8 +95,8 @@ macro(Build3rdParties)
     print("  [ ] curl")
   endif()
 
-  #_______________________________________________________________________________________
-  #                                                                                   jpeg
+  #_____________________________________________________________________________
+  #                                                                         jpeg
   if (BUILD_SWITCH_SYSTEM_DRAWING)
     find_package(JPEG)
     if (JPEG_FOUND)
@@ -114,8 +114,8 @@ macro(Build3rdParties)
     print("  [ ] JPEG")
   endif()
 
-  #_______________________________________________________________________________________
-  #                                                                                 libpng
+  #_____________________________________________________________________________
+  #                                                                       libpng
   if (BUILD_SWITCH_SYSTEM_DRAWING)
     find_package(PNG QUIET)
     if (PNG_FOUND)
@@ -132,8 +132,8 @@ macro(Build3rdParties)
     print("  [ ] PNG")
   endif()
 
-  #_______________________________________________________________________________________
-  #                                                                                  GTest
+  #_____________________________________________________________________________
+  #                                                                        GTest
   if (BUILD_SWITCH_TESTS OR BUILD_SWITCH_TUNIT_CORE)
     find_package(GTest QUIET)
     if (GTEST_FOUND)

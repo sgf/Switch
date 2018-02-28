@@ -1,3 +1,5 @@
+//______________________________________________________________________________
+//                                                                   Switch.Core
 operatorEqToSelf:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/__opaque_function_pointer__.hpp
 operatorEqVarError:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/System/Collections/ObjectModel/ReadOnlyCollection.hpp
 noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/System/Collections/Generic/KeyValuePair.hpp
@@ -22,14 +24,19 @@ noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/System/U
 noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/Boxing.hpp
 noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/ExceptionPtr.hpp
 noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/Ref.hpp
-noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/Ref.hpp
 noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/RefPtr.hpp
 unusedStructMember:@CMAKE_SOURCE_DIR@/src/Switch/Startup.cpp
 
+//______________________________________________________________________________
+//                                                                 Switch.System
 exceptRethrowCopy:@CMAKE_SOURCE_DIR@/src/Switch.System/src/Switch/System/Net/Sockets/TcpListener.cpp
 
+//______________________________________________________________________________
+//                                                         Switch.System.Drawing
 noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.System.Drawing/include/Switch/System/Drawing/Font.hpp
 cstyleCast:@CMAKE_SOURCE_DIR@/src/Switch.System.Drawing/src/Switch/System/Drawing/Jpg.hpp
 cstyleCast:@CMAKE_SOURCE_DIR@/src/Switch.System.Drawing/src/Switch/System/Drawing/Png.hpp
 
+//______________________________________________________________________________
+//                                                   Switch.System.Windows.Forms
 cstyleCast:@CMAKE_SOURCE_DIR@/src/Switch.System.Windows.Forms/src/Native/TimerApiGtk.cpp
