@@ -25,7 +25,7 @@ namespace Switch {
           KeyEventArgs() {}
           /// @brief Initializes a new instance of the KeyEventArgs class for the specified keys.
           /// @param keyData A Keys representing the key that was pressed, combined with any modifier flags that indicate which CTRL, SHIFT, and ALT keys were pressed at the same time. Possible values are obtained be applying the bitwise OR (|) operator to constants from the Keys enumeration.
-          KeyEventArgs(const Keys& keyData) : keyData(keyData), handled(false), suppressKeyPress(false) {}
+          explicit KeyEventArgs(const Keys& keyData) : keyData(keyData), handled(false), suppressKeyPress(false) {}
 
           /// @cond
           KeyEventArgs(const KeyEventArgs& keyEventArgs) : keyData(keyEventArgs.keyData), handled(keyEventArgs.handled), suppressKeyPress(keyEventArgs.suppressKeyPress) {}

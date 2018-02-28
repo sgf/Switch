@@ -46,8 +46,8 @@ void ProgressBar::SetMinimum(int32 minimum) {
 }
 
 void ProgressBar::SetProgressStyle(ProgressBarStyle style) {
-  if (this->style != style) {
-    this->style = style;
+  if (this->progressBarStyle != style) {
+    this->progressBarStyle = style;
     if (this->IsHandleCreated)
       Native::ProgressBarApi::SetMarquee(*this);
   }

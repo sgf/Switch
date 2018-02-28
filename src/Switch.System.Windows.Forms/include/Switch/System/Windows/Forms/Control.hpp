@@ -77,7 +77,7 @@ namespace Switch {
 
           private:
             friend Control;
-            ControlCollection(ref<Control> controlContainer) : controlContainer(controlContainer) {}
+            explicit ControlCollection(ref<Control> controlContainer) : controlContainer(controlContainer) {}
 
             void ChangeParent(ref<Control> value);
 

@@ -74,10 +74,10 @@ matrix:
       cache: ccache
       script: scripts/travis/check_switch_system_drawing.sh
 
-#    - env: TEST="Check Switch.System.ServiceModel"
-#      os: linux
-#      cache: ccache
-#      script: scripts/travis/check_switch_system_servicemodel.sh
+    - env: TEST="Check Switch.System.ServiceModel"
+      os: linux
+      cache: ccache
+      script: scripts/travis/check_switch_system_servicemodel.sh
 
 #    - env: TEST="Check Switch.System.Windows.Forms"
 #      os: linux

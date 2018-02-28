@@ -17,9 +17,10 @@ namespace Switch {
       namespace Forms {
         class system_windows_forms_export_ FormClosingEventArgs : public ComponentModel::CancelEventArgs {
         public:
-          FormClosingEventArgs() {}
+          FormClosingEventArgs() = default;
           FormClosingEventArgs(bool cancel, System::Windows::Forms::CloseReason closeReason) : ComponentModel::CancelEventArgs(cancel), closeReason(closeReason) {}
           FormClosingEventArgs(const FormClosingEventArgs& e) : ComponentModel::CancelEventArgs(e), closeReason(e.closeReason) {}
+          FormClosingEventArgs& operator=(const FormClosingEventArgs&) = default;
 
           property_<System::Windows::Forms::CloseReason, readonly_> CloseReason {
             get_ { return this->closeReason; }

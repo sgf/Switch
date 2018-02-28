@@ -16,8 +16,9 @@ namespace Switch {
       namespace Forms {
         class system_windows_forms_export_ FormClosedEventArgs : public EventArgs {
         public:
-          FormClosedEventArgs(System::Windows::Forms::CloseReason closeReason) : closeReason(closeReason) {}
+          explicit FormClosedEventArgs(System::Windows::Forms::CloseReason closeReason) : closeReason(closeReason) {}
           FormClosedEventArgs(const FormClosedEventArgs& e) : closeReason(e.closeReason) {}
+          FormClosedEventArgs& operator=(const FormClosedEventArgs&) = default;
 
           property_<System::Windows::Forms::CloseReason, readonly_> CloseReason {
             get_ { return this->closeReason; }

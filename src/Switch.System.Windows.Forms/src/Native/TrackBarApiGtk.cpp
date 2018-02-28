@@ -12,7 +12,7 @@ namespace Native {
   class TrackBar : public Widget, public Gtk::Scale {
   public:
     TrackBar() {this->RegisterEvent();}
-    TrackBar(Gtk::Orientation orientation) : Gtk::Scale(orientation) {this->RegisterEvent();}
+    explicit TrackBar(Gtk::Orientation orientation) : Gtk::Scale(orientation) {this->RegisterEvent();}
     void RegisterEvent() override {
       Native::Widget::RegisterEvent();
       this->signal_value_changed().connect(delegate_ {

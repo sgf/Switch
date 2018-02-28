@@ -16,16 +16,12 @@ namespace Switch {
 
         class system_windows_forms_export_ KeyPressEventArgs : public EventArgs {
         public:
-          KeyPressEventArgs() {}
-          KeyPressEventArgs(char32 keyChar) : keyChar(keyChar), handled(false) {}
+          KeyPressEventArgs() = default;
+          explicit KeyPressEventArgs(char32 keyChar) : keyChar(keyChar), handled(false) {}
 
           /// @cond
           KeyPressEventArgs(const KeyPressEventArgs& keyPressEventArgs): keyChar(keyPressEventArgs.keyChar), handled(keyPressEventArgs.handled) {}
-          KeyPressEventArgs& operator =(const KeyPressEventArgs& keyPressEventArgs) {
-            this->keyChar = keyPressEventArgs.keyChar;
-            this->handled = keyPressEventArgs.handled;
-            return *this;
-          }
+          KeyPressEventArgs& operator =(const KeyPressEventArgs&) = default;
           /// @endcond
 
           property_<bool> Handled {

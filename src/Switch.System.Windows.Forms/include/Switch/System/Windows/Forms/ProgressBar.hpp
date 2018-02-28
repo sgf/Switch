@@ -42,7 +42,7 @@ namespace Switch {
           };
 
           property_<ProgressBarStyle> Style{
-            get_{ return this->style; },
+            get_{ return this->progressBarStyle; },
             set_{ this->SetProgressStyle(value); },
           };
 
@@ -64,7 +64,7 @@ namespace Switch {
           int32 marqueeAnimationSpeed = 100;
           int32 maximum = 100;
           int32 minimum = 0;
-          ProgressBarStyle style = ProgressBarStyle::Blocks;
+          ProgressBarStyle progressBarStyle = ProgressBarStyle::Blocks;
           int32 value = 0;
           /// @endcond
         };

@@ -16,8 +16,9 @@ namespace Switch {
         struct system_windows_forms_export_ Message : public object {
         public:
           /// @cond
-          Message() {}
+          Message() = default;
           Message(const Message& message) : hwnd(message.hwnd), msg(message.msg), wParam(message.wParam), lParam(message.lParam), result(message.result) {}
+          Message& operator=(const Message&) = default;
           /// @cond
 
           property_<intptr> HWnd {

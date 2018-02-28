@@ -10,9 +10,10 @@ namespace Switch {
     namespace ComponentModel {
       class system_windows_forms_export_ CancelEventArgs : public EventArgs {
       public:
-        CancelEventArgs() {}
+        CancelEventArgs() = default;
+        explicit CancelEventArgs(bool cancel) : cancel(cancel) {}
         CancelEventArgs(const CancelEventArgs& ce) : cancel(ce.cancel) {}
-        CancelEventArgs(bool cancel) : cancel(cancel) {}
+        CancelEventArgs& operator=(const CancelEventArgs&) = default;
 
         property_<bool> Cancel {
           get_ {return cancel;},
