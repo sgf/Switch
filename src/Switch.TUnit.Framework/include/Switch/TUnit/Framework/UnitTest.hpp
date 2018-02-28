@@ -18,7 +18,7 @@ namespace Switch {
       public:
         UnitTest() {}
 
-        UnitTest(const System::Array<string>& args) {
+        explicit UnitTest(const System::Array<string>& args) {
           this->alsoRunIgnoredTests = true;
         }
 

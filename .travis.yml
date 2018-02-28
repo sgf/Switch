@@ -84,20 +84,20 @@ matrix:
       cache: ccache
       script: scripts/travis/check_switch_system_windows_forms.sh
 
-#    - env: TEST="Check Switch.TUnit.Core"
-#      os: linux
-#      cache: ccache
-#      script: scripts/travis/check_switch_tunit_core.sh
+    - env: TEST="Check Switch.TUnit.Core"
+      os: linux
+      cache: ccache
+      script: scripts/travis/check_switch_tunit_core.sh
 
-#    - env: TEST="Check Switch.TUnit.Framework"
-#      os: linux
-#      cache: ccache
-#      script: scripts/travis/check_switch_tunit_framework.sh
+    - env: TEST="Check Switch.TUnit.Framework"
+      os: linux
+      cache: ccache
+      script: scripts/travis/check_switch_tunit_framework.sh
 
-#    - env: TEST="Check Switch.TUnit.Main"
-#      os: linux
-#      cache: ccache
-#      script: scripts/travis/check_switch_tunit_main.sh
+    - env: TEST="Check Switch.TUnit.Main"
+      os: linux
+      cache: ccache
+      script: scripts/travis/check_switch_tunit_main.sh
 
     - env: TEST="Generate reference guide"
       os: linux
