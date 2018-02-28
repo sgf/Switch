@@ -12,7 +12,7 @@ namespace {
   class ProcessOutputStream : public Stream {
   public:
     ProcessOutputStream() {}
-    ProcessOutputStream(FILE* stream) : stream(stream), isClosed(stream == null) {}
+    explicit ProcessOutputStream(FILE* stream) : stream(stream), isClosed(stream == null) {}
 
     /// @cond
     ProcessOutputStream(const ProcessOutputStream& pos) : stream(pos.stream), isClosed(pos.isClosed) {}
@@ -69,7 +69,7 @@ void Process::Kill() {
 }
 
 Process Process::GetCurrentProcess() {
-  return Native::ProcessApi::GetCurrent();
+  return Process(Native::ProcessApi::GetCurrent());
 }
 
 Array<Process> Process::GetProcesses() {

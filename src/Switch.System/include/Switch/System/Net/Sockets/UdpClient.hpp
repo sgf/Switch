@@ -34,14 +34,14 @@ namespace Switch {
 
           /// @brief Initializes a new instance of the UdpClient class
           /// @param addressFamily one of the AddressFamily values that specifies the addressing scheme of the socket.
-          UdpClient(AddressFamily addressFamily);
+          explicit UdpClient(AddressFamily addressFamily);
 
           /// @brief Initializes a new instance of the UdpClient class and binds it to the local port number provided.
           /// @param port the local port number to use.
-          UdpClient(int32 port);
+          explicit UdpClient(int32 port);
 
           /// @brief Initializes a new instance of the UdpClient class and binds it to the specified local endpoint.
-          UdpClient(const IPEndPoint& endPoint);
+          explicit UdpClient(const IPEndPoint& endPoint);
 
           /// @brief Initializes a new instance of the UdpClient class and binds to the provided local port
           /// @param port the local port number to use.

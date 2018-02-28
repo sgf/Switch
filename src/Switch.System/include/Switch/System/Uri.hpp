@@ -114,8 +114,10 @@ namespace Switch {
       /// @brief Initializes a new instance of the Uri class.
       Uri() = default;
 
-      /// @brief Initializes a new instance of the Uri class by copy.
+      /// @cond
       Uri(const Uri& uri) : originalUri(uri.originalUri), scheme(uri.scheme), schemeDelimiter(uri.schemeDelimiter), userInfo(uri.userInfo), host(uri.host), port(uri.port), path(uri.path), query(uri.query), fragment(uri.fragment), kind(uri.kind) {}
+      Uri& operator=(const Uri&) = default;
+      /// @endcond
 
       /// @brief Initializes a new instance of the Uri class with the specified URI.
       /// @param uri : A URI.

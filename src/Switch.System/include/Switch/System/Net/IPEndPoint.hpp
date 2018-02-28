@@ -41,6 +41,7 @@ namespace Switch {
         /// @cond
         IPEndPoint() = default;
         IPEndPoint(const IPEndPoint& ipEndPoint) : EndPoint(ipEndPoint), address(ipEndPoint.address), port(ipEndPoint.port) {}
+        IPEndPoint& operator=(const IPEndPoint&) = default;
         /// @endcond
 
         /// @brief Creates an EndPoint instance from a SocketAddress instance.

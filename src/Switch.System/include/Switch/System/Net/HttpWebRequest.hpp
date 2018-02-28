@@ -35,8 +35,8 @@ namespace Switch {
         WebRequest::WebRequestStream GetRequestStream() override;
 
       protected:
-        HttpWebRequest(const string& uri);
-        HttpWebRequest(const System::Uri& uri);
+        explicit HttpWebRequest(const string& uri);
+        explicit HttpWebRequest(const System::Uri& uri);
         HttpWebRequest(const HttpWebRequest&) = delete;
         HttpWebRequest& operator =(const HttpWebRequest&) = delete;
 

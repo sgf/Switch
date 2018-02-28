@@ -29,7 +29,7 @@ namespace Switch {
           SerialPort& operator=(const SerialPort& serialPort) = delete;
           /// @endcond
 
-          SerialPort(const String& port) : port(port) {}
+          explicit SerialPort(const String& port) : port(port) {}
 
           SerialPort(const String& port, int32 baudRate) : port(port), baudRate(baudRate) {}
 

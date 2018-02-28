@@ -23,7 +23,7 @@ namespace Switch {
           /// @brief Initializes a new version of the IPv6MulticastOption class for the specified IP multicast group.
           /// @param group The IPAddress of the multicast group.
           /// @exception ArgumentNullException group is null.
-          IPv6MulticastOption(const IPAddress& group) : group(group) {}
+          explicit IPv6MulticastOption(const IPAddress& group) : group(group) {}
 
           /// @brief Initializes a new instance of the IPv6MulticastOption class with the specified IP multicast group and the local interface address.
           /// @param group The IPAddress of the multicast group.
@@ -34,6 +34,7 @@ namespace Switch {
 
           /// @cond
           IPv6MulticastOption(const IPv6MulticastOption& ipv6MulticastOption) : group(ipv6MulticastOption.group), interfaceIndex(ipv6MulticastOption.interfaceIndex) {}
+          IPv6MulticastOption& operator=(const IPv6MulticastOption&) = default;
           /// @endcond
 
           /// @brief Gets or Set the IP address of a multicast group.

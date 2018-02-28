@@ -65,12 +65,12 @@ namespace Switch {
 
         /// @brief Initializes a new instance of the IPAddress class with the address specified as an Int64.
         /// @param address The long value of the IP address. For example, the value 0x2414188F in big-endian format would be the IP address "143.24.20.36".
-        IPAddress(int64 address);
+        explicit IPAddress(int64 address);
 
         /// @brief Initializes a new instance of the IPAddress class with the address specified as a Byte array.
         /// @param address The Byte array value of the IP address.
         /// @exception ArgumentNullException The parameters address is null.
-        IPAddress(const Array<byte>& address);
+        explicit IPAddress(const Array<byte>& address);
 
         /// @brief Initializes a new instance of the IPAddress class with the address specified as a Byte array.
         /// @param address The Byte array value of the IP address.

@@ -33,7 +33,7 @@ namespace Switch {
           /// @exception SocketException An error occurred when attempting to access the socket. See the Remarks section for more information.
           /// @exception ObjectDisposedException The Socket has been closed.
           /// @remarks The NetworkStream is created with read/write access to the specified Socket. The NetworkStream does not own the underlying Socket, so calling the Close method does not close the Socket.
-          NetworkStream(const Socket& socket) : NetworkStream(socket, System::IO::FileAccess::ReadWrite) {}
+          explicit NetworkStream(const Socket& socket) : NetworkStream(socket, System::IO::FileAccess::ReadWrite) {}
 
           /// @brief Creates a new instance of the NetworkStream class for the specified Socket.
           /// @param socket The Socket that the NetworkStream will use to send and receive data.
@@ -65,6 +65,7 @@ namespace Switch {
           /// @cond
           NetworkStream() {}
           NetworkStream(const NetworkStream& networkStream) : data(networkStream.data) {}
+          NetworkStream& operator=(const NetworkStream& networkStream) = default;
           ~NetworkStream();
           /// @endcond
 

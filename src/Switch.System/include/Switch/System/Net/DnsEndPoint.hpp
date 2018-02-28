@@ -44,6 +44,7 @@ namespace Switch {
 
         /// @cond
         DnsEndPoint(const DnsEndPoint& dnsEndPoint) : EndPoint(dnsEndPoint), host(dnsEndPoint.host), port(dnsEndPoint.port) {}
+        DnsEndPoint& operator=(const DnsEndPoint&) = default;
         /// @endcond
 
         /// @brief Gets or sets the host name or string representation of the Internet Protocol (IP) address of the host.

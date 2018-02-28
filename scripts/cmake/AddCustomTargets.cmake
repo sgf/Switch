@@ -15,67 +15,67 @@ macro(AddCustomTargets)
   #_____________________________________________________________________________
   #                                                                        Check
   #print("  [X] Check")
-  #configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive.txt ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt @ONLY)
+  #configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   #add_custom_target(Check COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_ALL} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
   #                                                                 Check.Switch
   print("  [X] Check.${PROJECT_NAME}")
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive.txt ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME} COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
   #                                                            Check.Switch.Core
   print("  [X] Check.${PROJECT_NAME}.Core")
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive.txt ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.Core COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_CORE} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
   #                                                          Check.Switch.System
   print("  [X] Check.${PROJECT_NAME}.System")
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive.txt ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.System COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_SYSTEM} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
   #                                                     Check.Switch.System.Core
   print("  [X] Check.${PROJECT_NAME}.System.Core")
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive.txt ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.System.Core COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_SYSTEM_CORE} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
   #                                                  Check.Switch.System.Drawing
   print("  [X] Check.${PROJECT_NAME}.System.Drawing")
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive.txt ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.System.Drawing COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_SYSTEM_DRAWING} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
   #                                             Check.Switch.System.ServiceModel
   print("  [X] Check.${PROJECT_NAME}.System.ServiceModel")
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive.txt ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.System.ServiceModel COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_SYSTEM_SERVICEMODEL} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
   #                                            Check.Switch.System.Windows.Forms
   print("  [X] Check.${PROJECT_NAME}.System.Windows.Forms")
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive.txt ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.System.Windows.Forms COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_SYSTEM_WINDOWS_FORMS} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
   #                                                      Check.Switch.TUnit.Core
   print("  [X] Check.${PROJECT_NAME}.System.TUnit.Core")
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive.txt ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.TUnit.Core COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_TUNIT_CORE} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
   #                                                 Check.Switch.TUnit.Framework
   print("  [X] Check.${PROJECT_NAME}.System.TUnit.Framework")
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive.txt ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.TUnit.Framework COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_TUNIT_FRAMEWORK} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
   #                                                      Check.Switch.TUnit.Main
   print("  [X] Check.${PROJECT_NAME}.System.TUnit.Main")
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive.txt ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.TUnit.Main COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_TUNIT_MAIN} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________

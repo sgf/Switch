@@ -129,7 +129,7 @@ namespace Switch {
         }
 
       private:
-        Stopwatch(bool start) {
+        explicit Stopwatch(bool start) {
           if (start)
             Start();
         }

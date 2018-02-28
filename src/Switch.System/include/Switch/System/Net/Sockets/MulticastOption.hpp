@@ -33,7 +33,7 @@ namespace Switch {
           /// @brief Initializes a new version of the MulticastOption class for the specified IP multicast group.
           /// @param group The IPAddress of the multicast group.
           /// @exception ArgumentNullException group is null.
-          MulticastOption(const IPAddress& group) : group(group) {}
+          explicit MulticastOption(const IPAddress& group) : group(group) {}
 
           /// @brief Initializes a new instance of the MulticastOption class with the specified IP multicast group address and interface index.
           /// @param group The IPAddress of the multicast group.
@@ -52,6 +52,7 @@ namespace Switch {
 
           /// @cond
           MulticastOption(const MulticastOption& multicastOption) : group(multicastOption.group), interfaceIndex(multicastOption.interfaceIndex), localAddress(multicastOption.localAddress) {}
+          MulticastOption& operator=(const MulticastOption&) = default;
           /// @endcond
 
           /// @brief Gets or sets the IP address of a multicast group.

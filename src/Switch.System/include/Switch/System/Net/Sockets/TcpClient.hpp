@@ -38,13 +38,13 @@ namespace Switch {
           /// @brief Initializes a new instance of the TcpClient class with the specified family.
           /// @param addressFamily one of the AddressFamily values that specifies the addressing scheme of the socket.
           /// @exception ArgumentException The family parameter is not equal to AddressFamily::InterNetwork or The family parameter is not equal to AddressFamily::InterNetworkV6.
-          TcpClient(AddressFamily addressFamily);
+          explicit TcpClient(AddressFamily addressFamily);
 
           /// @brief Initializes a new instance of the TcpClient class and binds it to the specified local endpoint.
           /// @param endPoint The IPEndPoint to which you bind the TCP Socket.
           /// @remarks This constructor creates a new TcpClient and binds it to the IPEndPoint specified by the localEP parameter. Before you call this constructor, you must create an IPEndPoint using the IP address and port number from which you intend to send and receive data. You do not need to specify a local IP address and port number before connecting and communicating. If you create a TcpClient using any other constructor, the underlying service provider will assign the most appropriate local IP address and port number.
           /// @remarks You must call the Connect method before sending and receiving data.
-          TcpClient(const IPEndPoint& endPoint);
+          explicit TcpClient(const IPEndPoint& endPoint);
 
           /// @brief Initializes a new instance of the TcpClient class and connects to the specified port on the specified host.
           /// @param hostname The DNS name of the remote host to which you intend to connect.
@@ -59,10 +59,11 @@ namespace Switch {
           /// @brief Initializes a new instance of the TcpClient class
           /// @param acceptedSocket the socket to use
           /// @exception SocketException An error occurred when accessing the socket.
-          TcpClient(const Socket& acceptedSocket);
+          explicit TcpClient(const Socket& acceptedSocket);
 
           /// @cond
           TcpClient(const TcpClient& tcpClient) : data(tcpClient.data) {}
+          TcpClient& operator=(const TcpClient&) = default;
           /// @endcond
 
           /// @brief Gets or sets a value that indicates whether a connection has been made.

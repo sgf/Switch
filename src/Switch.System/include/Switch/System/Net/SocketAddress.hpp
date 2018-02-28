@@ -34,13 +34,13 @@ namespace Switch {
       class system_export_ SocketAddress : public Object {
       public:
         /// @brief Creates a new instance of the SocketAddress class for the given address family.
-        SocketAddress(Sockets::AddressFamily addressFamily) : SocketAddress(addressFamily, 32) {}
+        explicit SocketAddress(Sockets::AddressFamily addressFamily) : SocketAddress(addressFamily, 32) {}
 
         /// @brief Creates a new instance of the SocketAddress class using the specified address family and buffer size.
         SocketAddress(Sockets::AddressFamily addressFamily, int32 bufferSize);
 
         /// @brief Creates a new instance of the SocketAddress class using the specified byte buffer .
-        SocketAddress(const Array<byte>& buffer);
+        explicit SocketAddress(const Array<byte>& buffer);
 
         /// @cond
         SocketAddress(const SocketAddress& socketAddress): bytes(socketAddress.bytes) {}

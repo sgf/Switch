@@ -52,6 +52,7 @@ namespace Switch {
 
         /// @cond
         ProcessStartInfo(const ProcessStartInfo& psi) : data(psi.data) {}
+        ProcessStartInfo& operator=(const ProcessStartInfo&) = default;
         /// @endcond
 
         /// @brief Sets or Gets the set of command-line arguments to use when starting the application.

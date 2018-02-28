@@ -26,11 +26,11 @@ namespace Switch {
       /// @brief Create a new instance of class UriFormatException
       /// @param information Conatains current information of file and Number of line in the file where the exception is occurred. Typically #caller_.
       /// @remarks Message is set with the default message associate to the error.
-      UriFormatException(const System::Runtime::CompilerServices::Caller& information) : FormatException(information) {}
+      explicit UriFormatException(const System::Runtime::CompilerServices::Caller& information) : FormatException(information) {}
 
       /// @brief Create a new instance of class UriFormatException
       /// @param message Message string associate to the error.
-      UriFormatException(const System::String& message) : FormatException(message) {}
+      explicit UriFormatException(const System::String& message) : FormatException(message) {}
 
       /// @brief Create a new instance of class UriFormatException
       /// @param message Message string associate to the error.

@@ -46,7 +46,7 @@ namespace Switch {
           /// @remarks by using the LocalEndpoint property.
           /// @remarks Call the Start method to begin listening for incoming connection attempts.
           /// @note The 0 for local port functionality is not available.
-          TcpListener(const IPEndPoint& ipEndPoint);
+          explicit TcpListener(const IPEndPoint& ipEndPoint);
 
           /// Initializes a new instance of the TcpListener class that listens for incoming connection attempts on the specified local IP address and port number.
           /// @param ipAddress An IPAddress that represents the local IP address.
@@ -65,6 +65,7 @@ namespace Switch {
 
           /// @cond
           TcpListener(const TcpListener& tcpListener) : data(tcpListener.data) {}
+          TcpListener& operator=(const TcpListener&) = default;
           /// @endcond
 
           /// @brief Gets a bool value that specifies whether the TcpListener allows only one underlying socket to listen to a specific port.

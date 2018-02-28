@@ -24,19 +24,19 @@ namespace Switch {
           /// @remarks Message is set with the default message associate to the error.
           SocketException() : SystemException() {}
 
-          /// @brief Create a new instance of class SocketException
-          /// @param value The Excetion to copy.
-          /// @remarks Message is set with the default message associate to the error.
+          /// @cond
           SocketException(const SocketException& value) : SystemException(value), error(value.error) {}
+          SocketException& operator=(const SocketException& value) = default;
+          /// @endcond
 
           /// @brief Create a new instance of class SocketException
           /// @param information Conatains current information of file and Number of line in the file where the exception is occurred. Typically #caller_.
           /// @remarks Message is set with the default message associate to the error.
-          SocketException(const System::Runtime::CompilerServices::Caller& information) : SystemException(information) {}
+          explicit SocketException(const System::Runtime::CompilerServices::Caller& information) : SystemException(information) {}
 
           /// @brief Create a new instance of class SocketException
           /// @param message Message string associate to the error.
-          SocketException(const System::String& message) : SystemException(message) {}
+          explicit SocketException(const System::String& message) : SystemException(message) {}
 
           /// @brief Create a new instance of class SocketException
           /// @param message Message string associate to the error.
@@ -62,7 +62,7 @@ namespace Switch {
 
         private:
           System::String GetDefaultMessage() const override {return "The Socket operation failed."; }
-          Sockets::SocketError error;
+          Sockets::SocketError error = Sockets::SocketError::Success;
         };
       }
     }

@@ -37,8 +37,9 @@ namespace Switch {
         class WebRequestStream: public System::IO::Stream {
         public:
           WebRequestStream() {}
-          WebRequestStream(WebRequest* webRequest) {this->data->webRequest = webRequest;}
+          explicit WebRequestStream(WebRequest* webRequest) {this->data->webRequest = webRequest;}
           WebRequestStream(const WebRequestStream& wrs) {}
+          WebRequestStream& operator=(const WebRequestStream&) = default;
 
           void Write(const void* handle, int32 count);
           void Write(const Array<byte>& buffzer, int32 offset, int32 count) override;

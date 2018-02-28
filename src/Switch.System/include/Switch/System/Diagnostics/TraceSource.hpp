@@ -22,7 +22,7 @@ namespace Switch {
       public:
         TraceSource() {}
 
-        TraceSource(const String& name) {this->data->name = name;}
+        explicit TraceSource(const String& name) {this->data->name = name;}
 
         /// @cond
         ~TraceSource() {}

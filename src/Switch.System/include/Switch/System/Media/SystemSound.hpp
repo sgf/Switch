@@ -34,7 +34,7 @@ namespace Switch {
 
       private:
         friend struct ::__opaque_sound_access__;
-        SystemSound(int32 type) : type(type) {}
+        explicit SystemSound(int32 type) : type(type) {}
         int32 type = 0;
       };
     }

@@ -97,7 +97,7 @@ namespace Switch {
         void WaitForExit();
 
       private:
-        Process(intptr handle) {this->data->handle = handle;}
+        explicit Process(intptr handle) {this->data->handle = handle;}
         int32 GetId();
         string GetName();
         string GetPath();

@@ -29,8 +29,8 @@ namespace Switch {
         WebRequest::WebRequestStream GetRequestStream() override;
 
       protected:
-        FtpWebRequest(const string& uri);
-        FtpWebRequest(const System::Uri& uri);
+        explicit FtpWebRequest(const string& uri);
+        explicit FtpWebRequest(const System::Uri& uri);
         FtpWebRequest(const FtpWebRequest& ftpWebRequest) = delete;
         FtpWebRequest operator =(const FtpWebRequest& ftpWebRequest) = delete;
 

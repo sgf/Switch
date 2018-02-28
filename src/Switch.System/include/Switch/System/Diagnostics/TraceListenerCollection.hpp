@@ -26,7 +26,7 @@ namespace Switch {
         friend class Trace;
         friend class TraceSource;
         TraceListenerCollection() = default;
-        TraceListenerCollection(const DefaultTraceListener& defaultTraceListener) {
+        explicit TraceListenerCollection(const DefaultTraceListener& defaultTraceListener) {
           this->list.Add(defaultTraceListener.template MemberwiseClone<DefaultTraceListener>().template As<System::Diagnostics::TraceListener>());
         }
       public:
@@ -57,7 +57,7 @@ namespace Switch {
         System::Collections::Generic::Enumerator<TraceListener> GetEnumerator() const override {
           class Enumerator : public System::Collections::Generic::IEnumerator<TraceListener>, public object {
           public:
-            Enumerator(const System::Collections::Generic::Enumerator<refptr<TraceListener>>& enumerator) : enumerator(enumerator)  {}
+            explicit Enumerator(const System::Collections::Generic::Enumerator<refptr<TraceListener>>& enumerator) : enumerator(enumerator)  {}
             bool MoveNext() override {return this->enumerator.MoveNext();}
             void Reset() override {this->enumerator.Reset();}
 

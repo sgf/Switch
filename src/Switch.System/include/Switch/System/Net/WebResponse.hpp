@@ -32,6 +32,8 @@ namespace Switch {
         public:
           WebResponseStream() : Stream(1000, 1000) {}
           WebResponseStream(const WebResponseStream& wrs) : data(wrs.data) {}
+          WebResponseStream& operator=(const WebResponseStream&) = default;
+
           void SetWebRequest(System::Net::WebRequest* webRequest);
 
           void StartTransfert();

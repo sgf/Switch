@@ -99,7 +99,7 @@ list(APPEND CPPCHECK_ARGS_ALL
   -j 8
   --language=c++
   --std=c++14
-  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt
+  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive
   --template='[{file}:{line}]: ({severity}) {{id}} {message}'
   --report-progress
   ${CMAKE_SOURCE_DIR}/src/Switch/src
@@ -122,7 +122,7 @@ list(APPEND CPPCHECK_ARGS_SWITCH
   -j 8
   --language=c++
   --std=c++14
-  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt
+  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive
   --template='[{file}:{line}]: ({severity}) {{id}} {message}'
   --report-progress
   ${CMAKE_SOURCE_DIR}/src/Switch/src
@@ -136,7 +136,7 @@ list(APPEND CPPCHECK_ARGS_SWITCH_CORE
   -j 8
   --language=c++
   --std=c++14
-  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt
+  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive
   --template='[{file}:{line}]: ({severity}) {{id}} {message}'
   --report-progress
   ${CMAKE_SOURCE_DIR}/src/Switch.Core/src
@@ -150,7 +150,7 @@ list(APPEND CPPCHECK_ARGS_SWITCH_SYSTEM
   -j 8
   --language=c++
   --std=c++14
-  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt
+  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive
   --template='[{file}:{line}]: ({severity}) {{id}} {message}'
   --report-progress
   ${CMAKE_SOURCE_DIR}/src/Switch.System/src
@@ -164,7 +164,7 @@ list(APPEND CPPCHECK_ARGS_SWITCH_SYSTEM_CORE
   -j 8
   --language=c++
   --std=c++14
-  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt
+  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive
   --template='[{file}:{line}]: ({severity}) {{id}} {message}'
   --report-progress
   ${CMAKE_SOURCE_DIR}/src/Switch.System.Core/src
@@ -178,7 +178,7 @@ list(APPEND CPPCHECK_ARGS_SWITCH_SYSTEM_DRAWING
   -j 8
   --language=c++
   --std=c++14
-  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt
+  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive
   --template='[{file}:{line}]: ({severity}) {{id}} {message}'
   --report-progress
   ${CMAKE_SOURCE_DIR}/src/Switch.System.Drawing/src
@@ -192,7 +192,7 @@ list(APPEND CPPCHECK_ARGS_SWITCH_SYSTEM_SERVICEMODEL
   -j 8
   --language=c++
   --std=c++14
-  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt
+  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive
   --template='[{file}:{line}]: ({severity}) {{id}} {message}'
   --report-progress
   ${CMAKE_SOURCE_DIR}/src/Switch.System.ServiceModel/src
@@ -206,7 +206,7 @@ list(APPEND CPPCHECK_ARGS_SWITCH_SYSTEM_WINDOWS_FORMS
   -j 8
   --language=c++
   --std=c++14
-  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt
+  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive
   --template='[{file}:{line}]: ({severity}) {{id}} {message}'
   --report-progress
   ${CMAKE_SOURCE_DIR}/src/Switch.System.Windows.Forms/src
@@ -220,7 +220,7 @@ list(APPEND CPPCHECK_ARGS_SWITCH_TUNIT_CORE
   -j 8
   --language=c++
   --std=c++14
-  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt
+  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive
   --template='[{file}:{line}]: ({severity}) {{id}} {message}'
   --report-progress
   ${CMAKE_SOURCE_DIR}/src/Switch.TUnit.Core/src
@@ -234,7 +234,7 @@ list(APPEND CPPCHECK_ARGS_SWITCH_TUNIT_FRAMEWORK
   -j 8
   --language=c++
   --std=c++14
-  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt
+  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive
   --template='[{file}:{line}]: ({severity}) {{id}} {message}'
   --report-progress
   ${CMAKE_SOURCE_DIR}/src/Switch.TUnit.Framework/src
@@ -248,7 +248,7 @@ list(APPEND CPPCHECK_ARGS_SWITCH_TUNIT_MAIN
   -j 8
   --language=c++
   --std=c++14
-  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive.txt
+  --suppressions-list=${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive
   --template='[{file}:{line}]: ({severity}) {{id}} {message}'
   --report-progress
   ${CMAKE_SOURCE_DIR}/src/Switch.TUnit.Main/src

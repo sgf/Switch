@@ -25,6 +25,7 @@ namespace Switch {
         /// @cond
         EndPoint() {}
         EndPoint(const EndPoint& endPoint) : addressFamily(endPoint.addressFamily) {}
+        EndPoint& operator=(const EndPoint&) = default;
         /// @endcond
 
         /// @brief Creates an EndPoint instance from a SocketAddress instance.
@@ -49,7 +50,7 @@ namespace Switch {
 
       protected:
         /// @brief Initializes a new instance of the EndPoint class.
-        EndPoint(Sockets::AddressFamily addressFamily) : addressFamily(addressFamily) {}
+        explicit EndPoint(Sockets::AddressFamily addressFamily) : addressFamily(addressFamily) {}
 
         /// @cond
         Sockets::AddressFamily addressFamily = Sockets::AddressFamily::Unknown;
