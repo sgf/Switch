@@ -41,7 +41,7 @@ namespace Switch {
         /// @brief Initializes a new instance of the Point class from the specified Size class.
         /// @param size The Size class from which to initialize this Point class
         /// @exception ArgumentNullException size is null.
-        Point(const Size& size);
+        explicit Point(const Size& size);
 
         static Point Ceiling(const PointF& pt);
 
