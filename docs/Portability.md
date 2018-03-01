@@ -105,7 +105,7 @@ Configurations :
 
 With CMake, Switch support many Development Environment Tools.
 
-## Microsoft Visual C++ 2015 or later
+## Microsoft Visual C++ 2017 or later
 
 [![VisualStudio](Pictures/DevTools/VisualStudio.png)](https://visualstudio.com)
 
