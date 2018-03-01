@@ -11,6 +11,18 @@ popd
 # ______________________________________________________________________________
 #                                                      run registered unit tests
 pushd build
-ctest --output-on-failure --build-config Debug --fixture-exclude RegistryKeyUT
+#ctest --output-on-failure --build-config Debug --fixture-exclude RegistryKeyUT
+#if [ $? -ne 0 ]; then exit -1; fi
+
+Debug/Switch.Core.UnitTest --gtest_filter=-Registry*.*
+if [ $? -ne 0 ]; then exit -1; fi
+
+Debug/Switch.System.UnitTest
+if [ $? -ne 0 ]; then exit -1; fi
+
+Debug/Switch.System.Core.UnitTest
+if [ $? -ne 0 ]; then exit -1; fi
+
+Debug/Switch.TUnit.UnitTests
 if [ $? -ne 0 ]; then exit -1; fi
 popd
