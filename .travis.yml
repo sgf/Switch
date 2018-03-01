@@ -50,9 +50,9 @@ matrix:
       os: linux
       script: scripts/travis/check_switch.sh
 
-#    - env: TEST="Check Switch.Core"
-#      os: linux
-#      script: scripts/travis/check_switch_core.sh
+    - env: TEST="Check Switch.Core"
+      os: linux
+      script: scripts/travis/check_switch_core.sh
 
     - env: TEST="Check Switch.System"
       os: linux
