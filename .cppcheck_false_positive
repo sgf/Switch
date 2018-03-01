@@ -25,7 +25,7 @@ noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/Boxing.h
 noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/ExceptionPtr.hpp
 noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/Ref.hpp
 noExplicitConstructor:@CMAKE_SOURCE_DIR@/src/Switch.Core/include/Switch/RefPtr.hpp
-unusedStructMember:@CMAKE_SOURCE_DIR@/src/Switch/Startup.cpp
+unusedStructMember:@CMAKE_SOURCE_DIR@/src/Switch.Core/src/Switch/Startup.cpp
 
 //______________________________________________________________________________
 //                                                                 Switch.System
