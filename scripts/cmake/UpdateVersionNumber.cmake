@@ -19,14 +19,15 @@ macro(UpdateVersionNumber)
     file(WRITE .appveyor.yml
       "version: ${Switch_VERSION}.{build}\n"
       "image: Visual Studio 2017\n"
+      "\n"
       "environment:\n"
       "  matrix:\n"
-      "  - BUILD_OPTION: \"Visual Studio 14 2015\"\n"
-      "  - BUILD_OPTION: \"Visual Studio 14 2015 Win64\"\n"
       "  - BUILD_OPTION: \"Visual Studio 15 2017\"\n"
       "  - BUILD_OPTION: \"Visual Studio 15 2017 Win64\"\n"
+      "\n"
       "build_script:\n"
       "- cmd: scripts\\appveyor\\build.cmd\n"
+      "\n"
       "test_script:\n"
       "- cmd: scripts\\appveyor\\test.cmd\n"
     )
