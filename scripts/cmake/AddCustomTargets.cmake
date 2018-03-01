@@ -28,7 +28,7 @@ macro(AddCustomTargets)
     ${CMAKE_SOURCE_DIR}/src/Switch.TUnit.Framework/src
     ${CMAKE_SOURCE_DIR}/src/Switch.TUnit.Main/src
     )
-  #configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
+  #configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   #add_custom_target(Check COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_ALL} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
@@ -38,7 +38,7 @@ macro(AddCustomTargets)
     ${CPPCHECK_ARGS}
     ${CMAKE_SOURCE_DIR}/src/Switch/src
     )
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME} COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
@@ -48,7 +48,7 @@ macro(AddCustomTargets)
     ${CPPCHECK_ARGS}
     ${CMAKE_SOURCE_DIR}/src/Switch.Core/src
     )
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.Core COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_CORE} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
@@ -58,7 +58,7 @@ macro(AddCustomTargets)
     ${CPPCHECK_ARGS}
     ${CMAKE_SOURCE_DIR}/src/Switch.System/src
     )
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.System COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_SYSTEM} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
@@ -68,7 +68,7 @@ macro(AddCustomTargets)
     ${CPPCHECK_ARGS}
     ${CMAKE_SOURCE_DIR}/src/Switch.System.Core/src
     )
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.System.Core COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_SYSTEM_CORE} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
@@ -78,7 +78,7 @@ macro(AddCustomTargets)
     ${CPPCHECK_ARGS}
     ${CMAKE_SOURCE_DIR}/src/Switch.System.Drawing/src
     )
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.System.Drawing COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_SYSTEM_DRAWING} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
@@ -88,7 +88,7 @@ macro(AddCustomTargets)
     ${CPPCHECK_ARGS}
     ${CMAKE_SOURCE_DIR}/src/Switch.System.ServiceModel/src
     )
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.System.ServiceModel COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_SYSTEM_SERVICEMODEL} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
@@ -98,7 +98,7 @@ macro(AddCustomTargets)
     ${CPPCHECK_ARGS}
     ${CMAKE_SOURCE_DIR}/src/Switch.System.Windows.Forms/src
     )
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.System.Windows.Forms COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_SYSTEM_WINDOWS_FORMS} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
@@ -108,7 +108,7 @@ macro(AddCustomTargets)
     ${CPPCHECK_ARGS}
     ${CMAKE_SOURCE_DIR}/src/Switch.TUnit.Core/src
     )
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.TUnit.Core COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_TUNIT_CORE} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
@@ -118,7 +118,7 @@ macro(AddCustomTargets)
     ${CPPCHECK_ARGS}
     ${CMAKE_SOURCE_DIR}/src/Switch.TUnit.Framework/src
     )
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.TUnit.Framework COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_TUNIT_FRAMEWORK} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________
@@ -128,7 +128,7 @@ macro(AddCustomTargets)
     ${CPPCHECK_ARGS}
     ${CMAKE_SOURCE_DIR}/src/Switch.TUnit.Main/src
     )
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck_false_positive ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
+  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.cppcheck ${CMAKE_CURRENT_BINARY_DIR}/cppcheck_false_positive @ONLY)
   add_custom_target(Check.${PROJECT_NAME}.TUnit.Main COMMAND ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGS_SWITCH_TUNIT_MAIN} COMMENT "running cppcheck" DEPENDS ${CPPCHECK_PROJECT})
 
   #_____________________________________________________________________________

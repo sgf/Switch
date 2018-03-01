@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ______________________________________________________________________________
-#                                             generate, build and install Switch
+#                                                      generate and build Switch
 pushd build
 cmake .. -DCMAKE_BUILD_TYPE=Debug -DBUILD_SWITCH_TESTS=ON -DENABLE_ASAN=ON -DCMAKE_INSTALL_PREFIX=~/usr/local
 cmake --build . -- -j8
