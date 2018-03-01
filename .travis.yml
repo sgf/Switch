@@ -93,6 +93,7 @@ matrix:
       script: scripts/travis/generate_reference_guide.sh
 
     - env: TEST="Build on Linux"
+      sudo: required
       os: linux
       script: scripts/travis/build_linux.sh
 
