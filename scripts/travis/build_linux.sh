@@ -14,13 +14,13 @@ pushd build
 #ctest --output-on-failure --build-config Debug --fixture-exclude RegistryKeyUT
 #if [ $? -ne 0 ]; then exit -1; fi
 
-Debug/Switch.Core.UnitTest --gtest_filter=-Registry*.*
+Debug/Switch.Core.UnitTests --gtest_filter=-Registry*.*
 if [ $? -ne 0 ]; then exit -1; fi
 
-Debug/Switch.System.UnitTest
+Debug/Switch.System.UnitTests
 if [ $? -ne 0 ]; then exit -1; fi
 
-Debug/Switch.System.Core.UnitTest
+Debug/Switch.System.Core.UnitTests
 if [ $? -ne 0 ]; then exit -1; fi
 
 Debug/Switch.TUnit.UnitTests
