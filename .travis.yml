@@ -18,6 +18,8 @@ addons:
     packages:
       - clang-3.9
       - doxygen
+      - g++-6
+      - gcc-6
       - libcurlpp-dev
       - libc++-dev
       - libc++abi-dev
