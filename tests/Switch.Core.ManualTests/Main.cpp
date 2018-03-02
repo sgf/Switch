@@ -1,14 +1,17 @@
-#include <iostream>
-#include <sys/param.h>
-#include <unistd.h>
+#include <Switch/Startup.hpp>
+#include <Switch/System/Console.hpp>
+#include <Switch/System/Environment.hpp>
 
-int main(int argc, char* argv[]) {
-  char directory[MAXPATHLEN];
-  
-  if (getcwd(directory, MAXPATHLEN) != 0) {
-    std::cout << "Current directory = " << directory << std::endl;
-  } else {
-    std::cout << "error = " << errno << "With message = " << directory << std::endl;
-  }
+using namespace System;
+
+namespace Examples {
+  class Program {
+  public:
+    // The main entry point for the application.
+    static void Main() {
+      Console::WriteLine("Current directory = {0}", Environment::CurrentDirectory);
+    }
+  };
 }
 
+startup_(Examples::Program);

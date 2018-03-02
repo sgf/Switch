@@ -13,22 +13,17 @@ env:
 addons:
   apt:
     sources:
-      - llvm-toolchain-xenial-3.9
+      - llvm-toolchain-trusty-3.9
       - ubuntu-toolchain-r-test
     packages:
       - clang-3.9
       - doxygen
-      - g++-6
-      - gcc-6
       - libcurlpp-dev
-      - lldb-3.9
+      - libc++-dev
+      - libc++abi-dev
       - libgtkmm-3.0-dev
-      - libjpeg8-dev
-      - libpng-dev
       - libssl-dev
       - uuid-dev
-      - valgrind
-      - zlibc
 
 before_script: scripts/travis/install_3rd_parties.sh
 
