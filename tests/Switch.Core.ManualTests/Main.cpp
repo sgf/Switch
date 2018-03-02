@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 int main(int argc, char* argv[]) {
-  char directory[MAXPATHLEN + 1];
+  char directory[MAXPATHLEN];
   
   if (getcwd(directory, MAXPATHLEN) != 0) {
     std::cout << "Current directory = " << directory << std::endl;
