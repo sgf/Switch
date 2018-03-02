@@ -17,15 +17,12 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - clang-3.9
-      - doxygen
       - g++-6
       - gcc-6
-      - libcurlpp-dev
-      - libc++-dev
-      - libc++abi-dev
       - libgtkmm-3.0-dev
       - libssl-dev
       - uuid-dev
+      - doxygen
 
 before_script: scripts/travis/install_3rd_parties.sh
 

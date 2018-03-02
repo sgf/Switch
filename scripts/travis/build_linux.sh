@@ -26,7 +26,6 @@ pushd build
 #Debug/Switch.TUnit.UnitTests
 #if [ $? -ne 0 ]; then exit -1; fi
 
-pwd
 Debug/Switch.Core.ManualTests
 
 popd
