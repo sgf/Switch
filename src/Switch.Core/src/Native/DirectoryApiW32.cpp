@@ -108,12 +108,12 @@ int32 Native::DirectoryApi::GetFileTime(const string& path, int64& creationTime,
 }
 
 string Native::DirectoryApi::GetFullPath(const string& relPath) {
-  char fullPath[MAX_PATH];
+  char fullPath[MAX_PATH + 1];
   return _fullpath(fullPath, relPath.Data(), MAX_PATH) ? fullPath : "";
 }
 
 string Native::DirectoryApi::GetCurrentDirectory() {
-  char path[MAX_PATH];
+  char path[MAX_PATH + 1];
   return _getcwd(path, MAX_PATH) ? path : "";
 }
 
@@ -154,7 +154,7 @@ int32 Native::DirectoryApi::RenameFile(const string& oldPath, const string& newP
 }
 
 string Native::DirectoryApi::GetKnowFolderPath(System::Environment::SpecialFolder id) {
-  wchar path[MAX_PATH];
+  wchar path[MAX_PATH + 1];
   return SHGetFolderPath(null, static_cast<int>(id), null, SHGFP_TYPE_CURRENT, path) == S_OK ? path : L"";
 }
 

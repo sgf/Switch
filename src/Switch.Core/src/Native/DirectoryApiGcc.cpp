@@ -2,6 +2,7 @@
 
 #include <dirent.h>
 #include <unistd.h>
+#include <sys/param.h>
 #include <sys/stat.h>
 
 #include "../../include/Switch/System/Collections/Generic/Dictionary.hpp"
@@ -161,8 +162,8 @@ string Native::DirectoryApi::GetFullPath(const string& relativePath) {
 }
 
 string Native::DirectoryApi::GetCurrentDirectory() {
-  char path[PATH_MAX];
-  return getcwd(path, PATH_MAX) ? path : "";
+  char path[MAXPATHLEN + 1];
+  return getcwd(path, MAXPATHLEN) ? path : "";
 }
 
 int32 Native::DirectoryApi::SetCurrentDirectory(const string& directoryName) {
