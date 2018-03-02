@@ -56,52 +56,56 @@ matrix:
 #      os: linux
 #      script: scripts/travis/check_switch_core.sh
 
-    - env: TEST="Check Switch.System"
-      os: linux
-      script: scripts/travis/check_switch_system.sh
+#     - env: TEST="Check Switch.System"
+#       os: linux
+#       script: scripts/travis/check_switch_system.sh
+# 
+#     - env: TEST="Check Switch.System.Core"
+#       os: linux
+#       script: scripts/travis/check_switch_system_core.sh
+# 
+#     - env: TEST="Check Switch.System.Drawing"
+#       os: linux
+#       script: scripts/travis/check_switch_system_drawing.sh
+# 
+#     - env: TEST="Check Switch.System.ServiceModel"
+#       os: linux
+#       script: scripts/travis/check_switch_system_servicemodel.sh
+# 
+#     - env: TEST="Check Switch.System.Windows.Forms"
+#       os: linux
+#       script: scripts/travis/check_switch_system_windows_forms.sh
+# 
+#     - env: TEST="Check Switch.TUnit.Core"
+#       os: linux
+#       script: scripts/travis/check_switch_tunit_core.sh
+# 
+#     - env: TEST="Check Switch.TUnit.Framework"
+#       os: linux
+#       script: scripts/travis/check_switch_tunit_framework.sh
+# 
+#     - env: TEST="Check Switch.TUnit.Main"
+#       os: linux
+#       script: scripts/travis/check_switch_tunit_main.sh
+# 
+#     - env: TEST="Generate reference guide"
+#       os: linux
+#       script: scripts/travis/generate_reference_guide.sh
+# 
+#     - env: TEST="Build on Linux"
+#       sudo: required
+#       os: linux
+#       script: scripts/travis/build_linux.sh
+# 
+#     - env: TEST="Build on macOS"
+#       os: osx
+#       osx_image: xcode9.1
+#       script: scripts/travis/build_macos.sh
+#       after_success: scripts/travis/publish_to_codecov.sh
 
-    - env: TEST="Check Switch.System.Core"
-      os: linux
-      script: scripts/travis/check_switch_system_core.sh
-
-    - env: TEST="Check Switch.System.Drawing"
-      os: linux
-      script: scripts/travis/check_switch_system_drawing.sh
-
-    - env: TEST="Check Switch.System.ServiceModel"
-      os: linux
-      script: scripts/travis/check_switch_system_servicemodel.sh
-
-    - env: TEST="Check Switch.System.Windows.Forms"
-      os: linux
-      script: scripts/travis/check_switch_system_windows_forms.sh
-
-    - env: TEST="Check Switch.TUnit.Core"
-      os: linux
-      script: scripts/travis/check_switch_tunit_core.sh
-
-    - env: TEST="Check Switch.TUnit.Framework"
-      os: linux
-      script: scripts/travis/check_switch_tunit_framework.sh
-
-    - env: TEST="Check Switch.TUnit.Main"
-      os: linux
-      script: scripts/travis/check_switch_tunit_main.sh
-
-    - env: TEST="Generate reference guide"
-      os: linux
-      script: scripts/travis/generate_reference_guide.sh
-
-    - env: TEST="Build on Linux"
-      sudo: required
-      os: linux
-      script: scripts/travis/build_linux.sh
-
-    - env: TEST="Build on macOS"
-      os: osx
-      osx_image: xcode9.1
-      script: scripts/travis/build_macos.sh
-      after_success: scripts/travis/publish_to_codecov.sh
+     - env: TEST="Build on Linux"
+       os: linux
+       script: scripts/travis/build_linux.sh
 
 #    - env: TEST="Google Address Sanitize"
 #      os: osx

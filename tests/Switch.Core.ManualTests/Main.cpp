@@ -1,18 +1,14 @@
-#include <Switch/Startup.hpp>
-#include <Switch/System/Console.hpp>
-#include <Switch/System/Environment.hpp>
+#include <iostream>
+#include <sys/param.h>
+#include <unistd.h>
 
-using namespace System;
-
-namespace Examples {
-  class Program {
-  public:
-    // The main entry point for the application.
-    static void Main() {
-      for (Environment::SpecialFolder specialFolder : Enum<>::GetValues<Environment::SpecialFolder>())
-        Console::WriteLine("{0} ==> {1}", specialFolder, Environment::GetFolderPath(specialFolder));
-    }
-  };
+int main(int argc, char* argv[]) {
+  char directory[MAXPATHLEN + 1];
+  
+  if (getcwd(directory, MAXPATHLEN) != 0) {
+    std::cout << "Current directory = " << directory << std::endl;
+  } else {
+    std::cout << "error = " << errno << "With message = " << directory << std::endl;
+  }
 }
 
-startup_(Examples::Program);
