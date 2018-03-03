@@ -51,7 +51,7 @@ namespace DesignPatterns {
       ConcretePrototype1(const string& id) : Prototype(id) {}
       
       // Returns a shallow copy
-      refptr<Prototype> Clone() const override {return as<Prototype>(this->MemberwiseClone<ConcretePrototype1>());}
+      $<Prototype> Clone() const override {return as<Prototype>(this->MemberwiseClone<ConcretePrototype1>());}
     };
     
     // A 'ConcretePrototype' class
@@ -61,7 +61,7 @@ namespace DesignPatterns {
       ConcretePrototype2(const string& id) : Prototype(id) {}
       
       // Returns a shallow copy
-      refptr<Prototype> Clone() const override {return as<Prototype>(this->MemberwiseClone<ConcretePrototype2>());}
+      $<Prototype> Clone() const override {return as<Prototype>(this->MemberwiseClone<ConcretePrototype2>());}
     };
     
     // MainApp startup class for Creational
@@ -72,12 +72,12 @@ namespace DesignPatterns {
       static void Main() {
         // Create two instances and clone each
         
-        refptr<ConcretePrototype1> p1 = ref_new<ConcretePrototype1>("I");
-        refptr<ConcretePrototype1> c1 = as<ConcretePrototype1>(p1->Clone());
+        $<ConcretePrototype1> p1 = new_<ConcretePrototype1>("I");
+        $<ConcretePrototype1> c1 = as<ConcretePrototype1>(p1->Clone());
         Console::WriteLine("Cloned: {0}", c1->Id);
         
-        refptr<ConcretePrototype2> p2 = ref_new<ConcretePrototype2>("II");
-        refptr<ConcretePrototype2> c2 = as<ConcretePrototype2>(p2->Clone());
+        $<ConcretePrototype2> p2 = new_<ConcretePrototype2>("II");
+        $<ConcretePrototype2> c2 = as<ConcretePrototype2>(p2->Clone());
         Console::WriteLine("Cloned: {0}", c2->Id);
       }
     };

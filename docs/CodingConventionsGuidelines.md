@@ -159,7 +159,7 @@ The file will be named to *FormClosingEventHandler.hpp*.
 
 # Diagrams
 
-**√ DO** Diagrams are generate by Draw.IO Desktop. [Draw.IO Desktop](https://chrome.google.com/webstore/detail/drawio-desktop/pebppomjfocnoigkeepgbmcifnnlndla?hl=en-GB) is a Google Chrome extension.
+**√ DO** Diagrams are generate by [Draw.IO Desktop](https://chrome.google.com/webstore/detail/drawio-desktop/pebppomjfocnoigkeepgbmcifnnlndla?hl=en-GB). Draw.IO Desktop is a Google Chrome extension.
 
 # UML diagrams
 

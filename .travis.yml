@@ -41,9 +41,9 @@ matrix:
 #      os: linux
 #      script: scripts/travis/check.sh
 
-#    - env: TEST="Check Switch"
-#      os: linux
-#      script: scripts/travis/check_switch.sh
+    - env: TEST="Check Switch"
+      os: linux
+      script: scripts/travis/check_switch.sh
 
 # Too long : The job exceeded the maximum time limit for jobs, and has been terminated.
 #    - env: TEST="Check Switch.Core"

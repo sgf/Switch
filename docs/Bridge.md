@@ -36,7 +36,7 @@ namespace DesignPatterns {
     class Abstraction : public object {
     public:
       // Property
-      property_<refptr<DesignPatterns::Structural::Implementor>, writeonly_> Implementor {
+      property_<$<DesignPatterns::Structural::Implementor>, writeonly_> Implementor {
         set_ {this->implementor = value;}
       };
       
@@ -45,7 +45,7 @@ namespace DesignPatterns {
       }
  
     protected:
-      refptr<DesignPatterns::Structural::Implementor> implementor;
+      $<DesignPatterns::Structural::Implementor> implementor;
     };
     
     // The 'RefinedAbstraction' class
@@ -78,14 +78,14 @@ namespace DesignPatterns {
     public:
       // Entry point into console application.
       static void Main() {
-        refptr<Abstraction> ab = ref_new<RefinedAbstraction>();
+        $<Abstraction> ab = ne<Rew_finedAbstraction>();
         
         // Set implementation and call
-        ab->Implementor = ref_new<ConcreteImplementorA>();
+        ab->Implementor = new_<ConcreteImplementorA>();
         ab->Operation();
         
         // Change implemention and call
-        ab->Implementor = ref_new<ConcreteImplementorB>();
+        ab->Implementor = new_<ConcreteImplementorB>();
         ab->Operation();
       }
     };

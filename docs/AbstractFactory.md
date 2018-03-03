@@ -43,8 +43,8 @@ namespace DesignPatterns {
     // The 'AbstractFactory' abstract class
     class AbstractFactory abstract_ {
     public:
-      virtual refptr<AbstractProductA> CreateProductA() const = 0;
-      virtual refptr<AbstractProductB> CreateProductB() const = 0;
+      virtual $<AbstractProductA> CreateProductA() const = 0;
+      virtual $<AbstractProductB> CreateProductB() const = 0;
     };
  
     // The 'ProductA1' class
@@ -70,15 +70,15 @@ namespace DesignPatterns {
     // The 'ConcreteFactory1' class
     class ConcreteFactory1 : public AbstractFactory {
     public:
-      refptr<AbstractProductA> CreateProductA() const override {return ref_new<ProductA1>();}
-      refptr<AbstractProductB> CreateProductB() const override {return ref_new<ProductB1>();}
+      $<AbstractProductA> CreateProductA() const override {return new_<ProductA1>();}
+      $<AbstractProductB> CreateProductB() const override {return new_<ProductB1>();}
     };
  
     // The 'ConcreteFactory2' class
     class ConcreteFactory2 : public AbstractFactory {
     public:
-      refptr<AbstractProductA> CreateProductA() const override {return ref_new<ProductA2>();}
-      refptr<AbstractProductB> CreateProductB() const override {return ref_new<ProductB2>();}
+      $<AbstractProductA> CreateProductA() const override {return new_<ProductA2>();}
+      $<AbstractProductB> CreateProductB() const override {return new_<ProductB2>();}
     };
  
     // The 'Client' class. Interaction environment for the products.
@@ -93,8 +93,8 @@ namespace DesignPatterns {
       void Run() {this->abstractProductB->Interact(*this->abstractProductA);}
  
     private:
-      refptr<AbstractProductA> abstractProductA;
-      refptr<AbstractProductB> abstractProductB;
+      $<AbstractProductA> abstractProductA;
+      $<AbstractProductB> abstractProductB;
     };
  
     // MainApp startup class for Creational
@@ -104,12 +104,12 @@ namespace DesignPatterns {
       // The main entry point for the application.
       static void Main() {
         // Abstract factory #1
-        refptr<AbstractFactory> factory1 = ref_new<ConcreteFactory1>();
+        $<AbstractFactory> factory1 = new_<ConcreteFactory1>();
         Client client1(*factory1);
         client1.Run();
 ​
         // Abstract factory #2
-        refptr<AbstractFactory> factory2 = ref_new<ConcreteFactory2>();
+        $<AbstractFactory> factory2 = new_<ConcreteFactory2>();
         Client client2(*factory2);
         client2.Run();
       }

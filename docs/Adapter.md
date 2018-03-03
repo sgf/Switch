@@ -61,7 +61,7 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Create adapter and place a request
-        refptr<Target> target = ref_new<Adapter>();
+        $<Target> target = new_<Adapter>();
         target->Request();
       }
     };

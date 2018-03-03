@@ -92,8 +92,8 @@ namespace DesignPatterns {
       static void Main() {
         // Create director and builders
         Director director;
-        refptr<Builder> b1 = ref_new<ConcreteBuilder1>();
-        refptr<Builder> b2 = ref_new<ConcreteBuilder2>();
+        $<Builder> b1 = new_<ConcreteBuilder1>();
+        $<Builder> b2 = new_<ConcreteBuilder2>();
 ​
         // Construct two products
         director.Construct(*b1);
