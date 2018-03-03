@@ -34,7 +34,7 @@ namespace DesignPatterns {
     // The 'AbstractExpression' abstract class
     class AbstractExpression abstract_ {
     public:
-      virtual void Interpret(const Context& context) const =0;
+      virtual void Interpret(const Context& context) const = 0;
     };
     
     // The 'TerminalExpression' class

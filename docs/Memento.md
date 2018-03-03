@@ -37,7 +37,7 @@ namespace DesignPatterns {
       
       // Gets or sets state
       property_<string, readonly_> State {
-        get_ { return this->state; }
+        get_ {return this->state;}
       };
  
     private:
@@ -49,7 +49,7 @@ namespace DesignPatterns {
     public:
       // Property
       property_<string> State {
-        get_ { return this->state; },
+        get_ {return this->state;},
         set_ {
           this->state = value;
           Console::WriteLine("State = " + this->state);
@@ -78,8 +78,8 @@ namespace DesignPatterns {
       
       // Gets or sets memento
       property_<DesignPatterns::Behavioral::Memento> Memento {
-        get_ { return this->memento; },
-        set_ { this->memento = value; }
+        get_ {return this->memento;},
+        set_ {this->memento = value;}
       };
  
     private:

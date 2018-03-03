@@ -39,7 +39,7 @@ namespace DesignPatterns {
     // The 'Aggregate' abstract class
     class Aggregate abstract_ {
     public:
-      virtual refptr<Iterator> CreateIterator() = 0;
+      virtual $<Iterator> CreateIterator() = 0;
     };
     
     class ConcreteAggregate;
@@ -70,8 +70,8 @@ namespace DesignPatterns {
     // The 'ConcreteAggregate' class
     class ConcreteAggregate : public Aggregate {
     public:
-      refptr<Iterator> CreateIterator() override {
-        return ref_new<ConcreteIterator>(*this);
+      $<Iterator> CreateIterator() override {
+        return new_<ConcreteIterator>(*this);
       }
       
       // Gets item count
