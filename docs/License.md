@@ -7,7 +7,7 @@
  
 MIT License
 
-Switch, Copyright (c) 2018 [Gammasoft](https://gammasoft71.wixsite.com/gammasoft).
+Copyright (c) 2018 [Gammasoft](https://gammasoft71.wixsite.com/gammasoft).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
