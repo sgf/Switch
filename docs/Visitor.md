@@ -38,7 +38,7 @@ namespace DesignPatterns {
     // A 'ConcreteElement' class
     class ConcreteElementA : public Element {
     public:
-      void Accept(refptr<Visitor> visitor) override;
+      void Accept($<Visitor> visitor) override;
       
       void OperationA() {
       }
@@ -47,7 +47,7 @@ namespace DesignPatterns {
     // A 'ConcreteElement' class
     class ConcreteElementB : public Element {
     public:
-      void Accept(refptr<Visitor> visitor) override;
+      void Accept($<Visitor> visitor) override;
       
       void OperationB() {
       }
@@ -60,11 +60,11 @@ namespace DesignPatterns {
       virtual void VisitConcreteElementB(const ConcreteElementB& concreteElementB) = 0;
     };
  
-    inline void ConcreteElementA::Accept(refptr<Visitor> visitor) {
+    inline void ConcreteElementA::Accept($<Visitor> visitor) {
       visitor->VisitConcreteElementA(*this);
     }
  
-    inline void ConcreteElementB::Accept(refptr<Visitor> visitor) {
+    inline void ConcreteElementB::Accept($<Visitor> visitor) {
       visitor->VisitConcreteElementB(*this);
     }
     
@@ -104,12 +104,12 @@ namespace DesignPatterns {
       }
       
       void Accept(refptr<Visitor> visitor) {
-        for (refptr<Element> element : this->elements) {
+        for ($<Element> element : this->elements) {
           element->Accept(visitor);
         }
       }
     private:
-      List<refptr<Element>> elements;
+      List<$<Element>> elements;
     };
  
     // MainApp startup class for Behavioral
@@ -119,12 +119,12 @@ namespace DesignPatterns {
       static void Main() {
         // Setup structure
         ObjectStructure o;
-        o.Attach(ref_new<ConcreteElementA>());
-        o.Attach(ref_new<ConcreteElementB>());
+        o.Attach(new_<ConcreteElementA>());
+        o.Attach(new_<ConcreteElementB>());
         
         // Create visitor objects
-        refptr<ConcreteVisitor1> v1 = ref_new<ConcreteVisitor1>();
-        refptr<ConcreteVisitor2> v2 = ref_new<ConcreteVisitor2>();
+        $<ConcreteVisitor1> v1 = new_<ConcreteVisitor1>();
+        $<ConcreteVisitor2> v2 = new_<ConcreteVisitor2>();
         
         // Structure accepting visitors
         o.Accept(v1);

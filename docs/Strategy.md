@@ -61,7 +61,7 @@ namespace DesignPatterns {
     public:
       // Constructors
       Context() {}
-      Context(refptr<Strategy> strategy) : strategy(strategy) {}
+      Context($<Strategy> strategy) : strategy(strategy) {}
       Context(const Context& context) : strategy(context.strategy) {}
       
       void ContextInterface() {
@@ -69,7 +69,7 @@ namespace DesignPatterns {
       }
  
     private:
-      refptr<Strategy> strategy;
+      $<Strategy> strategy;
     };
     
     // MainApp startup class for Behavioral
@@ -81,13 +81,13 @@ namespace DesignPatterns {
         Context context;
         
         // Three contexts following different strategies
-        context = Context(ref_new<ConcreteStrategyA>());
+        context = Context(new_<ConcreteStrategyA>());
         context.ContextInterface();
         
-        context = Context(ref_new<ConcreteStrategyB>());
+        context = Context(new_<ConcreteStrategyB>());
         context.ContextInterface();
         
-        context = Context(ref_new<ConcreteStrategyC>());
+        context = Context(new_<ConcreteStrategyC>());
         context.ContextInterface();
       }
     };

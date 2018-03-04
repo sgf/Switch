@@ -37,12 +37,12 @@ namespace DesignPatterns {
     class Context : public object {
     public:
       // Constructor
-      Context(refptr<DesignPatterns::Behavioral::State> state) {
+      Context($<DesignPatterns::Behavioral::State> state) {
         this->State = state;
       }
       
       // Gets or sets the state
-      property_<refptr<DesignPatterns::Behavioral::State>> State {
+      property_<$<DesignPatterns::Behavioral::State>> State {
         get_ { return this->state; },
         set_ {
           this->state = value;
@@ -55,7 +55,7 @@ namespace DesignPatterns {
       }
  
     private:
-      refptr<DesignPatterns::Behavioral::State> state;
+      $<DesignPatterns::Behavioral::State> state;
     };
     
     // A 'ConcreteState' class
@@ -71,11 +71,11 @@ namespace DesignPatterns {
     };
  
     inline void ConcreteStateA::Handle(Context& context) {
-      context.State = ref_new<ConcreteStateB>();
+      context.State = new_<ConcreteStateB>();
     }
  
     inline void ConcreteStateB::Handle(Context& context) {
-      context.State = ref_new<ConcreteStateA>();
+      context.State = new_<ConcreteStateA>();
     }
  
     // MainApp startup class for Behavioral
@@ -85,7 +85,7 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Setup context in a state
-        Context c(ref_new<ConcreteStateA>());
+        Context c(new_<ConcreteStateA>());
         
         // Issue requests, which toggles state
         c.Request();
