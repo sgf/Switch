@@ -36,18 +36,18 @@ namespace DesignPatterns {
     // The 'Subject' abstract class
     class Subject abstract_ {
     public:
-      void Attach(refptr<Observer> observer) {this->observers.Add(observer);}
+      void Attach($<Observer> observer) {this->observers.Add(observer);}
  
-      void Detach(refptr<Observer> observer) {this->observers.Remove(observer);}
+      void Detach($<Observer> observer) {this->observers.Remove(observer);}
  
       void Notify() {
-        for(refptr<Observer> o : this->observers) {
+        for($<Observer> o : this->observers) {
           o->Update();
         }
       }
  
     private:
-      List<refptr<Observer>> observers;
+      List<$<Observer>> observers;
     };
  
     // The 'ConcreteSubject' class
@@ -67,7 +67,7 @@ namespace DesignPatterns {
     class ConcreteObserver : public Observer {
     public:
       // Constructor
-      ConcreteObserver(refptr<ConcreteSubject> subject, const string& name) : subject(subject), name(name) {}
+      ConcreteObserver($<ConcreteSubject> subject, const string& name) : subject(subject), name(name) {}
  
       void Update() override {
         this->observerState = this->subject->SubjectState;
@@ -75,14 +75,14 @@ namespace DesignPatterns {
       }
  
       // Gets or sets subject
-      property_<refptr<ConcreteSubject>> Subject {
+      property_<$<ConcreteSubject>> Subject {
         get_ { return this->subject; },
         set_ { this->subject = value; }
       };
  
     private:
       string observerState;
-      refptr<ConcreteSubject> subject;
+      $<ConcreteSubject> subject;
       string name;
     };
     
@@ -93,11 +93,11 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Configure Observer pattern
-        refptr<ConcreteSubject> s = ref_new<ConcreteSubject>();
+        $<ConcreteSubject> s = new_<ConcreteSubject>();
         
-        s->Attach(ref_new<ConcreteObserver>(s, "X"));
-        s->Attach(ref_new<ConcreteObserver>(s, "Y"));
-        s->Attach(ref_new<ConcreteObserver>(s, "Z"));
+        s->Attach(new_<ConcreteObserver>(s, "X"));
+        s->Attach(new_<ConcreteObserver>(s, "Y"));
+        s->Attach(new_<ConcreteObserver>(s, "Z"));
         
         // Change subject and notify observers
         s->SubjectState = "ABC";
