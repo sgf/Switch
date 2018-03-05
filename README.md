@@ -127,7 +127,7 @@ namespace UnitTests {
   };
 
   AddTest_(HelloWorldTest, CreateStringFromLiteral);
-  AddTest_(HelloWorldTest, CreateStringFromChar32Array);
+  AddTest_(HelloWorldTest, CreateStringFromChars);
 }
 ```
 
