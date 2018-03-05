@@ -34,7 +34,7 @@ namespace Native {
       if (is<Gtk::Fixed>(this->ToWidget().get_parent())) {
         int offset = 0;
         if (is<Gtk::Frame>(as<Gtk::Fixed>(this->ToWidget().get_parent())->get_parent()))
-          offset = -10;
+          offset = -20;
         as<Gtk::Fixed>(this->ToWidget().get_parent())->child_property_x(this->ToWidget()) = x;
         as<Gtk::Fixed>(this->ToWidget().get_parent())->child_property_y(this->ToWidget()) = y + offset;
       }
