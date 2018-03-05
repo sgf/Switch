@@ -31,13 +31,7 @@ git clone https://github.com/gammasoft71/Switch .
    
    *Remarks: Verify if you can execute cmake --version in "Command Prompt", if it's no, add cmake install directory to your path.*
 
-3. Install Doxygen 1.8.13 or later
-   
-   After CMake, to generate Switch documentation, you need to install the latest version Doxygen from [http://www.stack.nl/~dimitri/doxygen/download.html](http://www.stack.nl/~dimitri/doxygen/download.html)
-   
-   *Remarks: Verify if you can execute doxygen --version in "Command Prompt", if it's no, add doxygen install directory to your path.*
-
-4. After installing Microsoft Visual Studio, CMake and Doxygen, do the following in "Command Prompt" to build and install Switch :
+3. After installing Microsoft Visual Studio and CMake, do the following in "Command Prompt" to build and install Switch :
 
 ```shell
 cd C:\Users\YourName\Switch\
@@ -46,7 +40,7 @@ install.bat
 
    *Remarks, this operation depand of your hardware and can be very long*
 
-5. Enjoy and be creative with Switch ;-)
+4. Enjoy and be creative with Switch ;-)
 
 ### Remarks
 
@@ -108,21 +102,15 @@ cd /home/YourName/Switch
 
    *Remarks: Verify if you can execute cmake --version in terminal.*
 
-3. Install Doxygen 1.8.13 or later (optional)
+3. Install gtkmm 3.0 or later
    
-   After CMake, to generate Switch documentation, you need to install the latest version Doxygen from [http://www.stack.nl/~dimitri/doxygen/download.html](http://www.stack.nl/~dimitri/doxygen/download.html)
-   
-   *Remarks: Verify if you can execute doxygen --version in terminal.*
-
-4. Install gtkmm 3.0 or later
-   
-   After installing Doxygen, you need to install gtkmm 3 on your system. See [https://developer.gnome.org/gtkmm-tutorial/stable/chapter-installation.html](https://developer.gnome.org/gtkmm-tutorial/stable/chapter-installation.html) for more information. The easy way is install from your linux distribution package manager like apt, yum or other.
+   After installing CMake, you need to install gtkmm 3 on your system. See [https://developer.gnome.org/gtkmm-tutorial/stable/chapter-installation.html](https://developer.gnome.org/gtkmm-tutorial/stable/chapter-installation.html) for more information. The easy way is install from your linux distribution package manager like apt, yum or other.
   
-5. Install libuuid
+4. Install libuuid
    
    After installing gtkmm, you need to install libuuid lib on your system. The easy way is install from your linux distribution package manager like apt, yum or other.
   
-6. After installing clang, CMake, Doxygen, gtkmm and libuuid, do the following in "Terminal" to Build and install Switch :
+5. After installing clang, CMake, gtkmm and libuuid, do the following in "Terminal" to Build and install Switch :
 
 ```shell
 cd /home/YourName/Switch
