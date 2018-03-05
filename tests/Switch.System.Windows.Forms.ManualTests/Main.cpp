@@ -8,6 +8,22 @@ using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
+int main(int argc, char* argv[]) {
+  System::Environment::SetCommandLineArgs(argv, argc);
+  Application::EnableVisualStyles();
+  
+  Form mainForm;
+  mainForm.Text = "Main Form";
+  mainForm.ShowDialog();
+}
+
+int WinMain(HINSTANCE instance, HINSTANCE previousInstance, char* commandLine, int commandShow) {
+  __instance = instance;
+  __commandShow = commandShow;
+  return main(__argc, __argv);
+}
+
+/*
 namespace ManualTests {
   class Program {
   public:
@@ -22,3 +38,4 @@ namespace ManualTests {
 }
 
 startup_(ManualTests::Program);
+*/
