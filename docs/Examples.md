@@ -112,21 +112,21 @@ using namespace System;
 using namespace TUnit;
 
 namespace UnitTests {
-  class HelloWorldTest : public TestFixture {
+  class TestFixture_(HelloWorldTest) {
   protected:
-    void CreateStringFromLiteral() {
+    void Test_(CreateStringFromLiteral) {
       string s = "Hello, World!";
       Assert::AreEqual("Hello, World!", s);
     }
- 
-    void CreateStringFromChar32Array() {
-      string s = string(Array<char32> {'H', 'e', 'l', 'l', 'o', ',', ' ', 'W', 'o', 'r', 'l', 'd', '!'});
+
+    void Test_(CreateStringFromChars) {
+      string s = {'H', 'e', 'l', 'l', 'o', ',', ' ', 'W', 'o', 'r', 'l', 'd', '!'};
       Assert::AreEqual("Hello, World!", s);
     }
   };
   
-  _test (HelloWorldTest, CreateStringFromLiteral)
-  _test (HelloWorldTest, CreateStringFromChar32Array)
+  AddTest_(HelloWorldTest, CreateStringFromLiteral);
+  AddTest_(HelloWorldTest, CreateStringFromChar32Array);
 }
 ```
 

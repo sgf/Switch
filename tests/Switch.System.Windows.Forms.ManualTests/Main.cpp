@@ -11,7 +11,7 @@ using namespace System::Windows::Forms;
 int main(int argc, char* argv[]) {
   System::Environment::SetCommandLineArgs(argv, argc);
   Application::EnableVisualStyles();
-  
+
   Form mainForm;
   mainForm.Text = "Main Form";
   mainForm.ShowDialog();

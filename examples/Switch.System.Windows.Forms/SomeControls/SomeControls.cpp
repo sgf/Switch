@@ -72,5 +72,3 @@ namespace SomeControls {
 }
 
 startup_(SomeControls::MainForm);
-
-
