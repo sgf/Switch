@@ -11,6 +11,6 @@ popd
 # ______________________________________________________________________________
 #                                                      run registered unit tests
 pushd build
-ctest --output-on-failure --build-config Debug
+#ctest --output-on-failure --build-config Debug
 #if [ $? -ne 0 ]; then exit -1; fi
 popd
