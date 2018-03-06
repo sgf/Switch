@@ -20,10 +20,11 @@ namespace ManualTests {
 
       TabPage tabPage3;
       tabPage3.Text = "tabPage3";
-      tabPage3.Controls().Add(button);
+      //tabPage3.Controls().Add(button);
 
       TabControl tabControl;
       tabControl.Location = Point(10, 10);
+      tabControl.Size = Size(280, 150);
       tabControl.TabPages().Add("tabPage1");
       tabControl.TabPages().Add("tabPage2", "tabPage2");
       tabControl.TabPages().Add(tabPage3);

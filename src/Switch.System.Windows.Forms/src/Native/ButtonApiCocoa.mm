@@ -20,7 +20,10 @@ using namespace System::Windows::Forms;
 intptr Native::ButtonApi::Create(const System::Windows::Forms::Button& button) {
   @autoreleasepool {
     ButtonCocoa *handle = [[[ButtonCocoa alloc] init] autorelease];
-    [[(NSWindow*)button.Parent()().Handle() contentView] addSubview: handle];
+    if (is<System::Windows::Forms::TabPage>(button.Parent()))
+      [[(NSTabViewItem*)button.Parent()().Handle() tabView] addSubview: handle];
+    else
+      [[(NSWindow*)button.Parent()().Handle() contentView] addSubview: handle];
     
     [handle setTitle:[NSString stringWithUTF8String:button.Text().c_str()]];
     [handle setBezelStyle: button.Height <= 32 ? NSBezelStyleRounded : NSBezelStyleTexturedSquare];

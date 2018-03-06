@@ -32,7 +32,7 @@ System::Drawing::Rectangle Native::TabControlApi::GetTabPageRectangle(const Syst
 }
 
 void Native::TabControlApi::InsertTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage) {
-
+  [(NSTabView *)tabControl.Handle() insertTabViewItem:(NSTabViewItem *)tabPage.Handle() atIndex:index];
 }
 
 void Native::TabControlApi::RemoveTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage) {

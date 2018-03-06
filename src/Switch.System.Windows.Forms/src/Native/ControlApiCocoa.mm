@@ -126,6 +126,9 @@ void Native::ControlApi::SetBackColor(const System::Windows::Forms::Control& con
     ((NSTextField*)control.Handle()).backgroundColor = CocoaApi::FromColor(control.BackColor);
   } else if (is<System::Windows::Forms::GroupBox>(control)) {
     ((NSBox*)control.Handle()).contentView.layer.backgroundColor = CocoaApi::FromColor(control.BackColor).CGColor;
+  } else if (is<System::Windows::Forms::TabPage>(control)) {
+    //[(NSTabViewItem*)control.Handle() setWantsLayer:YES];
+    //((NSTabViewItem*)control.Handle()).layer.backgroundColor = CocoaApi::FromColor(control.BackColor).CGColor;
   } else if (is<System::Windows::Forms::Panel>(control)) {
     ((NSScrollView*)control.Handle()).backgroundColor = CocoaApi::FromColor(control.BackColor);
   } else {
@@ -173,10 +176,13 @@ void Native::ControlApi::SetForeColor(const System::Windows::Forms::Control& con
 void Native::ControlApi::SetLocation(const System::Windows::Forms::Control& control) {
   @autoreleasepool {
     System::Drawing::Rectangle bounds = CocoaApi::GetBounds(control);
-    if (is<System::Windows::Forms::Button>(control))
+    if (is<System::Windows::Forms::Button>(control)) {
       [(NSControl*)control.Handle() setFrameOrigin:NSMakePoint(bounds.Left - 1, bounds.Top - 1)];
-    else
+    } else if (is<System::Windows::Forms::TabPage>(control)) {
+      // Don't set the location
+    }  else {
       [(NSControl*)control.Handle() setFrameOrigin:NSMakePoint(bounds.Left, bounds.Top)];
+    }
   }
 }
 
@@ -188,6 +194,8 @@ void Native::ControlApi::SetSize(System::Windows::Forms::Control& control) {
     if (is<System::Windows::Forms::Form>(control)) {
       [((NSWindow*)control.Handle()) setFrame:NSMakeRect(0, 0, control.Width(), control.Height()) display:true];
       control.ClientSize = System::Drawing::Size(((NSWindow*)control.Handle()).contentLayoutRect.size.width, ((NSWindow*)control.Handle()).contentLayoutRect.size.height);
+    } else if (is<System::Windows::Forms::TabPage>(control)) {
+      // don't change the size...
     } else if (is<System::Windows::Forms::Button>(control)) {
       [(NSButton*)control.Handle() setFrameSize:NSMakeSize(control.Width() + 2, control.Height() + 2)];
       control.ClientSize = System::Drawing::Size(((NSControl*)control.Handle()).frame.size.width - 2, ((NSControl*)control.Handle()).frame.size.height - 2);
@@ -221,8 +229,11 @@ void Native::ControlApi::SetVisible(const System::Windows::Forms::Control& contr
       } else {
         [(NSWindow*)control.Handle() orderOut:nil];
       }
-    } else
+    } else if (is<System::Windows::Forms::TabPage>(control)) {
+      // Don't chnage the visibility
+    } else {
       [(NSControl*)control.Handle() setHidden:control.Visible ? NO : YES];
+    }
   }
 }
 

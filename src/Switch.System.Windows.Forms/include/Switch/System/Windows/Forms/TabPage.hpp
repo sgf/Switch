@@ -24,6 +24,7 @@ namespace Switch {
           };
 
         protected:
+          void CreateHandle() override;
           void SetParent(ref<Control> parent) override;
 
           bool useVisualStyleBackColor = false;
