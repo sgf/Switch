@@ -15,31 +15,44 @@ using namespace System::Windows::Forms;
 core_export_ extern HINSTANCE __instance;
 
 intptr Native::TabControlApi::Create(const System::Windows::Forms::TabControl& tabControl) {
-  HWND handle = CreateWindowEx(WS_EX_CONTROLPARENT, WC_TABCONTROL, tabControl.Text().w_str().c_str(), WS_CHILD, tabControl.Left, tabControl.Top, tabControl.Width, tabControl.Height, (HWND)tabControl.Parent()().Handle(), (HMENU)0, __instance, (LPVOID)NULL);
+  static INITCOMMONCONTROLSEX icc;
+  icc.dwSize = sizeof(INITCOMMONCONTROLSEX);
+  icc.dwICC = ICC_TAB_CLASSES;
+  InitCommonControlsEx(&icc);
+
+  HWND handle = CreateWindowEx(WS_EX_CONTROLPARENT, WC_TABCONTROL, tabControl.Text().w_str().c_str(), WS_CHILD | WS_CLIPSIBLINGS, tabControl.Left, tabControl.Top, tabControl.Width, tabControl.Height, (HWND)tabControl.Parent()().Handle(), (HMENU)0, __instance, (LPVOID)NULL);
   WindowProcedure::SetWindowTheme(handle);
   WindowProcedure::DefWindowProcs[(intptr)handle] = (WNDPROC)SetWindowLongPtr(handle, GWLP_WNDPROC, (LONG_PTR)WindowProcedure::WndProc);
   /// @todo to remove after create SetFont method...
   PostMessage(handle, WM_SETFONT, WPARAM((HFONT)GetStockObject(DEFAULT_GUI_FONT)), TRUE);
 
-  /*
-  static TCITEM item1;
-  item1.mask = TCIF_TEXT | TCIF_IMAGE;
-  item1.iImage = -1;
-  item1.pszText = L"One";
-  //TabCtrl_InsertItem(handle, 0, &item1);
-  PostMessage(handle, TCM_INSERTITEM, (WPARAM)0, (LPARAM)&item1);
-  static TCITEM item2;
-  item2.mask = TCIF_TEXT | TCIF_IMAGE;
-  item2.iImage = -1;
-  item2.pszText = L"Two";
-  //TabCtrl_InsertItem(handle, 0, &item2);
-  PostMessage(handle, TCM_INSERTITEM, (WPARAM)1, (LPARAM)&item2);
-  */
-
   return (intptr)handle;
 }
 
+int32 Native::TabControlApi::GetSelectedTabPageIndex(const System::Windows::Forms::TabControl& tabControl) {
+  return TabCtrl_GetCurSel((HWND)tabControl.Handle());
+}
+
+System::Drawing::Rectangle Native::TabControlApi::GetTabPageRectangle(const System::Windows::Forms::TabControl& tabControl) {
+  RECT tabPageRectangle {tabControl.Left, tabControl.Top, tabControl.Right, tabControl.Bottom};
+  TabCtrl_AdjustRect((HWND)tabControl.Handle(), false, &tabPageRectangle);
+  return System::Drawing::Rectangle(tabPageRectangle.left, tabPageRectangle.top, tabPageRectangle.right - tabPageRectangle.left, tabPageRectangle.bottom - tabPageRectangle.top);
+}
+
 void Native::TabControlApi::SetAlignment(const System::Windows::Forms::TabControl& tabControl) {
+}
+
+void Native::TabControlApi::InsertTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage) {
+  std::wstring name = tabPage.Text().w_str();
+  TCITEM tcItem;
+  tcItem.mask = TCIF_TEXT | TCIF_IMAGE;
+  tcItem.iImage = -1;
+  tcItem.pszText = (wchar*)name.c_str();
+  TabCtrl_InsertItem((HWND)tabControl.Handle(), index, &tcItem);
+}
+
+void Native::TabControlApi::RemoveTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage) {
+  TabCtrl_DeleteItem((HWND)tabControl.Handle(), index);
 }
 
 #endif

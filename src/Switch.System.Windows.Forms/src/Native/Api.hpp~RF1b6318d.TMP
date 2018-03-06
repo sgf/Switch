@@ -202,8 +202,6 @@ namespace Native {
   class TabControlApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::TabControl& tabControl);
-    static int32 GetSelectedTabPageIndex(const System::Windows::Forms::TabControl& tabControl);
-    static System::Drawing::Rectangle GetTabPageRectangle(const System::Windows::Forms::TabControl& tabControl);
     static void SetAlignment(const System::Windows::Forms::TabControl& tabControl);
     static void InsertTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage);
     static void RemoveTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage);

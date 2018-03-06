@@ -20,8 +20,8 @@ void Native::FormApi::Close(System::Windows::Forms::Form& form) {
 
 intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
   System::Drawing::Rectangle bounds = form.Bounds;
-  bounds.Left + Screen::AllScreens()[0].WorkingArea().X;
-  bounds.Top + Screen::AllScreens()[0].WorkingArea().Y;
+  bounds.X = bounds.X + Screen::AllScreens()[0].WorkingArea().X;
+  bounds.Y = bounds.Y + Screen::AllScreens()[0].WorkingArea().Y;
   switch (form.StartPosition) {
   case FormStartPosition::CenterScreen: bounds = System::Drawing::Rectangle((Screen::AllScreens()[0].WorkingArea().Width + Screen::AllScreens()[0].WorkingArea().X - form.Width) / 2, (Screen::AllScreens()[0].WorkingArea().Height + Screen::AllScreens()[0].WorkingArea().Y - form.Height) / 2, form.Width, form.Height); break;
   case FormStartPosition::Manual: bounds = form.Bounds; break;
@@ -30,7 +30,7 @@ intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
   case FormStartPosition::WindowsDefaultLocation: bounds = Drawing::Rectangle(CW_USEDEFAULT, CW_USEDEFAULT, form.Width, form.Height); break;
   }
 
-  HWND handle = CreateWindowEx(0, WC_DIALOG, form.Text().w_str().c_str(), WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_GROUP, bounds.Left, bounds.Top, bounds.Width, bounds.Height, NULL, (HMENU)0, __instance, (LPVOID)NULL);
+  HWND handle = CreateWindowEx(0, WC_DIALOG, form.Text().w_str().c_str(), WS_OVERLAPPED | WS_CAPTION | WS_CLIPSIBLINGS | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_GROUP, bounds.Left, bounds.Top, bounds.Width, bounds.Height, NULL, (HMENU)0, __instance, (LPVOID)NULL);
   WindowProcedure::DefWindowProcs[(intptr)handle] = (WNDPROC)SetWindowLongPtr(handle, GWLP_WNDPROC, (LONG_PTR)WindowProcedure::WndProc);
 
   RECT rect = { 0, 0, 0, 0 };

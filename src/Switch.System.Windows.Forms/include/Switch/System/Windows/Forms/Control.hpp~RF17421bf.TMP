@@ -174,7 +174,7 @@ namespace Switch {
           };
 
           property_<System::Drawing::Rectangle, readonly_> ClientRectangle {
-            get_{ return System::Drawing::Rectangle({0, 0}, this->clientSize); }
+            get_{ return {{0 ? 0}, this->clientSize}; }
           };
 
           property_<System::Drawing::Size> ClientSize{
@@ -498,8 +498,6 @@ namespace Switch {
           virtual void OnMouseWheel(const MouseEventArgs& e) { this->MouseWheel(*this, e); }
 
           virtual void OnNameChanged(const EventArgs& e) { this->NameChanged(*this, e); }
-
-          virtual void OnNotifyMessage(const Message& m) {}
 
           virtual void OnPaint(PaintEventArgs& e) { this->Paint(*this, e); }
 

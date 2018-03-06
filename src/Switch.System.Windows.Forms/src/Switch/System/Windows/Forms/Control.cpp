@@ -483,12 +483,16 @@ void Control::WmMouseWheel(Message& message) {
   System::Drawing::Point point = this->PointToClient(MakePoint(message.LParam));
   Array<byte> bytes = BitConverter::GetBytes(message.WParam());
   this->DefWndProc(message);
-  OnMouseWheel(MouseEventArgs(MouseButtons::None, point, 0, BitConverter::ToInt16(bytes, 2)));
+  this->OnMouseWheel(MouseEventArgs(MouseButtons::None, point, 0, BitConverter::ToInt16(bytes, 2)));
 }
 
 void Control::WmNotify(Message& message) {
   //System::Diagnostics::Debug::WriteLineIf(ShowDebugTrace::WindowMessage, "Control::WmNotify message=" + message + ", name=" + this->name);
   this->DefWndProc(message);
+  for (ref<Control> control : this->controls)
+    control().WmNotify(message);
+  if (this->GetStyle(ControlStyles::EnableNotifyMessage))
+    this->OnNotifyMessage(message);
 }
 
 void Control::WmNotifyFormat(Message& message) {

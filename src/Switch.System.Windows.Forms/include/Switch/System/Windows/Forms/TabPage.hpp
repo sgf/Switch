@@ -20,11 +20,18 @@ namespace Switch {
             this->SetStyle(ControlStyles::UserPaint, false);
           }
 
+          property_<bool> UseVisualStyleBackColor {
+            get_ {return this->useVisualStyleBackColor;},
+            set_ {this->useVisualStyleBackColor = value;}
+          };
+
         protected:
           void CreateHandle() override;
           System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(200, 100); }
 
           void SetParent(ref<Control> parent) override;
+
+          bool useVisualStyleBackColor = false;
         };
       }
     }
