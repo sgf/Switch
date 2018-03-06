@@ -109,7 +109,7 @@ namespace Switch {
 
         private:
           friend class TabPageCollection;
-          System::Collections::Generic::List<$<TabPage>> autoCreateTabPages;
+          System::Collections::Generic::List < $<TabPage >> autoCreateTabPages;
           void InsertTabPage(int32 index, const TabPage& tabPage);
           void RemoveTabPage(int32 index, const TabPage& tabPage);
           void AddAutoCreateTabPage($<TabPage> tabPage) { this->autoCreateTabPages.Add(tabPage); }

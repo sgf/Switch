@@ -180,11 +180,11 @@ namespace Switch {
           property_<System::Drawing::Size> ClientSize{
             get_{ return this->clientSize; },
             set_{
-            if (this->clientSize != value) {
-              this->clientSize = value;
-              this->OnClientSizeChanged(EventArgs::Empty);
+              if (this->clientSize != value) {
+                this->clientSize = value;
+                this->OnClientSizeChanged(EventArgs::Empty);
+              }
             }
-          }
           };
 
           /// @brief Gets the collection of controls contained within the control.

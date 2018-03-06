@@ -14,7 +14,7 @@ namespace TabControlExample {
 
     Form1() {
       this->tabPage3.Text = "tabPage3";
-      
+
       this->tabControl1.Location = System::Drawing::Point(10, 10);
       this->tabControl1.Size = System::Drawing::Size(350, 250);
       this->tabControl1.TabPages().Add("tabPage1");

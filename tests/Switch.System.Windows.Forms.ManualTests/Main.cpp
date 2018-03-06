@@ -29,7 +29,7 @@ namespace ManualTests {
       tabControl.TabPages().Add("tabPage2", "tabPage2");
       tabControl.TabPages().Add(tabPage3);
 
-      for(ref<TabPage> tabPage : tabControl.TabPages()) {
+      for (ref<TabPage> tabPage : tabControl.TabPages()) {
         tabPage().UseVisualStyleBackColor = true;
         tabPage().BackColor = Color::White;
       }
@@ -45,4 +45,4 @@ namespace ManualTests {
   };
 }
 
- startup_(ManualTests::Program);
+startup_(ManualTests::Program);
