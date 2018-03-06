@@ -43,4 +43,7 @@ intptr Native::TabPageApi::Create(const System::Windows::Forms::TabPage& tabPage
   return (intptr)handle;
 }
 
+void Native::TabPageApi::SetBorderStyle(const System::Windows::Forms::TabPage& tabPage) {
+}
+
 #endif
