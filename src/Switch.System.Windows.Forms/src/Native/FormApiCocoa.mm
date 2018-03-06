@@ -94,17 +94,5 @@ intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
   }
 }
 
-void Native::TabControlApi::SetAlignment(const System::Windows::Forms::TabControl& tabControl) {
-
-}
-
-void Native::TabControlApi::InsertTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage) {
-
-}
-
-void Native::TabControlApi::RemoveTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage) {
-
-}
-
 #endif
 
