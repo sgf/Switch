@@ -13,7 +13,15 @@ using namespace System::Windows::Forms;
 void TabPage::CreateHandle() {
   this->handle = Native::TabPageApi::Create(*this);
   this->Control::CreateHandle();
-  Native::PanelApi::SetBorderStyle(*this);
+  Native::TabPageApi::SetBorderStyle(*this);
+}
+
+void TabPage::SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
+  if (this->borderStyle != borderStyle) {
+    this->borderStyle = borderStyle;
+    if (this->IsHandleCreated)
+      Native::TabPageApi::SetBorderStyle(*this);
+  }
 }
 
 void TabPage::SetParent(ref<Control> parent) {
