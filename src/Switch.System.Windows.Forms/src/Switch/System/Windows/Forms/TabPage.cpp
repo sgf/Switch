@@ -10,6 +10,20 @@ using namespace System::ComponentModel;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
+void TabPage::CreateHandle() {
+  this->handle = Native::TabPageApi::Create(*this);
+  this->Control::CreateHandle();
+  Native::TabPageApi::SetBorderStyle(*this);
+}
+
+void TabPage::SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
+  if (this->borderStyle != borderStyle) {
+    this->borderStyle = borderStyle;
+    if (this->IsHandleCreated)
+      Native::TabPageApi::SetBorderStyle(*this);
+  }
+}
+
 void TabPage::SetParent(ref<Control> parent) {
   if (!is<TabControl>(parent))
     throw ArgumentException(caller_);

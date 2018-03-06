@@ -24,6 +24,8 @@ namespace Switch {
           };
 
         protected:
+          void CreateHandle() override;
+          void SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle) override;
           void SetParent(ref<Control> parent) override;
 
           bool useVisualStyleBackColor = false;

@@ -197,6 +197,7 @@ namespace Native {
   class TabPageApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::TabPage& tabPage);
+    static void SetBorderStyle(const System::Windows::Forms::TabPage& panel);
   };
 
   class TabControlApi static_ {

@@ -22,4 +22,14 @@ intptr Native::TabPageApi::Create(const System::Windows::Forms::TabPage& tabPage
   return (intptr)handle;
 }
 
+void Native::TabPageApi::SetBorderStyle(const System::Windows::Forms::TabPage& tabPage) {
+  SetWindowLongPtr((HWND)tabPage.Handle(), GWL_STYLE, GetWindowLongPtr((HWND)tabPage.Handle(), GWL_STYLE) & ~WS_BORDER);
+  SetWindowLongPtr((HWND)tabPage.Handle(), GWL_EXSTYLE, GetWindowLongPtr((HWND)tabPage.Handle(), GWL_EXSTYLE) & ~WS_EX_CLIENTEDGE);
+  switch (tabPage.BorderStyle) {
+  case BorderStyle::FixedSingle: SetWindowLongPtr((HWND)tabPage.Handle(), GWL_STYLE, GetWindowLongPtr((HWND)tabPage.Handle(), GWL_STYLE) | WS_BORDER); break;
+  case BorderStyle::Fixed3D: SetWindowLongPtr((HWND)tabPage.Handle(), GWL_EXSTYLE, GetWindowLongPtr((HWND)tabPage.Handle(), GWL_EXSTYLE) | WS_EX_CLIENTEDGE); break;
+  }
+  SetWindowPos((HWND)tabPage.Handle(), NULL, 0, 0, 0, 0, SWP_DRAWFRAME | SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER);
+}
+
 #endif
