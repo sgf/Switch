@@ -16,9 +16,7 @@ namespace Switch {
         /// @brief Used to group collections of controls.
         class system_windows_forms_export_ TabPage : public Panel {
         public:
-          TabPage() : Panel("", 0, 0, 200, 100) {
-            this->SetStyle(ControlStyles::UserPaint, false);
-          }
+          TabPage() {}
 
           property_<bool> UseVisualStyleBackColor {
             get_ {return this->useVisualStyleBackColor;},
@@ -26,9 +24,6 @@ namespace Switch {
           };
 
         protected:
-          void CreateHandle() override;
-          System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(200, 100); }
-
           void SetParent(ref<Control> parent) override;
 
           bool useVisualStyleBackColor = false;

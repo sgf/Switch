@@ -36,7 +36,7 @@ int32 Native::TabControlApi::GetSelectedTabPageIndex(const System::Windows::Form
 System::Drawing::Rectangle Native::TabControlApi::GetTabPageRectangle(const System::Windows::Forms::TabControl& tabControl) {
   RECT tabPageRectangle {tabControl.Left, tabControl.Top, tabControl.Right, tabControl.Bottom};
   TabCtrl_AdjustRect((HWND)tabControl.Handle(), false, &tabPageRectangle);
-  return System::Drawing::Rectangle(tabPageRectangle.left, tabPageRectangle.top, tabPageRectangle.right - tabPageRectangle.left, tabPageRectangle.bottom - tabPageRectangle.top);
+  return System::Drawing::Rectangle(tabPageRectangle.left - tabControl.Location().X, tabPageRectangle.top - tabControl.Location().Y, tabPageRectangle.right - tabPageRectangle.left, tabPageRectangle.bottom - tabPageRectangle.top);
 }
 
 void Native::TabControlApi::SetAlignment(const System::Windows::Forms::TabControl& tabControl) {

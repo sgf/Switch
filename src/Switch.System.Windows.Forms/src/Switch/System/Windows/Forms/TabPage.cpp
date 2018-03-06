@@ -10,11 +10,6 @@ using namespace System::ComponentModel;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-void TabPage::CreateHandle() {
-  this->handle = Native::TabPageApi::Create(*this);
-  this->Control::CreateHandle();
-}
-
 void TabPage::SetParent(ref<Control> parent) {
   if (!is<TabControl>(parent))
     throw ArgumentException(caller_);

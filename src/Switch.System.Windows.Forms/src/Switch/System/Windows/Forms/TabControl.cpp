@@ -15,12 +15,13 @@ void TabControl::CreateHandle() {
   this->handle = Native::TabControlApi::Create(*this);
   this->Control::CreateHandle();
   Native::TabControlApi::SetAlignment(*this);
+  Native::TabControlApi::GetTabPageRectangle(*this); // ???
   for (int32 index = 0; index < this->tabPages.Count; index++) {
-    this->tabPages[index]().Bounds = Native::TabControlApi::GetTabPageRectangle(*this);
     this->tabPages[index]().Parent = *this;
     this->tabPages[index]().CreateControl();
     this->tabPages[index]().Visible = index == 0;
     this->InsertTabPage(index, this->tabPages[index]());
+    this->tabPages[index]().Bounds = Native::TabControlApi::GetTabPageRectangle(*this);
   }
 }
 
