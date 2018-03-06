@@ -43,6 +43,14 @@ intptr Native::TabControlApi::Create(const System::Windows::Forms::TabControl& t
   return (intptr)handle;
 }
 
+int32 Native::TabControlApi::GetSelectedTabPageIndex(const System::Windows::Forms::TabControl& tabControl) {
+  return 0;
+}
+
+System::Drawing::Rectangle Native::TabControlApi::GetTabPageRectangle(const System::Windows::Forms::TabControl& tabControl) {
+  return System::Drawing::Rectangle();
+}
+
 void Native::TabControlApi::SetAlignment(const System::Windows::Forms::TabControl& tabControl) {
 
 }
