@@ -1,4 +1,5 @@
 # TrackBar
+
 This example demonstrates the use of System::Windows::Forms::TrackBar control.
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TrackBarW.png)

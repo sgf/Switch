@@ -1,14 +1,15 @@
-# Panel
-This example demonstrates the use of System::Windows::Forms::Panel control.
+# TabControl
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelW.png)
+This example demonstrates the use of System::Windows::Forms::TabControl and System::Windows::Forms::TabPage controls.
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlW.png)
 
 Windows
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelM.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlM.png)
 
 macOS
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelU.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlU.png)
 
 Ubuntu
