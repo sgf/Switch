@@ -23,7 +23,7 @@ namespace Switch {
           property_<intptr, readonly_> Handle {
             get_ {return this->GetHandle();}
           };
-          
+
         protected:
           virtual intptr GetHandle() = 0;
         };

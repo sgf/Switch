@@ -432,7 +432,7 @@ namespace Switch {
               this->OnParentChanged(EventArgs::Empty);
             }
           }
-          
+
           /// @brief Gets the window handle that the control is bound to.
           /// @return intptr An IntPtr that contains the window handle (HWND) of the control.
           /// @remarks The value of the Handle property is a Windows HWND. If the handle has not yet been created, referencing this property will force the handle to be created.
