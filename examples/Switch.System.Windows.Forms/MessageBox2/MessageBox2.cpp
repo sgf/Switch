@@ -36,37 +36,37 @@ namespace MessageBoxExample {
       this->radioButtonOk.Text = "Ok";
       this->radioButtonOk.Location = System::Drawing::Point(10, 30);
       this->radioButtonOk.Checked = true;
-      this->radioButtonOk.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonOk.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::OK;
       };
 
       this->radioButtonOkCancel.Text = "OkCancel";
       this->radioButtonOkCancel.Location = System::Drawing::Point(10, 60);
-      this->radioButtonOkCancel.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonOkCancel.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::OKCancel;
       };
 
       this->radioButtonAbortRetryIgnore.Text = "AbortRetryIgnore";
       this->radioButtonAbortRetryIgnore.Location = System::Drawing::Point(10, 90);
-      this->radioButtonAbortRetryIgnore.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonAbortRetryIgnore.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::AbortRetryIgnore;
       };
 
       this->radioButtonYesNoCancel.Text = "YesNoCancel";
       this->radioButtonYesNoCancel.Location = System::Drawing::Point(10, 120);
-      this->radioButtonYesNoCancel.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonYesNoCancel.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::YesNoCancel;
       };
 
       this->radioButtonYesNo.Text = "YesNo";
       this->radioButtonYesNo.Location = System::Drawing::Point(10, 150);
-      this->radioButtonYesNo.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonYesNo.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::YesNo;
       };
 
       this->radioButtonRetryCancel.Text = "RetryCancel";
       this->radioButtonRetryCancel.Location = System::Drawing::Point(10, 180);
-      this->radioButtonRetryCancel.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonRetryCancel.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::RetryCancel;
       };
 
@@ -78,55 +78,55 @@ namespace MessageBoxExample {
       this->radioButtonNone.Text = "None";
       this->radioButtonNone.Location = System::Drawing::Point(10, 30);
       this->radioButtonNone.Checked = true;
-      this->radioButtonNone.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonNone.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::None;
       };
 
       this->radioButtonHand.Text = "Hand";
       this->radioButtonHand.Location = System::Drawing::Point(10, 60);
-      this->radioButtonHand.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonHand.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Hand;
       };
 
       this->radioButtonStop.Text = "Stop";
       this->radioButtonStop.Location = System::Drawing::Point(10, 90);
-      this->radioButtonStop.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonStop.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Stop;
       };
 
       this->radioButtonError.Text = "Error";
       this->radioButtonError.Location = System::Drawing::Point(10, 120);
-      this->radioButtonError.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonError.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Error;
       };
 
       this->radioButtonQuestion.Text = "Question";
       this->radioButtonQuestion.Location = System::Drawing::Point(10, 150);
-      this->radioButtonQuestion.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonQuestion.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Question;
       };
 
       this->radioButtonExclamation.Text = "Exclamation";
       this->radioButtonExclamation.Location = System::Drawing::Point(10, 180);
-      this->radioButtonExclamation.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonExclamation.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Exclamation;
       };
 
       this->radioButtonWarning.Text = "Warning";
       this->radioButtonWarning.Location = System::Drawing::Point(10, 210);
-      this->radioButtonWarning.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonWarning.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Warning;
       };
 
       this->radioButtonAsterisk.Text = "Asterisk";
       this->radioButtonAsterisk.Location = System::Drawing::Point(10, 240);
-      this->radioButtonAsterisk.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonAsterisk.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Asterisk;
       };
 
       this->radioButtonInformation.Text = "Information";
       this->radioButtonInformation.Location = System::Drawing::Point(10, 270);
-      this->radioButtonInformation.Click += delegate_(const object& sender, const EventArgs& e) {
+      this->radioButtonInformation.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Information;
       };
 
