@@ -1,4 +1,5 @@
 # CheckBox
+
 This example demonstrates the use of System::Windows::Forms::CheckBox control.
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/CheckBoxW.png)

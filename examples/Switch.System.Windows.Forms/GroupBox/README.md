@@ -1,4 +1,5 @@
 # GroupBox
+
 This example demonstrates the use of System::Windows::Forms::GroupBox control.
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxW.png)

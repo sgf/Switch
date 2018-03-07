@@ -1,4 +1,5 @@
 # ProgressBar
+
 This example demonstrates the use of System::Windows::Forms::ProgressBar control.
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ProgressBarW.png)

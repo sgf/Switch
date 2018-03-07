@@ -1,4 +1,5 @@
-# GroupBoxAndRadioButton
+# GroupBoxAndCheckBox
+
 This example demonstrates the use of 
 System::Windows::Forms::GroupBox and System::Windows::Forms::CheckBox controls.
 

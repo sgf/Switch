@@ -1,4 +1,5 @@
 # Panel
+
 This example demonstrates the use of System::Windows::Forms::Panel control.
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelW.png)
