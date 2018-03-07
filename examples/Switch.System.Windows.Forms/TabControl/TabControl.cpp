@@ -21,6 +21,9 @@ namespace TabControlExample {
       this->tabControl1.TabPages().Add("tabPage2", "tabPage2");
       this->tabControl1.TabPages().Add(this->tabPage3);
 
+      for (ref<TabPage> tabPage : this->tabControl1.TabPages())
+        tabPage().UseVisualStyleBackColor = true;
+
       this->ClientSize = System::Drawing::Size(370, 270);
       this->Text = "TabControl example";
       this->Controls().Add(this->tabControl1);

@@ -22,6 +22,8 @@ void TabControl::CreateHandle() {
     this->tabPages[index]().Visible = index == 0;
     this->InsertTabPage(index, this->tabPages[index]());
     this->tabPages[index]().Bounds = Native::TabControlApi::GetTabPageRectangle(*this);
+    if (this->tabPages[index]().UseVisualStyleBackColor && Environment::OSVersion().IsWindowsFamilly)
+      this->tabPages[index]().BackColor = SystemColors::Window;
   }
 }
 
