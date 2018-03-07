@@ -72,9 +72,9 @@ DialogResult Native::ApplicationApi::ShowMessageBox(const string& message, const
   static refptr<Gtk::Window> emptyWindow = new_<Gtk::Window>();
   Gtk::Window* activeWindow = __application__->get_active_window();
   if (activeWindow == null) activeWindow = emptyWindow.ToPointer();
-  Gtk::MessageDialog dialog(*activeWindow, caption.c_str(), true /* use_markup */, icons[icon], Gtk::BUTTONS_NONE, true);
+  Gtk::MessageDialog dialog(*activeWindow, message.c_str(), true /* use_markup */, icons[icon], Gtk::BUTTONS_NONE, true);
   AddButtons(dialog, buttons);
-  dialog.set_secondary_text(message.c_str());
+  dialog.set_title(caption.c_str());
   dialog.set_modal();
   dialog.set_position(Gtk::WindowPosition::WIN_POS_CENTER);
   int result = dialog.run();

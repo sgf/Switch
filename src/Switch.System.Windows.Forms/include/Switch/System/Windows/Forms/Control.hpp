@@ -14,6 +14,7 @@
 #include "../../ComponentModel/EventHandlerList.hpp"
 #include "ControlStyles.hpp"
 #include "InvalidateEventHandler.hpp"
+#include "IWin32Window.hpp"
 #include "KeyEventHandler.hpp"
 #include "KeyPressEventHandler.hpp"
 #include "Message.hpp"
@@ -35,7 +36,7 @@ namespace Switch {
         /// @note The majority of the controls in the System::Windows::Forms namespace use the underlying Windows common control as a base to build on. For more information about the Windows common controls, see General Control Reference.
         /// @note To identify Windows Forms controls from a separate process, use a standard SendMessage call to pass the WM_GETCONTROLNAME message. WM_GETCONTROLNAME is independent of the language and Windows hierarchy. For more information, see the "Recommended Solution for Windows Forms" topic in Automating Windows Forms::
         /// @note Use the InvokeRequired property to synchronize access to the control from multiple threads. For more information about multithreaded Windows Forms controls, see How to: Make Thread-Safe Calls to Windows Forms Controls
-        class system_windows_forms_export_ Control : public System::ComponentModel::Component {
+        class system_windows_forms_export_ Control : public IWin32Window, public System::ComponentModel::Component {
           enum class State;
         public:
           /// @brief Represents a collection of Control objects.
@@ -217,17 +218,6 @@ namespace Switch {
                 this->foreColor = value;
                 this->OnForeColorChanged(EventArgs::Empty);
               }
-            }
-          };
-
-          /// @brief Gets the window handle that the control is bound to.
-          /// @return intptr An IntPtr that contains the window handle (HWND) of the control.
-          /// @remarks The value of the Handle property is a Windows HWND. If the handle has not yet been created, referencing this property will force the handle to be created.
-          property_<intptr, readonly_> Handle {
-            get_ {
-              if (!this->IsHandleCreated)
-                CreateHandle();
-              return this->handle;
             }
           };
 
@@ -442,6 +432,15 @@ namespace Switch {
               this->OnParentChanged(EventArgs::Empty);
             }
           }
+          
+          /// @brief Gets the window handle that the control is bound to.
+          /// @return intptr An IntPtr that contains the window handle (HWND) of the control.
+          /// @remarks The value of the Handle property is a Windows HWND. If the handle has not yet been created, referencing this property will force the handle to be created.
+          intptr GetHandle() override {
+            if (!this->IsHandleCreated)
+              CreateHandle();
+            return this->handle;
+          }
 
           virtual bool GetStyle(ControlStyles flag) { return ((int32)this->style & (int32)flag) == (int32)flag; }
 
@@ -515,14 +514,14 @@ namespace Switch {
 
           /// @cond
           Nullable<System::Drawing::Color> backColor;
-          System::Drawing::SolidBrush backBrush {System::Drawing::SystemColors::Control};
+          mutable System::Drawing::SolidBrush backBrush {System::Drawing::SystemColors::Control};
           System::Drawing::Size clientSize;
           ControlCollection controls {*this};
           System::Drawing::Color defaultBackColor;
           System::Drawing::Color defaultForeColor;
           bool enabled = true;
           Nullable<System::Drawing::Color> foreColor;
-          intptr handle = 0;
+          mutable intptr handle = 0;
           static System::Collections::Generic::Dictionary<intptr, ref<Control>> handles;
           System::Drawing::Point location;
           System::Collections::Generic::Dictionary<int32, Action<Message&>> messageActions;
