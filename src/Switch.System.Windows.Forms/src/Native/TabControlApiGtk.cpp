@@ -14,31 +14,15 @@ namespace Native {
   public:
     TabControl() {
       this->RegisterEvent();
-      this->add(this->scrolledWindow);
-      this->scrolledWindow.add(this->fixed);
-
-      this->signal_show().connect(delegate_ {
-        this->scrolledWindow.show();
-        this->fixed.show();
-      });
     }
 
-    const Gtk::Container& Container() const override {return this->fixed;}
-
-    Gtk::Container& Container() override {return this->fixed;}
-
     void Text(const string& text) override {}
-
-  private:
-    Gtk::ScrolledWindow scrolledWindow;
-    Gtk::Fixed fixed;
   };
 }
 
 intptr Native::TabControlApi::Create(const System::Windows::Forms::TabControl& tabControl) {
   Native::TabControl* handle = new Native::TabControl();
   handle->Move(tabControl.Location().X, tabControl.Location().Y);
-  handle->Text(tabControl.Text);
   handle->show();
   return (intptr)handle;
 }
@@ -56,10 +40,10 @@ void Native::TabControlApi::SetAlignment(const System::Windows::Forms::TabContro
 }
 
 void Native::TabControlApi::InsertTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage) {
-
+  ((Native::TabControl*)tabControl.Handle())->insert_page(((Native::TabControl*)tabPage.Handle())->ToWidget(), tabPage.Text().c_str(), index);
 }
 
 void Native::TabControlApi::RemoveTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage) {
-
+  ((Native::TabControl*)tabControl.Handle())->remove_page(index);
 }
 #endif

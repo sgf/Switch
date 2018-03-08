@@ -38,8 +38,6 @@ namespace Native {
 
 intptr Native::TabPageApi::Create(const System::Windows::Forms::TabPage& tabPage) {
   Native::TabPage* handle = new Native::TabPage();
-  handle->Text(tabPage.Text);
-  handle->show();
   return (intptr)handle;
 }
 

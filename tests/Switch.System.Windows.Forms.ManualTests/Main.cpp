@@ -20,7 +20,7 @@ namespace ManualTests {
 
       TabPage tabPage3;
       tabPage3.Text = "tabPage3";
-      //tabPage3.Controls().Add(button);
+      tabPage3.Controls().Add(button);
 
       TabControl tabControl;
       tabControl.Location = Point(10, 10);
@@ -29,17 +29,13 @@ namespace ManualTests {
       tabControl.TabPages().Add("tabPage2", "tabPage2");
       tabControl.TabPages().Add(tabPage3);
 
-      for (ref<TabPage> tabPage : tabControl.TabPages()) {
+      for (ref<TabPage> tabPage : tabControl.TabPages())
         tabPage().UseVisualStyleBackColor = true;
-        tabPage().BackColor = Color::White;
-      }
-      //tabControl.TabPages()[0]().BackColor = Color::LightBlue;
-      //tabControl.TabPages()[1]().BackColor = Color::LightGreen;
-      //tabControl.TabPages()[2]().BackColor = Color::LightPink;
 
       Form mainForm;
       mainForm.Text = "Main Form";
       mainForm.Controls().Add(tabControl);
+
       mainForm.ShowDialog();
     }
   };

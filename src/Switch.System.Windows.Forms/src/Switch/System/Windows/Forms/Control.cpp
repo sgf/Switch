@@ -90,7 +90,7 @@ property_<System::Drawing::Color, readonly_> Control::DefaultForeColor {
 void Control::CreateControl() {
   if (this->size.IsEmpty())
     this->size = this->DefaultSize;
-  if (this->parent != null || is<Form>(*this)) {
+  if (this->parent != null || is<Form>(*this) || is<TabPage>(*this)) {
     if (this->visible && !this->IsHandleCreated)
       CreateHandle();
     for (ref<Control> control : this->controls)

@@ -17,9 +17,9 @@ void TabControl::CreateHandle() {
   Native::TabControlApi::SetAlignment(*this);
   Native::TabControlApi::GetTabPageRectangle(*this); // ???
   for (int32 index = 0; index < this->tabPages.Count; index++) {
-    this->tabPages[index]().Parent = *this;
+    //this->tabPages[index]().Parent = *this;
     this->tabPages[index]().CreateControl();
-    this->tabPages[index]().Visible = index == 0;
+    //this->tabPages[index]().Visible = index == 0; // see how to on Win32
     this->InsertTabPage(index, this->tabPages[index]());
     this->tabPages[index]().Bounds = Native::TabControlApi::GetTabPageRectangle(*this);
     if (this->tabPages[index]().UseVisualStyleBackColor && Environment::OSVersion().IsWindowsFamilly)
