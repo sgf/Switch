@@ -16,6 +16,8 @@ namespace {
     static System::Drawing::Rectangle GetBounds(const System::Windows::Forms::Control& control) {
       if (is<System::Windows::Forms::Form>(control))
         return System::Drawing::Rectangle(control.Left + Screen::AllScreens()[0].WorkingArea().X, Screen::AllScreens()[0].Bounds().Height - Screen::AllScreens()[0].WorkingArea().Y - control.Top - control.Height, control.Width, control.Height);
+      if (is<System::Windows::Forms::TabPage>(control))
+        return System::Drawing::Rectangle(control.Left, control.Top, control.Width, control.Height);
       int32 captionHeight = !is<Form>(control.Parent()) || as<Form>(control.Parent())().FormBorderStyle == FormBorderStyle::None ? 0 : Native::SystemInformationApi::GetCaptionHeight();
       return System::Drawing::Rectangle(control.Left, control.Parent()().Height - control.Height - control.Top - captionHeight, control.Width, control.Height);
     }
