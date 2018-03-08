@@ -15,21 +15,21 @@ namespace MessageBoxExample {
     Form1() {
       this->labelCaption.Text = "Caption :";
       this->labelCaption.Location = System::Drawing::Point(10, 13);
-      this->labelCaption.Width = 50;
+      this->labelCaption.Width = 70;
 
       this->editCaption.Text = "Switch";
-      this->editCaption.Location = System::Drawing::Point(70, 10);
-      this->editCaption.Width = 350;
+      this->editCaption.Location = System::Drawing::Point(90, 10);
+      this->editCaption.Width = 330;
       this->editCaption.Height = 20;
       this->editCaption.BackColor = System::Drawing::Color::White;
 
       this->labelMessage.Text = "Message :";
       this->labelMessage.Location = System::Drawing::Point(10, 43);
-      this->labelMessage.Width = 50;
+      this->labelMessage.Width = 70;
 
       this->editMessage.Text = "It's fantastic !";
-      this->editMessage.Location = System::Drawing::Point(70, 40);
-      this->editMessage.Width = 350;
+      this->editMessage.Location = System::Drawing::Point(90, 40);
+      this->editMessage.Width = 330;
       this->editMessage.Height = 20;
       this->editMessage.BackColor = System::Drawing::Color::White;
 
