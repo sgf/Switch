@@ -13,3 +13,11 @@ macOS
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlU.png)
 
 Ubuntu
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlG.png)
+
+Gnome
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlGD.png)
+
+Gnome Dark

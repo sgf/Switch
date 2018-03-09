@@ -13,3 +13,11 @@ macOS
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelU.png)
 
 Ubuntu
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelG.png)
+
+Gnome
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelGD.png)
+
+Gnome Dark

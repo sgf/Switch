@@ -13,3 +13,11 @@ macOS
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColoredFormsU.png)
 
 Ubuntu
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColoredFormsG.png)
+
+Gnome
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColoredFormsGD.png)
+
+Gnome

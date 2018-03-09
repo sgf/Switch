@@ -13,3 +13,11 @@ macOS
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TrackBarU.png)
 
 Ubuntu
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/TrackBarG.png)
+
+Gnome
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/TrackBarGD.png)
+
+Gnome Dark

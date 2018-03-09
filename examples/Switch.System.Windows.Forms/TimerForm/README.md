@@ -13,3 +13,11 @@ macOS
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TimerFormU.png)
 
 Ubuntu
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/TimerFormG.png)
+
+Gnome
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/TimerFormGD.png)
+
+Gnome Dark

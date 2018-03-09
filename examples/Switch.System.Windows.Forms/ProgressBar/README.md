@@ -13,3 +13,11 @@ macOS
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ProgressBarU.png)
 
 Ubuntu
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ProgressBarG.png)
+
+Gnome
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ProgressBarGD.png)
+
+Gnome Dark

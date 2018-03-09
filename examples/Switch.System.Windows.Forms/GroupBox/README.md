@@ -13,3 +13,11 @@ macOS
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxU.png)
 
 Ubuntu
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxG.png)
+
+Gnome
+
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxGD.png)
+
+GnomeDark
