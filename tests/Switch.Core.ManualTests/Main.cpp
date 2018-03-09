@@ -18,15 +18,15 @@ namespace Examples {
       // Displays the values of the Array.
       // Console::WriteLine("a = {0}", a);
       //std::cout << a << std::endl;
-      
+
       Console::WriteLine("{");
       Array<int> lengths(a.Rank);
-      for(int rank = 0; rank < a.Rank; rank++)
+      for (int rank = 0; rank < a.Rank; rank++)
         lengths[rank] = a.GetLength(rank);
-      
-      for(int rank = 0; rank < a.Rank; rank++)
+
+      for (int rank = 0; rank < a.Rank; rank++)
         Console::WriteLine("Lower = {0}, upper = {1}", a.GetLowerBound(rank),  a.GetUpperBound(rank));
-      
+
       Console::WriteLine("}");
 
     }
@@ -41,7 +41,7 @@ startup_(Examples::Program);
     {000, 001, 002, 003},
     {010, 011, 012, 013},
     {020, 021, 022, 023}
- 
+
   },
   {
     {100, 101, 102, 103},

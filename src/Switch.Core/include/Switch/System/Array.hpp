@@ -122,7 +122,7 @@ namespace Switch {
       /// The following code example shows how to use operator [] to list the elements of an array.
       /// @include ArrayArrayOperatorFunctor.cpp
       T& operator()(const Array<int32>& indexes);
-      
+
       /// @brief Gets the value at the specified position in the multidimensional Array. The indexes are specified as a 32-bit integer array.
       /// @param indexes A 32-bit integer array that represents the multidimension index of the Array element to get.
       /// @return The value at the specified position in the multidimensional Array.
@@ -272,7 +272,7 @@ namespace Switch {
         }
         return -1;
       }
-      
+
       /// @brief Sets a value to the element at the specified position in the multidimensional Array.
       /// @param value The new value for the specified element.
       /// @param indexes A 32-bit integer array that represents the position of the element to set.
@@ -506,7 +506,7 @@ namespace Switch {
         for (int index = 0; index < value.Rank; index++) {
           if (index != 0) output << ", ";
           output << "{";
-          
+
           output << "}";
         }
         return output << "}";
@@ -992,7 +992,7 @@ namespace Switch {
       /// @exception ArgumentException The current Array does ! have exactly three dimension.
       /// @exception IndexOutOfRangeException index1 or index2 or index3 is outside the range of valid indexes for the current Array.
       void SetValue(const T& value, int32 index1, int32 index2, int32 index3)  { this->operator()(index1, index2, index3) = value; }
-      
+
     private:
       friend class Array<>;
       Array(const Array<int32>& lengths, bool) : GenericArrayObject<T, TAllocator>(lengths) {}
@@ -1323,11 +1323,11 @@ namespace Switch {
         this->upperBound.push_back(length - 1);
       }
     }
-    
+
     template<typename T, typename TAllocator>
     inline T& GenericArrayObject<T, TAllocator>::operator()(const Array<int32>& indexes) {
       int32 position = 0;
-      for(int32 index1 = 0; index1 < indexes.Count; index1++) {
+      for (int32 index1 = 0; index1 < indexes.Count; index1++) {
         if (indexes[index1] >= this->GetLength(index1) || indexes[index1] < 0) throw System::IndexOutOfRangeException(caller_);
         int multiplicand = 1;
         for (int32 index2 = index1 + 1; index2 < indexes.Count; index2++)
@@ -1336,11 +1336,11 @@ namespace Switch {
       }
       return this->array[position];
     }
-    
+
     template<typename T, typename TAllocator>
     inline const T& GenericArrayObject<T, TAllocator>::operator()(const Array<int32>& indexes) const {
       int32 position = 0;
-      for(int32 index1 = 0; index1 < indexes.Count; index1++) {
+      for (int32 index1 = 0; index1 < indexes.Count; index1++) {
         if (indexes[index1] >= this->GetLength(index1) || indexes[index1] < 0) throw System::IndexOutOfRangeException(caller_);
         int multiplicand = 1;
         for (int32 index2 = index1 + 1; index2 < indexes.Count; index2++)
