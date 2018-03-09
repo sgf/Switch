@@ -114,6 +114,24 @@ namespace Switch {
         get_ {return this->GetRank();}
       };
 
+      /// @brief Gets the value at the specified position in the multidimensional Array. The indexes are specified as a 32-bit integer array.
+      /// @param indexes A 32-bit integer array that represents the multidimension index of the Array element to get.
+      /// @return The value at the specified position in the multidimensional Array.
+      /// @exception IndexOutOfRangeException Either each index is outside the range of valid indexes for the corresponding dimension of the current Array.
+      /// @par Examples
+      /// The following code example shows how to use operator [] to list the elements of an array.
+      /// @include ArrayArrayOperatorFunctor.cpp
+      T& operator()(const Array<int32>& indexes);
+      
+      /// @brief Gets the value at the specified position in the multidimensional Array. The indexes are specified as a 32-bit integer array.
+      /// @param indexes A 32-bit integer array that represents the multidimension index of the Array element to get.
+      /// @return The value at the specified position in the multidimensional Array.
+      /// @exception IndexOutOfRangeException Either each index is outside the range of valid indexes for the corresponding dimension of the current Array.
+      /// @par Examples
+      /// The following code example shows how to use operator [] to list the elements of an array.
+      /// @include ArrayArrayOperatorFunctor.cpp
+      const T& operator()(const Array<int32>& indexes) const;
+
       /// @brief Returns an IEnumerator for the Array.
       /// @return IEnumerator An IEnumerator for the Array.
       /// @par Examples
@@ -201,6 +219,12 @@ namespace Switch {
         return this->upperBound[dimension];
       }
 
+      /// @brief Gets the value at the specified position in the multidimensional Array. The indexes are specified as 32-bit integers Array.
+      /// @param indexes A 32-bit integer array that represents the position of the element to get.
+      /// @return The value at the specified position in the multidimensional Array.
+      /// @exception IndexOutOfRangeException Either indexes is outside the range of valid indexes for the corresponding dimension of the current Array.
+      const T& GetValue(int32 index1, int32 index2, int32 index3) const { return this->operator()(index1, index2, index3); }
+
       /// @brief Determines the index of a specific item in the Array.
       /// @param value The object to locate in the Array.
       /// @return int32 The index of value if found in the Array; otherwise, -1.
@@ -248,6 +272,12 @@ namespace Switch {
         }
         return -1;
       }
+      
+      /// @brief Sets a value to the element at the specified position in the multidimensional Array.
+      /// @param value The new value for the specified element.
+      /// @param indexes A 32-bit integer array that represents the position of the element to set.
+      /// @exception IndexOutOfRangeException Either indexes is outside the range of valid indexes for the current Array.
+      void SetValue(const T& value, const Array<int32>& indexes)  { this->operator()(indexes) = value; }
 
       /// @cond
       using const_iterator = typename std::vector<typename std::conditional<std::is_same<bool, T>::value, char, T>::type, TAllocator>::const_iterator;
@@ -473,9 +503,20 @@ namespace Switch {
           return output << "{empty}";
 
         output << "{";
-        for (int index = 0; index < value.Length; index++)
-          output << (index != 0 ? ", " : "") << value(index);
+        for (int index = 0; index < value.Rank; index++) {
+          if (index != 0) output << ", ";
+          output << "{";
+          
+          output << "}";
+        }
         return output << "}";
+
+        /*
+        output << "{";
+        for (int index = 0; index < value.Length; index++)
+          output << (index != 0 ? ", " : "") << value[index];
+        return output << "}";
+         */
       }
       /// @endcond
 
@@ -615,6 +656,7 @@ namespace Switch {
       }
       /// @endcond
 
+      using GenericArrayObject<T, TAllocator>::operator();
       /// @brief Sets a value to the element at the specified position in the one-dimensional Array. The index is specified as a 32-bit integer.
       /// @param value The new value for the specified element.
       /// @param index A 32-bit integer that represents the position of the Array element to set.
@@ -702,6 +744,7 @@ namespace Switch {
 
       bool Equals(const object& obj) const override {return this->GenericArrayObject<T, TAllocator>::Equals(obj);}
 
+      using GenericArrayObject<T, TAllocator>::GetValue;
       /// @brief Gets the value at the specified position in the one-dimensional Array. The index is specified as a 32-bit integer.
       /// @param index A 32-bit integer that represents the position of the Array element to get.
       /// @return The value at the specified position in the one-dimensional Array.
@@ -709,13 +752,13 @@ namespace Switch {
       /// @exception IndexOutOfRangeException index is outside the range of valid indexes for the current Array.
       const T& GetValue(int32 index) const { return this->operator()(index); }
 
+      using GenericArrayObject<T, TAllocator>::SetValue;
       /// @brief Sets a value to the element at the specified position in the one-dimensional Array. The index is specified as a 32-bit integer.
       /// @param value The new value for the specified element.
       /// @param index A 32-bit integer that represents the position of the Array element to set.
       /// @exception ArgumentException The current Array does ! have exactly one dimension.
       /// @exception IndexOutOfRangeException index is outside the range of valid indexes for the current Array.
       void SetValue(const T& value, int32 index) { this->operator()(index) = value; }
-
     private:
       friend class Array<>;
       Array(const Array<int32>& lengths, bool) : GenericArrayObject<T, TAllocator>(lengths) {}
@@ -780,6 +823,7 @@ namespace Switch {
       }
       /// @endcond
 
+      using GenericArrayObject<T, TAllocator>::operator();
       /// @brief Sets the element at in multidimension array the specified index.
       /// @param index The zero-based index of the element to set.
       /// @return T The modified element at the specified index.
@@ -787,12 +831,7 @@ namespace Switch {
       /// @par Examples
       /// The following code example shows how to use operator [] to list the elements of an array.
       /// @include ArrayArrayOperatorFunctor.cpp
-      T& operator()(int32 index1, int32 index2) {
-        if (index2 >= this->GetLength(1) || index2 < 0) throw System::IndexOutOfRangeException(caller_);
-        if (index1 >= this->GetLength(0) || index1 < 0) throw System::IndexOutOfRangeException(caller_);
-
-        return this->array[index2 + (index1 * this->GetLength(1))];
-      }
+      T& operator()(int32 index1, int32 index2) {return this->GenericArrayObject<T, TAllocator>::operator()({index1, index2});}
 
       /// @brief Gets the value at the specified position in the two-dimensional Array. The index is specified as a 32-bit integer.
       /// @param index1 A 32-bit integer that represents the first-dimension index of the Array element to get.
@@ -803,12 +842,7 @@ namespace Switch {
       /// @par Examples
       /// The following code example shows how to use operator [] to list the elements of an array.
       /// @include ArrayArrayOperatorFunctor.cpp
-      const T& operator()(int32 index1, int32 index2) const {
-        if (index2 >= this->GetLength(1) || index2 < 0) throw System::ArgumentOutOfRangeException(caller_);
-        if (index1 >= this->GetLength(0) || index1 < 0) throw System::ArgumentOutOfRangeException(caller_);
-
-        return this->array[index2 + (index1 * this->GetLength(1))];
-      }
+      const T& operator()(int32 index1, int32 index2) const {return this->GenericArrayObject<T, TAllocator>::operator()({index1, index2});}
 
       /// @brief Creates a shallow copy of the Array.
       /// @return object A shallow copy of the Array.
@@ -820,6 +854,7 @@ namespace Switch {
 
       bool Equals(const object& obj) const override {return this->GenericArrayObject<T, TAllocator>::Equals(obj);}
 
+      using GenericArrayObject<T, TAllocator>::GetValue;
       /// @brief Gets the value at the specified position in the two-dimensional Array. The indexes are specified as 32-bit integers.
       /// @param index1 A 32-bit integer that represents the first-dimension index of the Array element to get.
       /// @param index2 A 32-bit integer that represents the second-dimension index of the Array element to get.
@@ -828,6 +863,7 @@ namespace Switch {
       /// @exception IndexOutOfRangeException Either index1 or index2 is outside the range of valid indexes for the corresponding dimension of the current Array.
       const T& GetValue(int32 index1, int32 index2) const { return this->operator()(index1, index2); }
 
+      using GenericArrayObject<T, TAllocator>::SetValue;
       /// @brief Sets a value to the element at the specified position in the two-dimensional Array.
       /// @param value The new value for the specified element.
       /// @param index1 A 32-bit integer that represents the position of the first dimension Array element to set.
@@ -905,6 +941,7 @@ namespace Switch {
       }
       /// @endcond
 
+      using GenericArrayObject<T, TAllocator>::operator();
       /// @brief Sets the element at in multidimension array the specified index.
       /// @param index The zero-based index of the element to set.
       /// @return T The modified element at the specified index.
@@ -912,13 +949,7 @@ namespace Switch {
       /// @par Examples
       /// The following code example shows how to use operator [] to list the elements of an array.
       /// @include ArrayArrayOperatorFunctor.cpp
-      T& operator()(int32 index1, int32 index2, int32 index3) {
-        if (index3 >= this->GetLength(2) || index3 < 0) throw System::IndexOutOfRangeException(caller_);
-        if (index2 >= this->GetLength(1) || index2 < 0) throw System::IndexOutOfRangeException(caller_);
-        if (index1 >= this->GetLength(0) || index1 < 0) throw System::IndexOutOfRangeException(caller_);
-
-        return this->array[index3 + (index2 * this->GetLength(2)) + (index1 * this->GetLength(2) * this->GetLength(1))];
-      }
+      T& operator()(int32 index1, int32 index2, int32 index3) {return this->GenericArrayObject<T, TAllocator>::operator()({index1, index2, index3});}
 
       /// @brief Gets the value at the specified position in the three-dimensional Array. The index is specified as a 32-bit integer.
       /// @param index1 A 32-bit integer that represents the first-dimension index of the Array element to get.
@@ -930,13 +961,7 @@ namespace Switch {
       /// @par Examples
       /// The following code example shows how to use operator [] to list the elements of an array.
       /// @include ArrayArrayOperatorFunctor.cpp
-      const T& operator()(int32 index1, int32 index2, int32 index3) const {
-        if (index3 >= this->GetLength(2) || index3 < 0) throw System::IndexOutOfRangeException(caller_);
-        if (index2 >= this->GetLength(1) || index2 < 0) throw System::IndexOutOfRangeException(caller_);
-        if (index1 >= this->GetLength(0) || index1 < 0) throw System::IndexOutOfRangeException(caller_);
-
-        return this->array[index3 + (index2 * this->GetLength(2)) + (index1 * this->GetLength(2) * this->GetLength(1))];
-      }
+      const T& operator()(int32 index1, int32 index2, int32 index3) const {return this->GenericArrayObject<T, TAllocator>::operator()({index1, index2, index3});}
 
       /// @brief Creates a shallow copy of the Array.
       /// @return object A shallow copy of the Array.
@@ -948,6 +973,7 @@ namespace Switch {
 
       bool Equals(const object& obj) const override {return this->GenericArrayObject<T, TAllocator>::Equals(obj);}
 
+      using GenericArrayObject<T, TAllocator>::GetValue;
       /// @brief Gets the value at the specified position in the three-dimensional Array. The indexes are specified as 32-bit integers.
       /// @param index1 A 32-bit integer that represents the first-dimension index of the Array element to get.
       /// @param index2 A 32-bit integer that represents the second-dimension index of the Array element to get.
@@ -957,6 +983,7 @@ namespace Switch {
       /// @exception IndexOutOfRangeException Either index1 or index2 or index3 is outside the range of valid indexes for the corresponding dimension of the current Array.
       const T& GetValue(int32 index1, int32 index2, int32 index3) const { return this->operator()(index1, index2, index3); }
 
+      using GenericArrayObject<T, TAllocator>::SetValue;
       /// @brief Sets a value to the element at the specified position in the three-dimensional Array.
       /// @param value The new value for the specified element.
       /// @param index1 A 32-bit integer that represents the position of the first dimension Array element to set.
@@ -965,7 +992,7 @@ namespace Switch {
       /// @exception ArgumentException The current Array does ! have exactly three dimension.
       /// @exception IndexOutOfRangeException index1 or index2 or index3 is outside the range of valid indexes for the current Array.
       void SetValue(const T& value, int32 index1, int32 index2, int32 index3)  { this->operator()(index1, index2, index3) = value; }
-
+      
     private:
       friend class Array<>;
       Array(const Array<int32>& lengths, bool) : GenericArrayObject<T, TAllocator>(lengths) {}
@@ -1180,6 +1207,9 @@ namespace Switch {
       /// @remarks Unlike most classes, Array provides the CreateInstance method, instead of public constructors, to allow for late bound access.
       /// @remarks Pointer-type elements are initialized to null. Value-type elements are initialized to zero.
       /// @remarks This method is an O(n) operation, where n is length.
+      /// @param EXamples
+      /// The following code example shows how to create and initialize a one-dimensional Array.
+      /// @include ArrayCreateInstance1.cpp
       template<typename T, typename TAllocator = Allocator<T>>
       static Array<T, 1, TAllocator> CreateInstance(int32 length) {return Array<T, 1, TAllocator>(length);}
 
@@ -1193,6 +1223,9 @@ namespace Switch {
       /// @remarks Unlike most classes, Array provides the CreateInstance method, instead of public constructors, to allow for late bound access.
       /// @remarks Pointer-type elements are initialized to null. Value-type elements are initialized to zero.
       /// @remarks This method is an O(n) operation, where n is length.
+      /// @param EXamples
+      /// The following code example shows how to create and initialize a two-dimensional Array.
+      /// @include ArrayCreateInstance2.cpp
       template<typename T, typename TAllocator = Allocator<T>>
       static Array<T, 2, TAllocator> CreateInstance(int32 length1, int32 length2) {return Array<T, 2, TAllocator>(length1, length2);}
 
@@ -1207,6 +1240,9 @@ namespace Switch {
       /// @remarks Unlike most classes, Array provides the CreateInstance method, instead of public constructors, to allow for late bound access.
       /// @remarks Pointer-type elements are initialized to null. Value-type elements are initialized to zero.
       /// @remarks This method is an O(n) operation, where n is length.
+      /// @param EXamples
+      /// The following code example shows how to create and initialize a three-dimensional Array.
+      /// @include ArrayCreateInstance3.cpp
       template<typename T, typename TAllocator = Allocator<T>>
       static Array<T, 3, TAllocator> CreateInstance(int32 length1, int32 length2, int32 length3) {return Array<T, 3, TAllocator>(length1, length2, length3);}
 
@@ -1277,6 +1313,7 @@ namespace Switch {
       static void Reverse(Array<T, 1, TAllocator>& array, int32 index, int32 count) {array.Reverse(index, count);}
     };
 
+    /// @cond
     template<typename T, typename TAllocator>
     inline GenericArrayObject<T, TAllocator>::GenericArrayObject(const Array<int32, 1>& lengths) {
       this->length = lengths.Agregate(delegate_(const int32 & accumulator, const int32 & value) {return accumulator * value;});
@@ -1286,6 +1323,33 @@ namespace Switch {
         this->upperBound.push_back(length - 1);
       }
     }
+    
+    template<typename T, typename TAllocator>
+    inline T& GenericArrayObject<T, TAllocator>::operator()(const Array<int32>& indexes) {
+      int32 position = 0;
+      for(int32 index1 = 0; index1 < indexes.Count; index1++) {
+        if (indexes[index1] >= this->GetLength(index1) || indexes[index1] < 0) throw System::IndexOutOfRangeException(caller_);
+        int multiplicand = 1;
+        for (int32 index2 = index1 + 1; index2 < indexes.Count; index2++)
+          multiplicand *= this->GetLength(index2);
+        position += indexes[index1] * multiplicand;
+      }
+      return this->array[position];
+    }
+    
+    template<typename T, typename TAllocator>
+    inline const T& GenericArrayObject<T, TAllocator>::operator()(const Array<int32>& indexes) const {
+      int32 position = 0;
+      for(int32 index1 = 0; index1 < indexes.Count; index1++) {
+        if (indexes[index1] >= this->GetLength(index1) || indexes[index1] < 0) throw System::IndexOutOfRangeException(caller_);
+        int multiplicand = 1;
+        for (int32 index2 = index1 + 1; index2 < indexes.Count; index2++)
+          multiplicand *= this->GetLength(index2);
+        position += indexes[index1] * multiplicand;
+      }
+      return this->array[position];
+    }
+    /// @endcond
   }
 }
 

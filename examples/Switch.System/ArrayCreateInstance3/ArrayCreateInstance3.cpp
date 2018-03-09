@@ -8,13 +8,15 @@ namespace Examples {
     // The main entry point for the application.
     static void Main() {
       // Creates and initializes a one-dimensional Array of type Int32.
-      auto my1DArray = Array<>::CreateInstance<int32>(5);
-      for (int i = my1DArray.GetLowerBound(0); i <= my1DArray.GetUpperBound(0); i++)
-        my1DArray.SetValue(i + 1, i);
+      auto my3DArray = Array<>::CreateInstance<string>(2, 3, 4);
+      for (int i = my3DArray.GetLowerBound(0); i <= my3DArray.GetUpperBound(0); i++)
+        for (int j = my3DArray.GetLowerBound(1); j <= my3DArray.GetUpperBound(1); j++)
+          for (int k = my3DArray.GetLowerBound(2); k <= my3DArray.GetUpperBound(2); k++)
+            my3DArray.SetValue("abc"_s + i + j + k, i, j, k);
 
       // Displays the values of the Array.
-      Console::WriteLine("The one-dimensional Array contains the following values:");
-      PrintValues(my1DArray);
+      Console::WriteLine("The three-dimensional Array contains the following values:");
+      PrintValues(my3DArray);
     }
 
   private:
@@ -41,5 +43,11 @@ startup_(Examples::Program);
 
 // This code produces the following output:
 //
-// The one-dimensional Array contains the following values:
-//     1  2  3  4  5
+// The three-dimensional Array contains the following values:
+//     abc000  abc001  abc002  abc003
+//     abc010  abc011  abc012  abc013
+//     abc020  abc021  abc022  abc023
+//     abc100  abc101  abc102  abc103
+//     abc110  abc111  abc112  abc113
+//     abc120  abc121  abc122  abc123
+

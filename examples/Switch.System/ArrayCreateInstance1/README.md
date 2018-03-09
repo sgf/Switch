@@ -1,9 +1,8 @@
-# ArrayCopyTo
-This code example shows how to copy an Array to another native Array.
+# ArrayCreateInstnce1
+This code example shows how to create and initialize a one-dimensional Array.
 
 ## Output
 ```
-The target Array contains the following (before and after copying):
-The quick brown fox jumps over the lazy dog
-The quick brown fox jumps over three napping cats in the barn
+The one-dimensional Array contains the following values:
+    1  2  3  4  5
 ```

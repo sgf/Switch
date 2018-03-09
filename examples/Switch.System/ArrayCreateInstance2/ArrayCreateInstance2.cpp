@@ -8,13 +8,14 @@ namespace Examples {
     // The main entry point for the application.
     static void Main() {
       // Creates and initializes a one-dimensional Array of type Int32.
-      auto my1DArray = Array<>::CreateInstance<int32>(5);
-      for (int i = my1DArray.GetLowerBound(0); i <= my1DArray.GetUpperBound(0); i++)
-        my1DArray.SetValue(i + 1, i);
+      auto my2DArray = Array<>::CreateInstance<string>(2, 3);
+      for (int i = my2DArray.GetLowerBound(0); i <= my2DArray.GetUpperBound(0); i++)
+        for (int j = my2DArray.GetLowerBound(1); j <= my2DArray.GetUpperBound(1); j++)
+          my2DArray.SetValue("abc"_s + i + j, i, j);
 
       // Displays the values of the Array.
-      Console::WriteLine("The one-dimensional Array contains the following values:");
-      PrintValues(my1DArray);
+      Console::WriteLine("The two-dimensional Array contains the following values:");
+      PrintValues(my2DArray);
     }
 
   private:
@@ -41,5 +42,7 @@ startup_(Examples::Program);
 
 // This code produces the following output:
 //
-// The one-dimensional Array contains the following values:
-//     1  2  3  4  5
+// The two-dimensional Array contains the following values:
+//     abc00  abc01  abc02
+//     abc10  abc11  abc12
+
