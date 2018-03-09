@@ -15,7 +15,7 @@ namespace Examples {
       size.Height -= 100;
       Console::WriteLine("size = {0}", size);
 
-      size = Size(300, 300) + Point(200, 100);
+      size = Size(300, 300) + Size(200, 100);
       Console::WriteLine("size = {0}", size);
     }
   };

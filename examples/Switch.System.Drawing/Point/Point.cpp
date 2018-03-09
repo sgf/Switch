@@ -15,7 +15,7 @@ namespace Examples {
       location.Y -= 15;
       Console::WriteLine("location = {0}", location);
 
-      location = Point(10, 10) + Point(20, 50);
+      location = Point(10, 10) + Size(20, 50);
       Console::WriteLine("location = {0}", location);
 
       location.Offset({70, 140});
