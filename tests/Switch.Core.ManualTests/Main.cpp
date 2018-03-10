@@ -28,10 +28,9 @@ namespace Examples {
       Console::WriteLine("Length = {0}", a.Length);
 
       Array<int32> indexes(a.Rank);
-      for (int32 index = 0; index < a.Length; index++) {
+      for (int32 index = 0; index < a.Length; index++)
         Console::Write(".");
-      }
-      
+
       Console::WriteLine();
 
       for (int k = 0; k < a.GetLength(2); k++) {

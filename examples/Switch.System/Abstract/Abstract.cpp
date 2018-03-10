@@ -6,7 +6,7 @@ namespace TestReader {
   class TextReader abstract_ {
   public:
     virtual int ReadByte() = 0;
-    
+
     string ReadLine() {
       string line;
       for (int b = ReadByte(); b != -1 && b != '\n'; b = ReadByte())
@@ -25,22 +25,22 @@ namespace TestReader {
   class StringReader : public TextReader {
   public:
     StringReader(const string& value) : enumerator(value.GetEnumerator()) {}
-    
+
     int ReadByte() override {
       if (this->enumerator.MoveNext() == false)
         return -1;
       return as<int>(this->enumerator.Current());
     }
-    
+
   private:
     System::Collections::Generic::Enumerator<char32> enumerator;
   };
-  
+
   class Program {
   public:
     static void Main() {
       string text = "Line 1\nLine 2\nLine 3";
-      
+
       StringReader sr(text);
       Console::WriteLine(sr.ReadLine());
     }
