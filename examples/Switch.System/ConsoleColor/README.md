@@ -3,6 +3,7 @@
 This example show how to use Console::BackgroundColor and Console::ForegroundColor properties.
 
 ## Output
+
 ```
 ===============================================================================
 
