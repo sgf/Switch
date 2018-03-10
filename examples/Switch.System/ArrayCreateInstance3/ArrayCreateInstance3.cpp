@@ -7,7 +7,7 @@ namespace Examples {
   public:
     // The main entry point for the application.
     static void Main() {
-      // Creates and initializes a one-dimensional Array of type Int32.
+      // Creates and initializes a three-dimensional Array of type string.
       auto my3DArray = Array<>::CreateInstance<string>(2, 3, 4);
       for (int i = my3DArray.GetLowerBound(0); i <= my3DArray.GetUpperBound(0); i++)
         for (int j = my3DArray.GetLowerBound(1); j <= my3DArray.GetUpperBound(1); j++)
