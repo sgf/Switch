@@ -1,7 +1,9 @@
 # ArrayArrayOperatorFunctor
+
 This code example shows how to use operator () to list the elements of an array.
 
 ## Output
+
 ```
 The Array contains the following values:
 (0, 0) The

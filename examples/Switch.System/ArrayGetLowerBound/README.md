@@ -1,7 +1,9 @@
 # ArrayGetLowerBound
+
 This code example uses GetLowerBound and GetUpperBound to initialize a one-dimensional array and a multidimensional array.
 
 ## Output
+
 ```
 One-dimensional Array:
 Rank	Lower	Upper

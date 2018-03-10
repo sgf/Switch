@@ -1,7 +1,9 @@
 # As
+
 This code example shows how to use as operator.
 
 ## Output
+
 ```
 d = 41.6, Convert::ToInt32(d) = 42, as<int>(d) = 42
 i = 42, Convert::ToString(i) = 42, as<string>(i) = 42

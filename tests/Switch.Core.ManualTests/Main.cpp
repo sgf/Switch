@@ -24,11 +24,23 @@ namespace Examples {
       for (int rank = 0; rank < a.Rank; rank++)
         lengths[rank] = a.GetLength(rank);
 
-      for (int rank = 0; rank < a.Rank; rank++)
-        Console::WriteLine("Lower = {0}, upper = {1}", a.GetLowerBound(rank),  a.GetUpperBound(rank));
+      Console::WriteLine("Rank = {0}", a.Rank);
+      Console::WriteLine("Length = {0}", a.Length);
 
-      Console::WriteLine("}");
+      Array<int32> indexes(a.Rank);
+      for (int32 index = 0; index < a.Length; index++) {
+        Console::Write(".");
+      }
+      
+      Console::WriteLine();
 
+      for (int k = 0; k < a.GetLength(2); k++) {
+        indexes[2] = k;
+        if (k != 0) Console::Write(", ");
+        Console::Write(a(indexes));
+      }
+
+      Console::WriteLine("{0}}}", Environment::NewLine);
     }
   };
 }

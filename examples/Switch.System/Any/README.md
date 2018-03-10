@@ -1,7 +1,9 @@
 # Any
+
 This example show how to use Any.
 
 ## Output
+
 ```
 a hasn't value
 a =

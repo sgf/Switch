@@ -1,7 +1,9 @@
 # ArrayCreateInstnceN
+
 This code example shows how to create and initialize a multidimensional Array.
 
 ## Output
+
 ```
 The four-dimensional Array contains the following values:
     abc000  abc001  abc002  abc003

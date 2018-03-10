@@ -1,7 +1,9 @@
 # ArrayConstructor
+
 This code example demonstrates different methods to create an array.
 
 ## Output
+
 ```
 The Array contains the following values:
 [0] 10

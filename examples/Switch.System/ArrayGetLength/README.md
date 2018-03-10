@@ -1,7 +1,9 @@
 # ArrayGetLength
+
 This code example demonstrates methods to get the length of an array.
 
 ## Output
+
 ```
 Lengths of single dimension array
     Total length of the array = 5

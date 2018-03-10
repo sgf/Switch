@@ -1,7 +1,9 @@
 # ArrayIndexOf
+
 This code example shows how to determine the index of the first occurrence of a specified element.
 
 ## Output
+
 ```
 The Array contains the following values:
     [0]:   the

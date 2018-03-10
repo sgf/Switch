@@ -1,7 +1,9 @@
 # ArrayAsReadOnly
+
 This code example wraps an array in a read-only ReadOnlyCollection<T>.
 
 ## Output
+
 ```
 The string array initially contains the following values:
    0 : The

@@ -1,7 +1,9 @@
 # Array2
+
 This code example creates and initializes an Array and displays its properties and its elements.
 
 ## Output
+
 ```
 The Array has 3 dimension(s) and a total of 24 elements.
         Length	 Lower	 Upper
