@@ -78,7 +78,7 @@ namespace Switch {
             get_{return this->startPosition;},
             set_{this->startPosition = value;}
           };
-          
+
           void CenterToScreen();
 
           void Close() override;

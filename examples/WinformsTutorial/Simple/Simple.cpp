@@ -9,7 +9,7 @@ public:
     this->Size = System::Drawing::Size(250, 200);
     this->CenterToScreen();
   }
-  
+
   static void Main() {
     Application::Run(Simple());
   }
