@@ -1,5 +1,6 @@
 #include "../../../../../include/Switch/System/Windows/Forms/Application.hpp"
 #include "../../../../../include/Switch/System/Windows/Forms/Form.hpp"
+#include "../../../../../include/Switch/System/Windows/Forms/Screen.hpp"
 #include "../../../../Native/Api.hpp"
 
 #include <Switch/System/EventArgs.hpp>
@@ -9,6 +10,13 @@ using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
+
+void Form::CenterToScreen() {
+  if (!this->IsHandleCreated)
+    this->StartPosition = FormStartPosition::CenterScreen;
+  else
+    this->Bounds = System::Drawing::Rectangle((Screen::AllScreens()[0].WorkingArea().Width + Screen::AllScreens()[0].WorkingArea().X - this->Width) / 2, (Screen::AllScreens()[0].WorkingArea().Height + Screen::AllScreens()[0].WorkingArea().Y - this->Height) / 2, this->Width, this->Height);
+}
 
 void Form::Close() {
   FormClosingEventArgs e;
