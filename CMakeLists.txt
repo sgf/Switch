@@ -182,7 +182,7 @@ install(EXPORT Switch DESTINATION cmake)
 install(FILES scripts/cmake/SwitchConfig.cmake scripts/cmake/SwitchDependencies.cmake 
   DESTINATION cmake)
 install(FILES resource/default.icns resource/default.ico resource/default.png 
-  resource/default.rc DESTINATION resource)
+  resource/default.rc DESTINATION resource/Switch)
 
 #_______________________________________________________________________________
 #                                                          include CMake modules
