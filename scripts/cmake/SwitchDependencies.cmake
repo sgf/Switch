@@ -38,7 +38,7 @@ endmacro()
 #_______________________________________________________________________________
 #                                               set default SWITCH_RESOURCE_FILE
 if(MSVC)
-  if (EXISTS ${CMAKE_INSTALL_PREFIX}/resource/Switch/default.ico AND EXISTS ${CMAKE_INSTALL_PREFIX}/resource/Switch/default.rc)
+  if (EXISTS ${CMAKE_INSTALL_PREFIX}/resource/Switch/default.rc)
     configure_file(${CMAKE_INSTALL_PREFIX}/resource/Switch/default.rc ${CMAKE_CURRENT_BINARY_DIR}/application.rc COPYONLY)
     set(SWITCH_RESOURCE_FILE ${CMAKE_CURRENT_BINARY_DIR}/application.rc)
   endif()
