@@ -29,28 +29,35 @@ macro(SetSwitchApplicationIcon PATH_APPLICATION_ICON)
     file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/application.rc "IDI_ICON1 ICON DISCARDABLE \"${PATH_APPLICATION_ICON}.ico\"\n")
   elseif (APPLE)
     configure_file(${PATH_APPLICATION_ICON}.icns ${CMAKE_CURRENT_BINARY_DIR}/application.icns COPYONLY)
+    set(MACOSX_BUNDLE_ICON_FILE application.icns)
     set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/application.icns PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
   elseif (UNIX)
   endif()
 endmacro()
 
 #_______________________________________________________________________________
-#                                                                 set SWITCH_GUI
-
+#                                               set default SWITCH_RESOURCE_FILE
 if(MSVC)
-  if (EXISTS ${CMAKE_INSTALL_PREFIX}/resource/Switch.icns AND EXISTS ${CMAKE_INSTALL_PREFIX}/resource/Switch.ico AND EXISTS ${CMAKE_INSTALL_PREFIX}/resource/Switch.rc)
-    configure_file(${CMAKE_INSTALL_PREFIX}/resource/Switch.rc ${CMAKE_CURRENT_BINARY_DIR}/application.rc COPYONLY)
-    configure_file(${CMAKE_INSTALL_PREFIX}/resource/Switch.ico ${CMAKE_CURRENT_BINARY_DIR}/application.ico COPYONLY)
+  if (EXISTS ${CMAKE_INSTALL_PREFIX}/resource/default.ico AND EXISTS ${CMAKE_INSTALL_PREFIX}/resource/default.rc)
+    configure_file(${CMAKE_INSTALL_PREFIX}/resource/default.ico ${CMAKE_CURRENT_BINARY_DIR}/application.ico COPYONLY)
+    configure_file(${CMAKE_INSTALL_PREFIX}/resource/default.rc ${CMAKE_CURRENT_BINARY_DIR}/application.rc COPYONLY)
     set(SWITCH_RESOURCE_FILE ${CMAKE_CURRENT_BINARY_DIR}/application.rc)
   endif()
-  set(SWITCH_GUI WIN32 ${SWITCH_RESOURCE_FILE})
 elseif (APPLE)
-  if (EXISTS ${CMAKE_INSTALL_PREFIX}/resource/Switch.icns)
-    configure_file(${CMAKE_INSTALL_PREFIX}/resource/Switch.icns ${CMAKE_CURRENT_BINARY_DIR}/application.icns COPYONLY)
+  if (EXISTS ${CMAKE_INSTALL_PREFIX}/resource/default.icns)
+    configure_file(${CMAKE_INSTALL_PREFIX}/resource/default.icns ${CMAKE_CURRENT_BINARY_DIR}/application.icns COPYONLY)
     set(MACOSX_BUNDLE_ICON_FILE application.icns)
     set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/application.icns PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
     set(SWITCH_RESOURCE_FILE ${CMAKE_CURRENT_BINARY_DIR}/application.icns)
   endif()
+elseif(UNIX)
+endif ()
+
+#_______________________________________________________________________________
+#                                                                 set SWITCH_GUI
+if(MSVC)
+  set(SWITCH_GUI WIN32 ${SWITCH_RESOURCE_FILE})
+elseif (APPLE)
   set(SWITCH_GUI MACOSX_BUNDLE ${SWITCH_RESOURCE_FILE})
 elseif(UNIX)
   set(SWITCH_GUI ${SWITCH_RESOURCE_FILE})
