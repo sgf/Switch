@@ -5,6 +5,7 @@ namespace Program {
   public:
     Form1() {
       this->Text = "Form1";
+      this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
     }
 
     static void Main() {
