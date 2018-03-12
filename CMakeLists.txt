@@ -181,6 +181,8 @@ endif()
 install(EXPORT Switch DESTINATION cmake)
 install(FILES scripts/cmake/SwitchConfig.cmake scripts/cmake/SwitchDependencies.cmake 
   DESTINATION cmake)
+install(FILES resource/Switch.icns resource/Switch.ico resource/Switch.rc
+  DESTINATION resource)
 
 #_______________________________________________________________________________
 #                                                          include CMake modules

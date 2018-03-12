@@ -2,17 +2,18 @@
 
 using namespace System::Windows::Forms;
 
-class Simple : public Form {
+class MainForm : public Form {
 public:
-  Simple() {
-    this->Text = "Simple";
+  MainForm() {
+    this->Text = "Icon";
     this->Size = System::Drawing::Size(250, 200);
+    //this->Icon = System::Drawing::Icon("Switch.ico");
     this->StartPosition = FormStartPosition::CenterScreen;
   }
 
   static void Main() {
-    Application::Run(Simple());
+    Application::Run(MainForm());
   }
 };
 
-startup_(Simple);
+startup_(MainForm);

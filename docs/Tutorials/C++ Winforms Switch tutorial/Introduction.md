@@ -60,7 +60,7 @@ public:
   Simple() {
      this->Text = "Simple";
      this->Size = System::Drawing::Size(250, 200);
-     this->CenterToScreen();
+     this->StartPosition = FormStartösition::CenterScreen;
   }
 
   static void Main() {
