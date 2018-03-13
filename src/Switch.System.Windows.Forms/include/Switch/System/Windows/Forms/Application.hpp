@@ -55,6 +55,10 @@ namespace Switch {
           template <typename TForm>
           static void Run(const TForm& mainForm) {as<System::Windows::Forms::Form>(mainForm).ShowDialog();}
 
+          static void SetCompatibleTextRenderingDefault(bool rendering) {
+
+          }
+
           /// @brief Occurs when the application finishes processing and is about to enter the idle state.
           static EventHandler Idle;
 

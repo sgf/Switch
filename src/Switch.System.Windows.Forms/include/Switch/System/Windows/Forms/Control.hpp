@@ -1221,6 +1221,8 @@ namespace Switch {
           /// @remarks Calling the Invalidate method does not force a synchronous paint; to force a synchronous paint, call the Update method after calling the Invalidate method. When this method is called with no parameters, the entire client area is added to the update region.
           void Invalidate(const System::Drawing::Rectangle& rect, bool invalidateChildren);
 
+          void PerformLayout() {}
+
           /// @brief Computes the location of the specified screen point into client coordinates.
           /// @param point The screen coordinate Point to convert.
           /// @return System::Drawing::Point A Point that represents the converted Point, p, in client coordinates.
@@ -1376,9 +1378,45 @@ namespace Switch {
             this->Update();
           }
 
+          /// @brief Resumes usual layout logic, optionally forcing an immediate layout of pending layout requests.
+          /// @param performLayout true to execute pending layout requests; otherwise, false.
+          /// @remarks Calling the ResumeLayout method forces an immediate layout if there are any pending layout requests. When the performLayout parameter is set to true, an immediate layout occurs if there are any pending layout requests.
+          /// @remarks The SuspendLayout and ResumeLayout methods are used in tandem to suppress multiple Layout events while you adjust multiple attributes of the control. For example, you would typically call the SuspendLayout method, then set the Size, Location, Anchor, or Dock properties of the control, and then call the ResumeLayout method to enable the changes to take effect.
+          /// @remarks There must be no pending calls to SuspendLayout for ResumeLayout to be successfully called.
+          /// @note When adding several controls to a parent control, it is recommended that you call the SuspendLayout method before initializing the controls to be added. After adding the controls to the parent control, call the ResumeLayout method. This will increase the performance of applications with many controls.
+          void ResumeLayout() {}
+
+          /// @brief Resumes usual layout logic.
+          /// @remarks Calling the ResumeLayout method forces an immediate layout if there are any pending layout requests.
+          /// @remarks The SuspendLayout and ResumeLayout methods are used in tandem to suppress multiple Layout events while you adjust multiple attributes of the control. For example, you would typically call the SuspendLayout method, then set the Size, Location, Anchor, or Dock properties of the control, and then call the ResumeLayout method to enable the changes to take effect.
+          /// @remarks There must be no pending calls to SuspendLayout for ResumeLayout to be successfully called.
+          /// @par Examples
+          /// The following code example adds two buttons to a form. The example transactions the addition of the buttons by using the SuspendLayout and ResumeLayout methods.
+          /// @code
+          /// void AddButtons() {
+          ///   // Suspend the form layout and add two buttons.
+          ///   this->SuspendLayout();
+          ///   buttonOK.Location = Point(10, 10);
+          ///   buttonOK.Size = System::Drawing::Size(75, 25);
+          ///   buttonOK.Text = "OK";
+          ///
+          ///   buttonCancel.Location = Point(90, 10);
+          ///   buttonCancel.Size = System::Drawing::Size(75, 25);
+          ///   buttonCancel.Text = "Cancel";
+          ///
+          ///   this->Controls().AddRange({buttonOK, buttonCancel});
+          ///   this->ResumeLayout();
+          /// }
+          /// @endcode
+          void ResumeLayout(bool performLayout) {
+            this->ResumeLayout();
+            if (performLayout)
+              this->SuspendLayout();
+          }
+
           /// @brief Displays the control to the user.
           /// @remarks Showing the control is equivalent to setting the Visible property to true. After the Show method is called, the Visible property returns a value of true until the Hide method is called.
-          /// @par examples
+          /// @par Examples
           /// The following code example displays an about dialog box and temporarily draws a blue square on its surface. This example requires that you have defined a class that derives from Form named AboutDialog.
           /// @code
           /// void menuItemHelpAbout_Click(const object& sender, const EventArgs& e) {
@@ -1404,6 +1442,33 @@ namespace Switch {
           void SetBounds(int32 x, int32 y, int32 width, int32 height) {
             this->Location = System::Drawing::Point(x, y);
             this->Size = System::Drawing::Size(width, height);
+          }
+
+          /// @brief Temporarily suspends the layout logic for the control.
+          /// @remarks The layout logic of the control is suspended until the ResumeLayout method is called.
+          /// @remarks The SuspendLayout and ResumeLayout methods are used in tandem to suppress multiple Layout events while you adjust multiple attributes of the control. For example, you would typically call the SuspendLayout method, then set the Size, Location, Anchor, or Dock properties of the control, and then call the ResumeLayout method to enable the changes to take effect.
+          /// @remarks There must be no pending calls to SuspendLayout for ResumeLayout to be successfully called.
+          /// @note When adding several controls to a parent control, it is recommended that you call the SuspendLayout method before initializing the controls to be added. After adding the controls to the parent control, call the ResumeLayout method. This will increase the performance of applications with many controls.
+          /// @par Examples
+          /// The following code example adds two buttons to a form. The example transactions the addition of the buttons by using the SuspendLayout and ResumeLayout methods.
+          /// @code
+          /// void AddButtons() {
+          ///   // Suspend the form layout and add two buttons.
+          ///   this->SuspendLayout();
+          ///   buttonOK.Location = Point(10, 10);
+          ///   buttonOK.Size = System::Drawing::Size(75, 25);
+          ///   buttonOK.Text = "OK";
+          ///
+          ///   buttonCancel.Location = Point(90, 10);
+          ///   buttonCancel.Size = System::Drawing::Size(75, 25);
+          ///   buttonCancel.Text = "Cancel";
+          ///
+          ///   this->Controls().AddRange({buttonOK, buttonCancel});
+          ///   this->ResumeLayout();
+          /// }
+          /// @endcode
+          void SuspendLayout() {
+
           }
 
           /// @brief Causes the control to redraw the invalidated regions within its client area.
@@ -1471,7 +1536,7 @@ namespace Switch {
           /// | ListBox, CheckedListBox, ComboBox                                                                                   | Click            | Click, DoubleClick      | none              | none               | none               | none                      | none                 | none                        | none                 | none                        |
           /// | TextBox, DomainUpDown, NumericUpDown                                                                                | Click            | Click, DoubleClick      | none              | none               | none               | none                      | none                 | none                        | none                 | none                        |
           /// | * TreeView, * ListView                                                                                              | Click            | Click, DoubleClick      | Click             | Click, DoubleClick | none               | none                      | none                 | none                        | none                 | none                        |
-          /// | ProgressBar, TrackBar                                                                                               | Click            | Click, Click            | Click             | Click, Click       | Click              | Click, Click            | Click                  | Click, Click                | Click                | Click, Click                |
+          /// | ProgressBar, TrackBar                                                                                               | Click            | Click, Click            | Click             | Click, Click       | Click              | Click, Click              | Click                | Click, Click                | Click                | Click, Click                |
           /// | Form, DataGrid, Label, LinkLabel, Panel, GroupBox, PictureBox, Splitter, StatusBar, ToolBar, TabPage, ** TabControl | Click            | Click, DoubleClick      | Click             | Click, DoubleClick | Click              | Click, DoubleClick        | Click                | Click, DoubleClick          | Click                | Click, DoubleClick          |
           ///
           /// * The mouse pointer must be over a child object (TreeNode or ListViewItem).
@@ -1501,10 +1566,82 @@ namespace Switch {
           /// @endcode
           EventHandler Click;
 
+          /// @brief Occurs when the value of the ClientSize property changes.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the ClientSizeChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.
+          ///
+          /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the ClientSizeChanged event.
+          /// @code
+          /// void Control1_ClientSizeChanged(const Object& sender, const EventArgs& e) {
+          ///   MessageBox::Show("You are in the Control.ClientSizeChanged event.");
+          /// }
+          /// @endcode
           EventHandler ClientSizeChanged;
 
+          /// @brief Occurs when the control is double-clicked.
+          /// @remarks A double-click is determined by the mouse settings of the user's operating system. The user can set the time between clicks of a mouse button that should be considered a double-click rather than two clicks. The Click event is raised every time a control is double-clicked. For example, if you have event handlers for the Click and DoubleClick events of a Form, the Click and DoubleClick events are raised when the form is double-clicked and both methods are called. If a control is double-clicked and that control does not support the DoubleClick event, the Click event might be raised twice.
+          /// @remarks You must set the StandardDoubleClick and StandardClick values of ControlStyles to true for this event to be raised. These values might already be set to true if you are inheriting from existing Windows Forms controls.
+          /// @note The following events are not raised for the TabControl class unless there is at least one TabPage in the TabControl.TabPages collection: Click, DoubleClick, MouseDown, MouseUp, MouseHover, MouseEnter, MouseLeave and MouseMove. If there is at least one TabPage in the collection, and the user interacts with the tab control's header (where the TabPage names appear), the TabControl raises the appropriate event. However, if the user interaction is within the client area of the tab page, the TabPage raises the appropriate event.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Notes to Inheritors:
+          /// Inheriting from a standard Windows Forms control and changing the StandardClick or StandardDoubleClick values of ControlStyles to true can cause unexpected behavior or have no effect at all if the control does not support the Click or DoubleClick events.
+          ///
+          /// The following table lists Windows Forms controls and which event (Click or DoubleClick) is raised in response to the mouse action specified.
+          /// | Control                                                                                                             | Left Mouse Click | Left Mouse Double Click | Right Mouse Click | Right Mouse Click  | Middle Mouse Click | Middle Mouse Double Click | XButton1 Mouse Click | XButton1 Mouse Double-Click | XButton2 Mouse Click | XButton2 Mouse Double-Click |
+          /// |---------------------------------------------------------------------------------------------------------------------|------------------|-------------------------|-------------------|--------------------|--------------------|---------------------------|----------------------|-----------------------------|----------------------|-----------------------------|
+          /// | MonthCalendar, DateTimePicker, HScrollBar, VScrollBar                                                               | none             | none                    | none              | none               | none               | none                      | none                 | none                        | none                 | none                        |
+          /// | Button, CheckBox, RichTextBox, RadioButton                                                                          | Click            | Click, Click            | none              | none               | none               | none                      | none                 | none                        | none                 | none                        |
+          /// | ListBox, CheckedListBox, ComboBox                                                                                   | Click            | Click, DoubleClick      | none              | none               | none               | none                      | none                 | none                        | none                 | none                        |
+          /// | TextBox, DomainUpDown, NumericUpDown                                                                                | Click            | Click, DoubleClick      | none              | none               | none               | none                      | none                 | none                        | none                 | none                        |
+          /// | * TreeView, * ListView                                                                                              | Click            | Click, DoubleClick      | Click             | Click, DoubleClick | none               | none                      | none                 | none                        | none                 | none                        |
+          /// | ProgressBar, TrackBar                                                                                               | Click            | Click, Click            | Click             | Click, Click       | Click              | Click, Click              | Click                | Click, Click                | Click                | Click, Click                |
+          /// | Form, DataGrid, Label, LinkLabel, Panel, GroupBox, PictureBox, Splitter, StatusBar, ToolBar, TabPage, ** TabControl | Click            | Click, DoubleClick      | Click             | Click, DoubleClick | Click              | Click, DoubleClick        | Click                | Click, DoubleClick          | Click                | Click, DoubleClick          |
+          ///
+          /// * The mouse pointer must be over a child object (TreeNode or ListViewItem).
+          ///
+          /// ** The TabControl must have at least one TabPage in its TabPages collection.
+          ///
+          /// @par examples
+          /// The following code example uses the DoubleClick event of a ListBox to load text files listed in the ListBox into a TextBox control.
+          /// @code
+          /// // This example uses the DoubleClick event of a ListBox to load text files
+          /// // listed in the ListBox into a TextBox control. This example
+          /// // assumes that the ListBox, named listBox1, contains a list of valid file
+          /// // names with path and that this event handler method
+          /// // is connected to the DoublClick event of a ListBox control named listBox1.
+          /// // This example requires code access permission to access files.
+          /// void listBox1_DoubleClick(const object& sender, const System::EventArgs& e) {
+          ///   // Get the name of the file to open from the ListBox.
+          ///   String file = listBox1.SelectedItem().ToString();
+          ///
+          ///   try {
+          ///     // Determine if the file exists before loading.
+          ///     if (System::IO::File::Exists(file)) {
+          ///       // Open the file and use a TextReader to read the contents into the TextBox.
+          ///       System::IO::FileInfo myFile(listBox1.SelectedItem().ToString());
+          ///       System::IO::TextReader myData = myFile.OpenText();;
+          ///
+          ///       textBox1.Text = myData.ReadToEnd();
+          ///       myData.Close();
+          ///     }
+          ///   } catch(System::IO::FileNotFoundException) {
+          ///   // Exception is thrown by the OpenText method of the FileInfo class.
+          ///     MessageBox::Show("The file you specified does not exist.");
+          ///   } catch(System::IO::IOException) {
+          ///   // Exception is thrown by the ReadToEnd method of the TextReader class.
+          ///     MessageBox::Show("There was a problem loading the file into the TextBox. Ensure that the file is a valid text file.");
+          ///   }
+          /// }
+          /// @endcode
           EventHandler DoubleClick;
 
+          /// @brief Occurs when the Enabled property value has changed.
+          /// @remarks This event is raised if the Enabled property is changed by either a programmatic modification or user interaction.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example uses two RadioButton controls to demonstrate the EnabledChanged event. Clicking one button changes the value of the Enabled property of the other button to false and displays a MessageBox.
+          /// @include EnableChangedEvent.cpp
           EventHandler EnabledChanged;
 
           EventHandler ForeColorChanged;
