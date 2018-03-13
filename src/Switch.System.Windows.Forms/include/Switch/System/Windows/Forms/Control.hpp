@@ -322,7 +322,27 @@ namespace Switch {
             get_{ return System::Drawing::Rectangle({0, 0}, this->clientSize); }
           };
 
-          property_<System::Drawing::Size> ClientSize{
+          /// @brief Gets or sets the height and width of the client area of the control.
+          /// @return A Size that represents the dimensions of the client area of the control.
+          /// @remarks The client area of a control is the bounds of the control, minus the nonclient elements such as scroll bars, borders, title bars, and menus. The SetClientSizeCore method is called to set the ClientSizeproperty. The ClientSize property is not always changed through its set method so you should override the SetClientSizeCore method to ensure that your code is executed when the ClientSize property is set.
+          /// @remarks The Size.Width and Size.Height properties represent the width and height of the client area of the control. You can use this property to obtain the size of the client area of the control for tasks such as drawing on the surface of the control.
+          /// @remarks For more information about drawing on controls, see Rendering a Windows Forms Control.
+          /// @note You cannot bind application settings to this property. For more information on application settings, see Application Settings Overview.
+          /// @par Example
+          /// The following code example resizes the specified control so the control will accommodate its formatted text. The formatted text is the Text property with the control's assigned Font applied to the text. The AutoSizeControl method in this example also has a textPadding parameter that represents the padding to apply to all edges of the control. To make the padding appear equal, align the text with the ContentAlignment.MiddleCenter value, if your control supports it.
+          /// @code
+          /// void AutoSizeControl(Control& control, int textPadding) {
+          ///   // Create a Graphics object for the Control.
+          ///   Graphics g = control.CreateGraphics();
+          ///
+          ///   // Get the Size needed to accommodate the formatted Text.
+          ///   Size preferredSize = g.MeasureString(control.Text, control.Font).ToSize();
+          ///
+          ///   // Pad the text and resize the control.
+          ///   control.ClientSize = Size(preferredSize.Width + (textPadding * 2), preferredSize.Height+(textPadding * 2));
+          /// }
+          /// @endcode
+          property_<System::Drawing::Size> ClientSize {
             get_{ return this->clientSize; },
             set_{
               if (this->clientSize != value) {
@@ -338,18 +358,115 @@ namespace Switch {
           /// @remarks You can manipulate the controls in the Control.ControlCollection assigned to the Controls property by using the methods available in the Control.ControlCollection class.
           /// @remarks When adding several controls to a parent control, it is recommended that you call the SuspendLayout method before initializing the controls to be added. After adding the controls to the parent control, call the ResumeLayout method. Doing so will increase the performance of applications with many controls.
           /// @remarks Use the Controls property to iterate through all controls of a form, including nested controls. Use the GetNextControl method to retrieve the previous or next child control in the tab order. Use the ActiveControl property to get or set the active control of a container control.
+          /// @par Example
+          /// The following code example removes a Control from the Control.ControlCollection of the derived class Panel if it is a member of the collection. The example requires that you have created a Panel, a Button, and at least one RadioButton control on a Form. The RadioButton control(s) are added to the Panel control, and the Panel control added to the Form. When the button is clicked, the radio button named removeButton is removed from the Control.ControlCollection.
+          /// @code
+          /// // Remove the RadioButton control if it exists.
+          /// void removeButton_Click(const object& sender, const System::EventArgs& e) {
+          ///   if(panel1.Controls().Contains(removeButton)) {
+          ///     panel1.Controls().Remove(removeButton);
+          ///   }
+          /// }
+          /// @endcode
           property_<ControlCollection&, readonly_> Controls {
             get_->ControlCollection& {return this->controls; }
           };
 
+          /// @brief Gets the default background color of the control.
+          /// @return System::Drawing::Color The default background Color of the control. The default is SystemColors.Control.
+          /// @remarks This is the default BackColor property value of a generic top-level control. Derived classes can have different defaults.
+          /// @par Example
+          /// The following code example demonstrates how to use the DefaultBackColor, DefaultFont, and DefaultForeColor members. To run the example, paste the following code in a form containing a ListBox called ListBox1. Call the Populate_ListBox method in the form's constructor or Load event-handling method.
+          /// @code
+          /// // The following method displays the default font,
+          /// // background color and foreground color values for the ListBox
+          /// // control. The values are displayed in the ListBox, itself.
+          ///
+          /// void Populate_ListBox() {
+          ///   listBox1.Dock = DockStyle::Bottom;
+          ///
+          ///   // Display the values in the read-only properties
+          ///   // DefaultBackColor, DefaultFont, DefaultForecolor.
+          ///   listBox1.Items().Add("Default BackColor: "_s + listBox.DefaultBackColor().ToString());
+          ///   listBox1.Items().Add("Default Font: "_s + listBox.DefaultFont().ToString());
+          ///   listBox1.Items().Add("Default ForeColor:"_s + listBox.DefaultForeColor().ToString());
+          /// }
+          /// @endcode
           static property_<System::Drawing::Color, readonly_> DefaultBackColor;
 
+          /// @brief Gets the default foreground color of the control.
+          /// @return System::Drawing::Color The default foreground Color of the control. The default is SystemColors.ControlText.
+          /// @remarks This is the default ForeColor property value of a nonparented control. Derived classes can have different defaults.
+          /// @par Example
+          /// The following code example demonstrates how to use the DefaultBackColor, DefaultFont, and DefaultForeColor members. To run the example, paste the following code in a form containing a ListBox called ListBox1. Call the Populate_ListBox method in the form's constructor or Load event-handling method.
+          /// @code
+          /// // The following method displays the default font,
+          /// // background color and foreground color values for the ListBox
+          /// // control. The values are displayed in the ListBox, itself.
+          ///
+          /// void Populate_ListBox() {
+          ///   listBox1.Dock = DockStyle::Bottom;
+          ///
+          ///   // Display the values in the read-only properties
+          ///   // DefaultBackColor, DefaultFont, DefaultForecolor.
+          ///   listBox1.Items().Add("Default BackColor: "_s + listBox.DefaultBackColor().ToString());
+          ///   listBox1.Items().Add("Default Font: "_s + listBox.DefaultFont().ToString());
+          ///   listBox1.Items().Add("Default ForeColor:"_s + listBox.DefaultForeColor().ToString());
+          /// }
+          /// @endcode
           static property_<System::Drawing::Color, readonly_> DefaultForeColor;
 
+          /// @brief Gets a value indicating whether the control contains one or more child controls.
+          /// @return bool true if the control contains one or more child controls; otherwise, false.
+          /// @remarks If the Controls collection has a Count greater than zero, the HasChildren property will return true. Accessing the HasChildren property does not force the creation of a Control.ControlCollection if the control has no children, so referencing this property can provide a performance benefit when walking a tree of controls.
+          /// @par Example
+          /// The following code example sets the BackColor and ForeColor of the controls to the default system colors. The code recursively calls itself if the control has any child controls. This code example requires that you have a Form with at least one child control; however, a child container control, like a Panel or GroupBox, with its own child control(s) would better demonstrate the recursion.
+          /// @code
+          /// // Reset all the controls to the user's default Control color.
+          /// void ResetAllControlsBackColor(ref<Control> control) {
+          ///   control.BackColor = SystemColors::Control;
+          ///   control.ForeColor = SystemColors::ControlText;
+          ///   if(control.HasChildren) {
+          ///     // Recursively call this method for each child control.
+          ///     for(ref<Control> childControl : control.Controls()) {
+          ///       ResetAllControlsBackColor(childControl);
+          ///     }
+          ///   }
+          /// }
+          /// @endcode
           property_<bool, readonly_> HasChildren {
             get_ {return this->Controls().Count != 0;}
           };
 
+          /// @brief Gets or sets a value indicating whether the control can respond to user interaction.
+          /// @return bool true if the control can respond to user interaction; otherwise, false. The default is true.
+          /// @remarks With the Enabled property, you can enable or disable controls at run time. For example, you can disable controls that do not apply to the current state of the application. You can also disable a control to restrict its use. For example, a button can be disabled to prevent the user from clicking it. If a control is disabled, it cannot be selected.
+          /// @par Important
+          /// Setting the Enabled property to false does not disable the application's control box or prevent the application window from receiving the focus.
+          /// @remarks When a container control has its enabled property set to false, all its contained controls are disabled, as well. For example, if the user clicks on any of the controls contained in a disabled GroupBox control, no events are raised.
+          /// @note When a scrollable control is disabled, the scroll bars are also disabled. For example, a disabled multiline textbox is unable to scroll to display all the lines of text.
+          /// @par Example
+          /// The following code example creates a GroupBox and sets some of its common properties. The example creates a TextBox and sets its Location within the group box. Next, it sets the Text property of the group box, and docks the group box to the top of the form. Lastly, it disables the group box by setting the Enabled property to false, which causes all controls contained within the group box to be disabled.
+          /// @code
+          /// // Add a GroupBox to a form and set some of its common properties.
+          /// void AddMyGroupBox() {
+          ///   // Create a GroupBox and add a TextBox to it.
+          ///   GroupBox groupBox1;
+          ///   TextBox textBox1;
+          ///   textBox1.Location = Point(15, 15);
+          ///   groupBox1.Controls().Add(textBox1);
+          ///
+          ///   // Set the Text and Dock properties of the GroupBox.
+          ///   groupBox1.Text = "MyGroupBox";
+          ///   groupBox1.Dock = DockStyle::Top;
+          ///
+          ///   // Disable the GroupBox (which disables all its child controls)
+          ///   groupBox1.Enabled = false;
+          ///
+          ///   // Add the Groupbox to the form.
+          ///   this.Controls().Add(groupBox1);
+          /// }
+          /// @endcode
           property_<bool> Enabled{
             get_ {return this->enabled; },
             set_ {
@@ -360,6 +477,26 @@ namespace Switch {
             }
           };
 
+          /// @brief Gets or sets the foreground color of the control.
+          /// @return System::Drawing::Color The foreground Color of the control. The default is the value of the DefaultForeColor property.
+          /// @remarks The ForeColor property is an ambient property. An ambient property is a control property that, if not set, is retrieved from the parent control. For example, a Button will have the same BackColor as its parent Form by default. For more information about ambient properties, see the AmbientProperties class or the Control class overview.
+          /// @par Notes to Inheritors
+          /// When overriding the ForeColor property in a derived class, use the base class's ForeColor property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both theget and setaccessors of the ForeColor property; you can override only one if needed.
+          /// @par Example
+          /// The following code example sets the BackColor and ForeColor of the controls to the default system colors. The code recursively calls itself if the control has any child controls. This code example requires that you have a Form with at least one child control; however, a child container control, like a Panel or GroupBox, with its own child control(s) would better demonstrate the recursion.
+          /// @code
+          /// // Reset all the controls to the user's default Control color.
+          /// void ResetAllControlsBackColor(ref<Control> control) {
+          ///   control.BackColor = SystemColors::Control;
+          ///   control.ForeColor = SystemColors::ControlText;
+          ///   if(control.HasChildren) {
+          ///     // Recursively call this method for each child control.
+          ///     for(ref<Control> childControl : control.Controls()) {
+          ///       ResetAllControlsBackColor(childControl);
+          ///     }
+          ///   }
+          /// }
+          /// @endcode
           property_<System::Drawing::Color> ForeColor {
             get_{ return (!this->foreColor.HasValue && this->parent != null) ? this->parent().ForeColor : this->foreColor.GetValueOrDefault(DefaultForeColor); },
             set_ {
@@ -374,6 +511,45 @@ namespace Switch {
           /// @return int32 The height of the control in pixels.
           /// @remarks Changes made to the Height and Top property values cause the Bottom property value of the control to change.
           /// @note The minimum height for the derived control Splitter is one pixel. The default height for the Splitter control is three pixels. Setting the height of the Splitter control to a value less than one will reset the property value to the default height.
+          /// @par Example
+          /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
+          /// @code
+          /// // Create three buttons and place them on a form using
+          /// // several size and location related properties.
+          /// void AddOKCancelButtons() {
+          ///   // Set the button size and location using
+          ///   // the Size and Location properties.
+          ///   Button buttonOK;
+          ///   buttonOK.Location = Point(136,248);
+          ///   buttonOK.Size = System::Drawing::Size(75,25);
+          ///   // Set the Text property and make the
+          ///   // button the form's default button.
+          ///   buttonOK.Text = "&OK";
+          ///   this.AcceptButton = buttonOK;
+          ///
+          ///   // Set the button size and location using the Top,
+          ///   // Left, Width, and Height properties.
+          ///   Button buttonCancel;
+          ///   buttonCancel.Top = buttonOK.Top;
+          ///   buttonCancel.Left = buttonOK.Right + 5;
+          ///   buttonCancel.Width = buttonOK.Width;
+          ///   buttonCancel.Height = buttonOK.Height;
+          ///   // Set the Text property and make the
+          ///   // button the form's cancel button.
+          ///   buttonCancel.Text = "&Cancel";
+          ///   this.CancelButton = buttonCancel;
+          ///
+          ///   // Set the button size and location using
+          ///   // the Bounds property.
+          ///   Button buttonHelp;
+          ///   buttonHelp.Bounds = Rectangle(10,10, 75, 25);
+          ///   // Set the Text property of the button.
+          ///   buttonHelp.Text = "&Help";
+          ///
+          ///   // Add the buttons to the form.
+          ///   this->Controls().AddRange({buttonOK, buttonCancel, buttonHelp});
+          /// }
+          /// @endcode
           property_<int32> Height {
             get_ { return this->size.Height(); },
             set_ { this->Size(System::Drawing::Size(this->size.Width(), value)); }
@@ -528,35 +704,65 @@ namespace Switch {
           virtual void WndProc(Message& message);
 
           EventHandler BackColorChanged;
+
           EventHandler Click;
+
           EventHandler ClientSizeChanged;
+
           EventHandler DoubleClick;
+
           EventHandler EnabledChanged;
+
           EventHandler ForeColorChanged;
+
           EventHandler HandleCreated;
+
           EventHandler HandleDestroyed;
+
           InvalidateEventHandler Invalidated;
+
           KeyEventHandler KeyDown;
+
           KeyPressEventHandler KeyPress;
+
           KeyEventHandler KeyUp;
+
           EventHandler LocationChanged;
+
           EventHandler LostFocus;
+
           EventHandler MouseCaptureChanged;
+
           MouseEventHandler MouseClick;
+
           MouseEventHandler MouseDoubleClick;
+
           MouseEventHandler MouseDown;
+
           EventHandler MouseEnter;
+
           EventHandler MouseHover;
+
           EventHandler MouseLeave;
+
           MouseEventHandler MouseMove;
+
           MouseEventHandler MouseUp;
+
           MouseEventHandler MouseWheel;
+
           EventHandler NameChanged;
+
           PaintEventHandler Paint;
+
           EventHandler ParentChanged;
+
           EventHandler SizeChanged;
+
           EventHandler TabStopChanged;
+
           EventHandler TextChanged;
+
           EventHandler VisibleChanged;
 
         protected:
