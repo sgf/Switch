@@ -555,10 +555,56 @@ namespace Switch {
             set_ { this->Size(System::Drawing::Size(this->size.Width(), value)); }
           };
 
+          /// @brief Gets a value indicating whether the control has a handle associated with it.
+          /// @return bool true if a handle has been assigned to the control; otherwise, false.
+          /// @remarks Use the IsHandleCreated property to determine whether CreateHandle has been called.
           property_<bool, readonly_> IsHandleCreated {
             get_ { return this->handle != 0; }
           };
 
+          /// @brief Gets or sets the distance, in pixels, between the left edge of the control and the left edge of its container's client area.
+          /// @return int32 An Int32 representing the distance, in pixels, between the left edge of the control and the left edge of its container's client area.
+          /// @remarks The Left property value is equivalent to the Point.X property of the Location property value of the control.
+          /// @remarks Changes made to the Width and Left property values cause the Right property value of the control to change.
+          /// @par Example
+          /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
+          /// @code
+          /// // Create three buttons and place them on a form using
+          /// // several size and location related properties.
+          /// void AddOKCancelButtons() {
+          ///   // Set the button size and location using
+          ///   // the Size and Location properties.
+          ///   Button buttonOK;
+          ///   buttonOK.Location = Point(136,248);
+          ///   buttonOK.Size = System::Drawing::Size(75,25);
+          ///   // Set the Text property and make the
+          ///   // button the form's default button.
+          ///   buttonOK.Text = "&OK";
+          ///   this.AcceptButton = buttonOK;
+          ///
+          ///   // Set the button size and location using the Top,
+          ///   // Left, Width, and Height properties.
+          ///   Button buttonCancel;
+          ///   buttonCancel.Top = buttonOK.Top;
+          ///   buttonCancel.Left = buttonOK.Right + 5;
+          ///   buttonCancel.Width = buttonOK.Width;
+          ///   buttonCancel.Height = buttonOK.Height;
+          ///   // Set the Text property and make the
+          ///   // button the form's cancel button.
+          ///   buttonCancel.Text = "&Cancel";
+          ///   this.CancelButton = buttonCancel;
+          ///
+          ///   // Set the button size and location using
+          ///   // the Bounds property.
+          ///   Button buttonHelp;
+          ///   buttonHelp.Bounds = Rectangle(10,10, 75, 25);
+          ///   // Set the Text property of the button.
+          ///   buttonHelp.Text = "&Help";
+          ///
+          ///   // Add the buttons to the form.
+          ///   this->Controls().AddRange({buttonOK, buttonCancel, buttonHelp});
+          /// }
+          /// @endcode
           property_<int32> Left {
             get_{ return this->location.X(); },
             set_{ this->Location(System::Drawing::Point(value, this->location.Y())); }
@@ -568,6 +614,28 @@ namespace Switch {
           /// @return System::Drawing::Point The Point that represents the upper-left corner of the control relative to the upper-left corner of its container.
           /// @remarks Because the Point class is returned by value, meaning accessing the property returns a copy of the upper-left point of the control. So, adjusting the X or Y properties of the Point returned from this property will not affect the Left, Right, Top, or Bottom property values of the control. To adjust these properties set each property value individually, or set the Location property with a new Point.
           /// @remarks If the Control is a Form, the Location property value represents the upper-left corner of the Form in screen coordinates.
+          /// @par Example
+          /// The following code example creates a GroupBox and sets some of its common properties. The example creates a TextBox and sets its Location within the group box. Next, it sets the Text property of the group box, and docks the group box to the top of the form. Lastly, it disables the group box by setting the Enabled property to false, which causes all controls contained within the group box to be disabled.
+          /// @code
+          /// // Add a GroupBox to a form and set some of its common properties.
+          /// void AddMyGroupBox() {
+          ///   // Create a GroupBox and add a TextBox to it.
+          ///   GroupBox groupBox1;
+          ///   TextBox textBox1;
+          ///   textBox1.Location = Point(15, 15);
+          ///   groupBox1.Controls().Add(textBox1);
+          ///
+          ///   // Set the Text and Dock properties of the GroupBox.
+          ///   groupBox1.Text = "MyGroupBox";
+          ///   groupBox1.Dock = DockStyle::Top;
+          ///
+          ///   // Disable the GroupBox (which disables all its child controls)
+          ///   groupBox1.Enabled = false;
+          ///
+          ///   // Add the Groupbox to the form.
+          ///   this.Controls().Add(groupBox1);
+          /// }
+          /// @endcode
           property_<System::Drawing::Point> Location {
             get_ { return this->location; },
             set_ {
@@ -581,6 +649,56 @@ namespace Switch {
           /// @brief Gets or sets the name of the control.
           /// @return string The name of the control. The default is an empty string ("").
           /// @remarks The Name property can be used at run time to evaluate the object by name rather than type and programmatic name.
+          /// @par Example
+          /// The following code example displays the Name of a control in a MessageBox when the control is added or removed from a form (Form1).
+          /// @code
+          /// // This example demonstrates the use of the ControlAdded and
+          /// // ControlRemoved events. This example assumes that two Button controls
+          /// // are added to the form and connected to the addControl_Click and
+          /// // removeControl_Click event-handler methods.
+          /// void Form1_Load(const object& sender, const System.EventArgs& e) {
+          ///   // Connect the ControlRemoved and ControlAdded event handlers
+          ///   // to the event-handler methods.
+          ///   // ControlRemoved and ControlAdded are not available at design time.
+          ///   this->ControlRemoved += {*this, &Form1::Control_Removed};
+          ///   this.ControlAdded += {*this, &Form1::Control_Added};
+          /// }
+          ///
+          /// void Control_Added(const object& sender, const System::Windows::Forms::ControlEventArgs& e) {
+          ///   MessageBox::Show("The control named " + e.Control.Name + " has been added to the form.");
+          /// }
+          ///
+          /// void Control_Removed(object sender, System.Windows.Forms.ControlEventArgs e) {
+          ///   MessageBox.Show("The control named " + e.Control.Name + " has been removed from the form.");
+          /// }
+          ///
+          /// // Click event handler for a Button control. Adds a TextBox to the form.
+          /// void addControl_Click(const object& sender, const System::EventArgs& e) {
+          ///   // Create a new TextBox control and add it to the form.
+          ///   textBox1 = new_<TextBox>();
+          ///   textBox1->Size = System::Drawing::Size(100,10);
+          ///   textBox1->Location = Point(10,10);
+          ///   // Name the control in order to remove it later. The name must be specified
+          ///   // if a control is added at run time.
+          ///   textBox1->Name = "textBox1";
+          ///
+          ///   // Add the control to the form's control collection.
+          ///   this.Controls.Add(*textBox1);
+          /// }
+          ///
+          /// // Click event handler for a Button control.
+          /// // Removes the previously added TextBox from the form.
+          /// void removeControl_Click(const object& sender, const System::EventArgs& e) {
+          ///   // Loop through all controls in the form's control collection.
+          ///   for (ref<Control> tempCtrl : this->Controls()) {
+          ///     // Determine whether the control is textBox1,
+          ///     // and if it is, remove it.
+          ///     if (tempCtrl().Name == "textBox1") {
+          ///       this.Controls().Remove(tempCtrl);
+          ///     }
+          ///   }
+          /// }
+          /// @endcode
           property_<string> Name {
             get_ { return this->name; },
             set_ {
@@ -594,11 +712,75 @@ namespace Switch {
           /// @brief Gets or sets the parent container of the control.
           /// @return Control A Control that represents the parent or container control of the control.
           /// @remarks Setting the Parent property value to null removes the control from the Control.ControlCollection of its current parent control.
+          /// @par Example
+          /// The following code example uses the Parent property and the FindForm method to set properties on the parent control of a button and its form.
+          /// @code
+          /// // This example uses the Parent property and the Find method of Control to set
+          /// // properties on the parent control of a Button and its Form. The example assumes
+          /// // that a Button control named button1 is located within a GroupBox control. The
+          /// // example also assumes that the Click event of the Button control is connected to
+          /// // the event handler method defined in the example.
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   // Get the control the Button control is located in. In this case a GroupBox.
+          ///   ref<Control> control = button1.Parent;
+          ///   // Set the text and backcolor of the parent control.
+          ///   control.Text = "My Groupbox";
+          ///   control.BackColor = Color::Blue;
+          ///   // Get the form that the Button control is contained within.
+          ///   ref<Form> myForm = button1.FindForm();
+          ///   // Set the text and color of the form containing the Button.
+          ///   myForm.Text = "The Form of My Control";
+          ///   myForm.BackColor = Color::Red;
+          /// }
+          /// @endcode
           property_<ref<Control>> Parent {
             get_ {return this->parent;},
             set_ {this->SetParent(value);}
           };
 
+          /// @brief Gets the distance, in pixels, between the right edge of the control and the left edge of its container's client area.
+          /// @return int32 An Int32 representing the distance, in pixels, between the right edge of the control and the left edge of its container's client area.
+          /// @remarks The value of the Right property is equal to the sum of the Left property value and the Width property value.
+          /// @remarks The Right property is read-only. You can change this property value indirectly by changing the value of the Left or Width properties or calling the SetBounds, SetBoundsCore, UpdateBounds, or SetClientSizeCore methods.
+          /// @par Example
+          /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
+          /// @code
+          /// // Create three buttons and place them on a form using
+          /// // several size and location related properties.
+          /// void AddOKCancelButtons() {
+          ///   // Set the button size and location using
+          ///   // the Size and Location properties.
+          ///   Button buttonOK;
+          ///   buttonOK.Location = Point(136,248);
+          ///   buttonOK.Size = System::Drawing::Size(75,25);
+          ///   // Set the Text property and make the
+          ///   // button the form's default button.
+          ///   buttonOK.Text = "&OK";
+          ///   this.AcceptButton = buttonOK;
+          ///
+          ///   // Set the button size and location using the Top,
+          ///   // Left, Width, and Height properties.
+          ///   Button buttonCancel;
+          ///   buttonCancel.Top = buttonOK.Top;
+          ///   buttonCancel.Left = buttonOK.Right + 5;
+          ///   buttonCancel.Width = buttonOK.Width;
+          ///   buttonCancel.Height = buttonOK.Height;
+          ///   // Set the Text property and make the
+          ///   // button the form's cancel button.
+          ///   buttonCancel.Text = "&Cancel";
+          ///   this.CancelButton = buttonCancel;
+          ///
+          ///   // Set the button size and location using
+          ///   // the Bounds property.
+          ///   Button buttonHelp;
+          ///   buttonHelp.Bounds = Rectangle(10,10, 75, 25);
+          ///   // Set the Text property of the button.
+          ///   buttonHelp.Text = "&Help";
+          ///
+          ///   // Add the buttons to the form.
+          ///   this->Controls().AddRange({buttonOK, buttonCancel, buttonHelp});
+          /// }
+          /// @endcode
           property_<int32, readonly_> Right{
             get_{ return this->location.X() + this->size.Width(); }
           };
@@ -607,6 +789,34 @@ namespace Switch {
           /// @return System::Drawing::Size The Size that represents the height and width of the control in pixels.
           /// @remarks Because the Size class is returned by value, meaning accessing the property returns a copy of the size of the control. So, adjusting the Width or Height properties of the Size returned from this property will not affect the Width or Height of the control. To adjust the Width or Height of the control, you must set the control's Width or Height property, or set the Size property with a new Size.
           /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
+          /// @par Example
+          /// The following code example adds a Button to a form and sets some of its common properties. The example anchors the button to the bottom-right corner of the form so it keeps its relative position as the form is resized. Next it sets the BackgroundImage and resizes the button to the same size as theImage. The example then sets the TabStop to true and sets the TabIndex property. Lastly, it adds an event handler to handle the Click event of the button. This example requires that you have an ImageList named imageList1.
+          /// @code
+          /// // Add a button to a form and set some of its common properties.
+          /// void AddMyButton() {
+          ///   // Anchor the button to the bottom right corner of the form
+          ///   button1.Anchor = AnchorStyles::Bottom | AnchorStyles::Right;
+          ///
+          ///   // Assign a background image.
+          ///   button1.BackgroundImage = imageList1.Images()[0];
+          ///
+          ///   // Specify the layout style of the background image. Tile is the default.
+          ///   button1.BackgroundImageLayout = ImageLayout::Center;
+          ///
+          ///   // Make the button the same size as the image.
+          ///   button1.Size = button1::BackgroundImage().Size;
+          ///
+          ///   // Set the button's TabIndex and TabStop properties.
+          ///   button1.TabIndex = 1;
+          ///   button1.TabStop = true;
+          ///
+          ///   // Add a delegate to handle the Click event.
+          ///   button1.Click += {*this, &Form1::button1_Click);
+          ///
+          ///   // Add the button to the form.
+          ///   this->Controls().Add(button1);
+          /// }
+          /// @endcode
           property_<System::Drawing::Size> Size {
             get_ { return this->size; },
             set_ {
@@ -617,6 +827,38 @@ namespace Switch {
             }
           };
 
+          /// @brief Gets or sets a value indicating whether the user can give the focus to this control using the TAB key.
+          /// @return bool true if the user can give the focus to the control using the TAB key; otherwise, false. The default is true.
+          /// @note This property will always return true for an instance of the Form class.
+          /// @remarks When the user presses the TAB key, the input focus is set to the next control in the tab order. Controls with the TabStop property value of false are not included in the collection of controls in the tab order. The tab order can be manipulated by setting the control's TabIndex property value.
+          /// @par Example
+          /// The following code example adds a Button to a form and sets some of its common properties. The example anchors the button to the bottom-right corner of the form so it keeps its relative position as the form is resized. Next it sets the BackgroundImage and resizes the button to the same size as theImage. The example then sets the TabStop to true and sets the TabIndex property. Lastly, it adds an event handler to handle the Click event of the button. This example requires that you have an ImageList named imageList1.
+          /// @code
+          /// // Add a button to a form and set some of its common properties.
+          /// void AddMyButton() {
+          ///   // Anchor the button to the bottom right corner of the form
+          ///   button1.Anchor = AnchorStyles::Bottom | AnchorStyles::Right;
+          ///
+          ///   // Assign a background image.
+          ///   button1.BackgroundImage = imageList1.Images()[0];
+          ///
+          ///   // Specify the layout style of the background image. Tile is the default.
+          ///   button1.BackgroundImageLayout = ImageLayout::Center;
+          ///
+          ///   // Make the button the same size as the image.
+          ///   button1.Size = button1::BackgroundImage().Size;
+          ///
+          ///   // Set the button's TabIndex and TabStop properties.
+          ///   button1.TabIndex = 1;
+          ///   button1.TabStop = true;
+          ///
+          ///   // Add a delegate to handle the Click event.
+          ///   button1.Click += {*this, &Form1::button1_Click);
+          ///
+          ///   // Add the button to the form.
+          ///   this->Controls().Add(button1);
+          /// }
+          /// @endcode
           property_<bool> TabStop {
             get_ {return this->tabStop;},
             set_ {
@@ -630,7 +872,30 @@ namespace Switch {
           /// @brief Gets or sets the text associated with this control.
           /// @return string The text associated with this control.
           /// @remarks The Text property of the control is used differently by each derived class. For example the Text property of a Form is displayed in the title bar at the top of the form, is fairly small in character count, and usually displays the application or document name. However, the Text property of a RichTextBox can be large and can include numerous nonvisual characters used to format the text. For example, the text displayed in a RichTextBox can be formatted by adjusting the Font properties, or by the addition of spaces or tab characters to align the text.
-          /// @note When overriding the Text property in a derived class, use the base class's Text property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setaccessors of the Text property; you can override only one if needed.
+          /// @par Notes to Inheritors
+          /// When overriding the Text property in a derived class, use the base class's Text property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setaccessors of the Text property; you can override only one if needed.
+          /// @par Example
+          /// The following code example creates a GroupBox and sets some of its common properties. The example creates a TextBox and sets its Location within the group box. Next, it sets the Text property of the group box, and docks the group box to the top of the form. Lastly, it disables the group box by setting the Enabled property to false, which causes all controls contained within the group box to be disabled.
+          /// @code
+          /// // Add a GroupBox to a form and set some of its common properties.
+          /// void AddMyGroupBox() {
+          ///   // Create a GroupBox and add a TextBox to it.
+          ///   GroupBox groupBox1;
+          ///   TextBox textBox1;
+          ///   textBox1.Location = Point(15, 15);
+          ///   groupBox1.Controls().Add(textBox1);
+          ///
+          ///   // Set the Text and Dock properties of the GroupBox.
+          ///   groupBox1.Text = "MyGroupBox";
+          ///   groupBox1.Dock = DockStyle::Top;
+          ///
+          ///   // Disable the GroupBox (which disables all its child controls)
+          ///   groupBox1.Enabled = false;
+          ///
+          ///   // Add the Groupbox to the form.
+          ///   this.Controls().Add(groupBox1);
+          /// }
+          /// @endcode
           property_<const string&> Text {
             get_->const string& { return this->text; },
             set_ {
@@ -641,11 +906,76 @@ namespace Switch {
             }
           };
 
+          /// @brief Gets or sets the distance, in pixels, between the top edge of the control and the top edge of its container's client area.
+          /// @return int32 An Int32 representing the distance, in pixels, between the bottom edge of the control and the top edge of its container's client area.
+          /// @remarks The Top property value is equivalent to the Point.Y property of the Location property value of the control.
+          /// @remarks Changes made to the Height and Top property values cause the Bottom property value of the control to change.
+          /// @par Example
+          /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
+          /// @code
+          /// // Create three buttons and place them on a form using
+          /// // several size and location related properties.
+          /// void AddOKCancelButtons() {
+          ///   // Set the button size and location using
+          ///   // the Size and Location properties.
+          ///   Button buttonOK;
+          ///   buttonOK.Location = Point(136,248);
+          ///   buttonOK.Size = System::Drawing::Size(75,25);
+          ///   // Set the Text property and make the
+          ///   // button the form's default button.
+          ///   buttonOK.Text = "&OK";
+          ///   this.AcceptButton = buttonOK;
+          ///
+          ///   // Set the button size and location using the Top,
+          ///   // Left, Width, and Height properties.
+          ///   Button buttonCancel;
+          ///   buttonCancel.Top = buttonOK.Top;
+          ///   buttonCancel.Left = buttonOK.Right + 5;
+          ///   buttonCancel.Width = buttonOK.Width;
+          ///   buttonCancel.Height = buttonOK.Height;
+          ///   // Set the Text property and make the
+          ///   // button the form's cancel button.
+          ///   buttonCancel.Text = "&Cancel";
+          ///   this.CancelButton = buttonCancel;
+          ///
+          ///   // Set the button size and location using
+          ///   // the Bounds property.
+          ///   Button buttonHelp;
+          ///   buttonHelp.Bounds = Rectangle(10,10, 75, 25);
+          ///   // Set the Text property of the button.
+          ///   buttonHelp.Text = "&Help";
+          ///
+          ///   // Add the buttons to the form.
+          ///   this->Controls().AddRange({buttonOK, buttonCancel, buttonHelp});
+          /// }
+          /// @endcode
           property_<int32> Top {
             get_{ return this->location.Y(); },
             set_{ this->Location(System::Drawing::Point(this->location.X(), value)); }
           };
 
+          /// @brief Gets or sets a value indicating whether the control and all its child controls are displayed.
+          /// @return bool true if the control and all its child controls are displayed; otherwise, false. The default is true.
+          /// @remarks Note that even if Visible is set to true, the control might not be visible to the user if it is obscured behind other controls.
+          /// @par Example
+          /// The following code example uses the derived classes VScrollBar and HScrollBar and sets their Visible property values, based on the size of an Image being displayed in a PictureBox control. This example requires that a PictureBox has been created on a form and that HScrollBar and VScrollBar controls have been created on the PictureBox. This code should be called when the image is loaded into the picture box and by the Resize event of the form.
+          /// @code
+          /// void DisplayScrollBars() {
+          ///   // Display or hide the scroll bars based upon
+          ///   // whether the image is larger than the PictureBox.
+          ///   if (pictureBox1.Width > pictureBox1.Image().Width) {
+          ///     hScrollBar1.Visible = false;
+          ///   } else {
+          ///     hScrollBar1.Visible = true;
+          ///   }
+          ///
+          ///   if (pictureBox1.Height > pictureBox1.Image().Height) {
+          ///     vScrollBar1.Visible = false;
+          ///   } else {
+          ///     vScrollBar1.Visible = true;
+          ///   }
+          /// }
+          /// @endcode
           property_<bool> Visible {
             get_ { return this->visible; },
             set_ {
@@ -656,6 +986,48 @@ namespace Switch {
             }
           };
 
+          /// @brief Gets or sets the width of the control.
+          /// @return int32 The width of the control in pixels.
+          /// @remarks Changes made to the Width and Left property values cause the Right property value of the control to change.
+          /// @par Example
+          /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
+          /// @code
+          /// // Create three buttons and place them on a form using
+          /// // several size and location related properties.
+          /// void AddOKCancelButtons() {
+          ///   // Set the button size and location using
+          ///   // the Size and Location properties.
+          ///   Button buttonOK;
+          ///   buttonOK.Location = Point(136,248);
+          ///   buttonOK.Size = System::Drawing::Size(75,25);
+          ///   // Set the Text property and make the
+          ///   // button the form's default button.
+          ///   buttonOK.Text = "&OK";
+          ///   this.AcceptButton = buttonOK;
+          ///
+          ///   // Set the button size and location using the Top,
+          ///   // Left, Width, and Height properties.
+          ///   Button buttonCancel;
+          ///   buttonCancel.Top = buttonOK.Top;
+          ///   buttonCancel.Left = buttonOK.Right + 5;
+          ///   buttonCancel.Width = buttonOK.Width;
+          ///   buttonCancel.Height = buttonOK.Height;
+          ///   // Set the Text property and make the
+          ///   // button the form's cancel button.
+          ///   buttonCancel.Text = "&Cancel";
+          ///   this.CancelButton = buttonCancel;
+          ///
+          ///   // Set the button size and location using
+          ///   // the Bounds property.
+          ///   Button buttonHelp;
+          ///   buttonHelp.Bounds = Rectangle(10,10, 75, 25);
+          ///   // Set the Text property of the button.
+          ///   buttonHelp.Text = "&Help";
+          ///
+          ///   // Add the buttons to the form.
+          ///   this->Controls().AddRange({buttonOK, buttonCancel, buttonHelp});
+          /// }
+          /// @endcode
           property_<int32> Width {
             get_ { return this->size.Width(); },
             set_ { this->Size(System::Drawing::Size(value, this->size.Height())); }
