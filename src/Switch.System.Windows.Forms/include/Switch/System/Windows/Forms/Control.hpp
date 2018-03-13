@@ -50,7 +50,7 @@ namespace Switch {
           /// @brief Represents a collection of Control objects.
           /// @remarks The Add, Remove, and RemoveAt methods enable you to add and remove individual controls from the collection. You can also use the AddRange or Clear methods to add or remove all the controls from the collection.
           /// @remarks You can determine if a Control is a member of the collection by passing the control into the Contains method. To get the index value of the location of a Control in the collection, pass the control into the IndexOf method. The collection can be copied into an array by calling the CopyTo method.
-          /// @par Examples
+          /// @par examples
           /// @code
           /// // Remove the RadioButton control if it exists.
           /// void RemoveButtonClick(const object& sender, const System::EventArgs& e) {
@@ -70,7 +70,7 @@ namespace Switch {
             /// @note A Control can only be assigned to one Control.ControlCollection at a time. If the Control is already a child of another control it is removed from that control before it is added to another control.
             /// @par Notes to Inheritors
             /// When overriding Add in a derived class, be sure to call the base class's Add method to ensure that the control is added to the collection.
-            /// @par Example
+            /// @par examples
             /// The following code example adds a Control to the Control.ControlCollection of the derived class Panel. The example requires that you have created a Panel control and a Button control on a Form. When the button is clicked, a TextBox control is added to the panel's Control.ControlCollection.
             /// @code
             /// // Create a TextBox to add to the Panel.
@@ -93,7 +93,7 @@ namespace Switch {
             /// @remarks To add new Control objects to the collection, use the Add or AddRange methods.
             /// @par Notes to Inheritors
             /// When overriding Remove in a derived class, be sure to call the base class's Remove method to ensure that the control is removed from the collection.
-            /// @par Example
+            /// @par examples
             /// The following code example removes a Control from the Control.ControlCollection of the derived class Panel if it is a member of the collection. The example requires that you have created a Panel, a Button, and one or more RadioButton controls on a Form. The RadioButton controls are added to the Panel control, and the Panel control is added to the Form. When the button is clicked, the radio button named radioButton2 is removed from the Control.ControlCollection.
             /// @code
             /// // Remove the RadioButton control if it exists.
@@ -113,7 +113,7 @@ namespace Switch {
             /// @remarks When a Control is removed from the control collection, all subsequent controls are moved up one position in the collection.
             /// @remarks You can also remove a Control that you previously added by using the Remove or Clear methods.
             /// @remarks To add new Control objects to the collection, use the Add or AddRange methods.
-            /// @par Example
+            /// @par examples
             /// The following code example removes the first Control in the Control.ControlCollection of the derived class Panel if the count of the collection is greater than zero. The example requires that you have created a Panel, a Button, and at least one other control on a Form. The other controls are added to the Panel control, and the Panel control added to the Form. When the button is clicked, the first control contained in the panel is removed from the Control.ControlCollection.
             /// @code
             /// // Remove the first control in the collection.
@@ -201,7 +201,7 @@ namespace Switch {
           /// @remarks The BackColor property is an ambient property. An ambient property is a control property that, if not set, is retrieved from the parent control. For example, a Button will have the same BackColor as its parent Form by default. For more information about ambient properties, see the AmbientProperties class or the Control class overview.
           /// @par Notes to Inheritors
           /// When overriding the BackColor property in a derived class, use the base class's BackColor property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setaccessors of the BackColor property; you can override only one if needed.
-          /// @par Example
+          /// @par examples
           /// The following code example sets the BackColor and ForeColor of the controls to the default system colors. The code recursively calls itself if the control has any child controls. This code example requires that you have a Form with at least one child control; however, a child container control, like a Panel or GroupBox, with its own child control(s) would better demonstrate the recursion.
           /// @code
           /// // Reset all the controls to the user's default Control color.
@@ -230,7 +230,7 @@ namespace Switch {
           /// @param value An Int32 representing the distance, in pixels, between the bottom edge of the control and the top edge of its container's client area.
           /// @remarks The value of this property is equal to the sum of the Top property value, and the Height property value.
           /// @remarks he Bottom property is a read-only property. You can manipulate this property value by changing the value of the Top or Height properties or calling the SetBounds, SetBoundsCore, UpdateBounds, or SetClientSizeCore methods.
-          /// @par Example
+          /// @par examples
           /// The following code example uses the Bottom property to define the lower limit of a TextBox control relative to the client area of the container.
           /// @code
           /// // This example demonstrates how to use the KeyUp event with the Help class to display
@@ -253,7 +253,7 @@ namespace Switch {
           /// @brief Gets or sets the size and location of the control including its nonclient elements, in pixels, relative to the parent control.
           /// @param value A Rectangle in pixels relative to the parent control that represents the size and location of the control including its nonclient elements.
           /// @remarks The bounds of the control include the nonclient elements such as scroll bars, borders, title bars, and menus. The SetBoundsCore method is called to set the Bounds property. The Bounds property is not always changed through its set method so you should override the SetBoundsCore method to ensure that your code is executed when the Bounds property is set.
-          /// @par Example
+          /// @par examples
           /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
           /// @code
           /// // Create three buttons and place them on a form using
@@ -305,7 +305,7 @@ namespace Switch {
           /// @remarks The client area of a control is the bounds of the control, minus the nonclient elements such as scroll bars, borders, title bars, and menus.
           /// @remarks Because client coordinates are relative to the upper-left corner of the client area of the control, the coordinates of the upper-left corner of the rectangle returned by this property are (0,0). You can use this property to obtain the size and coordinates of the client area of the control for tasks such as drawing on the surface of the control.
           /// @remarks For more information about drawing on controls, see Rendering a Windows Forms Control.
-          /// @par Example
+          /// @par examples
           /// The following code example enables auto-scrolling for a form, resizes the form, and ensures that a button remains visible after the form is resized. This example requires that you have a Form with a Button named button2 on it.
           /// @code
           /// void ResizeForm() {
@@ -332,7 +332,7 @@ namespace Switch {
           /// @remarks The Size.Width and Size.Height properties represent the width and height of the client area of the control. You can use this property to obtain the size of the client area of the control for tasks such as drawing on the surface of the control.
           /// @remarks For more information about drawing on controls, see Rendering a Windows Forms Control.
           /// @note You cannot bind application settings to this property. For more information on application settings, see Application Settings Overview.
-          /// @par Example
+          /// @par examples
           /// The following code example resizes the specified control so the control will accommodate its formatted text. The formatted text is the Text property with the control's assigned Font applied to the text. The AutoSizeControl method in this example also has a textPadding parameter that represents the padding to apply to all edges of the control. To make the padding appear equal, align the text with the ContentAlignment.MiddleCenter value, if your control supports it.
           /// @code
           /// void AutoSizeControl(Control& control, int textPadding) {
@@ -362,7 +362,7 @@ namespace Switch {
           /// @remarks You can manipulate the controls in the Control.ControlCollection assigned to the Controls property by using the methods available in the Control.ControlCollection class.
           /// @remarks When adding several controls to a parent control, it is recommended that you call the SuspendLayout method before initializing the controls to be added. After adding the controls to the parent control, call the ResumeLayout method. Doing so will increase the performance of applications with many controls.
           /// @remarks Use the Controls property to iterate through all controls of a form, including nested controls. Use the GetNextControl method to retrieve the previous or next child control in the tab order. Use the ActiveControl property to get or set the active control of a container control.
-          /// @par Example
+          /// @par examples
           /// The following code example removes a Control from the Control.ControlCollection of the derived class Panel if it is a member of the collection. The example requires that you have created a Panel, a Button, and at least one RadioButton control on a Form. The RadioButton control(s) are added to the Panel control, and the Panel control added to the Form. When the button is clicked, the radio button named removeButton is removed from the Control.ControlCollection.
           /// @code
           /// // Remove the RadioButton control if it exists.
@@ -379,7 +379,7 @@ namespace Switch {
           /// @brief Gets the default background color of the control.
           /// @return System::Drawing::Color The default background Color of the control. The default is SystemColors.Control.
           /// @remarks This is the default BackColor property value of a generic top-level control. Derived classes can have different defaults.
-          /// @par Example
+          /// @par examples
           /// The following code example demonstrates how to use the DefaultBackColor, DefaultFont, and DefaultForeColor members. To run the example, paste the following code in a form containing a ListBox called ListBox1. Call the Populate_ListBox method in the form's constructor or Load event-handling method.
           /// @code
           /// // The following method displays the default font,
@@ -401,7 +401,7 @@ namespace Switch {
           /// @brief Gets the default foreground color of the control.
           /// @return System::Drawing::Color The default foreground Color of the control. The default is SystemColors.ControlText.
           /// @remarks This is the default ForeColor property value of a nonparented control. Derived classes can have different defaults.
-          /// @par Example
+          /// @par examples
           /// The following code example demonstrates how to use the DefaultBackColor, DefaultFont, and DefaultForeColor members. To run the example, paste the following code in a form containing a ListBox called ListBox1. Call the Populate_ListBox method in the form's constructor or Load event-handling method.
           /// @code
           /// // The following method displays the default font,
@@ -423,7 +423,7 @@ namespace Switch {
           /// @brief Gets a value indicating whether the control contains one or more child controls.
           /// @return bool true if the control contains one or more child controls; otherwise, false.
           /// @remarks If the Controls collection has a Count greater than zero, the HasChildren property will return true. Accessing the HasChildren property does not force the creation of a Control.ControlCollection if the control has no children, so referencing this property can provide a performance benefit when walking a tree of controls.
-          /// @par Example
+          /// @par examples
           /// The following code example sets the BackColor and ForeColor of the controls to the default system colors. The code recursively calls itself if the control has any child controls. This code example requires that you have a Form with at least one child control; however, a child container control, like a Panel or GroupBox, with its own child control(s) would better demonstrate the recursion.
           /// @code
           /// // Reset all the controls to the user's default Control color.
@@ -449,7 +449,7 @@ namespace Switch {
           /// Setting the Enabled property to false does not disable the application's control box or prevent the application window from receiving the focus.
           /// @remarks When a container control has its enabled property set to false, all its contained controls are disabled, as well. For example, if the user clicks on any of the controls contained in a disabled GroupBox control, no events are raised.
           /// @note When a scrollable control is disabled, the scroll bars are also disabled. For example, a disabled multiline textbox is unable to scroll to display all the lines of text.
-          /// @par Example
+          /// @par examples
           /// The following code example creates a GroupBox and sets some of its common properties. The example creates a TextBox and sets its Location within the group box. Next, it sets the Text property of the group box, and docks the group box to the top of the form. Lastly, it disables the group box by setting the Enabled property to false, which causes all controls contained within the group box to be disabled.
           /// @code
           /// // Add a GroupBox to a form and set some of its common properties.
@@ -486,7 +486,7 @@ namespace Switch {
           /// @remarks The ForeColor property is an ambient property. An ambient property is a control property that, if not set, is retrieved from the parent control. For example, a Button will have the same BackColor as its parent Form by default. For more information about ambient properties, see the AmbientProperties class or the Control class overview.
           /// @par Notes to Inheritors
           /// When overriding the ForeColor property in a derived class, use the base class's ForeColor property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both theget and setaccessors of the ForeColor property; you can override only one if needed.
-          /// @par Example
+          /// @par examples
           /// The following code example sets the BackColor and ForeColor of the controls to the default system colors. The code recursively calls itself if the control has any child controls. This code example requires that you have a Form with at least one child control; however, a child container control, like a Panel or GroupBox, with its own child control(s) would better demonstrate the recursion.
           /// @code
           /// // Reset all the controls to the user's default Control color.
@@ -515,7 +515,7 @@ namespace Switch {
           /// @return int32 The height of the control in pixels.
           /// @remarks Changes made to the Height and Top property values cause the Bottom property value of the control to change.
           /// @note The minimum height for the derived control Splitter is one pixel. The default height for the Splitter control is three pixels. Setting the height of the Splitter control to a value less than one will reset the property value to the default height.
-          /// @par Example
+          /// @par examples
           /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
           /// @code
           /// // Create three buttons and place them on a form using
@@ -570,7 +570,7 @@ namespace Switch {
           /// @return int32 An Int32 representing the distance, in pixels, between the left edge of the control and the left edge of its container's client area.
           /// @remarks The Left property value is equivalent to the Point.X property of the Location property value of the control.
           /// @remarks Changes made to the Width and Left property values cause the Right property value of the control to change.
-          /// @par Example
+          /// @par examples
           /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
           /// @code
           /// // Create three buttons and place them on a form using
@@ -618,7 +618,7 @@ namespace Switch {
           /// @return System::Drawing::Point The Point that represents the upper-left corner of the control relative to the upper-left corner of its container.
           /// @remarks Because the Point class is returned by value, meaning accessing the property returns a copy of the upper-left point of the control. So, adjusting the X or Y properties of the Point returned from this property will not affect the Left, Right, Top, or Bottom property values of the control. To adjust these properties set each property value individually, or set the Location property with a new Point.
           /// @remarks If the Control is a Form, the Location property value represents the upper-left corner of the Form in screen coordinates.
-          /// @par Example
+          /// @par examples
           /// The following code example creates a GroupBox and sets some of its common properties. The example creates a TextBox and sets its Location within the group box. Next, it sets the Text property of the group box, and docks the group box to the top of the form. Lastly, it disables the group box by setting the Enabled property to false, which causes all controls contained within the group box to be disabled.
           /// @code
           /// // Add a GroupBox to a form and set some of its common properties.
@@ -653,7 +653,7 @@ namespace Switch {
           /// @brief Gets or sets the name of the control.
           /// @return string The name of the control. The default is an empty string ("").
           /// @remarks The Name property can be used at run time to evaluate the object by name rather than type and programmatic name.
-          /// @par Example
+          /// @par examples
           /// The following code example displays the Name of a control in a MessageBox when the control is added or removed from a form (Form1).
           /// @code
           /// // This example demonstrates the use of the ControlAdded and
@@ -716,7 +716,7 @@ namespace Switch {
           /// @brief Gets or sets the parent container of the control.
           /// @return Control A Control that represents the parent or container control of the control.
           /// @remarks Setting the Parent property value to null removes the control from the Control.ControlCollection of its current parent control.
-          /// @par Example
+          /// @par examples
           /// The following code example uses the Parent property and the FindForm method to set properties on the parent control of a button and its form.
           /// @code
           /// // This example uses the Parent property and the Find method of Control to set
@@ -746,7 +746,7 @@ namespace Switch {
           /// @return int32 An Int32 representing the distance, in pixels, between the right edge of the control and the left edge of its container's client area.
           /// @remarks The value of the Right property is equal to the sum of the Left property value and the Width property value.
           /// @remarks The Right property is read-only. You can change this property value indirectly by changing the value of the Left or Width properties or calling the SetBounds, SetBoundsCore, UpdateBounds, or SetClientSizeCore methods.
-          /// @par Example
+          /// @par examples
           /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
           /// @code
           /// // Create three buttons and place them on a form using
@@ -793,7 +793,7 @@ namespace Switch {
           /// @return System::Drawing::Size The Size that represents the height and width of the control in pixels.
           /// @remarks Because the Size class is returned by value, meaning accessing the property returns a copy of the size of the control. So, adjusting the Width or Height properties of the Size returned from this property will not affect the Width or Height of the control. To adjust the Width or Height of the control, you must set the control's Width or Height property, or set the Size property with a new Size.
           /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
-          /// @par Example
+          /// @par examples
           /// The following code example adds a Button to a form and sets some of its common properties. The example anchors the button to the bottom-right corner of the form so it keeps its relative position as the form is resized. Next it sets the BackgroundImage and resizes the button to the same size as theImage. The example then sets the TabStop to true and sets the TabIndex property. Lastly, it adds an event handler to handle the Click event of the button. This example requires that you have an ImageList named imageList1.
           /// @code
           /// // Add a button to a form and set some of its common properties.
@@ -835,7 +835,7 @@ namespace Switch {
           /// @return bool true if the user can give the focus to the control using the TAB key; otherwise, false. The default is true.
           /// @note This property will always return true for an instance of the Form class.
           /// @remarks When the user presses the TAB key, the input focus is set to the next control in the tab order. Controls with the TabStop property value of false are not included in the collection of controls in the tab order. The tab order can be manipulated by setting the control's TabIndex property value.
-          /// @par Example
+          /// @par examples
           /// The following code example adds a Button to a form and sets some of its common properties. The example anchors the button to the bottom-right corner of the form so it keeps its relative position as the form is resized. Next it sets the BackgroundImage and resizes the button to the same size as theImage. The example then sets the TabStop to true and sets the TabIndex property. Lastly, it adds an event handler to handle the Click event of the button. This example requires that you have an ImageList named imageList1.
           /// @code
           /// // Add a button to a form and set some of its common properties.
@@ -878,7 +878,7 @@ namespace Switch {
           /// @remarks The Text property of the control is used differently by each derived class. For example the Text property of a Form is displayed in the title bar at the top of the form, is fairly small in character count, and usually displays the application or document name. However, the Text property of a RichTextBox can be large and can include numerous nonvisual characters used to format the text. For example, the text displayed in a RichTextBox can be formatted by adjusting the Font properties, or by the addition of spaces or tab characters to align the text.
           /// @par Notes to Inheritors
           /// When overriding the Text property in a derived class, use the base class's Text property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setaccessors of the Text property; you can override only one if needed.
-          /// @par Example
+          /// @par examples
           /// The following code example creates a GroupBox and sets some of its common properties. The example creates a TextBox and sets its Location within the group box. Next, it sets the Text property of the group box, and docks the group box to the top of the form. Lastly, it disables the group box by setting the Enabled property to false, which causes all controls contained within the group box to be disabled.
           /// @code
           /// // Add a GroupBox to a form and set some of its common properties.
@@ -914,7 +914,7 @@ namespace Switch {
           /// @return int32 An Int32 representing the distance, in pixels, between the bottom edge of the control and the top edge of its container's client area.
           /// @remarks The Top property value is equivalent to the Point.Y property of the Location property value of the control.
           /// @remarks Changes made to the Height and Top property values cause the Bottom property value of the control to change.
-          /// @par Example
+          /// @par examples
           /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
           /// @code
           /// // Create three buttons and place them on a form using
@@ -961,7 +961,7 @@ namespace Switch {
           /// @brief Gets or sets a value indicating whether the control and all its child controls are displayed.
           /// @return bool true if the control and all its child controls are displayed; otherwise, false. The default is true.
           /// @remarks Note that even if Visible is set to true, the control might not be visible to the user if it is obscured behind other controls.
-          /// @par Example
+          /// @par examples
           /// The following code example uses the derived classes VScrollBar and HScrollBar and sets their Visible property values, based on the size of an Image being displayed in a PictureBox control. This example requires that a PictureBox has been created on a form and that HScrollBar and VScrollBar controls have been created on the PictureBox. This code should be called when the image is loaded into the picture box and by the Resize event of the form.
           /// @code
           /// void DisplayScrollBars() {
@@ -993,7 +993,7 @@ namespace Switch {
           /// @brief Gets or sets the width of the control.
           /// @return int32 The width of the control in pixels.
           /// @remarks Changes made to the Width and Left property values cause the Right property value of the control to change.
-          /// @par Example
+          /// @par examples
           /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
           /// @code
           /// // Create three buttons and place them on a form using
@@ -1045,7 +1045,7 @@ namespace Switch {
           /// @brief Retrieves the form that the control is on.
           /// @return Form The Form that the control is on.
           /// @remarks The control's Parent property value might not be the same as the Form returned by FindForm method. For example, if a RadioButton control is contained within a GroupBox control, and the GroupBox is on a Form, the RadioButton control's Parent is the GroupBox and the GroupBox control's Parent is the Form.
-          /// @par Example
+          /// @par examples
           /// The following code example uses the Parent property and the FindForm method to set properties on the parent control of a button and its form.
           /// @code
           /// // This example uses the Parent property and the Find method of Control to set
@@ -1081,7 +1081,7 @@ namespace Switch {
           /// * Label
           /// * LinkLabel (when there is no link present in the control)
           /// @note Focus is a low-level method intended primarily for custom control authors. Instead, application programmers should use the Select method or the ActiveControl property for child controls, or the Activate method for forms.
-          /// @par Example
+          /// @par examples
           /// The following code example sets focus to the specified Control, if it can receive focus.
           /// @code
           /// void ControlSetFocus(Control& control) {
@@ -1119,7 +1119,7 @@ namespace Switch {
 
           /// @brief Conceals the control from the user.
           /// @remarks Hiding the control is equivalent to setting the Visible property to false. After the Hide method is called, the Visible property returns a value of false until the Show method is called.
-          /// @par Example
+          /// @par examples
           /// The following code example hides a button if the CTRL key is pressed when the button is clicked. This example requires that you have a Button named button1 on a Form.
           /// @code
           /// void button1_Click(const object& sender, const System::EventArgs& e) {
@@ -1134,7 +1134,7 @@ namespace Switch {
 
           /// @brief Invalidates the entire surface of the control and causes the control to be redrawn.
           /// @remarks Calling the Invalidate method does not force a synchronous paint; to force a synchronous paint, call the Update method after calling the Invalidate method. When this method is called with no parameters, the entire client area is added to the update region.
-          /// @par Example
+          /// @par examples
           /// The following code example enables the user to drag an image or image file onto the form, and have it be displayed at the point on it is dropped. The OnPaint method is overridden to repaint the image each time the form is painted; otherwise the image would only persist until the next repainting. The DragEnter event-handling method determines the type of data being dragged into the form and provides the appropriate feedback. The DragDrop event-handling method displays the image on the form, if an Image can be created from the data. Because the DragEventArgs.X and DragEventArgs.Y values are screen coordinates, the example uses the PointToClient method to convert them to client coordinates.
           /// @code
           /// private:
@@ -1224,7 +1224,7 @@ namespace Switch {
           /// @brief Computes the location of the specified screen point into client coordinates.
           /// @param point The screen coordinate Point to convert.
           /// @return System::Drawing::Point A Point that represents the converted Point, p, in client coordinates.
-          /// @par Example
+          /// @par examples
           /// The following code example enables the user to drag an image or image file onto the form, and have it be displayed at the point on it is dropped. The OnPaint method is overridden to repaint the image each time the form is painted; otherwise the image would only persist until the next repainting. The DragEnter event-handling method determines the type of data being dragged into the form and provides the appropriate feedback. The DragDrop event-handling method displays the image on the form, if an Image can be created from the data. Because the DragEventArgs.X and DragEventArgs.Y values are screen coordinates, the example uses the PointToClient method to convert them to client coordinates.
           /// @code
           /// private:
@@ -1298,7 +1298,7 @@ namespace Switch {
           /// @brief Computes the location of the specified client point into screen coordinates.
           /// @param point The client coordinate Point to convert.
           /// @return System::Drawing::Point A Point that represents the converted Point, p, in screen coordinates.
-          /// @par Example
+          /// @par examples
           /// The following code example demonstrates how to use the BackColor, RectangleToScreen, PointToScreen, MouseButtons, ControlPaint::DrawReversibleFrame, and Rectangle::IntersectsWith members. To run the example, paste the following code in a form called Form1 containing several controls. This example requires that the MouseDown, MouseMove, and MouseUp events are connected to the event handlers defined in the example.
           /// @code
           /// // The following three methods will draw a rectangle and allow
@@ -1378,7 +1378,7 @@ namespace Switch {
 
           /// @brief Displays the control to the user.
           /// @remarks Showing the control is equivalent to setting the Visible property to true. After the Show method is called, the Visible property returns a value of true until the Hide method is called.
-          /// @par Example
+          /// @par examples
           /// The following code example displays an about dialog box and temporarily draws a blue square on its surface. This example requires that you have defined a class that derives from Form named AboutDialog.
           /// @code
           /// void menuItemHelpAbout_Click(const object& sender, const EventArgs& e) {
@@ -1417,10 +1417,88 @@ namespace Switch {
 
           }
 
+          /// @brief Processes Windows messages.
+          /// @param message The Windows Message to process.
+          /// @remarks All messages are sent to the WndProc method after getting filtered through the PreProcessMessage method.
+          /// @remarks The WndProc method corresponds exactly to the Windows WindowProc function. For more information about processing Windows messages, see the WindowProc function.
+          /// @par Notes to Inheritors
+          /// Inheriting controls should call the base class's WndProc method to process any messages that they do not handle.
+          /// @par examples
+          /// The following code example demonstrates overriding the WndProc method to handle operating system messages identified in the Message structure. TheWM_ACTIVATEAPPoperating system message is handled in this example to know when another application is becoming active. See the following topics to understand the available Message.Msg, Message.LParam, and Message.WParam values. Actual constant values can be found in the Windows.h header file.
+          /// @include WndProc.cpp
           virtual void WndProc(Message& message);
 
+          /// @brief Occurs when the value of the BackColor property changes.
+          /// @remarks This event is raised if the BackColor property is changed by either a programmatic modification or user interaction.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par examples
+          /// The following code example is an event handler that is executed when the Text property value changes. The Control class has several methods with the name pattern PropertyNameChanged that are raised when the corresponding PropertyName value changes (PropertyName represents the name of the corresponding property).
+          ///
+          /// The following code example changes the ForeColor of a TextBox displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive. This example requires that you have a Formthat contains a TextBox.
+          /// @code
+          /// void currencyTextBox_TextChanged(const object& sender, const EventArgs& e) {
+          ///   try {
+          ///     // Convert the text to a Double and determine if it is a negative number.
+          ///     if (Double::Parse(currencyTextBox::Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       currencyTextBox::ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       currencyTextBox::ForeColor = Color::Black;
+          ///     }
+          ///   } catch(...) {
+          ///     // If there is an error, display the text using the system colors.
+          ///     currencyTextBox::ForeColor = SystemColors::ControlText;
+          ///   }
+          /// }
+          /// @endcode
           EventHandler BackColorChanged;
 
+          /// @brief Occurs when the control is clicked.
+          /// @remarks The Click event passes an EventArgs to its event handler, so it only indicates that a click has occurred. If you need more specific mouse information (button, number of clicks, wheel rotation, or location), use the MouseClick event. However, the MouseClick event will not be raised if the click is caused by action other than that of the mouse, such as pressing the ENTER key.
+          /// @remarks A double-click is determined by the mouse settings of the user's operating system. The user can set the time between clicks of a mouse button that should be considered a double-click rather than two clicks. The Click event is raised every time a control is double-clicked. For example, if you have event handlers for the Click and DoubleClick events of a Form, the Click and DoubleClick events are raised when the form is double-clicked and both methods are called. If a control is double-clicked and that control does not support the DoubleClick event, the Click event might be raised twice.
+          /// @remarks You must set the StandardClick value ofControlStyles to true for this event to be raised.
+          /// @note The following events are not raised for the TabControl class unless there is at least one TabPage in the TabControl.TabPages collection: Click, DoubleClick, MouseDown, MouseUp, MouseHover, MouseEnter, MouseLeave and MouseMove. If there is at least one TabPage in the collection, and the user interacts with the tab control's header (where the TabPage names appear), the TabControl raises the appropriate event. However, if the user interaction is within the client area of the tab page, the TabPage raises the appropriate event.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Notes to Inheritors
+          /// Inheriting from a standard Windows Forms control and changing the StandardClick or StandardDoubleClick values of ControlStyles to true can cause unexpected behavior or have no effect at all if the control does not support the Click or DoubleClick events.
+          ///
+          /// The following table lists Windows Forms controls and which event (Click or DoubleClick) is raised in response to the mouse action specified.
+          /// | Control                                                                                                             | Left Mouse Click | Left Mouse Double Click | Right Mouse Click | Right Mouse Click  | Middle Mouse Click | Middle Mouse Double Click | XButton1 Mouse Click | XButton1 Mouse Double-Click | XButton2 Mouse Click | XButton2 Mouse Double-Click |
+          /// |---------------------------------------------------------------------------------------------------------------------|------------------|-------------------------|-------------------|--------------------|--------------------|---------------------------|----------------------|-----------------------------|----------------------|-----------------------------|
+          /// | MonthCalendar, DateTimePicker, HScrollBar, VScrollBar                                                               | none             | none                    | none              | none               | none               | none                      | none                 | none                        | none                 | none                        |
+          /// | Button, CheckBox, RichTextBox, RadioButton                                                                          | Click            | Click, Click            | none              | none               | none               | none                      | none                 | none                        | none                 | none                        |
+          /// | ListBox, CheckedListBox, ComboBox                                                                                   | Click            | Click, DoubleClick      | none              | none               | none               | none                      | none                 | none                        | none                 | none                        |
+          /// | TextBox, DomainUpDown, NumericUpDown                                                                                | Click            | Click, DoubleClick      | none              | none               | none               | none                      | none                 | none                        | none                 | none                        |
+          /// | * TreeView, * ListView                                                                                              | Click            | Click, DoubleClick      | Click             | Click, DoubleClick | none               | none                      | none                 | none                        | none                 | none                        |
+          /// | ProgressBar, TrackBar                                                                                               | Click            | Click, Click            | Click             | Click, Click       | Click              | Click, Click            | Click                  | Click, Click                | Click                | Click, Click                |
+          /// | Form, DataGrid, Label, LinkLabel, Panel, GroupBox, PictureBox, Splitter, StatusBar, ToolBar, TabPage, ** TabControl | Click            | Click, DoubleClick      | Click             | Click, DoubleClick | Click              | Click, DoubleClick        | Click                | Click, DoubleClick          | Click                | Click, DoubleClick          |
+          ///
+          /// * The mouse pointer must be over a child object (TreeNode or ListViewItem).
+          ///
+          /// ** The TabControl must have at least one TabPage in its TabPages collection.
+          ///
+          /// @par examples
+          /// The following code example shows the Click event in an event handler.
+          /// @code
+          /// // This example uses the Parent property and the Find method of Control to set
+          /// // properties on the parent control of a Button and its Form. The example assumes
+          /// // that a Button control named button1 is located within a GroupBox control. The
+          /// // example also assumes that the Click event of the Button control is connected to
+          /// // the event handler method defined in the example.
+          /// void button1_Click(const object& sender, const System.EventArgs& e) {
+          ///   // Get the control the Button control is located in. In this case a GroupBox.
+          ///   ref<Control> control = button1.Parent;
+          ///   // Set the text and backcolor of the parent control.
+          ///   control().Text = "My Groupbox";
+          ///   control().BackColor = Color::Blue;
+          ///   // Get the form that the Button control is contained within.
+          ///   ref<Form> myForm = button1.FindForm();
+          ///   // Set the text and color of the form containing the Button.
+          ///   myForm().Text = "The Form of My Control";
+          ///   myForm().BackColor = Color::Red;
+          /// }
+          /// @endcode
           EventHandler Click;
 
           EventHandler ClientSizeChanged;
