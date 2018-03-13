@@ -1210,16 +1210,190 @@ namespace Switch {
           /// @remarks Calling the Invalidate method does not force a synchronous paint; to force a synchronous paint, call the Update method after calling the Invalidate method. When this method is called with no parameters, the entire client area is added to the update region.
           void Invalidate(bool invalidateChildren);
 
+          /// @brief Invalidates the specified region of the control (adds it to the control's update region, which is the area that will be repainted at the next paint operation), and causes a paint message to be sent to the control.
+          /// @param rect A Rectangle that represents the region to invalidate.
+          /// @remarks Calling the Invalidate method does not force a synchronous paint; to force a synchronous paint, call the Update method after calling the Invalidate method. When this method is called with no parameters, the entire client area is added to the update region.
           void Invalidate(const System::Drawing::Rectangle& rect) { Invalidate(rect, false); }
 
+          /// @brief Invalidates the specified region of the control (adds it to the control's update region, which is the area that will be repainted at the next paint operation), and causes a paint message to be sent to the control. Optionally, invalidates the child controls assigned to the control.
+          /// @param rect A Rectangle that represents the region to invalidate.
+          /// @param invalidateChildren true to invalidate the control's child controls; otherwise, false.
+          /// @remarks Calling the Invalidate method does not force a synchronous paint; to force a synchronous paint, call the Update method after calling the Invalidate method. When this method is called with no parameters, the entire client area is added to the update region.
           void Invalidate(const System::Drawing::Rectangle& rect, bool invalidateChildren);
 
+          /// @brief Computes the location of the specified screen point into client coordinates.
+          /// @param point The screen coordinate Point to convert.
+          /// @return System::Drawing::Point A Point that represents the converted Point, p, in client coordinates.
+          /// @par Example
+          /// The following code example enables the user to drag an image or image file onto the form, and have it be displayed at the point on it is dropped. The OnPaint method is overridden to repaint the image each time the form is painted; otherwise the image would only persist until the next repainting. The DragEnter event-handling method determines the type of data being dragged into the form and provides the appropriate feedback. The DragDrop event-handling method displays the image on the form, if an Image can be created from the data. Because the DragEventArgs.X and DragEventArgs.Y values are screen coordinates, the example uses the PointToClient method to convert them to client coordinates.
+          /// @code
+          /// private:
+          ///   $<Image> picture;
+          ///   Point pictureLocation;
+          ///
+          /// public:
+          ///   Form1() {
+          ///     // Enable drag-and-drop operations and
+          ///     // add handlers for DragEnter and DragDrop.
+          ///     this->AllowDrop = true;
+          ///     this->DragDrop += {*this, &Form1::Form1_DragDrop};
+          ///     this->DragEnter += {*this, &Form1::Form1_DragEnter};
+          ///   }
+          ///
+          /// protected:
+          ///   void OnPaint(PaintEventArgs& e) override {
+          ///     // If there is an image and it has a location,
+          ///     // paint it when the Form is repainted.
+          ///     this->Form::OnPaint(e);
+          ///     if(this->picture != null && this->pictureLocation != Point::Empty) {
+          ///       e.Graphics.DrawImage(*this->picture, this.pictureLocation);
+          ///     }
+          ///   }
+          ///
+          /// private:
+          ///   void Form1_DragDrop(const object& sender, DragEventArgs& e) {
+          ///     // Handle FileDrop data.
+          ///     if (e.Data.GetDataPresent(DataFormats::FileDrop) ) {
+          ///       // Assign the file names to a string array, in
+          ///       // case the user has selected multiple files.
+          ///       $<Array<string>> files = as<Array<string>>(e.Data.GetData(DataFormats::FileDrop));
+          ///       try {
+          ///         // Assign the first image to the picture variable.
+          ///         this->picture = Image::FromFile((*files)[0]);
+          ///         // Set the picture location equal to the drop point.
+          ///         this->pictureLocation = this->PointToClient(Point(e.X, e.Y));
+          ///       } catch(const Exception& ex) {
+          ///         MessageBox::Show(ex.Message);
+          ///         return;
+          ///       }
+          ///     }
+          ///
+          ///     // Handle Bitmap data.
+          ///     if (e.Data.GetDataPresent(DataFormats::Bitmap) ) {
+          ///       try {
+          ///         // Create an Image and assign it to the picture variable.
+          ///         this->picture = as<Image>(e.Data.GetData(DataFormats.Bitmap));
+          ///         // Set the picture location equal to the drop point.
+          ///         this->pictureLocation = this->PointToClient(Point(e.X, e.Y) );
+          ///       } catch(const Exception& ex) {
+          ///         MessageBox::Show(ex.Message);
+          ///         return;
+          ///       }
+          ///     }
+          ///     // Force the form to be redrawn with the image.
+          ///     this->Invalidate();
+          ///   }
+          ///
+          ///   void Form1_DragEnter(const object& sender, DragEventArgs& e) {
+          ///     // If the data is a file or a bitmap, display the copy cursor.
+          ///     if (e.Data.GetDataPresent(DataFormats::Bitmap) || e.Data.GetDataPresent(DataFormats::FileDrop) ) {
+          ///       e.Effect = DragDropEffects::Copy;
+          ///     } else {
+          ///       e.Effect = DragDropEffects::None;
+          ///     }
+          ///   }
+          /// @endcode
           System::Drawing::Point PointToClient(System::Drawing::Point point) const;
 
+          /// @brief Computes the location of the specified client point into screen coordinates.
+          /// @param point The client coordinate Point to convert.
+          /// @return System::Drawing::Point A Point that represents the converted Point, p, in screen coordinates.
+          /// @par Example
+          /// The following code example demonstrates how to use the BackColor, RectangleToScreen, PointToScreen, MouseButtons, ControlPaint::DrawReversibleFrame, and Rectangle::IntersectsWith members. To run the example, paste the following code in a form called Form1 containing several controls. This example requires that the MouseDown, MouseMove, and MouseUp events are connected to the event handlers defined in the example.
+          /// @code
+          /// // The following three methods will draw a rectangle and allow
+          /// // the user to use the mouse to resize the rectangle.  If the
+          /// // rectangle intersects a control's client rectangle, the
+          /// // control's color will change.
+          ///
+          /// bool isDrag = false;
+          /// Rectangle theRectangle(Point(0, 0), Size(0, 0));
+          /// Point startPoint;
+          ///
+          /// void Form1_MouseDown(const object& sender, const System::Windows::Forms::MouseEventArgs& e) {
+          ///   // Set the isDrag variable to true and get the starting point by using the PointToScreen method
+          ///   // to convert form coordinates to screen coordinates.
+          ///   if (e.Button == MouseButtons::Left) {
+          ///     isDrag = true;
+          ///   }
+          ///
+          ///   // Calculate the startPoint by using the PointToScreen method.
+          ///   startPoint = as<Control>(sender).PointToScreen(Point(e.X, e.Y));
+          /// }
+          ///
+          /// void Form1_MouseMove(const object& sender, const System::Windows::Forms::MouseEventArgs& e) {
+          ///   // If the mouse is being dragged, undraw and redraw the rectangle as the mouse moves.
+          ///   if (isDrag) {
+          ///     // Hide the previous rectangle by calling the DrawReversibleFrame method with the same parameters.
+          ///     ControlPaint::DrawReversibleFrame(theRectangle, this->BackColor, FrameStyle::Dashed);
+          ///
+          ///     // Calculate the endpoint and dimensions for the new rectangle, again using the PointToScreen method.
+          ///     Point endPoint = as<Control>(sender).PointToScreen(Point(e.X, e.Y));
+          ///
+          ///     int width = endPoint.X-startPoint.X;
+          ///     int height = endPoint.Y-startPoint.Y;
+          ///     theRectangle = Rectangle(startPoint.X, startPoint.Y, width, height);
+          ///
+          ///     // Draw the new rectangle by calling DrawReversibleFrame again.
+          ///     ControlPaint::DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
+          ///   }
+          /// }
+          ///
+          /// void Form1_MouseUp(const object& sender, const System::Windows::Forms::MouseEventArgs& e) {
+          ///   // If the MouseUp event occurs, the user is not dragging.
+          ///   isDrag = false;
+          ///
+          ///   // Draw the rectangle to be evaluated. Set a dashed frame style using the FrameStyle enumeration.
+          ///   ControlPaint::DrawReversibleFrame(theRectangle, this.BackColor, FrameStyle.Dashed);
+          ///
+          ///   // Find out which controls intersect the rectangle and change their color. The method uses the
+          ///   // RectangleToScreen method to convert the Control's client coordinates to screen coordinates.
+          ///   Rectangle controlRectangle;
+          ///   for (int i = 0; i < Controls().Count; i++) {
+          ///     controlRectangle = Controls()[i].RectangleToScreen(Controls()[i].ClientRectangle);
+          ///     if (controlRectangle.IntersectsWith(theRectangle)) {
+          ///       Controls()[i].BackColor = Color::BurlyWood;
+          ///     }
+          ///   }
+          ///
+          ///   // Reset the rectangle.
+          ///   theRectangle = Rectangle(0, 0, 0, 0);
+          /// }
+          /// @endcode
           System::Drawing::Point PointToScreen(System::Drawing::Point point) const;
 
+          /// @brief Preprocesses keyboard or input messages within the message loop before they are dispatched.
+          /// @param msg A Message, passed by reference, that represents the message to process. The possible values are WM_KEYDOWN, WM_SYSKEYDOWN, WM_CHAR, and WM_SYSCHAR.
+          /// @remarks PreProcessMessage is called by the application's message loop to preprocess input messages before they are dispatched. Possible values for the msg parameter are WM_KEYDOWN, WM_SYSKEYDOWN, WM_CHAR, and WM_SYSCHAR.
+          /// @remarks When overriding PreProcessMessage, a control should return true to indicate that it has processed the message. For messages that are not processed by the control, the result of base.PreProcessMessage should be returned. Controls will typically override one of the more specialized methods such as IsInputChar, IsInputKey, ProcessCmdKey, ProcessDialogChar, or ProcessDialogKey instead of overriding PreProcessMessage.
           bool PreProcessMessage(const Message& msg);
 
+          /// @brief Forces the control to invalidate its client area and immediately redraw itself and any child controls.
+          /// @par Notes to Inheritors
+          /// When overriding Refresh in a derived class, be sure to call the base class's Refresh method so the control and its child controls are invalidated and redrawn.
+          virtual void Refresh() {
+            this->Invalidate();
+            this->Update();
+          }
+
+          /// @brief Displays the control to the user.
+          /// @remarks Showing the control is equivalent to setting the Visible property to true. After the Show method is called, the Visible property returns a value of true until the Hide method is called.
+          /// @par Example
+          /// The following code example displays an about dialog box and temporarily draws a blue square on its surface. This example requires that you have defined a class that derives from Form named AboutDialog.
+          /// @code
+          /// void menuItemHelpAbout_Click(const object& sender, const EventArgs& e) {
+          ///   // Create and display a modless about dialog box.
+          ///   AboutDialog about;
+          ///   about.Show();
+          ///
+          ///   // Draw a blue square on the form.
+          ///   /* NOTE: This is not a persistent object, it will no longer be
+          ///    * visible after the next call to OnPaint. To make it persistent,
+          ///    * override the OnPaint method and draw the square there */
+          ///   Graphics g = about.CreateGraphics();
+          ///   g.FillRectangle(Brushes.Blue, 10, 10, 50, 50);
+          /// }
+          /// @endcode
           void Show();
 
           /// @brief Sets the bounds of the control to the specified location and size.
@@ -1230,6 +1404,17 @@ namespace Switch {
           void SetBounds(int32 x, int32 y, int32 width, int32 height) {
             this->Location = System::Drawing::Point(x, y);
             this->Size = System::Drawing::Size(width, height);
+          }
+
+          /// @brief Causes the control to redraw the invalidated regions within its client area.
+          /// @remarks Executes any pending requests for painting.
+          /// @remarks There are two ways to repaint a form and its contents:
+          /// * You can use one of the overloads of the Invalidate method with the Update method.
+          /// * You can call the Refresh method, which forces the control to redraw itself and all its children. This is equivalent to setting the Invalidate method to true and using it with Update.
+          /// @remarks The Invalidate method governs what gets painted or repainted. The Update method governs when the painting or repainting occurs. If you use the Invalidate and Update methods together rather than calling Refresh, what gets repainted depends on which overload of Invalidate you use. The Update method just forces the control to be painted immediately, but the Invalidate method governs what gets painted when you call the Update method.
+          /// @remarks For more information, see theWM_PAINTtopic.
+          void Update() {
+
           }
 
           virtual void WndProc(Message& message);
