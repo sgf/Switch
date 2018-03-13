@@ -29,6 +29,10 @@ namespace Switch {
     namespace Windows {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
+        /// @cond
+        class Form;
+        /// @endcond
+
         /// @brief Defines the base class for controls, which are components with visual representation.
         /// @remarks To create your own control class, inherit from the UserControl, Control classes, or from the other Windows Forms provided controls. For more information about authoring custom controls, see Developing Custom Windows Forms Controls with the .NET Framework.
         /// @remarks The Control class implements very basic functionality required by classes that display information to the user. It handles user input through the keyboard and pointing devices. It handles message routing and security. It defines the bounds of a control (its position and size), although it does not implement painting. It provides a window handle (hWnd).
@@ -1033,10 +1037,78 @@ namespace Switch {
             set_ { this->Size(System::Drawing::Size(value, this->size.Height())); }
           };
 
+          /// @brief Forces the creation of the visible control, including the creation of the handle and any visible child controls.
+          /// @remarks The CreateControl method forces a handle to be created for the control and its child controls. This method is used when you need a handle immediately for manipulation of the control or its children; simply calling a control's constructor does not create the Handle.
+          /// @remarks CreateControl does not create a control handle if the control's Visible property is false. You can either call the CreateHandle method or access the Handle property to create the control's handle regardless of the control's visibility, but in this case, no window handles are created for the control's children.
           void CreateControl();
 
+          /// @brief Retrieves the form that the control is on.
+          /// @return Form The Form that the control is on.
+          /// @remarks The control's Parent property value might not be the same as the Form returned by FindForm method. For example, if a RadioButton control is contained within a GroupBox control, and the GroupBox is on a Form, the RadioButton control's Parent is the GroupBox and the GroupBox control's Parent is the Form.
+          /// @par Example
+          /// The following code example uses the Parent property and the FindForm method to set properties on the parent control of a button and its form.
+          /// @code
+          /// // This example uses the Parent property and the Find method of Control to set
+          /// // properties on the parent control of a Button and its Form. The example assumes
+          /// // that a Button control named button1 is located within a GroupBox control. The
+          /// // example also assumes that the Click event of the Button control is connected to
+          /// // the event handler method defined in the example.
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   // Get the control the Button control is located in. In this case a GroupBox.
+          ///   ref<Control> control = button1.Parent;
+          ///   // Set the text and backcolor of the parent control.
+          ///   control.Text = "My Groupbox";
+          ///   control.BackColor = Color::Blue;
+          ///   // Get the form that the Button control is contained within.
+          ///   ref<Form> myForm = button1.FindForm();
+          ///   // Set the text and color of the form containing the Button.
+          ///   myForm.Text = "The Form of My Control";
+          ///   myForm.BackColor = Color::Red;
+          /// }
+          /// @endcode
+          ref<Form> FindForm() const;
+
+          /// @brief Sets input focus to the control.
+          /// @return bool true if the input focus request was successful; otherwise, false.
+          /// @remarks The Focus method returns true if the control successfully received input focus. The control can have the input focus while not displaying any visual cues of having the focus. This behavior is primarily observed by the nonselectable controls listed below, or any controls derived from them.
+          /// @remarks A control can be selected and receive input focus if all the following are true: the Selectable value of ControlStyles is set to true, it is contained in another control, and all its parent controls are both visible and enabled.
+          /// @remarks The Windows Forms controls in the following list are not selectable. Controls derived from these controls are also not selectable.
+          /// * Panel
+          /// * GroupBox
+          /// * PictureBox
+          /// * ProgressBar
+          /// * Splitter
+          /// * Label
+          /// * LinkLabel (when there is no link present in the control)
+          /// @note Focus is a low-level method intended primarily for custom control authors. Instead, application programmers should use the Select method or the ActiveControl property for child controls, or the Activate method for forms.
+          /// @par Example
+          /// The following code example sets focus to the specified Control, if it can receive focus.
+          /// @code
+          /// void ControlSetFocus(Control& control) {
+          ///   // Set focus to the control, if it can receive focus.
+          ///   if(control.CanFocus) {
+          ///     control.Focus();
+          ///   }
+          /// }
+          /// @endcode
           bool Focus();
 
+          /// @brief Retrieves the control that contains the specified handle.
+          /// @param handle The window handle (HWND) to search for.
+          /// @return Control The Control that represents the control associated with the specified handle; returns null if no control with the specified handle is found.
+          /// @remarks This method searches up the window handle parent chain until it finds a handle that is associated with a control. This method is more reliable than the FromHandle method, because it correctly returns controls that own more than one handle.
+          static ref<Control> FromChildHandle(intptr handle) {
+            try {
+              return handles[handle]().Parent;
+            } catch (...) {
+              return ref<Control>::Null();
+            }
+          }
+
+          /// @brief Returns the control that is currently associated with the specified handle.
+          /// @param handle The window handle (HWND) to search for.
+          /// @return Control A Control that represents the control associated with the specified handle; returns null if no control with the specified handle is found.
+          /// @remarks Use the FromChildHandle method if you need to return controls that own more than one handle.
           static ref<Control> FromHandle(intptr handle) {
             try {
               return handles[handle];
@@ -1045,10 +1117,97 @@ namespace Switch {
             }
           }
 
+          /// @brief Conceals the control from the user.
+          /// @remarks Hiding the control is equivalent to setting the Visible property to false. After the Hide method is called, the Visible property returns a value of false until the Show method is called.
+          /// @par Example
+          /// The following code example hides a button if the CTRL key is pressed when the button is clicked. This example requires that you have a Button named button1 on a Form.
+          /// @code
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   /* If the CTRL key is pressed when the
+          ///    * control is clicked, hide the control. */
+          ///   if((this->button1.ModifierKeys == Keys::Control) {
+          ///     this->button1.Hide();
+          ///   }
+          /// }
+          /// @endcode
           void Hide();
 
+          /// @brief Invalidates the entire surface of the control and causes the control to be redrawn.
+          /// @remarks Calling the Invalidate method does not force a synchronous paint; to force a synchronous paint, call the Update method after calling the Invalidate method. When this method is called with no parameters, the entire client area is added to the update region.
+          /// @par Example
+          /// The following code example enables the user to drag an image or image file onto the form, and have it be displayed at the point on it is dropped. The OnPaint method is overridden to repaint the image each time the form is painted; otherwise the image would only persist until the next repainting. The DragEnter event-handling method determines the type of data being dragged into the form and provides the appropriate feedback. The DragDrop event-handling method displays the image on the form, if an Image can be created from the data. Because the DragEventArgs.X and DragEventArgs.Y values are screen coordinates, the example uses the PointToClient method to convert them to client coordinates.
+          /// @code
+          /// private:
+          ///   $<Image> picture;
+          ///   Point pictureLocation;
+          ///
+          /// public:
+          ///   Form1() {
+          ///     // Enable drag-and-drop operations and
+          ///     // add handlers for DragEnter and DragDrop.
+          ///     this->AllowDrop = true;
+          ///     this->DragDrop += {*this, &Form1::Form1_DragDrop};
+          ///     this->DragEnter += {*this, &Form1::Form1_DragEnter};
+          ///   }
+          ///
+          /// protected:
+          ///   void OnPaint(PaintEventArgs& e) override {
+          ///     // If there is an image and it has a location,
+          ///     // paint it when the Form is repainted.
+          ///     this->Form::OnPaint(e);
+          ///     if(this->picture != null && this->pictureLocation != Point::Empty) {
+          ///       e.Graphics.DrawImage(*this->picture, this.pictureLocation);
+          ///     }
+          ///   }
+          ///
+          /// private:
+          ///   void Form1_DragDrop(const object& sender, DragEventArgs& e) {
+          ///     // Handle FileDrop data.
+          ///     if (e.Data.GetDataPresent(DataFormats::FileDrop) ) {
+          ///       // Assign the file names to a string array, in
+          ///       // case the user has selected multiple files.
+          ///       $<Array<string>> files = as<Array<string>>(e.Data.GetData(DataFormats::FileDrop));
+          ///       try {
+          ///         // Assign the first image to the picture variable.
+          ///         this->picture = Image::FromFile((*files)[0]);
+          ///         // Set the picture location equal to the drop point.
+          ///         this->pictureLocation = this->PointToClient(Point(e.X, e.Y));
+          ///       } catch(const Exception& ex) {
+          ///         MessageBox::Show(ex.Message);
+          ///         return;
+          ///       }
+          ///     }
+          ///
+          ///     // Handle Bitmap data.
+          ///     if (e.Data.GetDataPresent(DataFormats::Bitmap) ) {
+          ///       try {
+          ///         // Create an Image and assign it to the picture variable.
+          ///         this->picture = as<Image>(e.Data.GetData(DataFormats.Bitmap));
+          ///         // Set the picture location equal to the drop point.
+          ///         this->pictureLocation = this->PointToClient(Point(e.X, e.Y) );
+          ///       } catch(const Exception& ex) {
+          ///         MessageBox::Show(ex.Message);
+          ///         return;
+          ///       }
+          ///     }
+          ///     // Force the form to be redrawn with the image.
+          ///     this->Invalidate();
+          ///   }
+          ///
+          ///   void Form1_DragEnter(const object& sender, DragEventArgs& e) {
+          ///     // If the data is a file or a bitmap, display the copy cursor.
+          ///     if (e.Data.GetDataPresent(DataFormats::Bitmap) || e.Data.GetDataPresent(DataFormats::FileDrop) ) {
+          ///       e.Effect = DragDropEffects::Copy;
+          ///     } else {
+          ///       e.Effect = DragDropEffects::None;
+          ///     }
+          ///   }
+          /// @endcode
           void Invalidate() { Invalidate(false); }
 
+          /// @brief Invalidates a specific region of the control and causes a paint message to be sent to the control. Optionally, invalidates the child controls assigned to the control.
+          /// @param invalidateChildren true to invalidate the control's child controls; otherwise, false.
+          /// @remarks Calling the Invalidate method does not force a synchronous paint; to force a synchronous paint, call the Update method after calling the Invalidate method. When this method is called with no parameters, the entire client area is added to the update region.
           void Invalidate(bool invalidateChildren);
 
           void Invalidate(const System::Drawing::Rectangle& rect) { Invalidate(rect, false); }

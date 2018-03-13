@@ -141,6 +141,13 @@ bool Control::Focus() {
   return true;
 }
 
+ref<Form> Control::FindForm() const {
+  for (ref<Control> control = this->Parent; control != null; control = control->Parent)
+    if (is<Form>(control))
+      return as<Form>(control);
+  return ref<Form>::Null();
+}
+
 void Control::Hide() {
   this->Visible = false;
 }
