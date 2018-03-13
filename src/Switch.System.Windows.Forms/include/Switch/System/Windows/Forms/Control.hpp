@@ -1221,7 +1221,17 @@ namespace Switch {
           /// @remarks Calling the Invalidate method does not force a synchronous paint; to force a synchronous paint, call the Update method after calling the Invalidate method. When this method is called with no parameters, the entire client area is added to the update region.
           void Invalidate(const System::Drawing::Rectangle& rect, bool invalidateChildren);
 
-          void PerformLayout() {}
+          /// @brief Forces the control to apply layout logic to all its child controls.
+          /// @remarks If the SuspendLayout method was called before calling the PerformLayout method, the Layout event is suppressed.
+          /// @remarks The AffectedControl and AffectedProperty properties of the LayoutEventArgs created are set to null if no values were provided when the PerformLayout method was called.
+          /// @par Examples
+          /// The following code example demonstrates how to use the PerformLayout method. It also demonstrates ways in which the Layout event is raised. In this example, the Click event handler for Button1 explicitly calls PerformLayout. The Click event handler for Button2 implicitly calls PerformLayout. PerformLayout is also called when the form is loaded. Button3 returns the control to the state it was in when loaded. In each case, the Layout event is raised.
+          ///
+          /// This is a complete example. To run the example, paste the following code in a blank form.
+          /// @include PerformLaout.cpp
+          void PerformLayout() {
+            
+          }
 
           /// @brief Computes the location of the specified screen point into client coordinates.
           /// @param point The screen coordinate Point to convert.
@@ -1378,14 +1388,6 @@ namespace Switch {
             this->Update();
           }
 
-          /// @brief Resumes usual layout logic, optionally forcing an immediate layout of pending layout requests.
-          /// @param performLayout true to execute pending layout requests; otherwise, false.
-          /// @remarks Calling the ResumeLayout method forces an immediate layout if there are any pending layout requests. When the performLayout parameter is set to true, an immediate layout occurs if there are any pending layout requests.
-          /// @remarks The SuspendLayout and ResumeLayout methods are used in tandem to suppress multiple Layout events while you adjust multiple attributes of the control. For example, you would typically call the SuspendLayout method, then set the Size, Location, Anchor, or Dock properties of the control, and then call the ResumeLayout method to enable the changes to take effect.
-          /// @remarks There must be no pending calls to SuspendLayout for ResumeLayout to be successfully called.
-          /// @note When adding several controls to a parent control, it is recommended that you call the SuspendLayout method before initializing the controls to be added. After adding the controls to the parent control, call the ResumeLayout method. This will increase the performance of applications with many controls.
-          void ResumeLayout() {}
-
           /// @brief Resumes usual layout logic.
           /// @remarks Calling the ResumeLayout method forces an immediate layout if there are any pending layout requests.
           /// @remarks The SuspendLayout and ResumeLayout methods are used in tandem to suppress multiple Layout events while you adjust multiple attributes of the control. For example, you would typically call the SuspendLayout method, then set the Size, Location, Anchor, or Dock properties of the control, and then call the ResumeLayout method to enable the changes to take effect.
@@ -1408,10 +1410,18 @@ namespace Switch {
           ///   this->ResumeLayout();
           /// }
           /// @endcode
+          void ResumeLayout() {}
+
+          /// @brief Resumes usual layout logic, optionally forcing an immediate layout of pending layout requests.
+          /// @param performLayout true to execute pending layout requests; otherwise, false.
+          /// @remarks Calling the ResumeLayout method forces an immediate layout if there are any pending layout requests. When the performLayout parameter is set to true, an immediate layout occurs if there are any pending layout requests.
+          /// @remarks The SuspendLayout and ResumeLayout methods are used in tandem to suppress multiple Layout events while you adjust multiple attributes of the control. For example, you would typically call the SuspendLayout method, then set the Size, Location, Anchor, or Dock properties of the control, and then call the ResumeLayout method to enable the changes to take effect.
+          /// @remarks There must be no pending calls to SuspendLayout for ResumeLayout to be successfully called.
+          /// @note When adding several controls to a parent control, it is recommended that you call the SuspendLayout method before initializing the controls to be added. After adding the controls to the parent control, call the ResumeLayout method. This will increase the performance of applications with many controls.
           void ResumeLayout(bool performLayout) {
             this->ResumeLayout();
             if (performLayout)
-              this->SuspendLayout();
+              this->PerformLayout();
           }
 
           /// @brief Displays the control to the user.
