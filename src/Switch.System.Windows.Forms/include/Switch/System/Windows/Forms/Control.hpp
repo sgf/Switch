@@ -34,12 +34,12 @@ namespace Switch {
         /// @remarks The Control class implements very basic functionality required by classes that display information to the user. It handles user input through the keyboard and pointing devices. It handles message routing and security. It defines the bounds of a control (its position and size), although it does not implement painting. It provides a window handle (hWnd).
         /// @remarks Windows Forms controls use ambient properties so child controls can appear like their surrounding environment. An ambient property is a control property that, if not set, is retrieved from the parent control. If the control does not have a Parent, and the property is not set, the control attempts to determine the value of the ambient property through the Site property. If the control is not sited, if the site does not support ambient properties, or if the property is not set on the AmbientProperties, the control uses its own default values. Typically, an ambient property represents a characteristic of a control, such as BackColor, that is communicated to a child control. For example, a Button will have the same BackColor as its parent Form by default. Ambient properties provided by the Control class include: Cursor, Font, BackColor, ForeColor, and RightToLeft.
         /// @note To make your Windows Forms application support visual styles, be sure to set the FlatStyle property to System and include a manifest with your executable. A manifest is an XML file that is included either as a resource within your application executable or as a separate file that resides in the same directory as the executable file. For an example of a manifest, see the Example section of the FlatStyle enumeration. For more information about using visual styles, see Visual Styles.
-        /// @note Windows Forms has accessibility support built in, and provides information about your application that enables it to work with accessibility client applications such as screen enlarger and reviewer utilities, voice input utilities, on-screen keyboards, alternative input devices, and keyboard enhancement utilities. Sometimes you will want to provide additional information to accessibility client applications. There are two ways of providing this additional information. You can set the AccessibleName, AccessibleDescription, AccessibleDefaultActionDescription, and AccessibleRole property values, which will be reported to accessibility client applications. This method is typically used to provide limited accessibility information for existing controls. Alternatively, you can write your own class deriving from the AccessibleObject or Control.ControlAccessibleObject classes, providing as much accessibility information as needed.
+        /// @remarks Windows Forms has accessibility support built in, and provides information about your application that enables it to work with accessibility client applications such as screen enlarger and reviewer utilities, voice input utilities, on-screen keyboards, alternative input devices, and keyboard enhancement utilities. Sometimes you will want to provide additional information to accessibility client applications. There are two ways of providing this additional information. You can set the AccessibleName, AccessibleDescription, AccessibleDefaultActionDescription, and AccessibleRole property values, which will be reported to accessibility client applications. This method is typically used to provide limited accessibility information for existing controls. Alternatively, you can write your own class deriving from the AccessibleObject or Control.ControlAccessibleObject classes, providing as much accessibility information as needed.
         /// @note To maintain better performance, do not set the size of a control in its constructor. The preferred method is to override the DefaultSize property.
         /// @note Do not add data bindings for a Control in its constructor. Doing so will cause errors in code generation and can cause unwanted behavior.
-        /// @note The majority of the controls in the System::Windows::Forms namespace use the underlying Windows common control as a base to build on. For more information about the Windows common controls, see General Control Reference.
-        /// @note To identify Windows Forms controls from a separate process, use a standard SendMessage call to pass the WM_GETCONTROLNAME message. WM_GETCONTROLNAME is independent of the language and Windows hierarchy. For more information, see the "Recommended Solution for Windows Forms" topic in Automating Windows Forms::
-        /// @note Use the InvokeRequired property to synchronize access to the control from multiple threads. For more information about multithreaded Windows Forms controls, see How to: Make Thread-Safe Calls to Windows Forms Controls
+        /// @remarks The majority of the controls in the System::Windows::Forms namespace use the underlying Windows common control as a base to build on. For more information about the Windows common controls, see General Control Reference.
+        /// @remarks To identify Windows Forms controls from a separate process, use a standard SendMessage call to pass the WM_GETCONTROLNAME message. WM_GETCONTROLNAME is independent of the language and Windows hierarchy. For more information, see the "Recommended Solution for Windows Forms" topic in Automating Windows Forms::
+        /// @remarks Use the InvokeRequired property to synchronize access to the control from multiple threads. For more information about multithreaded Windows Forms controls, see How to: Make Thread-Safe Calls to Windows Forms Controls
         class system_windows_forms_export_ Control : public IWin32Window, public System::ComponentModel::Component {
           enum class State;
         public:
@@ -57,30 +57,76 @@ namespace Switch {
           /// @endcode
           class ControlCollection : public System::Collections::Generic::List<ref<Control>> {
           public:
-            /// @cond
-            ~ControlCollection() { this->Clear(); }
-            /// @endcond
+            /// @brief Adds the specified control to the control collection.
+            /// @exception Exception The specified control is a top-level control, or a circular control reference would result if this control were added to the control collection.
+            /// @exception ArgumentException The object assigned to the value parameter is not a Control.
+            /// @remarks The Add method allows you to add Control objects to the end of the control collection.
+            /// @remarks You can also add new Control objects to the collection by using the AddRange method.
+            /// @remarks To remove a Control that you previously added, use the Remove, RemoveAt, or Clear methods.
+            /// @note A Control can only be assigned to one Control.ControlCollection at a time. If the Control is already a child of another control it is removed from that control before it is added to another control.
+            /// @par Notes to Inheritors
+            /// When overriding Add in a derived class, be sure to call the base class's Add method to ensure that the control is added to the collection.
+            /// @par Example
+            /// The following code example adds a Control to the Control.ControlCollection of the derived class Panel. The example requires that you have created a Panel control and a Button control on a Form. When the button is clicked, a TextBox control is added to the panel's Control.ControlCollection.
+            /// @code
+            /// // Create a TextBox to add to the Panel.
+            /// TextBox textBox1;
+            ///
+            /// // Add controls to the Panel using the Add method.
+            /// void addButton_Click(const object& sender, const System::EventArgs& e) {
+            ///   panel1.Controls().Add(textBox1);
+            /// }
+            /// @endcode
             void Add(const ref<Control>& value) override {
               ChangeParent(value);
               this->System::Collections::Generic::List<ref<Control>>::Add(value);
             }
 
-            void Insert(int32 index, const ref<Control>& value) override {
-              ChangeParent(value);
-              this->System::Collections::Generic::List<ref<Control>>::Insert(index, value);
-            }
-
+            /// @brief Removes the specified control from the control collection.
+            /// @param value The Control to remove from the Control.ControlCollection.
+            /// @remarks When a Control is removed from the control collection, all subsequent controls are moved up one position in the collection.
+            /// @remarks You can also remove a Control by using the RemoveAt method, or remove all controls by using the Clear method.
+            /// @remarks To add new Control objects to the collection, use the Add or AddRange methods.
+            /// @par Notes to Inheritors
+            /// When overriding Remove in a derived class, be sure to call the base class's Remove method to ensure that the control is removed from the collection.
+            /// @par Example
+            /// The following code example removes a Control from the Control.ControlCollection of the derived class Panel if it is a member of the collection. The example requires that you have created a Panel, a Button, and one or more RadioButton controls on a Form. The RadioButton controls are added to the Panel control, and the Panel control is added to the Form. When the button is clicked, the radio button named radioButton2 is removed from the Control.ControlCollection.
+            /// @code
+            /// // Remove the RadioButton control if it exists.
+            /// void removeButton_Click(const object& sender, const System::EventArgs& e) {
+            ///   if(panel1.Controls().Contains(removeButton)) {
+            ///     panel1.Controls().Remove(removeButton);
+            ///   }
+            /// }
+            /// @endcode
             bool Remove(const ref<Control>& value) override {
               RemoveParent(value);
               return this->System::Collections::Generic::List<ref<Control>>::Remove(value);
             }
 
+            /// @brief Removes a control from the control collection at the specified indexed location.
+            /// @param index The index value of the Control to remove.
+            /// @remarks When a Control is removed from the control collection, all subsequent controls are moved up one position in the collection.
+            /// @remarks You can also remove a Control that you previously added by using the Remove or Clear methods.
+            /// @remarks To add new Control objects to the collection, use the Add or AddRange methods.
+            /// @par Example
+            /// The following code example removes the first Control in the Control.ControlCollection of the derived class Panel if the count of the collection is greater than zero. The example requires that you have created a Panel, a Button, and at least one other control on a Form. The other controls are added to the Panel control, and the Panel control added to the Form. When the button is clicked, the first control contained in the panel is removed from the Control.ControlCollection.
+            /// @code
+            /// // Remove the first control in the collection.
+            /// void removeAtButton_Click(object sender, System.EventArgs e) {
+            ///   if (panel1.Controls().Count > 0) {
+            ///     panel1.Controls().RemoveAt(0);
+            ///   }
+            /// }
+            /// @endcode
             void RemoveAt(int32 index) override {
               RemoveParent((*this)[index]);
               this->System::Collections::Generic::List<ref<Control>>::RemoveAt(index);
             }
 
           private:
+            void Insert(int32 index, const ref<Control>& value) override {}
+
             friend Control;
             explicit ControlCollection(ref<Control> controlContainer) : controlContainer(controlContainer) {}
 
@@ -149,6 +195,23 @@ namespace Switch {
           /// @param color A Color that represents the background color of the control. The default is the value of the DefaultBackColor property.
           /// @remarks The BackColor property does not support transparent colors unless the SupportsTransparentBackColor value of System::Windows::Forms::ControlStyles is set to true.
           /// @remarks The BackColor property is an ambient property. An ambient property is a control property that, if not set, is retrieved from the parent control. For example, a Button will have the same BackColor as its parent Form by default. For more information about ambient properties, see the AmbientProperties class or the Control class overview.
+          /// @par Notes to Inheritors
+          /// When overriding the BackColor property in a derived class, use the base class's BackColor property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setaccessors of the BackColor property; you can override only one if needed.
+          /// @par Example
+          /// The following code example sets the BackColor and ForeColor of the controls to the default system colors. The code recursively calls itself if the control has any child controls. This code example requires that you have a Form with at least one child control; however, a child container control, like a Panel or GroupBox, with its own child control(s) would better demonstrate the recursion.
+          /// @code
+          /// // Reset all the controls to the user's default Control color.
+          /// void ResetAllControlsBackColor(ref<Control> control) {
+          ///   control.BackColor = SystemColors::Control;
+          ///   control.ForeColor = SystemColors::ControlText;
+          ///   if(control.HasChildren) {
+          ///     // Recursively call this method for each child control.
+          ///     for(ref<Control> childControl : control.Controls()) {
+          ///       ResetAllControlsBackColor(childControl);
+          ///     }
+          ///   }
+          /// }
+          /// @endcode
           property_<System::Drawing::Color> BackColor {
             get_ { return (!this->backColor.HasValue && this->parent != null) ? this->parent().BackColor : this->backColor.GetValueOrDefault(DefaultBackColor); },
             set_ {
@@ -163,6 +226,22 @@ namespace Switch {
           /// @param value An Int32 representing the distance, in pixels, between the bottom edge of the control and the top edge of its container's client area.
           /// @remarks The value of this property is equal to the sum of the Top property value, and the Height property value.
           /// @remarks he Bottom property is a read-only property. You can manipulate this property value by changing the value of the Top or Height properties or calling the SetBounds, SetBoundsCore, UpdateBounds, or SetClientSizeCore methods.
+          /// @par Example
+          /// The following code example uses the Bottom property to define the lower limit of a TextBox control relative to the client area of the container.
+          /// @code
+          /// // This example demonstrates how to use the KeyUp event with the Help class to display
+          /// // pop-up style help to the user of the application. When the user presses F1, the Help
+          /// // class displays a pop-up window, similar to a ToolTip, near the control. This example assumes
+          /// // that a TextBox control, named textBox1, has been added to the form and its KeyUp
+          /// // event has been contected to this event handler method.
+          /// void textBox1_KeyUp(const object& sender, const System::Windows::Forms::KeyEventArgs& e) {
+          ///   // Determine whether the key entered is the F1 key. Display help if it is.
+          ///   if(e.KeyCode == Keys::F1) {
+          ///     // Display a pop-up help topic to assist the user.
+          ///     Help::ShowPopup(this->textBox1, "Enter your first name", Point(this->textBox1.Right, this->textBox1.Bottom));
+          ///   }
+          /// }
+          /// @endcode
           property_<int32, readonly_> Bottom {
             get_{ return this->location.Y() + this->size.Height(); }
           };
@@ -170,6 +249,45 @@ namespace Switch {
           /// @brief Gets or sets the size and location of the control including its nonclient elements, in pixels, relative to the parent control.
           /// @param value A Rectangle in pixels relative to the parent control that represents the size and location of the control including its nonclient elements.
           /// @remarks The bounds of the control include the nonclient elements such as scroll bars, borders, title bars, and menus. The SetBoundsCore method is called to set the Bounds property. The Bounds property is not always changed through its set method so you should override the SetBoundsCore method to ensure that your code is executed when the Bounds property is set.
+          /// @par Example
+          /// The following code example creates three Button controls on a form and sets their size and location by using the various size-related and location-related properties. This example requires that you have a Form that has a width and height of at least 300 pixels.
+          /// @code
+          /// // Create three buttons and place them on a form using
+          /// // several size and location related properties.
+          /// void AddOKCancelButtons() {
+          ///   // Set the button size and location using
+          ///   // the Size and Location properties.
+          ///   Button buttonOK;
+          ///   buttonOK.Location = Point(136,248);
+          ///   buttonOK.Size = System::Drawing::Size(75,25);
+          ///   // Set the Text property and make the
+          ///   // button the form's default button.
+          ///   buttonOK.Text = "&OK";
+          ///   this.AcceptButton = buttonOK;
+          ///
+          ///   // Set the button size and location using the Top,
+          ///   // Left, Width, and Height properties.
+          ///   Button buttonCancel;
+          ///   buttonCancel.Top = buttonOK.Top;
+          ///   buttonCancel.Left = buttonOK.Right + 5;
+          ///   buttonCancel.Width = buttonOK.Width;
+          ///   buttonCancel.Height = buttonOK.Height;
+          ///   // Set the Text property and make the
+          ///   // button the form's cancel button.
+          ///   buttonCancel.Text = "&Cancel";
+          ///   this.CancelButton = buttonCancel;
+          ///
+          ///   // Set the button size and location using
+          ///   // the Bounds property.
+          ///   Button buttonHelp;
+          ///   buttonHelp.Bounds = Rectangle(10,10, 75, 25);
+          ///   // Set the Text property of the button.
+          ///   buttonHelp.Text = "&Help";
+          ///
+          ///   // Add the buttons to the form.
+          ///   this->Controls().AddRange({buttonOK, buttonCancel, buttonHelp});
+          /// }
+          /// @endcode
           property_<System::Drawing::Rectangle> Bounds {
             get_ { return Drawing::Rectangle(this->Location(), this->Size()); },
             set_ {
@@ -178,6 +296,28 @@ namespace Switch {
             }
           };
 
+          /// @brief Gets the rectangle that represents the client area of the control.
+          /// @return A Rectangle that represents the client area of the control.
+          /// @remarks The client area of a control is the bounds of the control, minus the nonclient elements such as scroll bars, borders, title bars, and menus.
+          /// @remarks Because client coordinates are relative to the upper-left corner of the client area of the control, the coordinates of the upper-left corner of the rectangle returned by this property are (0,0). You can use this property to obtain the size and coordinates of the client area of the control for tasks such as drawing on the surface of the control.
+          /// @remarks For more information about drawing on controls, see Rendering a Windows Forms Control.
+          /// @par Example
+          /// The following code example enables auto-scrolling for a form, resizes the form, and ensures that a button remains visible after the form is resized. This example requires that you have a Form with a Button named button2 on it.
+          /// @code
+          /// void ResizeForm() {
+          ///   // Enable auto-scrolling for the form.
+          ///   this->AutoScroll = true;
+          ///
+          ///   // Resize the form.
+          ///   Rectangle r = this->ClientRectangle;
+          ///   // Subtract 100 pixels from each side of the Rectangle.
+          ///   r.Inflate(-100, -100);
+          ///   this->Bounds = this->RectangleToScreen(r);
+          ///
+          ///   // Make sure button2 is visible.
+          ///   this->ScrollControlIntoView(button2);
+          /// }
+          /// @endcode
           property_<System::Drawing::Rectangle, readonly_> ClientRectangle {
             get_{ return System::Drawing::Rectangle({0, 0}, this->clientSize); }
           };
@@ -203,7 +343,12 @@ namespace Switch {
           };
 
           static property_<System::Drawing::Color, readonly_> DefaultBackColor;
+
           static property_<System::Drawing::Color, readonly_> DefaultForeColor;
+
+          property_<bool, readonly_> HasChildren {
+            get_ {return this->Controls().Count != 0;}
+          };
 
           property_<bool> Enabled{
             get_ {return this->enabled; },
