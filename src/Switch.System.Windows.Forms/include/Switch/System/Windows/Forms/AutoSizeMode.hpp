@@ -17,9 +17,9 @@ namespace Switch {
         /// @remarks AutoSizeMode property. The MinimumSize and MaximumSize properties are respected, but the current value of the Size property is ignored.
         enum class AutoSizeMode {
           /// @brief The control grows or shrinks to fit its contents. The control cannot be resized manually.
-          GrowAndShrink,
+          GrowAndShrink = 0,
           /// @brief The control grows as much as necessary to fit its contents but does not shrink smaller than the value of its Size property. The form can be resized, but cannot be made so small that any of its contained controls are hidden.
-          GrowOnly,
+          GrowOnly = 1,
         };
       }
     }

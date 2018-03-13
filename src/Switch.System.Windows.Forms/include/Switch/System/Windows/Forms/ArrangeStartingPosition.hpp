@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies the starting position that the system uses to arrange minimized windows.
+        /// @remarks This enumeration has a FlagsAttribute attribute that allows a bitwise combination of its member values.
+        /// @remarks This enumeration is used by the ArrangeStartingPosition property of the SystemInformation class.
         enum class ArrangeStartingPosition {
           /// @brief Starts at the lower-left corner of the screen, which is the default position.
           BottomLeft = 0,

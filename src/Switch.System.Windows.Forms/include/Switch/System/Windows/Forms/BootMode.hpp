@@ -9,6 +9,9 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies the mode to start the computer in.
+        /// @remarks This enumeration defines identifiers that represent the standard operating system startup modes.
+        /// @remarks This enumeration is used by the BootMode property of the SystemInformation class.
+        /// @remarks The Normal boot mode is the standard system startup mode. The FailSafe boot mode is also called safe mode. The FailSafeWithNetwork boot mode is also called safe mode with networking.
         enum class BootMode {
           /// @brief Starts the computer in standard mode.
           Normal = 0,

@@ -16,6 +16,17 @@ namespace Switch {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
         /// @brief Provides static methods and properties to manage an application, such as methods to start and stop an application, to process Windows messages, and properties to get information about an application. This class cannot be inherited.
+        /// @brief The Application class has methods to start and stop applications and threads, and to process Windows messages, as follows:
+        /// * Run starts an application message loop on the current thread and, optionally, makes a form visible.
+        /// * Exit or ExitThread stops a message loop.
+        /// * DoEvents processes messages while your program is in a loop.
+        /// * AddMessageFilter adds a message filter to the application message pump to monitor Windows messages.
+        /// * IMessageFilter lets you stop an event from being raised or perform special operations before invoking an event handler.
+        /// @remarks This class has CurrentCulture and CurrentInputLanguage properties to get or set culture information for the current thread.
+        /// @remarks You cannot create an instance of this class.
+        /// @par Example
+        /// The following code example demonstrate the use of Application class.
+        /// @include Application.cpp
         class system_windows_forms_export_ Application static_ {
         public:
           static void EnableVisualStyles();

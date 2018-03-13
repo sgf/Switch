@@ -33,10 +33,16 @@ namespace Switch {
           ContainerControl(const string& text, int32 left, int32 top, int32 width, int32 height) : ScrollableControl(text, left, top, width, height) {
           }
 
+          /// @brief Gets the IContainer that contains the Component.
+          /// @return Switch::System::ComponentModel::IContainer The IContainer that contains the Component, if any, or null if the Component is not encapsulated in an IContainer.
+          /// @remarks The components in a container are tracked in a first-in, first-out list, which also defines the order of the components within the container. The last component added is the last component in the list.
           property_<const System::ComponentModel::IContainer&, readonly_> Container {
             get_->const System::ComponentModel::IContainer& {return this->GetContainer();}
           };
 
+          /// @brief Gets the IContainer that contains the Component.
+          /// @return Switch::System::ComponentModel::IContainer The IContainer that contains the Component, if any, or null if the Component is not encapsulated in an IContainer.
+          /// @remarks The components in a container are tracked in a first-in, first-out list, which also defines the order of the components within the container. The last component added is the last component in the list.
           virtual const System::ComponentModel::IContainer& GetContainer() const {return ref<NullContainer>::Null();}
 
         private:

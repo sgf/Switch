@@ -39,9 +39,15 @@ namespace Switch {
           EventHandler CheckedChanged;
 
         protected:
+          /// @brief Creates a handle for the control
+          /// @remarks You typically should not call the CreateHandle method directly. The preferred method is to call the CreateControl method, which forces a handle to be created for the control and its child controls when the control is created.
+          /// @par Notes to Inheritors
+          /// When overriding CreateHandle in a derived class, be sure to call the base class's CreateHandle method to ensure that the handle is created.
           void CreateHandle() override;
           void SetChecked(bool checked);
 
+          /// @brief Gets the default size of the control.
+          /// @return Switch::System::Drawing::Size The default Size of the control.
           System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(104, 24); }
 
           virtual void OnCheckedChanged(const EventArgs& e) {this->CheckedChanged(*this, e);}

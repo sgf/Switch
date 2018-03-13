@@ -9,6 +9,7 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies the direction the system uses to arrange minimized windows.
+        /// @remarks This enumeration is used by the ArrangeDirection property of the SystemInformation class.
         enum class ArrangeDirection {
           /// @brief Arranges vertically, from top to bottom.
           Down = 0x0004,

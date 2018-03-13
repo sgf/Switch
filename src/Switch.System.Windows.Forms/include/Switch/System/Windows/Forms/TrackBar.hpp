@@ -79,12 +79,20 @@ namespace Switch {
           void OnScroll(const EventArgs& e) { this->Scroll(*this, e); }
           void OnValueChanged(const EventArgs& e) { this->ValueChanged(*this, e); }
 
+          /// @brief Creates a handle for the control
+          /// @remarks You typically should not call the CreateHandle method directly. The preferred method is to call the CreateControl method, which forces a handle to be created for the control and its child controls when the control is created.
+          /// @par Notes to Inheritors
+          /// When overriding CreateHandle in a derived class, be sure to call the base class's CreateHandle method to ensure that the handle is created.
           void CreateHandle() override;
+
+          /// @brief Gets the default size of the control.
+          /// @return Switch::System::Drawing::Size The default Size of the control.
           System::Drawing::Size GetDefaultSize() const override {
             if (this->orientation == Forms::Orientation::Horizontal)
               return System::Drawing::Size(104, 45);
             return System::Drawing::Size(45, 104);
           }
+
           void SetLargeChange(int32 largeChange);
           void SetMaximum(int32 maximum);
           void SetMinimum(int32 minimum);

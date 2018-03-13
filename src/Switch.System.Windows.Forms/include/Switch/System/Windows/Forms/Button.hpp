@@ -20,23 +20,40 @@ namespace Switch {
         /// @remarks When you display a form using the ShowDialog method, you can use the DialogResult property of a button to specify the return value of ShowDialog.
         /// @remarks You can change the button's appearance. For example, to make it appear flat for a Web look, set the FlatStyle property to FlatStyle.Flat. The FlatStyle property can also be set to FlatStyle.Popup, which appears flat until the mouse pointer passes over the button; then the button takes on the standard Windows button appearance.
         /// @note If the control that has focus accepts and processes the ENTER key press, the Button does not process it. For example, if a multiline TextBox or another button has focus, that control processes the ENTER key press instead of the accept button.
+        /// @par Example
+        /// The following code example demonstrate the use of Button control.
+        /// @include Button.cpp
         class system_windows_forms_export_ Button : public ButtonBase {
         public:
+          /// @brief Initializes a new instance of the Button class.
+          /// @remarks By default the Button displays no caption. To specify the caption text, set the Text property.
           Button() : ButtonBase("", 0, 0, 75, 25) {
             this->SetStyle(ControlStyles::UserPaint, false);
           }
 
+          /// @brief Gets or sets a value indicating whether the button control is the default button.(Inherited from ButtonBase.)
+          /// @return bool true if the button control is the default button; otherwise, false.
+          /// @remarks When the IsDefault property is set to true, the button is the default button for the Form. This means that the button is clicked when the ENTER key is pressed if no other button or any other control that captures the ENTER key has focus.
+          /// @remarks To specify the default button of a form, set the AcceptButton property of the form to the desired button.
           property_<bool> IsDefault {
             get_ {return this->isDefault;},
             set_ {this->SetIsDefault(value);}
           };
 
         protected:
+          /// @brief Creates a handle for the control
+          /// @remarks You typically should not call the CreateHandle method directly. The preferred method is to call the CreateControl method, which forces a handle to be created for the control and its child controls when the control is created.
+          /// @par Notes to Inheritors
+          /// When overriding CreateHandle in a derived class, be sure to call the base class's CreateHandle method to ensure that the handle is created.
           void CreateHandle() override;
+
+          /// @brief Gets the default size of the control.
+          /// @return Switch::System::Drawing::Size The default Size of the control.
           System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(75, 25); }
-          void SetIsDefault(bool isDefault);
 
           /// @cond
+          void SetIsDefault(bool isDefault);
+
           bool isDefault = false;
           /// @endcond
         };

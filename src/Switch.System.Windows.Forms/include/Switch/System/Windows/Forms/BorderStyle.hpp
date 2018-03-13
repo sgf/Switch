@@ -8,11 +8,15 @@ namespace Switch {
   namespace System {
     namespace Windows {
       namespace Forms {
-        /// @brief Specifie the BorderStyle values
+        /// @brief Specifies the border style for a control.
+        /// @remarks Use the members of this enumeration to set the border style for controls that have a changeable border.
         enum class BorderStyle {
-          None,
-          FixedSingle,
-          Fixed3D,
+          /// @brief No border.
+          None = 0,
+          /// @brief A single-line border.
+          FixedSingle = 1,
+          /// @brief A three-dimensional border.
+          Fixed3D = 2,
         };
       }
     }
