@@ -2361,7 +2361,7 @@ namespace Switch {
           /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
           /// @remarks The OnClick method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
           /// @par Notes to inheritors
-          /// When overriding OnClick in a derived class, be sure to call the base class's OnBackColorChanged method so that registered delegates receive the event.
+          /// When overriding OnClick in a derived class, be sure to call the base class's OnClick method so that registered delegates receive the event.
           /// @par Examples
           /// The following code example demonstrates overriding the OnClick method in a derived class. To run the example, paste the following code after a form class, in the same file. Add a textbox of type SingleClickTextBox to the form.
           /// @code
@@ -2398,6 +2398,12 @@ namespace Switch {
           /// @endcode
           virtual void OnClick(const EventArgs& e) { this->Click(*this, e); }
 
+          /// @brief Raises the ClientSizeChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnClientSizeChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to inheritors
+          /// When overriding OnClientSizeChanged in a derived class, be sure to call the base class's OnClientSizeChanged method so that registered delegates receive the event.
           virtual void OnClientSizeChanged(const EventArgs& e);
 
           /// @brief Raises the CreateControl method.
