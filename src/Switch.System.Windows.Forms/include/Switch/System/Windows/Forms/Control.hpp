@@ -2324,8 +2324,78 @@ namespace Switch {
           /// @endcode
           virtual void SetStyle(ControlStyles flag, bool value) { this->style = value ? (ControlStyles)((int32)this->state | (int32)flag) : (ControlStyles)((int32)this->style & ~(int32)flag); }
 
+          /// @brief Raises the BackColorChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnBackColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to inheritors
+          /// When overriding OnBackColorChanged in a derived class, be sure to call the base class's OnBackColorChanged method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example is an event-raising method that is executed when the Text property value changes. The Control class has several methods with the name pattern OnPropertyNameChanged that raise the corresponding PropertyNameChanged event when the PropertyName value changes (PropertyName represents the name of the corresponding property).<br><br>
+          /// The following code example changes the ForeColor of a TextBox derived class displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive. This example requires that you have a class that derives from the TextBox class.
+          /// @code
+          /// void OnTextChanged(const System::EventArgs& e) override {
+          ///   try {
+          ///     // Convert the text to a Double and determine
+          ///     // if it is a negative number.
+          ///     if (Double::Parse(this->Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       this->ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       this->ForeColor = Color::Black;
+          ///     }
+          ///   } catch (...) {
+          ///     // If there is an error, display the
+          ///     // text using the system colors.
+          ///     this->ForeColor = SystemColors::ControlText;
+          ///   }
+          ///
+          ///   this->TextBox::OnTextChanged(e);
+          /// }
+          /// @endcode
           virtual void OnBackColorChanged(const EventArgs& e);
 
+          /// @brief Raises the Click event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnClick method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to inheritors
+          /// When overriding OnClick in a derived class, be sure to call the base class's OnBackColorChanged method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example demonstrates overriding the OnClick method in a derived class. To run the example, paste the following code after a form class, in the same file. Add a textbox of type SingleClickTextBox to the form.
+          /// @code
+          /// // This is a custom TextBox control that overrides the OnClick method
+          /// // to allow one-click selection of the text in the text box.
+          ///
+          /// class SingleClickTextBox : public TextBox {
+          ///   protected:
+          ///     void OnClick(const EventArgs& e) override {
+          ///       this->SelectAll();
+          ///       this->TextBox::OnClick(e);
+          ///     }
+          /// };
+          /// @endcode
+          /// The following code example shows one of the many uses of the Click event and event han
+          /// @code
+          /// // This example uses the Parent property and the Find method of Control to set
+          /// // properties on the parent control of a Button and its Form. The example assumes
+          /// // that a Button control named button1 is located within a GroupBox control. The
+          /// // example also assumes that the Click event of the Button control is connected to
+          /// // the event handler method defined in the example.
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   // Get the control the Button control is located in. In this case a GroupBox.
+          ///   ref<Control> control = button1.Parent;
+          ///   // Set the text and backcolor of the parent control.
+          ///   control.Text = "My Groupbox";
+          ///   control.BackColor = Color::Blue;
+          ///   // Get the form that the Button control is contained within.
+          ///   ref<Form> myForm = button1.FindForm();
+          ///   // Set the text and color of the form containing the Button.
+          ///   myForm.Text = "The Form of My Control";
+          ///   myForm.BackColor = Color::Red;
+          /// }
+          /// @endcode
           virtual void OnClick(const EventArgs& e) { this->Click(*this, e); }
 
           virtual void OnClientSizeChanged(const EventArgs& e);
