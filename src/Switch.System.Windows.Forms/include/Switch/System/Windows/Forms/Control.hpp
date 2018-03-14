@@ -1225,7 +1225,7 @@ namespace Switch {
           /// @par Examples
           /// The following code example demonstrates how to use the PerformLayout method. It also demonstrates ways in which the Layout event is raised. In this example, the Click event handler for Button1 explicitly calls PerformLayout. The Click event handler for Button2 implicitly calls PerformLayout. PerformLayout is also called when the form is loaded. Button3 returns the control to the state it was in when loaded. In each case, the Layout event is raised.<br><br>
           /// This is a complete example. To run the example, paste the following code in a blank form.
-          /// @include PerformLaout.cpp
+          /// @include PerformLayout.cpp
           void PerformLayout() {
 
           }
