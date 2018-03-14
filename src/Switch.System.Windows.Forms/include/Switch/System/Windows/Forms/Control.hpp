@@ -1974,6 +1974,42 @@ namespace Switch {
           /// @endcode
           MouseEventHandler MouseClick;
 
+          /// @brief Occurs when the control is double clicked by the mouse.
+          /// @remarks The MouseDoubleClick event occurs when the user depresses a mouse button twice in quick succession when the cursor is over the control. The time interval that separates two single clicks from a double-click is determined by the mouse settings of the user's operating system.
+          /// @remarks The following series of events is raised by the control when such a user action takes place:
+          /// -# MouseDown event.
+          /// -# Click event.
+          /// -# MouseClick event.
+          /// -# MouseUp event.
+          /// -# MouseDown event.
+          /// -# DoubleClick event.
+          /// -# MouseDoubleClick event.
+          /// -# MouseUp event.
+          /// @remarks For this to occur, the various events cannot be disabled in the control's class.
+          /// @par Important
+          /// DoubleClick events are logically higher-level events of a control. They may be raised by other user actions, such as shortcut key combinations.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the MouseDoubleClick event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
+          /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the MouseDoubleClick event.
+          /// @code
+          /// void Control1_MouseDoubleClick(const Object& sender, const MouseEventArgs& e) {
+          ///   System::Text::StringBuilder messageBox;
+          ///   messageBox.AppendFormat("{0} = {1}", "Button", e.Button);
+          ///   messageBox.AppendLine();
+          ///   messageBox.AppendFormat("{0} = {1}", "Clicks", e.Clicks);
+          ///   messageBox.AppendLine();
+          ///   messageBox.AppendFormat("{0} = {1}", "X", e.X);
+          ///   messageBox.AppendLine();
+          ///   messageBox.AppendFormat("{0} = {1}", "Y", e.Y);
+          ///   messageBox.AppendLine();
+          ///   messageBox.AppendFormat("{0} = {1}", "Delta", e.Delta);
+          ///   messageBox.AppendLine();
+          ///   messageBox.AppendFormat("{0} = {1}", "Location", e.Location);
+          ///   messageBox.AppendLine();
+          ///   MessageBox::Show(messageBox.ToString(), "MouseDoubleClick Event");
+          /// }
+          /// @endcode
           MouseEventHandler MouseDoubleClick;
 
           MouseEventHandler MouseDown;
