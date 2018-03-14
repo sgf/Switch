@@ -27,7 +27,7 @@ namespace Switch {
   namespace System {
     /// @brief The Switch::System::Windows namespaces including animation clients, user interface controls, data binding, and type conversion. Switch::System::Windows::Forms and its child namespaces are used for developing Windows Forms applications.
     namespace Windows {
-      /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
+      /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating System::
       namespace Forms {
         /// @cond
         class Form;
@@ -117,7 +117,7 @@ namespace Switch {
             /// The following code example removes the first Control in the Control.ControlCollection of the derived class Panel if the count of the collection is greater than zero. The example requires that you have created a Panel, a Button, and at least one other control on a Form. The other controls are added to the Panel control, and the Panel control added to the Form. When the button is clicked, the first control contained in the panel is removed from the Control.ControlCollection.
             /// @code
             /// // Remove the first control in the collection.
-            /// void removeAtButton_Click(object sender, System.EventArgs e) {
+            /// void removeAtButton_Click(const object& sender, const System::EventArgs& e) {
             ///   if (panel1.Controls().Count > 0) {
             ///     panel1.Controls().RemoveAt(0);
             ///   }
@@ -660,7 +660,7 @@ namespace Switch {
           /// // ControlRemoved events. This example assumes that two Button controls
           /// // are added to the form and connected to the addControl_Click and
           /// // removeControl_Click event-handler methods.
-          /// void Form1_Load(const object& sender, const System.EventArgs& e) {
+          /// void Form1_Load(const object& sender, const System::EventArgs& e) {
           ///   // Connect the ControlRemoved and ControlAdded event handlers
           ///   // to the event-handler methods.
           ///   // ControlRemoved and ControlAdded are not available at design time.
@@ -672,7 +672,7 @@ namespace Switch {
           ///   MessageBox::Show("The control named " + e.Control.Name + " has been added to the form.");
           /// }
           ///
-          /// void Control_Removed(object sender, System.Windows.Forms.ControlEventArgs e) {
+          /// void Control_Removed(const object& sender, System::Windows::Forms::ControlEventArgs e) {
           ///   MessageBox.Show("The control named " + e.Control.Name + " has been removed from the form.");
           /// }
           ///
@@ -706,10 +706,8 @@ namespace Switch {
           property_<string> Name {
             get_ { return this->name; },
             set_ {
-              if (this->name != value) {
+              if (this->name != value)
                 this->name = value;
-                this->OnNameChanged(EventArgs::Empty);
-              }
             }
           };
 
@@ -1225,7 +1223,7 @@ namespace Switch {
           /// @remarks If the SuspendLayout method was called before calling the PerformLayout method, the Layout event is suppressed.
           /// @remarks The AffectedControl and AffectedProperty properties of the LayoutEventArgs created are set to null if no values were provided when the PerformLayout method was called.
           /// @par Examples
-          /// The following code example demonstrates how to use the PerformLayout method. It also demonstrates ways in which the Layout event is raised. In this example, the Click event handler for Button1 explicitly calls PerformLayout. The Click event handler for Button2 implicitly calls PerformLayout. PerformLayout is also called when the form is loaded. Button3 returns the control to the state it was in when loaded. In each case, the Layout event is raised.<br>
+          /// The following code example demonstrates how to use the PerformLayout method. It also demonstrates ways in which the Layout event is raised. In this example, the Click event handler for Button1 explicitly calls PerformLayout. The Click event handler for Button2 implicitly calls PerformLayout. PerformLayout is also called when the form is loaded. Button3 returns the control to the state it was in when loaded. In each case, the Layout event is raised.<br><br>
           /// This is a complete example. To run the example, paste the following code in a blank form.
           /// @include PerformLaout.cpp
           void PerformLayout() {
@@ -1508,7 +1506,7 @@ namespace Switch {
           /// @remarks This event is raised if the BackColor property is changed by either a programmatic modification or user interaction.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par examples
-          /// The following code example is an event handler that is executed when the Text property value changes. The Control class has several methods with the name pattern PropertyNameChanged that are raised when the corresponding PropertyName value changes (PropertyName represents the name of the corresponding property).<br>
+          /// The following code example is an event handler that is executed when the Text property value changes. The Control class has several methods with the name pattern PropertyNameChanged that are raised when the corresponding PropertyName value changes (PropertyName represents the name of the corresponding property).<br><br>
           /// The following code example changes the ForeColor of a TextBox displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color::Red if the number is negative and to Color::Black if the number is positive. This example requires that you have a Formthat contains a TextBox.
           /// @code
           /// void currencyTextBox_TextChanged(const object& sender, const EventArgs& e) {
@@ -1531,7 +1529,7 @@ namespace Switch {
 
           /// @brief Occurs when the control is clicked.
           /// @remarks The Click event passes an EventArgs to its event handler, so it only indicates that a click has occurred. If you need more specific mouse information (button, number of clicks, wheel rotation, or location), use the MouseClick event. However, the MouseClick event will not be raised if the click is caused by action other than that of the mouse, such as pressing the ENTER key.
-          /// @remarks A double-click is determined by the mouse settings of the user's operating system. The user can set the time between clicks of a mouse button that should be considered a double-click rather than two clicks. The Click event is raised every time a control is double-clicked. For example, if you have event handlers for the Click and DoubleClick events of a Form, the Click and DoubleClick events are raised when the form is double-clicked and both methods are called. If a control is double-clicked and that control does not support the DoubleClick event, the Click event might be raised twice.
+          /// @remarks A double-click is determined by the mouse settings of the user's operating System. The user can set the time between clicks of a mouse button that should be considered a double-click rather than two clicks. The Click event is raised every time a control is double-clicked. For example, if you have event handlers for the Click and DoubleClick events of a Form, the Click and DoubleClick events are raised when the form is double-clicked and both methods are called. If a control is double-clicked and that control does not support the DoubleClick event, the Click event might be raised twice.
           /// @remarks You must set the StandardClick value ofControlStyles to true for this event to be raised.
           /// @note The following events are not raised for the TabControl class unless there is at least one TabPage in the TabControl.TabPages collection: Click, DoubleClick, MouseDown, MouseUp, MouseHover, MouseEnter, MouseLeave and MouseMove. If there is at least one TabPage in the collection, and the user interacts with the tab control's header (where the TabPage names appear), the TabControl raises the appropriate event. However, if the user interaction is within the client area of the tab page, the TabPage raises the appropriate event.
           /// @remarks For more information about handling events, see Handling and Raising Events.
@@ -1561,7 +1559,7 @@ namespace Switch {
           /// // that a Button control named button1 is located within a GroupBox control. The
           /// // example also assumes that the Click event of the Button control is connected to
           /// // the event handler method defined in the example.
-          /// void button1_Click(const object& sender, const System.EventArgs& e) {
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
           ///   // Get the control the Button control is located in. In this case a GroupBox.
           ///   ref<Control> control = button1.Parent;
           ///   // Set the text and backcolor of the parent control.
@@ -1579,7 +1577,7 @@ namespace Switch {
           /// @brief Occurs when the value of the ClientSize property changes.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the ClientSizeChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the ClientSizeChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br><br>
           /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the ClientSizeChanged event.
           /// @code
           /// void Control1_ClientSizeChanged(const Object& sender, const EventArgs& e) {
@@ -1589,7 +1587,7 @@ namespace Switch {
           EventHandler ClientSizeChanged;
 
           /// @brief Occurs when the control is double-clicked.
-          /// @remarks A double-click is determined by the mouse settings of the user's operating system. The user can set the time between clicks of a mouse button that should be considered a double-click rather than two clicks. The Click event is raised every time a control is double-clicked. For example, if you have event handlers for the Click and DoubleClick events of a Form, the Click and DoubleClick events are raised when the form is double-clicked and both methods are called. If a control is double-clicked and that control does not support the DoubleClick event, the Click event might be raised twice.
+          /// @remarks A double-click is determined by the mouse settings of the user's operating System. The user can set the time between clicks of a mouse button that should be considered a double-click rather than two clicks. The Click event is raised every time a control is double-clicked. For example, if you have event handlers for the Click and DoubleClick events of a Form, the Click and DoubleClick events are raised when the form is double-clicked and both methods are called. If a control is double-clicked and that control does not support the DoubleClick event, the Click event might be raised twice.
           /// @remarks You must set the StandardDoubleClick and StandardClick values of ControlStyles to true for this event to be raised. These values might already be set to true if you are inheriting from existing Windows Forms controls.
           /// @note The following events are not raised for the TabControl class unless there is at least one TabPage in the TabControl.TabPages collection: Click, DoubleClick, MouseDown, MouseUp, MouseHover, MouseEnter, MouseLeave and MouseMove. If there is at least one TabPage in the collection, and the user interacts with the tab control's header (where the TabPage names appear), the TabControl raises the appropriate event. However, if the user interaction is within the client area of the tab page, the TabPage raises the appropriate event.
           /// @remarks For more information about handling events, see Handling and Raising Events.
@@ -1657,7 +1655,7 @@ namespace Switch {
           /// @remarks This event is raised if the ForeColor property is changed by either a programmatic modification or through interaction.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example is an event handler that is executed when the Text property value changes. The Control class has several methods with the name pattern PropertyNameChanged that are raised when the corresponding PropertyName value changes (PropertyName represents the name of the corresponding property).<br>
+          /// The following code example is an event handler that is executed when the Text property value changes. The Control class has several methods with the name pattern PropertyNameChanged that are raised when the corresponding PropertyName value changes (PropertyName represents the name of the corresponding property).<br><br>
           /// The following code example changes the ForeColor of a TextBox displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color::Red if the number is negative and to Color::Black if the number is positive. This example requires that you have a Form that contains a TextBox.
           /// @code
           /// void currencyTextBox_TextChanged(const object& sender, const EventArgs& e) {
@@ -1682,7 +1680,7 @@ namespace Switch {
           /// @remarks A handle is created when the Control is displayed for the first time. For example, if a Control is created that has Visible set to false, the HandleCreated event will not be raised until Visible is set to true.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the HandleCreated event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the HandleCreated event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br><br>
           /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Buttonor ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the HandleCreated event.
           /// @code
           /// void Control1_HandleCreated(const Object& sender, const EventArgs& e) {
@@ -1695,7 +1693,7 @@ namespace Switch {
           /// @remarks During the HandleDestroyed event, the control is still a valid Windows control and the Handle can be recreated by calling the RecreateHandle method.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the HandleDestroyed event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the HandleDestroyed event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br><br>
           /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the HandleDestroyed event.
           /// @code
           /// void Control1_HandleDestroyeded(const Object& sender, const EventArgs& e) {
@@ -1707,7 +1705,7 @@ namespace Switch {
           /// @brief  Occurs when a control's display requires redrawing.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the Invalidated event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the Invalidated event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br><br>
           /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the Invalidated event.
           /// @code
           /// void Control1_Invalidated(const Object& sender, const InvalidateEventArgs& e) {
@@ -1733,7 +1731,7 @@ namespace Switch {
           /// bool nonNumberEntered = false;
           ///
           /// // Handle the KeyDown event to determine the type of character entered into the control.
-          /// void textBox1_KeyDown(const object& sender, System.Windows.Forms.KeyEventArgs& e) {
+          /// void textBox1_KeyDown(const object& sender, System::Windows::Forms::KeyEventArgs& e) {
           ///   // Initialize the flag to false.
           ///   nonNumberEntered = false;
           ///
@@ -1783,7 +1781,7 @@ namespace Switch {
           /// bool nonNumberEntered = false;
           ///
           /// // Handle the KeyDown event to determine the type of character entered into the control.
-          /// void textBox1_KeyDown(const object& sender, System.Windows.Forms.KeyEventArgs& e) {
+          /// void textBox1_KeyDown(const object& sender, System::Windows::Forms::KeyEventArgs& e) {
           ///   // Initialize the flag to false.
           ///   nonNumberEntered = false;
           ///
@@ -1832,7 +1830,7 @@ namespace Switch {
           /// // class displays a pop-up window, similar to a ToolTip, near the control. This example assumes
           /// // that a TextBox control, named textBox1, has been added to the form and its KeyUp
           /// // event has been contected to this event handler method.
-          /// void textBox1_KeyUp(const object& sender, System.Windows.Forms.KeyEventArgs& e) {
+          /// void textBox1_KeyUp(const object& sender, System::Windows::Forms::KeyEventArgs& e) {
           ///   // Determine whether the key entered is the F1 key. Display help if it is.
           ///   if (e.KeyCode == Keys::F1) {
           ///     // Display a pop-up help topic to assist the user.
@@ -1858,7 +1856,7 @@ namespace Switch {
           /// -# Validating
           /// -# Validated
           /// -# LostFocus
-          /// When you change the focus by using the mouse or by calling the Focus method, focus events occur in the following order:
+          /// <br><br>When you change the focus by using the mouse or by calling the Focus method, focus events occur in the following order:
           /// -# Enter
           /// -# GotFocus
           /// -# LostFocus
@@ -1891,7 +1889,7 @@ namespace Switch {
           ///
           /// // This method handles the LostFocus event for textBox1 by setting the
           /// // dialog's InitialDirectory property to the text in textBox1.
-          /// void textBox1_LostFocus(const object& sender, const System.EventArgs& e) {
+          /// void textBox1_LostFocus(const object& sender, const System::EventArgs& e) {
           ///   openFileDialog1.InitialDirectory = textBox1.Text;
           /// }
           ///
@@ -1952,7 +1950,7 @@ namespace Switch {
           /// Click events are logically higher-level events of a control. They are often raised by other actions, such as pressing the ENTER key when the control has focus.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the MouseClick event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the MouseClick event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br><br>
           /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the MouseClick event.
           /// @code
           /// void Control1_MouseClick(const Object& sender, const MouseEventArgs& e) {
@@ -1975,7 +1973,7 @@ namespace Switch {
           MouseEventHandler MouseClick;
 
           /// @brief Occurs when the control is double clicked by the mouse.
-          /// @remarks The MouseDoubleClick event occurs when the user depresses a mouse button twice in quick succession when the cursor is over the control. The time interval that separates two single clicks from a double-click is determined by the mouse settings of the user's operating system.
+          /// @remarks The MouseDoubleClick event occurs when the user depresses a mouse button twice in quick succession when the cursor is over the control. The time interval that separates two single clicks from a double-click is determined by the mouse settings of the user's operating System::
           /// @remarks The following series of events is raised by the control when such a user action takes place:
           /// -# MouseDown event.
           /// -# Click event.
@@ -1990,7 +1988,7 @@ namespace Switch {
           /// DoubleClick events are logically higher-level events of a control. They may be raised by other user actions, such as shortcut key combinations.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the MouseDoubleClick event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the MouseDoubleClick event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br><br>
           /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the MouseDoubleClick event.
           /// @code
           /// void Control1_MouseDoubleClick(const Object& sender, const MouseEventArgs& e) {
@@ -2012,35 +2010,232 @@ namespace Switch {
           /// @endcode
           MouseEventHandler MouseDoubleClick;
 
+          /// @brief Occurs when the mouse pointer is over the control and a mouse button is pressed.
+          /// @remarks Mouse events occur in the following order:
+          /// -# MouseEnter
+          /// -# MouseMove
+          /// -# MouseHover / MouseDown / MouseWheel
+          /// -# MouseUp
+          /// -# MouseLeave
+          /// @note The following events are not raised for the TabControl class unless there is at least one TabPage in the TabControl.TabPages collection: Click, DoubleClick, MouseDown, MouseUp, MouseHover, MouseEnter, MouseLeave and MouseMove. If there is at least one TabPage in the collection, and the user interacts with the tab control's header (where the TabPage names appear), the TabControl raises the appropriate event. However, if the user interaction is within the client area of the tab page, the TabPage raises the appropriate event.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates using different mouse events to draw the path of the mouse on a Panel. A line segment is added to the GraphicsPath for each MouseMove and MouseDown events that occur. To update the graphics, the Invalidate method is called for the Panel on each MouseDown and MouseUp event. In addition, the graphic path is scrolled up or down when the MouseWheel event occurs. Additional mouse events, like MouseHover, are identified on screen as well. Also displayed on the screen is additional information about the mouse from the SystemInformation class.
+          /// @include MouseEvent.cpp
           MouseEventHandler MouseDown;
 
+          /// @brief Occurs when the mouse pointer enters the control.
+          /// @remarks Mouse events occur in the following order:
+          /// -# MouseEnter
+          /// -# MouseMove
+          /// -# MouseHover / MouseDown / MouseWheel
+          /// -# MouseUp
+          /// -# MouseLeave
+          /// @note The following events are not raised for the TabControl class unless there is at least one TabPage in the TabControl.TabPages collection: Click, DoubleClick, MouseDown, MouseUp, MouseHover, MouseEnter, MouseLeave and MouseMove. If there is at least one TabPage in the collection, and the user interacts with the tab control's header (where the TabPage names appear), the TabControl raises the appropriate event. However, if the user interaction is within the client area of the tab page, the TabPage raises the appropriate event.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates using different mouse events to draw the path of the mouse on a Panel. A line segment is added to the GraphicsPath for each MouseMove and MouseDown events that occur. To update the graphics, the Invalidate method is called for the Panel on each MouseDown and MouseUp event. In addition, the graphic path is scrolled up or down when the MouseWheel event occurs. Additional mouse events, like MouseHover, are identified on screen as well. Also displayed on the screen is additional information about the mouse from the SystemInformation class.
+          /// @include MouseEvent.cpp
           EventHandler MouseEnter;
 
+          /// @brief Occurs when the mouse pointer rests on the control.
+          /// @remarks Mouse events occur in the following order:
+          /// -# MouseEnter
+          /// -# MouseMove
+          /// -# MouseHover / MouseDown / MouseWheel
+          /// -# MouseUp
+          /// -# MouseLeave
+          /// @note The following events are not raised for the TabControl class unless there is at least one TabPage in the TabControl.TabPages collection: Click, DoubleClick, MouseDown, MouseUp, MouseHover, MouseEnter, MouseLeave and MouseMove. If there is at least one TabPage in the collection, and the user interacts with the tab control's header (where the TabPage names appear), the TabControl raises the appropriate event. However, if the user interaction is within the client area of the tab page, the TabPage raises the appropriate event.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates using different mouse events to draw the path of the mouse on a Panel. A line segment is added to the GraphicsPath for each MouseMove and MouseDown events that occur. To update the graphics, the Invalidate method is called for the Panel on each MouseDown and MouseUp event. In addition, the graphic path is scrolled up or down when the MouseWheel event occurs. Additional mouse events, like MouseHover, are identified on screen as well. Also displayed on the screen is additional information about the mouse from the SystemInformation class.
+          /// @include MouseEvent.cpp
           EventHandler MouseHover;
 
+          /// @brief Occurs when the mouse pointer leaves the control.
+          /// @remarks Mouse events occur in the following order:
+          /// -# MouseEnter
+          /// -# MouseMove
+          /// -# MouseHover / MouseDown / MouseWheel
+          /// -# MouseUp
+          /// -# MouseLeave
+          /// @note The following events are not raised for the TabControl class unless there is at least one TabPage in the TabControl.TabPages collection: Click, DoubleClick, MouseDown, MouseUp, MouseHover, MouseEnter, MouseLeave and MouseMove. If there is at least one TabPage in the collection, and the user interacts with the tab control's header (where the TabPage names appear), the TabControl raises the appropriate event. However, if the user interaction is within the client area of the tab page, the TabPage raises the appropriate event.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates using different mouse events to draw the path of the mouse on a Panel. A line segment is added to the GraphicsPath for each MouseMove and MouseDown events that occur. To update the graphics, the Invalidate method is called for the Panel on each MouseDown and MouseUp event. In addition, the graphic path is scrolled up or down when the MouseWheel event occurs. Additional mouse events, like MouseHover, are identified on screen as well. Also displayed on the screen is additional information about the mouse from the SystemInformation class.
+          /// @include MouseEvent.cpp
           EventHandler MouseLeave;
 
+          /// @brief Occurs when the mouse pointer is moved over the control.
+          /// @remarks Mouse events occur in the following order:
+          /// -# MouseEnter
+          /// -# MouseMove
+          /// -# MouseHover / MouseDown / MouseWheel
+          /// -# MouseUp
+          /// -# MouseLeave
+          /// @note The following events are not raised for the TabControl class unless there is at least one TabPage in the TabControl.TabPages collection: Click, DoubleClick, MouseDown, MouseUp, MouseHover, MouseEnter, MouseLeave and MouseMove. If there is at least one TabPage in the collection, and the user interacts with the tab control's header (where the TabPage names appear), the TabControl raises the appropriate event. However, if the user interaction is within the client area of the tab page, the TabPage raises the appropriate event.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates using different mouse events to draw the path of the mouse on a Panel. A line segment is added to the GraphicsPath for each MouseMove and MouseDown events that occur. To update the graphics, the Invalidate method is called for the Panel on each MouseDown and MouseUp event. In addition, the graphic path is scrolled up or down when the MouseWheel event occurs. Additional mouse events, like MouseHover, are identified on screen as well. Also displayed on the screen is additional information about the mouse from the SystemInformation class.
+          /// @include MouseEvent.cpp
           MouseEventHandler MouseMove;
 
+          /// @brief Occurs when the mouse pointer is over the control and a mouse button is released.
+          /// @remarks Mouse events occur in the following order:
+          /// -# MouseEnter
+          /// -# MouseMove
+          /// -# MouseHover / MouseDown / MouseWheel
+          /// -# MouseUp
+          /// -# MouseLeave
+          /// @note The following events are not raised for the TabControl class unless there is at least one TabPage in the TabControl.TabPages collection: Click, DoubleClick, MouseDown, MouseUp, MouseHover, MouseEnter, MouseLeave and MouseMove. If there is at least one TabPage in the collection, and the user interacts with the tab control's header (where the TabPage names appear), the TabControl raises the appropriate event. However, if the user interaction is within the client area of the tab page, the TabPage raises the appropriate event.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates using different mouse events to draw the path of the mouse on a Panel. A line segment is added to the GraphicsPath for each MouseMove and MouseDown events that occur. To update the graphics, the Invalidate method is called for the Panel on each MouseDown and MouseUp event. In addition, the graphic path is scrolled up or down when the MouseWheel event occurs. Additional mouse events, like MouseHover, are identified on screen as well. Also displayed on the screen is additional information about the mouse from the SystemInformation class.
+          /// @include MouseEvent.cpp
           MouseEventHandler MouseUp;
 
+          /// @brief Occurs when the mouse wheel moves while the control has focus.
+          /// @remarks Mouse events occur in the following order:
+          /// -# MouseEnter
+          /// -# MouseMove
+          /// -# MouseHover / MouseDown / MouseWheel
+          /// -# MouseUp
+          /// -# MouseLeave
+          /// @note The following events are not raised for the TabControl class unless there is at least one TabPage in the TabControl.TabPages collection: Click, DoubleClick, MouseDown, MouseUp, MouseHover, MouseEnter, MouseLeave and MouseMove. If there is at least one TabPage in the collection, and the user interacts with the tab control's header (where the TabPage names appear), the TabControl raises the appropriate event. However, if the user interaction is within the client area of the tab page, the TabPage raises the appropriate event.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates using different mouse events to draw the path of the mouse on a Panel. A line segment is added to the GraphicsPath for each MouseMove and MouseDown events that occur. To update the graphics, the Invalidate method is called for the Panel on each MouseDown and MouseUp event. In addition, the graphic path is scrolled up or down when the MouseWheel event occurs. Additional mouse events, like MouseHover, are identified on screen as well. Also displayed on the screen is additional information about the mouse from the SystemInformation class.
+          /// @include MouseEvent.cpp
           MouseEventHandler MouseWheel;
 
-          EventHandler NameChanged;
-
+          /// @brief Occurs when the control is redrawn.
+          /// @remarks The Paint event is raised when the control is redrawn. It passes an instance of PaintEventArgs to the method(s) that handles the Paint event.
+          /// @remarks When creating a new custom control or an inherited control with a different visual appearance, you must provide code to render the control by overriding the OnPaint method. For more information, see Overriding the OnPaint Method and Custom Control Painting and Rendering.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example creates a PictureBox control on the form and uses the Paint event to draw to it.
+          /// @code
+          /// // This example creates a PictureBox control on the form and draws to it.
+          /// // This example assumes that the Form_Load event handler method is
+          /// // connected to the Load event of the form.
+          ///
+          /// PictureBox pictureBox1;
+          /// void Form1_Load(const object& sender, const System::EventArgs& e) {
+          ///   // Dock the PictureBox to the form and set its background to white.
+          ///   pictureBox1.Dock = DockStyle::Fill;
+          ///   pictureBox1.BackColor = Color::White;
+          ///   // Connect the Paint event of the PictureBox to the event handler method.
+          ///   pictureBox1.Paint += System::Windows::Forms::PaintEventHandler(*this &Form1::pictureBox1_Paint);
+          ///
+          ///   // Add the PictureBox control to the Form.
+          ///   this.Controls().Add(pictureBox1);
+          /// }::
+          ///
+          /// void pictureBox1_Paint(const object& sender, System::Windows::Forms::PaintEventArgs& e) {
+          ///   // Create a local version of the graphics object for the PictureBox.
+          ///   Graphics g = e.Graphics;
+          ///
+          ///   // Draw a string on the PictureBox.
+          ///   g.DrawString("This is a diagonal line drawn on the control", Font("Arial",10), System::Drawing::Brushes::Blue, System::Drawing::Point(30,30));
+          ///   // Draw a line in the PictureBox.
+          ///   g.DrawLine(System::Drawing::Pens::Red, pictureBox1.Left, pictureBox1.Top, pictureBox1.Right, pictureBox1.Bottom);
+          /// }
+          /// @endcode
           PaintEventHandler Paint;
 
+          /// @brief Occurs when the Parent property value changes.
+          /// @remarks This event is raised if the Parent property is changed by either a programmatic modification or user interaction.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
           EventHandler ParentChanged;
 
+          /// @brief Occurs when the Size property value changes.
+          /// @remarks It is preferable to use the Layout event to handle custom layouts. The Layout event is raised in response to Resize events, but also in other conditions when layout might need to be applied.
+          /// @remarks This event is raised if the Size property is changed by either a programmatic modification or user interaction.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates the SizeChanged event. An instance of a Button control has been provided that can be scaled both horizontally and vertically. A NumericUpDown instance provides the horizontal and vertical scale value. The Button instance named <b>OK</b> is used to set the scale values for the Button control instance. Whenever the size of the control changes, the event handler associated with the SizeChanged event of the control is called. This event handler displays a message box indicating that the size of the control has changed.
+          /// @code
+          /// void RegisterEventHandler() {
+          ///   myButton1.SizeChanged += EventHandler(*this, &Form1::MyButton1_SizeChanged);
+          /// }
+          ///
+          /// void MyButton2_Click(const object& sender, const System::EventArgs& e) {
+          ///   // Set the scale for the control to the value provided.
+          ///   float scale = (float)myNumericUpDown1.Value;
+          ///   myButton1.Scale(scale);
+          /// }
+          ///
+          /// void MyButton1_SizeChanged(const object& sender, const System::EventArgs& e) {
+          ///   MessageBox::Show("The size of the 'Button' control has changed");
+          /// }
+          /// @endcode
           EventHandler SizeChanged;
 
+          /// @brief Occurs when the TabStop property value changes.
+          /// @remarks This event is raised if the TabStop property is changed by either a programmatic modification or user interaction.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the TabStopChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br><br>
+          /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the TabStopChanged event.
+          /// @code
+          /// void Control1_TabStopChanged(const Object& sender, const EventArgs& e) {
+          ///   MessageBox::Show("You are in the Control.TabStopChanged event.");
+          /// }
+          /// @endcode
           EventHandler TabStopChanged;
 
+          /// @brief Occurs when the Text property value changes.
+          /// @remarks This event is raised if the Text property is changed by either a programmatic modification or user interaction.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example changes the ForeColor of a TextBox displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive.<br>
+          /// This example requires that you have a Form that contains a TextBox.
+          /// @code
+          /// void currencyTextBox_TextChanged(const object& sender, const EventArgs& e) {
+          ///   try {
+          ///     // Convert the text to a Double and determine if it is a negative number.
+          ///     if (Double::Parse(currencyTextBox.Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       currencyTextBox.ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       currencyTextBox.ForeColor = Color::Black;
+          ///     }
+          ///   } catch {
+          ///     // If there is an error, display the text using the system colors.
+          ///     currencyTextBox::ForeColor = SystemColors::ControlText;
+          ///   }
+          /// }
+          /// @endcode
           EventHandler TextChanged;
 
+          /// @brief Occurs when the Visible property value changes.
+          /// @remarks This event is raised if the Visible property is changed by either a programmatic modification or user interaction.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example raises the VisibleChanged event when the Visible property value of the Label control has changed.
+          /// @code
+          /// void Button_HideLabel(const object& sender, const EventArgs& e) {
+          ///   myLabel.Visible = false;
+          /// }
+          ///
+          /// void AddVisibleChangedEventHandler() {
+          ///   myLabel.VisibleChanged += EventHandler(*this, &Form1::Label_VisibleChanged);
+          /// }
+          ///
+          /// void Label_VisibleChanged(const object& sender, const EventArgs& e) {
+          ///   MessageBox::Show("Visible change event raised!!!");
+          /// }
+          /// @endcode
           EventHandler VisibleChanged;
 
         protected:
+          /// @brief Gets the default size of the control.
+          /// @return System::Drawing::Size The default Size of the control.
+          /// @remarks The DefaultSize property represents the Size of the control when it is initially created. You can adjust the size of the control by setting its Size property value.
+          /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
+          /// @par Notes to Inheritors
+          /// Overide GetDefaultsize() method used by DefaultSize property.
           property_<System::Drawing::Size, readonly_> DefaultSize {
             get_ { return this->GetDefaultSize(); }
           };
@@ -2051,14 +2246,29 @@ namespace Switch {
           /// When overriding CreateHandle in a derived class, be sure to call the base class's CreateHandle method to ensure that the handle is created.
           virtual void CreateHandle();
 
+          /// @brief Sends the specified message to the default window procedure.
+          /// @param message The Windows Message to process.
+          /// @remarks For more information about processing Windows messages, see the WindowProc function.
           virtual void DefWndProc(Message& message);
 
+          /// @brief Destroys the handle associated with the control.
+          /// @par Notes to Inheritors
+          /// When overriding DestroyHandle in a derived class, be sure to call the base class's DestroyHandle method to ensure that the handle is destroyed.
           virtual void DestroyHandle();
 
           /// @brief Gets the default size of the control.
           /// @return Switch::System::Drawing::Size The default Size of the control.
+          /// @remarks The DefaultSize property represents the Size of the control when it is initially created. You can adjust the size of the control by setting its Size property value.
+          /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
+          /// @par Notes to Inheritors
+          /// Overide GetDefaultsize() method used by DefaultSize property.
           virtual System::Drawing::Size GetDefaultSize() const { return System::Drawing::Size(0, 0); }
 
+          /// @brief Sets the parent container of the control.
+          /// @return Control A Control that represents the parent or container control of the control.
+          /// @remarks Setting the Parent property value to null removes the control from the Control.ControlCollection of its current parent control.
+          /// @par Notes to Inheritors
+          /// Overide SetParent() method used by Parent property.
           virtual void SetParent(ref<Control> parent) {
             if (this->parent != parent) {
               if (parent == null && this->parent != null)
@@ -2078,17 +2288,54 @@ namespace Switch {
             return this->handle;
           }
 
+          /// @brief Retrieves the value of the specified control style bit for the control.
+          /// @param falg The ControlStyles bit to return the value from.
+          /// @return bool true if the specified control style bit is set to true; otherwise, false.
+          /// @remarks Control style bit flags are used to categorize supported behavior. A control can enable a style by calling the SetStyle method and passing in the appropriate ControlStyles bit and the Boolean value to set the bit to. To determine the value assigned to a specified ControlStyles bit, use the GetStyle method and pass in the ControlStyles member to evaluate.
+          /// @par Examples
+          /// The following code example returns the value of the double-buffering related style bits for a Form. This example returns true only if all the style bits are set to true.
+          /// @code
+          /// bool DoubleBufferingEnabled() {
+          ///   // Get the value of the double-buffering style bits.
+          ///   return this->GetStyle(ControlStyles::DoubleBuffer |
+          ///                         ControlStyles::UserPaint |
+          ///                         ControlStyles::AllPaintingInWmPaint);
+          /// }
+          /// @endcode
           virtual bool GetStyle(ControlStyles flag) { return ((int32)this->style & (int32)flag) == (int32)flag; }
 
+          /// @brief Sets a specified ControlStyles flag to either true or false.
+          /// @param flag The ControlStyles bit to set.
+          /// @param value rue to apply the specified style to the control; otherwise, false.
+          /// @remarks Control style bit flags are used to categorize supported behavior. A control can enable a style by calling the SetStyle method and passing in the appropriate ControlStyles bit (or bits) and the Boolean value to set the bit(s) to. To determine the value assigned to a specified ControlStyles bit, use the GetStyle method and pass in the ControlStyles member to evaluate.
+          /// @par Caution
+          /// Setting the control style bits can substantially change the behavior of the control. Review the ControlStyles enumeration documentation to understand the effects of changing the control style bits before calling the SetStyle method.
+          /// @par Examples
+          /// The following code example enables double-buffering on a Form and updates the styles to reflect the changes.
+          /// @code
+          /// public void EnableDoubleBuffering() {
+          ///   // Set the value of the double-buffering style bits to true.
+          ///   this->SetStyle(ControlStyles::DoubleBuffer |
+          ///                  ControlStyles::UserPaint |
+          ///                  ControlStyles::AllPaintingInWmPaint,
+          ///                  true);
+          ///   this->UpdateStyles();
+          /// }
+          /// @endcode
           virtual void SetStyle(ControlStyles flag, bool value) { this->style = value ? (ControlStyles)((int32)this->state | (int32)flag) : (ControlStyles)((int32)this->style & ~(int32)flag); }
-
-          virtual void OnCreateControl() {}
 
           virtual void OnBackColorChanged(const EventArgs& e);
 
           virtual void OnClick(const EventArgs& e) { this->Click(*this, e); }
 
           virtual void OnClientSizeChanged(const EventArgs& e);
+
+          /// @brief Raises the CreateControl method.
+          /// @remarks The OnCreateControl method is called when the control is first created.
+          /// @remarks The OnCreateControl method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnCreateControl in a derived class, be sure to call the base class's OnCreateControl method so that registered delegates receive the event.
+          virtual void OnCreateControl() {}
 
           virtual void OnDoubleClick(const EventArgs& e) { this->DoubleClick(*this, e); }
 
@@ -2131,8 +2378,6 @@ namespace Switch {
           virtual void OnMouseUp(const MouseEventArgs& e) { this->MouseUp(*this, e); }
 
           virtual void OnMouseWheel(const MouseEventArgs& e) { this->MouseWheel(*this, e); }
-
-          virtual void OnNameChanged(const EventArgs& e) { this->NameChanged(*this, e); }
 
           virtual void OnNotifyMessage(const Message& m) {}
 
