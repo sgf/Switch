@@ -1410,7 +1410,9 @@ namespace Switch {
           ///   this->ResumeLayout();
           /// }
           /// @endcode
-          void ResumeLayout() {}
+          void ResumeLayout() {
+            this->suspendLayout = false;
+          }
 
           /// @brief Resumes usual layout logic, optionally forcing an immediate layout of pending layout requests.
           /// @param performLayout true to execute pending layout requests; otherwise, false.
@@ -1478,7 +1480,7 @@ namespace Switch {
           /// }
           /// @endcode
           void SuspendLayout() {
-
+            this->suspendLayout = true;
           }
 
           /// @brief Causes the control to redraw the invalidated regions within its client area.
@@ -1509,7 +1511,7 @@ namespace Switch {
           /// @par examples
           /// The following code example is an event handler that is executed when the Text property value changes. The Control class has several methods with the name pattern PropertyNameChanged that are raised when the corresponding PropertyName value changes (PropertyName represents the name of the corresponding property).
           ///
-          /// The following code example changes the ForeColor of a TextBox displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive. This example requires that you have a Formthat contains a TextBox.
+          /// The following code example changes the ForeColor of a TextBox displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color::Red if the number is negative and to Color::Black if the number is positive. This example requires that you have a Formthat contains a TextBox.
           /// @code
           /// void currencyTextBox_TextChanged(const object& sender, const EventArgs& e) {
           ///   try {
@@ -1654,18 +1656,197 @@ namespace Switch {
           /// @include EnableChangedEvent.cpp
           EventHandler EnabledChanged;
 
+          /// @brief Occurs when the ForeColor property value changes.
+          /// @remarks This event is raised if the ForeColor property is changed by either a programmatic modification or through interaction.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example is an event handler that is executed when the Text property value changes. The Control class has several methods with the name pattern PropertyNameChanged that are raised when the corresponding PropertyName value changes (PropertyName represents the name of the corresponding property).
+          ///
+          /// The following code example changes the ForeColor of a TextBox displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color::Red if the number is negative and to Color::Black if the number is positive. This example requires that you have a Form that contains a TextBox.
+          /// @code
+          /// void currencyTextBox_TextChanged(const object& sender, const EventArgs& e) {
+          ///   try {
+          ///     // Convert the text to a Double and determine if it is a negative number.
+          ///     if (Double::Parse(currencyTextBox.Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       currencyTextBox.ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       currencyTextBox.ForeColor = Color::Black;
+          ///     }
+          ///   } catch {
+          ///     // If there is an error, display the text using the system colors.
+          ///     currencyTextBox::ForeColor = SystemColors::ControlText;
+          ///   }
+          /// }
+          /// @endcode
           EventHandler ForeColorChanged;
 
+          /// @brief Occurs when a handle is created for the control.
+          /// @remarks A handle is created when the Control is displayed for the first time. For example, if a Control is created that has Visible set to false, the HandleCreated event will not be raised until Visible is set to true.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the HandleCreated event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.
+          ///
+          /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Buttonor ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the HandleCreated event.
+          /// @code
+          /// void Control1_HandleCreated(const Object& sender, const EventArgs& e) {
+          ///   MessageBox::Show("You are in the Control.HandleCreated event.");
+          /// }
+          /// @endcode
           EventHandler HandleCreated;
 
+          /// @brief Occurs when the control's handle is in the process of being destroyed.
+          /// @remarks During the HandleDestroyed event, the control is still a valid Windows control and the Handle can be recreated by calling the RecreateHandle method.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the HandleDestroyed event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.
+          ///
+          /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the HandleDestroyed event.
+          /// @code
+          /// void Control1_HandleDestroyeded(const Object& sender, const EventArgs& e) {
+          ///   MessageBox::Show("You are in the Control.HandleDestroyed event.");
+          /// }
+          /// @endcode
           EventHandler HandleDestroyed;
 
+          /// @brief  Occurs when a control's display requires redrawing.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the Invalidated event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.
+          ///
+          /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the Invalidated event.
+          /// @code
+          /// void Control1_Invalidated(const Object& sender, const InvalidateEventArgs& e) {
+          ///   System::Text::StringBuilder messageBox;
+          ///   messageBox.AppendFormat("{0} = {1}", "InvalidRect", e.InvalidRect);
+          ///   messageBox.AppendLine();
+          ///   MessageBox::Show(messageBox.ToString(), "Invalidated Event");
+          /// }
+          /// @endcode
           InvalidateEventHandler Invalidated;
 
+          /// @brief Occurs when a key is pressed while the control has focus.
+          /// @remarks Key events occur in the following order:
+          /// * KeyDown
+          /// * KeyPress
+          /// * KeyUp
+          /// @remarks To handle keyboard events only at the form level and not enable other controls to receive keyboard events, set the KeyPressEventArgs.Handled property in your form's KeyPress event-handling method to true. Certain keys, such as the TAB, RETURN, ESC, and arrow keys are handled by controls automatically. To have these keys raise the KeyDown event, you must override the IsInputKey method in each control on your form. The code for the override of the IsInputKey would need to determine if one of the special keys is pressed and return a value of true. Instead of overriding the IsInputKey method, you can handle the PreviewKeyDown event and set the IsInputKeyproperty to true. For a code example, see the PreviewKeyDown event.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example uses the KeyDown event to determine the type of character entered into the control.
+          /// @code
+          /// // Boolean flag used to determine when a character other than a number is entered.
+          /// bool nonNumberEntered = false;
+          ///
+          /// // Handle the KeyDown event to determine the type of character entered into the control.
+          /// void textBox1_KeyDown(const object& sender, System.Windows.Forms.KeyEventArgs& e) {
+          ///   // Initialize the flag to false.
+          ///   nonNumberEntered = false;
+          ///
+          ///   // Determine whether the keystroke is a number from the top of the keyboard.
+          ///   if (e.KeyCode < Keys::D0 || e.KeyCode > Keys::D9) {
+          ///     // Determine whether the keystroke is a number from the keypad.
+          ///     if (e.KeyCode < Keys::NumPad0 || e.KeyCode > Keys::NumPad9) {
+          ///       // Determine whether the keystroke is a backspace.
+          ///       if (e.KeyCode != Keys::Back) {
+          ///         // A non-numerical keystroke was pressed.
+          ///         // Set the flag to true and evaluate in KeyPress event.
+          ///         nonNumberEntered = true;
+          ///       }
+          ///     }
+          ///   }
+          ///   //If shift key was pressed, it's not a number.
+          ///   if (Control.ModifierKeys == Keys::Shift) {
+          ///     nonNumberEntered = true;
+          ///   }
+          /// }
+          ///
+          /// // This event occurs after the KeyDown event and can be used to prevent
+          /// // characters from entering the control.
+          /// private void textBox1_KeyPress(const object& sender, System::Windows::Forms::KeyPressEventArgs& e) {
+          ///   // Check for the flag being set in the KeyDown event.
+          ///   if (nonNumberEntered == true) {
+          ///     // Stop the character from being entered into the control since it is non-numerical.
+          ///     e.Handled = true;
+          ///   }
+          /// }
+          /// @endcode
           KeyEventHandler KeyDown;
 
+          /// @brief Occurs when a character. space or backspace key is pressed while the control has focus.
+          /// @remarks Key events occur in the following order:
+          /// * KeyDown
+          /// * KeyPress
+          /// * KeyUp
+          /// @remarks The KeyPress event is not raised by non-character keys other than space and backspace; however, the non-character keys do raise the KeyDown and KeyUp events.
+          /// @remarks Use the KeyChar property to sample keystrokes at run time and to consume or modify a subset of common keystrokes.
+          /// @remarks To handle keyboard events only at the form level and not enable other controls to receive keyboard events, set the KeyPressEventArgs.Handled property in your form's KeyPress event-handling method to true.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example uses the KeyDown event to determine the type of character entered into the control.
+          /// @code
+          /// // Boolean flag used to determine when a character other than a number is entered.
+          /// bool nonNumberEntered = false;
+          ///
+          /// // Handle the KeyDown event to determine the type of character entered into the control.
+          /// void textBox1_KeyDown(const object& sender, System.Windows.Forms.KeyEventArgs& e) {
+          ///   // Initialize the flag to false.
+          ///   nonNumberEntered = false;
+          ///
+          ///   // Determine whether the keystroke is a number from the top of the keyboard.
+          ///   if (e.KeyCode < Keys::D0 || e.KeyCode > Keys::D9) {
+          ///     // Determine whether the keystroke is a number from the keypad.
+          ///     if (e.KeyCode < Keys::NumPad0 || e.KeyCode > Keys::NumPad9) {
+          ///       // Determine whether the keystroke is a backspace.
+          ///       if (e.KeyCode != Keys::Back) {
+          ///         // A non-numerical keystroke was pressed.
+          ///         // Set the flag to true and evaluate in KeyPress event.
+          ///         nonNumberEntered = true;
+          ///       }
+          ///     }
+          ///   }
+          ///   //If shift key was pressed, it's not a number.
+          ///   if (Control.ModifierKeys == Keys::Shift) {
+          ///     nonNumberEntered = true;
+          ///   }
+          /// }
+          ///
+          /// // This event occurs after the KeyDown event and can be used to prevent
+          /// // characters from entering the control.
+          /// private void textBox1_KeyPress(const object& sender, System::Windows::Forms::KeyPressEventArgs& e) {
+          ///   // Check for the flag being set in the KeyDown event.
+          ///   if (nonNumberEntered == true) {
+          ///     // Stop the character from being entered into the control since it is non-numerical.
+          ///     e.Handled = true;
+          ///   }
+          /// }
+          /// @endcode
           KeyPressEventHandler KeyPress;
 
+          /// @brief Occurs when a key is released while the control has focus.
+          /// @remarks Key events occur in the following order:
+          /// * KeyDown
+          /// * KeyPress
+          /// * KeyUp
+          /// @remarks To handle keyboard events only at the form level and not enable other controls to receive keyboard events, set the KeyPressEventArgs.Handled property in your form's KeyPress event-handling method to true. Certain keys, such as the TAB, RETURN, ESC, and arrow keys are handled by controls automatically. To have these keys raise the KeyUp event, you must override the IsInputKey method in each control on your form. The code for the override of IsInputKey would need to determine if one of the special keys is pressed and return a value of true.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example uses the KeyUp event with the Help class to display pop-up style help to the user.
+          /// @code
+          /// // This example demonstrates how to use the KeyUp event with the Help class to display
+          /// // pop-up style help to the user of the application. When the user presses F1, the Help
+          /// // class displays a pop-up window, similar to a ToolTip, near the control. This example assumes
+          /// // that a TextBox control, named textBox1, has been added to the form and its KeyUp
+          /// // event has been contected to this event handler method.
+          /// void textBox1_KeyUp(const object& sender, System.Windows.Forms.KeyEventArgs& e) {
+          ///   // Determine whether the key entered is the F1 key. Display help if it is.
+          ///   if (e.KeyCode == Keys::F1) {
+          ///     // Display a pop-up help topic to assist the user.
+          ///     Help::ShowPopup(textBox1, "Enter your first name", Point(textBox1.Right, this.textBox1.Bottom));
+          ///   }
+          /// }
+          /// @endcode
           KeyEventHandler KeyUp;
 
           EventHandler LocationChanged;
@@ -1832,6 +2013,7 @@ namespace Switch {
           System::Drawing::Size size;
           State state = State::Empty;
           ControlStyles style = (ControlStyles)0;
+          bool suspendLayout = false;
           bool tabStop = true;
           string text;
           bool visible = true;
