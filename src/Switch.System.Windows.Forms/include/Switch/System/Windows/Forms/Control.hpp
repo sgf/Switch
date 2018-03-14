@@ -1230,7 +1230,7 @@ namespace Switch {
           /// This is a complete example. To run the example, paste the following code in a blank form.
           /// @include PerformLaout.cpp
           void PerformLayout() {
-            
+
           }
 
           /// @brief Computes the location of the specified screen point into client coordinates.
