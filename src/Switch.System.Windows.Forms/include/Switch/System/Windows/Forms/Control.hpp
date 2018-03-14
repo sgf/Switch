@@ -1225,8 +1225,7 @@ namespace Switch {
           /// @remarks If the SuspendLayout method was called before calling the PerformLayout method, the Layout event is suppressed.
           /// @remarks The AffectedControl and AffectedProperty properties of the LayoutEventArgs created are set to null if no values were provided when the PerformLayout method was called.
           /// @par Examples
-          /// The following code example demonstrates how to use the PerformLayout method. It also demonstrates ways in which the Layout event is raised. In this example, the Click event handler for Button1 explicitly calls PerformLayout. The Click event handler for Button2 implicitly calls PerformLayout. PerformLayout is also called when the form is loaded. Button3 returns the control to the state it was in when loaded. In each case, the Layout event is raised.
-          ///
+          /// The following code example demonstrates how to use the PerformLayout method. It also demonstrates ways in which the Layout event is raised. In this example, the Click event handler for Button1 explicitly calls PerformLayout. The Click event handler for Button2 implicitly calls PerformLayout. PerformLayout is also called when the form is loaded. Button3 returns the control to the state it was in when loaded. In each case, the Layout event is raised.<br>
           /// This is a complete example. To run the example, paste the following code in a blank form.
           /// @include PerformLaout.cpp
           void PerformLayout() {
@@ -1509,8 +1508,7 @@ namespace Switch {
           /// @remarks This event is raised if the BackColor property is changed by either a programmatic modification or user interaction.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par examples
-          /// The following code example is an event handler that is executed when the Text property value changes. The Control class has several methods with the name pattern PropertyNameChanged that are raised when the corresponding PropertyName value changes (PropertyName represents the name of the corresponding property).
-          ///
+          /// The following code example is an event handler that is executed when the Text property value changes. The Control class has several methods with the name pattern PropertyNameChanged that are raised when the corresponding PropertyName value changes (PropertyName represents the name of the corresponding property).<br>
           /// The following code example changes the ForeColor of a TextBox displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color::Red if the number is negative and to Color::Black if the number is positive. This example requires that you have a Formthat contains a TextBox.
           /// @code
           /// void currencyTextBox_TextChanged(const object& sender, const EventArgs& e) {
@@ -1581,8 +1579,7 @@ namespace Switch {
           /// @brief Occurs when the value of the ClientSize property changes.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the ClientSizeChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.
-          ///
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the ClientSizeChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
           /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the ClientSizeChanged event.
           /// @code
           /// void Control1_ClientSizeChanged(const Object& sender, const EventArgs& e) {
@@ -1660,8 +1657,7 @@ namespace Switch {
           /// @remarks This event is raised if the ForeColor property is changed by either a programmatic modification or through interaction.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example is an event handler that is executed when the Text property value changes. The Control class has several methods with the name pattern PropertyNameChanged that are raised when the corresponding PropertyName value changes (PropertyName represents the name of the corresponding property).
-          ///
+          /// The following code example is an event handler that is executed when the Text property value changes. The Control class has several methods with the name pattern PropertyNameChanged that are raised when the corresponding PropertyName value changes (PropertyName represents the name of the corresponding property).<br>
           /// The following code example changes the ForeColor of a TextBox displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color::Red if the number is negative and to Color::Black if the number is positive. This example requires that you have a Form that contains a TextBox.
           /// @code
           /// void currencyTextBox_TextChanged(const object& sender, const EventArgs& e) {
@@ -1686,8 +1682,7 @@ namespace Switch {
           /// @remarks A handle is created when the Control is displayed for the first time. For example, if a Control is created that has Visible set to false, the HandleCreated event will not be raised until Visible is set to true.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the HandleCreated event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.
-          ///
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the HandleCreated event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
           /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Buttonor ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the HandleCreated event.
           /// @code
           /// void Control1_HandleCreated(const Object& sender, const EventArgs& e) {
@@ -1700,8 +1695,7 @@ namespace Switch {
           /// @remarks During the HandleDestroyed event, the control is still a valid Windows control and the Handle can be recreated by calling the RecreateHandle method.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the HandleDestroyed event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.
-          ///
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the HandleDestroyed event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
           /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the HandleDestroyed event.
           /// @code
           /// void Control1_HandleDestroyeded(const Object& sender, const EventArgs& e) {
@@ -1713,8 +1707,7 @@ namespace Switch {
           /// @brief  Occurs when a control's display requires redrawing.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Examples
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the Invalidated event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.
-          ///
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the Invalidated event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
           /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the Invalidated event.
           /// @code
           /// void Control1_Invalidated(const Object& sender, const InvalidateEventArgs& e) {
@@ -1849,12 +1842,136 @@ namespace Switch {
           /// @endcode
           KeyEventHandler KeyUp;
 
+          /// @brief Occurs when the Location property value has changed.
+          /// @remarks This event is raised if the Location property is changed by either a programmatic modification or through interaction.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example raises the LocationChanged event on a StatusStrip when the form is resized.
+          /// @include LocationChangedEvent.cpp
           EventHandler LocationChanged;
 
+          /// @brief Occurs when the control loses focus.
+          /// @remarks When you change the focus by using the keyboard (TAB, SHIFT+TAB, and so on), by calling the Select or SelectNextControl methods, or by setting the ContainerControl.ActiveControl property to the current form, focus events occur in the following order
+          /// -# Enter
+          /// -# GotFocus
+          /// -# Leave
+          /// -# Validating
+          /// -# Validated
+          /// -# LostFocus
+          /// When you change the focus by using the mouse or by calling the Focus method, focus events occur in the following order:
+          /// -# Enter
+          /// -# GotFocus
+          /// -# LostFocus
+          /// -# Leave
+          /// -# Validating
+          /// -# Validated
+          /// @remarks If the CausesValidation property is set to false, the Validating and Validated events are suppressed.
+          /// @remarks If the Cancel property of the CancelEventArgs is set to true in the Validating event delegate, all events that would usually occur after the Validating event are suppressed.
+          /// @note The GotFocus and LostFocus events are low-level focus events that are tied to the WM_KILLFOCUS and WM_SETFOCUS Windows messages. Typically, the GotFocus and LostFocus events are only used when updating UICues or when writing custom controls. Instead the Enter and Leave events should be used for all controls except the Form class, which uses the Activated and Deactivate events. For more information about the GotFocus and LostFocus events, see the WM_KILLFOCUS and WM_KILLFOCUS topics.
+          /// @par Caution
+          /// Do not attempt to set focus from within the Enter, GotFocus, Leave, LostFocus, Validating, or Validated event handlers. Doing so can cause your application or the operating system to stop responding. For more information, see the WM_KILLFOCUS topic.
+          /// @remarks
+          /// For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates validating the text for TextBox1. It also demonstrates handling the LostFocus event by setting the FileDialog.InitialDirectory property to the text in TextBox1. The code example used the ErrorProvider.GetError method to check for an error before opening the file dialog box. To run this example, paste the following code into a form containing a TextBox named TextBox1, an OpenFileDialog named OpenFileDialog1, a Button named Button1, and an ErrorProvider named ErrorProvider1. Ensure all events are associated with their event handlers.
+          /// @code
+          /// void textBox1_Validating(const object& sender, System::ComponentModel::CancelEventArgs& e) {
+          ///   // If nothing is entered, an ArgumentException is caught; if an invalid directory is entered,
+          ///   // a DirectoryNotFoundException is caught. An appropriate error message is displayed in either case.
+          ///   try {
+          ///     System::IO::DirectoryInfo directory(textBox1.Text);
+          ///     directory.GetFiles();
+          ///     errorProvider1.SetError(textBox1, "");
+          ///   } catch(const System::ArgumentException& ex1) {
+          ///     errorProvider1.SetError(textBox1, "Please enter a directory");
+          ///   } catch(const System::IO::DirectoryNotFoundException& ex2) {
+          ///     errorProvider1.SetError(textBox1, "The directory does not exist. Try again with a different directory.");
+          ///   }
+          /// }
+          ///
+          /// // This method handles the LostFocus event for textBox1 by setting the
+          /// // dialog's InitialDirectory property to the text in textBox1.
+          /// void textBox1_LostFocus(const object& sender, const System.EventArgs& e) {
+          ///   openFileDialog1.InitialDirectory = textBox1.Text;
+          /// }
+          ///
+          /// // This method demonstrates using the ErrorProvider.GetError method
+          /// // to check for an error before opening the dialog box.
+          /// void button1_Click(const System::Object& sender, const System::EventArgs& e) {
+          ///   //If there is no error, then open the dialog box.
+          ///   if (errorProvider1.GetError(textBox1) == "") {
+          ///     DialogResult dialogResult = openFileDialog1::ShowDialog();
+          ///   }
+          /// }
+          /// @endcode
           EventHandler LostFocus;
 
+          /// @brief Occurs when the control loses mouse capture.
+          /// @remarks In rare scenarios, you might need to detect unexpected input. For example, consider the following scenarios.
+          /// * During a mouse operation, the user opens the Start menu by pressing the Windows key or CTRL+ESC.
+          /// * During a mouse operation, the user switches to another program by pressing ALT+TAB.
+          /// * During a mouse operation, another program displays a window or a message box that takes focus away from the current application.
+          /// @remarks Mouse operations can include clicking and holding the mouse on a form or a control, or performing a mouse drag operation. If you have to detect when a form or a control loses mouse capture for these and related unexpected scenarios, you can use the MouseCaptureChanged event.
+          /// @par Examples
+          /// The following code example demonstrates the MouseCaptureChanged event for a Button control.
+          /// @code
+          /// void button1_MouseDown(const object& sender, const MouseEventArgs& e) {
+          ///   System::Diagnostics::Debug::WriteLine("button1_MouseDown");
+          /// }
+          ///
+          /// void button1_MouseUp(const object& sender, const MouseEventArgs& e) {
+          ///   System::Diagnostics::Debug::WriteLine("button1_MouseUp");
+          /// }
+          ///
+          /// void button1_MouseCaptureChanged(const object& sender, const EventArgs& e) {
+          ///   System::Diagnostics::Debug::WriteLine("button1_MouseCaptureChanged");
+          /// }
+          /// @endcode
+          /// To test this example, run it in the debugger by pressing F5. Open the Output window in Visual Studio so that you can see when events are raised. Click the Button and notice the following output.
+          /// @code
+          /// button1_MouseDown
+          /// button1_MouseUp
+          /// button1_MouseCaptureChanged
+          /// @endcode
+          /// Now, click and hold the left mouse button on the Button control. While still clicking the mouse, press ALT+TAB to switch to another program. Notice that the MouseCaptureChanged event is raised enabling you to potentially handle this scenario. Depending on your actions, the MouseUp event might not be raised. You can also try this test with the Windows key or CTRL+ESC.
+          /// @code
+          /// button1_MouseDown
+          /// button1_MouseCaptureChanged
+          /// @endcode
           EventHandler MouseCaptureChanged;
 
+          /// @brief Occurs when the control is clicked by the mouse.
+          /// @remarks Depressing a mouse button when the cursor is over a control typically raises the following series of events from the control:
+          /// * MouseDown event.
+          /// * Click event.
+          /// * MouseClick event.
+          /// * MouseUp event.
+          /// @remarks For this to occur, the various events cannot be disabled in the control's class.
+          /// @remarks Two single clicks that occur close enough in time, as determined by the mouse settings of the user's operating system, will generate a MouseDoubleClick event instead of the second MouseClick event.
+          /// @par Important
+          /// Click events are logically higher-level events of a control. They are often raised by other actions, such as pressing the ENTER key when the control has focus.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the MouseClick event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br>
+          /// To run the example code, paste it into a project that contains an instance of a type that inherits from Control, such as a Button or ComboBox. Then name the instance Control1 and ensure that the event handler is associated with the MouseClick event.
+          /// @code
+          /// void Control1_MouseClick(const Object& sender, const MouseEventArgs& e) {
+          ///   System::Text::StringBuilder messageBox;
+          ///   messageBox.AppendFormat("{0} = {1}", "Button", e.Button);
+          ///   messageBox.AppendLine();
+          ///   messageBox.AppendFormat("{0} = {1}", "Clicks", e.Clicks);
+          ///   messageBox.AppendLine();
+          ///   messageBox.AppendFormat("{0} = {1}", "X", e.X);
+          ///   messageBox.AppendLine();
+          ///   messageBox.AppendFormat("{0} = {1}", "Y", e.Y);
+          ///   messageBox.AppendLine();
+          ///   messageBox.AppendFormat("{0} = {1}", "Delta", e.Delta);
+          ///   messageBox.AppendLine();
+          ///   messageBox.AppendFormat("{0} = {1}", "Location", e.Location);
+          ///   messageBox.AppendLine();
+          ///   MessageBox::Show(messageBox.ToString(), "MouseClick Event");
+          /// }
+          /// @endcode
           MouseEventHandler MouseClick;
 
           MouseEventHandler MouseDoubleClick;
