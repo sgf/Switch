@@ -664,8 +664,8 @@ namespace Switch {
           ///   // Connect the ControlRemoved and ControlAdded event handlers
           ///   // to the event-handler methods.
           ///   // ControlRemoved and ControlAdded are not available at design time.
-          ///   this->ControlRemoved += {*this, &Form1::Control_Removed};
-          ///   this.ControlAdded += {*this, &Form1::Control_Added};
+          ///   this->ControlRemoved += System::Windows::Forms::ControlEventHandler(*this, &Form1::Control_Removed);
+          ///   this.ControlAdded += System::Windows::Forms::ControlEventHandler(*this, &Form1::Control_Added);
           /// }
           ///
           /// void Control_Added(const object& sender, const System::Windows::Forms::ControlEventArgs& e) {
@@ -813,7 +813,7 @@ namespace Switch {
           ///   button1.TabStop = true;
           ///
           ///   // Add a delegate to handle the Click event.
-          ///   button1.Click += {*this, &Form1::button1_Click);
+          ///   button1.Click += System::EventHandler(*this, &Form1::button1_Click);
           ///
           ///   // Add the button to the form.
           ///   this->Controls().Add(button1);
@@ -855,7 +855,7 @@ namespace Switch {
           ///   button1.TabStop = true;
           ///
           ///   // Add a delegate to handle the Click event.
-          ///   button1.Click += {*this, &Form1::button1_Click);
+          ///   button1.Click += System::EventHandler(*this, &Form1::button1_Click);
           ///
           ///   // Add the button to the form.
           ///   this->Controls().Add(button1);
@@ -1098,7 +1098,7 @@ namespace Switch {
           static ref<Control> FromChildHandle(intptr handle) {
             try {
               return handles[handle]().Parent;
-            } catch(...) {
+            } catch (...) {
               return ref<Control>::Null();
             }
           }
@@ -1110,7 +1110,7 @@ namespace Switch {
           static ref<Control> FromHandle(intptr handle) {
             try {
               return handles[handle];
-            } catch(...) {
+            } catch (...) {
               return ref<Control>::Null();
             }
           }
@@ -1144,8 +1144,8 @@ namespace Switch {
           ///     // Enable drag-and-drop operations and
           ///     // add handlers for DragEnter and DragDrop.
           ///     this->AllowDrop = true;
-          ///     this->DragDrop += {*this, &Form1::Form1_DragDrop};
-          ///     this->DragEnter += {*this, &Form1::Form1_DragEnter};
+          ///     this->DragDrop += DragEventHandler(*this, &Form1::Form1_DragDrop);
+          ///     this->DragEnter += DragEventHandler(*this, &Form1::Form1_DragEnter);
           ///   }
           ///
           /// protected:
@@ -1245,8 +1245,8 @@ namespace Switch {
           ///     // Enable drag-and-drop operations and
           ///     // add handlers for DragEnter and DragDrop.
           ///     this->AllowDrop = true;
-          ///     this->DragDrop += {*this, &Form1::Form1_DragDrop};
-          ///     this->DragEnter += {*this, &Form1::Form1_DragEnter};
+          ///     this->DragDrop += DragEventHandler(*this, &Form1::Form1_DragDrop);
+          ///     this->DragEnter += DragEventHandler(*this, &Form1::Form1_DragEnter);
           ///   }
           ///
           /// protected:
@@ -2445,7 +2445,7 @@ namespace Switch {
           ///   } catch(const System::IO::FileNotFoundException&) {
           ///     // Exception is thrown by the OpenText method of the FileInfo class.
           ///     MessageBox::Show("The file you specified does not exist.");
-          ///   } catch(System::IO::IOException) {
+          ///   } catch(const System::IO::IOException&) {
           ///     // Exception is thrown by the ReadToEnd method of the TextReader class.
           ///     MessageBox::Show("There was a problem loading the file into the TextBox. Ensure that the file is a valid text file.");
           ///   }
@@ -2453,8 +2453,44 @@ namespace Switch {
           /// @endcode
           virtual void OnDoubleClick(const EventArgs& e) { this->DoubleClick(*this, e); }
 
+          /// @brief Raises the EnabledChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnEnabledChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnEnabledChanged in a derived class, be sure to call the base class's OnEnabledChanged method so that registered delegates receive the event.
           virtual void OnEnabledChanged(const EventArgs& e);
 
+          /// @brief Raises the ForeColorChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnForeColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnForeColorChanged in a derived class, be sure to call the base class's OnForeColorChanged method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example is an event-raising method that is executed when the Text property value changes. The Control class has several methods with the name pattern OnPropertyNameChanged that raise the corresponding PropertyNameChanged event when the PropertyName value changes (PropertyName represents the name of the corresponding property).<br><br>
+          /// The following code example changes the ForeColor of a TextBox derived class displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive. This example requires that you have a class that derives from the TextBox class.
+          /// @code
+          /// void OnTextChanged(const System::EventArgs& e) override {
+          ///   try {
+          ///     // Convert the text to a Double and determine
+          ///     // if it is a negative number.
+          ///     if (Double::Parse(this->Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       this->ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       this->ForeColor = Color::Black;
+          ///     }
+          ///   } catch(...) {
+          ///     // If there is an error, display the
+          ///     // text using the system colors.
+          ///     this->ForeColor = SystemColors::ControlText;
+          ///   }
+          ///
+          ///   this->TextBox::OnTextChanged(e);
+          /// }
+          /// @endcode
           virtual void OnForeColorChanged(const EventArgs& e);
 
           virtual void OnHandleCreated(const EventArgs& e) { this->HandleCreated(*this, e); }
