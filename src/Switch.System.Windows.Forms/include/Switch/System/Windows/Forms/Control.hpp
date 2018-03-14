@@ -1098,7 +1098,7 @@ namespace Switch {
           static ref<Control> FromChildHandle(intptr handle) {
             try {
               return handles[handle]().Parent;
-            } catch (...) {
+            } catch(...) {
               return ref<Control>::Null();
             }
           }
@@ -1110,7 +1110,7 @@ namespace Switch {
           static ref<Control> FromHandle(intptr handle) {
             try {
               return handles[handle];
-            } catch (...) {
+            } catch(...) {
               return ref<Control>::Null();
             }
           }
@@ -1856,7 +1856,7 @@ namespace Switch {
           /// -# Validating
           /// -# Validated
           /// -# LostFocus
-          /// <br><br>When you change the focus by using the mouse or by calling the Focus method, focus events occur in the following order:
+          /// @remarks When you change the focus by using the mouse or by calling the Focus method, focus events occur in the following order:
           /// -# Enter
           /// -# GotFocus
           /// -# LostFocus
@@ -2345,7 +2345,7 @@ namespace Switch {
           ///       // If the number is not negative, display it in Black.
           ///       this->ForeColor = Color::Black;
           ///     }
-          ///   } catch (...) {
+          ///   } catch(...) {
           ///     // If there is an error, display the
           ///     // text using the system colors.
           ///     this->ForeColor = SystemColors::ControlText;
@@ -2413,6 +2413,44 @@ namespace Switch {
           /// When overriding OnCreateControl in a derived class, be sure to call the base class's OnCreateControl method so that registered delegates receive the event.
           virtual void OnCreateControl() {}
 
+          /// @brief Raises the DoubleClick event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnDoubleClick method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnDoubleClick in a derived class, be sure to call the base class's OnDoubleClick method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example uses the DoubleClick event of a ListBox to load text files listed in the ListBox into a TextBox control.
+          /// @code
+          /// // This example uses the DoubleClick event of a ListBox to load text files
+          /// // listed in the ListBox into a TextBox control. This example
+          /// // assumes that the ListBox, named listBox1, contains a list of valid file
+          /// // names with path and that this event handler method
+          /// // is connected to the DoublClick event of a ListBox control named listBox1.
+          /// // This example requires code access permission to access files.
+          /// void listBox1_DoubleClick(const object& sender, const System::EventArgs& e) {
+          ///   // Get the name of the file to open from the ListBox.
+          ///   String file = listBox1.SelectedItem().ToString();
+          ///
+          ///   try {
+          ///     // Determine if the file exists before loading.
+          ///     if (System::IO::File::Exists(file)) {
+          ///       // Open the file and use a TextReader to read the contents into the TextBox.
+          ///       System::IO::FileInfo myFile(listBox1.SelectedItem().ToString());
+          ///       System::IO::TextReader myData = myFile.OpenText();;
+          ///
+          ///       textBox1.Text = myData.ReadToEnd();
+          ///       myData.Close();
+          ///     }
+          ///   } catch(const System::IO::FileNotFoundException&) {
+          ///     // Exception is thrown by the OpenText method of the FileInfo class.
+          ///     MessageBox::Show("The file you specified does not exist.");
+          ///   } catch(System::IO::IOException) {
+          ///     // Exception is thrown by the ReadToEnd method of the TextReader class.
+          ///     MessageBox::Show("There was a problem loading the file into the TextBox. Ensure that the file is a valid text file.");
+          ///   }
+          /// }
+          /// @endcode
           virtual void OnDoubleClick(const EventArgs& e) { this->DoubleClick(*this, e); }
 
           virtual void OnEnabledChanged(const EventArgs& e);
