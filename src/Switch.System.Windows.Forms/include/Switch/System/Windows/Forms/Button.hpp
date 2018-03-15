@@ -27,6 +27,20 @@ namespace Switch {
         public:
           /// @brief Initializes a new instance of the Button class.
           /// @remarks By default the Button displays no caption. To specify the caption text, set the Text property.
+          /// @par Examples
+          /// The following code example creates a Button, sets its DialogResult property to the OK value of DialogResult, and adds it to a Form.
+          /// @code
+          /// void InitializeMyButton() {
+          ///   // Create and initialize a Button.
+          ///   this->button1 = new Button();
+          ///
+          ///   // Set the button to return a value of OK when clicked.
+          ///   this->button1->DialogResult = DialogResult::OK;
+          ///
+          ///   // Add the button to the form.
+          ///   this->Controls().Add(*button1);
+          /// }
+          /// @endcode
           Button() : ButtonBase("", 0, 0, 75, 25) {
             this->SetStyle(ControlStyles::UserPaint, false);
           }
@@ -48,7 +62,11 @@ namespace Switch {
           void CreateHandle() override;
 
           /// @brief Gets the default size of the control.
-          /// @return Switch::System::Drawing::Size The default Size of the control.
+          /// @return System::Drawing::Size The default Size of the control.
+          /// @remarks The DefaultSize property represents the Size of the control when it is initially created. You can adjust the size of the control by setting its Size property value.
+          /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
+          /// @par Notes to Inheritors
+          /// Overide GetDefaultsize() method used by DefaultSize property.
           System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(75, 25); }
 
           /// @cond
