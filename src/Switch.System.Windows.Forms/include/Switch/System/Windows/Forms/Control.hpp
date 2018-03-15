@@ -2637,42 +2637,426 @@ namespace Switch {
           /// @endcode
           virtual void OnKeyUp(KeyEventArgs& e) { this->KeyUp(*this, e); }
 
+          /// @brief Raises the LocationChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnLocationChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnLocationChanged in a derived class, be sure to call the base class's OnLocationChanged method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example is an event-raising method that is executed when the Text property value changes. The Control class has several methods with the name pattern OnPropertyNameChanged that raise the corresponding PropertyNameChanged event when the PropertyName value changes (PropertyName represents the name of the corresponding property).<br><br>
+          /// The following code example changes the ForeColor of a TextBox derived class displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive. This example requires that you have a class that derives from the TextBox class.
+          /// @code
+          /// void OnTextChanged(const System::EventArgs& e) override {
+          ///   try {
+          ///     // Convert the text to a Double and determine
+          ///     // if it is a negative number.
+          ///     if (Double::Parse(this->Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       this->ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       this->ForeColor = Color::Black;
+          ///     }
+          ///   } catch(...) {
+          ///     // If there is an error, display the
+          ///     // text using the system colors.
+          ///     this->ForeColor = SystemColors::ControlText;
+          ///   }
+          ///
+          ///   this->TextBox::OnTextChanged(e);
+          /// }
+          /// @endcode
           virtual void OnLocationChanged(const EventArgs& e);
 
+          /// @brief Raises the LostFocus event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnLostFocus method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnLostFocus in a derived class, be sure to call the base class's OnLostFocus method so that registered delegates receive the event.
           virtual void OnLostFocus(const EventArgs& e) { this->LostFocus(*this, e); }
 
+          /// @brief Raises the MouseCaptureChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnMouseCaptureChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnMouseCaptureChanged in a derived class, be sure to call the base class's OnMouseCaptureChanged method so that registered delegates receive the event.
           virtual void OnMouseCaptureChanged(const EventArgs& e) { this->MouseCaptureChanged(*this, e); }
 
+          /// @brief Raises the MouseClick event.
+          /// @param e An MouseEventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnMouseClick method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnMouseClick in a derived class, be sure to call the base class's OnMouseClick method so that registered delegates receive the event.
           virtual void OnMouseClick(const MouseEventArgs& e) { this->MouseClick(*this, e); }
 
+          /// @brief Raises the MouseDoubleClick event.
+          /// @param e An MouseEventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnMouseDoubleClick method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnMouseDoubleClick in a derived class, be sure to call the base class's OnMouseDoubleClick method so that registered delegates receive the event.
           virtual void OnMouseDoubleClick(const MouseEventArgs& e) { this->MouseDoubleClick(*this, e); }
 
+          /// @brief Raises the MouseDown event.
+          /// @param e A MouseEventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnMouseDown method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnMouseDown in a derived class, be sure to call the base class's OnMouseDown method so that registered delegates receive the event.
           virtual void OnMouseDown(const MouseEventArgs& e) { this->MouseDown(*this, e); }
 
+          /// @brief Raises the MouseEnter event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnMouseEnter method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes for Inheritors
+          /// When overriding OnMouseEnter in a derived class, be sure to call the base class's OnMouseEnter method so that registered delegates receive the event.
           virtual void OnMouseEnter(const EventArgs& e) { this->MouseEnter(*this, e); }
 
+          /// @brief Raises the MouseHover event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnMouseHover method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnMouseHover in a derived class, be sure to call the base class's OnMouseHover method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example demonstrates how to override the OnMouseHover and OnMouseMove methods in a derived class. To run the example, paste the following code in a new form and paste this class, forming the same file, after the form. Add a button of type FunButton to the form.
+          /// @code
+          /// class FunButton : public Button {
+          /// protected:
+          ///   void OnMouseHover(const System::EventArgs& e) override {
+          ///     // Get the font size in Points, add one to the size, and reset the button's font to the larger size.
+          ///     float fontSize = this->Font().SizeInPoints;
+          ///     fontSize += 1;
+          ///     System::Drawing::Size buttonSize = this->Size;
+          ///     this->Font = System::Drawing::Font(Font::FontFamily, fontSize, Font::Style);
+          ///
+          ///     // Increase the size width and height of the button by 5 points each.
+          ///     this->Size = System::Drawing::Size(this->Size().Width + 5, this->Size().Height + 5);
+          ///
+          ///     // Call myBase.OnMouseHover to activate the delegate.
+          ///     this->Button::OnMouseHover(e);
+          ///   }
+          ///
+          ///   void OnMouseMove(const MouseEventArgs& e) override {
+          ///     // Make the cursor the Hand cursor when the mouse moves over the button.
+          ///     this->Cursor = Cursors::Hand;
+          ///
+          ///     // Call MyBase.OnMouseMove to activate the delegate.
+          ///     this->Button::OnMouseMove(e);
+          ///   }
+          /// @endcode
           virtual void OnMouseHover(const EventArgs& e) { this->MouseHover(*this, e); }
 
+          /// @brief Raises the MouseLeave event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnMouseLeave method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnMouseLeave in a derived class, be sure to call the base class's OnMouseLeave method so that registered delegates receive the event.
           virtual void OnMouseLeave(const EventArgs& e) { this->MouseLeave(*this, e); }
 
+          /// @brief Raises the ouseMove event.
+          /// @param e An MouseEventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnMouseMove method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnMouseMove in a derived class, be sure to call the base class's OnMouseMove method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example demonstrates how to override the OnMouseHover and OnMouseMove methods in a derived class. To run the example, paste the following code in a new form and paste this class, forming the same file, after the form. Add a button of type FunButton to the form.
+          /// @code
+          /// class FunButton : public Button {
+          /// protected:
+          ///   void OnMouseHover(const System::EventArgs& e) override {
+          ///     // Get the font size in Points, add one to the size, and reset the button's font to the larger size.
+          ///     float fontSize = this->Font().SizeInPoints;
+          ///     fontSize += 1;
+          ///     System::Drawing::Size buttonSize = this->Size;
+          ///     this->Font = System::Drawing::Font(Font::FontFamily, fontSize, Font::Style);
+          ///
+          ///     // Increase the size width and height of the button by 5 points each.
+          ///     this->Size = System::Drawing::Size(this->Size().Width + 5, this->Size().Height + 5);
+          ///
+          ///     // Call myBase.OnMouseHover to activate the delegate.
+          ///     this->Button::OnMouseHover(e);
+          ///   }
+          ///
+          ///   void OnMouseMove(const MouseEventArgs& e) override {
+          ///     // Make the cursor the Hand cursor when the mouse moves over the button.
+          ///     this->Cursor = Cursors::Hand;
+          ///
+          ///     // Call MyBase.OnMouseMove to activate the delegate.
+          ///     this->Button::OnMouseMove(e);
+          ///   }
+          /// @endcode
           virtual void OnMouseMove(const MouseEventArgs& e) { this->MouseMove(*this, e); }
 
+          /// @brief Raises the MouseUp event.
+          /// @param e An MouseEventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnMouseUp method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnMouseUp in a derived class, be sure to call the base class's OnMouseUp method so that registered delegates receive the event.
           virtual void OnMouseUp(const MouseEventArgs& e) { this->MouseUp(*this, e); }
 
+          /// @brief Raises the MouseWheel event.
+          /// @param e An MouseEventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnMouseWheel method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnMouseWheel in a derived class, be sure to call the base class's OnMouseWheel method so that registered delegates receive the event.
           virtual void OnMouseWheel(const MouseEventArgs& e) { this->MouseWheel(*this, e); }
 
+          /// @brief Notifies the control of Windows messages.
+          /// @param m A Message that represents the Windows message.
+          /// @remarks The OnNotifyMessage method is called if the control's EnableNotifyMessage style bit is set in ControlStyles. The EnableNotifyMessage style in ControlStyles enables the control to be notified when the WndProc method receives a Windows message. With this method, semi-trusted controls can listen for Windows messages without enabling them to modify the message.
+          /// @par Notes to Inheritors
+          /// When overriding OnNotifyMessage in a derived class, calling the base class's OnNotifyMessage method is not necessary because there is no initial implementation.
           virtual void OnNotifyMessage(const Message& m) {}
 
+          /// @brief Raises the Paint event.
+          /// @param e An PaintEventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnPaint method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnPaint in a derived class, be sure to call the base class's OnPaint method so that registered delegates receive the event.
+          /// @par examples
+          /// The following code example enables the user to drag an image or image file onto the form, and have it be displayed at the point on it is dropped. The OnPaint method is overridden to repaint the image each time the form is painted; otherwise the image would only persist until the next repainting. The DragEnter event-handling method determines the type of data being dragged into the form and provides the appropriate feedback. The DragDrop event-handling method displays the image on the form, if an Image can be created from the data. Because the DragEventArgs.X and DragEventArgs.Y values are screen coordinates, the example uses the PointToClient method to convert them to client coordinates.
+          /// @code
+          /// private:
+          ///   $<Image> picture;
+          ///   Point pictureLocation;
+          ///
+          /// public:
+          ///   Form1() {
+          ///     // Enable drag-and-drop operations and
+          ///     // add handlers for DragEnter and DragDrop.
+          ///     this->AllowDrop = true;
+          ///     this->DragDrop += DragEventHandler(*this, &Form1::Form1_DragDrop);
+          ///     this->DragEnter += DragEventHandler(*this, &Form1::Form1_DragEnter);
+          ///   }
+          ///
+          /// protected:
+          ///   void OnPaint(PaintEventArgs& e) override {
+          ///     // If there is an image and it has a location,
+          ///     // paint it when the Form is repainted.
+          ///     this->Form::OnPaint(e);
+          ///     if(this->picture != null && this->pictureLocation != Point::Empty) {
+          ///       e.Graphics.DrawImage(*this->picture, this.pictureLocation);
+          ///     }
+          ///   }
+          ///
+          /// private:
+          ///   void Form1_DragDrop(const object& sender, DragEventArgs& e) {
+          ///     // Handle FileDrop data.
+          ///     if (e.Data.GetDataPresent(DataFormats::FileDrop) ) {
+          ///       // Assign the file names to a string array, in
+          ///       // case the user has selected multiple files.
+          ///       $<Array<string>> files = as<Array<string>>(e.Data.GetData(DataFormats::FileDrop));
+          ///       try {
+          ///         // Assign the first image to the picture variable.
+          ///         this->picture = Image::FromFile((*files)[0]);
+          ///         // Set the picture location equal to the drop point.
+          ///         this->pictureLocation = this->PointToClient(Point(e.X, e.Y));
+          ///       } catch(const Exception& ex) {
+          ///         MessageBox::Show(ex.Message);
+          ///         return;
+          ///       }
+          ///     }
+          ///
+          ///     // Handle Bitmap data.
+          ///     if (e.Data.GetDataPresent(DataFormats::Bitmap) ) {
+          ///       try {
+          ///         // Create an Image and assign it to the picture variable.
+          ///         this->picture = as<Image>(e.Data.GetData(DataFormats.Bitmap));
+          ///         // Set the picture location equal to the drop point.
+          ///         this->pictureLocation = this->PointToClient(Point(e.X, e.Y) );
+          ///       } catch(const Exception& ex) {
+          ///         MessageBox::Show(ex.Message);
+          ///         return;
+          ///       }
+          ///     }
+          ///     // Force the form to be redrawn with the image.
+          ///     this->Invalidate();
+          ///   }
+          ///
+          ///   void Form1_DragEnter(const object& sender, DragEventArgs& e) {
+          ///     // If the data is a file or a bitmap, display the copy cursor.
+          ///     if (e.Data.GetDataPresent(DataFormats::Bitmap) || e.Data.GetDataPresent(DataFormats::FileDrop) ) {
+          ///       e.Effect = DragDropEffects::Copy;
+          ///     } else {
+          ///       e.Effect = DragDropEffects::None;
+          ///     }
+          ///   }
+          /// @endcode
+          /// The following code example creates a PictureBox control on the form and uses the Paint event to draw to it.
+          /// @code
+          /// // This example creates a PictureBox control on the form and draws to it.
+          /// // This example assumes that the Form_Load event handler method is
+          /// // connected to the Load event of the form.
+          ///
+          /// PictureBox pictureBox1;
+          /// void Form1_Load(const object& sender, const System::EventArgs& e) {
+          ///   // Dock the PictureBox to the form and set its background to white.
+          ///   pictureBox1.Dock = DockStyle::Fill;
+          ///   pictureBox1.BackColor = Color::White;
+          ///   // Connect the Paint event of the PictureBox to the event handler method.
+          ///   pictureBox1.Paint += System::Windows::Forms::PaintEventHandler(*this &Form1::pictureBox1_Paint);
+          ///
+          ///   // Add the PictureBox control to the Form.
+          ///   this.Controls().Add(pictureBox1);
+          /// }::
+          ///
+          /// void pictureBox1_Paint(const object& sender, System::Windows::Forms::PaintEventArgs& e) {
+          ///   // Create a local version of the graphics object for the PictureBox.
+          ///   Graphics g = e.Graphics;
+          ///
+          ///   // Draw a string on the PictureBox.
+          ///   g.DrawString("This is a diagonal line drawn on the control", Font("Arial",10), System::Drawing::Brushes::Blue, System::Drawing::Point(30,30));
+          ///   // Draw a line in the PictureBox.
+          ///   g.DrawLine(System::Drawing::Pens::Red, pictureBox1.Left, pictureBox1.Top, pictureBox1.Right, pictureBox1.Bottom);
+          /// }
+          /// @endcode
           virtual void OnPaint(PaintEventArgs& e) { this->Paint(*this, e); }
 
+          /// @brief Raises the ParentChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnParentChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnParentChanged in a derived class, be sure to call the base class's OnParentChanged method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example is an event-raising method that is executed when the Text property value changes. The Control class has several methods with the name pattern OnPropertyNameChanged that raise the corresponding PropertyNameChanged event when the PropertyName value changes (PropertyName represents the name of the corresponding property).<br><br>
+          /// The following code example changes the ForeColor of a TextBox derived class displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive. This example requires that you have a class that derives from the TextBox class.
+          /// @code
+          /// void OnTextChanged(const System::EventArgs& e) override {
+          ///   try {
+          ///     // Convert the text to a Double and determine
+          ///     // if it is a negative number.
+          ///     if (Double::Parse(this->Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       this->ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       this->ForeColor = Color::Black;
+          ///     }
+          ///   } catch(...) {
+          ///     // If there is an error, display the
+          ///     // text using the system colors.
+          ///     this->ForeColor = SystemColors::ControlText;
+          ///   }
+          ///
+          ///   this->TextBox::OnTextChanged(e);
+          /// }
+          /// @endcode
           virtual void OnParentChanged(const EventArgs& e);
 
+          /// @brief Raises the SizeChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnSizeChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnSizeChanged in a derived class, be sure to call the base class's OnSizeChanged method so that registered delegates receive the event.
           virtual void OnSizeChanged(const EventArgs& e);
 
+          /// @brief Raises the TabStopChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnTabStopChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnTabStopChanged in a derived class, be sure to call the base class's OnTabStopChanged method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example is an event-raising method that is executed when the Text property value changes. The Control class has several methods with the name pattern OnPropertyNameChanged that raise the corresponding PropertyNameChanged event when the PropertyName value changes (PropertyName represents the name of the corresponding property).<br><br>
+          /// The following code example changes the ForeColor of a TextBox derived class displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive. This example requires that you have a class that derives from the TextBox class.
+          /// @code
+          /// void OnTextChanged(const System::EventArgs& e) override {
+          ///   try {
+          ///     // Convert the text to a Double and determine
+          ///     // if it is a negative number.
+          ///     if (Double::Parse(this->Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       this->ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       this->ForeColor = Color::Black;
+          ///     }
+          ///   } catch(...) {
+          ///     // If there is an error, display the
+          ///     // text using the system colors.
+          ///     this->ForeColor = SystemColors::ControlText;
+          ///   }
+          ///
+          ///   this->TextBox::OnTextChanged(e);
+          /// }
+          /// @endcode
           virtual void OnTabStopChanged(const EventArgs& e);
 
+          /// @brief Raises the TextChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnTextChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnTextChanged in a derived class, be sure to call the base class's OnTextChanged method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example is an event-raising method that is executed when the Text property value changes. The Control class has several methods with the name pattern OnPropertyNameChanged that raise the corresponding PropertyNameChanged event when the PropertyName value changes (PropertyName represents the name of the corresponding property).<br><br>
+          /// The following code example changes the ForeColor of a TextBox derived class displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive. This example requires that you have a class that derives from the TextBox class.
+          /// @code
+          /// void OnTextChanged(const System::EventArgs& e) override {
+          ///   try {
+          ///     // Convert the text to a Double and determine
+          ///     // if it is a negative number.
+          ///     if (Double::Parse(this->Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       this->ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       this->ForeColor = Color::Black;
+          ///     }
+          ///   } catch(...) {
+          ///     // If there is an error, display the
+          ///     // text using the system colors.
+          ///     this->ForeColor = SystemColors::ControlText;
+          ///   }
+          ///
+          ///   this->TextBox::OnTextChanged(e);
+          /// }
+          /// @endcode
           virtual void OnTextChanged(const EventArgs& e);
 
+          /// @brief Raises the VisibleChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnVisibleChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnVisibleChanged in a derived class, be sure to call the base class's OnVisibleChanged method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example is an event-raising method that is executed when the Text property value changes. The Control class has several methods with the name pattern OnPropertyNameChanged that raise the corresponding PropertyNameChanged event when the PropertyName value changes (PropertyName represents the name of the corresponding property).<br><br>
+          /// The following code example changes the ForeColor of a TextBox derived class displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive. This example requires that you have a class that derives from the TextBox class.
+          /// @code
+          /// void OnTextChanged(const System::EventArgs& e) override {
+          ///   try {
+          ///     // Convert the text to a Double and determine
+          ///     // if it is a negative number.
+          ///     if (Double::Parse(this->Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       this->ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       this->ForeColor = Color::Black;
+          ///     }
+          ///   } catch(...) {
+          ///     // If there is an error, display the
+          ///     // text using the system colors.
+          ///     this->ForeColor = SystemColors::ControlText;
+          ///   }
+          ///
+          ///   this->TextBox::OnTextChanged(e);
+          /// }
+          /// @endcode
           virtual void OnVisibleChanged(const EventArgs& e);
 
           /// @cond
