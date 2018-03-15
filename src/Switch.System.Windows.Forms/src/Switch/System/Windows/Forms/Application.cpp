@@ -28,3 +28,8 @@ void Application::MessageLoop() {
   Idle = EventHandler();
   Native::ApplicationApi::Stop();
 }
+
+
+void Application::SetCompatibleTextRenderingDefault(bool rendering) {
+
+}

@@ -1547,7 +1547,7 @@ namespace Switch {
           /// | ProgressBar, TrackBar                                                                                               | Click            | Click, Click            | Click             | Click, Click       | Click              | Click, Click              | Click                | Click, Click                | Click                | Click, Click                |
           /// | Form, DataGrid, Label, LinkLabel, Panel, GroupBox, PictureBox, Splitter, StatusBar, ToolBar, TabPage, ** TabControl | Click            | Click, DoubleClick      | Click             | Click, DoubleClick | Click              | Click, DoubleClick        | Click                | Click, DoubleClick          | Click                | Click, DoubleClick          |
           ///
-          /// * The mouse pointer must be over a child object (TreeNode or ListViewItem).
+          /// @* The mouse pointer must be over a child object (TreeNode or ListViewItem).
           ///
           /// ** The TabControl must have at least one TabPage in its TabPages collection.
           ///
@@ -1605,7 +1605,7 @@ namespace Switch {
           /// | ProgressBar, TrackBar                                                                                               | Click            | Click, Click            | Click             | Click, Click       | Click              | Click, Click              | Click                | Click, Click                | Click                | Click, Click                |
           /// | Form, DataGrid, Label, LinkLabel, Panel, GroupBox, PictureBox, Splitter, StatusBar, ToolBar, TabPage, ** TabControl | Click            | Click, DoubleClick      | Click             | Click, DoubleClick | Click              | Click, DoubleClick        | Click                | Click, DoubleClick          | Click                | Click, DoubleClick          |
           ///
-          /// * The mouse pointer must be over a child object (TreeNode or ListViewItem).
+          /// @* The mouse pointer must be over a child object (TreeNode or ListViewItem).
           ///
           /// ** The TabControl must have at least one TabPage in its TabPages collection.
           ///
