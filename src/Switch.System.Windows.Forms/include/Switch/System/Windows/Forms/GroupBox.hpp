@@ -14,6 +14,9 @@ namespace Switch {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
         /// @brief Used to group collections of controls.
+        /// @par Example
+        /// The following code example demonstrate the use of GroupBox control.
+        /// @include GroupBox.cpp
         class system_windows_forms_export_ GroupBox : public ContainerControl {
         public:
           GroupBox();
