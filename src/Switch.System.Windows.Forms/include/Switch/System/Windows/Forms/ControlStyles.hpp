@@ -9,6 +9,38 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies control functionality.
+        /// @remarks This enumeration has a FlagsAttribute attribute that allows a bitwise combination of its member values.
+        /// @remarks Controls use this enumeration in various properties and methods to specify functionality. A control can enable a style by calling the SetStyle method and passing in the appropriate ControlStyles bit (or bits) and the Boolean value to set the bit(s) to. For example, the following line code would enable double-buffering.
+        /// @code
+        /// myControl.SetStyle(ControlStyles::UserPaint | ControlStyles::AllPaintingInWmPaint | ControlStyles::DoubleBuffer, True)
+        /// @endcode
+        /// @remarks If the AllPaintingInWmPaint bit is set to true, the window message WM_ERASEBKGND is ignored, and both OnPaintBackground and OnPaint methods are called directly from the window message WM_PAINT. This generally reduces flicker unless other controls send the window message WM_ERASEBKGND to the control. You might send the window message WM_ERASEBKGRND to achieve a pseudo-transparent effect similar to SupportsTransparentBackColor; for example, a ToolBar with flat appearance does this.
+        /// @remarks To fully enable double-buffering, you can set the OptimizedDoubleBuffer and AllPaintingInWmPaint bits to true. However the preferred method for enabling double buffering, which yields the same result, is to set the DoubleBuffered property for the control to true.
+        /// @remarks If the SupportsTransparentBackColor bit is set to true, and the BackColor is set to a color whose alpha component is less than 255, OnPaintBackground will simulate transparency by asking its parent control to paint the background. This is not true transparency.
+        /// @note If there is another control between the control and its parent, the current control will not show the control in the middle.
+        /// @remarks When the UserMouse bit is set to true, the following methods are still called: Control.OnMouseDown, Control.OnMouseUp, Control.OnMouseEnter, Control.OnMouseMove, Control.OnMouseHover, Control.OnMouseLeave, and Control.OnMouseWheel.
+        /// @remarks When the control is clicked, if the StandardClick bit is set to true the Control.OnClick method is called and it raises the Control.Click event. When the control is double-clicked, and both the StandardClick and StandardDoubleClick bits are set to true, the click is passed on to the DoubleClick event. Then the Control.OnDoubleClick method is called and it raises the Control.DoubleClick event. However, the control can call OnClick or OnDoubleClick directly regardless of the StandardClick and StandardDoubleClick bit values. For more information on control click and double click behaviors, see the Control.Click and Control.DoubleClick topics.
+        /// @remarks When the UseTextForAccessibility bit is set and there is a value in the control's Text property, the value of that control's Text property determines the control's default Active Accessibility name and shortcut key. Otherwise, the text of the preceding Label control will be used instead. This style is set by default. Certain built-in control types, such as TextBox and ComboBox, reset this style so that the Text property of those controls will not be used by Active Accessibility.
+        /// @par Notes to Inheritors
+        /// nheriting from a standard Windows Forms control and changing the StandardClick or StandardDoubleClick bit values to true can cause unexpected behavior or can have no effect at all if the control does not support the Click or DoubleClick events.
+        /// @par Examples
+        /// The following example demonstrates a use of ControlStyles with the StyleChanged event.
+        /// @code
+        /// // Set the 'FixedHeight' and 'FixedWidth' styles to false.
+        /// void MyForm_Load(const object& sender, const EventArgs& e){
+        ///   this->SetStyle(ControlStyles::FixedHeight, false);
+        ///   this->SetStyle(ControlStyles::FixedWidth, false);
+        /// }
+        ///
+        /// void RegisterEventHandler() {
+        ///   this->StyleChanged += EventHandler(*this, &Form1::MyForm_StyleChanged);
+        /// }
+        ///
+        /// // Handle the 'StyleChanged' event for the 'Form'.
+        /// void MyForm_StyleChanged(const object& sender, const EventArgs& e) {
+        ///   MessageBox::Show("The style releated to the 'Form' has been changed");
+        /// }
+        /// @endcode
         enum class ControlStyles {
           /// @brief Indicates whether the control is a container-like control.
           ContainerControl = 0x00000001,

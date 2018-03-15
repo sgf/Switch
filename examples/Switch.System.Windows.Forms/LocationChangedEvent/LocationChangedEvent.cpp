@@ -32,7 +32,7 @@ private:
     this->statusStrip1.Name = "statusStrip1";
     this->statusStrip1.Size = System::Drawing::Size(292, 22);
     this->statusStrip1.Text = "statusStrip1";
-    this->statusStrip1.LocationChanged += {*this, &Form1::statusStrip1_LocationChanged};
+    this->statusStrip1.LocationChanged += System::EventHandler(*this, &Form1::statusStrip1_LocationChanged);
     //
     // Form1
     //

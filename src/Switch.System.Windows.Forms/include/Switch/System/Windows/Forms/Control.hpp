@@ -794,29 +794,34 @@ namespace Switch {
           /// @par examples
           /// The following code example adds a Button to a form and sets some of its common properties. The example anchors the button to the bottom-right corner of the form so it keeps its relative position as the form is resized. Next it sets the BackgroundImage and resizes the button to the same size as theImage. The example then sets the TabStop to true and sets the TabIndex property. Lastly, it adds an event handler to handle the Click event of the button. This example requires that you have an ImageList named imageList1.
           /// @code
+          /// $<Button> button1;
+          ///
           /// // Add a button to a form and set some of its common properties.
           /// void AddMyButton() {
+          ///   // Create a button and add it to the form.
+          ///   this->button1 = new_<Button>();
+          ///
           ///   // Anchor the button to the bottom right corner of the form
-          ///   button1.Anchor = AnchorStyles::Bottom | AnchorStyles::Right;
+          ///   this->button1->Anchor = AnchorStyles::Bottom | AnchorStyles::Right;
           ///
           ///   // Assign a background image.
-          ///   button1.BackgroundImage = imageList1.Images()[0];
+          ///   this->button1->BackgroundImage = this->imageList1->Images()[0];
           ///
           ///   // Specify the layout style of the background image. Tile is the default.
-          ///   button1.BackgroundImageLayout = ImageLayout::Center;
+          ///   this->button1->BackgroundImageLayout = ImageLayout::Center;
           ///
           ///   // Make the button the same size as the image.
-          ///   button1.Size = button1::BackgroundImage().Size;
+          ///   this->button1->Size = this->button1->BackgroundImage().Size;
           ///
           ///   // Set the button's TabIndex and TabStop properties.
-          ///   button1.TabIndex = 1;
-          ///   button1.TabStop = true;
+          ///   this->button1->TabIndex = 1;
+          ///   this->button1->TabStop = true;
           ///
           ///   // Add a delegate to handle the Click event.
-          ///   button1.Click += System::EventHandler(*this, &Form1::button1_Click);
+          ///   this->button1->Click += System::EventHandler(*this, &Form1::button1_Click);
           ///
           ///   // Add the button to the form.
-          ///   this->Controls().Add(button1);
+          ///   this->Controls().Add(*this->button1);
           /// }
           /// @endcode
           property_<System::Drawing::Size> Size {
@@ -836,29 +841,34 @@ namespace Switch {
           /// @par examples
           /// The following code example adds a Button to a form and sets some of its common properties. The example anchors the button to the bottom-right corner of the form so it keeps its relative position as the form is resized. Next it sets the BackgroundImage and resizes the button to the same size as theImage. The example then sets the TabStop to true and sets the TabIndex property. Lastly, it adds an event handler to handle the Click event of the button. This example requires that you have an ImageList named imageList1.
           /// @code
+          /// $<Button> button1;
+          ///
           /// // Add a button to a form and set some of its common properties.
           /// void AddMyButton() {
+          ///   // Create a button and add it to the form.
+          ///   this->button1 = new_<Button>();
+          ///
           ///   // Anchor the button to the bottom right corner of the form
-          ///   button1.Anchor = AnchorStyles::Bottom | AnchorStyles::Right;
+          ///   this->button1->Anchor = AnchorStyles::Bottom | AnchorStyles::Right;
           ///
           ///   // Assign a background image.
-          ///   button1.BackgroundImage = imageList1.Images()[0];
+          ///   this->button1->BackgroundImage = this->imageList1->Images()[0];
           ///
           ///   // Specify the layout style of the background image. Tile is the default.
-          ///   button1.BackgroundImageLayout = ImageLayout::Center;
+          ///   this->button1->BackgroundImageLayout = ImageLayout::Center;
           ///
           ///   // Make the button the same size as the image.
-          ///   button1.Size = button1::BackgroundImage().Size;
+          ///   this->button1->Size = this->button1->BackgroundImage().Size;
           ///
           ///   // Set the button's TabIndex and TabStop properties.
-          ///   button1.TabIndex = 1;
-          ///   button1.TabStop = true;
+          ///   this->button1->TabIndex = 1;
+          ///   this->button1->TabStop = true;
           ///
           ///   // Add a delegate to handle the Click event.
-          ///   button1.Click += System::EventHandler(*this, &Form1::button1_Click);
+          ///   this->button1->Click += System::EventHandler(*this, &Form1::button1_Click);
           ///
           ///   // Add the button to the form.
-          ///   this->Controls().Add(button1);
+          ///   this->Controls().Add(*this->button1);
           /// }
           /// @endcode
           property_<bool> TabStop {
@@ -2235,7 +2245,7 @@ namespace Switch {
           /// @remarks The DefaultSize property represents the Size of the control when it is initially created. You can adjust the size of the control by setting its Size property value.
           /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
           /// @par Notes to Inheritors
-          /// Overide GetDefaultsize() method used by DefaultSize property.
+          /// Override GetDefaultsize() method used by DefaultSize property.
           property_<System::Drawing::Size, readonly_> DefaultSize {
             get_ { return this->GetDefaultSize(); }
           };
@@ -2261,7 +2271,7 @@ namespace Switch {
           /// @remarks The DefaultSize property represents the Size of the control when it is initially created. You can adjust the size of the control by setting its Size property value.
           /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
           /// @par Notes to Inheritors
-          /// Overide GetDefaultsize() method used by DefaultSize property.
+          /// Override GetDefaultsize() method used by DefaultSize property.
           virtual System::Drawing::Size GetDefaultSize() const { return System::Drawing::Size(0, 0); }
 
           /// @brief Sets the parent container of the control.
@@ -2900,6 +2910,7 @@ namespace Switch {
           /// // connected to the Load event of the form.
           ///
           /// PictureBox pictureBox1;
+          ///
           /// void Form1_Load(const object& sender, const System::EventArgs& e) {
           ///   // Dock the PictureBox to the form and set its background to white.
           ///   pictureBox1.Dock = DockStyle::Fill;
@@ -2908,7 +2919,7 @@ namespace Switch {
           ///   pictureBox1.Paint += System::Windows::Forms::PaintEventHandler(*this &Form1::pictureBox1_Paint);
           ///
           ///   // Add the PictureBox control to the Form.
-          ///   this.Controls().Add(pictureBox1);
+          ///   this->Controls().Add(pictureBox1);
           /// }::
           ///
           /// void pictureBox1_Paint(const object& sender, System::Windows::Forms::PaintEventArgs& e) {

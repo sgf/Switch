@@ -2,6 +2,7 @@
 /// @brief Contains Switch::System::Windows::Forms::Button class.
 #pragma once
 
+#include <Switch/System/ComponentModel/InvalidEnumArgumentException.hpp>
 #include "../../../SystemWindowsFormsExport.hpp"
 #include "ButtonBase.hpp"
 #include "CheckState.hpp"
@@ -20,6 +21,9 @@ namespace Switch {
         /// @remarks When you display a form using the ShowDialog method, you can use the DialogResult property of a button to specify the return value of ShowDialog.
         /// @remarks You can change the button's appearance. For example, to make it appear flat for a Web look, set the FlatStyle property to FlatStyle.Flat. The FlatStyle property can also be set to FlatStyle.Popup, which appears flat until the mouse pointer passes over the button; then the button takes on the standard Windows button appearance.
         /// @note If the control that has focus accepts and processes the ENTER key press, the Button does not process it. For example, if a multiline TextBox or another button has focus, that control processes the ENTER key press instead of the accept button.
+        /// @remarks The FlatStyle property determines the style and appearance of the control. If the FlatStyle property is set to FlatStyle.System, the user's operating system determines the appearance of the control.
+        /// @note When the FlatStyle property is set to FlatStyle.System, the CheckAlign property is ignored and the control is displayed using the ContentAlignment.MiddleLeft or ContentAlignment.MiddleRight alignment. If the CheckAlign property is set to one of the right alignments, the control is displayed using the ContentAlignment.MiddleRight alignment; otherwise, it is displayed using the ContentAlignment.MiddleLeft alignment.
+        /// @remarks The following describes an indeterminate state: You have a CheckBox that determines if the selected text in a RichTextBox is bold. When you select text you can click the CheckBox to bold the selection. Likewise, when you select some text, the CheckBox displays whether the selected text is bold. If your selected text contains text that is bold and normal, the CheckBox will have an indeterminate state.
         /// @par Example
         /// The following code example demonstrate the use of CheckBox control.
         /// @include CheckBox.cpp
@@ -28,13 +32,48 @@ namespace Switch {
           /// @brief Initializes a new instance of the CheckBox class.
           /// @brief By default, when a new CheckBox is instantiated, AutoCheck is set to true, Checked is set to false, and Appearance is set to Normal.
           /// @par Example
-          /// The following code example demonstrate the use of CheckBox control.
-          /// @include CheckBox.cpp
+          /// The following code example creates and initializes a CheckBox, gives it the appearance of a toggle button, sets AutoCheck to false, and adds it to a Form.
+          /// @code
+          /// $<CheckBox> checkBox1;
+          ///
+          /// void InstantiateMyCheckBox() {
+          ///   // Create and initialize a CheckBox.
+          ///   this->checkBox1 = new_<CheckBox>();
+          ///
+          ///   // Make the check box control appear as a toggle button.
+          ///   this->checkBox1->Appearance = Appearance::Button;
+          ///
+          ///   // Turn off the update of the display on the click of the control.
+          ///   this->checkBox1->AutoCheck = false;
+          ///
+          ///   // Add the check box control to the form.
+          ///   this->Controls().Add(*this->checkBox1);
+          /// }
+          /// @endcode
           CheckBox() : ButtonBase("", 0, 0, 104, 24) { this->SetStyle(ControlStyles::UserPaint, false); }
 
           /// @brief Gets or set a value indicating whether the Checked or CheckState values and the CheckBox's appearance are automatically changed when the CheckBox is clicked.
           /// @return bool true if the Checked value or CheckState value and the appearance of the control are automatically changed on the Click event; otherwise, false. The default value is true.
           /// @remarks If AutoCheck is set to false, you will need to add code to update the Checked or CheckState values in the Click event handler.
+          /// @par Example
+          /// The following code example creates and initializes a CheckBox, gives it the appearance of a toggle button, sets AutoCheck to false, and adds it to a Form.
+          /// @code
+          /// $<CheckBox> checkBox1;
+          ///
+          /// void InstantiateMyCheckBox() {
+          ///   // Create and initialize a CheckBox.
+          ///   this->checkBox1 = new_<CheckBox>();
+          ///
+          ///   // Make the check box control appear as a toggle button.
+          ///   this->checkBox1->Appearance = Appearance::Button;
+          ///
+          ///   // Turn off the update of the display on the click of the control.
+          ///   this->checkBox1->AutoCheck = false;
+          ///
+          ///   // Add the check box control to the form.
+          ///   this->Controls().Add(*this->checkBox1);
+          /// }
+          /// @endcode
           property_<bool> AutoCheck {
             get_{ return this->autoCheck; },
             set_{ this->SetAutoCheck(value); }
@@ -44,6 +83,25 @@ namespace Switch {
           /// @return bool true if the CheckBox is in the checked state; otherwise, false. The default value is false.
           /// @note If the ThreeState property is set to true, the Checked property will return true for either a Checked or IndeterminateCheckState.
           /// @remarks When the value is true, the CheckBox portion of the control displays a check mark. If the Appearance property is set to Button, the control will appear sunken when Checked is true and raised like a standard button when false.
+          /// @par Examples
+          /// The following code example displays the values of three properties in a label. The ThreeState property alternates between true and false with alternating clicks of the control and the CheckAlign alternates between a ContentAlignment value of MiddleRight and MiddleLeft. This example shows how the property values change as the ThreeState property changes and the control is checked. This example requires that a CheckBox, Label and Button have all been instantiated on a form and that the label is large enough to display three lines of text, as well as a reference to the System.Drawing namespace. This code should be called in the Click event handler of the control.
+          /// @code
+          /// void AdjustMyCheckBoxProperties() {
+          ///   // Change the ThreeState and CheckAlign properties on every other click.
+          ///   if (!checkBox1.ThreeState) {
+          ///     checkBox1.ThreeState = true;
+          ///     checkBox1.CheckAlign = ContentAlignment::MiddleRight;
+          ///   } else {
+          ///     checkBox1.ThreeState = false;
+          ///     checkBox1.CheckAlign = ContentAlignment::MiddleLeft;
+          ///   }
+          ///
+          ///   // Concatenate the property values together on three lines.
+          ///   label1.Text = "ThreeState: " + Boolean(checkBox1.ThreeState).ToString() + "\n" +
+          ///                 "Checked: " + Boolean(checkBox1.Checked).ToString() + "\n" +
+          ///                 "CheckState: " + Enum<CheckState>(checkBox1.CheckState).ToString();
+          /// }
+          /// @endcode
           property_<bool> Checked {
             get_ {return this->CheckState != System::Windows::Forms::CheckState::Unchecked;},
             set_ {
@@ -54,23 +112,45 @@ namespace Switch {
 
           /// @brief Gets or sets the state of the CheckBox.
           /// @return Switch::System::Windows::Forms::CheckState One of the CheckState enumeration values. The default value is Switch::System::Windows::Forms::CheckState::Unchecked.
-          /// @remarks f the ThreeState property is set to false, the CheckState property value can only be set to CheckState.Indeterminate in code and not by user interaction.
+          /// @exception InvalidEnumArgumentException The value assigned is not one of the CheckState enumeration values.
+          /// @remarks If the ThreeState property is set to false, the CheckState property value can only be set to CheckState.Indeterminate in code and not by user interaction.
           /// @remarks The following table describes the System.Windows.Forms.Appearance of the CheckBox control in its different states for the Normal and Button style control CheckBox.Appearance.
           /// | CheckState    | Appearance::Normal                                | Appearance::Button          |
           /// |---------------|---------------------------------------------------|-----------------------------|
           /// | Checked       | The CheckBox displays a check mark.               | The control appears sunken. |
           /// | Unchecked     | The CheckBox is empty.                            | The control appears raised. |
           /// | Indeterminate | The CheckBox displays a check mark and is shaded. | The control appears flat.   |
+          /// @par Examples
+          /// The following code example displays the values of three properties in a label. The ThreeState property alternates between true and false with alternating clicks of the control and the CheckAlign alternates between a ContentAlignment value of MiddleRight and MiddleLeft. This example shows how the property values change as the ThreeState property changes and the control is checked. This example requires that a CheckBox, Label and Button have all been instantiated on a form and that the label is large enough to display three lines of text, as well as a reference to the System.Drawing namespace. This code should be called in the Click event handler of the control.
+          /// @code
+          /// void AdjustMyCheckBoxProperties() {
+          ///   // Change the ThreeState and CheckAlign properties on every other click.
+          ///   if (!checkBox1.ThreeState) {
+          ///     checkBox1.ThreeState = true;
+          ///     checkBox1.CheckAlign = ContentAlignment::MiddleRight;
+          ///   } else {
+          ///     checkBox1.ThreeState = false;
+          ///     checkBox1.CheckAlign = ContentAlignment::MiddleLeft;
+          ///   }
+          ///
+          ///   // Concatenate the property values together on three lines.
+          ///   label1.Text = "ThreeState: " + Boolean(checkBox1.ThreeState).ToString() + "\n" +
+          ///                 "Checked: " + Boolean(checkBox1.Checked).ToString() + "\n" +
+          ///                 "CheckState: " + Enum<CheckState>(checkBox1.CheckState).ToString();
+          /// }
+          /// @endcode
           property_<System::Windows::Forms::CheckState> CheckState {
             get_ {return this->checkState;},
-            set_ {this->SetCheckState(value);}
+            set_ {
+              if (value != System::Windows::Forms::CheckState::Checked && value != System::Windows::Forms::CheckState::Indeterminate && value != System::Windows::Forms::CheckState::Unchecked)
+                throw System::ComponentModel::InvalidEnumArgumentException(caller_);
+              this->SetCheckState(value);}
           };
 
           /// @brief Occurs when the value of the Checked property changes.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Example
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the CheckedChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.
-          ///
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the CheckedChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br><br>
           /// To run the example code, paste it into a project that contains an instance of type CheckBox named CheckBox1. Then ensure that the event handler is associated with the CheckedChanged event.
           /// @code
           /// void CheckBox1_CheckedChanged(const Object& sender, const EventArgs& e) {
@@ -82,8 +162,7 @@ namespace Switch {
           /// @brief Occurs when the value of the CheckState property changes.
           /// @remarks For more information about handling events, see Handling and Raising Events.
           /// @par Example
-          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the CheckStateChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.
-          ///
+          /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the CheckStateChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br><br>
           /// To run the example code, paste it into a project that contains an instance of type CheckBox named CheckBox1. Then ensure that the event handler is associated with the CheckStateChanged event.
           /// @code
           /// void CheckBox1_CheckStateChanged(const Object& sender, const EventArgs& e) {
@@ -102,6 +181,25 @@ namespace Switch {
           /// @brief Sets a value indicating whether the Checked or CheckState values and the CheckBox's appearance are automatically changed when the CheckBox is clicked.
           /// @param autocheck true if the Checked value or CheckState value and the appearance of the control are automatically changed on the Click event; otherwise, false. The default value is true.
           /// @remarks If AutoCheck is set to false, you will need to add code to update the Checked or CheckState values in the Click event handler.
+          /// @par Example
+          /// The following code example creates and initializes a CheckBox, gives it the appearance of a toggle button, sets AutoCheck to false, and adds it to a Form.
+          /// @code
+          /// $<CheckBox> checkBox1;
+          ///
+          /// void InstantiateMyCheckBox() {
+          ///   // Create and initialize a CheckBox.
+          ///   this->checkBox1 = new_<CheckBox>();
+          ///
+          ///   // Make the check box control appear as a toggle button.
+          ///   this->checkBox1->Appearance = Appearance::Button;
+          ///
+          ///   // Turn off the update of the display on the click of the control.
+          ///   this->checkBox1->AutoCheck = false;
+          ///
+          ///   // Add the check box control to the form.
+          ///   this->Controls().Add(*this->checkBox1);
+          /// }
+          /// @endcode
           void SetAutoCheck(bool autoCheck);
 
           /// @brief Sets the state of the CheckBox.
@@ -113,10 +211,33 @@ namespace Switch {
           /// | Checked       | The CheckBox displays a check mark.               | The control appears sunken. |
           /// | Unchecked     | The CheckBox is empty.                            | The control appears raised. |
           /// | Indeterminate | The CheckBox displays a check mark and is shaded. | The control appears flat.   |
+          /// @par Examples
+          /// The following code example displays the values of three properties in a label. The ThreeState property alternates between true and false with alternating clicks of the control and the CheckAlign alternates between a ContentAlignment value of MiddleRight and MiddleLeft. This example shows how the property values change as the ThreeState property changes and the control is checked. This example requires that a CheckBox, Label and Button have all been instantiated on a form and that the label is large enough to display three lines of text, as well as a reference to the System.Drawing namespace. This code should be called in the Click event handler of the control.
+          /// @code
+          /// void AdjustMyCheckBoxProperties() {
+          ///   // Change the ThreeState and CheckAlign properties on every other click.
+          ///   if (!checkBox1.ThreeState) {
+          ///     checkBox1.ThreeState = true;
+          ///     checkBox1.CheckAlign = ContentAlignment::MiddleRight;
+          ///   } else {
+          ///     checkBox1.ThreeState = false;
+          ///     checkBox1.CheckAlign = ContentAlignment::MiddleLeft;
+          ///   }
+          ///
+          ///   // Concatenate the property values together on three lines.
+          ///   label1.Text = "ThreeState: " + Boolean(checkBox1.ThreeState).ToString() + "\n" +
+          ///                 "Checked: " + Boolean(checkBox1.Checked).ToString() + "\n" +
+          ///                 "CheckState: " + Enum<CheckState>(checkBox1.CheckState).ToString();
+          /// }
+          /// @endcode
           void SetCheckState(System::Windows::Forms::CheckState checkState);
 
           /// @brief Gets the default size of the control.
-          /// @return Switch::System::Drawing::Size The default Size of the control.
+          /// @return System::Drawing::Size The default Size of the control.
+          /// @remarks The DefaultSize property represents the Size of the control when it is initially created. You can adjust the size of the control by setting its Size property value.
+          /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
+          /// @par Notes to Inheritors
+          /// Override GetDefaultsize() method used by DefaultSize property.
           System::Drawing::Size GetDefaultSize() const override {return System::Drawing::Size(104, 24);}
 
           /// @brief Raises the CheckedChanged event.

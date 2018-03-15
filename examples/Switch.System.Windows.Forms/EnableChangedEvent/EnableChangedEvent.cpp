@@ -34,7 +34,7 @@ private:
     this->radioButton1.Size = System::Drawing::Size(100, 17);    //this->radioButton1.TabIndex = 0;
     this->radioButton1.TabStop = true;
     this->radioButton1.Text = "Button1";
-    this->radioButton1.EnabledChanged += {*this, &Form1::radioButton1_EnabledChanged};
+    this->radioButton1.EnabledChanged += System::EventHandler(*this, &Form1::radioButton1_EnabledChanged);
     //
     // radioButton2
     //
@@ -43,7 +43,7 @@ private:
     this->radioButton2.Size = System::Drawing::Size(150, 17);
     this->radioButton2.TabStop = true;
     this->radioButton2.Text = "Disable Button1";
-    this->radioButton2.CheckedChanged += {*this, &Form1::radioButton2_CheckedChanged};
+    this->radioButton2.CheckedChanged += System::EventHandler(*this, &Form1::radioButton2_CheckedChanged);
     //
     // Form1
     //

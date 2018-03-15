@@ -28,8 +28,8 @@ namespace Switch {
         ///   // Connect the ControlRemoved and ControlAdded event handlers
         ///   // to the event-handler methods.
         ///   // ControlRemoved and ControlAdded are not available at design time.
-        ///   ControlRemoved += new System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlRemoved);
-        ///   ControlAdded += new System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlAdded);
+        ///   ControlRemoved += System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlRemoved);
+        ///   ControlAdded += System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlAdded);
         /// }
         /// void ControlAdded(const object& sender, const System::Windows::Forms::ControlEventArgs& e) {
         ///   MessageBox::Show("The control named " + e.Control()->Name() + " has been added to the form.");
@@ -40,7 +40,7 @@ namespace Switch {
         /// // Click event handler for a Button control. Adds a TextBox to the form.
         /// void AddControlClick(const object& sender, const System::EventArgs& e) {
         ///   // Create a new TextBox control and add it to the form.
-        ///   refptr<TextBox> textBox1 = new TextBox();
+        ///   $<TextBox> textBox1 = new_<TextBox>();
         ///   textBox1->Size(Size(100, 10));
         ///   textBox1->Location(Point(10, 10));
         ///   // Name the control in order to remove it later. The name must be specified
@@ -66,6 +66,7 @@ namespace Switch {
         public:
           /// @brief nitializes a new instance of the ControlEventArgs class.
           ControlEventArgs() {}
+
           /// @brief nitializes a new instance of the ControlEventArgs class for the specified control.
           /// @param control The Control to store in this event.
           /// @par Examples
@@ -79,8 +80,8 @@ namespace Switch {
           ///   // Connect the ControlRemoved and ControlAdded event handlers
           ///   // to the event-handler methods.
           ///   // ControlRemoved and ControlAdded are not available at design time.
-          ///   ControlRemoved += new System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlRemoved);
-          ///   ControlAdded += new System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlAdded);
+          ///   ControlRemoved += System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlRemoved);
+          ///   ControlAdded += System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlAdded);
           /// }
           /// void ControlAdded(const object& sender, const System::Windows::Forms::ControlEventArgs& e) {
           ///   MessageBox::Show("The control named " + e.Control()->Name() + " has been added to the form.");
@@ -91,7 +92,7 @@ namespace Switch {
           /// // Click event handler for a Button control. Adds a TextBox to the form.
           /// void AddControlClick(const object& sender, const System::EventArgs& e) {
           ///   // Create a new TextBox control and add it to the form.
-          ///   refptr<TextBox> textBox1 = new TextBox();
+          ///   $<TextBox> textBox1 = new_<TextBox>();
           ///   textBox1->Size(Size(100, 10));
           ///   textBox1->Location(Point(10, 10));
           ///   // Name the control in order to remove it later. The name must be specified
@@ -128,8 +129,8 @@ namespace Switch {
           ///   // Connect the ControlRemoved and ControlAdded event handlers
           ///   // to the event-handler methods.
           ///   // ControlRemoved and ControlAdded are not available at design time.
-          ///   ControlRemoved += new System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlRemoved);
-          ///   ControlAdded += new System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlAdded);
+          ///   ControlRemoved += System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlRemoved);
+          ///   ControlAdded += System::Windows::Forms::ControlEventHandler(*this, &Form1::ControlAdded);
           /// }
           /// void ControlAdded(const object& sender, const System::Windows::Forms::ControlEventArgs& e) {
           ///   MessageBox::Show("The control named " + e.Control()->Name() + " has been added to the form.");
@@ -140,7 +141,7 @@ namespace Switch {
           /// // Click event handler for a Button control. Adds a TextBox to the form.
           /// void AddControlClick(const object& sender, const System::EventArgs& e) {
           ///   // Create a new TextBox control and add it to the form.
-          ///   refptr<TextBox> textBox1 = new TextBox();
+          ///   $<TextBox> textBox1 = new_<TextBox>();
           ///   textBox1->Size(Size(100, 10));
           ///   textBox1->Location(Point(10, 10));
           ///   // Name the control in order to remove it later. The name must be specified

@@ -27,8 +27,8 @@ namespace Switch {
           /// @endcond
 
           /// @brief Gets or sets a value indicating whether the ellipsis character (...) appears at the right edge of the control, denoting that the control text extends beyond the specified length of the control.
-          /// @remarks Set AutoEllipsis to true to display text that extends beyond the width of the control when the user passes over the control with the mouse. You must set the control's AutoSize property to false if you want AutoEllipsis to be true. If AutoSize is true, the control will grow to fit the text and an ellipsis will not appear.
           /// @return bool true if the additional label text is to be indicated by an ellipsis; otherwise, false. The default is true.
+          /// @remarks Set AutoEllipsis to true to display text that extends beyond the width of the control when the user passes over the control with the mouse. You must set the control's AutoSize property to false if you want AutoEllipsis to be true. If AutoSize is true, the control will grow to fit the text and an ellipsis will not appear.
           property_<bool> AutoElispis {
             get_ {return this->autoElipsis;},
             set_ {this->autoElipsis = value;}

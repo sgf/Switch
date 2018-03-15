@@ -11,6 +11,57 @@ namespace Switch {
         /// @brief Specifies events that are reported by accessible applications.
         /// @remarks The operating system and accessibility server applications generate accessibility events in response to changes in the user interface.
         /// @remarks This enumeration is used by AccessibleObject and Control.
+        /// @par Examples
+        /// The following code example demonstrates the creation of an accessibility-aware chart control, using the AccessibleObject and Control.ControlAccessibleObject classes to expose accessible information. The control plots two curves along with a legend. The ChartControlAccessibleObject class, which derives from ControlAccessibleObject, is used in the CreateAccessibilityInstance method to provide custom accessible information for the chart control. Because the chart legend is not an actual Control -based control, but instead is drawn by the chart control, it does not any built-in accessible information. Because of this, the ChartControlAccessibleObject class overrides the GetChild method to return the CurveLegendAccessibleObject that represents accessible information for each part of the legend. When an accessible-aware application uses this control, the control can provide the necessary accessible information.<br><br>
+        /// This example demonstrates using the AccessibleEvents enumeration with the AccessibilityNotifyClients method. See the AccessibleObject class overview for the complete code example.
+        /// @code
+        /// // Gets or sets the location for the curve legend.
+        /// property_<Point> Location {
+        ///   get_ {return this->location;},
+        ///   set_ {
+        ///     this->location = value;
+        ///     this->chart.Invalidate();
+        ///
+        ///     // Notifies the chart of the location change. This is used for
+        ///     // the accessibility information. AccessibleEvents.LocationChange
+        ///     // tells the chart the reason for the notification.
+        ///     this->chart.AccessibilityNotifyClients(this->AccessibleEvents().LocationChange, as<CurveLegendAccessibleObject>(this->AccessibilityObject).ID);
+        ///   }
+        /// }
+        ///
+        /// // Gets or sets the Name for the curve legend.
+        /// property_<string> Name {
+        ///   get_ {return this->name;},
+        ///   set_ {
+        ///     if (this->name != value) {
+        ///       this->name = value;
+        ///       this->chart.Invalidate();
+        ///
+        ///       // Notifies the chart of the name change. This is used for
+        ///       // the accessibility information. AccessibleEvents.NameChange
+        ///       // tells the chart the reason for the notification.
+        ///       this->chart.AccessibilityNotifyClients(this->AccessibleEvents().NameChange, as<CurveLegendAccessibleObject>(this->AccessibilityObject).ID);
+        ///     }
+        ///   }
+        /// }
+        ///
+        /// // Gets or sets the Selected state for the curve legend.
+        /// property_<bool> Selected {
+        ///   get_ {return this->selected;},
+        ///   set_ {
+        ///     if (this->selected != value) {
+        ///       this->selected = value;
+        ///       this->chart.Invalidate();
+        ///
+        ///       // Notifies the chart of the selection value change. This is used for
+        ///       // the accessibility information. The AccessibleEvents value depends upon
+        ///       // if the selection is true (AccessibleEvents.SelectionAdd) or
+        ///       // false (AccessibleEvents.SelectionRemove).
+        ///       this->chart.AccessibilityNotifyClients(this->selected ? this->AccessibleEvents().SelectionAdd : this->AccessibleEvents().SelectionRemove, as<CurveLegendAccessibleObject>(AccessibilityObject).ID);
+        ///     }
+        ///   }
+        /// }
+        /// @endcode
         enum class AccessibleEvents {
           /// @brief A sound was played. The system sends this event when a system sound, such as for menus, is played, even if no sound is audible. This might be caused by lack of a sound file or sound card. Servers send this event if a custom user interface element generates a sound.
           SystemSound = 1,

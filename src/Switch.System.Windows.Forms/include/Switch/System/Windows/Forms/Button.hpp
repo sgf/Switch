@@ -30,15 +30,17 @@ namespace Switch {
           /// @par Examples
           /// The following code example creates a Button, sets its DialogResult property to the OK value of DialogResult, and adds it to a Form.
           /// @code
+          /// $<Button> button1;
+          ///
           /// void InitializeMyButton() {
           ///   // Create and initialize a Button.
-          ///   this->button1 = new Button();
+          ///   this->button1 = new_<Button>();
           ///
           ///   // Set the button to return a value of OK when clicked.
           ///   this->button1->DialogResult = DialogResult::OK;
           ///
           ///   // Add the button to the form.
-          ///   this->Controls().Add(*button1);
+          ///   this->Controls().Add(*this->button1);
           /// }
           /// @endcode
           Button() : ButtonBase("", 0, 0, 75, 25) {
@@ -66,7 +68,7 @@ namespace Switch {
           /// @remarks The DefaultSize property represents the Size of the control when it is initially created. You can adjust the size of the control by setting its Size property value.
           /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
           /// @par Notes to Inheritors
-          /// Overide GetDefaultsize() method used by DefaultSize property.
+          /// Override GetDefaultsize() method used by DefaultSize property.
           System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(75, 25); }
 
           /// @cond
