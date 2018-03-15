@@ -156,7 +156,9 @@ namespace Switch {
           static void SetCompatibleTextRenderingDefault(bool defaultValue);
 
         private:
+          /// @cond
           friend class Form;
+          /// @endcond
           static void AddForm();
           static void Init();
           static void MessageLoop();

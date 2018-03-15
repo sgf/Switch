@@ -1748,7 +1748,7 @@ namespace Switch {
           ///     }
           ///   }
           ///   //If shift key was pressed, it's not a number.
-          ///   if (Control.ModifierKeys == Keys::Shift) {
+          ///   if (Control::ModifierKeys == Keys::Shift) {
           ///     nonNumberEntered = true;
           ///   }
           /// }
@@ -1798,7 +1798,7 @@ namespace Switch {
           ///     }
           ///   }
           ///   //If shift key was pressed, it's not a number.
-          ///   if (Control.ModifierKeys == Keys::Shift) {
+          ///   if (Control::ModifierKeys == Keys::Shift) {
           ///     nonNumberEntered = true;
           ///   }
           /// }
@@ -2493,17 +2493,149 @@ namespace Switch {
           /// @endcode
           virtual void OnForeColorChanged(const EventArgs& e);
 
+          /// @brief Raises the HandleCreated event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnHandleCreated method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnHandleCreated in a derived class, be sure to call the base class's OnHandleCreated method so that registered delegates receive the event.
           virtual void OnHandleCreated(const EventArgs& e) { this->HandleCreated(*this, e); }
 
+          /// @biref Raises the HandleDestroyed event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnHandleDestroyed method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnHandleDestroyed in a derived class, be sure to call the base class's OnHandleDestroyed method so that registered delegates receive the event.
           virtual void OnHandleDestroyed(const EventArgs& e) { this->HandleDestroyed(*this, e); }
 
+          /// @brief Raises the Invalidated event.
+          /// @param e An InvalidateEventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnInvalidated method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnInvalidated in a derived class, be sure to call the base class's OnInvalidated method so that registered delegates receive the event.
+          virtual void OnInvalidated(const InvalidateEventArgs& e) { this->Invalidated(*this, e); }
+
+          /// @brief Raises the KeyDown event.
+          /// @param e A KeyEventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnKeyDown method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnKeyDown in a derived class, be sure to call the base class's OnKeyDown method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example uses the KeyDown event to determine the type of character entered into the control.
+          /// @code
+          /// // Boolean flag used to determine when a character other than a number is entered.
+          /// bool nonNumberEntered = false;
+          ///
+          /// // Handle the KeyDown event to determine the type of character entered into the control.
+          /// void textBox1_KeyDown(const object& sender, const System::Windows::Forms::KeyEventArgs& e) {
+          ///   // Initialize the flag to false.
+          ///   nonNumberEntered = false;
+          ///
+          ///   // Determine whether the keystroke is a number from the top of the keyboard.
+          ///   if (e.KeyCode < Keys::D0 || e.KeyCode > Keys::D9) {
+          ///     // Determine whether the keystroke is a number from the keypad.
+          ///     if (e.KeyCode < Keys::NumPad0 || e.KeyCode > Keys::NumPad9) {
+          ///       // Determine whether the keystroke is a backspace.
+          ///       if(e.KeyCode != Keys::Back) {
+          ///         // A non-numerical keystroke was pressed.
+          ///         // Set the flag to true and evaluate in KeyPress event.
+          ///         nonNumberEntered = true;
+          ///       }
+          ///     }
+          ///   }
+          ///
+          ///   //If shift key was pressed, it's not a number.
+          ///   if (Control::ModifierKeys == Keys::Shift) {
+          ///     nonNumberEntered = true;
+          ///   }
+          /// }
+          ///
+          /// // This event occurs after the KeyDown event and can be used to prevent
+          /// // characters from entering the control.
+          /// void textBox1_KeyPress(const object& sender, System::Windows::Forms::KeyPressEventArgs& e) {
+          ///   // Check for the flag being set in the KeyDown event.
+          ///   if (nonNumberEntered == true) {
+          ///     // Stop the character from being entered into the control since it is non-numerical.
+          ///     e.Handled = true;
+          ///   }
+          /// }
+          /// @endcode
           virtual void OnKeyDown(KeyEventArgs& e) { this->KeyDown(*this, e); }
 
+          /// @brief Raises the KeyPress event.
+          /// @partam e A KeyPressEventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnKeyPress method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnKeyPress in a derived class, be sure to call the base class's OnKeyPress method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example uses the KeyDown event to determine the type of character entered into the control.
+          /// @code
+          /// // Boolean flag used to determine when a character other than a number is entered.
+          /// bool nonNumberEntered = false;
+          ///
+          /// // Handle the KeyDown event to determine the type of character entered into the control.
+          /// void textBox1_KeyDown(const object& sender, const System::Windows::Forms::KeyEventArgs& e) {
+          ///   // Initialize the flag to false.
+          ///   nonNumberEntered = false;
+          ///
+          ///   // Determine whether the keystroke is a number from the top of the keyboard.
+          ///   if (e.KeyCode < Keys::D0 || e.KeyCode > Keys::D9) {
+          ///     // Determine whether the keystroke is a number from the keypad.
+          ///     if (e.KeyCode < Keys::NumPad0 || e.KeyCode > Keys::NumPad9) {
+          ///       // Determine whether the keystroke is a backspace.
+          ///       if(e.KeyCode != Keys::Back) {
+          ///         // A non-numerical keystroke was pressed.
+          ///         // Set the flag to true and evaluate in KeyPress event.
+          ///         nonNumberEntered = true;
+          ///       }
+          ///     }
+          ///   }
+          ///
+          ///   //If shift key was pressed, it's not a number.
+          ///   if (Control::ModifierKeys == Keys::Shift) {
+          ///     nonNumberEntered = true;
+          ///   }
+          /// }
+          ///
+          /// // This event occurs after the KeyDown event and can be used to prevent
+          /// // characters from entering the control.
+          /// void textBox1_KeyPress(const object& sender, System::Windows::Forms::KeyPressEventArgs& e) {
+          ///   // Check for the flag being set in the KeyDown event.
+          ///   if (nonNumberEntered == true) {
+          ///     // Stop the character from being entered into the control since it is non-numerical.
+          ///     e.Handled = true;
+          ///   }
+          /// }
+          /// @endcode
           virtual void OnKeyPress(KeyPressEventArgs& e) { this->KeyPress(*this, e); }
 
+          /// @brief Raises the KeyUp event.
+          /// @param e A KeyEventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnKeyUp method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes for Inheritors
+          /// When overriding OnKeyUp in a derived class, be sure to call the base class's OnKeyUp method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example uses the KeyUp event with the Help class to display pop-up style help to the user.
+          /// @code
+          /// // This example demonstrates how to use the KeyUp event with the Help class to display
+          /// // pop-up style help to the user of the application. When the user presses F1, the Help
+          /// // class displays a pop-up window, similar to a ToolTip, near the control. This example assumes
+          /// // that a TextBox control, named textBox1, has been added to the form and its KeyUp
+          /// // event has been contected to this event handler method.
+          /// void textBox1_KeyUp(const object& sender, System::Windows::Forms::KeyEventArgs& e) {
+          ///   // Determine whether the key entered is the F1 key. Display help if it is.
+          ///   if (e.KeyCode == Keys::F1) {
+          ///     // Display a pop-up help topic to assist the user.
+          ///     Help::ShowPopup(textBox1, "Enter your first name", Point(textBox1.Right, this.textBox1.Bottom));
+          ///   }
+          /// }
+          /// @endcode
           virtual void OnKeyUp(KeyEventArgs& e) { this->KeyUp(*this, e); }
-
-          virtual void OnInvalidated(const InvalidateEventArgs& e) { this->Invalidated(*this, e); }
 
           virtual void OnLocationChanged(const EventArgs& e);
 
