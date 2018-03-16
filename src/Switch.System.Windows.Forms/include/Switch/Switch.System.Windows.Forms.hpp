@@ -3,11 +3,6 @@
 #pragma once
 
 #include <Switch/Switch.System.Drawing>
-#include "System/ComponentModel/Component.hpp"
-#include "System/ComponentModel/ComponentCollection.hpp"
-#include "System/ComponentModel/IComponent.hpp"
-#include "System/ComponentModel/IContainer.hpp"
-#include "System/ComponentModel/ISite.hpp"
 #include "System/Windows/Forms/VisualStyles/VisualStyleState.hpp"
 #include "System/Windows/Forms/AccessibleEvents.hpp"
 #include "System/Windows/Forms/AccessibleNavigation.hpp"

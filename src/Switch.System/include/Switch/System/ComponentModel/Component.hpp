@@ -3,18 +3,19 @@
 #pragma once
 
 #include <Switch/System/Object.hpp>
-#include <Switch/System/Drawing/Size.hpp>
-#include "../../SystemWindowsFormsExport.hpp"
+#include "../../SystemExport.hpp"
 #include "IComponent.hpp"
 
+/// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
+  /// @brief The Switch::System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief The Switch::System::ComponentModel namespace provides classes that are used to implement the run-time and design-time behavior of components and controls. This namespace includes the base classes and interfaces for implementing attributes and type converters, binding to data sources, and licensing components.
     namespace ComponentModel {
       /// @brief Provides the base implementation for the IComponent interface and enables object sharing between applications.
       /// @par Library
-      /// Switch.System.Windows.Forms
-      class system_windows_forms_export_ Component : public object, public IComponent {
+      /// Switch.System
+      class system_export_ Component : public object, public IComponent {
       public:
         /// @brief Initializes a new instance of the Component class.
         Component() {}

@@ -2,9 +2,10 @@
 /// @brief Contains Switch::System::Windows::Forms::Timer class.
 #pragma once
 
+#include <Switch/System/ComponentModel/Component.hpp>
 #include <Switch/System/EventHandler.hpp>
+#include <Switch/System/IntPtr.hpp>
 #include "../../../SystemWindowsFormsExport.hpp"
-#include "../../ComponentModel/Component.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {

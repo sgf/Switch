@@ -3,7 +3,6 @@
 #pragma once
 
 #include <Switch/System/Enum.hpp>
-
 #include "Control.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.

@@ -2,9 +2,9 @@
 /// @brief Contains Switch::System::Windows::Forms::ContainerControl class.
 #pragma once
 
+#include <Switch/System/ComponentModel/Component.hpp>
+#include <Switch/System/ComponentModel/IContainer.hpp>
 #include "../../../SystemWindowsFormsExport.hpp"
-#include "../../ComponentModel/Component.hpp"
-#include "../../ComponentModel/IContainer.hpp"
 #include "ScrollableControl.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.

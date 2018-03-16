@@ -4,16 +4,19 @@
 
 #include <Switch/Interface.hpp>
 #include <Switch/System/EventHandler.hpp>
-#include "../../SystemWindowsFormsExport.hpp"
+#include "../../SystemExport.hpp"
 
+/// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
+  /// @brief The Switch::System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
+    /// @brief The Switch::System::ComponentModel namespace provides classes that are used to implement the run-time and design-time behavior of components and controls. This namespace includes the base classes and interfaces for implementing attributes and type converters, binding to data sources, and licensing components.
     namespace ComponentModel {
       /// @interface IComponent
       /// @brief Provides the base implementation for the IComponent interface and enables object sharing between applications.
       /// @par Library
-      /// Switch.System.Windows.Forms
-      class system_windows_forms_export_ IComponent interface_ {
+      /// Switch.System
+      class system_export_ IComponent interface_ {
       public:
         /// @brief Performs application-defined tasks associated with freeing, releasing, or resetting resources.
         virtual void Close() = 0;

@@ -9,9 +9,9 @@
 #include <Switch/System/Drawing/SystemColors.hpp>
 #include <Switch/System/Drawing/Font.hpp>
 #include <Switch/System/Nullable.hpp>
+#include <Switch/System/ComponentModel/Component.hpp>
+#include <Switch/System/ComponentModel/EventHandlerList.hpp>
 #include "../../../SystemWindowsFormsExport.hpp"
-#include "../../ComponentModel/Component.hpp"
-#include "../../ComponentModel/EventHandlerList.hpp"
 #include "ControlStyles.hpp"
 #include "InvalidateEventHandler.hpp"
 #include "IWin32Window.hpp"

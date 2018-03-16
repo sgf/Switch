@@ -2,9 +2,8 @@
 /// @brief Contains Switch::System::Windows::Forms::FormClosingEventArgs class.
 #pragma once
 
-#include <Switch/System/EventArgs.hpp>
+#include <Switch/System/ComponentModel/CancelEventArgs.hpp>
 #include "../../../SystemWindowsFormsExport.hpp"
-#include "../../ComponentModel/CancelEventArgs.hpp"
 #include "CloseReason.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
