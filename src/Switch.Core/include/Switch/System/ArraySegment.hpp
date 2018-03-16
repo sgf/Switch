@@ -7,7 +7,9 @@
 namespace Switch {
   namespace System {
     /// @brief Delimits a section of a one-dimensional array.
-    /// @todo Write Decimal class.
+    /// @par Library
+    /// Switch.Core
+    /// @todo Write ArraySegment class.
     template<typename T, typename TAllocator = Allocator<T>>
     using ArraySegment = Array<T, 1, TAllocator>;
   }

@@ -7,6 +7,8 @@
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Represent an asynchronous task
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// This example demontrate how to use async and await
   /// @include Async1.cpp
@@ -27,6 +29,8 @@ namespace Switch {
   };
 
   /// @brief Represent an asynchronous task
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// This example demontrate how to use async and await
   /// @include Async1.cpp
@@ -34,6 +38,8 @@ namespace Switch {
   using async = Async<Task>;
 
   /// @brief Represent an asynchronous task
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// This example demontrate how to use async and await
   /// @include Async2.cpp

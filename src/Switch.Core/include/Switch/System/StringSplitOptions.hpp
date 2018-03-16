@@ -8,8 +8,9 @@
 namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
-    /// @enum StringSplitOptions
     /// @brief Specifies whether applicable string::Split method overloads include or omit empty substrings from the return value.
+    /// @par Library
+    /// Switch.Core
     /// @see string
     enum class StringSplitOptions {
       /// @brief The return value includes array elements that contain an empty string.

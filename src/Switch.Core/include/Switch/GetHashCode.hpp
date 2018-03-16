@@ -10,6 +10,8 @@
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Generate a hash code for generic type T.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32  An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
@@ -19,114 +21,152 @@ namespace Switch {
   }
 
   /// @brief Generate a hash code for void*.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const void* e);
 
   /// @brief Generate a hash code for NullPtr.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const NullPtr& value);
 
   /// @brief Generate a hash code for bool.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const bool& value);
 
   /// @brief Generate a hash code for signed 8-bit integer.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const sbyte& value);
 
   /// @brief  Generate a hash code for char.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const char& value);
 
   /// @brief Generate a hash code for char16.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const char16& value);
 
   /// @brief Generate a hash code for char32.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const char32& value);
 
   /// @brief Generate a hash code for wchar.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const wchar& value);
 
   /// @brief Generate a hash code for signed 16-bit integer.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const int16& value);
 
   /// @brief Generate a hash code for signed 32-bit integer.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const int32& value);
 
   /// @brief Generate a hash code for char32.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const int64& value);
 
   /// @brief Generate a hash code for char32.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const llong& value);
 
   /// @brief Generate a hash code for char32.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const byte& value);
 
   /// @brief Generate a hash code for char32.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const uint16& value);
 
   /// @brief Generate a hash code for char32.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const uint32& value);
 
   /// @brief Generate a hash code for char32.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const ullong& value);
 
   /// @brief Generate a hash code for char32.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const uint64& value);
 
   /// @brief Generate a hash code for char32.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   core_export_ int32 GetHashCode(const double& value);
 
   /// @brief Generate a hash code for char32.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
@@ -150,6 +190,8 @@ namespace Switch {
   /// @endcond
 
   /// @brief Generate a hash code for generic type T.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
@@ -161,6 +203,8 @@ namespace Switch {
   }
 
   /// @brief Generate a hash code for generic type T.
+  /// @par Library
+  /// Switch.Core
   /// @param[in] value For which the hashcode is generated.
   /// @return int32 An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.

@@ -84,6 +84,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Provides the base class for enumerations.
+    /// @par Library
+    /// Switch.Core
     template<typename T = NullPtr>
     class Enum : public object, public System::IComparable {
     public:
@@ -419,6 +421,8 @@ namespace Switch {
     /// @endcond
 
     /// @brief Provides the base class for enumerations.
+    /// @par Library
+    /// Switch.Core
     template<>
     class Enum<NullPtr> static_ {
     public:

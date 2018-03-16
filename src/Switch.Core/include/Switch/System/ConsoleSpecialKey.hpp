@@ -9,6 +9,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Specifies combinations of modifier and console keys that can interrupt the current process.
+    /// @par Library
+    /// Switch.Core
     /// @remarks The ConsoleCancelEventArgs.SpecialKey property returns the ConsoleSpecialKey enumeration type.
     /// @remarks Simultaneously pressing certain key combinations signals the operating system to interrupt the currently running process. The two valid key combinations are ConsoleModifiers.Control plus BREAK (CTRL+BREAK) and ConsoleModifiers.Control plus ConsoleKey.C (CTRL+C).
     enum class ConsoleSpecialKey {

@@ -25,6 +25,8 @@ namespace Switch {
     /// @brief Supports all classes in the Switch class hierarchy and provides low-level services to derived classes.
     /// This is the ultimate base class of all classes in the Switch.
     /// It is the root of the type hierarchy.
+    /// @par Library
+    /// Switch.Core
     /// @par Examples
     /// The following example defines a Point type derived from the Object class and virtuals many of the virtual methods of the Object class. In addition, the example shows how to call many of the static and instance methods of the Object class.
     /// @include Object.cpp

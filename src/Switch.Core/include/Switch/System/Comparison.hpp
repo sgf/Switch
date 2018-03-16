@@ -10,6 +10,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents the method that compares two objects of the same type.
+    /// @par Library
+    /// Switch.Core
     /// @param T The type of the objects to compare.
     /// @param x The first object to compare.
     /// @param y The second object to compare.

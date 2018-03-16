@@ -10,6 +10,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Specifies the day of the week.
+    /// @par Library
+    /// Switch.Core
     /// @see DateTime
     enum class DayOfWeek {
       /// @brief Indicates Sunday.

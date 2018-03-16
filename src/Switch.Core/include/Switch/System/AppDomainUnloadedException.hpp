@@ -9,6 +9,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief The exception that is thrown when an attempt is made to access an unloaded application domain.
+    /// @par Library
+    /// Switch.Core
     class core_export_ AppDomainUnloadedException : public SystemException {
     public:
       /// @brief Create a new instance of class AppDomainUnloadedException

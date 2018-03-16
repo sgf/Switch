@@ -9,6 +9,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief The exception that is thrown when there is an attempt to read or write protected memory.
+    /// @par Library
+    /// Switch.Core
     /// @remarks An access violation occurs in unmanaged or unsafe code when the code attempts to read or write to memory that has not been allocated, or to which it does not have access. This usually occurs because a pointer has a bad value. Not all reads or writes through bad pointers lead to access violations, so an access violation usually indicates that several reads or writes have occurred through bad pointers, and that memory might be corrupted. Thus, access violations almost always indicate serious programming errors. An AccessViolationException clearly identifies these serious errors.
     /// @remarks In programs consisting entirely of verifiable managed code, all references are either valid or null, and access violations are impossible. Any operation that attempts to reference a null reference in verifiable code throws a NullReferenceException exception. An AccessViolationException occurs only when verifiable managed code interacts with unmanaged code or with unsafe managed code.
     /// @par Troubleshooting AccessViolationException exceptions

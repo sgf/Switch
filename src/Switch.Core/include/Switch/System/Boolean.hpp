@@ -19,6 +19,9 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents a Boolean value.
+    /// @par Library
+    /// Switch.Core
+    /// @par Examples
     /// The following example illustrates formatting with the ToString method. Note that the example uses the composite formatting feature, so the ToString method is called implicitly.
     /// @include Boolean1.cpp
     /// Because the Boolean structure can have only two values, it is easy to add custom formatting. For simple custom formatting in which other string literals are substituted for "true" and "false", you can use any conditional evaluation feature supported by your language, such as the conditional operator in C++ or the If operator in Visual Basic. The following example uses this technique to format Boolean values as "Yes" and "No" rather than "true" and "false".

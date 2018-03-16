@@ -31,8 +31,9 @@ namespace Switch {
 namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
-    /// @brief Provides information about, and means to manipulate, the current environment
-    /// and platform. This class cannot be inherited.
+    /// @brief Provides information about, and means to manipulate, the current environment and platform. This class cannot be inherited.
+    /// @par Library
+    /// Switch.Core
     /// @remarks Use the Environment class to retrieve information such as command-line arguments, the exit code, environment variable settings, contents of the call stack, time since last system boot, and the version of the Switch.
     /// @par Examples
     /// The following example demonstrates displays a list of information about the current environment.

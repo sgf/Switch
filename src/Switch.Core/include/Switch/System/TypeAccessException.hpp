@@ -9,6 +9,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief The exception that is thrown when a method attempts to use a type that it does not have access to.
+    /// @par Library
+    /// Switch.Core
     class core_export_ TypeAccessException : public TypeLoadException {
     public:
       /// @brief Create a new instance of class TypeAccessException

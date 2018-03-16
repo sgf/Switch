@@ -17,6 +17,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Converts base data types to an array of bytes, and an array of bytes to base data types.
+    /// @par Library
+    /// Switch.Core
     /// @remarks The BitConverter class helps manipulate value types in their fundamental form, as a series of bytes. A byte is defined as an 8-bit unsigned integer. The BitConverter class includes static methods to convert each of the primitive types to and from an array of bytes, as the following table illustrates.
     /// | Type     | To byte conversion                                | From byte conversion                                                  |
     /// |----------|---------------------------------------------------|-----------------------------------------------------------------------|

@@ -12,6 +12,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents information about an operating system, such as the version and platform identifier. This class cannot be inherited.
+    /// @par Library
+    /// Switch.Core
     class core_export_ OperatingSystem final : public object {
     public:
       /// @brief Initializes a new instance of the OperatingSystem class, using the specified platform identifier value and version object.

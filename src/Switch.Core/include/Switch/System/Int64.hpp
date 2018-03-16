@@ -17,6 +17,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents a 64-bit signed integer.
+    /// @par Library
+    /// Switch.Core
     struct core_export_ Int64 final : public ValueType, public IComparable, public IConvertible, public IFormattable {
     public:
       /// @brief Represents the largest possible value of an Int64 9223372036854775807 (0x7FFFFFFFFFFFFFFF). This field is constant.

@@ -22,6 +22,8 @@ core_export_ extern int __commandShow;
 
 namespace Switch {
   /// @brief Defines the entry point to be called when the application loads. Generally this is set either to the main form in your application or to the Main procedure that should run when the application starts.
+  /// @par Library
+  /// Switch.Core
   /// @param mainClass The class that contains the static Main method.
   /// @par Examples
   /// This example show a Main method without arguments and without return code

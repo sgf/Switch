@@ -7,6 +7,15 @@
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Represent a static class. A static class can't be instancied (constructors are deleted).
+  /// @par Library
+  /// Switch.Core
+  /// @par Examples
+  /// @code
+  /// class Foo : public Static {
+  /// public:
+  ///   static string ToString() {return "Foo";}
+  /// };
+  /// @endcode
   struct core_export_ Static {
     /// @cond
     Static() = delete;
@@ -17,6 +26,8 @@ namespace Switch {
 }
 
 /// @brief This keyword is use to represent a static class. A static class can't be instancied (constructors are deleted).
+/// @par Library
+/// Switch.Core
 /// @par Examples
 /// @code
 /// class Foo static_ {

@@ -10,6 +10,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Specifies the location where an environment variable is stored or retrieved in a set or get operation.
+    /// @par Library
+    /// Switch.Core
     enum class EnvironmentVariableTarget {
       /// @brief The environment variable is stored or retrieved from the environment block associated with the current process.
       Process = 0,

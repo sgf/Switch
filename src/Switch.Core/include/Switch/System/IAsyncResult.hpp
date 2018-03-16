@@ -22,6 +22,8 @@ namespace Switch {
   namespace System {
     /// @interface IAsyncResult
     /// @brief Represents the status of an asynchronous operation.
+    /// @par Library
+    /// Switch.Core
     class core_export_ IAsyncResult interface_ {
     public:
       /// @brief Gets a user-defined object that qualifies or contains information about an asynchronous operation.

@@ -20,7 +20,9 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents the standard input, output, and error streams for console applications.
-    /// This class cannot be inherited.
+    /// @par Library
+    /// Switch.Core
+    /// @remarks This class cannot be inherited.
     /// @par Examples
     /// The following example demonstrates how to read data from, and write data to, the standard input and output streams. Note that these streams can be redirected by using the SetIn and SetOut methods.
     /// @include Console.cpp

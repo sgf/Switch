@@ -9,6 +9,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief The exception that is thrown when a DLL specified in a DLL import cannot be found.
+    /// @par Library
+    /// Switch.Core
     class core_export_ DllNotFoundException : public TypeLoadException {
     public:
       /// @brief Create a new instance of class DllNotFoundException

@@ -13,6 +13,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Specifies the standard keys on a console.
+    /// @par Library
+    /// Switch.Core
     /// @see Console
     struct core_export_ ConsoleKeyInfo : public Object {
     public:

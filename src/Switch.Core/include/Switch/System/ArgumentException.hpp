@@ -9,6 +9,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief The exception that is thrown when one of the arguments provided to a method is not valid.
+    /// @par Library
+    /// Switch.Core
     /// @par Examples
     /// The following example demonstrates how to throw and catch an ArgumentException.
     /// @include ArgumentException.cpp

@@ -30,6 +30,8 @@ namespace Switch {
     /// @endcond
 
     /// @brief Represents text as a series of Unicode characters.
+    /// @par Library
+    /// Switch.Core
     /// @remarks A String is a sequential collection of Unicode characters that is used to represent text. A String object is a sequential collection of System::Char objects that represent a String. The value of the String object is the content of the sequential collection, and that value is immutable (that is, it is read-only).
     /// @remarks By assigning a String literal to a String variable. This is the most commonly used method for creating a String. The following example uses assignment to create several Strings. Note that in C++, because the backslash (\) is an escape character, literal backslashes in a String must be escaped.
     /// @include String1.cpp
@@ -1127,6 +1129,8 @@ namespace Switch {
   }
 
   /// @brief Represents text as a series of Unicode characters.
+  /// @par Library
+  /// Switch.Core
   /// @see System::String class
   /// @ingroup Types
   using string = System::String;

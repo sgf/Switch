@@ -7,6 +7,8 @@
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief The await object is applied to a task in an asynchronous method to suspend the execution of the method until the awaited task completes.
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// This example demontrate how to use async and await
   /// @include Async1.cpp
@@ -43,12 +45,16 @@ namespace Switch {
   };
 
   /// @brief The await object is applied to a task in an asynchronous method to suspend the execution of the method until the awaited task completes.
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// This example demontrate how to use async and await
   /// @include Async1.cpp
   using await = Await;
 
   /// @brief The await operator is applied to a task in an asynchronous method to suspend the execution of the method until the awaited task completes.
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// This example demontrate how to use async and await
   /// @include Async2.cpp

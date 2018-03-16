@@ -17,6 +17,8 @@ namespace Switch {
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Smart pointer type that can refer to exception objects.
+  /// @par Library
+  /// Switch.Core
   /// @remarks It is a shared pointer-like type: The pointed exception is guaranteed to remain valid for as long as at least one exception_ptr points to it, potentially extending its lifetime beyond the scope of a catch statement or across threads.
   /// @remarks Different libraries may implement this type differently, but it shall at least support the following operations without throwing:
   /// * Being default-constructed (acquiring a null-pointer value).

@@ -9,6 +9,22 @@
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Represent an interface class.
+  /// @par Library
+  /// Switch.Core
+  /// @par Examples
+  /// @code
+  /// class IStringable : public Interface {
+  /// public:
+  ///   virtual String ToString() const = 0;
+  /// };
+  ///
+  /// class Foo : public object, public IStringable {
+  /// public:
+  ///   Foo() {}
+  ///
+  ///   String ToString() const override {return "Foo";}
+  /// };
+  /// @endcode
   struct core_export_ Interface {
     /// @cond
     virtual ~Interface() {}
@@ -24,6 +40,8 @@ namespace Switch {
   }
 
   /// @brief This keyword is use to represent an interface.
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// class IStringable interface_ {

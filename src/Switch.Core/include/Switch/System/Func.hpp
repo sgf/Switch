@@ -18,6 +18,8 @@ namespace Switch {
     /// @endcond
 
     /// @brief Encapsulates a method that has 16 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -48,6 +50,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 15 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -77,6 +81,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 14 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -105,6 +111,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 13 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -132,6 +140,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 12 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -158,6 +168,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 11 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -183,6 +195,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 10 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -207,6 +221,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 9 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -230,6 +246,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 8 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -252,6 +270,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 7 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -273,6 +293,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 6 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -293,6 +315,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 5 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -312,6 +336,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 4 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -330,6 +356,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 3 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @param arg3 The third parameter of the method that this delegate encapsulates.
@@ -347,6 +375,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 2 parameters and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg1 The first parameter of the method that this delegate encapsulates.
     /// @param arg2 The second parameter of the method that this delegate encapsulates.
     /// @return TResult The type of the return value of the method that this delegate encapsulates.
@@ -363,6 +393,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has 1 parameter and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @param arg The first parameter of the method that this delegate encapsulates.
     /// @return TResult The type of the return value of the method that this delegate encapsulates.
     /// @return The return value of the method that this delegate encapsulates.
@@ -378,6 +410,8 @@ namespace Switch {
     };
 
     /// @brief Encapsulates a method that has no parameter and returns a value of the type specified by the TResult parameter.
+    /// @par Library
+    /// Switch.Core
     /// @return TResult The type of the return value of the method that this delegate encapsulates.
     /// @return The return value of the method that this delegate encapsulates.
     template<class TResult>

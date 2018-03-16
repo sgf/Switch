@@ -6,8 +6,9 @@
 namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
-    /// @enum TypeCode
     /// @brief Specifies the type of an object.
+    /// @par Library
+    /// Switch.Core
     /// @see IConvertible
     enum class TypeCode {
       /// @brief A null reference.

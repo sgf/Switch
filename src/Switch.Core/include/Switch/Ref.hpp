@@ -12,6 +12,8 @@
 
 namespace Switch {
   /// @brief Represent a reference.
+  /// @par Library
+  /// Switch.Core
   template<typename T>
   class Ref {
   public:
@@ -277,6 +279,9 @@ namespace Switch {
     /// @endcond
   };
 
+  /// @brief Represent a reference.
+  /// @par Library
+  /// Switch.Core
   template<typename T>
   using ref = Ref<T>;
 }

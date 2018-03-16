@@ -8,12 +8,6 @@
 /// @defgroup Types Types
 /// @brief Types definitions
 
-/// @defgroup Switch Switch
-/// @brief The base module of the Portable C++ Framework wich aim to be independant from the OS.
-
-/// @defgroup SwitchCore Switch.Core
-/// @brief The Switch.core library.
-
 #include "Microsoft/Win32/Registry.hpp"
 #include "Microsoft/Win32/RegistryHive.hpp"
 #include "Microsoft/Win32/RegistryKey.hpp"

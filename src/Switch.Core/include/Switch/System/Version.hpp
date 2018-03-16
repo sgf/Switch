@@ -21,6 +21,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents the version number of an assembly, operating system, or the common language runtime. This class cannot be inherited.
+    /// @par Library
+    /// Switch.Core
     class core_export_ Version final : public Object, public ICloneable, public IComparable, public Runtime::Serialization::ISerializable {
     public:
       /// @brief Initializes a new instance of the Version class.

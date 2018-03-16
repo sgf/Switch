@@ -7,6 +7,8 @@
 
 namespace Switch {
   /// @brief The lock_ keyword marks a statement block as a critical section by obtaining the mutual-exclusion lock for a given object, executing a statement, and then releasing the lock. The following example includes a lock statement.
+  /// @par Library
+  /// Switch.Core
   /// @code
   /// class Account : public object {
   /// public:

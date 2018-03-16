@@ -14,6 +14,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents a globally unique identifier (GUID). A GUID is a 128-bit integer (16 bytes) that can be used across all computers and networks wherever a unique identifier is required. Such an identifier has a very low probability of being duplicated.
+    /// @par Library
+    /// Switch.Core
     struct core_export_ Guid : public object, public IComparable {
     public:
       /// @brief Initializes a new instance of the Guid structure.

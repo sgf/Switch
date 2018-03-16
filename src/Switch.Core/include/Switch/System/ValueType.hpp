@@ -13,6 +13,8 @@ namespace Switch {
     /// @endcond
 
     /// @brief Provides the base class for value types.
+    /// @par Library
+    /// Switch.Core
     struct core_export_ ValueType : public Object {
     };
   }

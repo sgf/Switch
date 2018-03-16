@@ -11,6 +11,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief References a method to be called when a corresponding asynchronous operation completes.
+    /// @par Library
+    /// Switch.Core
     /// @param ar The result of the asynchronous operation.
     /// @remarks Use an AsyncCallback delegate to process the results of an asynchronous operation in a separate thread. The AsyncCallback delegate represents a callback method that is called when the asynchronous operation completes. The callback method takes an IAsyncResult parameter, which is subsequently used to obtain the results of the asynchronous operation.
     /// @par Examples

@@ -12,6 +12,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents the method that will handle an event that has no event data.
+    /// @par Library
+    /// Switch.Core
     /// @param sender The source of the event.
     /// @param e An System::EventArgs that contains no event data.
     /// @par Examples

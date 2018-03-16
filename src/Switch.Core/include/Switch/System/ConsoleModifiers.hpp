@@ -8,8 +8,9 @@
 namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
-    /// @enum ConsoleModifiers
     /// @brief Represents the SHIFT, ALT, and CTRL modifier keys on a keyboard.
+    /// @par Library
+    /// Switch.Core
     /// @see Console
     enum class ConsoleModifiers {
       /// @brief The left or right ALT modifier key.

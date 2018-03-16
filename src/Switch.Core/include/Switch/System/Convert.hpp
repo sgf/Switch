@@ -35,7 +35,9 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents API to convert base TypeCode.
-    /// This class cannot be inherited.
+    /// @par Library
+    /// Switch.Core
+    /// @remarks This class cannot be inherited.
     class core_export_ Convert final {
     public:
       /// @cond

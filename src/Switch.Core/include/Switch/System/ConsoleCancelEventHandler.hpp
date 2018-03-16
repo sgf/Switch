@@ -10,6 +10,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents the method that will handle the CancelKeyPress event of a System::Console.
+    /// @par Library
+    /// Switch.Core
     /// @param sender The source of the event.
     /// @param e A System::ConsoleCancelEventArgs object that contains the event data.
     using ConsoleCancelEventHandler = GenericEventHandler<ConsoleCancelEventArgs&>;

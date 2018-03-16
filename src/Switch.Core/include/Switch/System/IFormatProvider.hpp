@@ -20,6 +20,8 @@ namespace Switch {
   namespace System {
     /// @interface IFormatProvider
     /// @brief Provides a mechanism for retrieving an object to control formatting.
+    /// @par Library
+    /// Switch.Core
     class core_export_ IFormatProvider interface_ {
     public:
       /// @brief Returns an object that provides formatting services for the specified type.

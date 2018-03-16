@@ -82,6 +82,8 @@ namespace Switch {
 
   /// @brief Support boxing of type
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// bool ready = true;
@@ -203,6 +205,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// Boolean ready = true;
@@ -304,6 +308,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -315,6 +321,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -326,6 +334,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -337,6 +347,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -348,6 +360,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -359,6 +373,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -370,6 +386,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -381,6 +399,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -392,6 +412,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -403,6 +425,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -414,6 +438,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -425,6 +451,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -436,6 +464,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -447,6 +477,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -458,6 +490,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -469,6 +503,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -480,6 +516,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -491,6 +529,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -502,6 +542,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -518,6 +560,8 @@ namespace Switch {
 
   /// @brief Support boxing of type.
   /// You can use this when you want convert an unboxed type to a boxed type (e.g. int32 to Int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeBoxer.
   /// @par Examples
   /// @code
@@ -537,6 +581,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -548,6 +594,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -559,6 +607,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -570,6 +620,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -581,6 +633,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -592,6 +646,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -603,6 +659,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -614,6 +672,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -625,6 +685,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -636,6 +698,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -647,6 +711,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -658,6 +724,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -669,6 +737,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -680,6 +750,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -691,6 +763,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -702,6 +776,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code
@@ -713,6 +789,8 @@ namespace Switch {
 
   /// @brief Support unboxing of type
   /// You can use this when you want convert a boxed type to an unboxed type (e.g. Int32 to int32)
+  /// @par Library
+  /// Switch.Core
   /// @remarks Is an alias on Switch::TypeUnboxer.
   /// @par Examples
   /// @code

@@ -5,6 +5,8 @@
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief The specified expression is cleared automaticaly when the scope is ended.
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// // sr is released automatically after the end cosure }.

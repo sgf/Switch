@@ -20,6 +20,8 @@ namespace Switch {
   namespace System {
     /// @interface IFormattable
     /// @brief Provides functionality to format the value of an object into a string representation.
+    /// @par Library
+    /// Switch.Core
     class core_export_ IFormattable interface_ {
     public:
       /// @brief Formats the value of the current instance using the specified format.

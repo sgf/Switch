@@ -101,6 +101,8 @@ private:
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief #readonly_ keyword represent a #property_ read only attribute.
+  /// @par Library
+  /// Switch.Core
   /// @ingroup Keywords
 #define readonly_ \
   readonly_
@@ -111,11 +113,15 @@ namespace Switch {
   readwrite_
 
   /// @brief #writeonly_ keyword represent a #property_ write only attribute.
+  /// @par Library
+  /// Switch.Core
   /// @ingroup Keywords
 #define writeonly_ \
   writeonly_
 
   /// @brief A #property_ is a member that provides a flexible mechanism to read, write, or compute the value of a private field. Properties can be used as if they are public data members, but they are actually special methods called accessors. This enables data to be accessed easily and still helps promote the safety and flexibility of methods.
+  /// @par Library
+  /// Switch.Core
   /// @remarks The copy constructor is deleted. So the copy constructor of the owner class must be specified (the implicit or default copy contructor doesn't build).
   /// @par Examples
   /// This sample shows a Person class that has two properties: Name (string) and Age (int). Both properties are read/write.
@@ -125,6 +131,8 @@ namespace Switch {
   property_
 
   /// @brief The get keyword defines an accessor method in a #property_ or indexer that retrieves the value of the #property_ or the indexer element.
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// class Person {
@@ -146,6 +154,8 @@ namespace Switch {
   [&]()
 
   /// @brief The set keyword defines an accessor method in a #property_ or indexer that assigns the value of the #property_ or the indexer element.
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// class Person {

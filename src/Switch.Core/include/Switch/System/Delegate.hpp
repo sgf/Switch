@@ -18,6 +18,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents a delegate, which is a data structure that refers to a static method or to a class instance and an instance method of that class.
+    /// @par Library
+    /// Switch.Core
     /// @par Examples
     /// The following example shows how to define a delegate named myMethodDelegate. Instances of this delegate are created for an instance method and a static method of the nested mySampleClass class. The delegate for the instance method requires an instance of mySampleClass. The mySampleClass instance is saved in a variable named mySC.
     /// @include Delegate.cpp

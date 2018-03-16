@@ -9,6 +9,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief The exception that is thrown when there is an attempt to dynamically access a class member that does not exist.
+    /// @par Library
+    /// Switch.Core
     class core_export_ MissingMemberException : public MemberAccessException {
     public:
       /// @brief Create a new instance of class MissingMemberException

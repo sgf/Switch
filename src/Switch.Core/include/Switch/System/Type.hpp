@@ -35,6 +35,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents type declarations: class types, interface types, array types, value types, enumeration types, type parameters, generic type definitions, and open or closed constructed generic types.
+    /// @par Library
+    /// Switch.Core
     class core_export_ Type : public Object {
     public:
       /// @cond
@@ -126,6 +128,8 @@ namespace __s__ {
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Used to obtain the type Object for a type. A typeof_ expression takes the following form:
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// Type type1 = typeof_<Int32>();

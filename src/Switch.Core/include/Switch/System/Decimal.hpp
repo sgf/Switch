@@ -18,6 +18,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents a decimal number.
+    /// @par Library
+    /// Switch.Core
     struct core_export_ Decimal final : public ValueType, public IComparable, public IConvertible, public IFormattable {
     public:
       /// @brief Represents the smallest positive Decimal value greater than zero. This field is constant.

@@ -9,6 +9,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief The exception that is thrown when time zone information is invalid.
+    /// @par Library
+    /// Switch.Core
     class core_export_ InvalidTimeZoneException : public Exception {
     public:
       /// @brief Create a new instance of class InvalidTimeZoneException

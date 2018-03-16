@@ -32,6 +32,8 @@ class core_export_ __opaque_sub_object__ {
 
 namespace Switch {
   /// @brief Represents a Reference Pointer class. A $ is a memory-managing pointer to an object.
+  /// @par Library
+  /// Switch.Core
   /// @remarks A Reference Pointer is basically a pointer with a destructor. The destructor ensures that the object pointed to is deleted when it is no longer being used. You can have multiple pointers to the same object, so the object is only deleted when the last pointer is destroyed.
   /// @remarks A Reference Pointer has to have slightly different characteristics to a conventional C pointer. These differences show up in the behaviour of the pointer on assignment and when the pointer's address (i.e. the object being pointed to) is changed. Deciding the exact behaviour is difficult and very subjective. This could be solved by having a range of different classes with slightly different behaviour. You could then choose which one suits your problem. However, I don't agree with this approach - I think you get quickly bogged down with the subtle differences and lose sight of the program you are actually trying to write. So I provide just one kind of Reference Pointer which I believe is the most general-purpose. I think this is consistent with the STL, which provides just one kind of vector, map, list etc.
   /// @remarks The Reference Pointer contains the address of the object pointed to and a counter which stores the alias count. When one Reference Pointer is assigned to another, the second Reference Pointer becomes an alias of the first, which means that it is pointing to the same object. The alias count of the object is incremented to show that there are now two pointers pointing to the same object.
@@ -464,6 +466,8 @@ namespace Switch {
   };
 
   /// @brief Represents a Reference Pointer class. A $ is a memory-managing pointer to an object.
+  /// @par Library
+  /// Switch.Core
   /// @remarks A Reference Pointer is basically a pointer with a destructor. The destructor ensures that the object pointed to is deleted when it is no longer being used. You can have multiple pointers to the same object, so the object is only deleted when the last pointer is destroyed.
   /// @remarks A Reference Pointer has to have slightly different characteristics to a conventional C pointer. These differences show up in the behaviour of the pointer on assignment and when the pointer's address (i.e. the object being pointed to) is changed. Deciding the exact behaviour is difficult and very subjective. This could be solved by having a range of different classes with slightly different behaviour. You could then choose which one suits your problem. However, I don't agree with this approach - I think you get quickly bogged down with the subtle differences and lose sight of the program you are actually trying to write. So I provide just one kind of Reference Pointer which I believe is the most general-purpose. I think this is consistent with the STL, which provides just one kind of vector, map, list etc.
   /// @remarks The Reference Pointer contains the address of the object pointed to and a counter which stores the alias count. When one Reference Pointer is assigned to another, the second Reference Pointer becomes an alias of the first, which means that it is pointing to the same object. The alias count of the object is incremented to show that there are now two pointers pointing to the same object.
@@ -481,11 +485,18 @@ namespace Switch {
   template<typename T>
   using refptr = $<T>;
 
+  /// brief new operator. This operator creates a refptr object.
+  /// @par Library
+  /// Switch.Core
+  /// @par Examples
+  /// this is example shows to use #new_ with Version class
+  /// @code
+  /// $<Version> version = new_<Version>(1, 2, 3);
+  ///
+  /// Console::WriteLine("version = {0}", version->ToString());
+  /// @endcode
   template<typename T, typename ...Args>
   $<T> new_(Args&& ... args) {return $<T>(new T(args...));}
-
-  template<typename T, typename ...Args>
-  $<T> gcnew(Args&& ... args) {return $<T>(new T(args...));}
 }
 
 using namespace Switch;

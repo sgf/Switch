@@ -11,6 +11,8 @@ namespace Switch {
   namespace System {
     /// @interface IComparable
     /// @brief Defines a generalized comparison method that a value type or class implements to create a type-specific comparison method.
+    /// @par Library
+    /// Switch.Core
     class core_export_ IComparable interface_ {
     public:
       /// @brief Compares the current instance with another object of the same type.

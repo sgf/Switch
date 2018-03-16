@@ -8,8 +8,9 @@
 namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
-    /// @enum PlatformID
     /// @brief Identifies the operating system, or platform, supported by an assembly.
+    /// @par Library
+    /// Switch.Core
     /// @see OperatingSystem
     enum class PlatformID {
       /// @brief The operating system is unknown.

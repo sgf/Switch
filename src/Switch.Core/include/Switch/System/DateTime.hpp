@@ -20,15 +20,14 @@
 namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
-    /// @struct DateTime
     /// @brief Represents an instant in time, typically expressed as a date and time of day.
-    ///
-    /// The DateTime value type represents dates and times with values ranging from 00:00:00 (midnight), January 1, 0001 Anno Domini (Common Era) through 11:59:59 P.M., December 31, 9999 A.D. (C.E.) in the Gregorian calendar.
-    ///
-    /// Time values are measured in 100-nanosecond units called ticks, and a particular date is the number of ticks since 12:00 midnight, January 1, 0001 A.D. (C.E.) in the GregorianCalendar calendar (excluding ticks that would be added by leap seconds). For example, a ticks value of 31241376000000000L represents the date, Friday, January 01, 0100 12:00:00 midnight. A DateTime value is always expressed in the context of an explicit or default calendar.
+    /// @par Library
+    /// Switch.Core
+    /// @remarks The DateTime value type represents dates and times with values ranging from 00:00:00 (midnight), January 1, 0001 Anno Domini (Common Era) through 11:59:59 P.M., December 31, 9999 A.D. (C.E.) in the Gregorian calendar.
+    /// @remarks Time values are measured in 100-nanosecond units called ticks, and a particular date is the number of ticks since 12:00 midnight, January 1, 0001 A.D. (C.E.) in the GregorianCalendar calendar (excluding ticks that would be added by leap seconds). For example, a ticks value of 31241376000000000L represents the date, Friday, January 01, 0100 12:00:00 midnight. A DateTime value is always expressed in the context of an explicit or default calendar.
     /// @note If you are working with a ticks value that you want to convert to some other time interval, such as minutes or seconds, you should use the TimeSpan.TicksPerDay, TimeSpan.TicksPerHour, TimeSpan.TicksPerMinute, TimeSpan.TicksPerSecond, or TimeSpan.TicksPerMillisecond constant to perform the conversion. For example, to add the number of seconds represented by a specified number of ticks to the Second component of a DateTime value, you can use the expression dateValue.Second + nTicks/Timespan.TicksPerSecond.
     /// For example, a ticks value of 31241376000000000LL represents the date, Friday, January 01, 0100 12:00:00 midnight. A DateTime value is always expressed in the context of an explicit or default calendar.
-    /// <b>Instantiating a DateTime object</b>
+    /// PInstantiating a DateTime object</b>
     /// You can create a new DateTime value in any of the following ways:
     ///    * By calling any of the overloads of the DateTime constructor that allow you to specify specific elements of the date and time value (such as the year, month, and day, or the number of ticks). The following statement illustrates a call to one of the DateTime constructors to create a date with a specific year, month, day, hour, minute, and second.
     /// @code

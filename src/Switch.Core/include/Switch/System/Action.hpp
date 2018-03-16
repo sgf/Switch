@@ -12,10 +12,12 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Encapsulates a method that has 0 to 16 parameters and does not return a value.
+    /// @par Library
+    /// Switch.Core
     /// @param arguments The parameters of the method that this delegate encapsulates.
     /// @remarks You can use the Action<T> delegate to pass a method as a parameter without explicitly declaring a custom delegate. The encapsulated method must correspond to the method signature that is defined by this delegate. This means that the encapsulated method must have one parameter that is passed to it by value, and it must not return a value. Typically, such a method is used to perform an operation.
     /// @note To reference a method that has one parameter and returns a value, use the generic Func<T, TResult> delegate instead.
-    ///
+    /// @par Examples
     /// When you use the Action<T> delegate, you do not have to explicitly define a delegate that encapsulates a method with a single parameter. For example, the following code explicitly declares a delegate named DisplayMessage and assigns a reference to either the WriteLine method or the ShowWindowsMessage method to its delegate instance.
     /// @include Action1.cpp
     /// The following example simplifies this code by instantiating the Action<T> delegate instead of explicitly defining a new delegate and assigning a named method to it.

@@ -18,6 +18,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Represents any time zone in the world.
+    /// @par Library
+    /// Switch.Core
     /// @remarks A time zone is a geographical region in which the same time is used.
     /// @remarks The TimeZoneInfo class offers significant enhancements over the TimeZone class, which provides only limited functionality.
     /// @remarks The TimeZone class recognizes only the local time zone, and can convert times between Coordinated Universal Time (UTC) and local time. A TimeZoneInfo object can represent any time zone, and methods of the TimeZoneInfo class can be used to convert the time in one time zone to the corresponding time in any other time zone. The members of the TimeZoneInfo class support the following operations:

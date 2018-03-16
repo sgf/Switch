@@ -22,6 +22,8 @@ namespace Switch {
   namespace System {
     /// @interface IConvertible
     /// @brief Defines a generalized comparison method that a value type or class implements to create a type-specific comparison method.
+    /// @par Library
+    /// Switch.Core
     class core_export_ IConvertible interface_ {
     public:
       /// @brief Returns the TypeCode for this instance.

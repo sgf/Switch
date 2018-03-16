@@ -19,6 +19,8 @@ namespace Switch {
     /// @endcond
 
     /// @brief Base object that represent Tuple.
+    /// @par Library
+    /// Switch.Core
     class TupleObject : public object {
       template<typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename TRest>
       friend class Tuple;
@@ -26,6 +28,8 @@ namespace Switch {
     };
 
     /// @brief Represents an n-tuple, where n is 8 or greater.
+    /// @par Library
+    /// Switch.Core
     /// @see System::Tuple
     /// @see System::Tuple <T1>
     /// @see System::Tuple <T1, T2>
@@ -156,6 +160,8 @@ namespace Switch {
     };
 
     /// @brief Represents a 7-tuple, or septuple.
+    /// @par Library
+    /// Switch.Core
     /// @see System::Tuple
     /// @see System::Tuple <T1>
     /// @see System::Tuple <T1, T2>
@@ -277,6 +283,8 @@ namespace Switch {
     };
 
     /// @brief Represents a 6-tuple, or sextuple.
+    /// @par Library
+    /// Switch.Core
     /// @see System::Tuple
     /// @see System::Tuple <T1>
     /// @see System::Tuple <T1, T2>
@@ -389,6 +397,8 @@ namespace Switch {
     };
 
     /// @brief Represents a 5-tuple, or quintuple.
+    /// @par Library
+    /// Switch.Core
     /// @see System::Tuple
     /// @see System::Tuple <T1>
     /// @see System::Tuple <T1, T2>
@@ -492,6 +502,8 @@ namespace Switch {
     };
 
     /// @brief Represents a 4-tuple, or quadruple.
+    /// @par Library
+    /// Switch.Core
     /// @see System::Tuple
     /// @see System::Tuple <T1>
     /// @see System::Tuple <T1, T2>
@@ -586,6 +598,8 @@ namespace Switch {
     };
 
     /// @brief Represents a 3-tuple, or triple.
+    /// @par Library
+    /// Switch.Core
     /// @see System::Tuple
     /// @see System::Tuple <T1>
     /// @see System::Tuple <T1, T2>
@@ -671,6 +685,8 @@ namespace Switch {
     };
 
     /// @brief Represents a 2-tuple, or pair.
+    /// @par Library
+    /// Switch.Core
     /// @see System::Tuple
     /// @see System::Tuple <T1>
     /// @see System::Tuple <T1, T2, T3>
@@ -755,6 +771,8 @@ namespace Switch {
     };
 
     /// @brief Represents a 1-tuple, or singleton.
+    /// @par Library
+    /// Switch.Core
     /// @see System::Tuple
     /// @see System::Tuple <T1, T2>
     /// @see System::Tuple <T1, T2, T3>
@@ -822,6 +840,8 @@ namespace Switch {
     };
 
     /// @brief Provides static methods for creating tuple objects.
+    /// @par Library
+    /// Switch.Core
     /// @see System::Tuple <T1>
     /// @see System::Tuple <T1, T2>
     /// @see System::Tuple <T1, T2, T3>
