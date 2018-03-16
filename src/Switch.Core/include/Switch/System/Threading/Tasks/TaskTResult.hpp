@@ -27,6 +27,8 @@ namespace Switch {
         /// @endcond
 
         /// @brief Represents an asynchronous operation that can return a value.
+        /// @par Library
+        /// Switch.Core
         template <typename TResult>
         class Task : public object, public ITask {
         public:

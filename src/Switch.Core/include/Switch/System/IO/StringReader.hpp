@@ -13,6 +13,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief Implements a TextReader that reads from a string.
+      /// @par Library
+      /// Switch.Core
       /// @remarks StringReader enables you to read a string synchronously or asynchronously. You can read a character at a time with the Read or the ReadAsync method, a line at a time using the ReadLine or the ReadLineAsync method and an entire string using the ReadToEnd or the ReadToEndAsync method.
       /// @par Examples
       /// The following code example demonstrates the creation of a continuous paragraph from a group of double-spaced sentences, and then the conversion of the paragraph back to the original text.

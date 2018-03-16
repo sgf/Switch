@@ -21,7 +21,9 @@ namespace Switch {
       /// @endcond
 
       /// @brief Provides instance methods for the creation, copying, deletion, moving, and opening of files, and aids in the creation of System::IO::FileStream objects.
-      /// This class cannot be inherited.
+      /// @par Library
+      /// Switch.Core
+      /// @remarks This class cannot be inherited.
       class core_export_ FileInfo final : public FileSystemInfo {
       public:
         /// @brief Represents the uninitialized file object. This field is constant.

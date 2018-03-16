@@ -10,8 +10,9 @@ namespace Switch {
   namespace System {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
-      /// @enum FileAtributes
       /// @brief Provides attributes for files and directories.
+      /// @par Library
+      /// Switch.Core
       /// @see FileStream
       enum class FileAttributes {
         /// @brief The file is read-only.

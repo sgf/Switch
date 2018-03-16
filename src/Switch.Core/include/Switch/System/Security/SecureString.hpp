@@ -16,6 +16,8 @@ namespace Switch {
     /// @brief The System.Security namespaces contain classes that represent the Switch Framework security system and permissions. Child namespaces provide types that control access to and audit securable objects, allow authentication, provide crytographic services, control access to operations and resources based on policy, and support rights management of application-created content.
     namespace Security {
       /// @brief The exception that is thrown when a security error is detected.
+      /// @par Library
+      /// Switch.Core
       /// @remarks SecureString is a string type that provides a measure of security. It tries to avoid storing potentially sensitive strings in process memory as plain text. (For limitations, however, see the How secure is SecureString? section.) The value of an instance of SecureString is automatically protected using a mechanism supported by the underlying platform when the instance is initialized or when the value is modified. Your application can render the instance immutable and prevent further modification by invoking the MakeReadOnly method.
       /// @remarks The maximum length of a SecureString instance is 65,536 characters.
       class core_export_ SecureString final : public object {

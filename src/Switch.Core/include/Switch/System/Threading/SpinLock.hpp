@@ -14,6 +14,8 @@ namespace Switch {
     /// In addition to classes for synchronizing thread activities and access to data ( Mutex, Monitor, Interlocked, AutoResetEvent, and so on), this namespace includes a ThreadPool class that allows you to use a pool of system-supplied threads, and a Timer class that executes callback methods on thread pool threads.
     namespace Threading {
       /// @brief Provides a mechanism for executing a method at specified intervals.
+      /// @par Library
+      /// Switch.Core
       /// @remarks The callback method executed by the timer should be reentrant, because it is called on ThreadPool threads. The callback can be executed simultaneously on two thread pool threads if the timer interval is less than the time required to execute the callback, or if all thread pool threads are in use and the callback is queued multiple times.
       /// @par Examples
       /// This example show how to use Timer class

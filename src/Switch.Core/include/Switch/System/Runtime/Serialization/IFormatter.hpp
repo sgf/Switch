@@ -21,6 +21,8 @@ namespace Switch {
       namespace Serialization {
         /// @interface IFormatter
         /// @brief Provides functionality for formatting serialized objects.
+        /// @par Library
+        /// Switch.Core
         class core_export_ IFormatter interface_ {
         public:
           /// @cond

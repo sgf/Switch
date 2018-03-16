@@ -15,6 +15,8 @@ namespace Switch {
       namespace Generic {
         /// @interface IComparer
         /// @brief Exposes a method that compares two objects.
+        /// @par Library
+        /// Switch.Core
         template<typename T>
         class IComparer interface_ {
         public:

@@ -13,6 +13,8 @@ namespace Switch {
       /// @brief The System::Collections::Generic namespace contains interfaces and classes that define generic collections, which allow users to create strongly typed collections that provide better type safety and performance than non-generic strongly typed collections.
       namespace Generic {
         /// @brief The exception that is thrown when the key specified for accessing an element in a collection does not match any key in the collection.
+        /// @par Library
+        /// Switch.Core
         class KeyNotFoundException : public SystemException {
         public:
           /// @brief Create a new instance of class KeyNotFoundException

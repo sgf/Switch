@@ -13,6 +13,8 @@ namespace Switch {
       /// @brief The System::Threading::Tasks namespace provides types that simplify the work of writing concurrent and asynchronous code. The main types are System::Threading::Tasks::Task which represents an asynchronous operation that can be waited on and cancelled, and System::Threading::Tasks::Task<TResult>, which is a task that can return a value. The System::Threading::Tasks::TaskFactory class provides static methods for creating and starting tasks, and the System::Threading::Tasks::TaskScheduler class provides the default thread scheduling infrastructure.
       namespace Tasks {
         /// @brief Represents the current stage in the lifecycle of a Task.
+        /// @par Library
+        /// Switch.Core
         /// @remarks The Task.Status property returns a member of the TaskStatus enumeration to indicate the task's current status.
         enum class TaskStatus {
           /// @brief The task has been initialized but has not yet been scheduled.

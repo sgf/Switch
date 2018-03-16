@@ -19,6 +19,8 @@ namespace Switch {
       namespace Generic {
         /// @interface ICollection
         /// @brief Defines size, enumerators, and synchronization methods for all non-generic collections.
+        /// @par Library
+        /// Switch.Core
         template<typename T>
         class ICollection : public IEnumerable<T> {
         public:

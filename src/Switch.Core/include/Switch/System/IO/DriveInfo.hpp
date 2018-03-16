@@ -12,9 +12,10 @@ namespace Switch {
   namespace System {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
-      /// @brief Provides instance methods for the creation, copying, deletion, moving, and
-      /// opening of files, and aids in the creation of System::IO::FileStream objects.
-      /// This class cannot be inherited.
+      /// @brief Provides instance methods for the creation, copying, deletion, moving, and opening of files, and aids in the creation of System::IO::FileStream objects.
+      /// @par Library
+      /// Switch.Core
+      /// @remarks This class cannot be inherited.
       class core_export_ DriveInfo final : public Object {
       public:
         /// @brief Provides access to information on drive.

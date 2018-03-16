@@ -18,6 +18,8 @@ namespace Switch {
       namespace Generic {
         /// @interface IDictionary
         /// @brief Represents a generic collection of key/value pairs.
+        /// @par Library
+        /// Switch.Core
         template<typename TKey, typename TValue>
         class IDictionary : public ICollection<KeyValuePair<TKey, TValue>> {
         public:

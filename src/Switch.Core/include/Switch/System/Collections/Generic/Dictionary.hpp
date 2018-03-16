@@ -28,6 +28,8 @@ namespace Switch {
       /// @brief The System::Collections::Generic namespace contains interfaces and classes that define generic collections, which allow users to create strongly typed collections that provide better type safety and performance than non-generic strongly typed collections.
       namespace Generic {
         /// @brief Represents a non-generic collection of objects that can be individually accessed by index.
+        /// @par Library
+        /// Switch.Core
         /// @par Examples
         /// The following code example creates an empty Dictionary<TKey, TValue> of strings with string keys and uses the Add method to add some elements. The example demonstrates that the Add method throws an ArgumentException when attempting to add a duplicate key.
         /// The example uses the Item property to retrieve values, demonstrating that a KeyNotFoundException is thrown when a requested key is ! present, and showing that the value associated with a key can be replaced.

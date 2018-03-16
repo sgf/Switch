@@ -22,6 +22,8 @@ namespace Switch {
     /// @brief The System::Diagnostics namespace provides classes that allow you to interact with system processes, event logs, and performance counters.
     namespace Diagnostics {
       /// @brief Provides information about a StackFrame, which represents a function call on the call stack for the current thread.
+      /// @par Library
+      /// Switch.Core
       /// @remarks StackTrace information will be most informative with Debug build configurations. By default, Debug builds include debug symbols, while Release builds do not. The debug symbols contain most of the file, method name, line number, and column information used in constructing StackFrame and StackTrace objects.
       /// @remarks StackTrace might not report as many method calls as expected, due to code transformations that occur during optimization.
       class core_export_ StackTrace : public Object {

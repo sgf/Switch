@@ -14,6 +14,8 @@ namespace Switch {
       /// @brief The System::Collections::Generic namespace contains interfaces and classes that define generic collections, which allow users to create strongly typed collections that provide better type safety and performance than non-generic strongly typed collections.
       namespace Generic {
         /// @brief Exposes a method that compares two objects.
+        /// @par Library
+        /// Switch.Core
         template<typename T>
         class Comparer : public Object, public IComparer<T> {
         public:

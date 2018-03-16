@@ -32,6 +32,8 @@ namespace Switch {
       /// @brief The System::Collections::Generic namespace contains interfaces and classes that define generic collections, which allow users to create strongly typed collections that provide better type safety and performance than non-generic strongly typed collections.
       namespace Generic {
         /// @brief Represents a strongly typed list of objects that can be accessed by index. Provides methods to search, sort, and manipulate lists.
+        /// @par Library
+        /// Switch.Core
         /// @remarks The List<T> class is the generic equivalent of the ArrayList class. It implements the IList<T> generic interface using an array whose size is dynamically increased as required.
         /// @remarks The List<T> class uses both an equality comparer and an ordering comparer.
         /// @remarks Methods such as Contains, IndexOf, LastIndexOf, and Remove use an equality comparer for the list elements. The default equality comparer for type T is determined as follows. If type T implements the IEquatable<T> generic interface, then the equality comparer is the Equals(T) method of that interface; otherwise, the default equality comparer is object.Equals(object).

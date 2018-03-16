@@ -11,6 +11,8 @@ core_export_ void __throw_cast_exception__();
 
 namespace Switch {
   /// @brief Used to static cast a type into another type. A To expression takes the following form:
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// refptr<string> str = new Switch::string("A new string");
@@ -24,6 +26,8 @@ namespace Switch {
   }
 
   /// @brief Used to static cast a type into another type. A To expression takes the following form:
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// refptr<string> str = new Switch::string("A new string");
@@ -37,6 +41,8 @@ namespace Switch {
   }
 
   /// @brief Used to static cast a type into another type. A To expression takes the following form:
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// refptr<string> str = new Switch::string("A new string");
@@ -50,6 +56,8 @@ namespace Switch {
   }
 
   /// @brief Used to static cast a type into another type. A To expression takes the following form:
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// refptr<string> str = new Switch::string("A new string");
@@ -63,6 +71,8 @@ namespace Switch {
   }
 
   /// @brief Used to static cast a type into another type. A To expression takes the following form:
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// refptr<string> str = new Switch::string("A new string");
@@ -81,6 +91,8 @@ namespace Switch {
   }
 
   /// @brief Used to static cast a type into another type. A To expression takes the following form:
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// refptr<string> str = new Switch::string("A new string");

@@ -10,6 +10,8 @@ namespace Switch {
     /// @brief The Microsoft::Win32 namespace provides two types of classes: those that handle events raised by the operating system and those that manipulate the system registry.
     namespace Win32 {
       /// @brief Specifies options to use when creating a registry key.
+      /// @par Library
+      /// Switch.Core
       /// @remarks You can create a registry key that is available only in memory and that will not be persisted when the computer is restarted. This is known as a volatile key. You can specify that you want to create a volatile or non-volatile key by using the RegistryKey.CreateSubKey method overloads that take an options parameter.
       enum class RegistryOptions {
         /// @brief A non-volatile key. This is the default.

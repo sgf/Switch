@@ -11,6 +11,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief The exception that is thrown when trying to access a drive or share that is not available.
+      /// @par Library
+      /// Switch.Core
       class core_export_ DriveNotFoundException : public IOException {
       public:
         /// @brief Create a new instance of class DriveNotFoundException

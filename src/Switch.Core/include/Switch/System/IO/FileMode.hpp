@@ -11,6 +11,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief Specifies how the operating system should open a file.
+      /// @par Library
+      /// Switch.Core
       enum class FileMode {
         /// @brief Specifies that the operating system should create a new file. This requires System::Security::Permissions::FileIOPermissionAccess::Write. If the file already exists, an System::IO::IOException is thrown.
         CreateNew = 1,

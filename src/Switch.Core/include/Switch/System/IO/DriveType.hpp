@@ -11,6 +11,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief Defines constants for drive types, including CDRom, Fixed, Network, NoRootDirectory, Ram, Removable, and Unknown.
+      /// @par Library
+      /// Switch.Core
       /// @see DriveInfo
       enum class DriveType {
         /// @brief The type of drive is unknown.

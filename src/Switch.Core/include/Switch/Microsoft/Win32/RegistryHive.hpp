@@ -8,6 +8,8 @@ namespace Switch {
   namespace Microsoft {
     namespace Win32 {
       /// @brief Represents the possible values for a top-level node on a foreign machine.
+      /// @par Library
+      /// Switch.Core
       enum class RegistryHive {
         /// @brief Represents the HKEY_CLASSES_ROOT base key on another computer. This value can be passed to the OpenRemoteBaseKey method, to open this node remotely.
         ClassesRoot = 0,

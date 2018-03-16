@@ -10,8 +10,9 @@ namespace Switch {
   namespace System {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
-      /// @brief Enumeration.
-      /// Provides the fields that represent reference points in streams for seeking.
+      /// @brief Provides the fields that represent reference points in streams for seeking.
+      /// @par Library
+      /// Switch.Core
       /// @see Stream
       enum class SeekOrigin {
         /// @brief Specifies the beginning of a stream.

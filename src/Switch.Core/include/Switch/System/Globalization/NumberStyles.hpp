@@ -11,7 +11,9 @@ namespace Switch {
     /// @brief The System::Globalization namespace contains classes that define culture-related information, including language, country/region, calendars in use, format patterns for dates, currency, and numbers, and sort order for strings. These classes are useful for writing globalized (internationalized) applications. Classes such as StringInfo and TextInfo provide advanced globalization functionalities, including surrogate support and text element processing.
     namespace Globalization {
       /// @brief Determines the styles permitted in numeric string arguments that are passed to the Parse and TryParse methods of the integral and floating-point numeric types.
-      /// This enumeration has a FlagsAttribute attribute that allows a bitwise combination of its member values.
+      /// @par Library
+      /// Switch.Core
+      /// @remarks This enumeration has a FlagsAttribute attribute that allows a bitwise combination of its member values.
       enum class NumberStyles {
         /// @brief Indicates that no style elements, such as leading or trailing white space, thousands separators, or a decimal separator, can be present in the parsed string. The string to be parsed must consist of integral decimal digits only.
         None = 0,

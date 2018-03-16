@@ -34,6 +34,8 @@ namespace Switch {
       class ThreadPool;
       /// @endcond
       /// @brief Creates and controls a thread, sets its priority, and gets its status.
+      /// @par Library
+      /// Switch.Core
       /// @remarks A process can create one or more threads to execute a portion of the program code associated with the process. Use a ThreadStart delegate or the ParameterizedThreadStart delegate to specify the program code executed by a thread. The ParameterizedThreadStart delegate allows you to pass data to the thread procedure.
       /// @remarks For the duration of its existence, a thread is always in one or more of the states defined by ThreadState. A scheduling priority level, as defined by ThreadPriority, can be requested for a thread, but is not guaranteed to be honored by the operating system.
       /// @remarks GetHashCode provides identification for managed threads. For the lifetime of your thread, it will not collide with the value from any other thread, regardless of the application domain from which you obtain the value.

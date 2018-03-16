@@ -14,6 +14,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief Implements a System::IO::TextReader for writing characters to a stream in a particular encoding.
+      /// @par Library
+      /// Switch.Core
       /// @par Examples
       /// The following example uses an instance of StreamReader to read text from a file.
       /// @include StreamReader.cpp

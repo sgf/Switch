@@ -35,6 +35,8 @@ namespace Switch {
       /// @endcond
 
       /// @brief Represents a writer that can write a sequential series of characters.
+      /// @par Library
+      /// Switch.Core
       class core_export_ TextWriter: public Object {
       public:
         /// @brief Provides a TextWriter with no backing store that can be written to, but not read from.

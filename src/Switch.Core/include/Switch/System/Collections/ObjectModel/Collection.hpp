@@ -13,6 +13,8 @@ namespace Switch {
       /// @brief The System::Collections::ObjectModel namespace contains classes that can be used as collections in the object model of a reusable library. Use these classes when properties or methods return collections.
       namespace ObjectModel {
         /// @brief Represents a non-generic collection of objects that can be individually accessed by index.
+        /// @par Library
+        /// Switch.Core
         template<typename T, typename TAllocator = Allocator<T>>
         class Collection : public Object, public Generic::IList<T> {
         public:

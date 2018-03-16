@@ -15,6 +15,8 @@ namespace Switch {
       /// @brief The System::Runtime::CompilerServices namespace provides functionality for compiler writers who use managed code to specify attributes in metadata that affect the run-time behavior.
       namespace CompilerServices {
         /// @brief Caller information class is used to store current file, current line and current function information.
+        /// @par Library
+        /// Switch.Core
         /// @par Examples
         /// The following example shows how to use the Caller
         /// @include Caller.cpp
@@ -70,6 +72,8 @@ namespace Switch {
   }
 
   /// @brief Get Switch::System::Runtime::CompilerServices::Caller informations
+  /// @par Library
+  /// Switch.Core
   /// @return Switch::System::Runtime::CompilerServices::Caller caller informations.
   /// @par Examples
   /// The following example shows how to use the #caller_.

@@ -18,6 +18,8 @@ namespace Switch {
       /// @endcond
 
       /// @brief Represents a reader that can read a sequential series of characters.
+      /// @par Library
+      /// Switch.Core
       class core_export_ TextReader: public Object {
       public:
         /// @brief Provides a TextReader with no data to read from.

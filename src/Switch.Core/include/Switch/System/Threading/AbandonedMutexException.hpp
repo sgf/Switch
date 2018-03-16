@@ -12,6 +12,8 @@ namespace Switch {
     /// In addition to classes for synchronizing thread activities and access to data ( Mutex, Monitor, Interlocked, AutoResetEvent, and so on), this namespace includes a ThreadPool class that allows you to use a pool of system-supplied threads, and a Timer class that executes callback methods on thread pool threads.
     namespace Threading {
       /// @brief The exception that is thrown when one thread acquires a Mutex object that another thread has abandoned by exiting without releasing it.
+      /// @par Library
+      /// Switch.Core
       class core_export_ AbandonedMutexException : public SystemException {
       public:
         /// @brief Create a new instance of class AbandonedMutexException

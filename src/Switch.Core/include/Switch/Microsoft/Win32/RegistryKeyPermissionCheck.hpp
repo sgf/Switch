@@ -8,6 +8,8 @@ namespace Switch {
   namespace Microsoft {
     namespace Win32 {
       /// @brief Specifies whether security checks are performed when opening registry keys and accessing their name/value pairs.
+      /// @par Library
+      /// Switch.Core
       enum class RegistryKeyPermissionCheck {
         /// @brief A non-volatile key. This is the default.
         Default = 0,

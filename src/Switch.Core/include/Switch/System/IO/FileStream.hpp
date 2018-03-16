@@ -19,6 +19,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief Exposes a System::IO::Stream around a file, supporting both synchronous and asynchronous read and write operations.
+      /// @par Library
+      /// Switch.Core
       class core_export_ FileStream: public Stream {
       public:
         /// @brief Initializes a new instance of the System::IO::FileStream class.

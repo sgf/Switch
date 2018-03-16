@@ -12,6 +12,8 @@ namespace Switch {
     /// In addition to classes for synchronizing thread activities and access to data ( Mutex, Monitor, Interlocked, AutoResetEvent, and so on), this namespace includes a ThreadPool class that allows you to use a pool of system-supplied threads, and a Timer class that executes callback methods on thread pool threads.
     namespace Threading {
       /// @brief Represents a method to be called when a WaitHandle is signaled or times out.
+      /// @par Library
+      /// Switch.Core
       using WaitOrTimerCallback = Delegate<void, Object&, bool>;
     }
   }

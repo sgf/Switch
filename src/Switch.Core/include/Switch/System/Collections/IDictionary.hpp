@@ -13,6 +13,8 @@ namespace Switch {
     /// @brief The System::Collections namespace contains interfaces and classes that define various collections of objects, such as lists, queues, bit arrays, hash tables and dictionaries.
     namespace Collections {
       /// @brief Represents a nongeneric collection of key/value pairs
+      /// @par Library
+      /// Switch.Core
       using IDictionary = System::Collections::Generic::IDictionary<Any, Any>;
     }
   }

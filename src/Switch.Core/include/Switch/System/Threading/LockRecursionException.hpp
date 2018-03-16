@@ -11,6 +11,8 @@ namespace Switch {
     /// @brief The System::Threading namespace provides classes and interfaces that enable multithreaded programming. Exception addition to classes for synchronizing thread activities and access to data ( Mutex, Monitor, Interlocked, AutoResetEvent, and so on), this namespace includes a ThreadPool class that allows you to use a pool of system-supplied threads, and a Timer class that executes callback methods on thread pool threads.
     namespace Threading {
       /// @brief The exception that is thrown when the post-phase action of a Barrier fails
+      /// @par Library
+      /// Switch.Core
       class core_export_ LockRecursionException : public Exception {
       public:
         /// @brief Create a new instance of class LockRecursionException

@@ -25,6 +25,8 @@ namespace Switch {
         /// @endcond
 
         /// @brief Defines a key/value pair that can be set or retrieved.
+        /// @par Library
+        /// Switch.Core
         template<typename TKey, typename TValue>
         class KeyValuePair : public Object {
         public:

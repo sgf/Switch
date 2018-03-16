@@ -26,6 +26,8 @@ namespace Switch {
       /// @endcond
 
       /// @brief Provides a generic view of a sequence of bytes. This is an abstract class.
+      /// @par Library
+      /// Switch.Core
       class core_export_ Stream abstract_ {
       public:
         static NullStream& Null();

@@ -15,6 +15,8 @@ namespace Switch {
     /// In addition to classes for synchronizing thread activities and access to data ( Mutex, Monitor, Interlocked, AutoResetEvent, and so on), this namespace includes a ThreadPool class that allows you to use a pool of system-supplied threads, and a Timer class that executes callback methods on thread pool threads.
     namespace Threading {
       /// @brief Contains a constant used to specify an infinite amount of time. This class cannot be inherited.
+      /// @par Library
+      /// Switch.Core
       class core_export_ Timeout static_ {
       public:
         /// @brief A constant used to specify an infinite waiting period. This field is constant.

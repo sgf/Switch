@@ -12,6 +12,8 @@ namespace Switch {
     /// @brief The System::Collections namespace contains interfaces and classes that define various collections of objects, such as lists, queues, bit arrays, hash tables and dictionaries.
     namespace Collections {
       /// @brief interface IComparer exposes a method that compares two objects.
+      /// @par Library
+      /// Switch.Core
       using IComparer = System::Collections::Generic::IComparer<Any>;
     }
   }

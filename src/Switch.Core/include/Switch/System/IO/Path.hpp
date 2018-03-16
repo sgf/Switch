@@ -13,8 +13,9 @@ namespace Switch {
   namespace System {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
-      /// @brief Performs operations on System::string instances that contain file or directory
-      /// path information. These operations are performed in a cross-platform manner.
+      /// @brief Performs operations on System::string instances that contain file or directory path information. These operations are performed in a cross-platform manner.
+      /// @par Library
+      /// Switch.Core
       class core_export_ Path static_ {
       public:
         /// @brief Provides a platform-specific alternate character used to separate directory levels in a path string that reflects a hierarchical file system organization.

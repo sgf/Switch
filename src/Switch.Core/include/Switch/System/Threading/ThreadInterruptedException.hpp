@@ -12,6 +12,8 @@ namespace Switch {
     /// SystemException addition to classes for synchronizing thread activities and access to data ( Mutex, Monitor, Interlocked, AutoResetEvent, and so on), this namespace includes a ThreadPool class that allows you to use a pool of system-supplied threads, and a Timer class that executes callback methods on thread pool threads.
     namespace Threading {
       /// @brief The exception that is thrown when a Thread is interrupted while it is in a waiting state.
+      /// @par Library
+      /// Switch.Core
       class core_export_ ThreadInterruptedException : public SystemException {
       public:
         /// @brief Create a new instance of class ThreadInterruptedException

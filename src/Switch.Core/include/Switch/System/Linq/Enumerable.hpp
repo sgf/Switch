@@ -20,13 +20,19 @@ namespace Switch {
   namespace System {
     /// @brief The System::Linq namespace provides classes and interfaces that support queries that use Language-Integrated Query (LINQ).
     namespace Linq {
+      /// @par Library
+      /// Switch.Core
       template<typename T>
       using EnumerableCollection = System::Collections::Generic::List<T>;
 
+      /// @par Library
+      /// Switch.Core
       template<typename T>
       using IOrderedEnumerable = System::Collections::Generic::IEnumerable<T>;
 
       /// @brief Provides a set of static methods for querying objects that implement IEnumerable<T>.
+      /// @par Library
+      /// Switch.Core
       class core_export_ Enumerable static_ {
       public:
         /// @brief Applies an accumulator function over a sequence.
@@ -460,6 +466,8 @@ namespace Switch {
 
       namespace Extension {
         /// @brief Provides a set of methods for querying objects that implement IEnumerable<T>.
+        /// @par Library
+        /// Switch.Core
         template<typename T, typename TSource>
         class Enumerable {
         public:

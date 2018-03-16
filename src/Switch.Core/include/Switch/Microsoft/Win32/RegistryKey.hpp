@@ -18,11 +18,9 @@ namespace Switch {
   namespace Microsoft {
     namespace Win32 {
       /// @brief Represents a key-level node in the Windows registry. This class is a registry encapsulation.
+      /// @par Library
+      /// Switch.Core
       class core_export_ RegistryKey : public object {
-      private:
-        friend class Registry;
-        RegistryKey(RegistryHive hkey);
-
       public:
         /// @cond
         RegistryKey();
@@ -257,6 +255,8 @@ namespace Switch {
         System::String ToString() const override { return this->name; }
 
       private:
+        friend class Registry;
+        RegistryKey(RegistryHive hkey);
         void Load();
 
         template<typename T>

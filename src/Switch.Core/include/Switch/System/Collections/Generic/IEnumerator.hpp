@@ -15,6 +15,8 @@ namespace Switch {
       namespace Generic {
         /// @interface IEnumerator
         /// @brief Supports a simple iteration over a generic collection.
+        /// @par Library
+        /// Switch.Core
         template<typename T>
         class IEnumerator interface_ {
         public:

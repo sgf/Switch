@@ -11,8 +11,9 @@ namespace Switch {
     /// @brief The System::Threading namespace provides classes and interfaces that enable multithreaded programming.
     /// In addition to classes for synchronizing thread activities and access to data ( Mutex, Monitor, Interlocked, AutoResetEvent, and so on), this namespace includes a ThreadPool class that allows you to use a pool of system-supplied threads, and a Timer class that executes callback methods on thread pool threads.
     namespace Threading {
-      /// @enum EventResetMode
       /// @brief Indicates whether an System::Threading::EventWaitHandle is reset automatically or manually after receiving a signal.
+      /// @par Library
+      /// Switch.Core
       /// @see EventWaitHandle
       enum class EventResetMode {
         /// @brief When signaled, the System::Threading::EventWaitHandle resets automatically after releasing a single thread. If no threads are waiting, the System::Threading::EventWaitHandle remains signaled until a thread blocks, and resets after releasing the thread.

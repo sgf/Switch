@@ -24,6 +24,8 @@
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Represent a polymorphic wrapper capable of holding any type.
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// This example show how to use Any:
   /// @include Any.cpp
@@ -387,6 +389,8 @@ namespace Switch {
   }
 
   /// @brief Used to static cast a type into another type. A To expression takes the following form:
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// refptr<string> str = new Switch::string("A new string");
@@ -399,6 +403,8 @@ namespace Switch {
   }
 
   /// @brief Return true if specified value is the specified Type. A Is expression takes the following form:
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// System::Int32 i = 0;
@@ -411,6 +417,8 @@ namespace Switch {
   }
 
   /// @brief Return true if specified value is the specified Type. A Is expression takes the following form:
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// @code
   /// System::Int32 i = 0;
@@ -553,6 +561,8 @@ namespace Switch {
   /// @endcond
 
   /// @brief Represent a polymorphic wrapper capable of holding any type.
+  /// @par Library
+  /// Switch.Core
   /// @par Examples
   /// This example show how to use any:
   /// @include Any.cpp

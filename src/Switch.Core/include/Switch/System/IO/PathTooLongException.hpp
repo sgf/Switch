@@ -14,6 +14,8 @@ namespace Switch {
       class core_export_ PathTooLongException : public IOException {
       public:
         /// @brief Create a new instance of class PathTooLongException
+        /// @par Library
+        /// Switch.Core
         /// @remarks Message is set with the default message associate to the error.
         PathTooLongException() : IOException() {}
 

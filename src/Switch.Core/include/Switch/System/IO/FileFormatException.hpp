@@ -11,6 +11,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief The exception that is thrown when an input file or a data stream that is supposed to conform to a certain file format specification is malformed.
+      /// @par Library
+      /// Switch.Core
       class core_export_ FileFormatException : public FormatException {
       public:
         /// @brief Create a new instance of class FileFormatException

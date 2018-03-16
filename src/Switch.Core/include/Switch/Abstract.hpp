@@ -7,7 +7,8 @@
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Represent an abstract class.
-  /// @ingroup SwitchCore
+  /// @par Library
+  /// Switch.Core
   struct core_export_ Abstract : public System::Object {
     ~Abstract() override = 0;
   };

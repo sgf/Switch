@@ -14,6 +14,8 @@ namespace Switch {
     /// @brief The System::Collections namespace contains interfaces and classes that define various collections of objects, such as lists, queues, bit arrays, hash tables and dictionaries.
     namespace Collections {
       /// @brief Represents a first-in, first-out collection of objects.
+      /// @par Library
+      /// Switch.Core
       class Queue : public Object, public System::Linq::Extension::Enumerable<Queue, any>, public ICollection {
       public:
         /// @brief Initializes a new instance of the Queue<T> class that is empty and has the default initial capacity.

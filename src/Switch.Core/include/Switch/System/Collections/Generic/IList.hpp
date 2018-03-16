@@ -14,6 +14,8 @@ namespace Switch {
       namespace Generic {
         /// @interface IList
         /// @brief Represents a non-generic collection of objects that can be individually accessed by index.
+        /// @par Library
+        /// Switch.Core
         template<typename T>
         class IList : public ICollection<T> {
         public:

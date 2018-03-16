@@ -16,6 +16,8 @@ namespace Switch {
       /// @endcond
 
       /// @brief Represents a handle that has been registered when calling RegisterWaitForSingleObject. This class cannot be inherited.
+      /// @par Library
+      /// Switch.Core
       class core_export_ RegisteredWaitHandle final : public Object {
         /// @cond
         friend class ThreadPool;

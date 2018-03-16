@@ -29,6 +29,8 @@ namespace Switch {
       namespace Serialization {
         /// @interface ISerializable
         /// @brief Allows an object to control its own serialization and deserialization.
+        /// @par Library
+        /// Switch.Core
         class core_export_ ISerializable interface_ {
         public:
           /// @brief Populates a SerializationInfo with the data needed to serialize the target object.

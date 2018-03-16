@@ -11,6 +11,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief The exception that is thrown when reading is attempted past the end of a stream.
+      /// @par Library
+      /// Switch.Core
       class core_export_ EndOfStreamException : public IOException {
       public:
         /// @brief Create a new instance of class EndOfStreamException

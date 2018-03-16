@@ -11,6 +11,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief The exception that is thrown when a managed assembly is found but cannot be loaded.
+      /// @par Library
+      /// Switch.Core
       class core_export_ FileLoadException : public IOException {
       public:
         /// @brief Create a new instance of class FileLoadException

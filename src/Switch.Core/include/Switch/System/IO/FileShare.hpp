@@ -11,6 +11,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief Contains constants for controlling the kind of access other System::IO::FileStream objects can have to the same file.
+      /// @par Library
+      /// Switch.Core
       /// @see FileStream
       enum class FileShare {
         /// @brief Declines sharing of the current file. Any request to open the file (by this process or another process) will fail until the file is closed.

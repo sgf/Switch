@@ -44,6 +44,8 @@ namespace Switch {
 #define where_ | where
 
   /// @brief Applies an accumulator function over a sequence.
+  /// @par Library
+  /// Switch.Core
   /// @param func An accumulator function to be invoked on each element.
   /// @return The final accumulator value.
   /// @par Examples
@@ -63,6 +65,8 @@ namespace Switch {
   /// @endcond
 
   /// @brief Applies an accumulator function over a sequence. The specified seed value is used as the initial accumulator value.
+  /// @par Library
+  /// Switch.Core
   /// @param seed The initial accumulator value.
   /// @param func An accumulator function to be invoked on each element.
   /// @return The final accumulator value.
@@ -83,6 +87,8 @@ namespace Switch {
   /// @endcond
 
   /// @brief Applies an accumulator function over a sequence. The specified seed value is used as the initial accumulator value, and the specified function is used to select the result value.
+  /// @par Library
+  /// Switch.Core
   /// @param seed The initial accumulator value.
   /// @param objFunc An accumulator obj to be invoked on each element.
   /// @param func An accumulator function to be invoked on each element.
