@@ -7,6 +7,8 @@
 namespace Switch {
   namespace TUnit {
     namespace Framework {
+      /// @par Library
+      /// Switch.TUnit.Framework
       template <typename TestFixture>
       struct TestFixtureAttribute {
         TestFixtureAttribute(const string& name) {TUnit::Framework::UnitTest::Add({name, new_<TestFixture>()});} \

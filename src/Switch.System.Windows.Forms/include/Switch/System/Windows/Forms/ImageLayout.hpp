@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies the position of the image on the control.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         enum class ImageLayout {
           /// @brief The image is left-aligned at the top across the control's client rectangle.
           None = 0,

@@ -11,9 +11,13 @@
 namespace Switch {
   namespace System {
     namespace ComponentModel {
+      /// @cond
       class IComponent;
+      /// @endcond
 
       /// @brief Provides a read-only container for a collection of IComponent objects.
+      /// @par Library
+      /// Switch.System.Windows.Forms
       class system_windows_forms_export_ ComponentCollection : public object {
       public:
         /// @brief Initializes a new instance of the ComponentCollection class using the specified array of components.

@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies values for navigating among accessible objects.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks Accessible navigation directions are either spatial (up, down, left, and right) or logical (first child, last child, next, and previous). Logical directions are used when clients navigate from one user interface element to another within the same container.
         /// @remarks AccessibleObject uses this enumeration.
         /// @par Examples

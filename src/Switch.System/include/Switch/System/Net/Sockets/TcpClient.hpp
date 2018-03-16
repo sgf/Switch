@@ -16,10 +16,10 @@ namespace Switch {
     /// The WebRequest and WebResponse classes form the basis of what are called pluggable protocols, an implementation of network services that enables you to develop applications that use Internet resources without worrying about the specific details of the individual protocols.
     namespace Net {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
-      /// @par Library
-      /// Switch.System
       namespace Sockets {
         /// @brief Provides client connections for TCP network services.
+        /// @par Library
+        /// Switch.System
         /// @remarks The TcpClient class provides simple methods for connecting, sending, and receiving stream data over a network in synchronous blocking mode.
         /// @remarks In order for TcpClient to connect and exchange data, a TcpListener or Socket created with the TCP ProtocolType must be listening for incoming
         /// @remarks connection requests. You can connect to this listener in one of the following two ways:

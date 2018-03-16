@@ -22,13 +22,13 @@ namespace Switch {
     /// @brief The System::Diagnostics namespace provides classes that allow you to interact with system processes, event logs, and performance counters.
     namespace Diagnostics {
       /// @brief Provides the abstract base class for the listeners who monitor trace and debug output.
+      /// @par Library
+      /// Switch.System
       /// @remarks For examples of how to implement a TraceListener, see the DefaultTraceListener, TextWriterTraceListener and the EventLogTraceListener classes.
       /// @remarks You must enable tracing or debugging to use a trace listener. The syntax is compiler specific. If you use other than cmake to manage your build, refer to the documentation of your build nanager.
       ///  * To enable debugging with cmake, add the add_definitions(-DDEBUG) command line in the CMakeLists.txt of your porject, or you can add #define DEBUG to the top of your file but in this case, the compiler options for debug is not activated.
       ///  * To enable tracing with cmake, add the add_definitions(-DTRACE) command line in the CMakeLists.txt of your porject, or you can add #define TRACE to the top of your file.
       /// @note <b>to Inheritors:</b> Inherit from this class to implement a custom listener for the Debug and Trace classes. At a minimum, you must implement the Write and WriteLine methods. Additionally, you can implement the Fail, Close and Flush methods.
-      /// @par Library
-      /// Switch.System
       class system_export_ TraceListener abstract_ {
       public:
         /// @brief Initializes a new instance of the TraceListener class.

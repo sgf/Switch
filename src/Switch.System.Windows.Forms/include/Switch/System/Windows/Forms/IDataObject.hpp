@@ -16,6 +16,8 @@ namespace Switch {
       namespace Forms {
         /// @interface IDataObject
         /// @brief Provides a format-independent mechanism for transferring data.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks The IDataObject interface is used by the Clipboard class and in drag-and-drop operations.
         /// @remarks When implemented in a class, the IDataObject methods allow the user to store data in multiple formats in an instance of the class. Storing data in more than one format increases the chance that a target application, whose format requirements you might not know, can retrieve the stored data. To store data in an instance of IDataObject, call the SetData method and specify the data format in the format parameter. Set the autoConvert parameter to false if you do not want stored data to be converted to another format when it is retrieved. Invoke SetData multiple times on one instance of IDataObject to store data in more than one format.
         /// @remarks You retrieve stored data from an IDataObject by calling the GetData method and specifying the data format in the format parameter. Set the autoConvert parameter to false to retrieve only data that was stored in the specified format. To convert the stored data to the specified format, set autoConvert to true, or do not use autoConvert.

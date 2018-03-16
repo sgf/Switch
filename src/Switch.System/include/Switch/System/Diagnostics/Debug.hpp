@@ -12,6 +12,8 @@ namespace Switch {
     /// @brief The System::Diagnostics namespace provides classes that allow you to interact with system processes, event logs, and performance counters.
     namespace Diagnostics {
       /// @brief Provides a set of methods and properties that help you debug the execution of your code. This class cannot be inherited.
+      /// @par Library
+      /// Switch.System
       /// @remarks You can use the properties and methods in the Debug class to instrument release builds. Instrumentation allows you to monitor the health of your application running in real-life settings. Tracing helps you isolate problems and fix them without disturbing a running system.
       /// @remarks This class provides methods to display an Assert dialog box, and to emit an assertion that will always Fail. This class provides write methods in the following variations: Write, WriteLine, WriteIf, and WriteLineIf.
       /// @remarks The BooleanSwitch and TraceSwitch classes provide means to dynamically control the tracing output. You can modify the values of these switches without recompiling your application. For information on using the configuration file to set a switch, see the Switch class and the How to: Create, Initialize and Configure Debug Switches topic.
@@ -21,8 +23,6 @@ namespace Switch {
       /// @remarks You must enable debug mode to use a trace listener. The syntax is compiler specific. If you use other than cmake to manage your build, refer to the documentation of your build nanager.
       ///  * To enable debug mode with cmake, add the add_definitions(-DDEBUG) command line in the CMakeLists.txt of your porject, or you can add #define DEBUG to the top of your file.
       /// @remarks To activete your code if DEBUG is defined, you must enclose calls to the methods of Debug in an #if defined(DEBUG) ... #endif block, and add the /DDEBUG option to the compiler command line or add #define DEBUG to the file.
-      /// @par Library
-      /// Switch.System
       /// @par Examples
       /// The following example uses Debug to indicate the beginning and the end of a program's execution. The example also uses the Debug.Indent and Debug.Unindent methods to distinguish the tracing output.
       /// @include Debug.cpp

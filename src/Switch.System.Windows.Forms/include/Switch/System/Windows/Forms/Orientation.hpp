@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies the orientation of controls or elements of controls.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         enum class Orientation {
           /// @brief The control or element is oriented horizontally.
           Horizontal = 0,

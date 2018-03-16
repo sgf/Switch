@@ -10,6 +10,8 @@ namespace Switch {
   namespace System {
     namespace Windows {
       namespace Forms {
+        /// @par Library
+        /// Switch.System.Windows.Forms
         using KeyPressEventHandler = GenericEventHandler<KeyPressEventArgs&>;
       }
     }

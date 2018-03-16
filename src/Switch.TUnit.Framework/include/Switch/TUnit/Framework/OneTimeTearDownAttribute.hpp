@@ -7,9 +7,12 @@
 namespace Switch {
   namespace TUnit {
     namespace Framework {
+      /// @par Library
+      /// Switch.TUnit.Framework
       struct OneTimeTearDownAttribute {
         template<typename TestFixture>
         OneTimeTearDownAttribute(const string& name, TestFixture& testFixture, void (TestFixture::*method)()) :  OneTimeTearDownAttribute(name, testFixture, method, System::Runtime::CompilerServices::Caller()) {}
+
         template<typename TestFixture>
         OneTimeTearDownAttribute(const string& name, TestFixture& testFixture, void (TestFixture::*method)(), const System::Runtime::CompilerServices::Caller& caller) {testFixture.AddOneTimeTearDown({name, {testFixture, method}, caller});}
       };

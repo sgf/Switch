@@ -12,6 +12,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief The exception that is thrown when a data stream is in an invalid format.
+      /// @par Library
+      /// Switch.System
       class system_export_ InvalidDataException : public IOException {
       public:
         /// @brief Create a new instance of class InvalidDataException

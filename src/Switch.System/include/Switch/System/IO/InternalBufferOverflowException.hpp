@@ -12,6 +12,8 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief The exception thrown when the internal buffer overflows.
+      /// @par Library
+      /// Switch.System
       class system_export_ InternalBufferOverflowException : public IOException {
       public:
         /// @brief Create a new instance of class InternalBufferOverflowException

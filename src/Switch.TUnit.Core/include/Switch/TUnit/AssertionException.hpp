@@ -8,14 +8,10 @@
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief The TUnit namespace contains a unit test framework.
-  /// @par Examples
-  /// This example how to use TestFixture class, Assert class and #AddTest_ method:
-  /// @include Assert.cpp
-  /// @par Examples
-  /// This example how to use TestFixture class, Expect class and #AddTest_ method:
-  /// @include Expect.cpp
   namespace TUnit {
     /// @brief Thrown when an assertion failed.
+    /// @par Library
+    /// Switch.TUnit.Core
     class tunit_core_export_ AssertionException : public System::Exception {
     public:
       /// @brief Create a new instance of class AssertionException

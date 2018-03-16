@@ -16,6 +16,8 @@ namespace Switch {
         class Control;
         /// @endcond
 
+        /// @par Library
+        /// Switch.System.Windows.Forms
         class system_windows_forms_export_ PaintEventArgs : public EventArgs {
         public:
           PaintEventArgs() {}

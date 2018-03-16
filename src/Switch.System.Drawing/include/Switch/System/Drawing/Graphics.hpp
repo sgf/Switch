@@ -40,6 +40,8 @@ namespace Switch {
         Far
       };
 
+      /// @par Library
+      /// Switch.System.Drawing
       class system_drawing_export_ StringFormat {
       public:
         StringFormat() {}
@@ -61,6 +63,8 @@ namespace Switch {
         StringAlignment lineAlignment = StringAlignment::Near;
       };
 
+      /// @par Library
+      /// Switch.System.Drawing
       class system_drawing_export_ Graphics : public Object {
       public:
         /// @cond

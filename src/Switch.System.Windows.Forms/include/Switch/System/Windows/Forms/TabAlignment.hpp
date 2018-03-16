@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Controls where the tabs will be located in a Tab Control.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         enum class TabAlignment {
           /// @biref Tabs will be located across the top of the control.
           Top = 0,

@@ -19,6 +19,8 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief Contains IPAddress values used to join and drop multicast groups.
+        /// @par Library
+        /// Switch.System
         /// @remarks Use a MulticastOption to store the IPAddress of a multicast group you want to join or drop. Use the Socket.SetSocketOption method with the following parameters to join a multicast group.
         /// | Parameter         | Value                |
         /// |-------------------|----------------------|
@@ -26,8 +28,6 @@ namespace Switch {
         /// | SocketOptionName  | AddMembership        |
         /// | object            | MulticastOption      |
         /// @remarks Use DropMembership to drop a multicast group.
-        /// @par Library
-        /// Switch.System
         class system_export_ MulticastOption : public Object {
         public:
           /// @brief Initializes a new version of the MulticastOption class for the specified IP multicast group.

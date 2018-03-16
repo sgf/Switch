@@ -10,6 +10,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Provides data for the HelpRequested event.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         class system_windows_forms_export_ HelpEventArgs : public EventArgs {
         public:
           /// @brief Initializes a new instance of the HelpEventArgs class.

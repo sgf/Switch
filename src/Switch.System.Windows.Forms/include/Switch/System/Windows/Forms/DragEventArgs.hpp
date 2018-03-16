@@ -7,11 +7,17 @@
 #include "../../../SystemWindowsFormsExport.hpp"
 #include "DragDropEffects.hpp"
 
+/// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
+  /// @brief The Switch::System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
+    /// @brief The Switch::System::Windows namespaces including animation clients, user interface controls, data binding, and type conversion. Switch::System::Windows::Forms and its child namespaces are used for developing Windows Forms applications.
     namespace Windows {
+      /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
         /// @brief Contains arguments relevant to all drag-and-drop events (DragEnter, DragLeave, DragOver, and Drop).
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks The DragDrop event occurs when the user completes a drag-and-drop operation by dragging an object over the control and then dropping it onto the control by releasing the mouse button. The DragEnter event occurs when the user moves the mouse pointer onto the control while dragging an object with the mouse. The DragOver event occurs when the user moves the mouse pointer over the control while dragging an object with the mouse.
         /// @remarks A DragEventArgs object specifies any data associated with this event; the current state of the SHIFT, CTRL, and ALT keys; the location of the mouse pointer; and the drag-and-drop effects allowed by the source and target of the drag event.
         /// @remarks For information about the event model, see Handling and Raising Events.
@@ -20,7 +26,7 @@ namespace Switch {
         /// @remarks The keyboard state is evaluated in the DragOver event handler for the right ListBox, to determine what the drag operation will be based upon state of the SHIFT, CTRL, ALT, or CTRL+ALT keys. The location in the ListBox where the drop would occur is also determined during the DragOver event. If the data to drop is not a String, then the DragEventArgs.Effect is set to DragDropEffects.None. Finally, the status of the drop is displayed in the DropLocationLabel Label.
         /// @remarks The data to drop for the right ListBox is determined in the DragDrop event handler and the String value is added at the appropriate place in the ListBox. If the drag operation moves outside the bounds of the form, then the drag-and-drop operation is canceled in the QueryContinueDrag event handler.
         /// @par Examples
-        /// This code excerpt demonstrates using the DragEventArgs class. See the DoDragDrop method for the complete code example.
+        /// This code except demonstrates using the DragEventArgs class. See the DoDragDrop method for the complete code example.
         /// @code
         /// void ListDragTarget_DragOver(const object& sender, System::Windows::Forms::DragEventArgs& e) {
         ///   // Determine whether string data exists in the drop data. If not, then

@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies the location of tick marks in a TrackBar control.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         enum class TickStyle {
           /// @brief No tick marks appear in the control.
           None = 0,

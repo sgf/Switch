@@ -19,13 +19,13 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief Provides the underlying stream of data for network access.
+        /// @par Library
+        /// Switch.System
         /// @remarks The NetworkStream class provides methods for sending and receiving data over Stream sockets in blocking mode. For more information about blocking versus nonblocking Sockets, see Using an Asynchronous Client Socket. You can use the NetworkStream class for both synchronous and asynchronous data transfer. @remarks For more information about synchronous and asynchronous communication, see Sockets.
         /// @remarks To create a NetworkStream, you must provide a connected Socket. You can also specify what FileAccess permission the NetworkStream has over the provided Socket. By default, closing the NetworkStream does not close the provided Socket. If you want the NetworkStream to have permission to close the provided Socket, you must specify true for the value of the ownsSocket parameter.
         /// @remarks Use the Write and Read methods for simple single thread synchronous blocking I/O. If you want to process your I/O using separate threads, consider using the BeginWrite and EndWrite methods, or the BeginRead and EndRead methods for communication.
         /// @remarks The NetworkStream does not support random access to the network data stream. The value of the CanSeek property, which indicates whether the stream supports seeking, is always false; reading the Position property, reading the Length property, or calling the Seek method will throw a NotSupportedException.
         /// @remarks Read and write operations can be performed simultaneously on an instance of the NetworkStream class without the need for synchronization. As long as there is one unique thread for the write operations and one unique thread for the read operations, there will be no cross-interference between read and write threads and no synchronization is required.
-        /// @par Library
-        /// Switch.System
         class system_export_ NetworkStream : public System::IO::Stream {
         public:
           /// @brief Creates a new instance of the NetworkStream class for the specified Socket.

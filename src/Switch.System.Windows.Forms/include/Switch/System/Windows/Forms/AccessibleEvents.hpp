@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies events that are reported by accessible applications.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks The operating system and accessibility server applications generate accessibility events in response to changes in the user interface.
         /// @remarks This enumeration is used by AccessibleObject and Control.
         /// @par Examples

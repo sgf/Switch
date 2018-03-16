@@ -16,6 +16,8 @@ namespace Switch {
       namespace Forms {
         /// @interface IWin32Window
         /// @brief Provides an interface to expose Win32 HWND handles.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks This interface is implemented on objects that expose Win32 HWND handles. The resultant handle can be used with Win32 API calls.
         class system_windows_forms_export_ IWin32Window interface_ {
         public:

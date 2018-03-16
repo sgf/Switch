@@ -14,9 +14,9 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief Defines configuration option names.
-        /// @remarks The SocketOptionName enumeration defines the name of each Socket configuration option. Sockets can be configured with the Socket::SetSocketOption method.
         /// @par Library
         /// Switch.System
+        /// @remarks The SocketOptionName enumeration defines the name of each Socket configuration option. Sockets can be configured with the Socket::SetSocketOption method.
         enum class SocketOptionName {
           /// @brief Record debugging information.
           Debug = 1,

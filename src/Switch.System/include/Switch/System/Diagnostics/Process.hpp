@@ -18,6 +18,8 @@ namespace Switch {
     /// @brief The System::Diagnostics namespace provides classes that allow you to interact with system processes, event logs, and performance counters.
     namespace Diagnostics {
       /// @brief Provides access to local and remote processes and enables you to start and stop local system processes.
+      /// @par Library
+      /// Switch.System
       /// @remarks A Process component provides access to a process that is running on a computer. A process, in the simplest terms, is a running app. A thread is the basic unit to which the operating system allocates processor time. A thread can execute any part of the code of the process, including parts currently being executed by another thread.
       /// @remarks The Process component is a useful tool for starting, stopping, controlling, and monitoring apps. You can use the Process component, to obtain a list of the processes that are running, or you can start a new process. A Process component is used to access system processes. After a Process component has been initialized, it can be used to obtain information about the running process. Such information includes the set of threads, the loaded modules (.dll and .exe files), and performance information such as the amount of memory the process is using.
       /// @remarks This type implements the IDisposable interface. When you have finished using the type, you should dispose of it either directly or indirectly. To dispose of the type directly, call its Dispose method in a try/catch block. To dispose of it indirectly, use a language construct such as using (in C#) or Using (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the IDisposable interface topic.
@@ -26,8 +28,6 @@ namespace Switch {
       /// @remarks If you have a path variable declared in your system using quotes, you must fully qualify that path when starting any process found in that location. Otherwise, the system will not find the path. For example, if c:\mypath is not in your path, and you add it using quotation marks: path = %path%;"c:\mypath", you must fully qualify any process in c:\mypath when starting it.
       /// @remarks A system process is uniquely identified on the system by its process identifier. Like many Windows resources, a process is also identified by its handle, which might not be unique on the computer. A handle is the generic term for an identifier of a resource. The operating system persists the process handle, which is accessed through the Handle property of the Process component, even when the process has exited. Thus, you can get the process's administrative information, such as the ExitCode (usually either zero for success or a nonzero error code) and the ExitTime. Handles are an extremely valuable resource, so leaking handles is more virulent than leaking memory.
       /// @note This class contains a link demand and an inheritance demand at the class level that applies to all members. A SecurityException is thrown when either the immediate caller or the derived class does not have full-trust permission. For details about security demands, see Link Demands.
-      /// @par Library
-      /// Switch.System
       class system_export_ Process : public Object {
         refptr<IO::Stream> GetStandardOutput() const;
       public:

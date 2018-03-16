@@ -24,6 +24,8 @@ namespace Switch {
       /// @endcond
 
       /// @brief Provides a set of methods and properties that help you trace the execution of your code. This class cannot be inherited.
+      /// @par Library
+      /// Switch.System
       /// @remarks You can use the properties and methods in the Trace class to instrument release builds. Instrumentation allows you to monitor the health of your application running in real-life settings. Tracing helps you isolate problems and fix them without disturbing a running system.
       /// @remarks This class provides methods to display an Assert dialog box, and to emit an assertion that will always Fail. This class provides write methods in the following variations: Write, WriteLine, WriteIf, and WriteLineIf.
       /// @remarks The BooleanSwitch and TraceSwitch classes provide means to dynamically control the tracing output. You can modify the values of these switches without recompiling your application. For information on using the configuration file to set a switch, see the Switch class and the How to: Create, Initialize and Configure Trace Switches topic.
@@ -33,8 +35,6 @@ namespace Switch {
       /// @remarks You must enable tracing to use a trace listener. The syntax is compiler specific. If you use other than cmake to manage your build, refer to the documentation of your build nanager.
       ///  * To enable tracing with cmake, add the add_definitions(-DTRACE) command line in the CMakeLists.txt of your porject, or you can add #define TRACE to the top of your file.
       /// @remarks To activete your code if TRACE is defined, you must enclose calls to the methods of Trace in an #if defined(TRACE) ... #endif block, and add the /DTRACE option to the compiler command line or add #define TRACE to the file.
-      /// @par Library
-      /// Switch.System
       /// @par Examples
       /// The following example uses Trace to indicate the beginning and the end of a program's execution. The example also uses the Trace.Indent and Trace.Unindent methods to distinguish the tracing output.
       /// @include Trace.cpp

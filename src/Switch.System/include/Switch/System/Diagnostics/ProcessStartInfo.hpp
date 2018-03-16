@@ -18,6 +18,8 @@ namespace Switch {
     /// @brief The System::Diagnostics namespace provides classes that allow you to interact with system processes, event logs, and performance counters.
     namespace Diagnostics {
       /// @brief Specifies a set of values that are used when you start a process.
+      /// @par Library
+      /// Switch.System
       /// @remarks ProcessStartInfo is used together with the Process component. When you start a process using the Process class, you have access to process information in addition to that available when attaching to a running process.
       /// @remarks You can use the ProcessStartInfo class for better control over the process you start. You must at least set the FileName property, either manually or using the constructor. The file name is any application or document. Here a document is defined to be any file type that has an open or default action associated with it. You can view registered file types and their associated applications for your computer by using the Folder Options dialog box, which is available through the operating system. The Advanced button leads to a dialog box that shows whether there is an open action associated with a specific registered file type.
       /// @remarks In addition, you can set other properties that define actions to take with that file. You can specify a value specific to the type of the FileName property for the Verb property. For example, you can specify "print" for a document type. Additionally, you can specify Arguments property values to be command-line arguments to pass to the file's open procedure. For example, if you specify a text editor application in the FileName property, you can use the Arguments property to specify a text file to be opened by the editor.
@@ -25,8 +27,6 @@ namespace Switch {
       /// @remarks Set UseShellExecute to specify whether to start the process by using the operating system shell.
       /// @remarks You can change the value of any ProcessStartInfo property up to the time that the process starts. After you start the process, changing these values has no effect.
       /// @note This class contains a link demand at the class level that applies to all members. A SecurityException is thrown when the immediate caller does not have full-trust permission. For details about security demands, see Link Demands.
-      /// @par Library
-      /// Switch.System
       class system_export_ ProcessStartInfo final : public Object {
       public:
         /// @brief Initializes a new instance of the ProcessStartInfo class without specifying a file name with which to start the process.

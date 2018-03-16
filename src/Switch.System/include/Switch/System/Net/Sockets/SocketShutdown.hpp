@@ -14,9 +14,9 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief Defines constants that are used by the Socket::Shutdown method.
-        /// @remarks The SocketShutdown enumeration defines the values that can be passed to the Socket::Shutdown method.
         /// @par Library
         /// Switch.System
+        /// @remarks The SocketShutdown enumeration defines the values that can be passed to the Socket::Shutdown method.
         enum class SocketShutdown {
           /// @brief Disables a Socket for receiving. This field is constant.
           Receive = 0,

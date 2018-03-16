@@ -16,6 +16,8 @@ namespace Switch {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
         /// @brief Provides focus-management functionality for controls that can function as a container for other controls.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks A ContainerControl represents a control that can function as a container for other controls and provides focus management. Controls that inherit from this class can track the active control they contain, even when the focus moves somewhere within a different container.
         /// @remarks ContainerControl objects provide a logical boundary for contained controls. The container control can capture the TAB key press and move focus to the next control in the collection.
         /// @note The container control does not receive focus; the focus is always set to the first child control in the collection of contained controls.

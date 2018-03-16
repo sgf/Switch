@@ -15,9 +15,9 @@ namespace Switch {
     /// @brief The System::Drawing namespace provides access to GDI+ basic graphics functionality. More advanced functionality is provided in the System::Drawing::Drawing2D, System::Drawing::Imaging, and System::Drawing::Text namespaces.
     namespace Drawing {
       /// @brief An abstract base class that provides functionality for the System::Drawing::Bitmap and System::Drawing::Imaging::Metafile descended classes.
-      /// @remarks To draw an System::Drawing::Image on a Windows Form, you should use one of the Graphics::DrawImage(Image, Point) methods.
       /// @par Library
       /// Switch.System.Drawing
+      /// @remarks To draw an System::Drawing::Image on a Windows Form, you should use one of the Graphics::DrawImage(Image, Point) methods.
       class system_drawing_export_ Bitmap : public Image {
       public:
         Bitmap(const Image& image) : Image(image) {}

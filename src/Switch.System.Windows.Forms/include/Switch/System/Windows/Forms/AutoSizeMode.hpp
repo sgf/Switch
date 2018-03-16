@@ -13,6 +13,8 @@ namespace Switch {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
         /// @brief Specifies how a control will behave when its AutoSize property is enabled.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks Setting the GrowAndShrink value produces the same behavior that you get for controls with the AutoSize property enabled but which have no
         /// @remarks AutoSizeMode property. The MinimumSize and MaximumSize properties are respected, but the current value of the Size property is ignored.
         /// @par Examples

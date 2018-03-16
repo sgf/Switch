@@ -14,9 +14,9 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief Defines socket option levels for the Socket::SetSocketOption and Socket::GetSocketOption methods.
-        /// @remarks The SocketOptionLevel enumeration defines the socket option levels that can be passed to the Socket.SetSocketOption and Socket.GetSocketOption methods. SocketOptionName enumerated values are grouped by SocketOptionLevel.
         /// @par Library
         /// Switch.System
+        /// @remarks The SocketOptionLevel enumeration defines the socket option levels that can be passed to the Socket.SetSocketOption and Socket.GetSocketOption methods. SocketOptionName enumerated values are grouped by SocketOptionLevel.
         enum class SocketOptionLevel {
           /// @brief Socket options apply to all sockets.
           Socket = 65535,

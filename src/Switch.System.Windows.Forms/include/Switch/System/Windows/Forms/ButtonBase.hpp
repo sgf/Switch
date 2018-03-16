@@ -14,6 +14,8 @@ namespace Switch {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
         /// @brief Implements the basic functionality common to button controls.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks You do not typically inherit from ButtonBase. To create your own button class, inherit from the Button, CheckBox, or RadioButton class.
         /// @remarks To have the derived button control display an image, set the Image property or the ImageList and ImageIndex properties. The image can be aligned on the button control by setting the ImageAlign property. Likewise, to align the Text displayed on the button control, set the TextAlign property.
         /// @remarks The FlatStyle property determines the style and appearance of the control. If the FlatStyle property is set to FlatStyle.System, the user's operating system determines the appearance of the control.

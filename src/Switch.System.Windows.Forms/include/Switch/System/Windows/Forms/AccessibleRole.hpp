@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies values representing possible roles for an accessible object.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks The role of the object describes the function of the object and is used by accessibility applications.
         /// @remarks This enumeration is used by AccessibleObject and Control.AccessibleRole
         /// @par Examples

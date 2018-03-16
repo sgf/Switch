@@ -14,9 +14,9 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief  Specifies the protocols that the Socket class supports.
-        /// @remarks The Socket class uses the ProtocolType enumeration to inform the Windows Sockets API of the requested protocol. Low-level driver software for the requested protocol must be present on the computer for the Socket to be created successfully.
         /// @par Library
         /// Switch.System
+        /// @remarks The Socket class uses the ProtocolType enumeration to inform the Windows Sockets API of the requested protocol. Low-level driver software for the requested protocol must be present on the computer for the Socket to be created successfully.
         enum class ProtocolType {
           /// @brief Specifies an unknown Socket type.
           Unknown = -1,

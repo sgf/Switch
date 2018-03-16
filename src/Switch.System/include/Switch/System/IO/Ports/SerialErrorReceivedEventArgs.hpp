@@ -17,9 +17,9 @@ namespace Switch {
       /// The namespace includes enumerations that simplify the control of serial ports, such as Handshake, Parity, SerialPinChange, and StopBits.
       namespace Ports {
         /// @brief Prepares data for the ErrorReceived event.
-        /// @remarks This class is used with the ErrorReceived event.
         /// @par Library
         /// Switch.System
+        /// @remarks This class is used with the ErrorReceived event.
         class system_export_ SerialErrorReceivedEventArgs : public System::EventArgs {
         public:
           SerialErrorReceivedEventArgs(SerialError eventType) : eventType(eventType) {}

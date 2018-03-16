@@ -12,6 +12,8 @@ namespace Switch {
     /// @brief The Switch::System::ComponentModel namespace provides classes that are used to implement the run-time and design-time behavior of components and controls. This namespace includes the base classes and interfaces for implementing attributes and type converters, binding to data sources, and licensing components.
     namespace ComponentModel {
       /// @brief The exception thrown when using invalid arguments that are enumerators.
+      /// @par Library
+      /// Switch.System
       class system_export_ InvalidEnumArgumentException : public ArgumentException {
       public:
         /// @brief Create a new instance of class InvalidEnumArgumentException

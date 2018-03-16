@@ -16,6 +16,8 @@ namespace Switch {
         /// @endcond
 
         /// @brief Provides data for the ControlAdded and ControlRemoved events.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks For more information about handling events, see Handling and Raising Events.
         /// @par Examples
         /// The following code example demonstrates the use of the ControlAdded and ControlRemoved events. The example requires that two Button controls are added to the form and connected to the addControl_Click and removeControl_Click event handling methods.

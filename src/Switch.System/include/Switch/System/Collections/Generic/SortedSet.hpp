@@ -29,9 +29,9 @@ namespace Switch {
       /// @brief The System::Collections::Generic namespace contains interfaces and classes that define generic collections, which allow users to create strongly typed collections that provide better type safety and performance than non-generic strongly typed collections.
       namespace Generic {
         /// @brief Represents a collection of objects that is maintained in sorted order.
-        /// @remarks A SortedSet<T> object maintains a sorted order without affecting performance as elements are inserted and deleted. Duplicate elements are ! allowed. Changing the sort values of existing items is ! supported and may lead to unexpected behavior.
         /// @par Library
         /// Switch.System
+        /// @remarks A SortedSet<T> object maintains a sorted order without affecting performance as elements are inserted and deleted. Duplicate elements are ! allowed. Changing the sort values of existing items is ! supported and may lead to unexpected behavior.
         /// @par Examples
         /// The following example demonstrates how to merge two disparate sets. This example creates two SortedSet<T> objects, and populates them with even and odd numbers, respectively. A third SortedSet<T> object is created from the set that contains the even numbers. The example then calls the UnionWith method, which adds the odd number set to the third set.
         /// @include SortedSet.cpp

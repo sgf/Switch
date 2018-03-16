@@ -31,6 +31,8 @@ namespace Switch {
     namespace Windows {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple Mac Os X and Linux like Ubuntu operating system.
       namespace Forms {
+        /// @par Library
+        /// Switch.System.Windows.Forms
         class Screen : public object {
         public:
           /// @cond

@@ -18,9 +18,9 @@ namespace Switch {
     /// In addition to classes for synchronizing thread activities and access to data ( Mutex, Monitor, Interlocked, AutoResetEvent, and so on), this namespace includes a ThreadPool class that allows you to use a pool of system-supplied threads, and a Timer class that executes callback methods on thread pool threads.
     namespace Threading {
       /// @brief Enables multiple tasks to cooperatively work on an algorithm in parallel through multiple phases.
-      /// @remarks A group of tasks cooperate by moving through a series of phases, where each in the group signals it has arrived at the Barrier in a given phase and implicitly waits for all others to arrive. The same Barrier can be used for multiple phases.
       /// @par Library
       /// Switch.System
+      /// @remarks A group of tasks cooperate by moving through a series of phases, where each in the group signals it has arrived at the Barrier in a given phase and implicitly waits for all others to arrive. The same Barrier can be used for multiple phases.
       /// @par Examples
       /// The following example shows how to use a barrier:
       /// @include Barrier.cpp

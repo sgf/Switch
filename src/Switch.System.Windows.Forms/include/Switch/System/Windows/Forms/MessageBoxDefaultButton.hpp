@@ -13,6 +13,8 @@ namespace Switch {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
         /// @brief Specifies constants defining the default button on a MessageBox.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks This enumeration is used by the MessageBox class.
         enum class MessageBoxDefaultButton {
           /// @brief The first button on the message box is the default button.

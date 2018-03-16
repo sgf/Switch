@@ -16,6 +16,8 @@ namespace Switch {
       class UnitTest;
       /// @endcond
 
+      /// @par Library
+      /// Switch.TUnit.Framework
       struct tunit_framework_export_ RegisteredMethod : public object {
         RegisteredMethod(const string& name, delegate<void> method, const System::Runtime::CompilerServices::Caller& caller) : RegisteredMethod(name, method, false, caller) {}
         RegisteredMethod(const string& name, delegate<void> method, bool ignore, const System::Runtime::CompilerServices::Caller& caller) : name(name), method(method), ignore(ignore), caller(caller) {}

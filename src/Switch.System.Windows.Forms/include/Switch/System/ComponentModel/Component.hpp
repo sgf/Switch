@@ -10,14 +10,10 @@
 namespace Switch {
   namespace System {
     /// @brief The Switch::System::ComponentModel namespace provides classes that are used to implement the run-time and design-time behavior of components and controls. This namespace includes the base classes and interfaces for implementing attributes and type converters, binding to data sources, and licensing components.
-    /// The classes in this namespace divide into the following categories:
-    /// * Core component classes. See the Component, IComponent, Container, and IContainer classes.
-    /// * Component licensing. See the License, LicenseManager, LicenseProvider, and LicenseProviderAttribute classes.
-    /// * Attributes. See the Attribute class.
-    /// * Descriptors and persistence. See the TypeDescriptor, EventDescriptor, and PropertyDescriptor classes.
-    /// * Type converters. See the TypeConverter class.
     namespace ComponentModel {
       /// @brief Provides the base implementation for the IComponent interface and enables object sharing between applications.
+      /// @par Library
+      /// Switch.System.Windows.Forms
       class system_windows_forms_export_ Component : public object, public IComponent {
       public:
         /// @brief Initializes a new instance of the Component class.

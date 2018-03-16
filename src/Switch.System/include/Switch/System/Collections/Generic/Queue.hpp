@@ -25,6 +25,8 @@ namespace Switch {
       /// @brief The System::Collections::Generic namespace contains interfaces and classes that define generic collections, which allow users to create strongly typed collections that provide better type safety and performance than non-generic strongly typed collections.
       namespace Generic {
         /// @brief Represents a first-in, first-out collection of objects.
+        /// @par Library
+        /// Switch.System
         /// @remarks This class implements a generic queue as a circular array. Objects stored in a Queue<T> are inserted at one end and removed from the other. Queues and stacks are useful when you need temporary storage for information; that is, when you might want to discard an element after retrieving its value. Use Queue<T> if you need to access the information in the same order that it is stored in the collection. Use Stack<T> if you need to access the information in reverse order. Use ConcurrentQueue<T> or ConcurrentStack<T> if you need to access the collection from multiple threads concurrently.
         /// @remarks Three main operations can be performed on a Queue<T> and its elements:
         /// * Enqueue adds an element to the end of the Queue<T>.
@@ -32,8 +34,6 @@ namespace Switch {
         /// * Peek peek returns the oldest element that is at the start of the Queue<T> but does not remove it from the Queue<T>.
         /// @remarks The capacity of a Queue<T> is the number of elements the Queue<T> can hold. As elements are added to a Queue<T>, the capacity is automatically increased as required by reallocating the internal array. The capacity can be decreased by calling TrimExcess.
         /// @remarks Queue<T> accepts null as a valid value for reference types and allows duplicate elements.
-        /// @par Library
-        /// Switch.System
         template<typename T, typename TAllocator = Allocator<T>>
         class Queue : public Object, public System::Linq::Extension::Enumerable<Queue<T, TAllocator>, T>, public ICollection<T> {
           using Item = T;

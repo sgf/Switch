@@ -13,7 +13,9 @@ namespace Switch {
     /// @brief The System::IO namespace contains types that allow reading and writing to files and data streams, and types that provide basic file and directory support.
     namespace IO {
       /// @brief Changes that might occur to a file or directory.
-      /// This enumeration has a FlagsAttribute attribute that allows a bitwise combination of its member values.
+      /// @par Library
+      /// Switch.System
+      /// @remarks This enumeration has a FlagsAttribute attribute that allows a bitwise combination of its member values.
       enum class WatcherChangeTypes {
         /// @brief The creation, deletion, change, or renaming of a file or folder.
         All = 15,

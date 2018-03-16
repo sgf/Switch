@@ -36,6 +36,8 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief Implements the Berkeley sockets interface.
+        /// @par Library
+        /// Switch.System
         /// @remarks The Socket class provides a rich set of methods and properties for network communications. The Socket class allows you to perform both synchronous and asynchronous data transfer using any of the communication protocols listed in the ProtocolType enumeration.
         /// @remarks The Socket class follows the .NET Framework naming pattern for asynchronous methods. For example, the synchronous Receive method corresponds to the asynchronous BeginReceive and EndReceive methods.
         /// @remarks If your application only requires one thread during execution, use the following methods, which are designed for synchronous operation mode.
@@ -48,8 +50,6 @@ namespace Switch {
         /// @remarks When you are finished sending and receiving data, use the Shutdown method to disable the Socket. After calling Shutdown, call the Close method to release all resources associated with the Socket.
         /// @remarks The Socket class allows you to configure your Socket using the SetSocketOption method. Retrieve these settings using the GetSocketOption method.
         /// @note If you are writing a relatively simple application and do not require maximum performance, consider using TcpClient, TcpListener, and UdpClient. These classes provide a simpler and more user-friendly interface to Socket communications.
-        /// @par Library
-        /// Switch.System
         class system_export_ Socket : public Object {
         public:
           /// @brief Initializes a new instance of the Socket class using the specified address family, socket type and protocol.

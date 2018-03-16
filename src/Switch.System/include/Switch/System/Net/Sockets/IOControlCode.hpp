@@ -14,9 +14,9 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief  Specifies the IO control codes supported by the IOControl method.
-        /// @remarks The IOControlCode enumeration defines the socket option levels that can be passed to the Socket.SetSocketOption and Socket.GetSocketOption methods. SocketOptionName enumerated values are grouped by IOControlCode.
         /// @par Library
         /// Switch.System
+        /// @remarks The IOControlCode enumeration defines the socket option levels that can be passed to the Socket.SetSocketOption and Socket.GetSocketOption methods. SocketOptionName enumerated values are grouped by IOControlCode.
         enum class IOControlCode : int64 {
           /// @brief Replace the oldest queued datagram with an incoming datagram when the incoming message queues are full. This value is equal to the Winsock†2 SIO_ENABLE_CIRCULAR_QUEUEING constant.
           EnableCircularQueuing = 671088642,

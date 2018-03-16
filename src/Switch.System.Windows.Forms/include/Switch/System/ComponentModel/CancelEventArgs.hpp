@@ -8,6 +8,8 @@
 namespace Switch {
   namespace System {
     namespace ComponentModel {
+      /// @par Library
+      /// Switch.System.Windows.Forms
       class system_windows_forms_export_ CancelEventArgs : public EventArgs {
       public:
         CancelEventArgs() = default;

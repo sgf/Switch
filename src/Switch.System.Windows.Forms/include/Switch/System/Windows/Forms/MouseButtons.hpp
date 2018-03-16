@@ -8,6 +8,8 @@ namespace Switch {
   namespace System {
     namespace Windows {
       namespace Forms {
+        /// @par Library
+        /// Switch.System.Windows.Forms
         enum class MouseButtons {
           None = 0,
           Left = 0x100000,

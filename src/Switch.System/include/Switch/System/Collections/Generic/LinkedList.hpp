@@ -26,6 +26,8 @@ namespace Switch {
       /// @brief The System::Collections::Generic namespace contains interfaces and classes that define generic collections, which allow users to create strongly typed collections that provide better type safety and performance than non-generic strongly typed collections.
       namespace Generic {
         /// @brief Represents a doubly linked list.
+        /// @par Library
+        /// Switch.System
         /// @remarks LinkedList<T> is a general-purpose linked list. It supports enumerators and implements the ICollection interface, consistent with other collection classes in the .NET Framework.
         /// @remarks LinkedList<T> provides separate nodes of type LinkedListNode<T>, so insertion and removal are O(1) operations.
         /// @remarks You can remove nodes and reinsert them, either in the same list or in another list, which results in no additional objects allocated on the heap. Because the list also maintains an internal count, getting the Count property is an O(1) operation.
@@ -33,8 +35,6 @@ namespace Switch {
         /// @remarks Lists that contain reference types perform better when a node and its value are created at the same time. LinkedList<T> accepts null as a valid Value property for reference types and allows duplicate values.
         /// @remarks If the LinkedList<T> is empty, the First and Last properties contain null.
         /// @remarks The LinkedList<T> class does not support chaining, splitting, cycles, or other features that can leave the list in an inconsistent state. The list remains consistent on a single thread. The only multithreaded scenario supported by LinkedList<T> is multithreaded read operations.
-        /// @par Library
-        /// Switch.System
         template<typename T, typename TAllocator = Allocator<T>>
         class LinkedList : public Object, public System::Linq::Extension::Enumerable<LinkedList<T, TAllocator>, T>, public ICollection<T> {
           using Item = T;

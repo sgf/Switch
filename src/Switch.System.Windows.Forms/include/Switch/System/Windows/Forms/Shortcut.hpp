@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies shortcut keys that can be used by menu items.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         enum class Shortcut {
           Alt0 = 262192,
           Alt1,

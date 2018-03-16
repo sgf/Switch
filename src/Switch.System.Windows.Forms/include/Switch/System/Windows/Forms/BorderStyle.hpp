@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies the border style for a control.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks Use the members of this enumeration to set the border style for controls that have a changeable border.
         /// @par Examples
         /// The following code example demonstrates how to use the BorderStyle enumeration and the TreeView.BorderStyle, TreeView.HideSelection and the TreeView.ShowRootLines properties. To run this example, paste the following code in a form and call the InitializeTreeView method in the form's constructor or Load method.

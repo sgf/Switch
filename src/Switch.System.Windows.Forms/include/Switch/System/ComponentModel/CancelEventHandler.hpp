@@ -9,6 +9,8 @@
 namespace Switch {
   namespace System {
     namespace ComponentModel {
+      /// @par Library
+      /// Switch.System.Windows.Forms
       using CancelEventHandler = GenericEventHandler<CancelEventArgs&>;
     }
   }

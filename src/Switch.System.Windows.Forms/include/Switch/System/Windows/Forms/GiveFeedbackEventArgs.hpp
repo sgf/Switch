@@ -11,6 +11,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Provides data for the GiveFeedback event, which occurs during a drag operation.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         class system_windows_forms_export_ GiveFeedbackEventArgs : public EventArgs {
         public:
           /// @brief Initializes a new instance of the GiveFeedbackEventArgs class.

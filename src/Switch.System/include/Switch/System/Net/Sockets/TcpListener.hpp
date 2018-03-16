@@ -19,6 +19,8 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief Listens for connections from TCP network clients.
+        /// @par Library
+        /// Switch.System
         /// @remarks The TcpListener class provides simple methods that listen for and accept incoming connection requests in blocking synchronous mode. You can use either
         /// @remarks a TcpClient or a Socket to connect with a TcpListener. Create a TcpListener using an IPEndPoint, a Local IP address and port number, or just a port number.
         /// @remarks Specify Any for the local IP address and 0 for the local port number if you want the underlying service provider to assign those values for you.
@@ -29,8 +31,6 @@ namespace Switch {
         /// @remarks Call the Stop method to close the TcpListener.
         /// @note The Stop method does not close any accepted connections. You are responsible for closing these separately.
         /// @note The 0 for local port functionality is not available.
-        /// @par Library
-        /// Switch.System
         class system_export_ TcpListener : public Object {
         public:
           /// @brief Initializes a new instance of the TcpListener class with the specified local endpoint.

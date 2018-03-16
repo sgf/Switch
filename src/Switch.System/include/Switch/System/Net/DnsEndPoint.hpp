@@ -16,9 +16,9 @@ namespace Switch {
     /// The WebRequest and WebResponse classes form the basis of what are called pluggable protocols, an implementation of network services that enables you to develop applications that use Internet resources without worrying about the specific details of the individual protocols.
     namespace Net {
       /// @brief Represents a network endpoint as a host name or a string representation of an IP address and a port number.
-      /// @remarks The DnsEndPoint class contains a host name or an IP address and remote port information needed by an application to connect to a service on a host. By combining the host name or IP address and port number of a service, the DnsEndPoint class forms a connection point to a service.
       /// @par Library
       /// Switch.System
+      /// @remarks The DnsEndPoint class contains a host name or an IP address and remote port information needed by an application to connect to a service on a host. By combining the host name or IP address and port number of a service, the DnsEndPoint class forms a connection point to a service.
       class system_export_ DnsEndPoint : public EndPoint {
       public:
         /// @brief Initializes a new instance of the DnsEndPoint class with the host name or string representation of an IP address and a port number.

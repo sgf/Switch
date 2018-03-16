@@ -15,6 +15,8 @@ namespace Switch {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
         /// @brief Provides static, predefined Clipboard format names. Use them to identify the format of data that you store in an IDataObject.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks The IDataObject and DataObject classes also use the static format list to determine the type of data that is retrieved from the system Clipboard, or that is transferred in a drag-and-drop operation.
         /// @remarks The GetFormat method allows you to:
         /// * Get a predefined DataFormats.Format object for a format name or ID number.

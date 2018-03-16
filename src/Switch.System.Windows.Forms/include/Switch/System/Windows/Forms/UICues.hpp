@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies the state of the user interface.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks This enumeration is used by members such as the constructor for System::Windows::Forms::UICuesEventArgs.
         /// @remarks This enumeration is used to specify which user interface cues will be displayed or changed. For example, when the user presses the ALT key, the keyboard shortcuts on the menu are displayed by underlining the appropriate character. The bitwise combination of System::Windows::Forms::UICues for this example would be UICues::ShowKeyboard and UICues::ChangeKeyboard.
         enum class UICues {

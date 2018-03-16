@@ -17,6 +17,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Provides information about the current system environment.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks The SystemInformation class provides static properties that can be used to get information about the current system environment. The class provides access to information such as Windows display element sizes, operating system settings, network availability, and the capabilities of hardware installed on the system. This class cannot be instantiated.
         /// @remarks For more information about system-wide parameters, see "SystemParametersInfo" in the Platform SDK documentation at http://msdn.microsoft.com.
         class system_windows_forms_export_ SystemInformation static_ {

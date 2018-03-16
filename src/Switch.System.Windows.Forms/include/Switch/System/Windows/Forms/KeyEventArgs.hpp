@@ -15,6 +15,8 @@ namespace Switch {
         /// @endcond
 
         /// @brief Provides data for the KeyDown or KeyUp event.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks A KeyEventArgs, which specifies the key the user pressed and whether any modifier keys (CTRL, ALT, and SHIFT) were pressed at the same time, is passed with each KeyDown or KeyUp event.
         /// @remarks The KeyDown event occurs when the user presses any key. The KeyUp event occurs when the user releases the key. Duplicate KeyDown events occur each time the key repeats, if the key is held down, but only one KeyUp event is generated when the user releases the key.
         /// @remarks The KeyPress event also occurs when a key is pressed. A KeyPressEventArgs is passed with each KeyPress event, and specifies the character that was composed as a result of each key press.

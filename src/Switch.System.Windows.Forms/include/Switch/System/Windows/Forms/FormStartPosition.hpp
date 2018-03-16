@@ -13,6 +13,8 @@ namespace Switch {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
         /// @brief Specifies the initial position of a form.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         enum class FormStartPosition {
           /// @brief The position of the form is determined by the Location property.
           Manual,

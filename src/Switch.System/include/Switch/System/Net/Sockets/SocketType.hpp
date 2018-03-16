@@ -14,10 +14,10 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief Specifies the type of socket that an instance of the Socket class represents.
-        /// @remarks Before a Socket can send and receive data, it must first be created using an AddressFamily, a SocketType, and a ProtocolType. The SocketType enumeration provides several options for defining the type of Socket that you intend to open.
-        /// @note SocketType will sometimes implicitly indicate which ProtocolType will be used within an AddressFamily. For example when the SocketType is Dgram, the ProtocolType is always Udp.When the SocketType is Stream, the ProtocolType is always Tcp. If you try to create a Socket with an incompatible combination, Socket will throw a SocketException.
         /// @par Library
         /// Switch.System
+        /// @remarks Before a Socket can send and receive data, it must first be created using an AddressFamily, a SocketType, and a ProtocolType. The SocketType enumeration provides several options for defining the type of Socket that you intend to open.
+        /// @note SocketType will sometimes implicitly indicate which ProtocolType will be used within an AddressFamily. For example when the SocketType is Dgram, the ProtocolType is always Udp.When the SocketType is Stream, the ProtocolType is always Tcp. If you try to create a Socket with an incompatible combination, Socket will throw a SocketException.
         enum class SocketType {
           /// @brief Specifies an unknown Socket type.
           Unknown = -1,

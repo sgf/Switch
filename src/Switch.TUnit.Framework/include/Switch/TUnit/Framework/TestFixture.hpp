@@ -12,11 +12,16 @@
 namespace Switch {
   namespace TUnit {
     namespace Framework {
+      /// @par Library
+      /// Switch.TUnit.Framework
       struct tunit_framework_export_ TestFixture : public object {
       protected:
         void AddOneTimeTearDown(const RegisteredMethod& registeredMethod) {this->oneTimeTearDowns.Insert(0, registeredMethod);}
+
         void AddSetUp(const RegisteredMethod& registeredMethod) {this->setUps.Add(registeredMethod);}
+
         void AddTearDown(const RegisteredMethod& registeredMethod) {this->tearDowns.Insert(0, registeredMethod);}
+
         void AddTest(const RegisteredMethod& registeredMethod) {this->tests.Add(registeredMethod);}
 
       private:

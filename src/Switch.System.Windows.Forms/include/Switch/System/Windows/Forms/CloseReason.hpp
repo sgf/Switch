@@ -15,6 +15,8 @@ namespace Switch {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
         /// @brief Specifies the reason that a form was closed.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks The FormClosing and FormClosed events are raised when a Form is closed, either through user action or programmatically. Handlers for these events receive parameters of type FormClosingEventArgs and FormClosedEventArgs, respectively. Both of these event argument classes use the CloseReason enumeration.
         enum class CloseReason {
           /// @brief The cause of the closure was not defined or could not be determined.

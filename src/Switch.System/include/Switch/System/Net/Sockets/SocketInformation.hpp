@@ -19,9 +19,9 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief Encapsulates the information that is necessary to duplicate a Socket.
-        /// @remarks Socket::DuplicateAndClose creates a SocketInformation instance for use with the Socket::Socket(SocketInformation) constructor.
         /// @par Library
         /// Switch.System
+        /// @remarks Socket::DuplicateAndClose creates a SocketInformation instance for use with the Socket::Socket(SocketInformation) constructor.
         class system_export_ SocketInformation : public Object {
         public:
           /// @brief Create a new instance of SocketInformation class.

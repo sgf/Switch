@@ -15,12 +15,14 @@ namespace Switch {
     namespace Windows {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
-        /// @brief Represents a Windows button control.
-        /// @remarks A Button can be clicked by using the mouse, ENTER key, or SPACEBAR if the button has focus.
-        /// @remarks Set the AcceptButton or CancelButton property of a Form to allow users to click a button by pressing the ENTER or ESC keys even if the button does not have focus. This gives the form the behavior of a dialog box.
-        /// @remarks When you display a form using the ShowDialog method, you can use the DialogResult property of a button to specify the return value of ShowDialog.
-        /// @remarks You can change the button's appearance. For example, to make it appear flat for a Web look, set the FlatStyle property to FlatStyle.Flat. The FlatStyle property can also be set to FlatStyle.Popup, which appears flat until the mouse pointer passes over the button; then the button takes on the standard Windows button appearance.
-        /// @note If the control that has focus accepts and processes the ENTER key press, the Button does not process it. For example, if a multiline TextBox or another button has focus, that control processes the ENTER key press instead of the accept button.
+        /// @brief Represents a Windows CheckBox.
+        /// @par Library
+        /// Switch.System.Windows.Forms
+        /// @remarks Use a CheckBox to give the user an option, such as true/false or yes/no. The CheckBox control can display an image or text or both.
+        /// @remarks CheckBox and RadioButton controls have a similar function: they allow the user to choose from a list of options. CheckBox controls let the user pick a combination of options. In contrast, RadioButton controls allow a user to choose from mutually exclusive options.
+        /// @remarks The Appearance property determines whether the CheckBox appears as a typical CheckBox or as a button.
+        /// @remarks The ThreeState property determines whether the control supports two or three states. Use the Checked property to get or set the value of a two-state CheckBox control and use the CheckState property to get or set the value of a three-state CheckBox control.
+        /// @note If the ThreeState property is set to true, the Checked property will return true for either a checked or indeterminate state.
         /// @remarks The FlatStyle property determines the style and appearance of the control. If the FlatStyle property is set to FlatStyle.System, the user's operating system determines the appearance of the control.
         /// @note When the FlatStyle property is set to FlatStyle.System, the CheckAlign property is ignored and the control is displayed using the ContentAlignment.MiddleLeft or ContentAlignment.MiddleRight alignment. If the CheckAlign property is set to one of the right alignments, the control is displayed using the ContentAlignment.MiddleRight alignment; otherwise, it is displayed using the ContentAlignment.MiddleLeft alignment.
         /// @remarks The following describes an indeterminate state: You have a CheckBox that determines if the selected text in a RichTextBox is bold. When you select text you can click the CheckBox to bold the selection. Likewise, when you select some text, the CheckBox displays whether the selected text is bold. If your selected text contains text that is bold and normal, the CheckBox will have an indeterminate state.
@@ -34,20 +36,18 @@ namespace Switch {
           /// @par Example
           /// The following code example creates and initializes a CheckBox, gives it the appearance of a toggle button, sets AutoCheck to false, and adds it to a Form.
           /// @code
-          /// $<CheckBox> checkBox1;
+          /// // Create and initialize a CheckBox.
+          /// CheckBox checkBox1;
           ///
           /// void InstantiateMyCheckBox() {
-          ///   // Create and initialize a CheckBox.
-          ///   this->checkBox1 = new_<CheckBox>();
-          ///
           ///   // Make the check box control appear as a toggle button.
-          ///   this->checkBox1->Appearance = Appearance::Button;
+          ///   this->checkBox1.Appearance = Appearance::Button;
           ///
           ///   // Turn off the update of the display on the click of the control.
-          ///   this->checkBox1->AutoCheck = false;
+          ///   this->checkBox1.AutoCheck = false;
           ///
           ///   // Add the check box control to the form.
-          ///   this->Controls().Add(*this->checkBox1);
+          ///   this->Controls().Add(this->checkBox1);
           /// }
           /// @endcode
           CheckBox() : ButtonBase("", 0, 0, 104, 24) { this->SetStyle(ControlStyles::UserPaint, false); }
@@ -58,20 +58,18 @@ namespace Switch {
           /// @par Example
           /// The following code example creates and initializes a CheckBox, gives it the appearance of a toggle button, sets AutoCheck to false, and adds it to a Form.
           /// @code
-          /// $<CheckBox> checkBox1;
+          /// // Create and initialize a CheckBox.
+          /// CheckBox checkBox1;
           ///
           /// void InstantiateMyCheckBox() {
-          ///   // Create and initialize a CheckBox.
-          ///   this->checkBox1 = new_<CheckBox>();
-          ///
           ///   // Make the check box control appear as a toggle button.
-          ///   this->checkBox1->Appearance = Appearance::Button;
+          ///   this->checkBox1.Appearance = Appearance::Button;
           ///
           ///   // Turn off the update of the display on the click of the control.
-          ///   this->checkBox1->AutoCheck = false;
+          ///   this->checkBox1.AutoCheck = false;
           ///
           ///   // Add the check box control to the form.
-          ///   this->Controls().Add(*this->checkBox1);
+          ///   this->Controls().Add(this->checkBox1);
           /// }
           /// @endcode
           property_<bool> AutoCheck {
@@ -184,20 +182,18 @@ namespace Switch {
           /// @par Example
           /// The following code example creates and initializes a CheckBox, gives it the appearance of a toggle button, sets AutoCheck to false, and adds it to a Form.
           /// @code
-          /// $<CheckBox> checkBox1;
+          /// // Create and initialize a CheckBox.
+          /// CheckBox checkBox1;
           ///
           /// void InstantiateMyCheckBox() {
-          ///   // Create and initialize a CheckBox.
-          ///   this->checkBox1 = new_<CheckBox>();
-          ///
           ///   // Make the check box control appear as a toggle button.
-          ///   this->checkBox1->Appearance = Appearance::Button;
+          ///   this->checkBox1.Appearance = Appearance::Button;
           ///
           ///   // Turn off the update of the display on the click of the control.
-          ///   this->checkBox1->AutoCheck = false;
+          ///   this->checkBox1.AutoCheck = false;
           ///
           ///   // Add the check box control to the form.
-          ///   this->Controls().Add(*this->checkBox1);
+          ///   this->Controls().Add(this->checkBox1);
           /// }
           /// @endcode
           void SetAutoCheck(bool autoCheck);

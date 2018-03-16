@@ -14,6 +14,8 @@ namespace Switch {
         class Control;
         /// @endcond
 
+        /// @par Library
+        /// Switch.System.Windows.Forms
         class system_windows_forms_export_ KeyPressEventArgs : public EventArgs {
         public:
           KeyPressEventArgs() = default;

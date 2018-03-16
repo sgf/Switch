@@ -22,6 +22,8 @@ namespace Switch {
       /// @endcond
 
       /// @brief Stores serialized information from EndPoint derived classes.
+      /// @par Library
+      /// Switch.System
       /// @remarks The first 2 bytes of the underlying buffer are reserved for the AddressFamily enumerated value.
       /// @remarks When the SocketAddress is used to store a serialized IPEndPoint, the third and fourth bytes are
       /// @remarks used to store port number information. The next bytes are used to store the IP address. You can
@@ -29,8 +31,6 @@ namespace Switch {
       /// @remarks byte buffer uses zero-based indexing. You can also use the Family and Size properties to get the
       /// @remarks AddressFamily value and the buffer size, respectively. To view any of this information as a string,
       /// @remarks use the ToString method.
-      /// @par Library
-      /// Switch.System
       class system_export_ SocketAddress : public Object {
       public:
         /// @brief Creates a new instance of the SocketAddress class for the given address family.

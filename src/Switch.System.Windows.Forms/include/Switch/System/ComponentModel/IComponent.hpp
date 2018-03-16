@@ -11,6 +11,8 @@ namespace Switch {
     namespace ComponentModel {
       /// @interface IComponent
       /// @brief Provides the base implementation for the IComponent interface and enables object sharing between applications.
+      /// @par Library
+      /// Switch.System.Windows.Forms
       class system_windows_forms_export_ IComponent interface_ {
       public:
         /// @brief Performs application-defined tasks associated with freeing, releasing, or resetting resources.

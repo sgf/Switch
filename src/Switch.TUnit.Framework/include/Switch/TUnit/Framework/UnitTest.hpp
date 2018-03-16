@@ -13,7 +13,10 @@ namespace Switch {
       template <typename TestFixture>
       struct TestFixtureAttribute;
       /// @endcond
+
       /// @brief UnitTest is...
+      /// @par Library
+      /// Switch.TUnit.Framework
       class tunit_framework_export_ UnitTest {
       public:
         UnitTest() {}

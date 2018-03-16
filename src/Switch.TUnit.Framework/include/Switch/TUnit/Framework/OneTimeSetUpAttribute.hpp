@@ -7,9 +7,12 @@
 namespace Switch {
   namespace TUnit {
     namespace Framework {
+      /// @par Library
+      /// Switch.TUnit.Framework
       struct OneTimeSetUpAttribute {
         template<typename TestFixture>
         OneTimeSetUpAttribute(const string& name, TestFixture& testFixture, void (TestFixture::*method)()) :  OneTimeSetUpAttribute(name, testFixture, method, System::Runtime::CompilerServices::Caller()) {}
+
         template<typename TestFixture>
         OneTimeSetUpAttribute(const string& name, TestFixture& testFixture, void (TestFixture::*method)(), const System::Runtime::CompilerServices::Caller& caller) {testFixture.AddOneTimeSetUp({name, {testFixture, method}, caller});}
       };

@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Specifies the state of a control, such as a check box, that can be checked, unchecked, or set to an indeterminate state.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks Multiple methods in CheckBox, CheckedListBox, and ItemCheckEventArgs use this enumeration.
         /// @note Use an indeterminately checked control when you do not want to set a default value.
         /// @par Examples

@@ -11,6 +11,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Provides data for the Control::ChangeUICues event.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks A System::Windows::Forms::UICuesEventArgs specifies which user interface feature changed and its new value.
         /// @remarks The Control::ChangeUICues event occurs when the user interface changes by showing or hiding focus indicators or keyboard cues. This is usually when the user presses the TAB, ALT, or F10 keys.
         class system_windows_forms_export_ UICuesEventArgs : public EventArgs {

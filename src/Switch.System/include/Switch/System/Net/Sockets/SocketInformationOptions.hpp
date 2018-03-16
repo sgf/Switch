@@ -14,9 +14,9 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief This enumeration has a FlagsAttribute attribute that allows a bitwise combination of its member values.
-        /// @see Socket
         /// @par Library
         /// Switch.System
+        /// @see Socket
         enum class SocketInformationOptions {
           /// @brief None SockectInformationOptions.
           None = 0x00,

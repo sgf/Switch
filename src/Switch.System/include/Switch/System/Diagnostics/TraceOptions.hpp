@@ -11,9 +11,9 @@ namespace Switch {
     /// @brief The System::Diagnostics namespace provides classes that allow you to interact with system processes, event logs, and performance counters.
     namespace Diagnostics {
       /// @brief Specifies trace data options to be written to the trace output.
-      /// @remarks This enumeration is used by trace listeners to determine which options, or elements, should be included in the trace output. Trace listeners store the trace options in the TraceOutputOptions property.
       /// @par Library
       /// Switch.System
+      /// @remarks This enumeration is used by trace listeners to determine which options, or elements, should be included in the trace output. Trace listeners store the trace options in the TraceOutputOptions property.
       enum class TraceOptions {
         /// @brief Do not write any elements.
         None = 0,

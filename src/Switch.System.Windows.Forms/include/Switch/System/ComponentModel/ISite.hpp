@@ -21,6 +21,8 @@ namespace Switch {
     namespace ComponentModel {
       /// @interface ISite
       /// @brief Provides functionality required by sites.
+      /// @par Library
+      /// Switch.System.Windows.Forms
       class system_windows_forms_export_ ISite interface_ {
       public:
         /// @brief A valid value for this property (that is, the value is not null) indicates that the component has been added to a container.

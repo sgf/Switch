@@ -11,6 +11,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief Provides data for the Invalidated event.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         class system_windows_forms_export_ InvalidateEventArgs : public EventArgs {
         public:
           /// @brief Initializes a new instance of the InvalidateEventArgs class.

@@ -10,8 +10,9 @@ namespace Switch {
       namespace Forms {
         /// @brief The Switch::System::Windows::Forms::VisualStyles namespace contains classes for rendering controls and other Windows user interface (UI) elements with visual styles in operating systems that support them.
         namespace VisualStyles {
-          /// @brief Enumeration.
-          /// Specifies how visual styles are applied to the current application.
+          /// @brief Specifies how visual styles are applied to the current application.
+          /// @par Library
+          /// Switch.System.Windows.Forms
           /// @remarks This enumeration is used by the Application::VisualStyleState property to specify whether visual styles are applied to client or nonclient areas of application windows.
           enum class VisualStyleState {
             /// @brief Visual styles are not applied to the application.

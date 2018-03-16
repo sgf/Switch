@@ -14,11 +14,11 @@ namespace Switch {
       /// @brief The System::Collections::Specialized namespace contains specialized and strongly-typed collections; for example, a linked list dictionary, a bit vector, and collections that contain only strings.
       namespace Specialized {
         /// @brief Represents a collection of strings.
+        /// @par Library
+        /// Switch.System
         /// @remarks StringCollection allows duplicate elements.
         /// @remarks string comparisons are case-sensitive.
         /// @remarks Elements in this collection can be accessed using an integer index. Indexes in this collection are zero-based.
-        /// @par Library
-        /// Switch.System
         /// @par Examples
         /// The following code example demonstrates several of the properties and methods of StringCollection.
         /// @include StringCollection.cpp

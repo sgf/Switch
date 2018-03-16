@@ -14,9 +14,9 @@ namespace Switch {
       /// @brief The System::Net::Sockets namespace provides a managed implementation of the Berkeley Sockets interface for developers who need to tightly control access to the network.
       namespace Sockets {
         /// @brief Defines the polling modes for the Socket::Poll method.
-        /// @remarks The SelectMode enumeration defines the polling modes that can be passed to the Socket::Poll method. Use the SelectModeSelectRead value to determine if a listening Socket has incoming connection requests. Use the SelectModeSelectWrite value to determine if a Socket is writeable. Use the SelectError value to determine if there is an error condition present on the Socket. For explanations of writeability, readability, and the presence of error conditions, see the Socket::Poll method.
         /// @par Library
         /// Switch.System
+        /// @remarks The SelectMode enumeration defines the polling modes that can be passed to the Socket::Poll method. Use the SelectModeSelectRead value to determine if a listening Socket has incoming connection requests. Use the SelectModeSelectWrite value to determine if a Socket is writeable. Use the SelectError value to determine if there is an error condition present on the Socket. For explanations of writeability, readability, and the presence of error conditions, see the Socket::Poll method.
         enum class SelectMode {
           /// @brief Read status mode.
           SelectRead = 0,

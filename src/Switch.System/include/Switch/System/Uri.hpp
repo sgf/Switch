@@ -26,6 +26,8 @@ namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
   namespace System {
     /// @brief Provides an object representation of a uniform resource identifier (URI) and easy access to the parts of the URI.
+    /// @par Library
+    /// Switch.System
     /// @remarks A URI is a compact representation of a resource available to your application on the intranet or Internet. The Uri class defines the properties and methods for handling URIs, including parsing, comparing, and combining. The Uri class properties are read-only; to create a modifiable object, use the UriBuilder class.
     /// @remarks Relative URIs (for example, "/new/index.htm") must be expanded with respect to a base URI so that they are absolute. The MakeRelative method is provided to convert absolute URIs to relative URIs when necessary.
     /// @remarks The Uri constructors do ! escape URI strings if the string is a well-formed URI including a scheme identifier.
@@ -38,8 +40,6 @@ namespace Switch {
     /// @remarks For hierarchical URIs, if the host is ! terminated with a forward slash (/), one is added.
     /// @remarks By default, any reserved characters in the URI are escaped in accordance with RFC 2396. This behavior changes if International Resource Identifiers or International Domain Name parsing is enabled in which case reserved characters in the URI are escaped in accordance with RFC 3986 and RFC 3987.
     /// @remarks As part of canonicalization in the constructor for some schemes, escaped representations are compacted. The schemes for which URI will compact escaped sequences include the following: file, http, https, net.pipe, and net.tcp. For all other schemes, escaped sequences are ! compacted. For example: if you percent encode the two dots ".." as "%2E%2E" then the URI constructor will compact this sequence for some schemes. For example, the following code sample shows a URI constructor for the http scheme.
-    /// @par Library
-    /// Switch.System
     class system_export_ Uri : public Object, public System::Runtime::Serialization::ISerializable {
     public:
       /// @cond

@@ -9,6 +9,8 @@ namespace Switch {
     namespace Windows {
       namespace Forms {
         /// @brief This Enumeration represents the styles the ProgressBar can take. Blocks and Continuous.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         enum class ProgressBarStyle {
           /// @brief The progress bar displays the progress status as a segmented bar.
           Blocks,

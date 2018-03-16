@@ -17,6 +17,8 @@ namespace Switch {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
         /// @brief Represents a standard Windows track bar.
+        /// @par Library
+        /// Switch.System.Windows.Forms
         /// @remarks The TrackBar is a scrollable control similar to the ScrollBar control. You can configure ranges through which the value of the Value property of a track bar scrolls by setting the Minimum property to specify the lower end of the range and the Maximum property to specify the upper end of the range.
         /// @remarks The LargeChange property defines the increment to add or subtract from the Value property when clicks occur on either side of the scroll box. The track bar can be displayed horizontally or vertically.
         /// @remarks You can use this control to input numeric data obtained through the Value property. You can display this numeric data in a control or use it in code.

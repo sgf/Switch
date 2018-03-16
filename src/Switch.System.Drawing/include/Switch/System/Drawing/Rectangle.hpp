@@ -20,12 +20,12 @@ namespace Switch {
     /// @brief The System::Drawing namespace provides access to GDI+ basic graphics functionality. More advanced functionality is provided in the System::Drawing::Drawing2D, System::Drawing::Imaging, and System::Drawing::Text namespaces.
     namespace Drawing {
       /// @brief Stores a set of four integers that represent the location and size of a rectangle
+      /// @par Library
+      /// Switch.System.Drawing
       /// @remarks A rectangle is defined by its Width, Height, and upper-left corner represented by the Location property.
       /// @remarks To draw rectangles, you need a Graphics object and a Pen object. The Graphics object provides the DrawRectangle method, and the Pen object stores features of the line, such as color and width. The units the rectangle is drawn in is determined by the PageUnit and PageScale properties of the graphics object used for drawing. The default unit is pixels.
       /// @remarks To draw a Rectangle filled with color, you need a Graphics object and an object derived from Brush such as SolidBrush or LinearGradientBrush. The Graphics object provides the FillRectangle method and the Brush object provides the color and fill information.
       /// @remarks For more advanced shapes, use a Region object.
-      /// @par Library
-      /// Switch.System.Drawing
       class system_drawing_export_ Rectangle : public object {
       public:
         /// @brief Represents a Rectangle structure with its properties left uninitialized.

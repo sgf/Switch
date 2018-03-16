@@ -16,9 +16,9 @@ namespace Switch {
       /// @brief The System::Collections::Concurrent namespace provides several thread-safe collection classes that should be used in place of the corresponding types in the System::Collections and System::Collections::Generic namespaces whenever multiple threads are accessing the collection concurrently.
       namespace Concurrent {
         /// @brief Represents a thread-safe, unordered collection of objects.
-        /// @remarks Bags are useful for storing objects when ordering doesn't matter, and unlike sets, bags support duplicates. ConcurrentBag<T> is a thread-safe bag implementation, optimized for scenarios where the same thread will be both producing and consuming data stored in the bag.
         /// @par Library
         /// Switch.System
+        /// @remarks Bags are useful for storing objects when ordering doesn't matter, and unlike sets, bags support duplicates. ConcurrentBag<T> is a thread-safe bag implementation, optimized for scenarios where the same thread will be both producing and consuming data stored in the bag.
         /// @par Examples
         /// The following example shows how to add and remove items from a ConcurrentBag<T>:
         /// @include ConcurrentBag.cpp
