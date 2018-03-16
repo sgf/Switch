@@ -19,6 +19,7 @@
 #include "System/Windows/Forms/CheckBox.hpp"
 //#include "System/Windows/Forms/CheckedListBox.hpp"
 #include "System/Windows/Forms/CloseReason.hpp"
+#include "System/Windows/Forms/Commondialog.hpp"
 #include "System/Windows/Forms/ContainerControl.hpp"
 #include "System/Windows/Forms/Control.hpp"
 #include "System/Windows/Forms/ControlEventArgs.hpp"

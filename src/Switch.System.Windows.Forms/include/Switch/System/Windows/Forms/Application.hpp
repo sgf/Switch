@@ -89,6 +89,13 @@ namespace Switch {
           /// @endcode
           static void Exit();
 
+          /// @brief Raises the ThreadException event.
+          /// @param exception An Exception that represents the exception that was thrown.
+          /// @remarks Call OnThreadException to raise an exception that will halt processing of the application.
+          /// @remarks The Application class has a ThreadException event. You can attach an event handler to this event to do whatever custom processing you need for unhandled exceptions. If you do not attach an event handler, OnThreadException will execute the default behavior, which involves displaying a dialog box to inform the user that there has been an error.
+          /// @remarks OnThreadException only implements default exception behavior for unhandled exceptions that occur on threads owned by Windows Forms. Unhandled exceptions on other threads are handled by the UnhandledException event.
+          static void OnThreadException(const Exception& exception);
+
           /// @brief Begins running a standard application message loop on the current thread, without a form.
           /// @exception InvalidOperationException A main message loop is already running on this thread.
           /// @remarks In a Win32-based or Windows Forms application, a message loop is a routine in code that processes user events, such as mouse clicks and keyboard strokes. Every running Windows-based application requires an active message loop, called the main message loop. When the main message loop is closed, the application exits. In Windows Forms, this loop is closed when the Exit method is called, or when the ExitThread method is called on the thread that is running the main message loop.

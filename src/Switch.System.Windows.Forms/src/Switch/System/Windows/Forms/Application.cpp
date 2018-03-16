@@ -15,6 +15,10 @@ void Application::Exit() {
   Native::ApplicationApi::Exit();
 }
 
+void Application::OnThreadException(const Exception& exception) {
+
+}
+
 void Application::Init() {
   static bool runOnce = true;
   if (runOnce) {
@@ -28,7 +32,6 @@ void Application::MessageLoop() {
   Idle = EventHandler();
   Native::ApplicationApi::Stop();
 }
-
 
 void Application::SetCompatibleTextRenderingDefault(bool rendering) {
 
