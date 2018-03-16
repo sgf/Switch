@@ -25,15 +25,14 @@ namespace Switch {
           /// @brief Represents a Clipboard format type.
           /// @remarks A format type consists of a text-based format name and an ID number. The format name/ID number pair can define a system Clipboard or other format.
           /// @par Examples
-          ///  The following code example shows how to retrieve a DataFormats.Format representing a format name/ID pair. The UnicodeText format is requested, and the contents of the retrieved DataFormats.Format are displayed in a text box.
-          ///
+          ///  The following code example shows how to retrieve a DataFormats.Format representing a format name/ID pair. The UnicodeText format is requested, and the contents of the retrieved DataFormats.Format are displayed in a text box.<br><br>
           ///  This code requires that textBox1 has been created.
           /// @code
           /// void GetMyFormatInfomation() {
           ///   // Creates a DataFormats.Format for the Unicode data format.
           ///   DataFormats::Format myFormat = DataFormats::GetFormat(DataFormats::UnicodeText());
           ///   // Displays the contents of myFormat.
-          ///   textBox1->Text("ID value: " + myFormat.Id() + '\n' + "Format name: " + myFormat.Name());
+          ///   textBox1.Text("ID value: "_s + myFormat.Id() + '\n' + "Format name: "_s + myFormat.Name());
           /// }
           /// @endcode
           class Format : public object {

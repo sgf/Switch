@@ -86,4 +86,3 @@ struct EnumRegister<System::Windows::Forms::BorderStyle> {
 /// @endcond
 
 using namespace Switch;
-
