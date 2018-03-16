@@ -6,9 +6,13 @@
 #include "../../SystemExport.hpp"
 
 /// @cond
-namespace Switch { namespace System { namespace ComponentModel {
-  class IComponenent;
-}}}
+namespace Switch {
+  namespace System {
+    namespace ComponentModel {
+      class IComponenent;
+    }
+  }
+}
 /// @endcond
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.

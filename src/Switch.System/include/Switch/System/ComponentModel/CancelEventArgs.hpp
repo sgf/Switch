@@ -42,11 +42,11 @@ namespace Switch {
       public:
         /// @brief Initializes a new instance of the CancelEventArgs class with the Cancel property set to false.
         CancelEventArgs() = default;
-        
+
         /// @brief Initializes a new instance of the CancelEventArgs class with the Cancel property set to the given value.
         /// @param cancel true to cancel the event; otherwise, false.
         explicit CancelEventArgs(bool cancel) : cancel(cancel) {}
-        
+
         /// @cond
         CancelEventArgs(const CancelEventArgs& ce) : cancel(ce.cancel) {}
         CancelEventArgs& operator=(const CancelEventArgs&) = default;
