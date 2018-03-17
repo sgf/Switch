@@ -45,9 +45,9 @@ namespace Switch {
           CommonDialog() {}
 
           /// @brief Gets or sets an object that contains data about the control.
-          /// @return The object that contains data about the CommonDialog.
+          /// @return object The object that contains data about the CommonDialog.
           /// @remarks Use this property to store arbitrary information about the control.
-          property_ < $<object >> Tag {
+          property_ < ref<object >> Tag {
             get_ {return this->tag;},
             set_ {this->tag = value;}
           };
@@ -175,7 +175,7 @@ namespace Switch {
           virtual intptr OwnerWndProc(intptr hWnd, int32 msg, intptr wparam, intptr lparam);
 
           /// @cond
-          $<object> tag;
+          ref<object> tag;
           /// @endcond
         };
       }
