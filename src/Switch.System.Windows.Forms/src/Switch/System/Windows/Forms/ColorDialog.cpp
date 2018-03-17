@@ -12,7 +12,8 @@ void ColorDialog::Reset() {
   this->AllowFullOpen = true;
   this->AnyColor = false;
   this->Color = System::Drawing::Color::Black;
-  this->CustomColors = Array<System::Drawing::Color>();
+  for (int32 index = 0; index < this->CustomColors().Length; index++)
+    this->CustomColors()[index] = System::Drawing::Color::White;
   this->FullOpen = false;
   this->ShowHelp = false;
 }

@@ -165,8 +165,9 @@ namespace Switch {
           /// myDialog.ShowDialog();
           /// this->BackColor =  myDialog.Color;
           /// @endcode
-          property_<Array<System::Drawing::Color>&, readonly_> CustomColors {
-            get_->Array<System::Drawing::Color>&{return this->customColors;}
+          property_<Array<System::Drawing::Color>> CustomColors {
+            get_ {return this->customColors;},
+            set_ {this->customColors = value;}
           };
 
           /// @brief Gets or sets a value indicating whether the controls used to create custom colors are visible when the dialog box is opened

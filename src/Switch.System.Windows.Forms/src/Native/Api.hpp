@@ -58,7 +58,7 @@ namespace Native {
 
   class CommonDialog static_ {
   public:
-    static bool RunColorDialog(intptr hwnd, const System::Windows::Forms::ColorDialog& colorDialog);
+    static bool RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog& colorDialog);
   };
 
   class ControlApi static_ {

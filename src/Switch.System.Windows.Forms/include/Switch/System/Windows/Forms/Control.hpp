@@ -63,6 +63,10 @@ namespace Switch {
           /// @endcode
           class ControlCollection : public System::Collections::Generic::List<ref<Control>> {
           public:
+            /// @cond
+            ~ControlCollection() { this->Clear(); }
+            /// @endcond
+
             /// @brief Adds the specified control to the control collection.
             /// @exception Exception The specified control is a top-level control, or a circular control reference would result if this control were added to the control collection.
             /// @exception ArgumentException The object assigned to the value parameter is not a Control.
