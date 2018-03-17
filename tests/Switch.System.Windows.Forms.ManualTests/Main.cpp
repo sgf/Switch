@@ -19,7 +19,7 @@ namespace ManualTests {
       Button button;
       button.Text = "button";
       button.Location = Point(10, 10);
-      button.Click += delegate_(const object& sender, const EventArgs& e) {
+      button.Click += delegate_(const object & sender, const EventArgs & e) {
         ColorDialog colorDialog;
         colorDialog.Color = System::Drawing::Color::Green;
         System::Diagnostics::Debug::WriteLine(string::Format("Result = {0}", colorDialog.ShowDialog()));

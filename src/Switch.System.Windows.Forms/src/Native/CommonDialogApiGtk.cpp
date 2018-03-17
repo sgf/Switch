@@ -17,7 +17,7 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
   Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
 
   Gtk::ColorChooserDialog colorChooserDialog("Color");
-  if (window!= null) colorChooserDialog.set_transient_for(*window);
+  if (window != null) colorChooserDialog.set_transient_for(*window);
   colorChooserDialog.set_modal(true);
   colorChooserDialog.set_rgba(Native::Widget::FromColor(colorDialog.Color));
 
