@@ -18,7 +18,7 @@ intptr CommonDialog::HookProc(intptr hWnd, int32 msg, intptr wparam, intptr lpar
 }
 
 void CommonDialog::OnHelpRequest(const EventArgs& e) {
-  this->HelpRequest(*as<Component>(this), e);
+  this->HelpRequest(*this, e);
 }
 
 intptr CommonDialog::OwnerWndProc(intptr hWnd, int32 msg, intptr wparam, intptr lparam) {

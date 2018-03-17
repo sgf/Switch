@@ -9,11 +9,12 @@ ColorDialog::ColorDialog() {
 }
 
 void ColorDialog::Reset() {
-  this->allowFullOpen = true;
-  this->anyColor = false;
-  this->color = System::Drawing::Color::Black;
-  this->customColors = Array<System::Drawing::Color>();
-  this->fullOpen = false;
+  this->AllowFullOpen = true;
+  this->AnyColor = false;
+  this->Color = System::Drawing::Color::Black;
+  this->CustomColors = Array<System::Drawing::Color>();
+  this->FullOpen = false;
+  this->ShowHelp = false;
 }
 
 bool ColorDialog::RunDialog(intptr hwndOwner) {

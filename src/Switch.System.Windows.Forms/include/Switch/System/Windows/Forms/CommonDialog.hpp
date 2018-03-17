@@ -39,7 +39,7 @@ namespace Switch {
         ///     textBox1.ForeColor =  MyDialog.Color;
         /// }
         /// @endcode
-        class system_windows_forms_export_ CommonDialog abstract_, public System::ComponentModel::Component {
+        class system_windows_forms_export_ CommonDialog : public System::ComponentModel::Component {
         public:
           /// @brief Initializes a new instance of the CommonDialog class.
           CommonDialog() {}

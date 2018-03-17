@@ -26,7 +26,7 @@ namespace Switch {
         ///   // Keeps the user from selecting a custom color.
         ///   myDialog.AllowFullOpen = false ;
         ///   // Allows the user to get help. (The default is false.)
-        ///   myDialog.ShowHelp = true ;
+        ///   myDialog.ShowHelp = true;
         ///   // Sets the initial color select to the current text color.
         ///   myDialog.Color = this->textBox1.ForeColor ;
         ///
@@ -62,7 +62,7 @@ namespace Switch {
           ///   // Keeps the user from selecting a custom color.
           ///   myDialog.AllowFullOpen = false ;
           ///   // Allows the user to get help. (The default is false.)
-          ///   myDialog.ShowHelp = true ;
+          ///   myDialog.ShowHelp = true;
           ///   // Sets the initial color select to the current text color.
           ///   myDialog.Color = this->textBox1.ForeColor ;
           ///
@@ -130,7 +130,7 @@ namespace Switch {
           ///   // Keeps the user from selecting a custom color.
           ///   myDialog.AllowFullOpen = false ;
           ///   // Allows the user to get help. (The default is false.)
-          ///   myDialog.ShowHelp = true ;
+          ///   myDialog.ShowHelp = true;
           ///   // Sets the initial color select to the current text color.
           ///   myDialog.Color = this->textBox1.ForeColor ;
           ///
@@ -158,15 +158,15 @@ namespace Switch {
           /// myDialog.CustomColors = Array<System::Drawing::Color> {6916092, 15195440, 16107657, 1836924, 3758726, 12566463, 7526079, 7405793, 6945974, 241502, 2296476, 5130294, 3102017, 7324121, 14993507, 11730944,};
           ///
           /// // Allows the user to get help. (The default is false.)
-          /// myDialog.ShowHelp = true ;
+          /// myDialog.ShowHelp = true;
           /// // Sets the initial color select to the current text color,
           /// // so that if the user cancels out, the original color is restored.
           /// myDialog.Color = this->BackColor;
           /// myDialog.ShowDialog();
           /// this->BackColor =  myDialog.Color;
           /// @endcode
-          property_<Array<System::Drawing::Color>&> CustomColors {
-            get_->Array<System::Drawing::Color>& {return this->customColors;},
+          property_<Array<System::Drawing::Color>> CustomColors {
+            get_ {return this->customColors;},
             set_ {this->customColors = value;}
           };
 
@@ -177,6 +177,74 @@ namespace Switch {
           property_<bool> FullOpen {
             get_ {return this->fullOpen;},
             set_ {this->fullOpen = value;}
+          };
+
+          /// @brief Gets or sets a value indicating whether a Help button appears in the color dialog box.
+          /// @return bool true if the Help button is shown in the dialog box; otherwise, false. The default value is false.
+          /// @par Examples
+          /// The following code example shows how to add an array of type Int32 representing custom colors to CustomColors. This example requires that the code is run from within a Form.
+          /// @code
+          /// System::Windows::Forms::ColorDialog myDialog;
+          /// // Allows the user to select or edit a custom color.
+          /// myDialog.AllowFullOpen = true;
+          /// // Assigns an array of custom colors to the CustomColors property
+          /// myDialog.CustomColors = Array<System::Drawing::Color> {6916092, 15195440, 16107657, 1836924, 3758726, 12566463, 7526079, 7405793, 6945974, 241502, 2296476, 5130294, 3102017, 7324121, 14993507, 11730944,};
+          ///
+          /// // Allows the user to get help. (The default is false.)
+          /// myDialog.ShowHelp = true;
+          /// // Sets the initial color select to the current text color,
+          /// // so that if the user cancels out, the original color is restored.
+          /// myDialog.Color = this->BackColor;
+          /// myDialog.ShowDialog();
+          /// this->BackColor =  myDialog.Color;
+          /// @endcode
+          property_<bool> ShowHelp {
+            get_ {return this->showHelp;},
+            set_ {this->showHelp = value;}
+          };
+
+          /// @brief Gets or sets a value indicating whether the dialog box will restrict users to selecting solid colors only.
+          /// @return bool true if users can select only solid colors; otherwise, false. The default value is false.
+          /// @remarks This property is applicable to systems with 256 or fewer colors. On these types of systems, some colors are composites of others.
+          /// @par Examples
+          /// The following code example demonstrates initializing a ColorDialog object setting the AnyColor, AllowFullOpen properties. The ColorDialog object does not allow the user to set a custom color, but it allows the full set of basic colors to be displayed. By setting the SolidColorOnly property to false, it allows the display of colors that are combinations of other colors on systems with 256 or less colors. The example also shows setting the ShowHelp property and handling a HelpRequest event for a dialog box. To run the example, paste the following code in a form and call the InitializeColorDialog method in the form's constructor or Load method. This example requires that the Click event of the button is connected to the event handler defined in the example.
+          /// @code
+          /// ColorDialog colorDialog1;
+          ///
+          /// // This method initializes ColorDialog1 to allow any colors,
+          /// // and combination colors on systems with 256 colors or less,
+          /// // but will not allow the user to set custom colors.  The
+          /// // dialog will contain the help button.
+          /// void InitializeColorDialog() {
+          ///   this->colorDialog1.AllowFullOpen = false;
+          ///   this->colorDialog1.AnyColor = true;
+          ///   this->colorDialog1.SolidColorOnly = false;
+          ///   this->colorDialog1.ShowHelp = true;
+          ///
+          ///   // Associate the event-handling method with
+          ///   // the HelpRequest event.
+          ///   this->colorDialog1.HelpRequest += System::EventHandler(*this, &Form1::ColorDialog1_HelpRequest);
+          /// }
+          ///
+          /// // This method opens the dialog and checks the DialogResult value.
+          /// // If the result is OK, the text box's background color will be changed
+          /// // to the user-selected color.
+          /// void Button1_Click(const System::Object& sender, const System::EventArgs& e) {
+          ///   DialogResult result = this->colorDialog1.ShowDialog();
+          ///   if (result == DialogResult::OK) {
+          ///     TextBox1.BackColor = this->colorDialog1.Color;
+          ///   }
+          /// }
+          ///
+          /// // This method is called when the HelpRequest event is raised,
+          /// // which occurs when the user clicks the Help button on the ColorDialog object.
+          /// void ColorDialog1_HelpRequest(const object& sender, const System::EventArgs& e) {
+          ///   MessageBox::Show("Please select a color by clicking it. This will change the BackColor property of the TextBox.");
+          /// }
+          /// @endcode
+          property_<bool> SolidColorOnly {
+            get_ {return this->solidColorOnly;},
+            set_ {this->solidColorOnly = value;}
           };
 
           /// @brief When overridden in a derived class, resets the properties of a common dialog box to their default values.
@@ -197,6 +265,8 @@ namespace Switch {
           System::Drawing::Color color;
           Array<System::Drawing::Color> customColors;
           bool fullOpen = false;
+          bool showHelp = false;
+          bool solidColorOnly = false;
           /// @endcond
         };
       }
