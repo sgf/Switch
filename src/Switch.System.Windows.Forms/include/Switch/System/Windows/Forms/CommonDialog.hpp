@@ -54,6 +54,7 @@ namespace Switch {
 
           /// @brief Occurs when the user clicks the Help button on a common dialog box.
           /// @remarks For information about handling events, see Handling and Raising Events.
+          /// @par Examples
           /// The following code example demonstrates initializing a ColorDialog object setting the AnyColor, AllowFullOpen properties. The ColorDialog object does not allow the user to set a custom color, but it allows the full set of basic colors to be displayed. By setting the SolidColorOnly property to false, it allows the display of colors that are combinations of other colors on systems with 256 or less colors. The example also shows setting the ShowHelp property and handling a HelpRequest event for a dialog box. To run the example, paste the following code in a form and call the InitializeColorDialog method in the form's constructor or Load method. This example requires that the Click event of the button is connected to the event handler defined in the example.
           /// @code
           /// ColorDialog colorDialog1;
@@ -84,7 +85,7 @@ namespace Switch {
           /// }
           ///
           /// // This method is called when the HelpRequest event is raised,
-          /// //which occurs when the user clicks the Help button on the ColorDialog object.
+          /// // which occurs when the user clicks the Help button on the ColorDialog object.
           /// void ColorDialog1_HelpRequest(const object& sender, const System::EventArgs& e) {
           ///   MessageBox::Show("Please select a color by clicking it. This will change the BackColor property of the TextBox.");
           /// }

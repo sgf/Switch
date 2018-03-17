@@ -7,6 +7,7 @@
 #include "../../include/Switch/System/Windows/Forms/BootMode.hpp"
 #include "../../include/Switch/System/Windows/Forms/Button.hpp"
 #include "../../include/Switch/System/Windows/Forms/CheckBox.hpp"
+#include "../../include/Switch/System/Windows/Forms/ColorDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/Control.hpp"
 #include "../../include/Switch/System/Windows/Forms/DialogResult.hpp"
 #include "../../include/Switch/System/Windows/Forms/Form.hpp"
@@ -53,6 +54,11 @@ namespace Native {
     static intptr Create(const System::Windows::Forms::CheckBox& checkBox);
     static void SetAutoCheck(const System::Windows::Forms::CheckBox& checkBox);
     static void SetChecked(const System::Windows::Forms::CheckBox& checkBox);
+  };
+
+  class CommonDialog static_ {
+  public:
+    static bool RunColorDialog(intptr hwnd, const System::Windows::Forms::ColorDialog& colorDialog);
   };
 
   class ControlApi static_ {
