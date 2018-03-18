@@ -1,23 +1,23 @@
-# Form
+# ColorDialog
 
-This example demonstrates the use of System::Windows::Forms::Form control.
+This example demonstrates the use of System::Windows::Forms::ColorDialog dialog.
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormW.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColorDialogW.png)
 
 Windows
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormM.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColorDialogM.png)
 
 macOS
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormU.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColorDialogU.png)
 
 Ubuntu
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormG.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColorDialogG.png)
 
 Gnome
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormGD.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColorDialogGD.png)
 
 Gnome Dark

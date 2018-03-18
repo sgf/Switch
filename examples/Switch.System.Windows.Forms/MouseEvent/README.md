@@ -1,23 +1,23 @@
-# Application
+# MouseEvent
 
-This example demonstrates the use of System::Windows::Forms::Application class.
+This example demonstrates the use of some mouse events.
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationW.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/MouseEventW.png)
 
 Windows
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationM.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/MouseEventM.png)
 
 macOS
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationU.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/MouseEventU.png)
 
 Ubuntu
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationG.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/MouseEventG.png)
 
 Gnome
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationGD.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/MouseEventGD.png)
 
 Gnome Dark

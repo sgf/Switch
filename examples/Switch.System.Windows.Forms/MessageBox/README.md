@@ -1,6 +1,6 @@
 # MessageBox
 
-This example demonstrates the use of System::Windows::Forms::MessageBox control.
+This example demonstrates the use of System::Windows::Forms::MessageBox dialog.
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/MessageBoxW.png)
 

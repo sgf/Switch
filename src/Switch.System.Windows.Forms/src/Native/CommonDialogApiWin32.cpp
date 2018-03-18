@@ -26,9 +26,13 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
   if (colorDialog.AnyColor)
     flags += CC_ANYCOLOR;
   if (colorDialog.FullOpen && colorDialog.AllowFullOpen)
+<<<<<<< HEAD
       flags += CC_FULLOPEN;
   if (colorDialog.ShowHelp)
     flags += CC_SHOWHELP;
+=======
+    flags += CC_FULLOPEN;
+>>>>>>> d1a9c5c7db9af86f50a0a4e9203c0c93028afd81
   if (colorDialog.SolidColorOnly)
     flags += CC_SOLIDCOLOR;
   chooseColor.Flags = flags;
