@@ -1,23 +1,23 @@
-# Application
+# LocationChangedEvent
 
-This example demonstrates the use of System::Windows::Forms::Application class.
+This example demonstrates the use of System::Windows::Forms::Control::LocationChanged event.
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationW.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/LocationChangedEventW.png)
 
 Windows
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationM.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/LocationChangedEventM.png)
 
 macOS
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationU.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/LocationChangedEventU.png)
 
 Ubuntu
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationG.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/LocationChangedEventG.png)
 
 Gnome
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationGD.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/LocationChangedEventGD.png)
 
 Gnome Dark
