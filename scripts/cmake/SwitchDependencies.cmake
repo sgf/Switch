@@ -26,7 +26,7 @@ endif ()
 #                                                       SetSwitchApplicationIcon
 macro(SetSwitchApplicationIcon PATH_APPLICATION_ICON)
   if(MSVC)
-    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/application.rc "IDI_ICON1 ICON DISCARDABLE \"${PATH_APPLICATION_ICON}.ico\"\n")
+    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/application.rc "IDI_ICON1 ICON DISCARDABLE \"${CMAKE_CURRENT_SOURCE_DIR}/${PATH_APPLICATION_ICON}.ico\"\n")
   elseif (APPLE)
     configure_file(${PATH_APPLICATION_ICON}.icns ${CMAKE_CURRENT_BINARY_DIR}/application.icns COPYONLY)
     set(MACOSX_BUNDLE_ICON_FILE application.icns)
