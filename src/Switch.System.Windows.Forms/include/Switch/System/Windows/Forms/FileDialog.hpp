@@ -3,6 +3,7 @@
 #pragma once
 
 #include <Switch/System/Drawing/Color.hpp>
+#include "../../../System/Windows/Forms/FileDialogCustomPlaceCollection.hpp"
 #include "../../../System/Windows/Forms/CommonDialog.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
@@ -71,12 +72,12 @@ namespace Switch {
           /// @brief Gets or sets a value indicating whether this FileDialog instance should automatically upgrade appearance and behavior when running on Windows Vista.
           /// @return bool true if this FileDialog instance should automatically upgrade appearance and behavior when running on Windows Vista; otherwise, false. The default is true.
           /// @remarks If this property is false, the FileDialog class will have a Windows XP-style appearance and behavior on Windows Vista.
-          /// @remarks On Windows XP, this property does not have any effect.
+          /// @remarks On macOS, Linux and Windows XP, this property does not have any effect.
           property_<bool>AutoUpgradeEnabled {
             get_ {return this->autoUpgradeEnabled;},
             set_ {this->autoUpgradeEnabled = value;}
           };
-  
+
           /// @brief Gets or sets a value indicating whether the dialog box displays a warning if the user specifies a file name that does not exist.
           /// @return bool true if the dialog box displays a warning if the user specifies a file name that does not exist; otherwise, false. The default value is false.
           /// @remarks The default value is true for an inheriting OpenFileDialog and false for an inheriting SaveFileDialog.
@@ -84,20 +85,66 @@ namespace Switch {
             get_ {return this->checkFileExists;},
             set_ {this->checkFileExists = value;}
           };
-          
+
           /// @brief Gets or sets a value indicating whether the dialog box displays a warning if the user specifies a path that does not exist.
           /// @return bool true if the dialog box displays a warning when the user specifies a path that does not exist; otherwise, false. The default value is true.
           property_<bool> CheckPathExists {
             get_ {return this->checkPathExists;},
             set_ {this->checkPathExists = value;}
           };
-          
+
+          /// @brief Gets the custom places collection for this FileDialog instance.
+          /// @return System::Windows::Forms::FileDialogCustomPlaceCollection The custom places collection for this FileDialog instance.
+          /// @remarks On macOS, Linux and Windows XP, this property does not have any effect.
+          /// @par Examples
+          /// The following code example demonstrates how to use the CustomPlaces collection. To run this example, paste the following code into a Windows Form and call InitializeDialogAndButton from the form's constructor or Load event-handling method.
+          /// @code
+          /// OpenFileDialog openFileDialog1;
+          /// Button button1;
+          ///
+          /// void InitializeDialogAndButton() {
+          ///   this->button1.Location = System::Drawing::Point(53, 37);
+          ///   this->button1.AutoSize = true;
+          ///   this->button1.Text = "Show dialog with custom places.";
+          ///   this->button1.UseVisualStyleBackColor = true;
+          ///   this->button1.Click += System::EventHandler(*this, &Form1::button1_Click);
+          ///   this->Controls().Add(this->button1);
+          /// }
+          ///
+          /// void button1_Click(const object& sender, const EventArgs& e) {
+          ///   // Add Pictures custom place using GUID.
+          ///   openFileDialog1.CustomPlaces().Add("33E28130-4E1E-4676-835A-98395C3BC3BB");
+          ///
+          ///   // Add Links custom place using GUID
+          ///   openFileDialog1.CustomPlaces().Add(FileDialogCustomPlace(Guid("BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968")));
+          ///
+          ///   // Add Windows custom place using file path.
+          ///   openFileDialog1.CustomPlaces().Add(R"(c:\Windows)");
+          ///
+          ///   openFileDialog1.ShowDialog();
+          /// }
+          /// @endcode
+          property_<System::Windows::Forms::FileDialogCustomPlaceCollection&> FileDialogCustomPlaceCollection {
+            get_->System::Windows::Forms::FileDialogCustomPlaceCollection& {return this->fileDialogCustomPlaceCollection;},
+            set_ {this->fileDialogCustomPlaceCollection = value;}
+          };
+
+          /// @brief Gets or sets the default file name extension.
+          /// @return string The default file name extension. The returned string does not include the period. The default value is an empty string ("").
+          /// @remarks When the user of your application specifies a file name without an extension, the FileDialog appends an extension to the file name. The extension that is used is determined by the Filter and DefaultExt properties. If a filter is selected in the FileDialog and the filter specifies an extension, then that extension is used. If the filter selected uses a wildcard in place of the extension, then the extension specified in the DefaultExt property is used.
+          property_<string> DefaultExt {
+            get_ {return this->defaultExt;},
+            set_ {this->defaultExt = value;}
+          };
+
         protected:
           /// @cond
           bool addExtension = true;
           bool autoUpgradeEnabled = true;
           bool checkFileExists = false;
           bool checkPathExists = false;
+          System::Windows::Forms::FileDialogCustomPlaceCollection fileDialogCustomPlaceCollection;
+          string defaultExt;
           /// @endcond
         };
       }
