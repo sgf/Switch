@@ -1882,8 +1882,7 @@ namespace Switch {
           /// @remarks If the CausesValidation property is set to false, the Validating and Validated events are suppressed.
           /// @remarks If the Cancel property of the CancelEventArgs is set to true in the Validating event delegate, all events that would usually occur after the Validating event are suppressed.
           /// @note The GotFocus and LostFocus events are low-level focus events that are tied to the WM_KILLFOCUS and WM_SETFOCUS Windows messages. Typically, the GotFocus and LostFocus events are only used when updating UICues or when writing custom controls. Instead the Enter and Leave events should be used for all controls except the Form class, which uses the Activated and Deactivate events. For more information about the GotFocus and LostFocus events, see the WM_KILLFOCUS and WM_KILLFOCUS topics.
-          /// @par Caution
-          /// Do not attempt to set focus from within the Enter, GotFocus, Leave, LostFocus, Validating, or Validated event handlers. Doing so can cause your application or the operating system to stop responding. For more information, see the WM_KILLFOCUS topic.
+          /// @warning Do not attempt to set focus from within the Enter, GotFocus, Leave, LostFocus, Validating, or Validated event handlers. Doing so can cause your application or the operating system to stop responding. For more information, see the WM_KILLFOCUS topic.
           /// @remarks
           /// For more information about handling events, see Handling and Raising Events.
           /// @par Examples
@@ -2324,8 +2323,7 @@ namespace Switch {
           /// @param flag The ControlStyles bit to set.
           /// @param value rue to apply the specified style to the control; otherwise, false.
           /// @remarks Control style bit flags are used to categorize supported behavior. A control can enable a style by calling the SetStyle method and passing in the appropriate ControlStyles bit (or bits) and the Boolean value to set the bit(s) to. To determine the value assigned to a specified ControlStyles bit, use the GetStyle method and pass in the ControlStyles member to evaluate.
-          /// @par Caution
-          /// Setting the control style bits can substantially change the behavior of the control. Review the ControlStyles enumeration documentation to understand the effects of changing the control style bits before calling the SetStyle method.
+          /// @warning Setting the control style bits can substantially change the behavior of the control. Review the ControlStyles enumeration documentation to understand the effects of changing the control style bits before calling the SetStyle method.
           /// @par Examples
           /// The following code example enables double-buffering on a Form and updates the styles to reflect the changes.
           /// @code

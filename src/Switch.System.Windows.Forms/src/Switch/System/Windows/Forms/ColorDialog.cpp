@@ -16,6 +16,7 @@ void ColorDialog::Reset() {
     this->CustomColors()[index] = System::Drawing::Color::White;
   this->FullOpen = false;
   this->ShowHelp = false;
+  this->CommonDialog::Reset();
 }
 
 bool ColorDialog::RunDialog(intptr hwndOwner) {

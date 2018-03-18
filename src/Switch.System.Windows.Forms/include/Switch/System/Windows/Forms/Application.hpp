@@ -33,8 +33,7 @@ namespace Switch {
         public:
           /// @brief Occurs when the application finishes processing and is about to enter the idle state.
           /// @remarks If you have tasks that you must perform before the thread becomes idle, attach them to this event.
-          /// @par Caution
-          /// Because this is a static event, you must detach your event handlers when your application is disposed, or memory leaks will result.
+          /// @warning Because this is a static event, you must detach your event handlers when your application is disposed, or memory leaks will result.
           /// @par Examples
           /// The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the Idle event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing MessageBox.Show with Console.WriteLine or appending the message to a multiline TextBox.<br><br>
           /// To run the example code, paste it into a Windows Form and make sure that the event handler is associated with the Idle event.

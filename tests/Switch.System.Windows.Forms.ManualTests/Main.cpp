@@ -1,6 +1,6 @@
 #include <Switch/System/Diagnostics/Debug.hpp>
 #include <Switch/System/Windows/Forms/Application.hpp>
-#include <Switch/System/Windows/Forms/ColorDialog.hpp>
+#include <Switch/System/Windows/Forms/FileDialog.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
 #include <Switch/System/Windows/Forms/Screen.hpp>
 #include <Switch/System/Windows/Forms/TabControl.hpp>
@@ -20,10 +20,6 @@ namespace ManualTests {
       button.Text = "button";
       button.Location = Point(10, 10);
       button.Click += delegate_(const object & sender, const EventArgs & e) {
-        ColorDialog colorDialog;
-        colorDialog.Color = System::Drawing::Color::Green;
-        System::Diagnostics::Debug::WriteLine(string::Format("Result = {0}", colorDialog.ShowDialog()));
-        System::Diagnostics::Debug::WriteLine(string::Format("Color = {0}", colorDialog.Color));
       };
 
       Form mainForm;
