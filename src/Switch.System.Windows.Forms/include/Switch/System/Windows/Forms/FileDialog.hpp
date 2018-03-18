@@ -68,9 +68,36 @@ namespace Switch {
             set_ {this->addExtension = value;}
           };
 
+          /// @brief Gets or sets a value indicating whether this FileDialog instance should automatically upgrade appearance and behavior when running on Windows Vista.
+          /// @return bool true if this FileDialog instance should automatically upgrade appearance and behavior when running on Windows Vista; otherwise, false. The default is true.
+          /// @remarks If this property is false, the FileDialog class will have a Windows XP-style appearance and behavior on Windows Vista.
+          /// @remarks On Windows XP, this property does not have any effect.
+          property_<bool>AutoUpgradeEnabled {
+            get_ {return this->autoUpgradeEnabled;},
+            set_ {this->autoUpgradeEnabled = value;}
+          };
+  
+          /// @brief Gets or sets a value indicating whether the dialog box displays a warning if the user specifies a file name that does not exist.
+          /// @return bool true if the dialog box displays a warning if the user specifies a file name that does not exist; otherwise, false. The default value is false.
+          /// @remarks The default value is true for an inheriting OpenFileDialog and false for an inheriting SaveFileDialog.
+          property_<bool> CheckFileExists {
+            get_ {return this->checkFileExists;},
+            set_ {this->checkFileExists = value;}
+          };
+          
+          /// @brief Gets or sets a value indicating whether the dialog box displays a warning if the user specifies a path that does not exist.
+          /// @return bool true if the dialog box displays a warning when the user specifies a path that does not exist; otherwise, false. The default value is true.
+          property_<bool> CheckPathExists {
+            get_ {return this->checkPathExists;},
+            set_ {this->checkPathExists = value;}
+          };
+          
         protected:
           /// @cond
           bool addExtension = true;
+          bool autoUpgradeEnabled = true;
+          bool checkFileExists = false;
+          bool checkPathExists = false;
           /// @endcond
         };
       }
