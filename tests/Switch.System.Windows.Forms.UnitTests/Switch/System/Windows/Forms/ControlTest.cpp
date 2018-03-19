@@ -42,14 +42,16 @@ namespace SwitchUnitTests {
     };
 
     control.BackColor = Color::SpringGreen;
-    ASSERT_EQ(Color::SpringGreen, control.BackColor);
 
+    ASSERT_EQ(Color::SpringGreen, control.BackColor);
     ASSERT_EQ(Color::SpringGreen, result);
   }
 
   TEST(ControlTest, Bottom) {
     Control control;
+
     control.SetBounds(1, 2, 3, 4);
+
     ASSERT_EQ(6, control.Bottom);
   }
 
@@ -76,6 +78,7 @@ namespace SwitchUnitTests {
     Control control;
 
     control.ClientSize = System::Drawing::Size(3, 4);
+
     ASSERT_EQ(System::Drawing::Rectangle(0, 0, 3, 4), control.ClientRectangle);
   }
 
@@ -90,11 +93,9 @@ namespace SwitchUnitTests {
   TEST(ControlTest, Controls) {
     Control control1, control2, control3;
     int32 result = 1;
-
     control2.ParentChanged += delegate_(const object & sender, const EventArgs & e) {
       result += 2;
     };
-
     control3.ParentChanged += delegate_(const object & sender, const EventArgs & e) {
       result += 3;
     };
@@ -137,12 +138,14 @@ namespace SwitchUnitTests {
     };
 
     control.ForeColor = Color::SpringGreen;
+
     ASSERT_EQ(Color::SpringGreen, control.ForeColor);
     ASSERT_EQ(Color::SpringGreen, result);
   }
 
   TEST(ControlTest, HasChildren) {
     Control control1, control2, control3;
+
     control1.Controls().AddRange({control2, control3});
 
     ASSERT_TRUE(control1.HasChildren);
@@ -207,7 +210,6 @@ namespace SwitchUnitTests {
   TEST(ControlTest, Parent) {
     Control control1, control2;
     int32 result = 1;
-
     control2.ParentChanged += delegate_(const object & sender, const EventArgs & e) {
       result += 2;
     };
@@ -301,6 +303,127 @@ namespace SwitchUnitTests {
 
     ASSERT_EQ(4, result);
     ASSERT_EQ(3, control.Width);
+  }
+
+  TEST(ControlTest, FindFormFromOneChild) {
+    Form form1;
+    Control control1;
+
+    form1.Controls().Add(control1);
+
+    ASSERT_EQ(form1, control1.FindForm());
+  }
+
+  TEST(ControlTest, FindFormFromMoreThanOneChild) {
+    Form form1;
+    Control control1, control2;
+
+    control1.Controls().Add(control2);
+    form1.Controls().Add(control1);
+
+    ASSERT_EQ(form1, control2.FindForm());
+  }
+
+  TEST(ControlTest, FindFormWithoutFormParent) {
+    Control control1, control2;
+
+    control1.Controls().Add(control2);
+
+    ASSERT_TRUE(control2.FindForm() == null);
+  }
+
+  TEST(ControlTest, Focus) {
+    Control control;
+
+    ASSERT_TRUE(control.Focus());
+  }
+
+  TEST(ControlTest, FromChildHandle) {
+    Form form1;
+    Control control1, control2, control3;
+
+    control2.Controls().Add(control3);
+    control1.Controls().Add(control2);
+    form1.Controls().Add(control1);
+
+    form1.Visible = true;
+    form1.CreateControl();
+
+    ASSERT_EQ(control2, Control::FromChildHandle(control3.Handle));
+  }
+
+  TEST(ControlTest, FromChildHandleWithInvalidHandle) {
+    Form form1;
+    Control control1, control2, control3;
+
+    control2.Controls().Add(control3);
+    control1.Controls().Add(control2);
+    form1.Controls().Add(control1);
+
+    form1.Visible = true;
+    form1.CreateControl();
+
+    ASSERT_TRUE(Control::FromChildHandle(-1) == null);
+  }
+
+  TEST(ControlTest, FromHandle) {
+    Form form1;
+    Control control1, control2, control3;
+
+    control2.Controls().Add(control3);
+    control1.Controls().Add(control2);
+    form1.Controls().Add(control1);
+
+    form1.Visible = true;
+    form1.CreateControl();
+
+    ASSERT_EQ(control3, Control::FromHandle(control3.Handle));
+  }
+
+  TEST(ControlTest, FromHandleWithInvalidHandle) {
+    Form form1;
+    Control control1, control2, control3;
+
+    control2.Controls().Add(control3);
+    control1.Controls().Add(control2);
+    form1.Controls().Add(control1);
+
+    form1.Visible = true;
+    form1.CreateControl();
+
+    ASSERT_TRUE(Control::FromHandle(-1) == null);
+  }
+
+  TEST(ControlTest, Hide) {
+    Control control;
+    int32 result = 1;
+    control.VisibleChanged += delegate_(const object & sender, const EventArgs & e) {
+      result += 2;
+    };
+
+    control.Hide();
+
+    ASSERT_EQ(3, result);
+    ASSERT_FALSE(control.Visible);
+  }
+
+  TEST(ControlTest, SetBounds) {
+    Control control;
+    int32 result = 1;
+    control.LocationChanged += delegate_(const object & sender, const EventArgs & e) {
+      result += 2;
+    };
+    control.SizeChanged += delegate_(const object & sender, const EventArgs & e) {
+      result += 3;
+    };
+
+    control.SetBounds(1, 2, 3, 4);
+
+    ASSERT_EQ(6, result);
+    ASSERT_EQ(1, control.Left);
+    ASSERT_EQ(2, control.Top);
+    ASSERT_EQ(3, control.Width);
+    ASSERT_EQ(4, control.Height);
   }
 }
 

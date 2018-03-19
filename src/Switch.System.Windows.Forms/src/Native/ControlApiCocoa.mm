@@ -38,8 +38,9 @@ namespace {
 
 intptr Native::ControlApi::Create(const System::Windows::Forms::Control& control) {
   ControlCocoa *handle = [[[ControlCocoa alloc] init] autorelease];
-  [[(NSWindow*)control.Parent()().Handle() contentView] addSubview: handle];
-  
+  if (is<System::Windows::Forms::Form>(control.Parent()))
+    [[(NSWindow*)control.Parent()().Handle() contentView] addSubview: handle];
+
   [handle setStringValue:[NSString stringWithUTF8String:control.Text().c_str()]];
   [handle setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
   [handle setWantsLayer:YES];

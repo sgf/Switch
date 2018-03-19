@@ -9,13 +9,16 @@ using namespace System::Windows::Forms;
 namespace SwitchUnitTests {
   TEST(OpenFileDialogTest, DefaultConstructor) {
     OpenFileDialog openFileDialog;
-    ASSERT_EQ(false, openFileDialog.Multiselect);
-    ASSERT_EQ(false, openFileDialog.ReadOnlyChecked);
+
+    ASSERT_FALSE(openFileDialog.Multiselect);
+    ASSERT_FALSE(openFileDialog.ReadOnlyChecked);
   }
 
   TEST(OpenFileDialogTest, SafeFileName) {
     OpenFileDialog openFileDialog;
+
     openFileDialog.FileName = Path::Combine("Directory1", "Directory2", "Directory3", "MyFile.txt");
+
     ASSERT_EQ("MyFile.txt", openFileDialog.SafeFileName);
   }
 
@@ -63,5 +66,21 @@ namespace SwitchUnitTests {
     ASSERT_FALSE(openFileDialog.Multiselect);
     ASSERT_FALSE(openFileDialog.ReadOnlyChecked);
     ASSERT_EQ("", openFileDialog.SafeFileName);
+  }
+
+  TEST(OpenFileDialogTest, Multiselect) {
+    OpenFileDialog openFileDialog;
+
+    openFileDialog.Multiselect = true;
+
+    ASSERT_TRUE(openFileDialog.Multiselect);
+  }
+
+  TEST(OpenFileDialogTest, ReadOnlyChecked) {
+    OpenFileDialog openFileDialog;
+
+    openFileDialog.ReadOnlyChecked = true;
+
+    ASSERT_TRUE(openFileDialog.ReadOnlyChecked);
   }
 }

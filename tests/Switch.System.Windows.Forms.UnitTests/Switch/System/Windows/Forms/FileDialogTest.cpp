@@ -36,6 +36,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, AddExtension) {
     FileDialog1 fileDialog1;
+
     fileDialog1.AddExtension = false;
 
     ASSERT_FALSE(fileDialog1.AddExtension);
@@ -43,6 +44,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, AutoUpgradeEnabled) {
     FileDialog1 fileDialog1;
+
     fileDialog1.AutoUpgradeEnabled = false;
 
     ASSERT_FALSE(fileDialog1.AutoUpgradeEnabled);
@@ -50,6 +52,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, CheckFileExists) {
     FileDialog1 fileDialog1;
+
     fileDialog1.CheckFileExists = true;
 
     ASSERT_TRUE(fileDialog1.CheckFileExists);
@@ -57,6 +60,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, CheckPathExists) {
     FileDialog1 fileDialog1;
+
     fileDialog1.CheckPathExists = true;
 
     ASSERT_TRUE(fileDialog1.CheckPathExists);
@@ -64,6 +68,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, FileDialogCustomPlaceCollection) {
     FileDialog1 fileDialog1;
+
     fileDialog1.FileDialogCustomPlaceCollection().Add(FileDialogCustomPlace("directory1"));
 
     ASSERT_EQ(FileDialogCustomPlace("directory1").Path, fileDialog1.FileDialogCustomPlaceCollection()[0].Path);
@@ -71,6 +76,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, DefaultExt) {
     FileDialog1 fileDialog1;
+
     fileDialog1.DefaultExt = "cmd";
 
     ASSERT_EQ("cmd", fileDialog1.DefaultExt);
@@ -78,6 +84,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, DereferenceLinks) {
     FileDialog1 fileDialog1;
+
     fileDialog1.DereferenceLinks = false;
 
     ASSERT_FALSE(fileDialog1.DereferenceLinks);
@@ -85,6 +92,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, FileName) {
     FileDialog1 fileDialog1;
+
     fileDialog1.FileName = "MyFile.txt";
 
     ASSERT_EQ("MyFile.txt", fileDialog1.FileName);
@@ -92,6 +100,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, Filter) {
     FileDialog1 fileDialog1;
+
     fileDialog1.Filter = "*.*";
 
     ASSERT_EQ("*.*", fileDialog1.Filter);
@@ -99,6 +108,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, FilterIndex) {
     FileDialog1 fileDialog1;
+
     fileDialog1.FilterIndex = 2;
 
     ASSERT_EQ(2, fileDialog1.FilterIndex);
@@ -106,6 +116,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, InitialDirectory) {
     FileDialog1 fileDialog1;
+
     fileDialog1.InitialDirectory = "directory";
 
     ASSERT_EQ("directory", fileDialog1.InitialDirectory);
@@ -113,6 +124,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, RestoreDirectory) {
     FileDialog1 fileDialog1;
+
     fileDialog1.RestoreDirectory = true;
 
     ASSERT_TRUE(fileDialog1.RestoreDirectory);
@@ -120,6 +132,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, ShowHelp) {
     FileDialog1 fileDialog1;
+
     fileDialog1.ShowHelp = true;
 
     ASSERT_TRUE(fileDialog1.ShowHelp);
@@ -127,6 +140,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, SupportMultiDottedExtensions) {
     FileDialog1 fileDialog1;
+
     fileDialog1.SupportMultiDottedExtensions = true;
 
     ASSERT_TRUE(fileDialog1.SupportMultiDottedExtensions);
@@ -134,6 +148,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, Title) {
     FileDialog1 fileDialog1;
+
     fileDialog1.Title = "FileDialog1 open";
 
     ASSERT_EQ("FileDialog1 open", fileDialog1.Title);
@@ -141,6 +156,7 @@ namespace SwitchUnitTests {
 
   TEST(FileDialogTest, ValidateNames) {
     FileDialog1 fileDialog1;
+
     fileDialog1.ValidateNames = false;
 
     ASSERT_FALSE(fileDialog1.ValidateNames);

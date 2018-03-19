@@ -59,7 +59,6 @@ namespace SwitchUnitTests {
   TEST(CommonDialogTest, HelpRequest) {
     CommonDialog1 commonDialog1;
     int32 result = 1;
-
     commonDialog1.HelpRequest += delegate_(const object & sender, const EventArgs & e) {
       result += 1;
     };
@@ -69,26 +68,38 @@ namespace SwitchUnitTests {
     ASSERT_EQ(2, result);
   }
 
-  TEST(CommonDialogTest, ShowDialog) {
+  TEST(CommonDialogTest, ShowDialogWithDialogResultCancel) {
     CommonDialog1 commonDialog1;
 
     commonDialog1.RunDialogResult = false;
+
     ASSERT_EQ(DialogResult::Cancel, commonDialog1.ShowDialog());
     ASSERT_EQ(IntPtr::Zero, commonDialog1.HwndOwner);
+  }
+
+  TEST(CommonDialogTest, ShowDialogWithDialogResultOk) {
+    CommonDialog1 commonDialog1;
 
     commonDialog1.RunDialogResult = true;
+
     ASSERT_EQ(DialogResult::OK, commonDialog1.ShowDialog());
     ASSERT_EQ(IntPtr::Zero, commonDialog1.HwndOwner);
   }
 
-  TEST(CommonDialogTest, ShowDialogWithHwndOwner) {
+  TEST(CommonDialogTest, ShowDialogWithHwndOwnerAndDialogResultCancel) {
     CommonDialog1 commonDialog1;
 
     commonDialog1.RunDialogResult = false;
+
     ASSERT_EQ(DialogResult::Cancel, commonDialog1.ShowDialog(Win32Window1()));
     ASSERT_EQ(42, commonDialog1.HwndOwner);
+  }
+
+  TEST(CommonDialogTest, ShowDialogWithHwndOwnerAndDialogResultOk) {
+    CommonDialog1 commonDialog1;
 
     commonDialog1.RunDialogResult = true;
+
     ASSERT_EQ(DialogResult::OK, commonDialog1.ShowDialog(Win32Window1()));
     ASSERT_EQ(42, commonDialog1.HwndOwner);
   }
