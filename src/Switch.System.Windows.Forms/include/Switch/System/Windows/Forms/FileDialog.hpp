@@ -2,6 +2,7 @@
 /// @brief Contains Switch::System::Windows::Forms::Application class.
 #pragma once
 
+#include <Switch/System/Collections/Generic/List.hpp>
 #include <Switch/System/Drawing/Color.hpp>
 #include <Switch/System/ComponentModel/CancelEventHandler.hpp>
 #include "../../../System/Windows/Forms/FileDialogCustomPlaceCollection.hpp"
@@ -160,7 +161,7 @@ namespace Switch {
           /// @include RichTextBox.cpp
           property_<string> FileName {
             get_ {return this->fileName;},
-            set_ {this->FileName = value;}
+            set_ {this->fileName = value;}
           };
 
           /// @brief Gets the file names of all selected files in the dialog box.
@@ -208,7 +209,7 @@ namespace Switch {
           ///   }
           /// @endcode
           property_<Array<string>, readonly_> FileNames {
-            get_ {return this->fileNames;}
+            get_ {return this->fileNames.ToArray();}
           };
 
           /// @brief Gets or sets the current file name filter string, which determines the choices that appear in the "Save as file type" or "Files of type" box in the dialog box.
@@ -470,7 +471,7 @@ namespace Switch {
           string defaultExt;
           bool dereferenceLinks = true;
           string fileName;
-          Array<string> fileNames;
+          System::Collections::Generic::List<string> fileNames;
           string filter;
           int32 filterIndex = 1;
           string initialDirectory;

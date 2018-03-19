@@ -62,6 +62,7 @@ void Control::ControlCollection::ChangeParent(ref<Control> value) {
   if (value().parent != null)
     value().parent().controls.Remove(value);
   value().parent = this->controlContainer;
+  value().OnParentChanged(EventArgs::Empty);
   if (this->controlContainer().Visible && this->controlContainer().handle != IntPtr::Zero && value().handle == IntPtr::Zero)
     value().CreateControl();
 }
@@ -182,7 +183,7 @@ void Control::OnClientSizeChanged(const EventArgs& e) {
 void Control::OnEnabledChanged(const EventArgs& e) {
   if (this->IsHandleCreated)
     Native::ControlApi::SetEnabled(*this);
-  this->ForeColorChanged(*this, e);
+  this->EnabledChanged(*this, e);
 }
 
 void Control::OnForeColorChanged(const EventArgs& e) {

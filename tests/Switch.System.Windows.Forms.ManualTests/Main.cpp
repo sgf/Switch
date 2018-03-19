@@ -1,7 +1,6 @@
 #include <Switch/System/Diagnostics/Debug.hpp>
 #include <Switch/System/Windows/Forms/Application.hpp>
-#include <Switch/System/Windows/Forms/ColorDialog.hpp>
-#include <Switch/System/Windows/Forms/FileDialog.hpp>
+#include <Switch/System/Windows/Forms/OpenFileDialog.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
 #include <Switch/System/Windows/Forms/Screen.hpp>
 #include <Switch/System/Windows/Forms/TabControl.hpp>

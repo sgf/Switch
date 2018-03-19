@@ -11,4 +11,8 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
   return false;
 }
 
+bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog &openFileDialog) {
+  return false;
+}
+
 #endif

@@ -383,7 +383,7 @@ namespace Switch {
           };
 
           /// @brief Gets the default background color of the control.
-          /// @return System::Drawing::Color The default background Color of the control. The default is SystemColors.Control.
+          /// @return System::Drawing::Color The default background Color of the control. The default is SystemColors::Control.
           /// @remarks This is the default BackColor property value of a generic top-level control. Derived classes can have different defaults.
           /// @par examples
           /// The following code example demonstrates how to use the DefaultBackColor, DefaultFont, and DefaultForeColor members. To run the example, paste the following code in a form containing a ListBox called ListBox1. Call the Populate_ListBox method in the form's constructor or Load event-handling method.
@@ -405,7 +405,7 @@ namespace Switch {
           static property_<System::Drawing::Color, readonly_> DefaultBackColor;
 
           /// @brief Gets the default foreground color of the control.
-          /// @return System::Drawing::Color The default foreground Color of the control. The default is SystemColors.ControlText.
+          /// @return System::Drawing::Color The default foreground Color of the control. The default is SystemColors::ControlText.
           /// @remarks This is the default ForeColor property value of a nonparented control. Derived classes can have different defaults.
           /// @par examples
           /// The following code example demonstrates how to use the DefaultBackColor, DefaultFont, and DefaultForeColor members. To run the example, paste the following code in a form containing a ListBox called ListBox1. Call the Populate_ListBox method in the form's constructor or Load event-handling method.
@@ -425,28 +425,6 @@ namespace Switch {
           /// }
           /// @endcode
           static property_<System::Drawing::Color, readonly_> DefaultForeColor;
-
-          /// @brief Gets a value indicating whether the control contains one or more child controls.
-          /// @return bool true if the control contains one or more child controls; otherwise, false.
-          /// @remarks If the Controls collection has a Count greater than zero, the HasChildren property will return true. Accessing the HasChildren property does not force the creation of a Control.ControlCollection if the control has no children, so referencing this property can provide a performance benefit when walking a tree of controls.
-          /// @par examples
-          /// The following code example sets the BackColor and ForeColor of the controls to the default system colors. The code recursively calls itself if the control has any child controls. This code example requires that you have a Form with at least one child control; however, a child container control, like a Panel or GroupBox, with its own child control(s) would better demonstrate the recursion.
-          /// @code
-          /// // Reset all the controls to the user's default Control color.
-          /// void ResetAllControlsBackColor(ref<Control> control) {
-          ///   control.BackColor = SystemColors::Control;
-          ///   control.ForeColor = SystemColors::ControlText;
-          ///   if(control.HasChildren) {
-          ///     // Recursively call this method for each child control.
-          ///     for(ref<Control> childControl : control.Controls()) {
-          ///       ResetAllControlsBackColor(childControl);
-          ///     }
-          ///   }
-          /// }
-          /// @endcode
-          property_<bool, readonly_> HasChildren {
-            get_ {return this->Controls().Count != 0;}
-          };
 
           /// @brief Gets or sets a value indicating whether the control can respond to user interaction.
           /// @return bool true if the control can respond to user interaction; otherwise, false. The default is true.
@@ -515,6 +493,28 @@ namespace Switch {
                 this->OnForeColorChanged(EventArgs::Empty);
               }
             }
+          };
+
+          /// @brief Gets a value indicating whether the control contains one or more child controls.
+          /// @return bool true if the control contains one or more child controls; otherwise, false.
+          /// @remarks If the Controls collection has a Count greater than zero, the HasChildren property will return true. Accessing the HasChildren property does not force the creation of a Control.ControlCollection if the control has no children, so referencing this property can provide a performance benefit when walking a tree of controls.
+          /// @par examples
+          /// The following code example sets the BackColor and ForeColor of the controls to the default system colors. The code recursively calls itself if the control has any child controls. This code example requires that you have a Form with at least one child control; however, a child container control, like a Panel or GroupBox, with its own child control(s) would better demonstrate the recursion.
+          /// @code
+          /// // Reset all the controls to the user's default Control color.
+          /// void ResetAllControlsBackColor(ref<Control> control) {
+          ///   control.BackColor = SystemColors::Control;
+          ///   control.ForeColor = SystemColors::ControlText;
+          ///   if(control.HasChildren) {
+          ///     // Recursively call this method for each child control.
+          ///     for(ref<Control> childControl : control.Controls()) {
+          ///       ResetAllControlsBackColor(childControl);
+          ///     }
+          ///   }
+          /// }
+          /// @endcode
+          property_<bool, readonly_> HasChildren {
+            get_ {return this->Controls().Count != 0;}
           };
 
           /// @brief Gets or sets the height of the control.
@@ -2290,7 +2290,6 @@ namespace Switch {
                 this->parent().controls.Remove(*this);
               else
                 const_cast<Control&>(parent()).controls.Add(*this);
-              this->OnParentChanged(EventArgs::Empty);
             }
           }
 

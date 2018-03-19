@@ -18,6 +18,7 @@
 #include "../../include/Switch/System/Windows/Forms/MessageBoxDefaultButton.hpp"
 #include "../../include/Switch/System/Windows/Forms/MessageBoxIcon.hpp"
 #include "../../include/Switch/System/Windows/Forms/MessageBoxOptions.hpp"
+#include "../../include/Switch/System/Windows/Forms/OpenFileDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/Panel.hpp"
 #include "../../include/Switch/System/Windows/Forms/ProgressBar.hpp"
 #include "../../include/Switch/System/Windows/Forms/RadioButton.hpp"
@@ -59,6 +60,7 @@ namespace Native {
   class CommonDialog static_ {
   public:
     static bool RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog& colorDialog);
+    static bool RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog& openFileDialog);
   };
 
   class ControlApi static_ {
