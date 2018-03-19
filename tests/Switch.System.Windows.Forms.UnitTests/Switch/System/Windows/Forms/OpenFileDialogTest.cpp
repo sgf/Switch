@@ -65,4 +65,3 @@ namespace SwitchUnitTests {
     ASSERT_EQ("", openFileDialog.SafeFileName);
   }
 }
-
