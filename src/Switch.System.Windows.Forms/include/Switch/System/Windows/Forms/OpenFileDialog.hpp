@@ -144,7 +144,7 @@ namespace Switch {
           /// }
           /// @endcode
           System::IO::FileStream OpenFile() {return System::IO::File::OpenRead(this->FileName);};
-          
+
           /// @brief Resets all properties to their default values.
           void Reset() override;
 
