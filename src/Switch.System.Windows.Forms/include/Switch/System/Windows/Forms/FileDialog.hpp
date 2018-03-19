@@ -3,6 +3,7 @@
 #pragma once
 
 #include <Switch/System/Drawing/Color.hpp>
+#include <Switch/System/ComponentModel/CancelEventHandler.hpp>
 #include "../../../System/Windows/Forms/FileDialogCustomPlaceCollection.hpp"
 #include "../../../System/Windows/Forms/CommonDialog.hpp"
 
@@ -132,12 +133,334 @@ namespace Switch {
           /// @brief Gets or sets the default file name extension.
           /// @return string The default file name extension. The returned string does not include the period. The default value is an empty string ("").
           /// @remarks When the user of your application specifies a file name without an extension, the FileDialog appends an extension to the file name. The extension that is used is determined by the Filter and DefaultExt properties. If a filter is selected in the FileDialog and the filter specifies an extension, then that extension is used. If the filter selected uses a wildcard in place of the extension, then the extension specified in the DefaultExt property is used.
+          /// @par Examples
+          /// The following code example demonstrates using the RichTextBox.SaveFile and RichTextBox.LoadFile methods with streams. It also demonstrates using the FileName, DefaultExt, SaveFileDialog.CreatePrompt, and SaveFileDialog.OverwritePrompt members.<br><br>
+          /// This is a complete example that is ready to run when you copy it to your project.
+          /// @include RichTextBox.cpp
           property_<string> DefaultExt {
             get_ {return this->defaultExt;},
             set_ {this->defaultExt = value;}
           };
 
+          /// @brief Gets or sets a value indicating whether the dialog box returns the location of the file referenced by the shortcut or whether it returns the location of the shortcut (.lnk).
+          /// @return bool true if the dialog box returns the location of the file referenced by the shortcut; otherwise, false. The default value is true.
+          property_<bool> DereferenceLinks {
+            get_ {return this->dereferenceLinks;},
+            set_ {this->dereferenceLinks = value;}
+          };
+
+          /// @brief Gets or sets a string containing the file name selected in the file dialog box.
+          /// @return string The file name selected in the file dialog box. The default value is an empty string ("").
+          /// @remarks The file name includes both the file path and the extension. If no files are selected, this method returns an empty string ("").
+          /// @remarks When used from the SaveFileDialog class, this property represents the file being saved; when used from the OpenFileDialog class, it represents the file being opened.
+          /// @remarks This property can only be the name of one selected file. If you want to return an array containing the names of all selected files in a multiple-selection dialog box, use FileNames.
+          /// @par Examples
+          /// The following code example demonstrates using the RichTextBox.SaveFile and RichTextBox.LoadFile methods with streams. It also demonstrates using the FileName, DefaultExt, SaveFileDialog.CreatePrompt, and SaveFileDialog.OverwritePrompt members.<br><br>
+          /// This is a complete example that is ready to run when you copy it to your project.
+          /// @include RichTextBox.cpp
+          property_<string> FileName {
+            get_ {return this->fileName;},
+            set_ {this->FileName = value;}
+          };
+
+          /// @brief Gets the file names of all selected files in the dialog box.
+          /// @return Array<string> An array of type String, containing the file names of all selected files in the dialog box.
+          /// @remarks Each file name includes both the file path and the extension. If no files are selected, this method returns an empty array.
+          /// @par Examples
+          /// The following code example allows the user to select a number of images and display them in PictureBox controls on a Form. It demonstrates initializing an OpenFileDialog, setting the Title and Filter properties, and allowing the user to select multiple files by setting the Multiselect property to true. This code example assumes that your form already has an OpenFileDialog control named openFileDialog1, a Button named SelectFileButton, and a FlowLayoutPanel named flowLayoutPanel1.
+          /// @code
+          /// void Form1_Load(const object& sender, const EventArgs& e) {
+          ///   InitializeOpenFileDialog();
+          /// }
+          ///
+          /// void InitializeOpenFileDialog() {
+          ///   // Set the file dialog to filter for graphics files.
+          ///   this->openFileDialog1.Filter = "Images (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
+          ///
+          ///   // Allow the user to select multiple images.
+          ///   this->openFileDialog1.Multiselect = true;
+          ///   this->openFileDialog1.Title = "My Image Browser";
+          /// }
+          ///
+          /// void selectFilesButton_Click(const object& sender, const EventArgs& e) {
+          ///   DialogResult dr = this->openFileDialog1.ShowDialog();
+          ///   if (dr == System::Windows::Forms::DialogResult::OK) {
+          ///     // Read the files
+          ///     for (const String& file : openFileDialog1.FileNames) {
+          ///       // Create a PictureBox.
+          ///       try {
+          ///         this->pictureBoxes.Add(new_<PictureBox>());
+          ///         Image loadedImage = Image.FromFile(file);
+          ///         this->pictureBoxes[this->pictureBoxes.Count - 1]->Height = loadedImage.Height;
+          ///         this->pictureBoxes[this->pictureBoxes.Count - 1]->Width = loadedImage.Width;
+          ///         this->pictureBoxes[this->pictureBoxes.Count - 1]->Image = loadedImage;
+          ///         flowLayoutPanel1.Controls().Add(*this->pictureBoxes[this->pictureBoxes.Count - 1]);
+          ///       }
+          ///       catch (const SecurityException& ex) {
+          ///         // The user lacks appropriate permissions to read files, discover paths, etc.
+          ///         MessageBox::Show("Security error. Please contact your administrator for details.\n\nError message: "_s + ex.Message + "\n\nDetails (send to Support):\n\n"_s + ex.StackTrace);
+          ///       }
+          ///       catch (const Exception& ex) {
+          ///         // Could not load the image - probably related to Windows file system permissions.
+          ///         MessageBox.Show("Cannot display the image: "_s + file.Substring(file.LastIndexOf('\\')) + ". You may not have permission to read the file, or it may be corrupt.\n\nReported error: "_s + ex.Message);
+          ///       }
+          ///     }
+          ///   }
+          /// @endcode
+          property_<Array<string>, readonly_> FileNames {
+            get_ {return this->fileNames;}
+          };
+
+          /// @brief Gets or sets the current file name filter string, which determines the choices that appear in the "Save as file type" or "Files of type" box in the dialog box.
+          /// @return string The file filtering options available in the dialog box.
+          /// @exception ArgumentException Filter format is invalid.
+          /// @remarks For each filtering option, the filter string contains a description of the filter, followed by the vertical bar (|) and the filter pattern. The strings for different filtering options are separated by the vertical bar.
+          /// @remarks The following is an example of a filter string:
+          /// @code
+          /// Text files (*.txt)|*.txt|All files (*.*)|*.*
+          /// @endcode
+          /// @remarks You can add several filter patterns to a filter by separating the file types with semicolons, for example:
+          /// @code
+          /// Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*
+          /// @endcode
+          /// Use the FilterIndex property to set which filtering option is shown first to the user.
+          /// @par Examples
+          /// The following code example uses the OpenFileDialog implementation of FileDialog and illustrates creating, setting of properties, and showing the dialog box. The example uses the Filter and FilterIndex properties to provide a list of filters for the user. The example requires a form with a Button placed on it and the System.IO namespace added to it.
+          /// @code
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   Stream myStream;
+          ///   OpenFileDialog openFileDialog1;
+          ///
+          ///   openFileDialog1.InitialDirectory = "c:\\" ;
+          ///   openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
+          ///   openFileDialog1.FilterIndex = 2 ;
+          ///   openFileDialog1.RestoreDirectory = true ;
+          ///
+          ///   if (openFileDialog1.ShowDialog() == DialogResult::OK) {
+          ///     try {
+          ///       using_ (myStream = openFileDialog1.OpenFile()) {
+          ///         // Insert code to read the stream here.
+          ///       }
+          ///     } catch (const Exception& ex) {
+          ///       MessageBox::Show("Error: Could not read file from disk. Original error: "_s + ex.Message);
+          ///     }
+          ///   }
+          /// }
+          /// @endcode
+          property_<string> Filter {
+            get_ {return this->filter;},
+            set_ {this->filter = value;}
+          };
+
+          /// @brief Gets or sets the index of the filter currently selected in the file dialog box.
+          /// @return int32 A value containing the index of the filter currently selected in the file dialog box. The default value is 1.
+          /// @remarks Use the FilterIndex property to set which filtering option is shown first to the user. You can also use the value of FilterIndex after showing the file dialog to perform special file operations depending upon the filter chosen.
+          /// @note The index value of the first filter entry is 1.
+          /// @par Examples
+          /// The following code example uses the OpenFileDialog implementation of FileDialog and illustrates creating, setting of properties, and showing the dialog box. The example uses the Filter and FilterIndex properties to provide a list of filters for the user. The example requires a form with a Button placed on it and the System.IO namespace added to it.
+          /// @code
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   Stream myStream;
+          ///   OpenFileDialog openFileDialog1;
+          ///
+          ///   openFileDialog1.InitialDirectory = "c:\\" ;
+          ///   openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
+          ///   openFileDialog1.FilterIndex = 2 ;
+          ///   openFileDialog1.RestoreDirectory = true ;
+          ///
+          ///   if (openFileDialog1.ShowDialog() == DialogResult::OK) {
+          ///     try {
+          ///       using_ (myStream = openFileDialog1.OpenFile()) {
+          ///         // Insert code to read the stream here.
+          ///       }
+          ///     } catch (const Exception& ex) {
+          ///       MessageBox::Show("Error: Could not read file from disk. Original error: "_s + ex.Message);
+          ///     }
+          ///   }
+          /// }
+          /// @endcode
+          property_<int32> FilterIndex {
+            get_ {return this->filterIndex;},
+            set_ {this->filterIndex = value;}
+          };
+
+          /// @brief Gets or sets the initial directory displayed by the file dialog box.
+          /// @brief return string The initial directory displayed by the file dialog box. The default is an empty string ("").
+          /// @remarks The InitialDirectory property is typically set using one of the following sources:
+          /// * A path that was previously used in the program, perhaps retained from the last directory or file operation.
+          /// * A path read from a persistent source, such as an application setting, a Registry or a string resource in the application.
+          /// * Standard Windows system and user paths, such as Program Files, MyDocuments, MyMusic, and so on (which you can obtain using the GetFolderPath method)
+          /// * A path related to the current application, such as its startup directory (which you can obtain using properties on the Application object).
+          /// @remarks For more information about creating dynamic paths, see the FileDialog class overview.
+          /// @remarks On Windows Vista, if InitialDirectory is set to a full file name instead of just a directory path, the initial directory will default either to the application path, or to the directory from which the user last selected a file.
+          /// @par Examples
+          /// The following code example uses the OpenFileDialog implementation of FileDialog and illustrates creating, setting of properties, and showing the dialog box. The example uses the Filter and FilterIndex properties to provide a list of filters for the user. The example requires a form with a Button placed on it and the System.IO namespace added to it.
+          /// @code
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   Stream myStream;
+          ///   OpenFileDialog openFileDialog1;
+          ///
+          ///   openFileDialog1.InitialDirectory = "c:\\" ;
+          ///   openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
+          ///   openFileDialog1.FilterIndex = 2 ;
+          ///   openFileDialog1.RestoreDirectory = true ;
+          ///
+          ///   if (openFileDialog1.ShowDialog() == DialogResult::OK) {
+          ///     try {
+          ///       using_ (myStream = openFileDialog1.OpenFile()) {
+          ///         // Insert code to read the stream here.
+          ///       }
+          ///     } catch (const Exception& ex) {
+          ///       MessageBox::Show("Error: Could not read file from disk. Original error: "_s + ex.Message);
+          ///     }
+          ///   }
+          /// }
+          /// @endcode
+          property_<string> InitialDirectory {
+            get_ {return this->initialDirectory;},
+            set_ {this->initialDirectory = value;}
+          };
+
+          /// @brief Gets or sets a value indicating whether the dialog box restores the directory to the previously selected directory before closing.
+          /// @return bool rue if the dialog box restores the current directory to the previously selected directory if the user changed the directory while searching for files; otherwise, false. The default value is false.
+          /// @par Examples
+          /// The following code example uses the OpenFileDialog implementation of FileDialog and illustrates creating, setting of properties, and showing the dialog box. The example uses the Filter and FilterIndex properties to provide a list of filters for the user. The example requires a form with a Button placed on it and the System.IO namespace added to it.
+          /// @code
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   Stream myStream;
+          ///   OpenFileDialog openFileDialog1;
+          ///
+          ///   openFileDialog1.InitialDirectory = "c:\\" ;
+          ///   openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
+          ///   openFileDialog1.FilterIndex = 2 ;
+          ///   openFileDialog1.RestoreDirectory = true ;
+          ///
+          ///   if (openFileDialog1.ShowDialog() == DialogResult::OK) {
+          ///     try {
+          ///       using_ (myStream = openFileDialog1.OpenFile()) {
+          ///         // Insert code to read the stream here.
+          ///       }
+          ///     } catch (const Exception& ex) {
+          ///       MessageBox::Show("Error: Could not read file from disk. Original error: "_s + ex.Message);
+          ///     }
+          ///   }
+          /// }
+          /// @endcode
+          property_<bool> RestoreDirectory {
+            get_ {return this->restoreDirectory;},
+            set_ {this->restoreDirectory = value;}
+          };
+
+          /// @brief Gets or sets a value indicating whether the Help button is displayed in the file dialog box.
+          /// @return bool true if the dialog box includes a help button; otherwise, false. The default value is false.
+          /// @remarks A HelpRequested event is raised when the user clicks the Help button.
+          property_<bool> ShowHelp {
+            get_ {return this->showHelp;},
+            set_ {this->showHelp = value;}
+          };
+
+          /// @brief Gets or sets whether the dialog box supports displaying and saving files that have multiple file name extensions.
+          /// @return bool true if the dialog box supports multiple file name extensions; otherwise, false. The default is false.
+          /// @remarks Sometimes users must open and save files that use multiple file name extensions. For example, the application manifest files used by the ClickOnce deployment technology end in the complex file name extension ".exe.manifest". Setting this property to true enables you to set the Filter property to a multi-dotted extension.
+          /// @remarks If SupportMultiDottedExtensions is false, and you assign a multi-dotted extension to Filter, derived controls such as SaveFileDialog will only use the last extension in the string. For example, ".manifest" will be used instead of ".exe.manifest".
+          /// @par Examples
+          /// The following code example saves files with the extension ".data.txt". This code example requires that your application host a SaveFileDialog named saveFileDialog1 and a Button named button1.
+          /// @code
+          /// Form1() {
+          ///   this->InitializeComponent();
+          ///   this->button1.Click += EventHandler(*this, &Form1::button1_Click);
+          /// }
+          ///
+          /// void button1_Click(const object& sender, const EventArgs& e) {
+          ///   saveFileDialog1.Filter = "Data text files|.data.txt";
+          ///   saveFileDialog1.SupportMultiDottedExtensions = true;
+          ///   saveFileDialog1.FileOk += CancelEventHandler(*this, &Form::saveFileDialog1_FileOk);
+          ///   saveFileDialog1.ShowDialog();
+          /// }
+          ///
+          /// void saveFileDialog1_FileOk(const object& sender, CancelEventArgs e) {
+          ///   try {
+          ///     FileStream s = saveFileDialog1.OpenFile();
+          ///     StreamWriter sw(s, Encoding.Unicode);
+          ///     sw.WriteLine("Hello, world!");
+          ///     sw.Close();
+          ///   } catch (const Exception& ex) {
+          ///     MessageBox.Show("Error: Could not write file. Please try again later. Error message: "_s + ex.Message, "Error Writing File", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+          ///   }
+          /// }
+          /// @endcode
+          property_<bool> SupportMultiDottedExtensions {
+            get_ {return this->supportMultiDottedExtensions;},
+            set_ {this->supportMultiDottedExtensions = value;}
+          };
+
+          /// @brief Gets or sets the file dialog box title.
+          /// @return string The file dialog box title. The default value is an empty string ("").
+          /// @remarks The string is placed in the title bar of the dialog box. If the title is an empty string, the system uses a default title, which is either "Save As" or "Open".
+          /// @par EXamples
+          /// The following code example demonstrates initializing an OpenFileDialog, setting the Title and Filter properties, and allowing the user to select multiple files by setting the OpenFileDialog.Multiselect property to true. To run this example, paste the following code in a form containing an OpenFileDialog named OpenFileDialog1 and a Button named fileButton. Call the InitializeOpenFileDialog method in the form's constructor or Load method. The example also requires that the Click event of the Button control is connected to the event handler defined in the example.
+          /// @code
+          /// void InitializeOpenFileDialog() {
+          ///   // Set the file dialog to filter for graphics files.
+          ///   this->openFileDialog1.Filter = "Images (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
+          ///
+          ///   // Allow the user to select multiple images.
+          ///   this->openFileDialog1.Multiselect = true;
+          ///   this->openFileDialog1.Title = "My Image Browser";
+          /// }
+          ///
+          /// void selectFilesButton_Click(const object& sender, const EventArgs& e) {
+          ///   this->openFileDialog1.ShowDialog();
+          /// }
+          /// @endcode
+          property_<string> Title {
+            get_ {return this->title;},
+            set_ {this->title = value;}
+          };
+
+          /// @brief Gets or sets a value indicating whether the dialog box accepts only valid Win32 file names.
+          /// @return bool true if the dialog box accepts only valid Win32 file names; otherwise, false. The default value is true.
+          /// @remarks If the edit control contains anything but spaces when the user clicks OK, the dialog box returns the file name, whether it is valid or not. No default extension is added to the text.
+          property_<bool> ValidateNames {
+            get_ {return this->validateNames;},
+            set_ {this->validateNames = value;}
+          };
+
+          /// @brief Occurs when the user clicks on the Open or Save button on a file dialog box.
+          /// @remarks For information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example saves files with the extension ".data.txt". This code example requires that your application host a SaveFileDialog named saveFileDialog1 and a Button named button1.
+          /// @code
+          /// Form1() {
+          ///   this->InitializeComponent();
+          ///   this->button1.Click += EventHandler(*this, &Form1::button1_Click);
+          /// }
+          ///
+          /// void button1_Click(const object& sender, const EventArgs& e) {
+          ///   saveFileDialog1.Filter = "Data text files|.data.txt";
+          ///   saveFileDialog1.SupportMultiDottedExtensions = true;
+          ///   saveFileDialog1.FileOk += CancelEventHandler(*this, &Form::saveFileDialog1_FileOk);
+          ///   saveFileDialog1.ShowDialog();
+          /// }
+          ///
+          /// void saveFileDialog1_FileOk(const object& sender, CancelEventArgs e) {
+          ///   try {
+          ///     FileStream s = saveFileDialog1.OpenFile();
+          ///     StreamWriter sw(s, Encoding.Unicode);
+          ///     sw.WriteLine("Hello, world!");
+          ///     sw.Close();
+          ///   } catch (const Exception& ex) {
+          ///     MessageBox.Show("Error: Could not write file. Please try again later. Error message: "_s + ex.Message, "Error Writing File", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+          ///   }
+          /// }
+          /// @endcode
+          ComponentModel::CancelEventHandler FileOk;
+
         protected:
+          /// @brief Raises the FileOk event.
+          /// @param e A CancelEventArgs that contains the event data.
+          void OnFileOk(ComponentModel::CancelEventArgs& e) {this->FileOk(*this, e);}
+
           /// @cond
           bool addExtension = true;
           bool autoUpgradeEnabled = true;
@@ -145,6 +468,17 @@ namespace Switch {
           bool checkPathExists = false;
           System::Windows::Forms::FileDialogCustomPlaceCollection fileDialogCustomPlaceCollection;
           string defaultExt;
+          bool dereferenceLinks = true;
+          string fileName;
+          Array<string> fileNames;
+          string filter;
+          int32 filterIndex = 1;
+          string initialDirectory;
+          bool restoreDirectory = false;
+          bool showHelp = false;
+          bool supportMultiDottedExtensions = false;
+          string title;
+          bool validateNames = true;
           /// @endcond
         };
       }

@@ -63,17 +63,16 @@ namespace Switch {
       /// @return string The time zone's general display name.
       /// @remarks The display name is localized based on the culture installed with the Windows operating system.
       /// @remarks Time zone display names for Windows system time zones follow a fairly standard format. The first portion of the display name is the time zone's base offset from Coordinated Universal Time, which is indicated by the acronym GMT (for Greenwich Mean Time), enclosed in parentheses. For Coordinated Universal Time, the GMT acronym with no offset is enclosed in parentheses. This is followed by a string that identifies the time zone or one or more of the cities, regions, or countries in the time zone. For example:
-      /// @verbatim
+      /// @code
       /// (GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London
       /// (GMT+02:00) Athens, Beirut, Istanbul, Minsk
       /// (GMT-02:00) Mid-Atlantic
       /// (GMT-07:00) Mountain Time (US & Canada)
-      ///  @endverbatim
+      ///  @endcode
       property_<const String&, readonly_> DisplayName {
         get_->const String& {return this->displayName;}
       };
 
-      /// @brief Gets the display name for the time zone's standard time.
       /// @brief Gets the time zone identifier.
       /// @return string The time zone identifier.
       /// @remarks The time zone identifier is a key string that uniquely identifies a particular time zone. It can be passed as a parameter to the FindSystemTimeZoneById method to retrieve a particular time zone from the registry.
@@ -85,6 +84,7 @@ namespace Switch {
       /// @return TimeZoneInfo An object that represents the local time zone.
       static const TimeZoneInfo& Local();
 
+      /// @brief Gets the display name for the time zone's standard time.
       /// @return The display name of the time zone's standard time.
       /// @remarks The display name is localized based on the culture installed with the Windows operating system.
       /// @remarks The StandardName property is identical to the StandardName property of the TimeZone class.
