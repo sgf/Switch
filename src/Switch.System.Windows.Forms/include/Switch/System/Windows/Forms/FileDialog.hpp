@@ -229,7 +229,6 @@ namespace Switch {
           /// The following code example uses the OpenFileDialog implementation of FileDialog and illustrates creating, setting of properties, and showing the dialog box. The example uses the Filter and FilterIndex properties to provide a list of filters for the user. The example requires a form with a Button placed on it and the System.IO namespace added to it.
           /// @code
           /// void button1_Click(const object& sender, const System::EventArgs& e) {
-          ///   Stream myStream;
           ///   OpenFileDialog openFileDialog1;
           ///
           ///   openFileDialog1.InitialDirectory = "c:\\" ;
@@ -239,7 +238,7 @@ namespace Switch {
           ///
           ///   if (openFileDialog1.ShowDialog() == DialogResult::OK) {
           ///     try {
-          ///       using_ (myStream = openFileDialog1.OpenFile()) {
+          ///       using_ (FileStream myStream = openFileDialog1.OpenFile()) {
           ///         // Insert code to read the stream here.
           ///       }
           ///     } catch (const Exception& ex) {

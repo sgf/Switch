@@ -248,15 +248,7 @@ namespace Switch {
           };
 
           /// @brief When overridden in a derived class, resets the properties of a common dialog box to their default values.
-          /// @par Notes to Inheritors
-          /// Inheriting classes can override this method to reset their properties.
-          virtual void Reset();
-
-          /// @brief When overridden in a derived class, specifies a common dialog box.
-          /// @param hwndOwner A value that represents the window handle of the owner window for the common dialog box.
-          /// @return bool true if the dialog box was successfully run; otherwise, false.
-          /// @remarks This method is invoked when the user of a common dialog box calls ShowDialog, and it must be overridden by inherited classes of CommonDialog to implement a specific common dialog box.
-          virtual bool RunDialog(intptr hwndOwner);
+          void Reset() override;
 
         protected:
           /// @cond
@@ -268,6 +260,9 @@ namespace Switch {
           bool showHelp = false;
           bool solidColorOnly = false;
           /// @endcond
+
+        private:
+          bool RunDialog(intptr hwndOwner) override;
         };
       }
     }

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "../../../System/Windows/Forms/FileDialog.hpp"
+#include <Switch/System/IO/File.hpp>
 #include <Switch/System/IO/Path.hpp>
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
@@ -117,15 +118,44 @@ namespace Switch {
             get_ {return System::IO::Path::GetFileName(this->FileName);}
           };
 
+          /// @brief Opens the file selected by the user, with read-only permission. The file is specified by the FileName property.
+          /// @return FileStream A Stream that specifies the read-only file selected by the user.
+          /// @remarks The OpenFile method is used to provide a facility to quickly open a file from the dialog box. The file is opened in read-only mode for security purposes. To open a file in read/write mode, you must use another method, such as FileStream.
+          /// @par Examples
+          /// The following code example uses the OpenFileDialog implementation of FileDialog and illustrates creating, setting of properties, and showing the dialog box. The example uses the Filter and FilterIndex properties to provide a list of filters for the user. The example requires a form with a Button placed on it and the System.IO namespace added to it.
+          /// @code
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   OpenFileDialog openFileDialog1;
+          ///
+          ///   openFileDialog1.InitialDirectory = "c:\\" ;
+          ///   openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
+          ///   openFileDialog1.FilterIndex = 2 ;
+          ///   openFileDialog1.RestoreDirectory = true ;
+          ///
+          ///   if (openFileDialog1.ShowDialog() == DialogResult::OK) {
+          ///     try {
+          ///       using_ (FileStream myStream = openFileDialog1.OpenFile()) {
+          ///         // Insert code to read the stream here.
+          ///       }
+          ///     } catch (const Exception& ex) {
+          ///       MessageBox::Show("Error: Could not read file from disk. Original error: "_s + ex.Message);
+          ///     }
+          ///   }
+          /// }
+          /// @endcode
+          System::IO::FileStream OpenFile() {return System::IO::File::OpenRead(this->FileName);};
+          
+          /// @brief Resets all properties to their default values.
           void Reset() override;
-
-          bool RunDialog(intptr hwndOwner) override;
 
         protected:
           /// @cond
           bool multiselect = false;
           bool readOnlyChecked = false;
           /// @endcond
+
+        private:
+          bool RunDialog(intptr hwndOwner) override;
         };
       }
     }
