@@ -252,7 +252,7 @@ namespace Switch {
             set_ {
               if (this->filter != value) {
                 Array<string> filterPatterns = value.Split('|');
-                if (filterPatterns.Count %2 != 0) throw ArgumentException(caller_);
+                if (filterPatterns.Count % 2 != 0) throw ArgumentException(caller_);
                 for (int32 index = 0; index < filterPatterns.Count; index += 2)
                   this->filters.Add({filterPatterns[index], filterPatterns[index + 1].Split(';')});
                 this->filter = value;
@@ -467,7 +467,7 @@ namespace Switch {
           /// @cond
           Array<System::Collections::Generic::KeyValuePair<string, Array<string>>> __get_filters__() {return this->filters.ToArray();}
           /// @endcond
-          
+
         protected:
           /// @brief Raises the FileOk event.
           /// @param e A CancelEventArgs that contains the event data.

@@ -56,7 +56,7 @@ namespace Switch {
           /// }
           /// @endcode
           System::IO::FileStream OpenFile() {return System::IO::File::Open(this->FileName, Switch::System::IO::FileMode::OpenOrCreate, Switch::System::IO::FileAccess::ReadWrite);}
-          
+
           /// @brief Resets all properties to their default values.
           void Reset() override;
 

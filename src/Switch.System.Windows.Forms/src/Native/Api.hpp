@@ -7,40 +7,50 @@
 #include "WindowMessage.hpp"
 #include "WindowMessageKey.hpp"
 
-namespace Switch { namespace System { namespace Drawing {
-  class Font;
-  class Point;
-  class Rectangle;
-  class Size;
-}}}
+namespace Switch {
+  namespace System {
+    namespace Drawing {
+      class Font;
+      class Point;
+      class Rectangle;
+      class Size;
+    }
+  }
+}
 
-namespace Switch { namespace System { namespace Windows { namespace Forms {
-  enum class ArrangeDirection;
-  enum class ArrangeStartingPosition;
-  enum class BootMode;
-  class Button;
-  class CheckBox;
-  class ColorDialog;
-  class Control;
-  enum class DialogResult;
-  class Form;
-  class GroupBox;
-  class Label;
-  struct Message;
-  enum class MessageBoxButtons;
-  enum class MessageBoxIcon;
-  enum class MessageBoxDefaultButton;
-  enum class MessageBoxOptions;
-  class OpenFileDialog;
-  class Panel;
-  class ProgressBar;
-  class RadioButton;
-  class SaveFileDialog;
-  class Screen;
-  class TabControl;
-  class TabPage;
-  class TrackBar;
-}}}}
+namespace Switch {
+  namespace System {
+    namespace Windows {
+      namespace Forms {
+        enum class ArrangeDirection;
+        enum class ArrangeStartingPosition;
+        enum class BootMode;
+        class Button;
+        class CheckBox;
+        class ColorDialog;
+        class Control;
+        enum class DialogResult;
+        class Form;
+        class GroupBox;
+        class Label;
+        struct Message;
+        enum class MessageBoxButtons;
+        enum class MessageBoxIcon;
+        enum class MessageBoxDefaultButton;
+        enum class MessageBoxOptions;
+        class OpenFileDialog;
+        class Panel;
+        class ProgressBar;
+        class RadioButton;
+        class SaveFileDialog;
+        class Screen;
+        class TabControl;
+        class TabPage;
+        class TrackBar;
+      }
+    }
+  }
+}
 
 namespace Native {
   class ApplicationApi static_ {
