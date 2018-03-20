@@ -5,6 +5,8 @@
 #include <gtkmm/radiobuttongroup.h>
 #include <gtkmm/widget.h>
 #include <Switch/System/Diagnostics/Debug.hpp>
+#include <Switch/System/Drawing/Color.hpp>
+#include "../../include/Switch/System/Windows/Forms/Control.hpp"
 #include "Api.hpp"
 
 namespace Native {

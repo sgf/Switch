@@ -2,7 +2,8 @@
 
 #include <gtkmm/widget.h>
 #include "WidgetGtk.hpp"
-#include "../../include/Switch/System/Windows/Forms/Control.hpp"
+#include "../../include/Switch/System/Windows/Forms/Button.hpp"
+#include "../../include/Switch/System/Windows/Forms/Form.hpp"
 
 using namespace System;
 using namespace System::Drawing;
