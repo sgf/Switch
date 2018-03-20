@@ -23,4 +23,3 @@ namespace SwitchUnitTests {
     ASSERT_TRUE(button.IsDefault);
   }
 }
-
