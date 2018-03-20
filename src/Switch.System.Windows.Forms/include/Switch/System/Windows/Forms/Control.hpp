@@ -158,22 +158,6 @@ namespace Switch {
           Control(const Control& parent, const string& text) : Control() {
             this->Parent = parent;
             this->Text = text;
-            this->size = GetDefaultSize();
-          }
-
-          /// @brief Initializes a new instance of the Control class with specific text, size, and location.
-          /// @param text The text displayed by the control.
-          /// @param left The X position of the control, in pixels, from the left edge of the control's container. The value is assigned to the Left property.
-          /// @param top The Y position of the control, in pixels, from the top edge of the control's container. The value is assigned to the Top property.
-          /// @param width The height of the control, in pixels. The value is assigned to the Height property.
-          /// @param height The width of the control, in pixels. The value is assigned to the Width property.
-          /// @remarks The Control class is the base class for all controls used in a Windows Forms application. Because this class is not typically used to create an instance of the class, this constructor is typically not called directly but is instead called by a derived class.
-          /// @remarks This version of the Control constructor sets the initial Text property value to the text parameter value. The initial Size and Location of the control are determined by the left, top, width and height parameter values.
-          /// @note To maintain better performance, do not set the size of a control in its constructor. The preferred method is to virtual the DefaultSize property.
-          Control(const string& text, int32 left, int32 top, int32 width, int32 height) : Control() {
-            this->Text = text;
-            this->location = {left, top};
-            this->size = {width, height};
           }
 
           /// @brief Initializes a new instance of the Control class as a child control, with specific text, size, and location.
@@ -189,6 +173,29 @@ namespace Switch {
           Control(const Control& parent, const string& text, int32 left, int32 top, int32 width, int32 height) : Control() {
             this->Parent = parent;
             this->Text = text;
+            this->Bounds = System::Drawing::Rectangle(left, top, width, height);
+          }
+
+          /// @brief Initializes a new instance of the Control class with specific text.
+          /// @param text The text displayed by the control.
+          /// @remarks The Control class is the base class for all controls used in a Windows Forms application. Because this class is not typically used to create an instance of the class, this constructor is typically not called directly but is instead called by a derived class.
+          /// @remarks This version of the Control constructor sets the initial Text property value to the text parameter value. The constructor also adds the control to the parent control's Control::ControlCollection.
+          explicit Control(const string& text) : Control() {
+            this->Text = text;
+          }
+
+          /// @brief Initializes a new instance of the Control class with specific text, size, and location.
+          /// @param text The text displayed by the control.
+          /// @param left The X position of the control, in pixels, from the left edge of the control's container. The value is assigned to the Left property.
+          /// @param top The Y position of the control, in pixels, from the top edge of the control's container. The value is assigned to the Top property.
+          /// @param width The height of the control, in pixels. The value is assigned to the Height property.
+          /// @param height The width of the control, in pixels. The value is assigned to the Width property.
+          /// @remarks The Control class is the base class for all controls used in a Windows Forms application. Because this class is not typically used to create an instance of the class, this constructor is typically not called directly but is instead called by a derived class.
+          /// @remarks This version of the Control constructor sets the initial Text property value to the text parameter value. The initial Size and Location of the control are determined by the left, top, width and height parameter values.
+          /// @note To maintain better performance, do not set the size of a control in its constructor. The preferred method is to virtual the DefaultSize property.
+          Control(const string& text, int32 left, int32 top, int32 width, int32 height) : Control() {
+            this->Text = text;
+            this->Bounds = System::Drawing::Rectangle(left, top, width, height);
           }
 
           /// @cond

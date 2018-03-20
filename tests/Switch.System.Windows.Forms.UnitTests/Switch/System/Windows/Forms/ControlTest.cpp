@@ -34,6 +34,36 @@ namespace SwitchUnitTests {
     ASSERT_EQ(0, control.Width);
   }
 
+  TEST(ControlTest, ConstructorWithParentAndText) {
+    Control control1;
+    Control control2(control1, "control2");
+
+    ASSERT_EQ(control1, control2.Parent());
+    ASSERT_EQ("control2", control2.Text);
+  }
+
+  TEST(ControlTest, ConstructorWithParentTextAndBounds) {
+    Control control1;
+    Control control2(control1, "control2", 1, 2, 3, 4);
+
+    ASSERT_EQ(Rectangle(1, 2, 3, 4), control2.Bounds);
+    ASSERT_EQ(control1, control2.Parent());
+    ASSERT_EQ("control2", control2.Text);
+  }
+
+  TEST(ControlTest, ConstructorWithText) {
+    Control control("control");
+
+    ASSERT_EQ("control", control.Text);
+  }
+
+  TEST(ControlTest, ConstructorWithTextAndBounds) {
+    Control control("control", 1, 2, 3, 4);
+
+    ASSERT_EQ(Rectangle(1, 2, 3, 4), control.Bounds);
+    ASSERT_EQ("control", control.Text);
+  }
+
   TEST(ControlTest, BackColor) {
     Control control;
     Color result;

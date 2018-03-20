@@ -38,7 +38,7 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
   fileChooserDialog.add_button("Open", Gtk::RESPONSE_OK);
 
-  int result= fileChooserDialog.run();
+  int result = fileChooserDialog.run();
   if (result == Gtk::RESPONSE_CANCEL) return false;
   return true;
 }
@@ -52,7 +52,7 @@ bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms
   fileChooserDialog.add_button("Save", Gtk::RESPONSE_OK);
   fileChooserDialog.set_filename("Undefined");
 
-  int result= fileChooserDialog.run();
+  int result = fileChooserDialog.run();
   if (result == Gtk::RESPONSE_CANCEL) return false;
   return true;
 }
