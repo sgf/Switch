@@ -23,6 +23,7 @@ void OpenFileDialog::Reset() {
   this->FileDialog::initialDirectory = "";
   this->FileDialog::restoreDirectory = false;
   this->FileDialog::showHelp = false;
+  this->FileDialog::showHiddenFiles = false;
   this->FileDialog::supportMultiDottedExtensions = false;
   this->FileDialog::title = "";
   this->FileDialog::validateNames = true;

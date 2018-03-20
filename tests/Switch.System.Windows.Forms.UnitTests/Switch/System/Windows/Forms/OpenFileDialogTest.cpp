@@ -30,6 +30,7 @@ namespace SwitchUnitTests {
     openFileDialog.InitialDirectory = "home";
     openFileDialog.RestoreDirectory = true;
     openFileDialog.ShowHelp = true;
+    openFileDialog.ShowHiddenFiles = true;
     openFileDialog.SupportMultiDottedExtensions = true;
     openFileDialog.Title = "Myopen file title";
     openFileDialog.ValidateNames = false;
@@ -52,6 +53,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("", openFileDialog.InitialDirectory);
     ASSERT_FALSE(openFileDialog.RestoreDirectory);
     ASSERT_FALSE(openFileDialog.ShowHelp);
+    ASSERT_FALSE(openFileDialog.ShowHiddenFiles);
     ASSERT_FALSE(openFileDialog.SupportMultiDottedExtensions);
     ASSERT_EQ("", openFileDialog.Title);
     ASSERT_TRUE(openFileDialog.ValidateNames);

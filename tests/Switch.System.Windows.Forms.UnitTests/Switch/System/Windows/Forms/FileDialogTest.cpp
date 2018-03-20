@@ -30,6 +30,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("", fileDialog1.InitialDirectory);
     ASSERT_FALSE(fileDialog1.RestoreDirectory);
     ASSERT_FALSE(fileDialog1.ShowHelp);
+    ASSERT_FALSE(fileDialog1.ShowHiddenFiles);
     ASSERT_FALSE(fileDialog1.SupportMultiDottedExtensions);
     ASSERT_EQ("", fileDialog1.Title);
     ASSERT_TRUE(fileDialog1.ValidateNames);
@@ -179,6 +180,14 @@ namespace SwitchUnitTests {
     fileDialog1.ShowHelp = true;
 
     ASSERT_TRUE(fileDialog1.ShowHelp);
+  }
+
+  TEST(FileDialogTest, ShowHiddenFiles) {
+    FileDialog1 fileDialog1;
+
+    fileDialog1.ShowHiddenFiles = true;
+
+    ASSERT_TRUE(fileDialog1.ShowHiddenFiles);
   }
 
   TEST(FileDialogTest, SupportMultiDottedExtensions) {

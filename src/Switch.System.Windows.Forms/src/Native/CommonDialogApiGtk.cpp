@@ -23,8 +23,7 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
   colorChooserDialog.set_modal(true);
   colorChooserDialog.set_rgba(Native::Widget::FromColor(colorDialog.Color));
 
-  int result = colorChooserDialog.run();
-  if (result == Gtk::RESPONSE_CANCEL) return false;
+  if (colorChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
   if (colorChooserDialog.get_rgba() != Native::Widget::FromColor(colorDialog.Color)) colorDialog.Color = Native::Widget::ToColor(colorChooserDialog.get_rgba());
   return true;
 }
@@ -38,8 +37,7 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
   fileChooserDialog.add_button("Open", Gtk::RESPONSE_OK);
 
-  int result = fileChooserDialog.run();
-  if (result == Gtk::RESPONSE_CANCEL) return false;
+  if (fileChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
   return true;
 }
 
@@ -52,8 +50,7 @@ bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms
   fileChooserDialog.add_button("Save", Gtk::RESPONSE_OK);
   fileChooserDialog.set_filename("Undefined");
 
-  int result = fileChooserDialog.run();
-  if (result == Gtk::RESPONSE_CANCEL) return false;
+  if (fileChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
   return true;
 }
 

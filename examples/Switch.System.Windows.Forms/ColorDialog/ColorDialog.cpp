@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-namespace FormExample {
+namespace ColorDialogExample {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -13,7 +13,7 @@ namespace FormExample {
     }
 
     Form1() {
-      this->button.Text = "colors";
+      this->button.Text = "Color...";
       this->button.Location = System::Drawing::Point(10, 10);
       this->button.Click += delegate_(const object & sender, const EventArgs & e) {
         ColorDialog colorDialog;
@@ -31,4 +31,4 @@ namespace FormExample {
   };
 }
 
-startup_(FormExample::Form1);
+startup_(ColorDialogExample::Form1);

@@ -25,6 +25,8 @@ namespace ManualTests {
         ColorDialog colorDialog;
         DialogResult result = colorDialog.ShowDialog();
         System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
+        if (result == DialogResult::OK)
+          System::Diagnostics::Debug::WriteLine(string::Format("Color = {0}", colorDialog.Color));
       };
 
       Button buttonOpen;
@@ -32,8 +34,15 @@ namespace ManualTests {
       buttonOpen.Location = Point(10, 50);
       buttonOpen.Click += delegate_(const object & sender, const EventArgs & e) {
         OpenFileDialog openFileDialog;
+        openFileDialog.InitialDirectory = Environment::GetFolderPath(Environment::SpecialFolder::Desktop);
+        openFileDialog.Multiselect = true;
+        openFileDialog.ShowHiddenFiles = true;
         DialogResult result = openFileDialog.ShowDialog();
         System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
+        if (result == DialogResult::OK && !openFileDialog.Multiselect)
+          System::Diagnostics::Debug::WriteLine(string::Format("File = {0}", openFileDialog.FileName));
+        if (result == DialogResult::OK && openFileDialog.Multiselect)
+          System::Diagnostics::Debug::WriteLine(string::Format("File = {0}", string::Join(Environment::NewLine, openFileDialog.FileNames)));
       };
 
       Button buttonSave;
@@ -41,8 +50,11 @@ namespace ManualTests {
       buttonSave.Location = Point(10, 90);
       buttonSave.Click += delegate_(const object & sender, const EventArgs & e) {
         SaveFileDialog saveFileDialog;
+        saveFileDialog.FileName = "Gammasoft.txt";
         DialogResult result = saveFileDialog.ShowDialog();
         System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
+        if (result == DialogResult::OK)
+          System::Diagnostics::Debug::WriteLine(string::Format("File = {0}", saveFileDialog.FileName));
       };
 
       Form mainForm;

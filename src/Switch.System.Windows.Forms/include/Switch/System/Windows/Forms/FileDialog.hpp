@@ -367,6 +367,14 @@ namespace Switch {
             set_ {this->showHelp = value;}
           };
 
+          /// @brief Gets or sets a value that indicates whether the panel displays files that are normally hidden from the user.
+          /// @return bool true if the dialog box shows hidden files; otherwise false. the default value is false;
+          /// @remarks On Windows, this property does not have any effect.
+          property_<bool> ShowHiddenFiles {
+            get_ {return this->showHiddenFiles;},
+            set_ {this->showHiddenFiles = value;}
+          };
+
           /// @brief Gets or sets whether the dialog box supports displaying and saving files that have multiple file name extensions.
           /// @return bool true if the dialog box supports multiple file name extensions; otherwise, false. The default is false.
           /// @remarks Sometimes users must open and save files that use multiple file name extensions. For example, the application manifest files used by the ClickOnce deployment technology end in the complex file name extension ".exe.manifest". Setting this property to true enables you to set the Filter property to a multi-dotted extension.
@@ -466,6 +474,7 @@ namespace Switch {
 
           /// @cond
           Array<System::Collections::Generic::KeyValuePair<string, Array<string>>> __get_filters__() {return this->filters.ToArray();}
+          void __set__file_names__(const Array<string>& fileNames) {this->fileNames = fileNames;}
           /// @endcond
 
         protected:
@@ -489,6 +498,7 @@ namespace Switch {
           string initialDirectory;
           bool restoreDirectory = false;
           bool showHelp = false;
+          bool showHiddenFiles = false;
           bool supportMultiDottedExtensions = false;
           string title;
           bool validateNames = true;

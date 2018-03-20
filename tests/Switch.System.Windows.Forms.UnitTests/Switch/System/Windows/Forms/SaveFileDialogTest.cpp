@@ -29,6 +29,7 @@ namespace SwitchUnitTests {
     saveFileDialog.InitialDirectory = "home";
     saveFileDialog.RestoreDirectory = true;
     saveFileDialog.ShowHelp = true;
+    saveFileDialog.ShowHiddenFiles = true;
     saveFileDialog.SupportMultiDottedExtensions = true;
     saveFileDialog.Title = "Myopen file title";
     saveFileDialog.ValidateNames = false;
@@ -50,6 +51,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("", saveFileDialog.InitialDirectory);
     ASSERT_FALSE(saveFileDialog.RestoreDirectory);
     ASSERT_FALSE(saveFileDialog.ShowHelp);
+    ASSERT_FALSE(saveFileDialog.ShowHiddenFiles);
     ASSERT_FALSE(saveFileDialog.SupportMultiDottedExtensions);
     ASSERT_EQ("", saveFileDialog.Title);
     ASSERT_TRUE(saveFileDialog.ValidateNames);
