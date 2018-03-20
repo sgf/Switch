@@ -5,9 +5,10 @@
 #include <windows.h>
 #include <Uxtheme.h>
 #include <Switch/Undef.hpp>
-
 #include "Api.hpp"
 #include "WindowProcedureApiWin32.hpp"
+#include "../../include/Switch/System/Windows/Forms/TabControl.hpp"
+#include "../../include/Switch/System/Windows/Forms/TabPage.hpp"
 
 using namespace System;
 using namespace System::Windows::Forms;

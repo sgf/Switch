@@ -2,8 +2,8 @@
 
 #include <gtkmm/frame.h>
 #include <gtkmm/scrolledwindow.h>
-
 #include "WidgetGtk.hpp"
+#include "../../include/Switch/System/Windows/Forms/GroupBox.hpp"
 
 using namespace System;
 using namespace System::Drawing;

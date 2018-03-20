@@ -6,8 +6,8 @@
 #include <Windowsx.h>
 #include <Uxtheme.h>
 #include <Switch/Undef.hpp>
-
 #include "WindowProcedureApiWin32.hpp"
+#include "../../include/Switch/System/Windows/Forms/Label.hpp"
 
 using namespace System;
 using namespace System::Windows::Forms;

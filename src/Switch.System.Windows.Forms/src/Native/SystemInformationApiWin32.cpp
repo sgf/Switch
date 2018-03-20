@@ -4,8 +4,12 @@
 #include <Windowsx.h>
 #include <Uxtheme.h>
 #include <Switch/Undef.hpp>
-
+#include <Switch/System/Drawing/Font.hpp>
+#include <Switch/System/Drawing/Size.hpp>
 #include "Api.hpp"
+#include "../../include/Switch/System/Windows/Forms/ArrangeDirection.hpp"
+#include "../../include/Switch/System/Windows/Forms/ArrangeStartingPosition.hpp"
+#include "../../include/Switch/System/Windows/Forms/BootMode.hpp"
 
 using namespace System;
 using namespace System::Drawing;

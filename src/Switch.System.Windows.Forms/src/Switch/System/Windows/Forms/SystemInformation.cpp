@@ -1,5 +1,6 @@
 #include "../../../../../include/Switch/System/Windows/Forms/SystemInformation.hpp"
 #include "../../../../Native/Api.hpp"
+#include <Switch/System/Environment.hpp>
 
 using namespace System;
 using namespace System::Drawing;

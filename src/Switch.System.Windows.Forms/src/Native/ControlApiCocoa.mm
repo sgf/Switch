@@ -1,5 +1,12 @@
 #if defined(__APPLE__)
 #include "WindowProcedureApiCocoa.hpp"
+#include "../../include/Switch/System/Windows/Forms/GroupBox.hpp"
+#include "../../include/Switch/System/Windows/Forms/Label.hpp"
+#include "../../include/Switch/System/Windows/Forms/ProgressBar.hpp"
+#include "../../include/Switch/System/Windows/Forms/Screen.hpp"
+#include "../../include/Switch/System/Windows/Forms/Control.hpp"
+#include "../../include/Switch/System/Windows/Forms/TabControl.hpp"
+#include "../../include/Switch/System/Windows/Forms/TabPage.hpp"
 
 using namespace System;
 using namespace System::Collections::Generic;

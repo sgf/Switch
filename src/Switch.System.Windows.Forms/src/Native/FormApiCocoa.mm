@@ -3,6 +3,8 @@
 #include <Switch/Microsoft/Win32/Registry.hpp>
 #include <Switch/System/Boolean.hpp>
 #include <Switch/System/Convert.hpp>
+#include "../../include/Switch/System/Windows/Forms/Form.hpp"
+#include "../../include/Switch/System/Windows/Forms/Screen.hpp"
 
 using namespace System;
 using namespace System::Collections::Generic;

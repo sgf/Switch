@@ -10,6 +10,7 @@ namespace SwitchUnitTests {
   public:
     void Reset() override {}
     bool RunDialog(intptr hwndOwner) override {return false;}
+    Array<System::Collections::Generic::KeyValuePair<string, Array<string>>> GetFilters() {return this->FileDialog::__get_filters__();}
   };
 
   TEST(FileDialogTest, DefaultConstructor) {
@@ -98,12 +99,54 @@ namespace SwitchUnitTests {
     ASSERT_EQ("MyFile.txt", fileDialog1.FileName);
   }
 
-  TEST(FileDialogTest, Filter) {
+  TEST(FileDialogTest, FilterWithOneFilter) {
     FileDialog1 fileDialog1;
+    
+    fileDialog1.Filter = "All files (*.*)|*.*";
+    
+    ASSERT_EQ("All files (*.*)|*.*", fileDialog1.Filter);
+    ASSERT_EQ(1, fileDialog1.GetFilters().Count);
+    ASSERT_EQ("All files (*.*)", fileDialog1.GetFilters()[0].Key);
+    ASSERT_EQ(1, fileDialog1.GetFilters()[0].Value().Count);
+    ASSERT_EQ("*.*", fileDialog1.GetFilters()[0].Value()[0]);
+  }
 
-    fileDialog1.Filter = "*.*";
-
-    ASSERT_EQ("*.*", fileDialog1.Filter);
+  TEST(FileDialogTest, FilterWithTwoFilters) {
+    FileDialog1 fileDialog1;
+    
+    fileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+    
+    ASSERT_EQ("Text files (*.txt)|*.txt|All files (*.*)|*.*", fileDialog1.Filter);
+    ASSERT_EQ(2, fileDialog1.GetFilters().Count);
+    ASSERT_EQ("Text files (*.txt)", fileDialog1.GetFilters()[0].Key);
+    ASSERT_EQ(1, fileDialog1.GetFilters()[0].Value().Count);
+    ASSERT_EQ("*.txt", fileDialog1.GetFilters()[0].Value()[0]);
+    ASSERT_EQ("All files (*.*)", fileDialog1.GetFilters()[1].Key);
+    ASSERT_EQ(1, fileDialog1.GetFilters()[1].Value().Count);
+    ASSERT_EQ("*.*", fileDialog1.GetFilters()[1].Value()[0]);
+  }
+  
+  TEST(FileDialogTest, FilterWithTwoFiltersAndMoreThanOnePattern) {
+    FileDialog1 fileDialog1;
+    
+    fileDialog1.Filter = "Image files (*.bmp;*.jpg;*.png)|*.bmp;*.jpg;*.png|All files (*.*)|*.*";
+    
+    ASSERT_EQ("Image files (*.bmp;*.jpg;*.png)|*.bmp;*.jpg;*.png|All files (*.*)|*.*", fileDialog1.Filter);
+    ASSERT_EQ(2, fileDialog1.GetFilters().Count);
+    ASSERT_EQ("Image files (*.bmp;*.jpg;*.png)", fileDialog1.GetFilters()[0].Key);
+    ASSERT_EQ(3, fileDialog1.GetFilters()[0].Value().Count);
+    ASSERT_EQ("*.bmp", fileDialog1.GetFilters()[0].Value()[0]);
+    ASSERT_EQ("*.jpg", fileDialog1.GetFilters()[0].Value()[1]);
+    ASSERT_EQ("*.png", fileDialog1.GetFilters()[0].Value()[2]);
+    ASSERT_EQ("All files (*.*)", fileDialog1.GetFilters()[1].Key);
+    ASSERT_EQ(1, fileDialog1.GetFilters()[1].Value().Count);
+    ASSERT_EQ("*.*", fileDialog1.GetFilters()[1].Value()[0]);
+  }
+  
+  TEST(FileDialogTest, FilterWithInvalidFormat) {
+    FileDialog1 fileDialog1;
+    
+    ASSERT_THROW(fileDialog1.Filter = "*.*", ArgumentException);
   }
 
   TEST(FileDialogTest, FilterIndex) {

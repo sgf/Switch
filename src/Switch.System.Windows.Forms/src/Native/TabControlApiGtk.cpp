@@ -2,8 +2,9 @@
 
 #include <gtkmm/notebook.h>
 #include <gtkmm/scrolledwindow.h>
-
 #include "WidgetGtk.hpp"
+#include "../../include/Switch/System/Windows/Forms/TabControl.hpp"
+#include "../../include/Switch/System/Windows/Forms/TabPage.hpp"
 
 using namespace System;
 using namespace System::Drawing;

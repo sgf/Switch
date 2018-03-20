@@ -24,7 +24,7 @@ namespace SwitchUnitTests {
     saveFileDialog.DereferenceLinks = false;
     saveFileDialog.FileName = "MyFile.txt";
     /// saveFileDialog.FileNames = ... readonly
-    saveFileDialog.Filter = "*.*";
+    saveFileDialog.Filter = "All files (*.*)|*.*";
     saveFileDialog.FilterIndex = 2;
     saveFileDialog.InitialDirectory = "home";
     saveFileDialog.RestoreDirectory = true;

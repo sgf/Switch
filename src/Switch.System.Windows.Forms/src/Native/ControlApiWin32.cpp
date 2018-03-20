@@ -7,8 +7,8 @@
 #include <Uxtheme.h>
 #include <Switch/Undef.hpp>
 #undef SendMessage
-
 #include "WindowProcedureApiWin32.hpp"
+#include "../../include/Switch/System/Windows/Forms/Control.hpp"
 
 using namespace System;
 using namespace System::Drawing;

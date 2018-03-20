@@ -5,6 +5,9 @@
 #include <windows.h>
 #include <Switch/Undef.hpp>
 #include "Api.hpp"
+#include "../../include/Switch/System/Windows/Forms/ColorDialog.hpp"
+#include "../../include/Switch/System/Windows/Forms/OpenFileDialog.hpp"
+#include "../../include/Switch/System/Windows/Forms/SaveFileDialog.hpp"
 
 using namespace System;
 using namespace System::Drawing;

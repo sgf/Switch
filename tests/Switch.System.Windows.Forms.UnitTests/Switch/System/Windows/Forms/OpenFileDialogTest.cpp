@@ -25,7 +25,7 @@ namespace SwitchUnitTests {
     openFileDialog.DereferenceLinks = false;
     openFileDialog.FileName = "MyFile.txt";
     /// openFileDialog.FileNames = ... readonly
-    openFileDialog.Filter = "*.*";
+    openFileDialog.Filter = "All files (*.*)|*.*";
     openFileDialog.FilterIndex = 2;
     openFileDialog.InitialDirectory = "home";
     openFileDialog.RestoreDirectory = true;

@@ -3,8 +3,8 @@
 #include <gtkmm/frame.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/notebook.h>
-
 #include "WidgetGtk.hpp"
+#include "../../include/Switch/System/Windows/Forms/TabPage.hpp"
 
 using namespace System;
 using namespace System::Drawing;

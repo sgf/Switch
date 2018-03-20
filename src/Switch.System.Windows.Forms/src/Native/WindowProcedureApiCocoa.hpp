@@ -7,6 +7,7 @@
 #include "Api.hpp"
 #include "WindowMessage.hpp"
 #include "WindowMessageKey.hpp"
+#include "../../include/Switch/System/Windows/Forms/Form.hpp"
 
 namespace Native {
   class WindowProcedure static_ {

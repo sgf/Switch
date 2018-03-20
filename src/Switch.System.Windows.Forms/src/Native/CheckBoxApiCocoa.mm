@@ -1,6 +1,7 @@
 #if defined(__APPLE__)
 #include "WidgetCocoa.hpp"
 #include "WindowProcedureApiCocoa.hpp"
+#include "../../include/Switch/System/Windows/Forms/CheckBox.hpp"
 
 using namespace System;
 using namespace System::Drawing;

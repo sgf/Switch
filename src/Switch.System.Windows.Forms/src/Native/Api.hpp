@@ -1,34 +1,46 @@
 #pragma once
 
 #include <Switch/Static.hpp>
+#include <Switch/System/EventHandler.hpp>
 #include <Switch/System/String.hpp>
-#include "../../include/Switch/System/Windows/Forms/ArrangeDirection.hpp"
-#include "../../include/Switch/System/Windows/Forms/ArrangeStartingPosition.hpp"
-#include "../../include/Switch/System/Windows/Forms/BootMode.hpp"
-#include "../../include/Switch/System/Windows/Forms/Button.hpp"
-#include "../../include/Switch/System/Windows/Forms/CheckBox.hpp"
-#include "../../include/Switch/System/Windows/Forms/ColorDialog.hpp"
-#include "../../include/Switch/System/Windows/Forms/Control.hpp"
-#include "../../include/Switch/System/Windows/Forms/DialogResult.hpp"
-#include "../../include/Switch/System/Windows/Forms/Form.hpp"
-#include "../../include/Switch/System/Windows/Forms/GroupBox.hpp"
-#include "../../include/Switch/System/Windows/Forms/InvalidateEventArgs.hpp"
-#include "../../include/Switch/System/Windows/Forms/Label.hpp"
-#include "../../include/Switch/System/Windows/Forms/MessageBoxButtons.hpp"
-#include "../../include/Switch/System/Windows/Forms/MessageBoxDefaultButton.hpp"
-#include "../../include/Switch/System/Windows/Forms/MessageBoxIcon.hpp"
-#include "../../include/Switch/System/Windows/Forms/MessageBoxOptions.hpp"
-#include "../../include/Switch/System/Windows/Forms/OpenFileDialog.hpp"
-#include "../../include/Switch/System/Windows/Forms/Panel.hpp"
-#include "../../include/Switch/System/Windows/Forms/ProgressBar.hpp"
-#include "../../include/Switch/System/Windows/Forms/RadioButton.hpp"
-#include "../../include/Switch/System/Windows/Forms/SaveFileDialog.hpp"
-#include "../../include/Switch/System/Windows/Forms/Screen.hpp"
-#include "../../include/Switch/System/Windows/Forms/TabControl.hpp"
-#include "../../include/Switch/System/Windows/Forms/TabPage.hpp"
-#include "../../include/Switch/System/Windows/Forms/TrackBar.hpp"
+#include <Switch/System/Collections/Generic/Dictionary.hpp>
 #include "WindowMessage.hpp"
 #include "WindowMessageKey.hpp"
+
+namespace Switch { namespace System { namespace Drawing {
+  class Font;
+  class Point;
+  class Rectangle;
+  class Size;
+}}}
+
+namespace Switch { namespace System { namespace Windows { namespace Forms {
+  enum class ArrangeDirection;
+  enum class ArrangeStartingPosition;
+  enum class BootMode;
+  class Button;
+  class CheckBox;
+  class ColorDialog;
+  class Control;
+  enum class DialogResult;
+  class Form;
+  class GroupBox;
+  class Label;
+  struct Message;
+  enum class MessageBoxButtons;
+  enum class MessageBoxIcon;
+  enum class MessageBoxDefaultButton;
+  enum class MessageBoxOptions;
+  class OpenFileDialog;
+  class Panel;
+  class ProgressBar;
+  class RadioButton;
+  class SaveFileDialog;
+  class Screen;
+  class TabControl;
+  class TabPage;
+  class TrackBar;
+}}}}
 
 namespace Native {
   class ApplicationApi static_ {
@@ -204,12 +216,6 @@ namespace Native {
     static int32 GetMenuHeight();
   };
 
-  class TabPageApi static_ {
-  public:
-    static intptr Create(const System::Windows::Forms::TabPage& tabPage);
-    static void SetBorderStyle(const System::Windows::Forms::TabPage& panel);
-  };
-
   class TabControlApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::TabControl& tabControl);
@@ -218,6 +224,12 @@ namespace Native {
     static void SetAlignment(const System::Windows::Forms::TabControl& tabControl);
     static void InsertTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage);
     static void RemoveTabPage(const System::Windows::Forms::TabControl& tabControl, int32 index, const System::Windows::Forms::TabPage& tabPage);
+  };
+
+  class TabPageApi static_ {
+  public:
+    static intptr Create(const System::Windows::Forms::TabPage& tabPage);
+    static void SetBorderStyle(const System::Windows::Forms::TabPage& panel);
   };
 
   class TimerApi static_ {

@@ -3,9 +3,9 @@
 #include <gtkmm/fixed.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/window.h>
-
 #include "WidgetGtk.hpp"
 #include <Switch/Microsoft/Win32/Registry.hpp>
+#include "../../include/Switch/System/Windows/Forms/Form.hpp"
 
 using namespace System;
 using namespace System::Drawing;

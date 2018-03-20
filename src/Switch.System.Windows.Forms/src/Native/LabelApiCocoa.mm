@@ -1,5 +1,6 @@
 #if defined(__APPLE__)
 #include "WindowProcedureApiCocoa.hpp"
+#include "../../include/Switch/System/Windows/Forms/Label.hpp"
 
 using namespace System;
 using namespace System::Drawing;

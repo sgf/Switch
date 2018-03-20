@@ -34,6 +34,29 @@ namespace Switch {
             set_ {this->createPrompt = value;}
           };
 
+          /// @brief Opens the file with read/write permission selected by the user.
+          /// @return FileStream The read/write file selected by the user.
+          /// @warning For security purposes, this method creates a new file with the selected name and opens it with read/write permissions. This can cause unintentional loss of data if you select an existing file to save to. To save data to an existing file while retaining existing data, use the File class to open the file using the file name returned in the FileName property.
+          /// @par Examples
+          /// The following code example illustrates creating a SaveFileDialog, setting members, calling the dialog box using the ShowDialog method, and opening the selected file. The example requires a form with a button placed on it.
+          /// @code
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   SaveFileDialog saveFileDialog1;
+          ///
+          ///   saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
+          ///   saveFileDialog1.FilterIndex = 2 ;
+          ///   saveFileDialog1.RestoreDirectory = true ;
+          ///
+          ///   if (saveFileDialog1.ShowDialog() == DialogResult::OK) {
+          ///     using_(FileStream myStream = saveFileDialog1.OpenFile()) {
+          ///       // Code to write the stream goes here.
+          ///       myStream.Close();
+          ///     }
+          ///   }
+          /// }
+          /// @endcode
+          System::IO::FileStream OpenFile() {return System::IO::File::Open(this->FileName, Switch::System::IO::FileMode::OpenOrCreate, Switch::System::IO::FileAccess::ReadWrite);}
+          
           /// @brief Resets all properties to their default values.
           void Reset() override;
 

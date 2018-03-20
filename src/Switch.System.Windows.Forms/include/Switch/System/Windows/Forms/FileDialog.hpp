@@ -44,7 +44,7 @@ namespace Switch {
         ///   OpenFileDialog openFileDialog1;
         ///
         ///   openFileDialog1.InitialDirectory = "c:\\" ;
-        ///   openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
+        ///   openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
         ///   openFileDialog1.FilterIndex = 2 ;
         ///   openFileDialog1.RestoreDirectory = true ;
         ///
@@ -249,7 +249,15 @@ namespace Switch {
           /// @endcode
           property_<string> Filter {
             get_ {return this->filter;},
-            set_ {this->filter = value;}
+            set_ {
+              if (this->filter != value) {
+                Array<string> filterPatterns = value.Split('|');
+                if (filterPatterns.Count %2 != 0) throw ArgumentException(caller_);
+                for (int32 index = 0; index < filterPatterns.Count; index += 2)
+                  this->filters.Add({filterPatterns[index], filterPatterns[index + 1].Split(';')});
+                this->filter = value;
+              }
+            }
           };
 
           /// @brief Gets or sets the index of the filter currently selected in the file dialog box.
@@ -456,6 +464,10 @@ namespace Switch {
           /// @endcode
           ComponentModel::CancelEventHandler FileOk;
 
+          /// @cond
+          Array<System::Collections::Generic::KeyValuePair<string, Array<string>>> __get_filters__() {return this->filters.ToArray();}
+          /// @endcond
+          
         protected:
           /// @brief Raises the FileOk event.
           /// @param e A CancelEventArgs that contains the event data.
@@ -472,6 +484,7 @@ namespace Switch {
           string fileName;
           System::Collections::Generic::List<string> fileNames;
           string filter;
+          System::Collections::Generic::List<System::Collections::Generic::KeyValuePair<string, Array<string>>> filters;
           int32 filterIndex = 1;
           string initialDirectory;
           bool restoreDirectory = false;

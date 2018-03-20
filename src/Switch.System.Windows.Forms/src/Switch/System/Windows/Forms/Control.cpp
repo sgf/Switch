@@ -5,6 +5,7 @@
 #include "../../../../../include/Switch/System/Windows/Forms/Application.hpp"
 #include "../../../../../include/Switch/System/Windows/Forms/Control.hpp"
 #include "../../../../../include/Switch/System/Windows/Forms/Form.hpp"
+#include "../../../../../include/Switch/System/Windows/Forms/TabPage.hpp"
 #include "../../../../Native/Api.hpp"
 
 using namespace System;

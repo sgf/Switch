@@ -6,6 +6,9 @@
 
 #include <gtkmm.h>
 #include "WidgetGtk.hpp"
+#include "../../include/Switch/System/Windows/Forms/ColorDialog.hpp"
+#include "../../include/Switch/System/Windows/Forms/OpenFileDialog.hpp"
+#include "../../include/Switch/System/Windows/Forms/SaveFileDialog.hpp"
 
 extern Glib::RefPtr<Gtk::Application> __application__;
 

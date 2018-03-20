@@ -1,8 +1,8 @@
 #if defined(__linux__)
 
 #include <gtkmm/label.h>
-
 #include "WidgetGtk.hpp"
+#include "../../include/Switch/System/Windows/Forms/Label.hpp"
 
 using namespace System;
 using namespace System::Drawing;

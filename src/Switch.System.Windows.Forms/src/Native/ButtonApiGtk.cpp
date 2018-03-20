@@ -1,8 +1,8 @@
 #if defined(__linux__)
 
 #include <gtkmm/button.h>
-
 #include "WidgetGtk.hpp"
+#include "../../include/Switch/System/Windows/Forms/Button.hpp"
 
 using namespace System;
 using namespace System::Drawing;

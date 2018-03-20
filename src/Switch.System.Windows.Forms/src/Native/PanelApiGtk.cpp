@@ -2,8 +2,8 @@
 
 #include <gtkmm/frame.h>
 #include <gtkmm/scrolledwindow.h>
-
 #include "WidgetGtk.hpp"
+#include "../../include/Switch/System/Windows/Forms/Panel.hpp"
 
 using namespace System;
 using namespace System::Drawing;

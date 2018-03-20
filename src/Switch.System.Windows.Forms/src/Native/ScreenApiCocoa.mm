@@ -2,6 +2,7 @@
 #import <AppKit/AppKit.h>
 #include <CoreGraphics/CoreGraphics.h>
 #include "Api.hpp"
+#include "../../include/Switch/System/Windows/Forms/Screen.hpp"
 
 using namespace System;
 using namespace System::Collections::Generic;

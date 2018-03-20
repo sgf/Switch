@@ -1,5 +1,10 @@
 #if defined(__APPLE__)
 #include "WindowProcedureApiCocoa.hpp"
+#include "../../include/Switch/System/Windows/Forms/DialogResult.hpp"
+#include "../../include/Switch/System/Windows/Forms/MessageBoxButtons.hpp"
+#include "../../include/Switch/System/Windows/Forms/MessageBoxDefaultButton.hpp"
+#include "../../include/Switch/System/Windows/Forms/MessageBoxIcon.hpp"
+#include "../../include/Switch/System/Windows/Forms/MessageBoxOptions.hpp"
 
 using namespace System;
 using namespace System::Collections::Generic;
