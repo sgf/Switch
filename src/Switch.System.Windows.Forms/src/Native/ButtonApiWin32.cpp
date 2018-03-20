@@ -8,7 +8,6 @@
 #include <Switch/Undef.hpp>
 #include "WindowProcedureApiWin32.hpp"
 #include "../../include/Switch/System/Windows/Forms/Button.hpp"
-#include "../../include/Switch/System/Windows/Forms/CheckBox.hpp"
 
 using namespace System;
 using namespace System::Windows::Forms;
