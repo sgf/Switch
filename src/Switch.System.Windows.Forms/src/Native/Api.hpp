@@ -22,6 +22,7 @@
 #include "../../include/Switch/System/Windows/Forms/Panel.hpp"
 #include "../../include/Switch/System/Windows/Forms/ProgressBar.hpp"
 #include "../../include/Switch/System/Windows/Forms/RadioButton.hpp"
+#include "../../include/Switch/System/Windows/Forms/SaveFileDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/Screen.hpp"
 #include "../../include/Switch/System/Windows/Forms/TabControl.hpp"
 #include "../../include/Switch/System/Windows/Forms/TabPage.hpp"
@@ -61,6 +62,7 @@ namespace Native {
   public:
     static bool RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog& colorDialog);
     static bool RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog& openFileDialog);
+    static bool RunSaveFileDialog(intptr hwnd, System::Windows::Forms::SaveFileDialog& saveFileDialog);
   };
 
   class ControlApi static_ {

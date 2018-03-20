@@ -14,14 +14,6 @@ namespace SwitchUnitTests {
     ASSERT_FALSE(openFileDialog.ReadOnlyChecked);
   }
 
-  TEST(OpenFileDialogTest, SafeFileName) {
-    OpenFileDialog openFileDialog;
-
-    openFileDialog.FileName = Path::Combine("Directory1", "Directory2", "Directory3", "MyFile.txt");
-
-    ASSERT_EQ("MyFile.txt", openFileDialog.SafeFileName);
-  }
-
   TEST(OpenFileDialogTest, Reset) {
     OpenFileDialog openFileDialog;
     openFileDialog.AddExtension = false;
@@ -82,5 +74,13 @@ namespace SwitchUnitTests {
     openFileDialog.ReadOnlyChecked = true;
 
     ASSERT_TRUE(openFileDialog.ReadOnlyChecked);
+  }
+
+  TEST(OpenFileDialogTest, SafeFileName) {
+    OpenFileDialog openFileDialog;
+
+    openFileDialog.FileName = Path::Combine("Directory1", "Directory2", "Directory3", "MyFile.txt");
+
+    ASSERT_EQ("MyFile.txt", openFileDialog.SafeFileName);
   }
 }

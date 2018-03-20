@@ -14,14 +14,15 @@ namespace Switch {
     namespace Windows {
       /// @brief The Switch::System::Windows::Forms namespace contains classes for creating Windows-based applications that take full advantage of the rich user interface features available in the Microsoft Windows operating system, Apple macOS and Linux like Ubuntu operating system.
       namespace Forms {
-        /// @brief Displays a dialog box from which the user can select a file.
+        /// @brief Displays a standard dialog box that prompts the user to open a file. This class cannot be inherited.
         /// @par Library
         /// Switch.System.Windows.Forms
-        class system_windows_forms_export_ OpenFileDialog : public FileDialog {
+        class system_windows_forms_export_ OpenFileDialog final : public FileDialog {
         public:
           /// @brief Initializes an instance of the OpenFileDialog class.
           /// @remarks This is the default, compiler-supplied constructor for the OpenFileDialog class.
           OpenFileDialog();
+
           /// @brief Gets or sets a value indicating whether the dialog box allows multiple files to be selected.
           /// @return bool true if the dialog box allows multiple files to be selected together or concurrently; otherwise, false. The default value is false.
           /// @remarks Use the FileNames property to access the full list of selected file names.
