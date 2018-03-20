@@ -18,19 +18,36 @@ namespace ManualTests {
     static void Main() {
       Application::EnableVisualStyles();
 
-      Button button;
-      button.Text = "button";
-      button.Location = Point(10, 10);
-      button.Click += delegate_(const object & sender, const EventArgs & e) {
+      Button buttonColor;
+      buttonColor.Text = "Color...";
+      buttonColor.Location = Point(10, 10);
+      buttonColor.Click += delegate_(const object & sender, const EventArgs & e) {
+        ColorDialog colorDialog;
+        DialogResult result = colorDialog.ShowDialog();
+        System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
+      };
+
+      Button buttonOpen;
+      buttonOpen.Text = "Open...";
+      buttonOpen.Location = Point(10, 50);
+      buttonOpen.Click += delegate_(const object & sender, const EventArgs & e) {
+        OpenFileDialog openFileDialog;
+        DialogResult result = openFileDialog.ShowDialog();
+        System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
+      };
+
+      Button buttonSave;
+      buttonSave.Text = "Save...";
+      buttonSave.Location = Point(10, 90);
+      buttonSave.Click += delegate_(const object & sender, const EventArgs & e) {
         SaveFileDialog saveFileDialog;
-        saveFileDialog.ShowDialog();
-        //ColorDialog colorDialog;
-        //colorDialog.ShowDialog();
+        DialogResult result = saveFileDialog.ShowDialog();
+        System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
       };
 
       Form mainForm;
       mainForm.Text = "Main Form";
-      mainForm.Controls().Add(button);
+      mainForm.Controls().AddRange({buttonColor, buttonOpen, buttonSave});
       mainForm.ShowDialog();
     }
   };

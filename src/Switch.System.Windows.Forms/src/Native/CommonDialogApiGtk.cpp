@@ -18,8 +18,7 @@ using namespace System::Windows::Forms;
 
 bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog& colorDialog) {
   Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
-
-  Gtk::ColorChooserDialog colorChooserDialog("Color");
+  Gtk::ColorChooserDialog colorChooserDialog("");
   if (window != null) colorChooserDialog.set_transient_for(*window);
   colorChooserDialog.set_modal(true);
   colorChooserDialog.set_rgba(Native::Widget::FromColor(colorDialog.Color));
@@ -31,11 +30,31 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
 }
 
 bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog& openFileDialog) {
-  return false;
+  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
+
+  Gtk::FileChooserDialog fileChooserDialog(openFileDialog.Title().c_str(), Gtk::FILE_CHOOSER_ACTION_OPEN);
+  if (window != null) fileChooserDialog.set_transient_for(*window);
+  fileChooserDialog.set_modal(true);
+  fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
+  fileChooserDialog.add_button("Open", Gtk::RESPONSE_OK);
+
+  int result= fileChooserDialog.run();
+  if (result == Gtk::RESPONSE_CANCEL) return false;
+  return true;
 }
 
 bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms::SaveFileDialog& saveFileDialog) {
-  return false;
+  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
+  Gtk::FileChooserDialog fileChooserDialog(saveFileDialog.Title().c_str(), Gtk::FILE_CHOOSER_ACTION_SAVE);
+  if (window != null) fileChooserDialog.set_transient_for(*window);
+  fileChooserDialog.set_modal(true);
+  fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
+  fileChooserDialog.add_button("Save", Gtk::RESPONSE_OK);
+  fileChooserDialog.set_filename("Undefined");
+
+  int result= fileChooserDialog.run();
+  if (result == Gtk::RESPONSE_CANCEL) return false;
+  return true;
 }
 
 #endif
