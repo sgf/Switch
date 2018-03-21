@@ -60,7 +60,7 @@ namespace {
       if (string::IsNullOrEmpty(fileName))
         return false;
 
-      if (pattern == "*")
+      if (pattern == "*" || pattern == "*.*")
         return true;
 
       if (pattern[0] == '*')

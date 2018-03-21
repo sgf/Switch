@@ -1,7 +1,7 @@
 # https://docs.codecov.io/docs/codecov-yaml
 coverage:
   precision: 2
-  round: down
+  round: up
   range: "0...100"
 
   status:

@@ -132,7 +132,7 @@ void Native::ControlApi::SetBackColor(const System::Windows::Forms::Control& con
   if (is<System::Windows::Forms::Form>(control)) {
     ((NSWindow*)control.Handle()).backgroundColor = CocoaApi::FromColor(control.BackColor);
   } else if (is<System::Windows::Forms::Label>(control)) {
-    ((NSTextField*)control.Handle()).drawsBackground = TRUE;
+    ((NSTextField*)control.Handle()).drawsBackground = YES;
     ((NSTextField*)control.Handle()).backgroundColor = CocoaApi::FromColor(control.BackColor);
   } else if (is<System::Windows::Forms::GroupBox>(control)) {
     ((NSBox*)control.Handle()).contentView.layer.backgroundColor = CocoaApi::FromColor(control.BackColor).CGColor;
