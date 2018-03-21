@@ -19,14 +19,14 @@ namespace OpenFileDialogExample {
       this->button.Click += delegate_(const object & sender, const EventArgs & e) {
         OpenFileDialog openFileDialog;
         openFileDialog.InitialDirectory = Environment::GetFolderPath(Environment::SpecialFolder::Desktop);
-        openFileDialog.Filter = "All Files (*.*)|*.*|Text Files (*.txt)|*.txt";
+        openFileDialog.Filter = "Text Files (*.txt)|*.txt;*.md|All Files (*.*)|*.*";
         if (openFileDialog.ShowDialog() == DialogResult::OK)
           this->label.Text = string::Format("File = {0}", openFileDialog.FileName);
       };
 
       this->label.Text = "File = ";
       this->label.Location = System::Drawing::Point(10, 40);
-      this->label.Width = 260;
+      this->label.Width = 340;
 
       this->Text = "OpenFileDialog example";
       this->Controls().AddRange({this->button, this->label});

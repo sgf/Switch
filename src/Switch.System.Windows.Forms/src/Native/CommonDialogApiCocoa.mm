@@ -69,9 +69,7 @@ namespace {
   }
 
   static NSView* CreateFilterView(NSSavePanel* savePanel, const Array<System::Collections::Generic::KeyValuePair<string, Array<string>>>& filters, int filterIndex) {
-    NSPopUpButton* popUpButton = [[[NSPopUpButton alloc ] initWithFrame:NSMakeRect(105, 0, 246, 30) pullsDown:NO] autorelease];
-    if (filters.Count == 0)
-      [popUpButton addItemWithTitle:@"All Files (*.*)"];
+    NSPopUpButton* popUpButton = [[[NSPopUpButton alloc ] initWithFrame:NSMakeRect(62, 0, 256, 30) pullsDown:NO] autorelease];
     for (auto filter : filters)
       [popUpButton addItemWithTitle:[NSString stringWithUTF8String:filter.Key().c_str()]];
     [popUpButton setAction:@selector(validateVisibleColumns)];
@@ -83,7 +81,7 @@ namespace {
 
     NSBox* box = [[[NSBox alloc] initWithFrame:NSMakeRect(0, 3, 140, 20 )] autorelease];
     [box setBorderType:NSNoBorder];
-    [box setTitle:@"Show:"];
+    [box setTitle:@"Filter:"];
     [box setTitleFont:[NSFont controlContentFontOfSize:NSControlSizeRegular]];
     [box sizeToFit];
     NSPoint boxLocation = [box frame].origin;
@@ -100,7 +98,7 @@ namespace {
 
 bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog &colorDialog) {
   NSColorPanel* colorPanel = [[[NSColorPanel alloc] init] autorelease];
-  [colorPanel runToolbarCustomizationPalette:null];
+  [colorPanel setIsVisible:YES];
   return false;
 }
 
@@ -111,11 +109,11 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   [openPanel setCanChooseDirectories:NO];
   [openPanel setResolvesAliases:openFileDialog.DereferenceLinks()];
   [openPanel setAllowsMultipleSelection:openFileDialog.Multiselect()];
-  [openPanel setNameFieldLabel:[NSString stringWithUTF8String:openFileDialog.FileName().c_str()]];
   [openPanel setShowsHiddenFiles:openFileDialog.ShowHiddenFiles()];
   [openPanel setDirectoryURL:[NSURL fileURLWithPath:[NSString stringWithUTF8String:openFileDialog.InitialDirectory().c_str()]]];
   [openPanel setNameFieldStringValue:[NSString stringWithUTF8String:openFileDialog.FileName().c_str()]];
-  [openPanel setAccessoryView:CreateFilterView(openPanel, openFileDialog.__get_filters__(), openFileDialog.FilterIndex - 1)];
+  if (openFileDialog.__get_filters__().Count != 0)
+    [openPanel setAccessoryView:CreateFilterView(openPanel, openFileDialog.__get_filters__(), openFileDialog.FilterIndex - 1)];
 
   if ([openPanel runModal] == NSModalResponseCancel) return false;
 
@@ -134,12 +132,12 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
 bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms::SaveFileDialog &saveFileDialog) {
   NSSavePanel* savePanel = [[[NSSavePanel alloc] init] autorelease];
   [savePanel setMessage:[NSString stringWithUTF8String:saveFileDialog.Title().c_str()]];
-  [savePanel setNameFieldLabel:[NSString stringWithUTF8String:saveFileDialog.FileName().c_str()]];
   [savePanel setCanCreateDirectories:YES];
   [savePanel setShowsHiddenFiles:saveFileDialog.ShowHiddenFiles()];
   [savePanel setDirectoryURL:[NSURL fileURLWithPath:[NSString stringWithUTF8String:saveFileDialog.InitialDirectory().c_str()]]];
   [savePanel setNameFieldStringValue:[NSString stringWithUTF8String:saveFileDialog.FileName().c_str()]];
-  [savePanel setAccessoryView:CreateFilterView(savePanel, saveFileDialog.__get_filters__(), saveFileDialog.FilterIndex - 1)];
+  if (saveFileDialog.__get_filters__().Count != 0)
+    [savePanel setAccessoryView:CreateFilterView(savePanel, saveFileDialog.__get_filters__(), saveFileDialog.FilterIndex - 1)];
 
   if ([savePanel runModal] == NSModalResponseCancel) return false;
 

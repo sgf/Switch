@@ -137,4 +137,3 @@ namespace SwitchUnitTests {
     ASSERT_TRUE(PatternCompare(".MyFile", "*.*e"));
   }
 }
-
