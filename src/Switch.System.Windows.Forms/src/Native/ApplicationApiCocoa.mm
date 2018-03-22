@@ -219,10 +219,6 @@ DialogResult Native::ApplicationApi::ShowMessageBox(const string& message, const
     if (displayHelpButton)
       [alert setShowsHelp:YES];
     DialogResult result = showModal[buttons](alert);
-    NSEvent *ignoredEvent;
-    do
-      ignoredEvent = [NSApp nextEventMatchingMask:(NSEventMaskAny & ~NSEventMaskSystemDefined) untilDate:[NSDate dateWithTimeIntervalSinceNow:0] inMode:NSDefaultRunLoopMode dequeue:YES];
-    while (ignoredEvent);
     return result;
   }
 }

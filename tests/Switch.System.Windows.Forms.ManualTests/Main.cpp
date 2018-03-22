@@ -1,6 +1,7 @@
 #include <Switch/System/Diagnostics/Debug.hpp>
 #include <Switch/System/Windows/Forms/Application.hpp>
 #include <Switch/System/Windows/Forms/ColorDialog.hpp>
+#include <Switch/System/Windows/Forms/MessageBox.hpp>
 #include <Switch/System/Windows/Forms/OpenFileDialog.hpp>
 #include <Switch/System/Windows/Forms/SaveFileDialog.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
@@ -18,11 +19,19 @@ namespace ManualTests {
     static void Main() {
       Application::EnableVisualStyles();
 
+      Button buttonMessage;
+      buttonMessage.Text = "Message...";
+      buttonMessage.Location = Point(10, 10);
+      buttonMessage.Click += delegate_(const object & sender, const EventArgs & e) {
+        MessageBox::Show("Thisis an example on MessageBox.", "Demo message", MessageBoxButtons::OKCancel, MessageBoxIcon::Exclamation);
+      };
+
       Button buttonColor;
       buttonColor.Text = "Color...";
-      buttonColor.Location = Point(10, 10);
+      buttonColor.Location = Point(10, 50);
       buttonColor.Click += delegate_(const object & sender, const EventArgs & e) {
         ColorDialog colorDialog;
+        colorDialog.Color = System::Drawing::Color::LightGreen;
         DialogResult result = colorDialog.ShowDialog();
         System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
         if (result == DialogResult::OK)
@@ -31,7 +40,7 @@ namespace ManualTests {
 
       Button buttonOpen;
       buttonOpen.Text = "Open...";
-      buttonOpen.Location = Point(10, 50);
+      buttonOpen.Location = Point(10, 90);
       buttonOpen.Click += delegate_(const object & sender, const EventArgs & e) {
         OpenFileDialog openFileDialog;
         openFileDialog.InitialDirectory = Environment::GetFolderPath(Environment::SpecialFolder::Desktop);
@@ -48,7 +57,7 @@ namespace ManualTests {
 
       Button buttonSave;
       buttonSave.Text = "Save...";
-      buttonSave.Location = Point(10, 90);
+      buttonSave.Location = Point(10, 130);
       buttonSave.Click += delegate_(const object & sender, const EventArgs & e) {
         SaveFileDialog saveFileDialog;
         saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
@@ -61,7 +70,7 @@ namespace ManualTests {
 
       Form mainForm;
       mainForm.Text = "Main Form";
-      mainForm.Controls().AddRange({buttonColor, buttonOpen, buttonSave});
+      mainForm.Controls().AddRange({buttonMessage, buttonColor, buttonOpen, buttonSave});
       mainForm.ShowDialog();
     }
   };

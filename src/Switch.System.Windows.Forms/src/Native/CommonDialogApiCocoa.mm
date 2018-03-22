@@ -1,7 +1,7 @@
 #if defined(__APPLE__)
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
-#include "Api.hpp"
+#include "WindowProcedureApiCocoa.hpp"
 #include "../../include/Switch/System/Windows/Forms/ColorDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/OpenFileDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/SaveFileDialog.hpp"
@@ -41,6 +41,30 @@ namespace {
 
 - (BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
   return [self panel:sender shouldShowFilename:[url path]];
+}
+@end
+
+@interface ColorPanelCocoa : NSColorPanel {
+  bool close;
+}
+- (BOOL)windowShouldClose:(id)sender;
+- (void) show;
+
+@end
+
+@implementation ColorPanelCocoa
+- (BOOL)windowShouldClose:(id)sender {
+  self->close = true;
+  return YES;
+}
+
+- (void) show {
+  self->close = false;
+  NSEvent *event;
+  do {
+    event = [NSApp nextEventMatchingMask:(NSEventMaskAny & ~NSEventMaskSystemDefined) untilDate:[NSDate dateWithTimeIntervalSinceNow:0] inMode:NSDefaultRunLoopMode dequeue:YES];
+    Native::WindowProcedure::WndProc(event);
+  } while (self->close == false);
 }
 @end
 
@@ -94,12 +118,24 @@ namespace {
 
     return view;
   }
+
+  static NSColor* FromColor(const System::Drawing::Color& color) {
+    return [NSColor colorWithCalibratedRed:as<double>(color.R()) / 0xFF green:as<double>(color.G()) / 0xFF blue:as<double>(color.B()) / 0xFF alpha:as<double>(color.A()) / 0xFF];
+  }
+
+  System::Drawing::Color ToColor(NSColor* color) {
+    const CGFloat* components = CGColorGetComponents(color.CGColor);
+    return System::Drawing::Color::FromArgb(CGColorGetAlpha(color.CGColor) * 0xFF, components[0] * 0xFF, components[1] * 0xFF, components[2] * 0xFF);
+  }
 }
 
 bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog &colorDialog) {
-  NSColorPanel* colorPanel = [[[NSColorPanel alloc] init] autorelease];
+  ColorPanelCocoa* colorPanel = [[[ColorPanelCocoa alloc] init] autorelease];
   [colorPanel setIsVisible:YES];
-  return false;
+  [colorPanel setColor:FromColor(colorDialog.Color)];
+  [colorPanel show];
+  colorDialog.Color = ToColor([colorPanel color]);
+  return true;
 }
 
 bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog &openFileDialog) {
