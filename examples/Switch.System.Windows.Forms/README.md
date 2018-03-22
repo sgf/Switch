@@ -10,7 +10,10 @@ This folder contains all examples used by Switch Docmentation and more.
 * [CheckBox](./CheckBox) Represents a Windows CheckBox control.
 * **CheckedListBox** Represents a Windows control to display a list of items.
 * **ComboBox** Represents a Windows combo box control.
+* [Control](./Control) Defines the base class for controls, which are components with visual representation.
 * **DateTimePicker** Represents a Windows control that allows the user to select a date and a time and to display the date and time with a specified format.
+* **DomainUpDown** Represents a Windows spin box (also known as an up-down control) that displays string values.
+* **HScroolBar** Represents a standard Windows horizontal scroll bar.
 * [Label](./Label) Represents a standard Windows label.
 * **LinkLabel** Represents a Windows label control that can display hyperlinks.
 * **ListBox** Represents a Windows control to display a list of items.
@@ -23,8 +26,12 @@ This folder contains all examples used by Switch Docmentation and more.
 * [ProgressBar](./ProgressBar) Represents a Windows progress bar control.
 * [RadioButton](./RadioButton) Enables the user to select a single option from a group of choices when paired with other RadioButton controls.
 * **RichTextBox** Represents a Windows rich text box control.
+* **Splitter** Represents a splitter control that enables the user to resize docked controls. Splitter has been replaced by SplitContainer and is provided only for compatibility with previous versions.
 * **TextBox** Represents a Windows text box control.
 * **ToolTip** Represents a small rectangular pop-up window that displays a brief description of a control's purpose when the user rests the pointer on the control.
+* [TrackBar](./TrackBar) Represents a standard Windows track bar.
+* **TreeView** Displays a hierarchical collection of labeled items, each represented by a TreeNode.
+* **VScroolBar** Represents a standard Windows vertical scroll bar.
 * **WebBrowser** Enables the user to navigate Web pages inside your form.
 
 ### Containers
@@ -47,9 +54,9 @@ This folder contains all examples used by Switch Docmentation and more.
 
 ### Datas
 
-* **Chart** 
 * **BindingNavigator** Represents the navigation and manipulation user interface (UI) for controls on a form that are bound to data.
 * **BindingSource** Encapsulates the data source for a form.
+* **Chart** 
 * **DataGridView** Displays data in a customizable grid.
 * **DataSet** 
 
