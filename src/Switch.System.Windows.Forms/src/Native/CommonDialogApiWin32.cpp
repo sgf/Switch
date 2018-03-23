@@ -21,7 +21,7 @@ namespace {
     int32 length = 1;
     for (auto& filter : filters)
       length += (int32)filter.Length + 1;
-    Array<byte> result(length*sizeof(wchar));
+    Array<byte> result(length * sizeof(wchar));
     int32 index = 0;
     for (auto& filter : filters) {
       Buffer::BlockCopy((const void*)filter.w_str().c_str(), filter.Length * sizeof(wchar), 0, (void*)result.Data(), result.Length * sizeof(wchar), index, filter.Length * sizeof(wchar));
@@ -67,7 +67,7 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   OPENFILENAME openFileName;
   ZeroMemory(&openFileName, sizeof(openFileName));
   openFileName.lStructSize = sizeof(openFileName);
-  
+
   openFileName.hwndOwner = hwnd != IntPtr::Zero ? (HWND)hwnd : GetActiveWindow();
 
   const Array<byte> filter = ToFilter(openFileDialog.Filter().Split('|'));
@@ -106,7 +106,7 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   openFileName.lpstrDefExt = defaultExt.c_str();
 
   if (!GetOpenFileName(&openFileName)) return false;
-  
+
   openFileDialog.FileName = fileName;
   return true;
 }
