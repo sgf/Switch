@@ -2,7 +2,8 @@
 
 This example demonstrates the use of System::Windows::Forms::SaveFileDialog dialog.
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/SaveFileDialogW.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/SaveFileDialog1W.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/SaveFileDialog2W.png)
 
 Windows
 
