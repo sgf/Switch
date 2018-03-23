@@ -785,14 +785,11 @@ String String::Remove(int32 startIndex, int32 count) const {
   return str;
 }
 
-// TODO THIS IS FALSE BECAUSE OF UNICODE -> MUST BUILD A NEW STRING (variable char size)
 String String::Replace(char32 oldChar, char32 newChar) const {
-  String str(*this);
-  for (StringType::const_iterator it = (this->string).begin(); it != (this->string).end(); it++) {
-    if (*it == oldChar)
-      str.string.replace(it.get_logical_index(), 1, 1, (char)newChar);
-  }
-  return str;
+  String result;
+  for (char32 c : *this)
+    result += c == oldChar ? newChar : c;
+  return result;
 }
 
 String String::Replace(const String& oldString, const String& newStr) const {

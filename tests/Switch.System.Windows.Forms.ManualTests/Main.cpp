@@ -44,7 +44,9 @@ namespace ManualTests {
       buttonOpen.Click += delegate_(const object & sender, const EventArgs & e) {
         OpenFileDialog openFileDialog;
         openFileDialog.InitialDirectory = Environment::GetFolderPath(Environment::SpecialFolder::Desktop);
+        openFileDialog.Title = "My open file";
         openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+        openFileDialog.FilterIndex = 2;
         openFileDialog.Multiselect = true;
         openFileDialog.ShowHiddenFiles = true;
         DialogResult result = openFileDialog.ShowDialog();
@@ -60,7 +62,6 @@ namespace ManualTests {
       buttonSave.Location = Point(10, 130);
       buttonSave.Click += delegate_(const object & sender, const EventArgs & e) {
         SaveFileDialog saveFileDialog;
-        saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
         saveFileDialog.FileName = "Gammasoft.txt";
         DialogResult result = saveFileDialog.ShowDialog();
         System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));

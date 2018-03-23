@@ -413,7 +413,7 @@ namespace Switch {
           /// @brief Gets or sets the file dialog box title.
           /// @return string The file dialog box title. The default value is an empty string ("").
           /// @remarks The string is placed in the title bar of the dialog box. If the title is an empty string, the system uses a default title, which is either "Save As" or "Open".
-          /// @par EXamples
+          /// @par Examples
           /// The following code example demonstrates initializing an OpenFileDialog, setting the Title and Filter properties, and allowing the user to select multiple files by setting the OpenFileDialog.Multiselect property to true. To run this example, paste the following code in a form containing an OpenFileDialog named OpenFileDialog1 and a Button named fileButton. Call the InitializeOpenFileDialog method in the form's constructor or Load method. The example also requires that the Click event of the Button control is connected to the event handler defined in the example.
           /// @code
           /// void InitializeOpenFileDialog() {
