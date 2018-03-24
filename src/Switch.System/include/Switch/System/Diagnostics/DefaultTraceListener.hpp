@@ -63,7 +63,7 @@ namespace Switch {
           get_ {return this->data->logFileName;},
           set_ {
             this->data->logFileName = value;
-            this->data->logWriter = new System::IO::StreamWriter(this->data->logFileName);
+            this->data->logWriter = new_<System::IO::StreamWriter>(this->data->logFileName);
           }
         };
 
@@ -75,7 +75,7 @@ namespace Switch {
           string messageLine;
         };
 
-        refptr<DefaultTraceListenerData> data {new DefaultTraceListenerData()};
+        refptr<DefaultTraceListenerData> data {new_<DefaultTraceListenerData>()};
       };
     }
   }

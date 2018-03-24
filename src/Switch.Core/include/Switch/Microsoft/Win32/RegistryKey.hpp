@@ -263,7 +263,7 @@ namespace Switch {
         const object& GetValue(const System::String& name, const T& defaultValue, bool) const {
           if (! this->values.ContainsKey(name.ToLower())) {
             static refptr<object> value;
-            value = new T(defaultValue);
+            value = new_<T>(defaultValue);
             return value.ToObject();
           }
           return this->values[name.ToLower()].Value();
@@ -289,7 +289,7 @@ namespace Switch {
           RegistryKeyValue() {}
           RegistryKeyValue(const RegistryKeyValue& rkv) : key(rkv.key), value(rkv.value), kind(rkv.kind) {}
           template<typename T>
-          RegistryKeyValue(const System::String& key, T value, RegistryValueKind kind) : key(key), value(new T(value)), kind(kind) {
+          RegistryKeyValue(const System::String& key, T value, RegistryValueKind kind) : key(key), value(new_<T>(value)), kind(kind) {
             switch (kind) {
             case RegistryValueKind::Binary : if (! is<System::Array<byte>>(value)) throw System::ArgumentException(caller_); break;
             case RegistryValueKind::DWord : if (! is<System::Int32>(value)) throw System::ArgumentException(caller_); break;

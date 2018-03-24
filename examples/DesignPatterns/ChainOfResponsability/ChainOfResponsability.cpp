@@ -9,12 +9,12 @@ namespace DesignPatterns {
     // The 'Handler' abstract class
     class Handler abstract_ {
     public:
-      void SetSuccessor(refptr<Handler> successor) {this->successor = successor;}
+      void SetSuccessor($<Handler> successor) {this->successor = successor;}
 
       virtual void HandleRequest(int request) const = 0;
 
     protected:
-      refptr<Handler> successor;
+      $<Handler> successor;
     };
 
     // The 'ConcreteHandler1' class
@@ -57,9 +57,9 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Setup Chain of Responsibility
-        refptr<Handler> h1 = new_<ConcreteHandler1>();
-        refptr<Handler> h2 = new_<ConcreteHandler2>();
-        refptr<Handler> h3 = new_<ConcreteHandler3>();
+        $<Handler> h1 = new_<ConcreteHandler1>();
+        $<Handler> h2 = new_<ConcreteHandler2>();
+        $<Handler> h3 = new_<ConcreteHandler3>();
         h1->SetSuccessor(h2);
         h2->SetSuccessor(h3);
 

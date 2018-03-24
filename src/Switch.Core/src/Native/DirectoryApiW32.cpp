@@ -83,11 +83,11 @@ char32 Native::DirectoryApi::VolumeSeparator() {
 }
 
 System::Collections::Generic::Enumerator<string> Native::DirectoryApi::EnumerateDirectories(const string& path, const string& pattern) {
-  return System::Collections::Generic::Enumerator<string>(new Enumerator(path, pattern, Enumerator::FileType::Directory));
+  return System::Collections::Generic::Enumerator<string>(new_<Enumerator>(path, pattern, Enumerator::FileType::Directory));
 }
 
 System::Collections::Generic::Enumerator<string> Native::DirectoryApi::EnumerateFiles(const string& path, const string& pattern) {
-  return System::Collections::Generic::Enumerator<string>(new Enumerator(path, pattern, Enumerator::FileType::File));
+  return System::Collections::Generic::Enumerator<string>(new_<Enumerator>(path, pattern, Enumerator::FileType::File));
 }
 
 int32 Native::DirectoryApi::GetFileAttributes(const string& path, System::IO::FileAttributes& attributes) {

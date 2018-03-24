@@ -19,7 +19,7 @@ namespace DesignPatterns {
     // The 'Aggregate' abstract class
     class Aggregate abstract_ {
     public:
-      virtual refptr<Iterator> CreateIterator() = 0;
+      virtual $<Iterator> CreateIterator() = 0;
     };
 
     class ConcreteAggregate;
@@ -50,7 +50,7 @@ namespace DesignPatterns {
     // The 'ConcreteAggregate' class
     class ConcreteAggregate : public Aggregate {
     public:
-      refptr<Iterator> CreateIterator() override {
+      $<Iterator> CreateIterator() override {
         return new_<ConcreteIterator>(*this);
       }
 
@@ -113,7 +113,7 @@ namespace DesignPatterns {
         a.Insert(3, "Item D");
 
         // Create Iterator and provide aggregate
-        refptr<Iterator> i = new_<ConcreteIterator>(a);
+        $<Iterator> i = new_<ConcreteIterator>(a);
 
         Console::WriteLine("Iterating over collection:");
 

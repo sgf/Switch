@@ -25,19 +25,19 @@ namespace DesignPatterns {
     // The 'Creator' abstract class
     class Creator abstract_ {
     public:
-      virtual refptr<Product> FactoryMethod() const = 0;
+      virtual $<Product> FactoryMethod() const = 0;
     };
 
     // A 'ConcreteCreator' class
     class ConcreteCreatorA : public Creator {
     public:
-      refptr<Product> FactoryMethod() const override {return new_<ConcreteProductA>();}
+      $<Product> FactoryMethod() const override {return new_<ConcreteProductA>();}
     };
 
     // A 'ConcreteCreator' class
     class ConcreteCreatorB : public Creator {
     public:
-      refptr<Product> FactoryMethod() const override {return new_<ConcreteProductB>();}
+      $<Product> FactoryMethod() const override {return new_<ConcreteProductB>();}
     };
 
     // MainApp startup_ class for Creational
@@ -47,14 +47,14 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // An array of creators
-        Array<refptr<Creator>> creators(2);
+        Array < $<Creator >> creators(2);
 
         creators[0] = new_<ConcreteCreatorA>();
         creators[1] = new_<ConcreteCreatorB>();
 
         // Iterate over creators and create products
-        for (refptr<Creator> creator : creators) {
-          refptr<Product> product = creator->FactoryMethod();
+        for ($<Creator> creator : creators) {
+          $<Product> product = creator->FactoryMethod();
           Console::WriteLine("Created {0}", product->GetType().Name);
         }
       }

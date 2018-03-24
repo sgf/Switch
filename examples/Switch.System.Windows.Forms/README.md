@@ -90,5 +90,6 @@ This folder contains all examples used by Switch Docmentation and more.
 * [ColorDialog](./ColorDialog) Represents a common dialog box that displays available colors along with controls that enable the user to define custom colors.
 * **FolderBrowserDialog** Prompts the user to select a folder. This class cannot be inherited.
 * **FontDialog** Prompts the user to choose a font from among those installed on the local computer.
-* [OpenFileDialog](./OpenFileDialog) Displays a standard dialog box that prompts the user to open a file. This class cannot be inherited.
-* [SaveFileDialog](./SaveFileDialog) Prompts the user to select a location for saving a file. This class cannot be inherited.
+* [MessageBox](./MessageBox) Displays a message window, also known as a dialog box, which presents a message to the user. It is a modal window, blocking other actions in the application until the user closes it. A MessageBox can contain text, buttons, and symbols that inform and instruct the user.
+* [OpenFileDialog](./OpenFileDialog) Displays a standard dialog box that prompts the user to open a file.
+* [SaveFileDialog](./SaveFileDialog) Prompts the user to select a location for saving a file.

@@ -2,6 +2,7 @@
 /// @brief Contains Switch::System::Diagnostics::StackFrame class.
 #pragma once
 
+#include "../../RefPtr.hpp"
 #include "../../Types.hpp"
 #include "../Object.hpp"
 #include "../String.hpp"

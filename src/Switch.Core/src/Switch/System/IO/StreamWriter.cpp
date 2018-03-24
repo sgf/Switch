@@ -12,19 +12,19 @@ namespace {
 }
 
 StreamWriter::StreamWriter() : TextWriter(utf8Encoding) {
-  this->data->stream = new NullStream();
+  this->data->stream = new_<NullStream>();
 }
 
 StreamWriter::StreamWriter(const string& path) : TextWriter(utf8Encoding) {
-  this->data->stream = new FileStream(path, FileMode::Create, FileAccess::Write, FileShare::Read);
+  this->data->stream = new_<FileStream>(path, FileMode::Create, FileAccess::Write, FileShare::Read);
 }
 
 StreamWriter::StreamWriter(const string& path, bool append, Text::Encoding& encoding) : TextWriter(encoding) {
-  this->data->stream = new FileStream(path, (append && File::Exists(path)) ? FileMode::Append : FileMode::Create, FileAccess(FileAccess::Write), FileShare(FileShare::Read));
+  this->data->stream = new_<FileStream>(path, (append && File::Exists(path)) ? FileMode::Append : FileMode::Create, FileAccess(FileAccess::Write), FileShare(FileShare::Read));
 }
 
 StreamWriter::StreamWriter(const string& path, bool append) : TextWriter(utf8Encoding) {
-  this->data->stream = new FileStream(path, (append && File::Exists(path)) ? FileMode::Append : FileMode::Create, FileAccess(FileAccess::Write), FileShare(FileShare::Read));
+  this->data->stream = new_<FileStream>(path, (append && File::Exists(path)) ? FileMode::Append : FileMode::Create, FileAccess(FileAccess::Write), FileShare(FileShare::Read));
 }
 
 bool StreamWriter::GetAutoFlush() const {

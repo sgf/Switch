@@ -209,7 +209,7 @@ namespace Switch {
         /// @return IEnumerator An IEnumerator object that can be used to iterate through the collection.
         /// @return @see object
         Generic::Enumerator<bool> GetEnumerator() const override {
-          return Generic::Enumerator<bool>(new BitArray::Enumerator(const_cast<BitArray*>(this)));
+          return Generic::Enumerator<bool>(new_<BitArray::Enumerator>(const_cast<BitArray*>(this)));
         }
 
         /// @brief Copies the elements of the BitArray to an Array, starting at a particular Array index.

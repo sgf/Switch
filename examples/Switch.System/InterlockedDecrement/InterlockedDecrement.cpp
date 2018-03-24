@@ -35,7 +35,7 @@ namespace Examples {
 
   private:
     static void ThreadMethod() {
-      refptr<CountClass> coutClass;
+      $<CountClass> coutClass;
 
       // Create 100000 instances of CountClass.
       for (int i = 0; i < 100000; i++)

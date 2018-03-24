@@ -13,100 +13,100 @@ Any& Any::operator=(const Any& any) {
 Any::Any(NullPtr value) {
 }
 
-Any::Any(bool value) : value(new System::Boolean(value)) {
+Any::Any(bool value) : value(new_<System::Boolean>(value)) {
 }
 
-Any::Any(byte value) : value(new System::Byte(value)) {
+Any::Any(byte value) : value(new_<System::Byte>(value)) {
 }
 
-Any::Any(char value) : value(new System::Char(value)) {
+Any::Any(char value) : value(new_<System::Char>(value)) {
 }
 
-Any::Any(wchar value) : value(new System::Char(value)) {
+Any::Any(wchar value) : value(new_<System::Char>(value)) {
 }
 
-Any::Any(char16 value) : value(new System::Char(value)) {
+Any::Any(char16 value) : value(new_<System::Char>(value)) {
 }
 
-Any::Any(char32 value) : value(new System::Char(value)) {
+Any::Any(char32 value) : value(new_<System::Char>(value)) {
 }
 
-Any::Any(double value) : value(new System::Double(value)) {
+Any::Any(double value) : value(new_<System::Double>(value)) {
 }
 
-Any::Any(int16 value) : value(new System::Int16(value)) {
+Any::Any(int16 value) : value(new_<System::Int16>(value)) {
 }
 
-Any::Any(int32 value) : value(new System::Int32(value)) {
+Any::Any(int32 value) : value(new_<System::Int32>(value)) {
 }
 
-Any::Any(int64 value) : value(new System::Int64(value)) {
+Any::Any(int64 value) : value(new_<System::Int64>(value)) {
 }
 
-Any::Any(const char* value) : value(new System::String(value)) {
+Any::Any(const char* value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(char* value) : value(new System::String(value)) {
+Any::Any(char* value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(const unsigned char* value) : value(new System::String((const char*)value)) {
+Any::Any(const unsigned char* value) : value(new_<System::String>((const char*)value)) {
 }
 
-Any::Any(unsigned char* value) : value(new System::String((const char*)value)) {
+Any::Any(unsigned char* value) : value(new_<System::String>((const char*)value)) {
 }
 
-Any::Any(const wchar* value) : value(new System::String(value)) {
+Any::Any(const wchar* value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(wchar* value) : value(new System::String(value)) {
+Any::Any(wchar* value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(const char16* value) : value(new System::String(value)) {
+Any::Any(const char16* value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(char16* value) : value(new System::String(value)) {
+Any::Any(char16* value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(const char32* value) : value(new System::String(value)) {
+Any::Any(const char32* value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(char32* value) : value(new System::String(value)) {
+Any::Any(char32* value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(const std::string& value) : value(new System::String(value)) {
+Any::Any(const std::string& value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(const std::wstring& value) : value(new System::String(value)) {
+Any::Any(const std::wstring& value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(const std::u16string& value) : value(new System::String(value)) {
+Any::Any(const std::u16string& value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(const std::u32string& value) : value(new System::String(value)) {
+Any::Any(const std::u32string& value) : value(new_<System::String>(value)) {
 }
 
-Any::Any(sbyte value) : value(new System::SByte(value)) {
+Any::Any(sbyte value) : value(new_<System::SByte>(value)) {
 }
 
-Any::Any(float value) : value(new System::Single(value)) {
+Any::Any(float value) : value(new_<System::Single>(value)) {
 }
 
-Any::Any(uint16 value) : value(new System::UInt16(value)) {
+Any::Any(uint16 value) : value(new_<System::UInt16>(value)) {
 }
 
-Any::Any(uint32 value) : value(new System::UInt32(value)) {
+Any::Any(uint32 value) : value(new_<System::UInt32>(value)) {
 }
 
-Any::Any(uint64 value) : value(new System::UInt64(value)) {
+Any::Any(uint64 value) : value(new_<System::UInt64>(value)) {
 }
 
-Any::Any(void* value) : value(new System::IntPtr((intptr)value)) {
+Any::Any(void* value) : value(new_<System::IntPtr>((intptr)value)) {
 }
 
-Any::Any(llong value) : value(sizeof(long) == 8 ? (object*)new System::Int64(value) : (object*)new System::Int32(value)) {
+Any::Any(llong value) : value(sizeof(long) == 8 ? as<object>(new_<System::Int64>(value)) : as<object>(new_<System::Int32>(value))) {
 }
 
-Any::Any(ullong value) : value(sizeof(long) == 8 ? (object*)new System::UInt64(value) : (object*)new System::UInt32(value)) {
+Any::Any(ullong value) : value(sizeof(long) == 8 ? as<object>(new_<System::UInt64>(value)) : as<object>(new_<System::UInt32>(value))) {
 }
 
 bool Any::operator==(NullPtr value) const {

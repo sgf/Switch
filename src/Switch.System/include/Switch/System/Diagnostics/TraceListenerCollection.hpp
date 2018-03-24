@@ -66,7 +66,7 @@ namespace Switch {
             System::Collections::Generic::Enumerator<refptr<TraceListener>> enumerator;
           };
 
-          return System::Collections::Generic::Enumerator<TraceListener>(new Enumerator(this->list.GetEnumerator()));
+          return System::Collections::Generic::Enumerator<TraceListener>(new_<Enumerator>(this->list.GetEnumerator()));
         }
 
         int32 IndexOf(const TraceListener& value) const override {

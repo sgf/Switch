@@ -58,7 +58,7 @@ namespace Switch {
           TraceListenerCollection listeners;
           String name;
         };
-        refptr<TraceSourceData> data {new TraceSourceData()};
+        refptr<TraceSourceData> data {new_<TraceSourceData>()};
       };
     }
   }

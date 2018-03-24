@@ -156,7 +156,7 @@ namespace Switch {
           bool writable = true;
         };
 
-        refptr<MemoryStreamData> data {new MemoryStreamData()};
+        refptr<MemoryStreamData> data {new_<MemoryStreamData>()};
       };
     }
   }

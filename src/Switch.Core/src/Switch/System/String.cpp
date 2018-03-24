@@ -487,11 +487,11 @@ String String::FormatToString(const IFormatProvider& provider, const String& for
 }
 
 CharEnumerator String::GetEnumerator() const {
-  return CharEnumerator(new Enumerator(*this));
+  return CharEnumerator(new_<Enumerator>(*this));
 }
 
 CharEnumerator String::GetReverseEnumerator() const {
-  return CharEnumerator(new ReverseEnumerator(*this));
+  return CharEnumerator(new_<ReverseEnumerator>(*this));
 }
 
 int32 String::GetLength() const {

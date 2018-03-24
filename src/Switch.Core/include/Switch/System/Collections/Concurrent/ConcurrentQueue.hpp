@@ -101,8 +101,8 @@ namespace Switch {
           /// @remarks The enumerator returns the collection elements in the order in which they were added, which is FIFO order (first-in, first-out).
           Generic::Enumerator<T> GetEnumerator() const override {
             lock_(this->queue.SyncRoot)
-            return Generic::Enumerator<T>(new Enumerator(this));
-            return Generic::Enumerator<T>(new Enumerator(this));
+            return Generic::Enumerator<T>(new_<Enumerator>(this));
+            return Generic::Enumerator<T>(new_<Enumerator>(this));
           }
 
           /// @brief Attempts to return an object from the ConcurrentQueue<T> without removing it.

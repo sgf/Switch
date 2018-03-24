@@ -183,7 +183,7 @@ public:
 
           /// @brief Returns an enumerator that iterates through the Dictionary<TKey,TValue>.
           /// @return Int32 A Dictionary<TKey,TValue>::Enumerator for the Dictionary<TKey,TValue>.
-          System::Collections::Generic::Enumerator<KeyValuePair<TKey, TValue>> GetEnumerator() const override {return System::Collections::Generic::Enumerator<KeyValuePair<TKey, TValue>>(new Dictionary::Enumerator(*((Dictionary*)this)));}
+          System::Collections::Generic::Enumerator<KeyValuePair<TKey, TValue>> GetEnumerator() const override {return System::Collections::Generic::Enumerator<KeyValuePair<TKey, TValue>>(new_<Dictionary::Enumerator>(*((Dictionary*)this)));}
 
           /// @brief Removes the first occurrence of a specific object from the Dictionary<TKey, TValue>.
           /// @param keyValue The object to remove from the Dictionary<TKey, TValue>. The value can ! be null.

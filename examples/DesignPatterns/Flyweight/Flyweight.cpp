@@ -31,10 +31,10 @@ namespace DesignPatterns {
         flyweights.Add("Z", new_<ConcreteFlyweight>());
       }
 
-      refptr<Flyweight> GetFlyweight(const string& key) const {return flyweights[key];}
+      $<Flyweight> GetFlyweight(const string& key) const {return flyweights[key];}
 
     private:
-      Dictionary<string, refptr<Flyweight>> flyweights;
+      Dictionary < string, $<Flyweight >> flyweights;
     };
 
     /// @brief The 'UnsharedConcreteFlyweight' class
@@ -55,16 +55,16 @@ namespace DesignPatterns {
         FlyweightFactory factory;
 
         // Work with different flyweight instances
-        refptr<Flyweight> fx = factory.GetFlyweight("X");
+        $<Flyweight> fx = factory.GetFlyweight("X");
         fx->Operation(--extrinsicstate);
 
-        refptr<Flyweight> fy = factory.GetFlyweight("Y");
+        $<Flyweight> fy = factory.GetFlyweight("Y");
         fy->Operation(--extrinsicstate);
 
-        refptr<Flyweight> fz = factory.GetFlyweight("Z");
+        $<Flyweight> fz = factory.GetFlyweight("Z");
         fz->Operation(--extrinsicstate);
 
-        refptr<UnsharedConcreteFlyweight> fu = new_<UnsharedConcreteFlyweight>();
+        $<UnsharedConcreteFlyweight> fu = new_<UnsharedConcreteFlyweight>();
         fu->Operation(--extrinsicstate);
       }
     };

@@ -177,7 +177,7 @@ namespace Switch {
           typename std::vector<typename std::conditional<std::is_same<bool, T>::value, char, T>::type, TAllocator>::const_iterator iterator;
         };
 
-        return System::Collections::Generic::Enumerator<T>(new Enumerator(*this));
+        return System::Collections::Generic::Enumerator<T>(new_<Enumerator>(*this));
       }
 
       /// @brief Determines whether an element is in the Array.

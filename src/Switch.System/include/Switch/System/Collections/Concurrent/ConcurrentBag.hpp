@@ -93,8 +93,8 @@ namespace Switch {
           /// @return Int32 A List<T>::Enumerator for the List<T>.
           Generic::Enumerator<T> GetEnumerator() const override {
             lock_(this->list.SyncRoot)
-            return Generic::Enumerator<T>(new Enumerator(this));
-            return Generic::Enumerator<T>(new Enumerator(this));
+            return Generic::Enumerator<T>(new_<Enumerator>(this));
+            return Generic::Enumerator<T>(new_<Enumerator>(this));
           }
 
           /// @brief Attempts to add an object to the IProducerConsumerCollection<T>.

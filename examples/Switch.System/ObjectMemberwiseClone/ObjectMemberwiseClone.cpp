@@ -16,10 +16,10 @@ namespace Examples {
     string name;
     IdInfo* idInfo;
 
-    refptr<Person> ShallowCopy() { return as<Person>(MemberwiseClone<Person>()); }
+    $<Person> ShallowCopy() { return as<Person>(MemberwiseClone<Person>()); }
 
-    refptr<Person> DeepCopy() {
-      refptr<Person> other = as<Person>(MemberwiseClone<Person>());
+    $<Person> DeepCopy() {
+      $<Person> other = as<Person>(MemberwiseClone<Person>());
       other->idInfo = new IdInfo(idInfo->idNumber);
       return other;
     }
@@ -30,13 +30,13 @@ namespace Examples {
     // The main entry point for the application.
     static void Main() {
       // Create an instance of Person and assign values to its fields.
-      refptr<Person> person1 = new_<Person>();
+      $<Person> person1 = new_<Person>();
       person1->age = 42;
       person1->name = "Sam";
       person1->idInfo = new IdInfo(6565);
 
       // Perform a shallow copy of person1 and assign it to person2.
-      refptr<Person> person2 = person1->ShallowCopy();
+      $<Person> person2 = person1->ShallowCopy();
 
       // Display values of person1, person2
       Console::WriteLine("Original values of person1 and person2:");
@@ -56,7 +56,7 @@ namespace Examples {
       DisplayValues(*person2);
 
       // Make a deep copy of person1 and assign it to person3.
-      refptr<Person> person3 = person1->DeepCopy();
+      $<Person> person3 = person1->DeepCopy();
       // Change the members of the person1 class to new values to show the deep copy.
       person1->name = "George";
       person1->age = 39;

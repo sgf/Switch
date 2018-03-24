@@ -52,7 +52,7 @@ RegistryKey RegistryKey::CreateSubKey(const string& subKey, RegistryKeyPermissio
   if (this->permission != RegistryKeyPermissionCheck::ReadWriteSubTree)
     throw UnauthorizedAccessException(caller_);
 
-  key.handle = new RegistryHandle(this->handle->Handle(), subKey);
+  key.handle = new_<RegistryHandle>(this->handle->Handle(), subKey);
   key.path = string::Format("{0}\\{1}", this->name, subKey);
   key.name = string::Format("{0}\\{1}", this->name, subKey);
   key.permission = permissionCheck == RegistryKeyPermissionCheck::Default ? this->permission : permissionCheck;
@@ -211,7 +211,7 @@ RegistryKey RegistryKey::OpenSubKey(const string& subKeyName, RegistryKeyPermiss
   RegistryKey key;
   key.name = this->name + "\\" + subKeyName;
   key.permission = permissionCheck == RegistryKeyPermissionCheck::Default ? this->permission : permissionCheck;
-  key.handle = new RegistryHandle(handle);
+  key.handle = new_<RegistryHandle>(handle);
   key.Load();
 
   return key;

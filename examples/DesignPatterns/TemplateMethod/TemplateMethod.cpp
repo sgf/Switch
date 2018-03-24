@@ -50,10 +50,10 @@ namespace DesignPatterns {
     public:
       // Entry point into console application.
       static void Main() {
-        refptr<AbstractClass> aA = new_<ConcreteClassA>();
+        $<AbstractClass> aA = new_<ConcreteClassA>();
         aA->TemplateMethod();
 
-        refptr<AbstractClass> aB = new_<ConcreteClassB>();
+        $<AbstractClass> aB = new_<ConcreteClassB>();
         aB->TemplateMethod();
       }
     };

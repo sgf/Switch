@@ -26,7 +26,7 @@ namespace Examples {
       }
 
       // An action to consume the ConcurrentQueue.
-      Array<refptr<Thread>> actions(4);
+      Array < $<Thread >> actions(4);
 
       for (int i = 0; i < 4; i++)
         actions[i] = new_<Thread>((ThreadStart)&Program::ActionTryDequeue);

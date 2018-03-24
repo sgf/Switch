@@ -90,7 +90,7 @@ refptr<Image> Image::FromData(const char* data[]) {
 }
 
 void Image::ReadStream(refptr<System::IO::Stream> stream) {
-  refptr<BinaryReader> reader = new BinaryReader(stream);
+  refptr<BinaryReader> reader = new_<BinaryReader>(stream);
 
   uint16 magicNumber = reader->ReadUInt16();
   reader->BaseStream().Seek(0, Switch::System::IO::SeekOrigin::Begin);

@@ -35,13 +35,13 @@ namespace Switch {
 
     template <typename T>
     struct EnumOrOtherToAny<T, std::true_type> {
-      refptr<object> operator()(T value) {return new System::Enum<T>(value);}
+      refptr<object> operator()(T value) {return new_<System::Enum<T>>(value);}
     };
 
     template <typename T>
     struct EnumOrOtherToAny<T, std::false_type> {
-      //refptr<object> operator()(T value) {return new System::IntPtr((intptr)&value);}
-      refptr<object> operator()(T value) {return new Boxer<T>(value);}
+      //refptr<object> operator()(T value) {return new_<System::IntPtr>((intptr)&value);}
+      refptr<object> operator()(T value) {return new_<Boxer<T>>(value);}
     };
 
     template <typename T, typename Bool>
@@ -49,7 +49,7 @@ namespace Switch {
 
     template <typename T>
     struct ObjectOrOtherToAny<T, std::true_type> {
-      refptr<object> operator()(T value) {return new T(value);}
+      refptr<object> operator()(T value) {return new_<T>(value);}
     };
 
     template <typename T>

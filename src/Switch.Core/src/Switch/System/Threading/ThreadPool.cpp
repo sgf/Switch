@@ -141,7 +141,7 @@ bool ThreadPool::QueueUserWorkItem(const WaitCallback& callBack) {
   lock_(threadPoolItems.SyncRoot) {
     if (threadPoolItems.Count() == maxThreads)
       return false;
-    threadPoolItems.Add(new ThreadPoolItem(callBack));
+    threadPoolItems.Add(new_<ThreadPoolItem>(callBack));
     semaphore.Release();
   }
   return true;
@@ -153,7 +153,7 @@ bool ThreadPool::QueueUserWorkItem(const WaitCallback& callBack, object& state) 
   lock_(threadPoolItems.SyncRoot) {
     if (threadPoolItems.Count() == maxThreads)
       return false;
-    threadPoolItems.Add(new ThreadPoolItem(callBack, state));
+    threadPoolItems.Add(new_<ThreadPoolItem>(callBack, state));
     semaphore.Release();
   }
   return true;
@@ -166,7 +166,7 @@ RegisteredWaitHandle ThreadPool::RegisterWaitForSingleObject(WaitHandle& waitObj
   lock_(threadPoolAsynchronousIOItems.SyncRoot) {
     if (threadPoolAsynchronousIOItems.Count() == maxAsynchronousIOThreads)
       return result;
-    refptr<ThreadPoolAsynchronousIOItem> item = new ThreadPoolAsynchronousIOItem(callBack, state, waitObject, millisecondsTimeoutInterval, executeOnlyOnce);
+    refptr<ThreadPoolAsynchronousIOItem> item = new_<ThreadPoolAsynchronousIOItem>(callBack, state, waitObject, millisecondsTimeoutInterval, executeOnlyOnce);
     result.item = item.ToPointer();
     threadPoolAsynchronousIOItems.Add(item);
     asynchronousIOSemaphore.Release();

@@ -29,17 +29,17 @@ namespace Switch {
         /// @brief Initializes a new instance of the Barrier class.
         /// @param participantCount The number of participating threads.
         /// @exception ArgumentOutOfRangeException participantCount is less than 0 or greater than 32,767.
-        explicit Barrier(int32 participantCount) : data(new BarrierData()) {this->AddParticipants(participantCount);}
+        explicit Barrier(int32 participantCount) : data(new_<BarrierData>()) {this->AddParticipants(participantCount);}
 
         /// @brief Initializes a new instance of the Barrier class.
         /// @param participantCount The number of participating threads.
         /// @param postPhaseAction The Action<T> to be executed after each phase.
         /// @exception ArgumentOutOfRangeException participantCount is less than 0 or greater than 32,767.
         /// @remarks The postPhaseAction delegate will be executed after all participants have arrived at the barrier in one phase. The participants will not be released to the next phase until the postPhaseAction delegate has completed execution.
-        explicit Barrier(int32 participantCount, const Action<const Barrier&>& postPhaseAction) : data(new BarrierData(postPhaseAction)) {this->AddParticipants(participantCount);}
+        explicit Barrier(int32 participantCount, const Action<const Barrier&>& postPhaseAction) : data(new_<BarrierData>(postPhaseAction)) {this->AddParticipants(participantCount);}
 
         /// @cond
-        Barrier() : data(new BarrierData()) {}
+        Barrier() : data(new_<BarrierData>()) {}
         Barrier(const Barrier& barrier) : data(barrier.data) {}
         Barrier& operator=(const Barrier& barriere) {
           this->data = data;

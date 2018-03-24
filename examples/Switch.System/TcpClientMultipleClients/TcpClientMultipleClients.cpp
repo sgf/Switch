@@ -37,7 +37,7 @@ namespace Examples {
       Thread server(ThreadStart(delegate_ {
         TcpListener tcpListener(IPAddress::Any, 9050);
         tcpListener.Start();
-        List<refptr<Reader>> readers;
+        List < $<Reader >> readers;
         while (true) {
           // create reader for each client
           readers.Add(new_<Reader>(tcpListener.AcceptTcpClient().GetStream()));

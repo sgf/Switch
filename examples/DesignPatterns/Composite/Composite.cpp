@@ -13,8 +13,8 @@ namespace DesignPatterns {
       // Constructor
       Component(const string& name) : name(name) {}
 
-      virtual void Add(refptr<Component> c) = 0;
-      virtual void Remove(refptr<Component> c) = 0;
+      virtual void Add($<Component> c) = 0;
+      virtual void Remove($<Component> c) = 0;
       virtual void Display(int depth) const = 0;
 
     protected:
@@ -27,20 +27,20 @@ namespace DesignPatterns {
       // Constructor
       explicit Composite(string name) : Component(name) {}
 
-      void Add(refptr<Component> component) override {this->children.Add(component);}
+      void Add($<Component> component) override {this->children.Add(component);}
 
-      void Remove(refptr<Component> component) override {this->children.Remove(component);}
+      void Remove($<Component> component) override {this->children.Remove(component);}
 
       void Display(int depth) const override {
         Console::WriteLine(string('-', depth) + name);
 
         // Recursively display child nodes
-        for (refptr<Component> component : this->children)
+        for ($<Component> component : this->children)
           component->Display(depth + 2);
       }
 
     private:
-      List<refptr<Component>> children;
+      List < $<Component >> children;
     };
 
     // The 'Leaf' class
@@ -52,8 +52,8 @@ namespace DesignPatterns {
       void Display(int depth) const override {Console::WriteLine(string('-', depth) + name);}
 
     private:
-      void Add(refptr<Component> c) override {throw InvalidOperationException("Cannot remove from a leaf");}
-      void Remove(refptr<Component> c) override {throw InvalidOperationException("Cannot remove from a leaf");}
+      void Add($<Component> c) override {throw InvalidOperationException("Cannot remove from a leaf");}
+      void Remove($<Component> c) override {throw InvalidOperationException("Cannot remove from a leaf");}
     };
 
     // MainApp startup_ class for Structural
@@ -63,11 +63,11 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Create a tree structure
-        refptr<Composite> root = new_<Composite>("root");
+        $<Composite> root = new_<Composite>("root");
         root->Add(new_<Leaf>("Leaf A"));
         root->Add(new_<Leaf>("Leaf B"));
 
-        refptr<Composite> comp = new_<Composite>("Composite X");
+        $<Composite> comp = new_<Composite>("Composite X");
         comp->Add(new_<Leaf>("Leaf XA"));
         comp->Add(new_<Leaf>("Leaf XB"));
 
@@ -75,7 +75,7 @@ namespace DesignPatterns {
         root->Add(new_<Leaf>("Leaf C"));
 
         // Add and remove a leaf
-        refptr<Leaf> leaf = new_<Leaf>("Leaf D");
+        $<Leaf> leaf = new_<Leaf>("Leaf D");
         root->Add(as<Component>(leaf));
         root->Remove(as<Component>(leaf));
 

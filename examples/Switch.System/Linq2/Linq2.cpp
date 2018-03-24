@@ -11,7 +11,7 @@ namespace Examples {
     static void Main() {
       Array<string> names = { "Burke", "Connor", "Frank", "Everett", "Albert", "George", "Harris", "David" };
 
-      refptr<IEnumerable<string>> query = names.Where(delegate_(string s) {return s.Length == 5;})->OrderBy<string>(delegate_(string s) {return s;})->Select<string>(delegate_(string s) {return s.ToUpper();});
+      $<IEnumerable<string>> query = names.Where(delegate_(string s) {return s.Length == 5;})->OrderBy<string>(delegate_(string s) {return s;})->Select<string>(delegate_(string s) {return s.ToUpper();});
 
       for (string item : *query)
         Console::WriteLine(item);

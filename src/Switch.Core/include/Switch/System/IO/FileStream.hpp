@@ -162,7 +162,7 @@ namespace Switch {
           std::fstream::openmode openMode = (std::fstream::openmode)0;
         };
 
-        refptr<FileStreamData> data = new FileStreamData();
+        refptr<FileStreamData> data = new_<FileStreamData>();
       };
     }
   }

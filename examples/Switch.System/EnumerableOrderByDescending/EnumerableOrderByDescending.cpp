@@ -39,7 +39,7 @@ namespace Examples {
         {"Whiskers", 1}
       };
 
-      refptr<IEnumerable<Pet>> query = pets.OrderByDescending<string>(delegate_(const Pet & pet) {return  pet.Name();});
+      $<IEnumerable<Pet>> query = pets.OrderByDescending<string>(delegate_(const Pet & pet) {return  pet.Name();});
 
       for (Pet& pet : *query)
         Console::WriteLine("{0} - {1}", pet.Name, pet.Age);

@@ -133,7 +133,7 @@ namespace Switch {
           refptr<Stream> stream;
         };
 
-        refptr<StreamWriterData> data {new StreamWriterData()};
+        refptr<StreamWriterData> data {new_<StreamWriterData>()};
 
       };
     }

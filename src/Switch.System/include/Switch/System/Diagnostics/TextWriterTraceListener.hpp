@@ -40,7 +40,7 @@ namespace Switch {
         struct InitStream {
           template<typename TStream>
           void operator()(const TStream& stream, TextWriterTraceListener& twtl) {
-            twtl.textWriter = new System::IO::StreamWriter(stream);
+            twtl.textWriter = new_<System::IO::StreamWriter>(stream);
           }
         };
 
@@ -62,7 +62,7 @@ namespace Switch {
           init(textWriterOrStream, *this);
         }
 
-        TextWriterTraceListener(const string& path) {this->textWriter = new System::IO::StreamWriter(path);}
+        TextWriterTraceListener(const string& path) {this->textWriter = new_<System::IO::StreamWriter>(path);}
 
         /// @cond
         TextWriterTraceListener(const char* path) : TextWriterTraceListener(string(path)) {}

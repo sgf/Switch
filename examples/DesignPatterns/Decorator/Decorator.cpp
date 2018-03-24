@@ -21,7 +21,7 @@ namespace DesignPatterns {
     // The 'Decorator' abstract class
     class Decorator : public Component {
     public:
-      void SetComponent(refptr<Component> component) {this->component = component;}
+      void SetComponent($<Component> component) {this->component = component;}
 
       void Operation() const override {
         if (component != null)
@@ -29,7 +29,7 @@ namespace DesignPatterns {
       }
 
     protected:
-      refptr<Component> component;
+      $<Component> component;
     };
 
     // The 'ConcreteDecoratorA' class
@@ -60,9 +60,9 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Create ConcreteComponent and two Decorators
-        refptr<ConcreteComponent> c = new_<ConcreteComponent>();
-        refptr<ConcreteDecoratorA> d1 = new_<ConcreteDecoratorA>();
-        refptr<ConcreteDecoratorB> d2 = new_<ConcreteDecoratorB>();
+        $<ConcreteComponent> c = new_<ConcreteComponent>();
+        $<ConcreteDecoratorA> d1 = new_<ConcreteDecoratorA>();
+        $<ConcreteDecoratorB> d2 = new_<ConcreteDecoratorB>();
 
         // Link decorators
         d1->SetComponent(as<Component>(c));

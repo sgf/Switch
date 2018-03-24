@@ -12,13 +12,13 @@ namespace DesignPatterns {
     // The 'Element' abstract class
     class Element abstract_ {
     public:
-      virtual void Accept(refptr<Visitor> visitor) = 0;
+      virtual void Accept($<Visitor> visitor) = 0;
     };
 
     // A 'ConcreteElement' class
     class ConcreteElementA : public Element {
     public:
-      void Accept(refptr<Visitor> visitor) override;
+      void Accept($<Visitor> visitor) override;
 
       void OperationA() {
       }
@@ -27,7 +27,7 @@ namespace DesignPatterns {
     // A 'ConcreteElement' class
     class ConcreteElementB : public Element {
     public:
-      void Accept(refptr<Visitor> visitor) override;
+      void Accept($<Visitor> visitor) override;
 
       void OperationB() {
       }
@@ -40,11 +40,11 @@ namespace DesignPatterns {
       virtual void VisitConcreteElementB(const ConcreteElementB& concreteElementB) = 0;
     };
 
-    inline void ConcreteElementA::Accept(refptr<Visitor> visitor) {
+    inline void ConcreteElementA::Accept($<Visitor> visitor) {
       visitor->VisitConcreteElementA(*this);
     }
 
-    inline void ConcreteElementB::Accept(refptr<Visitor> visitor) {
+    inline void ConcreteElementB::Accept($<Visitor> visitor) {
       visitor->VisitConcreteElementB(*this);
     }
 
@@ -75,20 +75,20 @@ namespace DesignPatterns {
     // The 'ObjectStructure' class
     class ObjectStructure : public object {
     public:
-      void Attach(refptr<Element> element) {
+      void Attach($<Element> element) {
         this->elements.Add(element);
       }
 
-      void Detach(refptr<Element> element) {
+      void Detach($<Element> element) {
         this->elements.Remove(element);
       }
 
-      void Accept(refptr<Visitor> visitor) {
-        for (refptr<Element> element : this->elements)
+      void Accept($<Visitor> visitor) {
+        for ($<Element> element : this->elements)
           element->Accept(visitor);
       }
     private:
-      List<refptr<Element>> elements;
+      List < $<Element >> elements;
     };
 
     // MainApp startup_ class for Behavioral
@@ -102,8 +102,8 @@ namespace DesignPatterns {
         o.Attach(new_<ConcreteElementB>());
 
         // Create visitor objects
-        refptr<ConcreteVisitor1> v1 = new_<ConcreteVisitor1>();
-        refptr<ConcreteVisitor2> v2 = new_<ConcreteVisitor2>();
+        $<ConcreteVisitor1> v1 = new_<ConcreteVisitor1>();
+        $<ConcreteVisitor2> v2 = new_<ConcreteVisitor2>();
 
         // Structure accepting visitors
         o.Accept(v1);

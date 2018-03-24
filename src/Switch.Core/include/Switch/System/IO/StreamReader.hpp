@@ -157,7 +157,7 @@ namespace Switch {
           ref<Text::Encoding> encoding;
         };
 
-        refptr<StreamReaderData> data {new StreamReaderData()};
+        refptr<StreamReaderData> data {new_<StreamReaderData>()};
         static Text::UTF8Encoding utf8Encoding;
         /// @endcond
       };

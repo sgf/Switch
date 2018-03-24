@@ -36,11 +36,11 @@ namespace Examples {
       items.Add(new_<T>(obj));
     }
 
-    static System::Collections::Generic::List<refptr<object>> items;
+    static System::Collections::Generic::List < $<object >> items;
   };
 
   // List of polymorphic objects
-  System::Collections::Generic::List<refptr<object>> Program::items;
+  System::Collections::Generic::List < $<object >> Program::items;
 }
 
 startup_(Examples::Program);

@@ -41,7 +41,7 @@ namespace DesignPatterns {
     public:
       // Constructors
       Context() {}
-      explicit Context(refptr<Strategy> strategy) : strategy(strategy) {}
+      explicit Context($<Strategy> strategy) : strategy(strategy) {}
       Context(const Context& context) : strategy(context.strategy) {}
       Context& operator=(const Context& context) {
         this->strategy = context.strategy;
@@ -53,7 +53,7 @@ namespace DesignPatterns {
       }
 
     private:
-      refptr<Strategy> strategy;
+      $<Strategy> strategy;
     };
 
     // MainApp startup_ class for Behavioral

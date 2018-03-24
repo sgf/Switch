@@ -15,7 +15,7 @@ namespace Examples {
       fruits.Add("apple");
       fruits.Add("lemon");
 
-      refptr<IEnumerable<string>> query = fruits.Cast<string>();
+      $<IEnumerable<string>> query = fruits.Cast<string>();
 
       for (string fruit : *query)
         Console::WriteLine(fruit);

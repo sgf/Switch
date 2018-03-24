@@ -9,7 +9,7 @@ namespace Switch {
         namespace Json {
           class JSonSerializer : public System::Runtime::Serialization::IFormatter {
           public:
-            void Deserialize(const refptr<System::IO::Stream>& serializationStream, System::Runtime::Serialization::ISerializable& graph) override {
+            void Deserialize(const $<System::IO::Stream>& serializationStream, System::Runtime::Serialization::ISerializable& graph) override {
               System::Runtime::Serialization::SerializationInfo serializationInfo;
               as<System::Runtime::Serialization::ISerializable>(graph).GetObjectData(serializationInfo);
               string json = IO::StreamReader(serializationStream).ReadToEnd();
@@ -26,7 +26,7 @@ namespace Switch {
 
             using IFormatter::Deserialize;
 
-            void Serialize(const refptr<System::IO::Stream>& serializationStream, const Object& graph) override {
+            void Serialize(const $<System::IO::Stream>& serializationStream, const Object& graph) override {
               System::Runtime::Serialization::SerializationInfo serializationInfo;
               as<System::Runtime::Serialization::ISerializable>(graph).GetObjectData(serializationInfo);
               this->writer = new_<IO::StreamWriter>(serializationStream);
@@ -92,7 +92,7 @@ namespace Switch {
               return is<Byte>(number) || is<Decimal>(number) || is<Double>(number) || is<Int16>(number) || is<Int32>(number) || is<Int64>(number) || is<SByte>(number) || is<Single>(number) || is<UInt16>(number) || is<UInt32>(number) || is<UInt64>(number);
             }
 
-            refptr<IO::StreamWriter> writer;
+            $<IO::StreamWriter> writer;
           };
         }
       }
@@ -115,8 +115,8 @@ namespace Test {
       info.AddValue("Info", this->Info);
     }
 
-    static refptr<Role> Deserialize(const System::Runtime::Serialization::SerializationInfo& info) {
-      refptr<Role> role = new_<Role>();
+    static $<Role> Deserialize(const System::Runtime::Serialization::SerializationInfo& info) {
+      $<Role> role = new_<Role>();
       role->Name = info.GetString("Name");
       role->Info = info.GetByte("Info");
       return role;
@@ -144,8 +144,8 @@ namespace Test {
       info.AddValue("Role", this->Role);
     }
 
-    static refptr<Person> Deserialize(const System::Runtime::Serialization::SerializationInfo& info) {
-      refptr<Person> person = new_<Person>();
+    static $<Person> Deserialize(const System::Runtime::Serialization::SerializationInfo& info) {
+      $<Person> person = new_<Person>();
       person->FirstName = info.GetString("FirstName");
       person->LastName = info.GetString("LastName");
       person->Age = info.GetInt32("Age");
@@ -159,12 +159,12 @@ namespace Test {
 
   class TestSerializer : public System::Runtime::Serialization::IFormatter {
   public:
-    void Deserialize(const refptr<System::IO::Stream>& serializationStream, System::Runtime::Serialization::ISerializable& graph) override {
+    void Deserialize(const $<System::IO::Stream>& serializationStream, System::Runtime::Serialization::ISerializable& graph) override {
     }
 
     using IFormatter::Deserialize;
 
-    void Serialize(const refptr<System::IO::Stream>& serializationStream, const Object& graph) override {
+    void Serialize(const $<System::IO::Stream>& serializationStream, const Object& graph) override {
       Serialize(as<System::Runtime::Serialization::ISerializable>(graph));
     }
 
@@ -225,7 +225,7 @@ namespace Test {
 int main(int argc, char* argv[]) {
   Test::Person person("Robert", "March", 45, {"Meg", "Jo", "Beth", "Amy"}, Test::Role("Doctor", 42));
   Console::WriteLine("person = {0}", person);
-  refptr<System::IO::Stream> stream = new_<System::IO::MemoryStream>();
+  $<System::IO::Stream> stream = new_<System::IO::MemoryStream>();
 
   Test::TestSerializer serializer;
   serializer.Serialize(stream, person);

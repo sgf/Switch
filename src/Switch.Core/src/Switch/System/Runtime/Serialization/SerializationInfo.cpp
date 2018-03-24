@@ -7,59 +7,59 @@ using namespace System;
 using namespace System::Runtime::Serialization;
 
 void SerializationInfo::AddValue(const string& name, const string& value) {
-  AddValue(name, refptr<object>(new String(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<String>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Boolean& value) {
-  AddValue(name, refptr<object>(new Boolean(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<Boolean>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Byte& value) {
-  AddValue(name, refptr<object>(new Byte(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<Byte>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const SByte& value) {
-  AddValue(name, refptr<object>(new SByte(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<SByte>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Char& value) {
-  AddValue(name, refptr<object>(new Char(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<Char>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const DateTime& value) {
-  AddValue(name, refptr<object>(new DateTime(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<DateTime>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Single& value) {
-  AddValue(name, refptr<object>(new Single(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<Single>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Double& value) {
-  AddValue(name, refptr<object>(new Double(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<Double>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Int16& value) {
-  AddValue(name, refptr<object>(new Int16(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<Int16>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Int32& value) {
-  AddValue(name, refptr<object>(new Int32(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<Int32>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Int64& value) {
-  AddValue(name, refptr<object>(new Int64(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<Int64>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const UInt16& value) {
-  AddValue(name, refptr<object>(new UInt16(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<UInt16>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const UInt32& value) {
-  AddValue(name, refptr<object>(new UInt32(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<UInt32>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const UInt64& value) {
-  AddValue(name, refptr<object>(new UInt64(value)), value.GetType().Name());
+  AddValue(name, refptr<object>(new_<UInt64>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const ISerializable& value) {
@@ -68,7 +68,7 @@ void SerializationInfo::AddValue(const string& name, const ISerializable& value)
 }
 
 void SerializationInfo::AddValue(const string& name, const ISerializable& value, const string& typeName) {
-  refptr<SerializationInfo> infos = new SerializationInfo();
+  refptr<SerializationInfo> infos = new_<SerializationInfo>();
   infos->SetObjectType(typeName);
   value.GetObjectData(*infos);
 
@@ -189,7 +189,7 @@ refptr<Boolean> SerializationInfo::GetValue<Boolean>(const string& name) const {
   if (is<Boolean>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Boolean>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new Boolean(Convert::ToBoolean(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<Boolean>(Convert::ToBoolean(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -200,7 +200,7 @@ refptr<string> SerializationInfo::GetValue<string>(const string& name) const {
   if (is<string>(entry.Value().ToObject()))
     return entry.Value().ChangeType<string>();
   else
-    return new String(entry.Value()->ToString());
+    return new_<String>(entry.Value()->ToString());
 }
 
 template<>
@@ -209,7 +209,7 @@ refptr<Byte> SerializationInfo::GetValue<Byte>(const string& name) const {
   if (is<Byte>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Byte>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new Byte(Convert::ToByte(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<Byte>(Convert::ToByte(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -220,7 +220,7 @@ refptr<SByte> SerializationInfo::GetValue<SByte>(const string& name) const {
   if (is<SByte>(entry.Value().ToObject()))
     return entry.Value().ChangeType<SByte>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new SByte(Convert::ToSByte(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<SByte>(Convert::ToSByte(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -231,7 +231,7 @@ refptr<Char> SerializationInfo::GetValue<Char>(const string& name) const {
   if (is<Char>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Char>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new Char(Convert::ToChar(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<Char>(Convert::ToChar(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -242,7 +242,7 @@ refptr<DateTime> SerializationInfo::GetValue<DateTime>(const string& name) const
   if (is<DateTime>(entry.Value().ToObject()))
     return entry.Value().ChangeType<DateTime>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new DateTime(Convert::ToDateTime(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<DateTime>(Convert::ToDateTime(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -253,7 +253,7 @@ refptr<Single> SerializationInfo::GetValue<Single>(const string& name) const {
   if (is<Single>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Single>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new Single(Convert::ToSingle(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<Single>(Convert::ToSingle(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -264,7 +264,7 @@ refptr<Double> SerializationInfo::GetValue<Double>(const string& name) const {
   if (is<Double>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Double>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new Double(Convert::ToDouble(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<Double>(Convert::ToDouble(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -275,7 +275,7 @@ refptr<Int16> SerializationInfo::GetValue<Int16>(const string& name) const {
   if (is<Int16>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Int16>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new Int16(Convert::ToInt16(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<Int16>(Convert::ToInt16(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -286,7 +286,7 @@ refptr<Int32> SerializationInfo::GetValue<Int32>(const string& name) const {
   if (is<Int32>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Int32>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new Int32(Convert::ToInt32(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<Int32>(Convert::ToInt32(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -297,7 +297,7 @@ refptr<Int64> SerializationInfo::GetValue<Int64>(const string& name) const {
   if (is<Int64>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Int64>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new Int64(Convert::ToInt64(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<Int64>(Convert::ToInt64(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -308,7 +308,7 @@ refptr<UInt16> SerializationInfo::GetValue<UInt16>(const string& name) const {
   if (is<UInt16>(entry.Value().ToObject()))
     return entry.Value().ChangeType<UInt16>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new UInt16(Convert::ToUInt16(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<UInt16>(Convert::ToUInt16(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -319,7 +319,7 @@ refptr<UInt32> SerializationInfo::GetValue<UInt32>(const string& name) const {
   if (is<UInt32>(entry.Value().ToObject()))
     return entry.Value().ChangeType<UInt32>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new UInt32(Convert::ToUInt32(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<UInt32>(Convert::ToUInt32(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }
@@ -330,7 +330,7 @@ refptr<UInt64> SerializationInfo::GetValue<UInt64>(const string& name) const {
   if (is<UInt64>(entry.Value().ToObject()))
     return entry.Value().ChangeType<UInt64>();
   else if (is<IConvertible>(entry.Value().ToObject()))
-    return new UInt64(Convert::ToUInt64(entry.Value().ChangeType<IConvertible>().ToObject()));
+    return new_<UInt64>(Convert::ToUInt64(entry.Value().ChangeType<IConvertible>().ToObject()));
   else
     throw SerializationException(caller_);
 }

@@ -16,19 +16,19 @@ namespace DesignPatterns {
     class Command abstract_ {
     public:
       // Constructor
-      Command(refptr<Receiver> receiver) : receiver(receiver) {}
+      Command($<Receiver> receiver) : receiver(receiver) {}
 
       virtual void Execute() const = 0;
 
     protected:
-      refptr<Receiver> receiver;
+      $<Receiver> receiver;
     };
 
     // The 'ConcreteCommand' class
     class ConcreteCommand : public Command {
     public:
       // Constructor
-      explicit ConcreteCommand(refptr<Receiver> receiver) : Command(receiver) {}
+      explicit ConcreteCommand($<Receiver> receiver) : Command(receiver) {}
 
       void Execute() const override {
         receiver->Action();
@@ -38,12 +38,12 @@ namespace DesignPatterns {
     // The 'Invoker' class
     class Invoker : public object {
     public:
-      void SetCommand(refptr<Command> command) {this->command = command;}
+      void SetCommand($<Command> command) {this->command = command;}
 
       void ExecuteCommand() const {this->command->Execute();}
 
     private:
-      refptr<Command> command;
+      $<Command> command;
     };
 
     // MainApp startup_ class for Behavioral
@@ -53,9 +53,9 @@ namespace DesignPatterns {
       // Entry point into console application.
       static void Main() {
         // Create receiver, command, and invoker
-        refptr<Receiver> receiver = new_<Receiver>();
-        refptr<Command> command = new_<ConcreteCommand>(receiver);
-        refptr<Invoker> invoker = new_<Invoker>();
+        $<Receiver> receiver = new_<Receiver>();
+        $<Command> command = new_<ConcreteCommand>(receiver);
+        $<Invoker> invoker = new_<Invoker>();
 
         // Set and execute command
         invoker->SetCommand(command);

@@ -480,6 +480,7 @@ namespace Switch {
         private:
           class TaskData {
             friend class Task<void>;
+            friend $<TaskData> new_<TaskData>();
             TaskData() = default;
             TaskData(const TaskData&) = delete;
             TaskData operator=(const TaskData&) = delete;
@@ -515,7 +516,7 @@ namespace Switch {
             };
           };
 
-          refptr<TaskData> data {new TaskData()};
+          refptr<TaskData> data {new_<TaskData>()};
         };
       }
     }

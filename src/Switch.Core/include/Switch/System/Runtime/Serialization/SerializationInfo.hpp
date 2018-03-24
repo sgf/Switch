@@ -162,7 +162,7 @@ namespace Switch {
           void AddValue(const String& name, char32 value);
           template<typename T>
           void AddValue(const String& name, const System::Collections::Generic::IEnumerable<T>& value) {
-            AddValue(name, refptr<object>(new Array<T>(value)), "System::Collections::Generic::IEnumerable");
+            AddValue(name, refptr<object>(new_<Array<T>>(value)), "System::Collections::Generic::IEnumerable");
           }
 
           System::Collections::Generic::Enumerator<System::Collections::Generic::KeyValuePair<System::String, SerializationEntry>> GetEnumerator() const;
