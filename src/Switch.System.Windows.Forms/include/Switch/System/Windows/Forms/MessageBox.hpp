@@ -215,6 +215,12 @@ namespace Switch {
           static System::Windows::Forms::DialogResult Show(const string& text, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options) {return Show(text, caption, buttons, icon, defaultButton, options, false);}
 
           static System::Windows::Forms::DialogResult Show(const string& text, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool displayHelpButton);
+
+          static System::Windows::Forms::DialogResult Show(const string& text, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, const string& helpFilePath);
+
+          static System::Windows::Forms::DialogResult Show(const string& text, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, const string& helpFilePath, HelpNavigator navigator);
+
+          static System::Windows::Forms::DialogResult Show(const string& text, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, const string& helpFilePath, HelpNavigator navigator, any param);
         };
       }
     }
