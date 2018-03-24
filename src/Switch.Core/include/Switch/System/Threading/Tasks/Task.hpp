@@ -2,6 +2,7 @@
 /// @brief Contains Switch::System::Threading::Tasks::Task <> class.
 #pragma once
 
+#include "../../../RefPtr.hpp"
 #include "TaskTResult.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
