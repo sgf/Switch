@@ -143,11 +143,11 @@ namespace Switch {
           return true;
         }
 
-        refptr<std::mutex> guard = new_<std::mutex>();
-        refptr<std::condition_variable> signal = new_<std::condition_variable>();
-        refptr<int32> count = new_<int32>(0);
-        refptr<int32> maxCount = new_<int32>(Int32::MaxValue);
-        refptr<string> name = new_<string>();
+        $<std::mutex> guard = new_<std::mutex>();
+        $<std::condition_variable> signal = new_<std::condition_variable>();
+        $<int32> count = new_<int32>(0);
+        $<int32> maxCount = new_<int32>(Int32::MaxValue);
+        $<string> name = new_<string>();
       };
     }
   }

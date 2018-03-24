@@ -45,7 +45,7 @@ namespace Switch {
         /// @brief Initializes a new instance of the System::IO::StreamReader class for the specified Sream pointer.
         /// @param stream The stream pointer to be read.
         /// @exception ArgumentException The stream to be read.
-        StreamReader(refptr<Stream> stream) {
+        StreamReader($<Stream> stream) {
           if (stream->CanRead() == false)
             throw ArgumentException(caller_);
           this->data->stream = stream;
@@ -94,13 +94,13 @@ namespace Switch {
         /// @endcond
 
         /// @brief Gets the underlying stream that interfaces with a backing store.
-        /// @return refptr<Stream> The stream this StreamReader is writing to.
+        /// @return $<Stream> The stream this StreamReader is writing to.
         property_<Stream&, readonly_> BaseStream {
           get_->Stream& {return *this->data->stream;}
         };
 
         /// @brief Gets the current character encoding that the current StreamReader object is using.
-        /// @return refptr<Text::Encoding> The current character encoding used by the current reader. The value can be different after the first call to any Read method of StreamReader, since encoding autodetection is not done until the first call to a Read method.
+        /// @return $<Text::Encoding> The current character encoding used by the current reader. The value can be different after the first call to any Read method of StreamReader, since encoding autodetection is not done until the first call to a Read method.
         property_<Text::Encoding&, readonly_> CurrentEncoding {
           get_->Text::Encoding& {return *this->data->encoding;}
         };
@@ -153,11 +153,11 @@ namespace Switch {
         struct StreamReaderData {
           int32 peekByte {0};
           bool hasPeekByte {false};
-          refptr<Stream> stream;
+          $<Stream> stream;
           ref<Text::Encoding> encoding;
         };
 
-        refptr<StreamReaderData> data {new_<StreamReaderData>()};
+        $<StreamReaderData> data {new_<StreamReaderData>()};
         static Text::UTF8Encoding utf8Encoding;
         /// @endcond
       };

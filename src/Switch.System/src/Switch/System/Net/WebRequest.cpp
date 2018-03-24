@@ -52,7 +52,7 @@ WebRequest::~WebRequest() {
   }
 }
 
-refptr<WebRequest> WebRequest::Create(const Uri& requestUriString) {
+$<WebRequest> WebRequest::Create(const Uri& requestUriString) {
   if (Native::CurlApi::GetOSSupportsWebOperations() == false)
     throw NotSupportedException(caller_);
 

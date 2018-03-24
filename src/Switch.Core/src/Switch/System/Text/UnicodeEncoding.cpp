@@ -91,11 +91,11 @@ UnicodeEncoding& UnicodeEncoding::operator=(const UnicodeEncoding& encoding)  {
   return *this;
 }
 
-refptr<Encoding::Decoder> UnicodeEncoding::CreateDecoder() const {
+$<Encoding::Decoder> UnicodeEncoding::CreateDecoder() const {
   return new_<Decoder>(this->bigEndian);
 }
 
-refptr<Encoding::Encoder> UnicodeEncoding::CreateEncoder() const {
+$<Encoding::Encoder> UnicodeEncoding::CreateEncoder() const {
   return new_<Encoder>(this->bigEndian);
 }
 

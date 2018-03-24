@@ -71,11 +71,11 @@ namespace Switch {
         void WriteToOutputDebug(const string& message);
         struct DefaultTraceListenerData {
           String logFileName;
-          refptr<System::IO::StreamWriter> logWriter;
+          $<System::IO::StreamWriter> logWriter;
           string messageLine;
         };
 
-        refptr<DefaultTraceListenerData> data {new_<DefaultTraceListenerData>()};
+        $<DefaultTraceListenerData> data {new_<DefaultTraceListenerData>()};
       };
     }
   }

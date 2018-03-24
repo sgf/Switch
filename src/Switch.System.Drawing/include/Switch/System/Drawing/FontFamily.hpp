@@ -51,7 +51,7 @@ namespace Switch {
         struct FontFamilyData {
           intptr handle = 0;
         };
-        refptr<FontFamilyData> data = new_<FontFamilyData>();
+        $<FontFamilyData> data = new_<FontFamilyData>();
       };
     }
   }

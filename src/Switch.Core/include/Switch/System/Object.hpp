@@ -11,8 +11,6 @@ namespace Switch {
   /// @cond
   template<typename T>
   class $;
-  template<typename T>
-  using refptr = $<T>;
   /// @endcond
 
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
@@ -74,12 +72,12 @@ namespace Switch {
       virtual Type GetType() const;
 
       /// @brief Creates a shallow copy of the current Object.
-      /// @return refptr<Object> A shallow copy of the current Object.
+      /// @return $<Object> A shallow copy of the current Object.
       /// @par Examples
       /// The following code example shows how to copy an instance of a class using MemberwiseClone.
       /// @include ObjectMemberwiseClone.cpp
       template<typename T>
-      refptr<Object> MemberwiseClone() const;
+      $<Object> MemberwiseClone() const;
 
       /// @brief Determines whether the specified Object instances are the same instance.
       /// @param objectA The first Object to compare.
@@ -113,7 +111,7 @@ namespace Switch {
 namespace Switch {
   namespace System {
     template<typename T>
-    refptr<Object> Object::MemberwiseClone() const {return new_<T>(as<T>(*this));}
+    $<Object> Object::MemberwiseClone() const {return new_<T>(as<T>(*this));}
   }
 }
 

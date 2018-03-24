@@ -19,8 +19,8 @@ class __opaque_format_item__ {
     };
 
     template<typename T>
-    class Factory<T, refptr<T>> {
-      //class Factory<T, typename std::enable_if<std::is_base_of<refptr<T>, T>::value>::type> {
+    class Factory < T, $<T >> {
+      //class Factory<T, typename std::enable_if<std::is_base_of<$<T>, T>::value>::type> {
     public:
       refobj operator()(const T& value) {return refobj(new T(value));}
     };
@@ -48,7 +48,7 @@ class __opaque_format_item__ {
 
   private:
     ref<object> obj;
-    refptr<object> ptr;
+    $<object> ptr;
   };
 
   friend class Switch::System::String;

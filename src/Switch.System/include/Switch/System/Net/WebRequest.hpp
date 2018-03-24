@@ -67,7 +67,7 @@ namespace Switch {
             int32 bufferSize = 0;
             int32 bufferOffset = 0;
           };
-          refptr<WebRequestStreamData> data = new_<WebRequestStreamData>();
+          $<WebRequestStreamData> data = new_<WebRequestStreamData>();
         };
 
 
@@ -83,7 +83,7 @@ namespace Switch {
         /// @remarks ftp://
         /// @remarks The Switch includes support for the http://, ftp:// URI schemes.
         /// @note This member outputs trace information when you enable network tracing in your application. For more information, see Network Tracing.
-        static refptr<WebRequest> Create(const String& requestUriString) { return Create(Uri(requestUriString)); }
+        static $<WebRequest> Create(const String& requestUriString) { return Create(Uri(requestUriString)); }
 
         /// @brief Initializes a new WebRequest instance for the specified URI scheme.
         /// @param requestUriString A Uri containing the URI of the requested resource.
@@ -97,7 +97,7 @@ namespace Switch {
         /// @remarks ftp://
         /// @remarks The Switch includes support for the http://, ftp:// URI schemes.
         /// @note This member outputs trace information when you enable network tracing in your application. For more information, see Network Tracing.
-        static refptr<WebRequest> Create(const Uri& requestUriString);
+        static $<WebRequest> Create(const Uri& requestUriString);
 
         property_<int64> ContentLength {
           get_ {return this->GetContentLength();},

@@ -151,7 +151,7 @@ namespace Switch {
             bool writeable = false;
             bool ownsSocket = false;
           };
-          refptr<NetworkStreamData> data = new_<NetworkStreamData>();
+          $<NetworkStreamData> data = new_<NetworkStreamData>();
         };
       }
     }

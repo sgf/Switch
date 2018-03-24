@@ -109,7 +109,7 @@ namespace {
     al.Add("Barley");
     al.Add("Boots");
     al.Add("Whiskers");
-    refptr<IEnumerable<String>> enumerable = al.Cast<String>();
+    $<IEnumerable<String>> enumerable = al.Cast<String>();
     Enumerator<String> enumerator = enumerable->GetEnumerator();
     ASSERT_TRUE(enumerator.MoveNext());
     ASSERT_EQ("Barley", enumerator.Current());
@@ -122,7 +122,7 @@ namespace {
   TEST(EnumerableTest, Concat) {
     Array<int> a1 = {1, 2};
     Array<int> a2 = {3, 4};
-    refptr<IEnumerable<int>> enumerable = a1.Concat(a2);
+    $<IEnumerable<int>> enumerable = a1.Concat(a2);
     Enumerator<int> enumerator = enumerable->GetEnumerator();
     ASSERT_TRUE(enumerator.MoveNext());
     ASSERT_EQ(1, enumerator.Current());

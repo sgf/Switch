@@ -23,7 +23,7 @@ namespace {
 
   TEST(StreamReaderTest, ReadLineUTF8) {
     Array<byte> utf8buffer = { 0x61, 0xC3, 0xA6, 0xC5, 0xA3, '\n', 0xCE, 0xA3, 0xDC, 0xA3, 0xE2, 0x96, 0x88, '\n', 0xE5, 0xA5, 0xBB, 0xF0, 0x9F, 0x90, 0xA8 };
-    refptr<Text::Encoding> encoding = Text::Encoding::UTF8;
+    $<Text::Encoding> encoding = Text::Encoding::UTF8;
     IO::MemoryStream s(utf8buffer, false);
     IO::StreamReader reader(s, *encoding);
 
@@ -43,7 +43,7 @@ namespace {
 
   TEST(StreamReaderTest, ReadToEndUTF8) {
     Array<byte> utf8buffer = { 0x61, 0xC3, 0xA6, 0xC5, 0xA3, '\n', 0xCE, 0xA3, 0xDC, 0xA3, 0xE2, 0x96, 0x88, '\n', 0xE5, 0xA5, 0xBB, 0xF0, 0x9F, 0x90, 0xA8 };
-    refptr<Text::Encoding> encoding = Text::Encoding::UTF8;
+    $<Text::Encoding> encoding = Text::Encoding::UTF8;
     IO::MemoryStream s(utf8buffer, false);
     IO::StreamReader reader(s, *encoding);
 
@@ -59,7 +59,7 @@ namespace {
 
   TEST(StreamReaderTest, ReadLine437) {
     Array<byte> buffer = { 0x61, 0x91, '\n', 0xE4, 0xDB};
-    refptr<Text::Encoding> encoding = Text::Encoding::CreateEncoding(437);
+    $<Text::Encoding> encoding = Text::Encoding::CreateEncoding(437);
 
     IO::MemoryStream s(buffer, false);
     IO::StreamReader reader(s, *encoding);
@@ -81,7 +81,7 @@ namespace {
 
   TEST(StreamReaderTest, ReadToEnd437) {
     Array<byte> buffer = { 0x61, 0x91, '\n', 0xE4, 0xDB };
-    refptr<Text::Encoding> encoding = Text::Encoding::CreateEncoding(437);
+    $<Text::Encoding> encoding = Text::Encoding::CreateEncoding(437);
 
     IO::MemoryStream s(buffer, false);
     IO::StreamReader reader(s, *encoding);

@@ -146,7 +146,7 @@ namespace Switch {
         /// @brief Creates a new object that is a copy of the current instance.
         /// @return object A new object that is a copy of this instance.
         /// @return @see object
-        refptr<object> Clone() const override {
+        $<object> Clone() const override {
           return new_<BitArray>(*this);
         }
 

@@ -99,7 +99,7 @@ namespace Switch {
           string name;
           float size = .0f;
         };
-        refptr<FontData> data = new_<FontData>();
+        $<FontData> data = new_<FontData>();
       };
     }
   }

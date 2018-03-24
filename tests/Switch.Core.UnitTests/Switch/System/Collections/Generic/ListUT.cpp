@@ -99,7 +99,7 @@ namespace {
     ASSERT_FALSE(int64s.IsFixedSize);
     ASSERT_FALSE(int64s.IsReadOnly);
 
-    List< refptr<ListHelper>> myList;
+    List < $<ListHelper >> myList;
     myList.Add(new ListHelper(1, "YFI"));
     myList.Add(new ListHelper(2, "VLE"));
 
@@ -623,7 +623,7 @@ namespace {
   }
 
   TEST(ListTest, FindLast) {
-    refptr<string>::Empty();
+    $<string>::Empty();
     // Create List<T> to used with Contains function
     List<string> dinosaurs;
 
@@ -838,7 +838,7 @@ namespace {
     dinosaurs.Add("Gallimimus");
     dinosaurs.Add("Triceratops");
 
-    refptr<IEnumerator<string>> enumerators[50];
+    $<IEnumerator<string>> enumerators[50];
 
     for (Int32 index = 0; index < 50; index++) {
       enumerators[index] = new_<Enumerator<string>>(dinosaurs.GetEnumerator());
@@ -1006,7 +1006,7 @@ namespace {
   }
 
   TEST(ListTest, polymorphicList) {
-    List<refptr<ValueType>> polymorphicList;
+    List < $<ValueType >> polymorphicList;
     polymorphicList.Add(new Int32(1024));
     polymorphicList.Add(new string("Polymorphic"));
     polymorphicList.Add(new Boolean(true));

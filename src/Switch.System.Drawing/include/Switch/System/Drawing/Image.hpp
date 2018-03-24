@@ -123,14 +123,14 @@ namespace Switch {
           get_ {return this->size.Width();}
         };
 
-        static refptr<Image> FromFile(const string& fileName);
+        static $<Image> FromFile(const string& fileName);
 
         template<typename TStream>
-        static refptr<Image> FromStream(const TStream& stream) {return new Image(stream.template MemberwiseClone<TStream>().template As<TStream>());}
+        static $<Image> FromStream(const TStream& stream) {return new Image(stream.template MemberwiseClone<TStream>().template As<TStream>());}
 
-        static refptr<Image> FromStream(refptr<System::IO::Stream> stream) {return new Image(stream);}
+        static $<Image> FromStream($<System::IO::Stream> stream) {return new Image(stream);}
 
-        static refptr<Image> FromData(const char* data[]);
+        static $<Image> FromData(const char* data[]);
 
         virtual int32 CompareTo(const IComparable& obj) const {
           if (!is<Image>(obj))
@@ -150,10 +150,10 @@ namespace Switch {
         friend Gif;
         friend Resources::Image;
         explicit Image(const string& fileName);
-        explicit Image(refptr<System::IO::Stream> stream);
+        explicit Image($<System::IO::Stream> stream);
 
-        void ReadStream(refptr<System::IO::Stream> stream);
-        void ReadWindowsBmp(refptr<System::IO::Stream> stream);
+        void ReadStream($<System::IO::Stream> stream);
+        void ReadWindowsBmp($<System::IO::Stream> stream);
 
         Imaging::ImageFlags flags;
         Array<Guid> frameDimensionList;

@@ -25,47 +25,47 @@ namespace Switch {
 
         /// @brief Creates an encoding for the ASCII (7-bit) character set.
         /// @return An encoding for the ASCII (7-bit) character set.
-        static const refptr<Encoding> ASCII;
+        static const $<Encoding> ASCII;
 
         /// @brief Creates an encoding for the UTF-8 format.
         /// @return An encoding for the UTF-8 format.
-        static const refptr<Encoding> UTF8;
+        static const $<Encoding> UTF8;
 
         /// @brief Creates an encoding for the UTF-16 format using the little endian byte order.
         /// @return An encoding for the UTF-16 format using the little endian byte order.
-        static const refptr<Encoding> Unicode;
+        static const $<Encoding> Unicode;
 
         /// @brief Creates an encoding for the UTF-16 format that uses the big endian byte order.
         /// @return An encoding object for the UTF-16 format that uses the big endian byte order.
-        static const refptr<Encoding> BigEndianUnicode;
+        static const $<Encoding> BigEndianUnicode;
 
         /// @brief Creates an encoding for the UTF-16 format using the little endian byte order.
         /// @return An encoding for the UTF-16 format using the little endian byte order.
-        static const refptr<Encoding> UTF16LE;
+        static const $<Encoding> UTF16LE;
 
         /// @brief Creates an encoding for the UTF-16 format that uses the big endian byte order.
         /// @return An encoding object for the UTF-16 format that uses the big endian byte order.
-        static const refptr<Encoding> UTF16BE;
+        static const $<Encoding> UTF16BE;
 
         /// @brief Creates an encoding for the UTF-32 format using the little endian byte order.
         /// @return An encoding object for the UTF-32 format using the little endian byte order.
-        static const refptr<Encoding> UTF32;
+        static const $<Encoding> UTF32;
 
         /// @brief Gets an encoding for the operating system's current ANSI code page.
         /// @return An encoding for the operating system's current ANSI code page (currently 437).
-        static const refptr<Encoding> Default;
+        static const $<Encoding> Default;
 
         /// @brief Returns the encoding associated with the specified code page name.
         /// @param name The code page name of the preferred encoding. Possible values are listed in the Name column of the table that appears in the System::Text::Encoding class topic.
         /// @return The encoding associated with the specified code page.
         /// @exception System::ArgumentException name is not a valid code page name. or  The code page indicated by name is not supported by the underlying platform.
-        static refptr<Encoding> CreateEncoding(int32 codePage);
+        static $<Encoding> CreateEncoding(int32 codePage);
 
         /// @brief Returns the encoding associated with the specified code page name.
         /// @param name The code page name of the preferred encoding. Possible values are listed in the Name column of the table that appears in the System::Text::Encoding class topic.
         /// @return The encoding associated with the specified code page.
         /// @exception System::ArgumentException name is not a valid code page name. or  The code page indicated by name is not supported by the underlying platform.
-        static refptr<Encoding> CreateEncoding(const String& codePageName);
+        static $<Encoding> CreateEncoding(const String& codePageName);
 
         /// @brief When overridden in a derived class, gets the code page identifier of the current System::Text::Encoding.
         /// @return The code page identifier of the current System::Text::Encoding.
@@ -344,8 +344,8 @@ namespace Switch {
         };
 
         //todo
-        virtual refptr<Decoder> CreateDecoder() const = 0;
-        virtual refptr<Encoder> CreateEncoder() const = 0;
+        virtual $<Decoder> CreateDecoder() const = 0;
+        virtual $<Encoder> CreateEncoder() const = 0;
 
       protected:
         /// @brief Initializes a new instance of the System::Text::Encoding class.
@@ -369,9 +369,9 @@ namespace Switch {
 
       private:
         static void InitCodePages();
-        static refptr< System::Collections::Generic::Dictionary<int32, String>> names;
-        static refptr< System::Collections::Generic::Dictionary<String, int32>> codePagesFromName;
-        static refptr< System::Collections::Generic::Dictionary<int32, String>> displayNames;
+        static $< System::Collections::Generic::Dictionary<int32, String>> names;
+        static $< System::Collections::Generic::Dictionary<String, int32>> codePagesFromName;
+        static $< System::Collections::Generic::Dictionary<int32, String>> displayNames;
         /// @endcond
       };
     }

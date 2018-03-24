@@ -41,7 +41,7 @@ namespace Switch {
         /// @param stream The stream pointer to be read.
         /// @exception ArgumentNullException stream is null.
         /// @exception ArgumentException stream is not readable.
-        BinaryReader(refptr<Stream> stream) : stream(stream) {
+        BinaryReader($<Stream> stream) : stream(stream) {
           if (!stream->CanRead())
             throw ArgumentException(caller_);
         }
@@ -217,7 +217,7 @@ namespace Switch {
         virtual Stream& GetBaseStream() const {return *this->stream;}
 
       private :
-        mutable refptr<Stream> stream {Stream::Null().MemberwiseClone<NullStream>().template As<Stream>()};
+        mutable $<Stream> stream {Stream::Null().MemberwiseClone<NullStream>().template As<Stream>()};
       };
     }
   }

@@ -47,11 +47,11 @@ int32 UdpClient::GetAvailable() const {
   return this->client->Available();
 }
 
-refptr<Socket> UdpClient::GetClient() {
+$<Socket> UdpClient::GetClient() {
   return this->client;
 }
 
-const refptr<Socket> UdpClient::GetClient() const {
+const $<Socket> UdpClient::GetClient() const {
   return this->client;
 }
 
@@ -62,7 +62,7 @@ bool UdpClient::GetConnected() const {
   return this->client->Connected();
 }
 
-void UdpClient::SetClient(const refptr<Socket>& client) {
+void UdpClient::SetClient(const $<Socket>& client) {
   this->client = client;
 }
 

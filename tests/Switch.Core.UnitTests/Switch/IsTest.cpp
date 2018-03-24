@@ -274,162 +274,162 @@ namespace {
   }
 
   TEST(IsTest, SpStringIsString) {
-    refptr<string> s = new_<String>("Test");
+    $<string> s = new_<String>("Test");
     ASSERT_TRUE(is<string>(s));
   }
 
   TEST(IsTest, SpStringIsObject) {
-    refptr<string> s = new_<String>("Test");
+    $<string> s = new_<String>("Test");
     ASSERT_TRUE(is<object>(s));
   }
 
   TEST(IsTest, SpStringIsIComparable) {
-    refptr<string> s = new_<String>("Test");
+    $<string> s = new_<String>("Test");
     ASSERT_TRUE(is<IComparable>(s));
   }
 
   TEST(IsTest, SpStringIsInt32) {
-    refptr<string> s = new String("Test");
+    $<string> s = new String("Test");
     ASSERT_FALSE(is<Int32>(s));
   }
 
   TEST(IsTest, SpObjectFromSpStringIsString) {
-    refptr<object> o = new_<string>("Test");
+    $<object> o = new_<string>("Test");
     ASSERT_TRUE(is<string>(o));
   }
 
   TEST(IsTest, SpObjectFromSpStringIsObject) {
-    refptr<object> o = new_<string>("Test");
+    $<object> o = new_<string>("Test");
     ASSERT_TRUE(is<object>(o));
   }
 
   TEST(IsTest, SpObjectFormSpStringIsIComparable) {
-    refptr<object> o = new_<string>("Test");
+    $<object> o = new_<string>("Test");
     ASSERT_TRUE(is<IComparable>(o));
   }
 
   TEST(IsTest, SpObjectFormSpStringIsInt32) {
-    refptr<object> o = new_<string>("Test");
+    $<object> o = new_<string>("Test");
     ASSERT_FALSE(is<Int32>(o));
   }
 
   TEST(IsTest, SpStringNullIsString) {
-    refptr<string> s = refptr<string>::Null();
+    $<string> s = $<string>::Null();
     ASSERT_FALSE(is<string>(s));
   }
 
   TEST(IsTest, SpStringNullIsObject) {
-    refptr<string> s = refptr<string>::Null();
+    $<string> s = $<string>::Null();
     ASSERT_FALSE(is<object>(s));
   }
 
   TEST(IsTest, SpStringNullIsIComparable) {
-    refptr<string> s = refptr<string>::Null();
+    $<string> s = $<string>::Null();
     ASSERT_FALSE(is<IComparable>(s));
   }
 
   TEST(IsTest, SpStringNullIsInt32) {
-    refptr<string> s = refptr<string>::Null();
+    $<string> s = $<string>::Null();
     ASSERT_FALSE(is<Int32>(s));
   }
 
   TEST(IsTest, SpObjectFromSpStringNullIsString) {
-    refptr<object> o = as<object>(refptr<string>::Null());
+    $<object> o = as<object>($<string>::Null());
     ASSERT_FALSE(is<string>(o));
   }
 
   TEST(IsTest, SpObjectFromSpStringNullIsObject) {
-    refptr<object> o = as<object>(refptr<string>::Null());
+    $<object> o = as<object>($<string>::Null());
     ASSERT_FALSE(is<object>(o));
   }
 
   TEST(IsTest, SpObjectFormSpStringNullIsIComparable) {
-    refptr<object> o = as<object>(refptr<string>::Null());
+    $<object> o = as<object>($<string>::Null());
     ASSERT_FALSE(is<IComparable>(o));
   }
 
   TEST(IsTest, SpObjectFormSpStringNullIsInt32) {
-    refptr<object> o = as<object>(refptr<string>::Null());
+    $<object> o = as<object>($<string>::Null());
     ASSERT_FALSE(is<Int32>(o));
   }
 
   TEST(IsTest, ConstSpStringIsString) {
-    const refptr<string> s = new_<String>("Test");
+    const $<string> s = new_<String>("Test");
     ASSERT_TRUE(is<string>(s));
   }
 
   TEST(IsTest, ConstSpStringIsObject) {
-    const refptr<string> s = new_<String>("Test");
+    const $<string> s = new_<String>("Test");
     ASSERT_TRUE(is<object>(s));
   }
 
   TEST(IsTest, ConstSpStringIsIComparable) {
-    const refptr<string> s = new_<String>("Test");
+    const $<string> s = new_<String>("Test");
     ASSERT_TRUE(is<IComparable>(s));
   }
 
   TEST(IsTest, ConstSpStringIsInt32) {
-    const refptr<string> s = new_<String>("Test");
+    const $<string> s = new_<String>("Test");
     ASSERT_FALSE(is<Int32>(s));
   }
 
   TEST(IsTest, ConstSpObjectFromConstSpStringIsString) {
-    const refptr<object> o = new_<string>("Test");
+    const $<object> o = new_<string>("Test");
     ASSERT_TRUE(is<string>(o));
   }
 
   TEST(IsTest, ConstSpObjectFromConstSpStringIsObject) {
-    const refptr<object> o = new_<string>("Test");
+    const $<object> o = new_<string>("Test");
     ASSERT_TRUE(is<object>(o));
   }
 
   TEST(IsTest, ConstSpObjectFormConstSpStringIsIComparable) {
-    const refptr<object> o = new_<string>("Test");
+    const $<object> o = new_<string>("Test");
     ASSERT_TRUE(is<IComparable>(o));
   }
 
   TEST(IsTest, ConstSpObjectFormConstSpStringIsInt32) {
-    const refptr<object> o = new_<string>("Test");
+    const $<object> o = new_<string>("Test");
     ASSERT_FALSE(is<Int32>(o));
   }
 
   TEST(IsTest, ConstSpStringNullIsString) {
-    const refptr<string> s = refptr<string>::Null();
+    const $<string> s = $<string>::Null();
     ASSERT_FALSE(is<string>(s));
   }
 
   TEST(IsTest, ConstSpStringNullIsObject) {
-    const refptr<string> s = refptr<string>::Null();
+    const $<string> s = $<string>::Null();
     ASSERT_FALSE(is<object>(s));
   }
 
   TEST(IsTest, ConstSpStringNullIsIComparable) {
-    const refptr<string> s = refptr<string>::Null();
+    const $<string> s = $<string>::Null();
     ASSERT_FALSE(is<IComparable>(s));
   }
 
   TEST(IsTest, ConstSpStringNullIsInt32) {
-    const refptr<string> s = refptr<string>::Null();
+    const $<string> s = $<string>::Null();
     ASSERT_FALSE(is<Int32>(s));
   }
 
   TEST(IsTest, ConstSpObjectFromConstSpStringNullIsString) {
-    const refptr<object> o = as<object>(refptr<string>::Null());
+    const $<object> o = as<object>($<string>::Null());
     ASSERT_FALSE(is<string>(o));
   }
 
   TEST(IsTest, ConstSpObjectFromConstSpStringNullIsObject) {
-    const refptr<object> o = as<object>(refptr<string>::Null());
+    const $<object> o = as<object>($<string>::Null());
     ASSERT_FALSE(is<object>(o));
   }
 
   TEST(IsTest, ConstSpObjectFormConstSpStringNullIsIComparable) {
-    const refptr<object> o = as<object>(refptr<string>::Null());
+    const $<object> o = as<object>($<string>::Null());
     ASSERT_FALSE(is<IComparable>(o));
   }
 
   TEST(IsTest, ConstSpObjectFormConstSpStringNullIsInt32) {
-    const refptr<object> o = as<object>(refptr<string>::Null());
+    const $<object> o = as<object>($<string>::Null());
     ASSERT_FALSE(is<Int32>(o));
   }
 

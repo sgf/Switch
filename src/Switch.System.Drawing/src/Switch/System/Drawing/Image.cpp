@@ -30,7 +30,7 @@ property_<Image, readonly_> Image::None {
 Image::Image() {
 }
 
-Image::Image(refptr<System::IO::Stream> stream) {
+Image::Image($<System::IO::Stream> stream) {
   ReadStream(stream);
 }
 
@@ -42,12 +42,12 @@ Image::Image(const string& fileName) {
 Image::Image(const Image& image) : flags(image.flags), frameDimensionList(image.frameDimensionList), horizontalResolution(image.horizontalResolution), pixelFormat(image.pixelFormat), palette(image.palette), rawData(image.rawData), rawFormat(image.rawFormat), size(image.size), tag(image.tag), verticalResolution(image.verticalResolution) {
 }
 
-refptr<Image> Image::FromFile(const string& fileName) {
+$<Image> Image::FromFile(const string& fileName) {
   return new Image(fileName);
 }
 
-refptr<Image> Image::FromData(const char* data[]) {
-  refptr<Image> image = new_<Image>();
+$<Image> Image::FromData(const char* data[]) {
+  $<Image> image = new_<Image>();
 
   Array<string> infos = string(data[0]).Split(' ');
   int32 columns = Int32::Parse(infos[0]);
@@ -89,8 +89,8 @@ refptr<Image> Image::FromData(const char* data[]) {
   return image;
 }
 
-void Image::ReadStream(refptr<System::IO::Stream> stream) {
-  refptr<BinaryReader> reader = new_<BinaryReader>(stream);
+void Image::ReadStream($<System::IO::Stream> stream) {
+  $<BinaryReader> reader = new_<BinaryReader>(stream);
 
   uint16 magicNumber = reader->ReadUInt16();
   reader->BaseStream().Seek(0, Switch::System::IO::SeekOrigin::Begin);

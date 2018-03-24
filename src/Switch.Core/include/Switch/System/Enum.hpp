@@ -337,7 +337,7 @@ namespace Switch {
 
       protected:
         int64 operationNumber;
-        refptr<System::Collections::Generic::IComparer<T>> comparer;
+        $<System::Collections::Generic::IComparer<T>> comparer;
         std::map<T, string, MapComparer> map;
         object syncRoot;
 

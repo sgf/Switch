@@ -69,15 +69,15 @@ namespace SwitchUnitTests {
   };
 
   TEST(PropertyReadOnlyTest, PropertyCopyConstructor) {
-    refptr<PropertyReadClass> p1 = new_<PropertyReadClass>();
-    refptr<PropertyReadClass> p2 = new_<PropertyReadClass>(*p1);
+    $<PropertyReadClass> p1 = new_<PropertyReadClass>();
+    $<PropertyReadClass> p2 = new_<PropertyReadClass>(*p1);
     p1 = null;
     ASSERT_EQ("Test property", p2->Name);
   }
 
   TEST(PropertyReadOnlyTest, PropertyEqualOperator) {
-    refptr<PropertyReadClass> p1 = new_<PropertyReadClass>();
-    refptr<PropertyReadClass> p2 = new_<PropertyReadClass>();
+    $<PropertyReadClass> p1 = new_<PropertyReadClass>();
+    $<PropertyReadClass> p2 = new_<PropertyReadClass>();
     *p2 = *p1;
     p1 = null;
     ASSERT_EQ("Test property", p2->Name);

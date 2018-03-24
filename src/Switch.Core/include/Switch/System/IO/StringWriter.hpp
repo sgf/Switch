@@ -56,7 +56,7 @@ namespace Switch {
           bool close = false;
         };
 
-        refptr<StringWriterData> data = refptr<StringWriterData>();
+        $<StringWriterData> data = $<StringWriterData>();
       };
     }
   }

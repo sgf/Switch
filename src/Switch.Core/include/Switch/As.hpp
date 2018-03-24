@@ -15,8 +15,8 @@ namespace Switch {
   /// Switch.Core
   /// @par Examples
   /// @code
-  /// refptr<string> str = new Switch::string("A new string");
-  /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+  /// $<string> str = new Switch::string("A new string");
+  /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
   /// @endcode
   /// @exception ArgumentNullException The parameters is null.
   template<typename TT, typename T>
@@ -29,8 +29,8 @@ namespace Switch {
   /// Switch.Core
   /// @par Examples
   /// @code
-  /// refptr<string> str = new Switch::string("A new string");
-  /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+  /// $<string> str = new Switch::string("A new string");
+  /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
   /// @endcode
   /// @exception ArgumentNullException The parameters is null.
   template<typename TT, typename T>
@@ -43,12 +43,12 @@ namespace Switch {
   /// Switch.Core
   /// @par Examples
   /// @code
-  /// refptr<string> str = new Switch::string("A new string");
-  /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+  /// $<string> str = new Switch::string("A new string");
+  /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
   /// @endcode
   /// @exception ArgumentNullException The parameters is null.
   template<typename TT, typename T>
-  refptr<TT> as(const refptr<T>& value) {
+  $<TT> as(const $<T>& value) {
     return value.template As<TT>();
   }
 
@@ -57,12 +57,12 @@ namespace Switch {
   /// Switch.Core
   /// @par Examples
   /// @code
-  /// refptr<string> str = new Switch::string("A new string");
-  /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+  /// $<string> str = new Switch::string("A new string");
+  /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
   /// @endcode
   /// @exception ArgumentNullException The parameters is null.
   template<typename TT, typename T>
-  refptr<TT> as(refptr<T>& value) {
+  $<TT> as($<T>& value) {
     return value.template As<TT>();
   }
 
@@ -71,8 +71,8 @@ namespace Switch {
   /// Switch.Core
   /// @par Examples
   /// @code
-  /// refptr<string> str = new Switch::string("A new string");
-  /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+  /// $<string> str = new Switch::string("A new string");
+  /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
   /// @endcode
   /// @exception ArgumentNullException The parameters is null.
   template<typename TT, typename T>
@@ -90,8 +90,8 @@ namespace Switch {
   /// Switch.Core
   /// @par Examples
   /// @code
-  /// refptr<string> str = new Switch::string("A new string");
-  /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+  /// $<string> str = new Switch::string("A new string");
+  /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
   /// @endcode
   /// @exception ArgumentNullException The parameters is null.
   template<typename TT, typename T>
@@ -109,8 +109,8 @@ namespace Switch {
   /// Switch.Core
   /// @par Examples
   /// @code
-  /// refptr<string> str = new Switch::string("A new string");
-  /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+  /// $<string> str = new Switch::string("A new string");
+  /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
   /// @endcode
   /// @exception ArgumentNullException The parameters is null.
   template<typename TT, typename T>
@@ -125,8 +125,8 @@ namespace Switch {
   /// Switch.Core
   /// @par Examples
   /// @code
-  /// refptr<string> str = new Switch::string("A new string");
-  /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+  /// $<string> str = new Switch::string("A new string");
+  /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
   /// @endcode
   /// @exception ArgumentNullException The parameters is null.
   template<typename TT, typename T>

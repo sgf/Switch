@@ -74,7 +74,7 @@ int32 StreamReader::ReadCodePoint(Text::Encoding::Decoder& decoder) {
 }
 
 string StreamReader::ReadLine() {
-  refptr<Text::Encoding::Decoder> decoder = this->data->encoding->CreateDecoder();
+  $<Text::Encoding::Decoder> decoder = this->data->encoding->CreateDecoder();
   string result;
   for (int32 value = this->Read(*decoder); value != -1 && value != '\n'; value = this->Read(*decoder)) {
     if (value != '\r')
@@ -85,7 +85,7 @@ string StreamReader::ReadLine() {
 }
 
 string StreamReader::ReadToEnd() {
-  refptr<Text::Encoding::Decoder> decoder = this->data->encoding->CreateDecoder();
+  $<Text::Encoding::Decoder> decoder = this->data->encoding->CreateDecoder();
   String result;
   for (int32 value = this->Read(*decoder); value != -1; value = this->Read(*decoder)) {
     if (value != '\r')

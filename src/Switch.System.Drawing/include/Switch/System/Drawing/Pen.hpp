@@ -79,7 +79,7 @@ namespace Switch {
         intptr GetNativePen() const { return this->pen; }
         void Create();
         void Destroy();
-        refptr<System::Drawing::Brush> brush  = as<System::Drawing::Brush>(new_<SolidBrush>(System::Drawing::Color::Black()));
+        $<System::Drawing::Brush> brush  = as<System::Drawing::Brush>(new_<SolidBrush>(System::Drawing::Color::Black()));
         System::Drawing::Drawing2D::DashStyle dashStyle = System::Drawing::Drawing2D::DashStyle::Solid;
         float width = 1;
         intptr pen = IntPtr::Zero;

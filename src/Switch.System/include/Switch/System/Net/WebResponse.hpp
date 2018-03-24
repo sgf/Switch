@@ -69,7 +69,7 @@ namespace Switch {
             bool started = false;
             bool finished = false;
           };
-          refptr<WebRequestStreamData> data = new_<WebRequestStreamData>();
+          $<WebRequestStreamData> data = new_<WebRequestStreamData>();
         };
 
         property_<int64> ContentLength {

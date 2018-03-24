@@ -30,10 +30,10 @@ namespace Switch {
         struct Item {
           ref<object> key;
           delegate<Result, Arguments...> handler;
-          refptr<Item> next;
+          $<Item> next;
         };
 
-        refptr<Item> head;
+        $<Item> head;
       };
     }
   }

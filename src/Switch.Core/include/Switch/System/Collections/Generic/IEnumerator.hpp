@@ -124,7 +124,7 @@ namespace Switch {
         class Enumerator : public object, public IEnumerator<T> {
         public:
           /// @cond
-          explicit Enumerator(refptr<IEnumerator<T>> enumerator) : enumerator(enumerator) {}
+          explicit Enumerator($<IEnumerator<T>> enumerator) : enumerator(enumerator) {}
           Enumerator(const Enumerator& enumerator) : enumerator(enumerator.enumerator) {}
           Enumerator& operator=(const Enumerator& enumerator) {
             this->enumerator = enumerator.enumerator;
@@ -143,15 +143,15 @@ namespace Switch {
           void Reset() override {this->enumerator->Reset();}
 
           /// @cond
-          operator refptr<IEnumerator<T>>() const {return this->enumerator;}
-          operator refptr<IEnumerator<T>>() {return this->enumerator;}
+          operator $<IEnumerator<T>>() const {return this->enumerator;}
+          operator $<IEnumerator<T>>() {return this->enumerator;}
           /// @endcond
 
         protected:
           const T& GetCurrent() const override {return this->enumerator->Current();}
 
         private:
-          refptr<IEnumerator<T>> enumerator;
+          $<IEnumerator<T>> enumerator;
         };
       }
     }

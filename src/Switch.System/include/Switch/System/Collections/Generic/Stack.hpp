@@ -94,7 +94,7 @@ namespace Switch {
           void CopyTo(int32 index, Array<T>& array, int32 arrayIndex, int32 count) const {this->stack.CopyTo(index, array, arrayIndex, count);}
 
           /// @brief Removes and returns the object at the top of the Stack<T>.
-          /// @return refptr<T> The object removed
+          /// @return $<T> The object removed
           /// @exception InvalidOperationException The Stack<T> is Empty.
           T Pop() {
             T value = Peek();
@@ -113,7 +113,7 @@ namespace Switch {
           Enumerator<T> GetEnumerator() const override {return this->stack.GetEnumerator();}
 
           /// @brief Returns the object at the top of the Stack<T> without removing it.
-          /// @return refptr<T> The object to peek from the Stack<T>. The value can not be null.
+          /// @return $<T> The object to peek from the Stack<T>. The value can not be null.
           /// @exception InvalidOperationException The Stack<T> is Empty.
           T Peek() {
             if (this->stack.Count == 0)

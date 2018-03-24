@@ -45,7 +45,7 @@ namespace Switch {
   /// @endcode
   /// @see Switch::System::Type
   template<typename TT, typename T>
-  bool is(const refptr<T>& value) {
+  bool is(const $<T>& value) {
     return value.template Is<TT>();
   }
 
@@ -59,7 +59,7 @@ namespace Switch {
   /// @endcode
   /// @see Switch::System::Type
   template<typename TT, typename T>
-  bool is(refptr<T>& value) {
+  bool is($<T>& value) {
     return value.template Is<TT>();
   }
 

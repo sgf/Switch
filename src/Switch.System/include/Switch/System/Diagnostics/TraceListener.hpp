@@ -348,7 +348,7 @@ namespace Switch {
           TraceOptions traceOutputOptions = TraceOptions::None;
         };
 
-        refptr<TraceListenerData> data = new_<TraceListenerData>();
+        $<TraceListenerData> data = new_<TraceListenerData>();
       };
     }
   }

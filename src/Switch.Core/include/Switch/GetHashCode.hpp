@@ -16,7 +16,7 @@ namespace Switch {
   /// @return int32  An integer value being the generated hashcode.
   /// @exception System::ArgumentNullException The parameters converter is null.
   template<typename T>
-  int32 GetHashCode(const refptr<T>& value) {
+  int32 GetHashCode(const $<T>& value) {
     return int32(int64(value.ToPointer()) & 0x00000000FFFFFFFF) ^ int32((int64(value.ToPointer()) >> 32) & 0x00000000FFFFFFFF);
   }
 

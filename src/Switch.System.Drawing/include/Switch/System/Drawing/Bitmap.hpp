@@ -27,7 +27,7 @@ namespace Switch {
         template<typename TStream>
         Bitmap(const TStream& stream) : Image(stream) {}
 
-        Bitmap(refptr<System::IO::Stream> stream) : Image(stream) {}
+        Bitmap($<System::IO::Stream> stream) : Image(stream) {}
 
       private:
         Bitmap() {}

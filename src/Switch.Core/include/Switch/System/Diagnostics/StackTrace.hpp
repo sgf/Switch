@@ -126,7 +126,7 @@ namespace Switch {
         /// @remarks Use the returned StackFrame array to enumerate and examine function calls in the StackTrace. The length of the returned array is equal to the FrameCount property value.
         /// @remarks The StackFrame array elements are in reverse chronological order. The StackFrame at array index 0 represents the most recent function call in the stack trace and the last frame pushed onto the call stack. The StackFrame at array index FrameCount minus 1 represents the oldest function call in the stack trace and the first frame pushed onto the call stack.
         /// @remarks Use the GetFrames method to obtain all stack frames in a stack trace; use the GetFrame method to obtain a specific stack frame in a stack trace. The StackFrame indexes are ordered alike by the two methods. For example, the StackFrame at index 0 in the array returned by GetFrames is equivalent to the StackFrame returned by GetFrame with an input index of 0.
-        System::Array<refptr<StackFrame>> GetFrames() {
+        System::Array < $<StackFrame >> GetFrames() {
           return this->frames.ToArray();
         }
 
@@ -145,8 +145,8 @@ namespace Switch {
           intptr handle;
         };
 
-        refptr<CallStack> stackTrace;
-        System::Collections::Generic::List<refptr<StackFrame>> frames;
+        $<CallStack> stackTrace;
+        System::Collections::Generic::List < $<StackFrame >> frames;
       };
     }
   }

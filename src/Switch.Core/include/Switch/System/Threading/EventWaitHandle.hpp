@@ -136,11 +136,11 @@ namespace Switch {
           return true;
         }
 
-        refptr<std::mutex> guard = new_<std::mutex>();
-        refptr<std::condition_variable> signal = new_<std::condition_variable>();
-        refptr<bool> event = new_<bool>(false);
-        refptr<EventResetMode> mode = new_<EventResetMode>(EventResetMode::ManualReset);
-        refptr<string> name = new_<string>();
+        $<std::mutex> guard = new_<std::mutex>();
+        $<std::condition_variable> signal = new_<std::condition_variable>();
+        $<bool> event = new_<bool>(false);
+        $<EventResetMode> mode = new_<EventResetMode>(EventResetMode::ManualReset);
+        $<string> name = new_<string>();
       };
     }
   }

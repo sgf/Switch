@@ -132,7 +132,7 @@ namespace Switch {
 
       /// @brief Returns a new Version object whose value is the same as the current Version object.
       /// @return object* A new object whose values are a copy of the current Version object.
-      refptr<object> Clone() const override {return new_<Version>(*this);}
+      $<object> Clone() const override {return new_<Version>(*this);}
 
       /// @brief Compares the current Version object to a specified object and returns an indication of their relative values.
       /// @param obj An object to compare with this instance.

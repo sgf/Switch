@@ -148,7 +148,7 @@ const EndPoint& Socket::GetRemoteEndPoint() const {
   return *this->data->remoteEndPoint;
 }
 
-refptr<object> Socket::GetSocketOption(SocketOptionLevel socketOptionLevel, SocketOptionName socketOptionName) const {
+$<object> Socket::GetSocketOption(SocketOptionLevel socketOptionLevel, SocketOptionName socketOptionName) const {
   if (this->data->socket == IntPtr::Zero)
     throw ObjectDisposedException(caller_);
 

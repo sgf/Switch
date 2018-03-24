@@ -62,7 +62,7 @@ namespace Switch {
           /// @endcond
 
           template<typename Type>
-          refptr<Type> GetLParam() { return (refptr<Type>)this->lParam; }
+          $<Type> GetLParam() { return ($<Type>)this->lParam; }
 
           String ToString() const override;
 

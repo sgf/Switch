@@ -516,7 +516,7 @@ namespace Switch {
             };
           };
 
-          refptr<TaskData> data {new_<TaskData>()};
+          $<TaskData> data {new_<TaskData>()};
         };
       }
     }

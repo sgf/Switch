@@ -26,7 +26,7 @@ namespace {
 
   TEST(DictionaryTest, AddSpPairRef) {
     Dictionary<Int32, string> dictionary;
-    refptr<KeyValuePair<Int32, string>> pair(new KeyValuePair<Int32, string>(Int32(42), "Hello"));
+    $<KeyValuePair<Int32, string>> pair(new KeyValuePair<Int32, string>(Int32(42), "Hello"));
 
     dictionary.Add(*pair);
     ASSERT_TRUE(dictionary.ContainsKey(Int32(42)));

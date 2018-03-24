@@ -29,7 +29,7 @@ namespace Switch {
       /// @remarks A system process is uniquely identified on the system by its process identifier. Like many Windows resources, a process is also identified by its handle, which might not be unique on the computer. A handle is the generic term for an identifier of a resource. The operating system persists the process handle, which is accessed through the Handle property of the Process component, even when the process has exited. Thus, you can get the process's administrative information, such as the ExitCode (usually either zero for success or a nonzero error code) and the ExitTime. Handles are an extremely valuable resource, so leaking handles is more virulent than leaking memory.
       /// @note This class contains a link demand and an inheritance demand at the class level that applies to all members. A SecurityException is thrown when either the immediate caller or the derived class does not have full-trust permission. For details about security demands, see Link Demands.
       class system_export_ Process : public Object {
-        refptr<IO::Stream> GetStandardOutput() const;
+        $<IO::Stream> GetStandardOutput() const;
       public:
         /// @cond
         Process() {}
@@ -107,10 +107,10 @@ namespace Switch {
           int32 basePriority = 8;
           int32 exitCode = 0;
           intptr handle = 0;
-          refptr<System::IO::Stream> outputStream;
+          $<System::IO::Stream> outputStream;
           ProcessStartInfo startInfo;
         };
-        refptr<ProcessData> data = new_<ProcessData>();
+        $<ProcessData> data = new_<ProcessData>();
       };
     }
   }

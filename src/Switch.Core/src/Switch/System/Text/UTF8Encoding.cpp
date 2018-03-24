@@ -77,11 +77,11 @@ UTF8Encoding& UTF8Encoding::operator =(const UTF8Encoding& encoding) {
   return *this;
 }
 
-refptr<Encoding::Decoder> UTF8Encoding::CreateDecoder() const {
+$<Encoding::Decoder> UTF8Encoding::CreateDecoder() const {
   return new_<Decoder>();
 }
 
-refptr<Encoding::Encoder> UTF8Encoding::CreateEncoder() const {
+$<Encoding::Encoder> UTF8Encoding::CreateEncoder() const {
   return new_<Encoder>();
 }
 

@@ -390,7 +390,7 @@ namespace Switch {
           static bool SetPriority(NativeHandle handle, ThreadPriority priority);
         };
 
-        Thread(const refptr<ThreadItem>& data) : data(data) {}
+        Thread(const $<ThreadItem>& data) : data(data) {}
 
         bool Cancel();
         void Close();
@@ -430,7 +430,7 @@ namespace Switch {
             this->data->thread = std::thread(std::function<void(const object*)>(std::bind(&ThreadItem::ParameterizedRun, this->data.ToPointer(), std::placeholders::_1)), obj == null ? this : obj);
         }
 
-        refptr<ThreadItem> data;
+        $<ThreadItem> data;
 
         friend class ThreadPool;
         friend struct ThreadItem;

@@ -98,7 +98,7 @@ namespace Switch {
         }
 
       private:
-        refptr<System::IO::TextWriter> textWriter;
+        $<System::IO::TextWriter> textWriter;
       };
     }
   }

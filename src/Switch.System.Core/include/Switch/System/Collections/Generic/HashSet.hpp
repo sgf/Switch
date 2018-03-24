@@ -34,7 +34,7 @@ namespace Switch {
 
           /// @brief Initializes a new instance of the HashSet<T> class that uses a specified comparer
           /// @param comparer an instance of IComparer<T> used to determine the sort order of the set.
-          HashSet(const refptr< IComparer<T>>& comparer) : comparer(comparer) {}
+          HashSet(const $< IComparer<T>>& comparer) : comparer(comparer) {}
 
           /// @cond
           HashSet(InitializerList<T> il) : operationNumber(0), comparer(new System::Collections::Generic::EmptyComparer<T>()) {
@@ -68,7 +68,7 @@ namespace Switch {
           /// @brief Initializes a new instance of the HashSet<T> class that contains elements copied from a specified enumerable collection and that uses a specified comparer.
           /// @param collection The elements to copy
           /// @param comparer an instance of IComparer<T> used to determine the sort order of the set.
-          HashSet(const IEnumerable<T>& collection, const refptr<IComparer<T>>& comparer) : operationNumber(0), comparer(comparer) {
+          HashSet(const IEnumerable<T>& collection, const $<IComparer<T>>& comparer) : operationNumber(0), comparer(comparer) {
             for (T item : collection)
               Add(item);
           }
@@ -363,7 +363,7 @@ namespace Switch {
 
           std::unordered_set<T, Hasher<T>, EqualTo<T>, TAllocator> hashset;
           int64 operationNumber;
-          refptr< IComparer<T>> comparer;
+          $< IComparer<T>> comparer;
 
         public:
           /// @cond

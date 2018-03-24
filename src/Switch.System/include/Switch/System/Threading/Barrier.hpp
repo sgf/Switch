@@ -197,7 +197,7 @@ namespace Switch {
           int32 participantsPostPhaseExceptionRemainin = 0;
         };
 
-        refptr<BarrierData> data;
+        $<BarrierData> data;
       };
     }
   }

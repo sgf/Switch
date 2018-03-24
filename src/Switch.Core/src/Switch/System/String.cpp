@@ -911,7 +911,7 @@ Array<char> String::ToCCharArray(int32 startIndex, int32 length) const  {
 }
 
 Array<char> String::ToCCharArray(int32 codePage) const {
-  refptr<Text::Encoding> encoding = Text::Encoding::CreateEncoding(codePage);
+  $<Text::Encoding> encoding = Text::Encoding::CreateEncoding(codePage);
   if (!encoding->IsSingleByte())
     throw InvalidOperationException(caller_);
 
@@ -921,7 +921,7 @@ Array<char> String::ToCCharArray(int32 codePage) const {
 }
 
 Array<char> String::ToCCharArray(int32 startIndex, int32 length, int32 codePage) const {
-  refptr<Text::Encoding> encoding = Text::Encoding::CreateEncoding(codePage);
+  $<Text::Encoding> encoding = Text::Encoding::CreateEncoding(codePage);
   if (!encoding->IsSingleByte())
     throw InvalidOperationException(caller_);
 
@@ -1001,7 +1001,7 @@ string String::ToString() const {
   return *this;
 }
 
-refptr<object> String::Clone() const {
+$<object> String::Clone() const {
   return new_<String>(*this);
 }
 

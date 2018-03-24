@@ -9,25 +9,25 @@
 using namespace System;
 using namespace System::Text;
 
-refptr<System::Collections::Generic::Dictionary<int32, string>> Encoding::names;
-refptr<System::Collections::Generic::Dictionary<string, int32>> Encoding::codePagesFromName;
-refptr<System::Collections::Generic::Dictionary<int32, string>> Encoding::displayNames;
+$<System::Collections::Generic::Dictionary<int32, string>> Encoding::names;
+$<System::Collections::Generic::Dictionary<string, int32>> Encoding::codePagesFromName;
+$<System::Collections::Generic::Dictionary<int32, string>> Encoding::displayNames;
 
-const refptr<Encoding> Encoding::ASCII = new_<ASCIIEncoding>();
+const $<Encoding> Encoding::ASCII = new_<ASCIIEncoding>();
 
-const refptr<Encoding> Encoding::UTF8 = new_<UTF8Encoding>(true);
+const $<Encoding> Encoding::UTF8 = new_<UTF8Encoding>(true);
 
-const refptr<Encoding> Encoding::Unicode = new_<UnicodeEncoding>(false, true);
+const $<Encoding> Encoding::Unicode = new_<UnicodeEncoding>(false, true);
 
-const refptr<Encoding> Encoding::BigEndianUnicode = new_<UnicodeEncoding>(true, true);
+const $<Encoding> Encoding::BigEndianUnicode = new_<UnicodeEncoding>(true, true);
 
-const refptr<Encoding> Encoding::UTF16LE = new_<UnicodeEncoding>(false, true);
+const $<Encoding> Encoding::UTF16LE = new_<UnicodeEncoding>(false, true);
 
-const refptr<Encoding> Encoding::UTF16BE = new_<UnicodeEncoding>(true, true);
+const $<Encoding> Encoding::UTF16BE = new_<UnicodeEncoding>(true, true);
 
-const refptr<Encoding> Encoding::UTF32 = new_<UTF32Encoding>(false, true);
+const $<Encoding> Encoding::UTF32 = new_<UTF32Encoding>(false, true);
 
-const refptr<Encoding> Encoding::Default = new_<UTF8Encoding>(true);
+const $<Encoding> Encoding::Default = new_<UTF8Encoding>(true);
 
 Encoding::Encoding() {
   this->codePage = 0;
@@ -66,7 +66,7 @@ string Encoding::GetEncodingName() const {
   return "";
 }
 
-refptr<Encoding> Encoding::CreateEncoding(int32 codePage) {
+$<Encoding> Encoding::CreateEncoding(int32 codePage) {
   switch (codePage) {
   case 437   : { return new_<CodePage437Encoding>(); }
   case 1200  : { return new_<UnicodeEncoding>(false, true); }
@@ -81,7 +81,7 @@ refptr<Encoding> Encoding::CreateEncoding(int32 codePage) {
   throw NotSupportedException(caller_);
 }
 
-refptr<Encoding> Encoding::CreateEncoding(const string& codePageName) {
+$<Encoding> Encoding::CreateEncoding(const string& codePageName) {
   if (codePageName == "us-ascii") return CreateEncoding(20127);
   if (codePageName == "iso-8859-1") return CreateEncoding(28591);
   if (codePageName == "iso-8859-2") return CreateEncoding(28592);
@@ -258,7 +258,7 @@ int32 Encoding::GetChars(const byte bytes[], int32 bytesLength, int32 byteIndex,
   ArrayAlgorithms::ValidateRange(bytesLength, byteIndex, byteCount);
   ArrayAlgorithms::ValidateIndex(charIndex, charsLength);
   if (bytesLength == 0) return 0;
-  refptr<Decoder> decoder = CreateDecoder();
+  $<Decoder> decoder = CreateDecoder();
   int index = charIndex;
   for (int32 i = byteIndex; i < byteIndex + byteCount; i += 1) {
     decoder->Add(bytes[i]);

@@ -1235,39 +1235,39 @@ namespace Switch {
       /// @param pointer The pointer to check is null.
       /// @par Examples
       /// @code
-      /// refptr<string> s1(new string("A string"));
-      /// refptr<string> s2;
+      /// $<string> s1(new string("A string"));
+      /// $<string> s2;
       /// Assert::IsNotNull(s1); // test ok
       /// Assert::IsNotNull(s2); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void IsNotNull(const refptr<TPointer>& pointer) {IsNotNull(pointer, "", System::Runtime::CompilerServices::Caller());}
+      static inline void IsNotNull(const $<TPointer>& pointer) {IsNotNull(pointer, "", System::Runtime::CompilerServices::Caller());}
 
       /// @brief Asserts that the pointer is not null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
       /// @param message A message to display if the assertion fails. This message can be seen in the unit test results.
       /// @par Examples
       /// @code
-      /// refptr<string> s1(new string("A string"));
-      /// refptr<string> s2;
+      /// $<string> s1(new string("A string"));
+      /// $<string> s2;
       /// Assert::IsNotNull(s1, "User message..."); // test ok
       /// Assert::IsNotNull(s2, "User message..."); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void IsNotNull(const refptr<TPointer>& pointer, const string& message) {IsNotNull(pointer, message, System::Runtime::CompilerServices::Caller());}
+      static inline void IsNotNull(const $<TPointer>& pointer, const string& message) {IsNotNull(pointer, message, System::Runtime::CompilerServices::Caller());}
 
       /// @brief Asserts that the pointer is not null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
       /// @param caller Contains information about current file and current line.
       /// @par Examples
       /// @code
-      /// refptr<string> s1(new string("A string"));
-      /// refptr<string> s2;
+      /// $<string> s1(new string("A string"));
+      /// $<string> s2;
       /// Assert::IsNotNull(s1, caller_); // test ok
       /// Assert::IsNotNull(s2, caller_); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void IsNotNull(const refptr<TPointer>& pointer, const System::Runtime::CompilerServices::Caller& caller) {IsNotNull(pointer, "", caller);}
+      static inline void IsNotNull(const $<TPointer>& pointer, const System::Runtime::CompilerServices::Caller& caller) {IsNotNull(pointer, "", caller);}
 
       /// @brief Asserts that the pointer is not null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
@@ -1275,13 +1275,13 @@ namespace Switch {
       /// @param caller Contains information about current file and current line.
       /// @par Examples
       /// @code
-      /// refptr<string> s1(new string("A string"));
-      /// refptr<string> s2;
+      /// $<string> s1(new string("A string"));
+      /// $<string> s2;
       /// Assert::IsNotNull(s1, "User message...", caller_); // test ok
       /// Assert::IsNotNull(s2, "User message...", caller_); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void IsNotNull(const refptr<TPointer>& pointer, const string& message, const System::Runtime::CompilerServices::Caller& caller) {
+      static inline void IsNotNull(const $<TPointer>& pointer, const string& message, const System::Runtime::CompilerServices::Caller& caller) {
         if (pointer != null)
           Succeed(message, caller);
         else
@@ -1364,39 +1364,39 @@ namespace Switch {
       /// @param pointer The pointer to check is null.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::IsNull(s1); // test ok
       /// Assert::IsNull(s2); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void IsNull(const refptr<TPointer>& pointer) {IsNull(pointer, "", System::Runtime::CompilerServices::Caller());}
+      static inline void IsNull(const $<TPointer>& pointer) {IsNull(pointer, "", System::Runtime::CompilerServices::Caller());}
 
       /// @brief Asserts that the pointer is null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
       /// @param message A message to display if the assertion fails. This message can be seen in the unit test results.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::IsNull(s1, "User message..."); // test ok
       /// Assert::IsNull(s2, "User message..."); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void IsNull(const refptr<TPointer>& pointer, const string& message) {IsNull(pointer, message, System::Runtime::CompilerServices::Caller());}
+      static inline void IsNull(const $<TPointer>& pointer, const string& message) {IsNull(pointer, message, System::Runtime::CompilerServices::Caller());}
 
       /// @brief Asserts that the pointer is null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
       /// @param caller Contains information about current file and current line.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::IsNull(s1, caller_); // test ok
       /// Assert::IsNull(s2, caller_); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void IsNull(const refptr<TPointer>& pointer, const System::Runtime::CompilerServices::Caller& caller) {IsNull(pointer, "", caller);}
+      static inline void IsNull(const $<TPointer>& pointer, const System::Runtime::CompilerServices::Caller& caller) {IsNull(pointer, "", caller);}
 
       /// @brief Asserts that the pointer is null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
@@ -1404,13 +1404,13 @@ namespace Switch {
       /// @param caller Contains information about current file and current line.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::IsNull(s1, "User message...", caller_); // test ok
       /// Assert::IsNull(s2, "User message...", caller_); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void IsNull(const refptr<TPointer>& pointer, const string& message, const System::Runtime::CompilerServices::Caller& caller) {
+      static inline void IsNull(const $<TPointer>& pointer, const string& message, const System::Runtime::CompilerServices::Caller& caller) {
         if (pointer == null)
           Succeed(message, caller);
         else
@@ -1421,8 +1421,8 @@ namespace Switch {
       /// @param pointer The pointer to check is null.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::IsNull(s1); // test ok
       /// Assert::IsNull(s2); // test throws an AssertionException.
       /// @endcode
@@ -1434,8 +1434,8 @@ namespace Switch {
       /// @param message A message to display if the assertion fails. This message can be seen in the unit test results.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::IsNull(s1, "User message..."); // test ok
       /// Assert::IsNull(s2, "User message..."); // test throws an AssertionException.
       /// @endcode
@@ -1447,8 +1447,8 @@ namespace Switch {
       /// @param caller Contains information about current file and current line.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::IsNull(s1, caller_); // test ok
       /// Assert::IsNull(s2, caller_); // test throws an AssertionException.
       /// @endcode
@@ -1461,8 +1461,8 @@ namespace Switch {
       /// @param caller Contains information about current file and current line.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::IsNull(s1, "User message...", caller_); // test ok
       /// Assert::IsNull(s2, "User message...", caller_); // test throws an AssertionException.
       /// @endcode
@@ -1708,39 +1708,39 @@ namespace Switch {
       /// @param pointer The pointer to check is null.
       /// @par Examples
       /// @code
-      /// refptr<string> s1(new string("A string"));
-      /// refptr<string> s2;
+      /// $<string> s1(new string("A string"));
+      /// $<string> s2;
       /// Assert::IsNotNull(s1); // test ok
       /// Assert::IsNotNull(s2); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void NotNull(const refptr<TPointer>& pointer) {IsNotNull(pointer, "", System::Runtime::CompilerServices::Caller());}
+      static inline void NotNull(const $<TPointer>& pointer) {IsNotNull(pointer, "", System::Runtime::CompilerServices::Caller());}
 
       /// @brief Asserts that the pointer is not null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
       /// @param message A message to display if the assertion fails. This message can be seen in the unit test results.
       /// @par Examples
       /// @code
-      /// refptr<string> s1(new string("A string"));
-      /// refptr<string> s2;
+      /// $<string> s1(new string("A string"));
+      /// $<string> s2;
       /// Assert::NotNull(s1, "User message..."); // test ok
       /// Assert::NotNull(s2, "User message..."); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void NotNull(const refptr<TPointer>& pointer, const string& message) {IsNotNull(pointer, message, System::Runtime::CompilerServices::Caller());}
+      static inline void NotNull(const $<TPointer>& pointer, const string& message) {IsNotNull(pointer, message, System::Runtime::CompilerServices::Caller());}
 
       /// @brief Asserts that the pointer is not null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
       /// @param caller Contains information about current file and current line.
       /// @par Examples
       /// @code
-      /// refptr<string> s1(new string("A string"));
-      /// refptr<string> s2;
+      /// $<string> s1(new string("A string"));
+      /// $<string> s2;
       /// Assert::NotNull(s1, caller_); // test ok
       /// Assert::NotNull(s2, caller_); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void NotNull(const refptr<TPointer>& pointer, const System::Runtime::CompilerServices::Caller& caller) {IsNotNull(pointer, "", caller);}
+      static inline void NotNull(const $<TPointer>& pointer, const System::Runtime::CompilerServices::Caller& caller) {IsNotNull(pointer, "", caller);}
 
       /// @brief Asserts that the pointer is not null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
@@ -1748,13 +1748,13 @@ namespace Switch {
       /// @param caller Contains information about current file and current line.
       /// @par Examples
       /// @code
-      /// refptr<string> s1(new string("A string"));
-      /// refptr<string> s2;
+      /// $<string> s1(new string("A string"));
+      /// $<string> s2;
       /// Assert::NotNull(s1, "User message...", caller_); // test ok
       /// Assert::NotNull(s2, "User message...", caller_); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void NotNull(const refptr<TPointer>& pointer, const string& message, const System::Runtime::CompilerServices::Caller& caller) {IsNotNull(pointer, message, caller);}
+      static inline void NotNull(const $<TPointer>& pointer, const string& message, const System::Runtime::CompilerServices::Caller& caller) {IsNotNull(pointer, message, caller);}
 
       /// @cond
       static inline void Null(NullPtr pointer) {IsNull(pointer, "", System::Runtime::CompilerServices::Caller());}
@@ -1827,39 +1827,39 @@ namespace Switch {
       /// @param pointer The pointer to check is null.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::Null(s1); // test ok
       /// Assert::Null(s2); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void Null(const refptr<TPointer>& pointer) {IsNull(pointer, "", System::Runtime::CompilerServices::Caller());}
+      static inline void Null(const $<TPointer>& pointer) {IsNull(pointer, "", System::Runtime::CompilerServices::Caller());}
 
       /// @brief Asserts that the pointer is null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
       /// @param message A message to display if the assertion fails. This message can be seen in the unit test results.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::Null(s1, "User message..."); // test ok
       /// Assert::Null(s2, "User message..."); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void Null(const refptr<TPointer>& pointer, const string& message) {IsNull(pointer, message, System::Runtime::CompilerServices::Caller());}
+      static inline void Null(const $<TPointer>& pointer, const string& message) {IsNull(pointer, message, System::Runtime::CompilerServices::Caller());}
 
       /// @brief Asserts that the pointer is null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
       /// @param caller Contains information about current file and current line.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::Null(s1, caller_); // test ok
       /// Assert::Null(s2, caller_); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void Null(const refptr<TPointer>& pointer, const System::Runtime::CompilerServices::Caller& caller) {IsNull(pointer, "", caller);}
+      static inline void Null(const $<TPointer>& pointer, const System::Runtime::CompilerServices::Caller& caller) {IsNull(pointer, "", caller);}
 
       /// @brief Asserts that the pointer is null. If the pointer is null the method throws an Switch::TUnit::AssertionException.
       /// @param pointer The pointer to check is null.
@@ -1867,13 +1867,13 @@ namespace Switch {
       /// @param caller Contains information about current file and current line.
       /// @par Examples
       /// @code
-      /// refptr<string> s1;
-      /// refptr<string> s2(new string("A string"));
+      /// $<string> s1;
+      /// $<string> s2(new string("A string"));
       /// Assert::Null(s1, "User message...", caller_); // test ok
       /// Assert::Null(s2, "User message...", caller_); // test throws an AssertionException.
       /// @endcode
       template<typename TPointer>
-      static inline void Null(const refptr<TPointer>& pointer, const string& message, const System::Runtime::CompilerServices::Caller& caller) {IsNull(pointer, message, caller);}
+      static inline void Null(const $<TPointer>& pointer, const string& message, const System::Runtime::CompilerServices::Caller& caller) {IsNull(pointer, message, caller);}
 
       /// @brief The ReferenceEquals method throws an Switch::TUnit::AssertionException. This is done to make sure there is no mistake by calling this function.
       static inline bool ReferenceEquals(const Object&, const Object&) { throw AssertionException(caller_); }

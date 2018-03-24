@@ -33,11 +33,11 @@ namespace {
 
   TEST(UTF32_EncodingTest, Ctor) {
     EncodingUT::Bytes preamble;
-    refptr<Text::Encoding> def = new Text::UTF32Encoding();
-    refptr<Text::Encoding> eFF = new Text::UTF32Encoding(false, false);
-    refptr<Text::Encoding> eFT = new Text::UTF32Encoding(false, true);
-    refptr<Text::Encoding> eTF = new Text::UTF32Encoding(true, false);
-    refptr<Text::Encoding> eTT = new Text::UTF32Encoding(true, true);
+    $<Text::Encoding> def = new Text::UTF32Encoding();
+    $<Text::Encoding> eFF = new Text::UTF32Encoding(false, false);
+    $<Text::Encoding> eFT = new Text::UTF32Encoding(false, true);
+    $<Text::Encoding> eTF = new Text::UTF32Encoding(true, false);
+    $<Text::Encoding> eTT = new Text::UTF32Encoding(true, true);
 
     ASSERT_EQ(12000, def->GetCodePage());
     ASSERT_TRUE(def->IsReadOnly());
@@ -75,7 +75,7 @@ namespace {
 
   TEST(UTF32_EncodingTest, Encode) {
     // The encoding, utf32 big endian, BOM.
-    refptr<Text::UTF32Encoding> unicode = new Text::UTF32Encoding();
+    $<Text::UTF32Encoding> unicode = new Text::UTF32Encoding();
 
     // Create a string that contains Unicode characters.
     string unicodeString("This unicode string contains two characters "
@@ -122,7 +122,7 @@ namespace {
 
   TEST(UTF32_EncodingTest, EncodeBigEndian) {
     // The encoding, utf32 big endian, BOM.
-    refptr<Text::UTF32Encoding> unicode = new Text::UTF32Encoding(true);
+    $<Text::UTF32Encoding> unicode = new Text::UTF32Encoding(true);
 
     // Create a string that contains Unicode characters.
     string unicodeString("This unicode string contains two characters "

@@ -326,7 +326,7 @@ namespace Switch {
           ProcessWindowStyle windowStyle = ProcessWindowStyle::Normal;
           string workingDirectory;
         };
-        refptr<ProcessStartInfoData> data = new_<ProcessStartInfoData>();
+        $<ProcessStartInfoData> data = new_<ProcessStartInfoData>();
       };
     }
   }

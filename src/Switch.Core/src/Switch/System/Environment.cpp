@@ -126,11 +126,11 @@ namespace {
 
   int32 exitCode;
   bool userInteractive = true;
-  refptr<SocketInit> socketInit;
-  refptr<System::Array<String>> commandLineArgs;
-  refptr<ConsoleChangeCodePage> consoleChangeCodePage;
-  refptr<ConsoleInterceptSignals> consoleInterceptSignals;
-  refptr<SignalCatcher> signalCatcher;
+  $<SocketInit> socketInit;
+  $<System::Array<String>> commandLineArgs;
+  $<ConsoleChangeCodePage> consoleChangeCodePage;
+  $<ConsoleInterceptSignals> consoleInterceptSignals;
+  $<SignalCatcher> signalCatcher;
 }
 
 property_<String, readonly_> Environment::CommandLine {

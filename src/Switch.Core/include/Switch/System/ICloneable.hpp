@@ -26,7 +26,7 @@ namespace Switch {
     public:
       /// @brief Creates a new object that is a copy of the current instance.
       /// @return object A new object that is a copy of this instance.
-      virtual refptr<Object> Clone() const = 0;
+      virtual $<Object> Clone() const = 0;
     };
   }
 }

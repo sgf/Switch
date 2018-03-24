@@ -318,7 +318,7 @@ namespace {
   }
 
   TYPED_TEST(Encoding, Equals) {
-    refptr<Text::Encoding> byCodePage = Text::Encoding::CreateEncoding(TypeParam::codePage);
+    $<Text::Encoding> byCodePage = Text::Encoding::CreateEncoding(TypeParam::codePage);
     ASSERT_TRUE(TypeParam::encoding.Equals(*byCodePage));
   }
 

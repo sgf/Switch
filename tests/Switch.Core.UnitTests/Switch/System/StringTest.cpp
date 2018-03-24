@@ -1,4 +1,4 @@
-﻿#include <Switch/System/String.hpp>
+#include <Switch/System/String.hpp>
 #include <gtest/gtest.h>
 #include <Switch/LiteralOperatorConverter.hpp>
 
@@ -520,7 +520,7 @@ namespace SwitchUnitTests {
     ASSERT_NE("My string"_S.GetHashCode(), "My Gtrins"_S.GetHashCode());
     ASSERT_EQ("another string"_S.GetHashCode(), "another string"_S.GetHashCode());
 
-    refptr<string> clone;
+    $<string> clone;
     string testClone("Test Clone");
     clone = as<string>(testClone.Clone());
     ASSERT_EQ(testClone.GetHashCode(), clone->GetHashCode());

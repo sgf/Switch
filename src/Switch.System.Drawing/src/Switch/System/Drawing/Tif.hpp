@@ -14,7 +14,7 @@ namespace Switch {
         template<typename TStream>
         explicit Tif(const TStream& stream) : reader(stream) {}
 
-        explicit Tif(refptr<System::IO::Stream> stream) : reader(stream) {}
+        explicit Tif($<System::IO::Stream> stream) : reader(stream) {}
 
         void Read(Image& image) {
         }

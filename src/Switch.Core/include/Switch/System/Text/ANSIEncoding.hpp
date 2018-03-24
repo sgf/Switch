@@ -111,8 +111,8 @@ namespace Switch {
       class core_export_ CodePage437Encoding : public ANSIEncoding {
       public:
         CodePage437Encoding();
-        refptr<Encoding::Decoder> CreateDecoder() const override;
-        refptr<Encoding::Encoder> CreateEncoder() const override;
+        $<Encoding::Decoder> CreateDecoder() const override;
+        $<Encoding::Encoder> CreateEncoder() const override;
         using ANSIEncoding::GetBytes;
         int32 GetBytes(char32 c, byte bytes[], int32 bytesLength, int32 byteIndex) const override;
 
@@ -132,8 +132,8 @@ namespace Switch {
       class core_export_ CodePage28591Encoding : public ANSIEncoding {
       public:
         CodePage28591Encoding();
-        refptr<Encoding::Decoder> CreateDecoder() const override;
-        refptr<Encoding::Encoder> CreateEncoder() const override;
+        $<Encoding::Decoder> CreateDecoder() const override;
+        $<Encoding::Encoder> CreateEncoder() const override;
         using ANSIEncoding::GetBytes;
         int32 GetBytes(char32 c, byte bytes[], int32 bytesLength, int32 byteIndex) const override;
 
@@ -153,8 +153,8 @@ namespace Switch {
       class core_export_ CodePage28592Encoding : public ANSIEncoding {
       public:
         CodePage28592Encoding();
-        refptr<Encoding::Decoder> CreateDecoder() const override;
-        refptr<Encoding::Encoder> CreateEncoder() const override;
+        $<Encoding::Decoder> CreateDecoder() const override;
+        $<Encoding::Encoder> CreateEncoder() const override;
         using ANSIEncoding::GetBytes;
         int32 GetBytes(char32 c, byte bytes[], int32 bytesLength, int32 byteIndex) const override;
 

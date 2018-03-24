@@ -250,7 +250,7 @@ namespace Switch {
             Socket clientSocket {AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp};
             bool active = false;
           };
-          refptr<TcpClientData> data = new_<TcpClientData>();
+          $<TcpClientData> data = new_<TcpClientData>();
         };
       }
     }

@@ -19,8 +19,8 @@ namespace {
     return output;
   }
 
-  refptr<System::Text::Encoding> inputEncoding = new_<System::Text::UTF8Encoding>(false);
-  refptr<System::Text::Encoding> outputEncoding = new_<System::Text::UTF8Encoding>(false);
+  $<System::Text::Encoding> inputEncoding = new_<System::Text::UTF8Encoding>(false);
+  $<System::Text::Encoding> outputEncoding = new_<System::Text::UTF8Encoding>(false);
 
   bool treatControlCAsInput = false;
 }
@@ -165,9 +165,9 @@ property_<Console::StandardInput&, readonly_> Console::In {
   }
 };
 
-property_<const refptr<System::Text::Encoding>&> Console::InputEncoding {
-  []()->const refptr<System::Text::Encoding>& {return inputEncoding;},
-  [](const refptr<System::Text::Encoding>& value) {
+property_ < const $<System::Text::Encoding>& > Console::InputEncoding {
+  []()->const $<System::Text::Encoding>& {return inputEncoding;},
+  [](const $<System::Text::Encoding>& value) {
     inputEncoding = value;
     Native::ConsoleApi::SetInputCodePage(inputEncoding->GetCodePage());
   }
@@ -211,9 +211,9 @@ property_<Console::StandardOutput&, readonly_> Console::Out {
   }
 };
 
-property_<const refptr<System::Text::Encoding>&> Console::OutputEncoding {
-  []()->const refptr<System::Text::Encoding>& {return outputEncoding;},
-  [](const refptr<System::Text::Encoding>& value) {
+property_ < const $<System::Text::Encoding>& > Console::OutputEncoding {
+  []()->const $<System::Text::Encoding>& {return outputEncoding;},
+  [](const $<System::Text::Encoding>& value) {
     outputEncoding = value;
     Native::ConsoleApi::SetOutputCodePage(outputEncoding->GetCodePage());
   }

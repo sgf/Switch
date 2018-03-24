@@ -154,8 +154,8 @@ namespace Switch {
         using ThreadPoolItem = ThreadItem<WaitCallback>;
         using ThreadPoolAsynchronousIOItem = ThreadItem<WaitOrTimerCallback>;
 
-        using ThreadPoolItemCollection = System::Collections::Generic::List<refptr<ThreadPoolItem>>;
-        using ThreadPoolAsynchronousIOItemCollection = System::Collections::Generic::List<refptr<ThreadPoolAsynchronousIOItem>>;
+        using ThreadPoolItemCollection = System::Collections::Generic::List < $<ThreadPoolItem >>;
+        using ThreadPoolAsynchronousIOItemCollection = System::Collections::Generic::List < $<ThreadPoolAsynchronousIOItem >>;
 
         static ThreadPoolItemCollection threadPoolItems;
         static ThreadPoolAsynchronousIOItemCollection threadPoolAsynchronousIOItems;

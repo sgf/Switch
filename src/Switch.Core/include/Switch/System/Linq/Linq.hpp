@@ -53,7 +53,7 @@ namespace Switch {
   /// @include LinqAgregate.cpp
   template<typename TSource>
   auto agregate(const System::Func<const TSource&, const TSource&, TSource>& func) {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->Agregate(func);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->Agregate(func);
   }
 
   /// @cond
@@ -74,7 +74,7 @@ namespace Switch {
   /// @include LinqAgregate2.cpp
   template<typename TSource, typename TAccumulate>
   auto agregate(const TAccumulate& seed, const System::Func<const TAccumulate&, const TSource&, TAccumulate>& func)  {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->Agregate(seed, func);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->Agregate(seed, func);
   }
 
   /// @cond
@@ -98,7 +98,7 @@ namespace Switch {
   /// @include LinqAgregate3.cpp
   template<typename TSource, typename TAccumulate, typename TResult>
   auto agregate(const TAccumulate& seed, const System::Func<const TAccumulate&, const TSource&, TAccumulate>& func, const System::Func<const TAccumulate&, TResult>& resultSelector)  {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->Agregate(seed, func, resultSelector);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->Agregate(seed, func, resultSelector);
   }
 
   /// @cond
@@ -110,61 +110,61 @@ namespace Switch {
 
   template<typename TSource>
   auto concat(const System::Collections::Generic::IEnumerable<TSource>& second) {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->Concat(second);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->Concat(second);
   }
 
   /// @cond
   template<typename TSource>
   auto concat(const InitializerList<TSource>& second) {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->Concat(second);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->Concat(second);
   }
 
   template<typename TSource, int32 len>
   auto concat(const TSource(&second)[len]) {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->Concat(second);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->Concat(second);
   }
   /// @endcond
 
   template<typename TSource>
   auto from(const System::Collections::Generic::IEnumerable<TSource>& source) {
     __enumerable__.Value = System::Linq::Enumerable::AsEnumerable(source);
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value());
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value());
   }
 
   /// @cond
   template<typename TSource>
   auto from(const InitializerList<TSource>& source) {
     __enumerable__.Value = System::Linq::Enumerable::AsEnumerable(source);
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value());
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value());
   }
 
   template<typename TSource, int32 len>
   auto from(const TSource(&source)[len]) {
     __enumerable__.Value = System::Linq::Enumerable::AsEnumerable(source);
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value());
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value());
   }
   /// @endcond
 
   template<typename TSource>
   auto intersect(const System::Collections::Generic::IEnumerable<TSource>& second) {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->Intersect(second);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->Intersect(second);
   }
 
   /// @cond
   template<typename TSource>
   auto intersect(const InitializerList<TSource>& second) {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->Intersect(second);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->Intersect(second);
   }
 
   template<typename TSource, int32 len>
   auto intersect(const TSource(&second)[len]) {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->Intersect(second);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->Intersect(second);
   }
   /// @endcond
 
   template<typename TSource>
   auto orderby(System::Func<const TSource&, TSource> keySelector) {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->OrderBy(keySelector);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->OrderBy(keySelector);
   }
 
   /// @cond
@@ -176,7 +176,7 @@ namespace Switch {
 
   template<typename TSource, typename TKey>
   auto orderby(System::Func<const TSource&, TKey> keySelector) {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->OrderBy(keySelector);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->OrderBy(keySelector);
   }
 
   /// @cond
@@ -189,8 +189,8 @@ namespace Switch {
   template<__linq_order__ order, typename TSource>
   auto orderby(System::Func<const TSource&, TSource> keySelector) {
     if (order == descending)
-      return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->OrderByDescending(keySelector);
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->OrderBy(keySelector);
+      return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->OrderByDescending(keySelector);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->OrderBy(keySelector);
   }
 
   /// @cond
@@ -203,8 +203,8 @@ namespace Switch {
   template<__linq_order__ order, typename TSource, typename TKey>
   auto orderby(System::Func<const TSource&, TKey> keySelector) {
     if (order == descending)
-      return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->OrderByDescending(keySelector);
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->OrderBy(keySelector);
+      return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->OrderByDescending(keySelector);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->OrderBy(keySelector);
   }
 
   /// @cond
@@ -216,7 +216,7 @@ namespace Switch {
 
   template<typename TSource>
   auto select(System::Func<const TSource&, TSource> selector) {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->Select(selector);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->Select(selector);
   }
 
   /// @cond
@@ -228,7 +228,7 @@ namespace Switch {
 
   template<typename TSource, typename TResult>
   auto select(System::Func<const TSource&, TResult> selector) {
-    return as<refptr<System::Linq::EnumerableCollection<TResult>>>(__enumerable__.Value())->Select(selector);
+    return as < $<System::Linq::EnumerableCollection<TResult> >> (__enumerable__.Value())->Select(selector);
   }
 
   /// @cond
@@ -240,7 +240,7 @@ namespace Switch {
 
   template<typename TSource>
   auto where(System::Func<const TSource&, bool> predicate) {
-    return as<refptr<System::Linq::EnumerableCollection<TSource>>>(__enumerable__.Value())->Where(predicate);
+    return as < $<System::Linq::EnumerableCollection<TSource> >> (__enumerable__.Value())->Where(predicate);
   }
 
   /// @cond
@@ -252,18 +252,18 @@ namespace Switch {
 
   /// @cond
   template<typename TSource>
-  refptr<System::Linq::EnumerableCollection<TSource>> operator |(const refptr<System::Linq::EnumerableCollection<TSource>>& a, const refptr<System::Linq::EnumerableCollection<TSource>>& b) {
+  $<System::Linq::EnumerableCollection<TSource>> operator |(const $<System::Linq::EnumerableCollection<TSource>>& a, const $<System::Linq::EnumerableCollection<TSource>>& b) {
     __enumerable__.Value = b;
     return __enumerable__.Value();
   }
 
   template<typename TSource>
-  const TSource& operator |(const refptr<System::Linq::EnumerableCollection<TSource>>& a, const TSource& b) {
+  const TSource& operator |(const $<System::Linq::EnumerableCollection<TSource>>& a, const TSource& b) {
     return b;
   }
 
   template<typename TSource, typename TResult>
-  TResult operator |(const refptr<System::Linq::EnumerableCollection<TSource>>& a, const TSource& b) {
+  TResult operator |(const $<System::Linq::EnumerableCollection<TSource>>& a, const TSource& b) {
     return b;
   }
   /// @endcond

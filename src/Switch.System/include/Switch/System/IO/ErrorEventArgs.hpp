@@ -32,7 +32,7 @@ namespace Switch {
         const Exception& GetException() const {return this->exception();}
 
       private:
-        refptr<Exception> exception;
+        $<Exception> exception;
       };
     }
   }

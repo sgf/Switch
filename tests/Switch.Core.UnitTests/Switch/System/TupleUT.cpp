@@ -991,11 +991,11 @@ namespace {
   }
 
   TEST(TupleTest, SharedPointerTuple) {
-    refptr<String> s1 = new String("Item1");
-    refptr<Int32> s2 = new Int32(2);
-    refptr<String> s3 = new String("Item3");
-    Tuple<refptr<String>, refptr<Int32>> tuple1(s1, s2);
-    Tuple<refptr<Int32>, refptr<String>> tuple2(s2, s3);
+    $<String> s1 = new String("Item1");
+    $<Int32> s2 = new Int32(2);
+    $<String> s3 = new String("Item3");
+    Tuple < $<String>, $<Int32 >> tuple1(s1, s2);
+    Tuple < $<Int32>, $<String >> tuple2(s2, s3);
     ASSERT_EQ(tuple1.Item1(), s1);
     ASSERT_EQ(tuple1.Item2(), s2);
   }

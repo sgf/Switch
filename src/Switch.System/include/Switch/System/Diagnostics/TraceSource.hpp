@@ -42,7 +42,7 @@ namespace Switch {
         void TraceData(const TraceEventType& traceEventType, int32 id, const object& data);
 
         /// @brief Writes trace data to the trace listeners in the Listeners collection using the specified event type, event identifier, and trace data array.
-        void TraceData(const TraceEventType& traceEventType, int32 id, const Array<refptr<object>>& data);
+        void TraceData(const TraceEventType& traceEventType, int32 id, const Array < $<object >>& data);
 
         /// @brief Writes a trace event message to the trace listeners in the Listeners collection using the specified event type and event identifier.
         void TraceEvent(const TraceEventType& traceEventType, int32 id);
@@ -58,7 +58,7 @@ namespace Switch {
           TraceListenerCollection listeners;
           String name;
         };
-        refptr<TraceSourceData> data {new_<TraceSourceData>()};
+        $<TraceSourceData> data {new_<TraceSourceData>()};
       };
     }
   }

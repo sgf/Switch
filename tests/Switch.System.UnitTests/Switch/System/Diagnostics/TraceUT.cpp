@@ -173,7 +173,7 @@ namespace {
     string dataString("Data string");
     const Object& dataObject = string("Data object");
 
-    Array<refptr<Object>> dataArray(2);
+    Array < $<Object >> dataArray(2);
     dataArray[0] = new_<string>("Object 0");
     dataArray[1] = new_<string>("Object 1");
 

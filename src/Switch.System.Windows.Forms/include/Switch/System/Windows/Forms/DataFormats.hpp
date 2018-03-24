@@ -93,7 +93,7 @@ namespace Switch {
 
           static string WaveAudio() {return "WaveAudio"; }
 
-          static refptr<DataFormats> GetFormat(const string& format) {
+          static $<DataFormats> GetFormat(const string& format) {
             return new DataFormats();
           }
 

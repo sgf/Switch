@@ -331,7 +331,7 @@ namespace SwitchUnitTests {
 
 
   TEST(Array, PolymorphicArray) {
-    Array<refptr<Object>> PolymorphicList(50);
+    Array < $<Object >> PolymorphicList(50);
     PolymorphicList[0] = new_<Int32>(1024);
     PolymorphicList[1] = new_<String>("Polymorphic");
     PolymorphicList[2] = new_<Boolean>(true);

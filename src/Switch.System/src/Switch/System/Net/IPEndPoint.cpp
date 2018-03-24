@@ -25,8 +25,8 @@ IPEndPoint::IPEndPoint(const IPAddress& address, int32 port) {
   SetPort(port);
 }
 
-refptr<EndPoint> IPEndPoint::Create(const SocketAddress& socketAddress) const {
-  refptr<IPEndPoint> endPoint = new_<IPEndPoint>(0, 0);
+$<EndPoint> IPEndPoint::Create(const SocketAddress& socketAddress) const {
+  $<IPEndPoint> endPoint = new_<IPEndPoint>(0, 0);
 
   endPoint->addressFamily = socketAddress.GetAddressFamily();
   endPoint->port = IPAddress::NetworkToHostOrder(BitConverter::ToUInt16(socketAddress.bytes, 2));

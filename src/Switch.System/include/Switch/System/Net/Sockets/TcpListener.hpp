@@ -192,7 +192,7 @@ namespace Switch {
             Socket serverSocket;
             bool active = false;
           };
-          refptr<TcpListenerData> data = new_<TcpListenerData>();
+          $<TcpListenerData> data = new_<TcpListenerData>();
         };
       }
     }

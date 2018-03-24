@@ -59,7 +59,7 @@ namespace Switch {
         /// // Removes the previously added TextBox from the form.
         /// void RemoveControlClick(const object& sender, const System::EventArgs& e) {
         ///   // Loop through all controls in the form's control collection.
-        ///   for (refptr<Control> tempCtrl : Controls) {
+        ///   for ($<Control> tempCtrl : Controls) {
         ///     // Determine whether the control is textBox1,
         ///     // and if it is, remove it.
         ///     if (tempCtrl->Name() == "textBox1") {
@@ -111,7 +111,7 @@ namespace Switch {
           /// // Removes the previously added TextBox from the form.
           /// void RemoveControlClick(const object& sender, const System::EventArgs& e) {
           ///   // Loop through all controls in the form's control collection.
-          ///   for (refptr<Control> tempCtrl : Controls) {
+          ///   for ($<Control> tempCtrl : Controls) {
           ///     // Determine whether the control is textBox1,
           ///     // and if it is, remove it.
           ///     if (tempCtrl->Name() == "textBox1") {
@@ -160,7 +160,7 @@ namespace Switch {
           /// // Removes the previously added TextBox from the form.
           /// void RemoveControlClick(const object& sender, const System::EventArgs& e) {
           ///   // Loop through all controls in the form's control collection.
-          ///   for (refptr<Control> tempCtrl : Controls) {
+          ///   for ($<Control> tempCtrl : Controls) {
           ///     // Determine whether the control is textBox1,
           ///     // and if it is, remove it.
           ///     if (tempCtrl->Name() == "textBox1") {

@@ -36,7 +36,7 @@ namespace Switch {
         template<typename TStream>
         explicit Png(const TStream& stream) : reader(new_<System::IO::BinaryReader>(stream)) {}
 
-        explicit Png(refptr<System::IO::Stream> stream) : reader(new_<System::IO::BinaryReader>(stream)) {}
+        explicit Png($<System::IO::Stream> stream) : reader(new_<System::IO::BinaryReader>(stream)) {}
 
         void Read(Image& image) {
           png_infop info = null;
@@ -115,7 +115,7 @@ namespace Switch {
         }
 
       private:
-        refptr<System::IO::BinaryReader> reader;
+        $<System::IO::BinaryReader> reader;
       };
     }
   }

@@ -346,14 +346,14 @@ public:
             bool IsFinished() const {return this->iterator == this->dictionary.hashmap.end();}
             int64 operationNumber;
             Dictionary& dictionary;
-            refptr<Item> currentKeyValuePair;
+            $<Item> currentKeyValuePair;
             typename std::unordered_map<TKey, TValue, Hasher, EqualTo, TAllocator>::iterator iterator;
             bool beforeFirst;
           };
 
 protected:
           std::unordered_map<TKey, TValue, Hasher, EqualTo, TAllocator> hashmap;
-          refptr< IComparer<TKey>> comparer;
+          $< IComparer<TKey>> comparer;
           int64 operationNumber;
           Object syncRoot;
           /// @endcond

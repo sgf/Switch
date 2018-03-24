@@ -50,7 +50,7 @@ namespace Switch {
           /// @return object An object that can be used to synchronize access to the ICollection.
           /// @remarks In the absence of a Synchronized method on a collection, the expected usage for SyncRoot looks as follows:
           /// @code
-          /// refptr<ICollection> collection;
+          /// $<ICollection> collection;
           /// // Instantiate and populate the collection
           /// lock_ (collection->SyncRoot) {
           ///   // Some operation on the collection, which is now thread safe.
@@ -105,7 +105,7 @@ namespace Switch {
           /// @return object An object that can be used to synchronize access to the ICollection.
           /// @remarks In the absence of a Synchronized method on a collection, the expected usage for SyncRoot looks as follows:
           /// @code
-          /// refptr<ICollection> collection;
+          /// $<ICollection> collection;
           /// // Instantiate and populate the collection
           /// lock_ (collection->SyncRoot) {
           ///   // Some operation on the collection, which is now thread safe.

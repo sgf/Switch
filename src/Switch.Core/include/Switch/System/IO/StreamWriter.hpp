@@ -37,7 +37,7 @@ namespace Switch {
         /// @brief Initializes a new instance of the System::IO::StreamWriter class for the specified file on the specified stream pointer.
         /// @param stream The stream pointer to write to.
         /// @exception ArgumentException stream is not writable.
-        StreamWriter(refptr<Stream> stream) {
+        StreamWriter($<Stream> stream) {
           if (!stream->CanWrite())
             throw ArgumentException(caller_);
           this->data->stream = stream;
@@ -95,7 +95,7 @@ namespace Switch {
         };
 
         /// @brief Gets the underlying stream that interfaces with a backing store.
-        /// @return refptr<Stream> The stream this StreamWriter is writing to.
+        /// @return $<Stream> The stream this StreamWriter is writing to.
         property_<Stream&, readonly_> BaseStream {
           get_->Stream& {return this->GetBaseStream();}
         };
@@ -130,10 +130,10 @@ namespace Switch {
 
         struct StreamWriterData {
           bool autoFlush {false};
-          refptr<Stream> stream;
+          $<Stream> stream;
         };
 
-        refptr<StreamWriterData> data {new_<StreamWriterData>()};
+        $<StreamWriterData> data {new_<StreamWriterData>()};
 
       };
     }

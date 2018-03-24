@@ -24,7 +24,7 @@ namespace Switch {
         public:
           /// @brief Gets the value contained in the object.
           /// @param value The value contained in the object.
-          property_<refptr<Object>> Value {
+          property_ < $<Object >> Value {
             get_ {return this->value;},
             set_ {this->value = value;}
           };
@@ -49,11 +49,11 @@ namespace Switch {
 
         protected:
           /// @brief Initializes a new instance of the SerializationEntry
-          SerializationEntry(const refptr<Object>& value, const String& typeName) : value(value), typeName(typeName) {}
+          SerializationEntry(const $<Object>& value, const String& typeName) : value(value), typeName(typeName) {}
 
         private:
           friend class SerializationInfo;
-          refptr<Object> value;
+          $<Object> value;
           String typeName;
         };
       }

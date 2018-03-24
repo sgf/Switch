@@ -51,7 +51,7 @@ void StackTrace::FillFrames(void* stackTrace, int32 skipFrames, bool needFileInf
 String StackTrace::ToString() const {
   String str;
   bool first = true;
-  for (refptr<StackFrame> item : this->frames) {
+  for ($<StackFrame> item : this->frames) {
     if (!first) str += Environment::NewLine;
     str += "   at "_s + item->GetMethod() ;
     if (!String::IsNullOrEmpty(item->GetFileName()))

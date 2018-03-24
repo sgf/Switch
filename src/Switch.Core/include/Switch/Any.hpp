@@ -35,13 +35,13 @@ namespace Switch {
 
     template <typename T>
     struct EnumOrOtherToAny<T, std::true_type> {
-      refptr<object> operator()(T value) {return new_<System::Enum<T>>(value);}
+      $<object> operator()(T value) {return new_<System::Enum<T>>(value);}
     };
 
     template <typename T>
     struct EnumOrOtherToAny<T, std::false_type> {
-      //refptr<object> operator()(T value) {return new_<System::IntPtr>((intptr)&value);}
-      refptr<object> operator()(T value) {return new_<Boxer<T>>(value);}
+      //$<object> operator()(T value) {return new_<System::IntPtr>((intptr)&value);}
+      $<object> operator()(T value) {return new_<Boxer<T>>(value);}
     };
 
     template <typename T, typename Bool>
@@ -49,17 +49,17 @@ namespace Switch {
 
     template <typename T>
     struct ObjectOrOtherToAny<T, std::true_type> {
-      refptr<object> operator()(T value) {return new_<T>(value);}
+      $<object> operator()(T value) {return new_<T>(value);}
     };
 
     template <typename T>
     struct ObjectOrOtherToAny<T, std::false_type> {
-      refptr<object> operator()(T value) {return EnumOrOtherToAny<T, typename std::conditional<std::is_enum<T>::value, std::true_type, std::false_type>::type>()(value);}
+      $<object> operator()(T value) {return EnumOrOtherToAny<T, typename std::conditional<std::is_enum<T>::value, std::true_type, std::false_type>::type>()(value);}
     };
 
     template <typename T>
     struct ObjectOrEnumOrOtherToAny {
-      refptr<object> operator()(T value) {return ObjectOrOtherToAny<T, typename std::conditional<std::is_base_of<object, T>::value, std::true_type, std::false_type>::type>()(value);}
+      $<object> operator()(T value) {return ObjectOrOtherToAny<T, typename std::conditional<std::is_base_of<object, T>::value, std::true_type, std::false_type>::type>()(value);}
     };
 
   public:
@@ -179,8 +179,8 @@ namespace Switch {
     /// @brief Used to static cast a type into another type. A To expression takes the following form:
     /// @par Examples
     /// @code
-    /// refptr<string> str = new Switch::string("A new string");
-    /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+    /// $<string> str = new Switch::string("A new string");
+    /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
     /// @endcode
     /// @exception InvalidOperationException The parameters is null.
     template<typename T>
@@ -193,8 +193,8 @@ namespace Switch {
     /// @brief Used to static cast a type into another type. A To expression takes the following form:
     /// @par Examples
     /// @code
-    /// refptr<string> str = new Switch::string("A new string");
-    /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+    /// $<string> str = new Switch::string("A new string");
+    /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
     /// @endcode
     /// @exception InvalidOperationException The parameters is null.
     template<typename T>
@@ -291,7 +291,7 @@ namespace Switch {
     template <typename T>
     T To() {return *dynamic_cast<T*>(this->value.ToPointer());}
 
-    refptr<object> value;
+    $<object> value;
   };
 
   /// @cond
@@ -379,8 +379,8 @@ namespace Switch {
   /// @brief Used to static cast a type into another type. A To expression takes the following form:
   /// @par Examples
   /// @code
-  /// refptr<string> str = new Switch::string("A new string");
-  /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+  /// $<string> str = new Switch::string("A new string");
+  /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
   /// @endcode
   /// @exception ArgumentNullException The parameters is null.
   template<typename T>
@@ -393,8 +393,8 @@ namespace Switch {
   /// Switch.Core
   /// @par Examples
   /// @code
-  /// refptr<string> str = new Switch::string("A new string");
-  /// refptr<System::IComparable> comparable = as<Switch::System::IComparable>(str);
+  /// $<string> str = new Switch::string("A new string");
+  /// $<System::IComparable> comparable = as<Switch::System::IComparable>(str);
   /// @endcode
   /// @exception ArgumentNullException The parameters is null.
   template<typename T>

@@ -36,7 +36,7 @@ namespace Switch {
         template<typename TStream>
         explicit Jpg(const TStream& stream) : reader(stream) {}
 
-        explicit Jpg(refptr<System::IO::Stream> stream) : reader(stream) {}
+        explicit Jpg($<System::IO::Stream> stream) : reader(stream) {}
 
         void Read(Image& image) {
           Array<byte> streamData((int32)reader.BaseStream().Length());

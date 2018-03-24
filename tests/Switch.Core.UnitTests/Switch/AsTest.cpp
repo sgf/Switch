@@ -328,210 +328,210 @@ namespace SwitchUnitTests {
   }
 
   TEST(AsTest, RefPtrStringAsString) {
-    refptr<string> s = new_<string>("Test");
-    refptr<string> r = as<string>(s);
+    $<string> s = new_<string>("Test");
+    $<string> r = as<string>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrStringAsObject) {
-    refptr<string> s = new_<string>("Test");
-    refptr<object> r = as<object>(s);
+    $<string> s = new_<string>("Test");
+    $<object> r = as<object>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrStringAsIComparable) {
-    refptr<string> s = new_<string>("Test");
-    refptr<IComparable> r = as<IComparable>(s);
+    $<string> s = new_<string>("Test");
+    $<IComparable> r = as<IComparable>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrStringAsInt32) {
-    refptr<string> s = new_<string>("Test");
-    refptr<Int32> r = as<Int32>(s);
+    $<string> s = new_<string>("Test");
+    $<Int32> r = as<Int32>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, RefPtrObjectFromStringAsString) {
-    refptr<string> s = new_<string>("Test");
-    refptr<object> o = as<object>(s);
-    refptr<string> r = as<string>(o);
+    $<string> s = new_<string>("Test");
+    $<object> o = as<object>(s);
+    $<string> r = as<string>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrObjectFromStringAsObject) {
-    refptr<string> s = new_<string>("Test");
-    refptr<object> o = as<object>(s);
-    refptr<object> r = as<object>(o);
+    $<string> s = new_<string>("Test");
+    $<object> o = as<object>(s);
+    $<object> r = as<object>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrObjectFromStringAsIComparable) {
-    refptr<string> s = new_<string>("Test");
-    refptr<object> o = as<object>(s);
-    refptr<IComparable> r = as<IComparable>(o);
+    $<string> s = new_<string>("Test");
+    $<object> o = as<object>(s);
+    $<IComparable> r = as<IComparable>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, RefPtrObjectFromStringAsInt32) {
-    refptr<string> s = new_<string>("Test");
-    refptr<object> o = as<object>(s);
-    refptr<Int32> r = as<Int32>(o);
+    $<string> s = new_<string>("Test");
+    $<object> o = as<object>(s);
+    $<Int32> r = as<Int32>(o);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, RefPtrStringNullAsString) {
-    refptr<string> s = refptr<string>::Null();
-    refptr<string> r = as<string>(s);
+    $<string> s = $<string>::Null();
+    $<string> r = as<string>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, RefPtrStringNullAsObject) {
-    refptr<string> s = refptr<string>::Null();
-    refptr<object> r = as<object>(s);
+    $<string> s = $<string>::Null();
+    $<object> r = as<object>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, RefPtrStringNullAsIComparable) {
-    refptr<string> s = refptr<string>::Null();
-    refptr<IComparable> r = as<IComparable>(s);
+    $<string> s = $<string>::Null();
+    $<IComparable> r = as<IComparable>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, RefPtrStringNullAsInt32) {
-    refptr<string> s = refptr<string>::Null();
-    refptr<Int32> r = as<Int32>(s);
+    $<string> s = $<string>::Null();
+    $<Int32> r = as<Int32>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, RefPtrObjectFromStringNullAsString) {
-    refptr<string> s = refptr<string>::Null();
-    refptr<object> o = as<object>(s);
-    refptr<string> r = as<string>(o);
+    $<string> s = $<string>::Null();
+    $<object> o = as<object>(s);
+    $<string> r = as<string>(o);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, RefPtrObjectFromStringNullAsObject) {
-    refptr<string> s = refptr<string>::Null();
-    refptr<object> o = as<object>(s);
-    refptr<object> r = as<object>(o);
+    $<string> s = $<string>::Null();
+    $<object> o = as<object>(s);
+    $<object> r = as<object>(o);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, RefPtrObjectFromStringNullAsIComparable) {
-    refptr<string> s = refptr<string>::Null();
-    refptr<object> o = as<object>(s);
-    refptr<IComparable> r = as<IComparable>(o);
+    $<string> s = $<string>::Null();
+    $<object> o = as<object>(s);
+    $<IComparable> r = as<IComparable>(o);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, RefPtrObjectFromStringNullAsInt32) {
-    refptr<string> s = refptr<string>::Null();
-    refptr<object> o = as<object>(s);
-    refptr<Int32> r = as<Int32>(o);
+    $<string> s = $<string>::Null();
+    $<object> o = as<object>(s);
+    $<Int32> r = as<Int32>(o);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, ConstSpStringAsString) {
-    const refptr<string> s = new_<string>("Test");
-    const refptr<string> r = as<string>(s);
+    const $<string> s = new_<string>("Test");
+    const $<string> r = as<string>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpStringAsObject) {
-    const refptr<string> s = new_<string>("Test");
-    const refptr<object> r = as<object>(s);
+    const $<string> s = new_<string>("Test");
+    const $<object> r = as<object>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpStringAsIComparable) {
-    const refptr<string> s = new_<string>("Test");
-    const refptr<IComparable> r = as<IComparable>(s);
+    const $<string> s = new_<string>("Test");
+    const $<IComparable> r = as<IComparable>(s);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpStringAsInt32) {
-    const refptr<string> s = new_<string>("Test");
-    const refptr<Int32> r = as<Int32>(s);
+    const $<string> s = new_<string>("Test");
+    const $<Int32> r = as<Int32>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, ConstSpObjectFromStringAsString) {
-    const refptr<string> s = new_<string>("Test");
-    const refptr<object> o = as<object>(s);
-    const refptr<string> r = as<string>(o);
+    const $<string> s = new_<string>("Test");
+    const $<object> o = as<object>(s);
+    const $<string> r = as<string>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpObjectFromStringAsObject) {
-    const refptr<string> s = new_<string>("Test");
-    const refptr<object> o = as<object>(s);
-    const refptr<object> r = as<object>(o);
+    const $<string> s = new_<string>("Test");
+    const $<object> o = as<object>(s);
+    const $<object> r = as<object>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpObjectFromStringAsIComparable) {
-    const refptr<string> s = new_<string>("Test");
-    const refptr<object> o = as<object>(s);
-    const refptr<IComparable> r = as<IComparable>(o);
+    const $<string> s = new_<string>("Test");
+    const $<object> o = as<object>(s);
+    const $<IComparable> r = as<IComparable>(o);
     GTEST_ASSERT_EQ(s.ToPointer(), r.ToPointer());
   }
 
   TEST(AsTest, ConstSpObjectFromStringAsInt32) {
-    const refptr<string> s = new_<string>("Test");
-    const refptr<object> o = as<object>(s);
-    const refptr<Int32> r = as<Int32>(o);
+    const $<string> s = new_<string>("Test");
+    const $<object> o = as<object>(s);
+    const $<Int32> r = as<Int32>(o);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, ConstSpStringNullAsString) {
-    const refptr<string> s = refptr<string>::Null();
-    const refptr<string> r = as<string>(s);
+    const $<string> s = $<string>::Null();
+    const $<string> r = as<string>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, ConstSpStringNullAsObject) {
-    const refptr<string> s = refptr<string>::Null();
-    const refptr<object> r = as<object>(s);
+    const $<string> s = $<string>::Null();
+    const $<object> r = as<object>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, ConstSpStringNullAsIComparable) {
-    const refptr<string> s = refptr<string>::Null();
-    const refptr<IComparable> r = as<IComparable>(s);
+    const $<string> s = $<string>::Null();
+    const $<IComparable> r = as<IComparable>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, ConstSpStringNullAsInt32) {
-    const refptr<string> s = refptr<string>::Null();
-    const refptr<Int32> r = as<Int32>(s);
+    const $<string> s = $<string>::Null();
+    const $<Int32> r = as<Int32>(s);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, ConstSpObjectFromStringNullAsString) {
-    const refptr<string> s = refptr<string>::Null();
-    const refptr<object> o = as<object>(s);
-    const refptr<string> r = as<string>(o);
+    const $<string> s = $<string>::Null();
+    const $<object> o = as<object>(s);
+    const $<string> r = as<string>(o);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, ConstSpObjectFromStringNullAsObject) {
-    const refptr<string> s = refptr<string>::Null();
-    const refptr<object> o = as<object>(s);
-    const refptr<object> r = as<object>(o);
+    const $<string> s = $<string>::Null();
+    const $<object> o = as<object>(s);
+    const $<object> r = as<object>(o);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, ConstSpObjectFromStringNullAsIComparable) {
-    const refptr<string> s = refptr<string>::Null();
-    const refptr<object> o = as<object>(s);
-    const refptr<IComparable> r = as<IComparable>(o);
+    const $<string> s = $<string>::Null();
+    const $<object> o = as<object>(s);
+    const $<IComparable> r = as<IComparable>(o);
     ASSERT_TRUE(r == null);
   }
 
   TEST(AsTest, ConstSpObjectFromStringNullAsInt32) {
-    const refptr<string> s = refptr<string>::Null();
-    const refptr<object> o = as<object>(s);
-    const refptr<Int32> r = as<Int32>(o);
+    const $<string> s = $<string>::Null();
+    const $<object> o = as<object>(s);
+    const $<Int32> r = as<Int32>(o);
     ASSERT_TRUE(r == null);
   }
 

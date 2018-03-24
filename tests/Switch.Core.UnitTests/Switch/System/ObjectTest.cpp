@@ -81,16 +81,16 @@ namespace SwitchUnitTests {
   }
 
   TEST(ObjectTest, MemberwiseCloneOnString) {
-    refptr<string> str = new_<string>("First");
-    refptr<object> clonedStr = str->MemberwiseClone<string>();
+    $<string> str = new_<string>("First");
+    $<object> clonedStr = str->MemberwiseClone<string>();
     *str = "Second";
     ASSERT_EQ("Second", str->ToString());
     ASSERT_EQ("First", clonedStr->ToString());
   }
 
   TEST(ObjectTest, MemberwiseCloneOnStringAsString) {
-    refptr<string> str = new_<string>("First");
-    refptr<string> clonedStr = str->MemberwiseClone<string>().As<string>();
+    $<string> str = new_<string>("First");
+    $<string> clonedStr = str->MemberwiseClone<string>().As<string>();
     *str = "Second";
     ASSERT_EQ("Second", *str);
     ASSERT_EQ("First", *clonedStr);

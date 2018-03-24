@@ -56,11 +56,11 @@ ASCIIEncoding& ASCIIEncoding::operator=(const ASCIIEncoding& encoding) {
   return *this;
 }
 
-refptr<Encoding::Decoder> ASCIIEncoding::CreateDecoder() const {
+$<Encoding::Decoder> ASCIIEncoding::CreateDecoder() const {
   return new_<Decoder>();
 }
 
-refptr<Encoding::Encoder> ASCIIEncoding::CreateEncoder() const {
+$<Encoding::Encoder> ASCIIEncoding::CreateEncoder() const {
   return new_<Encoder>();
 }
 

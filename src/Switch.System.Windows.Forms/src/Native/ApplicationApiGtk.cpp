@@ -75,7 +75,7 @@ namespace {
 
 DialogResult Native::ApplicationApi::ShowMessageBox(const string& message, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool displayHelpButton) {
   static System::Collections::Generic::Dictionary<MessageBoxIcon, Gtk::MessageType> icons = {{MessageBoxIcon::None, Gtk::MESSAGE_OTHER}, {MessageBoxIcon::Error, Gtk::MESSAGE_ERROR}, {MessageBoxIcon::Question, Gtk::MESSAGE_QUESTION}, {MessageBoxIcon::Warning, Gtk::MESSAGE_WARNING}, {MessageBoxIcon::Information, Gtk::MESSAGE_INFO}};
-  static refptr<Gtk::Window> emptyWindow = new_<Gtk::Window>();
+  static $<Gtk::Window> emptyWindow = new_<Gtk::Window>();
   Gtk::Window* activeWindow = __application__->get_active_window();
   if (activeWindow == null) activeWindow = emptyWindow.ToPointer();
   Gtk::MessageDialog dialog(*activeWindow, message.c_str(), true /* use_markup */, icons[icon], Gtk::BUTTONS_NONE, true);

@@ -7,59 +7,59 @@ using namespace System;
 using namespace System::Runtime::Serialization;
 
 void SerializationInfo::AddValue(const string& name, const string& value) {
-  AddValue(name, refptr<object>(new_<String>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<String>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Boolean& value) {
-  AddValue(name, refptr<object>(new_<Boolean>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<Boolean>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Byte& value) {
-  AddValue(name, refptr<object>(new_<Byte>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<Byte>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const SByte& value) {
-  AddValue(name, refptr<object>(new_<SByte>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<SByte>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Char& value) {
-  AddValue(name, refptr<object>(new_<Char>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<Char>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const DateTime& value) {
-  AddValue(name, refptr<object>(new_<DateTime>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<DateTime>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Single& value) {
-  AddValue(name, refptr<object>(new_<Single>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<Single>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Double& value) {
-  AddValue(name, refptr<object>(new_<Double>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<Double>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Int16& value) {
-  AddValue(name, refptr<object>(new_<Int16>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<Int16>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Int32& value) {
-  AddValue(name, refptr<object>(new_<Int32>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<Int32>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const Int64& value) {
-  AddValue(name, refptr<object>(new_<Int64>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<Int64>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const UInt16& value) {
-  AddValue(name, refptr<object>(new_<UInt16>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<UInt16>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const UInt32& value) {
-  AddValue(name, refptr<object>(new_<UInt32>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<UInt32>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const UInt64& value) {
-  AddValue(name, refptr<object>(new_<UInt64>(value)), value.GetType().Name());
+  AddValue(name, $<object>(new_<UInt64>(value)), value.GetType().Name());
 }
 
 void SerializationInfo::AddValue(const string& name, const ISerializable& value) {
@@ -68,14 +68,14 @@ void SerializationInfo::AddValue(const string& name, const ISerializable& value)
 }
 
 void SerializationInfo::AddValue(const string& name, const ISerializable& value, const string& typeName) {
-  refptr<SerializationInfo> infos = new_<SerializationInfo>();
+  $<SerializationInfo> infos = new_<SerializationInfo>();
   infos->SetObjectType(typeName);
   value.GetObjectData(*infos);
 
   mItems.Add(name, SerializationEntry(infos.ChangeType<object>(), typeName));
 }
 
-void SerializationInfo::AddValue(const string& name, refptr<Object> value, const string& typeName) {
+void SerializationInfo::AddValue(const string& name, $<Object> value, const string& typeName) {
   if (value == null)
     throw ArgumentNullException(caller_);
 
@@ -184,7 +184,7 @@ const object& SerializationInfo::GetObject(const string& name) const {
 }
 
 template<>
-refptr<Boolean> SerializationInfo::GetValue<Boolean>(const string& name) const {
+$<Boolean> SerializationInfo::GetValue<Boolean>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<Boolean>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Boolean>();
@@ -195,7 +195,7 @@ refptr<Boolean> SerializationInfo::GetValue<Boolean>(const string& name) const {
 }
 
 template<>
-refptr<string> SerializationInfo::GetValue<string>(const string& name) const {
+$<string> SerializationInfo::GetValue<string>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<string>(entry.Value().ToObject()))
     return entry.Value().ChangeType<string>();
@@ -204,7 +204,7 @@ refptr<string> SerializationInfo::GetValue<string>(const string& name) const {
 }
 
 template<>
-refptr<Byte> SerializationInfo::GetValue<Byte>(const string& name) const {
+$<Byte> SerializationInfo::GetValue<Byte>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<Byte>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Byte>();
@@ -215,7 +215,7 @@ refptr<Byte> SerializationInfo::GetValue<Byte>(const string& name) const {
 }
 
 template<>
-refptr<SByte> SerializationInfo::GetValue<SByte>(const string& name) const {
+$<SByte> SerializationInfo::GetValue<SByte>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<SByte>(entry.Value().ToObject()))
     return entry.Value().ChangeType<SByte>();
@@ -226,7 +226,7 @@ refptr<SByte> SerializationInfo::GetValue<SByte>(const string& name) const {
 }
 
 template<>
-refptr<Char> SerializationInfo::GetValue<Char>(const string& name) const {
+$<Char> SerializationInfo::GetValue<Char>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<Char>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Char>();
@@ -237,7 +237,7 @@ refptr<Char> SerializationInfo::GetValue<Char>(const string& name) const {
 }
 
 template<>
-refptr<DateTime> SerializationInfo::GetValue<DateTime>(const string& name) const {
+$<DateTime> SerializationInfo::GetValue<DateTime>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<DateTime>(entry.Value().ToObject()))
     return entry.Value().ChangeType<DateTime>();
@@ -248,7 +248,7 @@ refptr<DateTime> SerializationInfo::GetValue<DateTime>(const string& name) const
 }
 
 template<>
-refptr<Single> SerializationInfo::GetValue<Single>(const string& name) const {
+$<Single> SerializationInfo::GetValue<Single>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<Single>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Single>();
@@ -259,7 +259,7 @@ refptr<Single> SerializationInfo::GetValue<Single>(const string& name) const {
 }
 
 template<>
-refptr<Double> SerializationInfo::GetValue<Double>(const string& name) const {
+$<Double> SerializationInfo::GetValue<Double>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<Double>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Double>();
@@ -270,7 +270,7 @@ refptr<Double> SerializationInfo::GetValue<Double>(const string& name) const {
 }
 
 template<>
-refptr<Int16> SerializationInfo::GetValue<Int16>(const string& name) const {
+$<Int16> SerializationInfo::GetValue<Int16>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<Int16>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Int16>();
@@ -281,7 +281,7 @@ refptr<Int16> SerializationInfo::GetValue<Int16>(const string& name) const {
 }
 
 template<>
-refptr<Int32> SerializationInfo::GetValue<Int32>(const string& name) const {
+$<Int32> SerializationInfo::GetValue<Int32>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<Int32>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Int32>();
@@ -292,7 +292,7 @@ refptr<Int32> SerializationInfo::GetValue<Int32>(const string& name) const {
 }
 
 template<>
-refptr<Int64> SerializationInfo::GetValue<Int64>(const string& name) const {
+$<Int64> SerializationInfo::GetValue<Int64>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<Int64>(entry.Value().ToObject()))
     return entry.Value().ChangeType<Int64>();
@@ -303,7 +303,7 @@ refptr<Int64> SerializationInfo::GetValue<Int64>(const string& name) const {
 }
 
 template<>
-refptr<UInt16> SerializationInfo::GetValue<UInt16>(const string& name) const {
+$<UInt16> SerializationInfo::GetValue<UInt16>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<UInt16>(entry.Value().ToObject()))
     return entry.Value().ChangeType<UInt16>();
@@ -314,7 +314,7 @@ refptr<UInt16> SerializationInfo::GetValue<UInt16>(const string& name) const {
 }
 
 template<>
-refptr<UInt32> SerializationInfo::GetValue<UInt32>(const string& name) const {
+$<UInt32> SerializationInfo::GetValue<UInt32>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<UInt32>(entry.Value().ToObject()))
     return entry.Value().ChangeType<UInt32>();
@@ -325,7 +325,7 @@ refptr<UInt32> SerializationInfo::GetValue<UInt32>(const string& name) const {
 }
 
 template<>
-refptr<UInt64> SerializationInfo::GetValue<UInt64>(const string& name) const {
+$<UInt64> SerializationInfo::GetValue<UInt64>(const string& name) const {
   const SerializationEntry& entry = mItems[name];
   if (is<UInt64>(entry.Value().ToObject()))
     return entry.Value().ChangeType<UInt64>();

@@ -186,7 +186,7 @@ namespace Switch {
               }}};
         };
 
-        refptr<TimerData> data = new_<TimerData>();
+        $<TimerData> data = new_<TimerData>();
       };
     }
   }

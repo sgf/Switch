@@ -144,7 +144,7 @@ namespace Switch {
 
       /// @brief Gets or sets the encoding the console uses to read input.
       /// @param The encoding used to read console input.
-      static property_<const refptr<System::Text::Encoding>&> InputEncoding;
+      static property_ < const $<System::Text::Encoding>& > InputEncoding;
 
       /// @brief Gets a value that indicates whether the error output stream has been redirected from the standard error stream.
       /// @param true if error output is redirected; otherwise, false.
@@ -185,7 +185,7 @@ namespace Switch {
 
       /// @brief Gets the encoding the console uses to write output.
       /// @param The encoding used to write console output.
-      static property_<const refptr<System::Text::Encoding>&> OutputEncoding;
+      static property_ < const $<System::Text::Encoding>& > OutputEncoding;
 
       /// @brief Gets or sets the title to display in the console title bar.
       /// @param The string to be displayed in the title bar of the console. The maximum length of the title string is 24500 characters.

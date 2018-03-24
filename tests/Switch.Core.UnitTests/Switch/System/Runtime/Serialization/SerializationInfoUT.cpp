@@ -30,11 +30,11 @@ public:
     info.AddValue("Flags", this->Flags);
   }
 
-  static refptr<Role> Deserialize(const System::Runtime::Serialization::SerializationInfo& info) {
+  static $<Role> Deserialize(const System::Runtime::Serialization::SerializationInfo& info) {
     if (!info.GetObjectType().Equals("Role"))
       throw System::Runtime::Serialization::SerializationException(caller_);
 
-    refptr<Role> role = new Role();
+    $<Role> role = new Role();
     role->RoleName = info.GetString("RoleName");
     role->Flags = info.GetByte("Flags");
     return role;
@@ -57,11 +57,11 @@ public:
     info.AddValue("PrsRole", this->Role, "Role");
   }
 
-  static refptr<Person> Deserialize(const System::Runtime::Serialization::SerializationInfo& info) {
+  static $<Person> Deserialize(const System::Runtime::Serialization::SerializationInfo& info) {
     if (!info.GetObjectType().Equals("Person"))
       throw System::Runtime::Serialization::SerializationException(caller_);
 
-    refptr<Person> person = new Person();
+    $<Person> person = new Person();
 
     person->FirstName = info.GetString("PrsFirstName");
     person->LastName = info.GetString("PrsLastName");
@@ -148,7 +148,7 @@ TEST(SerializationInfoTest, Deserialize) {
 
   person.GetObjectData(serializationInfo);
 
-  refptr<Person> newPerson = Person::Deserialize(serializationInfo);
+  $<Person> newPerson = Person::Deserialize(serializationInfo);
 
   ASSERT_EQ(person.Age, newPerson->Age);
   ASSERT_EQ(person.StrAge, newPerson->StrAge);

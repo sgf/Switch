@@ -262,7 +262,7 @@ namespace Switch {
         template<typename T>
         const object& GetValue(const System::String& name, const T& defaultValue, bool) const {
           if (! this->values.ContainsKey(name.ToLower())) {
-            static refptr<object> value;
+            static $<object> value;
             value = new_<T>(defaultValue);
             return value.ToObject();
           }
@@ -393,7 +393,7 @@ namespace Switch {
           }
 
           System::String key;
-          refptr<object> value;
+          $<object> value;
           RegistryValueKind kind;
         };
 
@@ -416,7 +416,7 @@ namespace Switch {
           intptr handle;
         };
 
-        refptr<RegistryHandle> handle;
+        $<RegistryHandle> handle;
         System::String name;
         System::String path;
         RegistryKeyPermissionCheck permission;

@@ -81,8 +81,8 @@ namespace Switch {
         /// @return true if value is an instance of System::Text::Encoding and is equal to the current instance; otherwise, false.
         bool Equals(const object& obj) const override;
 
-        refptr<Encoding::Decoder> CreateDecoder() const override;
-        refptr<Encoding::Encoder> CreateEncoder() const override;
+        $<Encoding::Decoder> CreateDecoder() const override;
+        $<Encoding::Encoder> CreateEncoder() const override;
 
         class Encoder : public Encoding::Encoder {
         public:

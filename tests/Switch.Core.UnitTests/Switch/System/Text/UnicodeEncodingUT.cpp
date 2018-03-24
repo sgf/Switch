@@ -51,33 +51,33 @@ namespace {
 
   TEST(Unicode_EncodingTest, Equals) {
     // Create a Text::UnicodeEncoding without parameters.
-    refptr<Text::UnicodeEncoding> unicode = new Text::UnicodeEncoding();
+    $<Text::UnicodeEncoding> unicode = new Text::UnicodeEncoding();
     ASSERT_EQ(1200, unicode->GetCodePage());
 
     // Create a Text::UnicodeEncoding to support little-endian byte ordering
     // and include the Unicode byte order mark.
-    refptr<Text::UnicodeEncoding> unicodeLittleEndianBOM = new Text::UnicodeEncoding(false, true);
+    $<Text::UnicodeEncoding> unicodeLittleEndianBOM = new Text::UnicodeEncoding(false, true);
     // Compare this Text::UnicodeEncoding to the Text::UnicodeEncoding without parameters.
     ASSERT_TRUE(unicode->Equals(*unicodeLittleEndianBOM));
     ASSERT_EQ(1200, unicodeLittleEndianBOM->GetCodePage());
 
     // Create a Text::UnicodeEncoding to support little-endian byte ordering
     // and not include the Unicode byte order mark.
-    refptr<Text::UnicodeEncoding> unicodeLittleEndianNoBOM = new Text::UnicodeEncoding(false, false);
+    $<Text::UnicodeEncoding> unicodeLittleEndianNoBOM = new Text::UnicodeEncoding(false, false);
     // Compare this Text::UnicodeEncoding to the Text::UnicodeEncoding without parameters.
     ASSERT_FALSE(unicode->Equals(*unicodeLittleEndianNoBOM));
     ASSERT_EQ(1200, unicodeLittleEndianNoBOM->GetCodePage());
 
     // Create a Text::UnicodeEncoding to support big-endian byte ordering
     // and include the Unicode byte order mark.
-    refptr<Text::UnicodeEncoding> unicodeBigEndianBOM = new Text::UnicodeEncoding(true, true);
+    $<Text::UnicodeEncoding> unicodeBigEndianBOM = new Text::UnicodeEncoding(true, true);
     // Compare this Text::UnicodeEncoding to the Text::UnicodeEncoding without parameters.
     ASSERT_FALSE(unicode->Equals(*unicodeBigEndianBOM));
     ASSERT_EQ(1201, unicodeBigEndianBOM->GetCodePage());
 
     // Create a Text::UnicodeEncoding to support big-endian byte ordering
     // and not include the Unicode byte order mark.
-    refptr<Text::UnicodeEncoding> unicodeBigEndianNoBOM = new Text::UnicodeEncoding(true, false);
+    $<Text::UnicodeEncoding> unicodeBigEndianNoBOM = new Text::UnicodeEncoding(true, false);
     // Compare this Text::UnicodeEncoding to the Text::UnicodeEncoding without parameters.
     ASSERT_FALSE(unicode->Equals(*unicodeBigEndianNoBOM));
     ASSERT_EQ(1201, unicodeBigEndianNoBOM->GetCodePage());

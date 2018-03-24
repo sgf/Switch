@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Net;
 using namespace System::Net::Sockets;
 
-refptr<EndPoint> EndPoint::Create(const SocketAddress&) const {
+$<EndPoint> EndPoint::Create(const SocketAddress&) const {
   throw NotSupportedException(caller_);
 }
 

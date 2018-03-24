@@ -52,18 +52,18 @@ namespace Switch {
 
         bool Contains(const TraceListener& value) const override {return this->IndexOf(value) != -1;}
 
-        void CopyTo(System::Array<refptr<TraceListener>>& array, int32 index) const {this->list.CopyTo(array, index);}
+        void CopyTo(System::Array < $<TraceListener >>& array, int32 index) const {this->list.CopyTo(array, index);}
 
         System::Collections::Generic::Enumerator<TraceListener> GetEnumerator() const override {
           class Enumerator : public System::Collections::Generic::IEnumerator<TraceListener>, public object {
           public:
-            explicit Enumerator(const System::Collections::Generic::Enumerator<refptr<TraceListener>>& enumerator) : enumerator(enumerator)  {}
+            explicit Enumerator(const System::Collections::Generic::Enumerator < $<TraceListener >>& enumerator) : enumerator(enumerator)  {}
             bool MoveNext() override {return this->enumerator.MoveNext();}
             void Reset() override {this->enumerator.Reset();}
 
           private:
             const TraceListener& GetCurrent() const override {return *this->enumerator.Current();}
-            System::Collections::Generic::Enumerator<refptr<TraceListener>> enumerator;
+            System::Collections::Generic::Enumerator < $<TraceListener >> enumerator;
           };
 
           return System::Collections::Generic::Enumerator<TraceListener>(new_<Enumerator>(this->list.GetEnumerator()));
@@ -133,7 +133,7 @@ namespace Switch {
         void CopyTo(System::Array<TraceListener>& array, int32 index) const override {throw InvalidOperationException(caller_);}
         void Insert(int32 index, const TraceListener& value) override {throw InvalidOperationException(caller_);}
 
-        System::Collections::Generic::List<refptr<TraceListener>> list;
+        System::Collections::Generic::List < $<TraceListener >> list;
       };
     }
   }

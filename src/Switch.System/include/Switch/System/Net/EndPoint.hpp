@@ -32,7 +32,7 @@ namespace Switch {
         /// @param socketAddress The socket address that serves as the endpoint for a connection.
         /// @return A new EndPoint instance that is initialized from the specified SocketAddress instance.
         /// @exception NotSupportedException Any attempt is made to access the method when the method is not overridden in a descendant class.
-        virtual refptr<EndPoint> Create(const SocketAddress& socketAddress) const;
+        virtual $<EndPoint> Create(const SocketAddress& socketAddress) const;
 
         /// @brief Gets the address family to which the endpoint belongs.
         /// @return One of the AddressFamily values.

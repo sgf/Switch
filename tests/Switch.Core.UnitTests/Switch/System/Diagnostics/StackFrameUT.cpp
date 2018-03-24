@@ -19,7 +19,7 @@ namespace {
      */
 
     /*
-    refptr<StackTrace> st = new StackTrace(1, true);
+    $<StackTrace> st = new StackTrace(1, true);
 
     System::Console::WriteLine("FrameCount     : {0}", st->FrameCount());
     System::Console::WriteLine("ToString       :");

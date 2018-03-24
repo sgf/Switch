@@ -129,8 +129,8 @@ namespace Switch {
           return this->mutex->try_lock_for(std::chrono::milliseconds(millisecondsTimeOut));
         }
 
-        refptr<std::recursive_timed_mutex> mutex = new_<std::recursive_timed_mutex>();
-        refptr<string> name = new_<string>();
+        $<std::recursive_timed_mutex> mutex = new_<std::recursive_timed_mutex>();
+        $<string> name = new_<string>();
       };
     }
   }

@@ -33,61 +33,61 @@ namespace {
 
   TEST(EncoderTest,   ASCII) {
     ASCIIEncoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ("ASCIIEncoder", encoder().ToString());
   }
 
   TEST(EncoderTest, CreateEncoder_437) {
     CodePage437Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ("Code Page 437 Encoder", encoder().ToString());
   }
 
   TEST(EncoderTest, CreateEncoder_28591) {
     CodePage28591Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ("Code Page 28591 Encoder", encoder().ToString());
   }
 
   TEST(EncoderTest, CreateEncoder_28592) {
     CodePage28592Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ("Code Page 28592 Encoder", encoder().ToString());
   }
 
   TEST(EncoderTest, CreateEncoder_UTF8) {
     UTF8Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ("UTF8Encoder", encoder().ToString());
   }
 
   TEST(EncoderTest, CreateEncoder_UTF16) {
     UnicodeEncoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ("UnicodeEncoder", encoder().ToString());
   }
 
   TEST(EncoderTest, CreateEncoder_UTF16BE) {
     UnicodeEncoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ("UnicodeEncoder Big Endian", encoder().ToString());
   }
 
   TEST(EncoderTest, CreateEncoder_UTF32) {
     UTF32Encoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ("UTF32Encoder", encoder().ToString());
   }
 
   TEST(EncoderTest, CreateEncoder_UTF32BE) {
     UTF32Encoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ("UTF32Encoder Big Endian", encoder().ToString());
   }
 
   TEST(EncoderTest, GetNbBytes_ASCII) {
     ASCIIEncoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ(1, encoder->GetNbBytes(charA));
     ASSERT_EQ(1, encoder->GetNbBytes(charAE));
     ASSERT_EQ(1, encoder->GetNbBytes(charSpecialT));
@@ -100,7 +100,7 @@ namespace {
 
   TEST(EncoderTest, GetNbBytes_437) {
     CodePage437Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ(1, encoder->GetNbBytes(charA));
     ASSERT_EQ(1, encoder->GetNbBytes(charAE));
     ASSERT_EQ(1, encoder->GetNbBytes(charSpecialT));
@@ -113,7 +113,7 @@ namespace {
 
   TEST(EncoderTest, GetNbBytes_88591) {
     CodePage28591Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ(1, encoder->GetNbBytes(charA));
     ASSERT_EQ(1, encoder->GetNbBytes(charAE));
     ASSERT_EQ(1, encoder->GetNbBytes(charSpecialT));
@@ -126,7 +126,7 @@ namespace {
 
   TEST(EncoderTest, GetNbBytes_88592) {
     CodePage28592Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ(1, encoder->GetNbBytes(charA));
     ASSERT_EQ(1, encoder->GetNbBytes(charAE));
     ASSERT_EQ(1, encoder->GetNbBytes(charSpecialT));
@@ -139,7 +139,7 @@ namespace {
 
   TEST(EncoderTest, GetNbBytes_UTF8) {
     UTF8Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ(1, encoder->GetNbBytes(charA));
     ASSERT_EQ(2, encoder->GetNbBytes(charAE));
     ASSERT_EQ(2, encoder->GetNbBytes(charSpecialT));
@@ -152,7 +152,7 @@ namespace {
 
   TEST(EncoderTest, GetNbBytes_UTF16) {
     UnicodeEncoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ(2, encoder->GetNbBytes(charA));
     ASSERT_EQ(2, encoder->GetNbBytes(charAE));
     ASSERT_EQ(2, encoder->GetNbBytes(charSpecialT));
@@ -165,7 +165,7 @@ namespace {
 
   TEST(EncoderTest, GetNbBytes_UTF16BE) {
     UnicodeEncoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ(2, encoder->GetNbBytes(charA));
     ASSERT_EQ(2, encoder->GetNbBytes(charAE));
     ASSERT_EQ(2, encoder->GetNbBytes(charSpecialT));
@@ -178,7 +178,7 @@ namespace {
 
   TEST(EncoderTest, GetNbBytes_UTF32) {
     UTF32Encoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ(4, encoder->GetNbBytes(charA));
     ASSERT_EQ(4, encoder->GetNbBytes(charAE));
     ASSERT_EQ(4, encoder->GetNbBytes(charSpecialT));
@@ -191,7 +191,7 @@ namespace {
 
   TEST(EncoderTest, GetNbBytes_UTF32BE) {
     UTF32Encoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     ASSERT_EQ(4, encoder->GetNbBytes(charA));
     ASSERT_EQ(4, encoder->GetNbBytes(charAE));
     ASSERT_EQ(4, encoder->GetNbBytes(charSpecialT));
@@ -220,7 +220,7 @@ namespace {
 
   TEST(EncoderTest, Encode_ASCII_charA) {
     ASCIIEncoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -233,7 +233,7 @@ namespace {
 
   TEST(EncoderTest, Encode_ASCII_charAE) {
     ASCIIEncoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -246,7 +246,7 @@ namespace {
 
   TEST(EncoderTest, Encode_ASCII_charSpecialT) {
     ASCIIEncoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -259,7 +259,7 @@ namespace {
 
   TEST(EncoderTest, Encode_ASCII_sigma) {
     ASCIIEncoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -272,7 +272,7 @@ namespace {
 
   TEST(EncoderTest, Encode_ASCII_syriacSemkath) {
     ASCIIEncoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -285,7 +285,7 @@ namespace {
 
   TEST(EncoderTest, Encode_ASCII_fullBlock) {
     ASCIIEncoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -298,7 +298,7 @@ namespace {
 
   TEST(EncoderTest, Encode_ASCII_cjk) {
     ASCIIEncoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -311,7 +311,7 @@ namespace {
 
   TEST(EncoderTest, Encode_ASCII_koala) {
     ASCIIEncoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -324,7 +324,7 @@ namespace {
 
   TEST(EncoderTest, Encode_437_charA) {
     CodePage437Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -337,7 +337,7 @@ namespace {
 
   TEST(EncoderTest, Encode_437_charAE) {
     CodePage437Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -350,7 +350,7 @@ namespace {
 
   TEST(EncoderTest, Encode_437_charSpecialT) {
     CodePage437Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -363,7 +363,7 @@ namespace {
 
   TEST(EncoderTest, Encode_437_sigma) {
     CodePage437Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -376,7 +376,7 @@ namespace {
 
   TEST(EncoderTest, Encode_437_syriacSemkath) {
     CodePage437Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -389,7 +389,7 @@ namespace {
 
   TEST(EncoderTest, Encode_437_fullBlock) {
     CodePage437Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -402,7 +402,7 @@ namespace {
 
   TEST(EncoderTest, Encode_437_cjk) {
     CodePage437Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -415,7 +415,7 @@ namespace {
 
   TEST(EncoderTest, Encode_437_koala) {
     CodePage437Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -428,7 +428,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88591_charA) {
     CodePage28591Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -441,7 +441,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88591_charAE) {
     CodePage28591Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -454,7 +454,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88591_charSpecialT) {
     CodePage28591Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -467,7 +467,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88591_sigma) {
     CodePage28591Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -480,7 +480,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88591_syriacSemkath) {
     CodePage28591Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -493,7 +493,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88591_fullBlock) {
     CodePage28591Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -506,7 +506,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88591_cjk) {
     CodePage28591Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -519,7 +519,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88591_koala) {
     CodePage28591Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -532,7 +532,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88592_charA) {
     CodePage28592Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -545,7 +545,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88592_charAE) {
     CodePage28592Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -558,7 +558,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88592_charSpecialT) {
     CodePage28592Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -571,7 +571,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88592_sigma) {
     CodePage28592Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -584,7 +584,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88592_syriacSemkath) {
     CodePage28592Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -597,7 +597,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88592_fullBlock) {
     CodePage28592Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -610,7 +610,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88592_cjk) {
     CodePage28592Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -623,7 +623,7 @@ namespace {
 
   TEST(EncoderTest, Encode_88592_koala) {
     CodePage28592Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -636,7 +636,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF8_charA) {
     UTF8Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -649,7 +649,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF8_charAE) {
     UTF8Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -662,7 +662,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF8_charSpecialT) {
     UTF8Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -675,7 +675,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF8_sigma) {
     UTF8Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -688,7 +688,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF8_syriacSemkath) {
     UTF8Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -701,7 +701,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF8_fullBlock) {
     UTF8Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -714,7 +714,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF8_cjk) {
     UTF8Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -727,7 +727,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF8_koala) {
     UTF8Encoding encoding;
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -740,7 +740,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16_charA) {
     UnicodeEncoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -753,7 +753,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16_charAE) {
     UnicodeEncoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -766,7 +766,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16_charSpecialT) {
     UnicodeEncoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -779,7 +779,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16_sigma) {
     UnicodeEncoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -792,7 +792,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16_syriacSemkath) {
     UnicodeEncoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -805,7 +805,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16_fullBlock) {
     UnicodeEncoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -818,7 +818,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16_cjk) {
     UnicodeEncoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -831,7 +831,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16_koala) {
     UnicodeEncoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -844,7 +844,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16BE_charA) {
     UnicodeEncoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -857,7 +857,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16BE_charAE) {
     UnicodeEncoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -870,7 +870,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16BE_charSpecialT) {
     UnicodeEncoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -883,7 +883,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16BE_sigma) {
     UnicodeEncoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -896,7 +896,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16BE_syriacSemkath) {
     UnicodeEncoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -909,7 +909,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16BE_fullBlock) {
     UnicodeEncoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -922,7 +922,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16BE_cjk) {
     UnicodeEncoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -935,7 +935,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF16BE_koala) {
     UnicodeEncoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -948,7 +948,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32_charA) {
     UTF32Encoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -961,7 +961,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32_charAE) {
     UTF32Encoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -974,7 +974,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32_charSpecialT) {
     UTF32Encoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -987,7 +987,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32_sigma) {
     UTF32Encoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1000,7 +1000,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32_syriacSemkath) {
     UTF32Encoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1013,7 +1013,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32_fullBlock) {
     UTF32Encoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1026,7 +1026,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32_cjk) {
     UTF32Encoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1039,7 +1039,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32_koala) {
     UTF32Encoding encoding(false);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1052,7 +1052,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32BE_charA) {
     UTF32Encoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1065,7 +1065,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32BE_charAE) {
     UTF32Encoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1078,7 +1078,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32BE_charSpecialT) {
     UTF32Encoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1091,7 +1091,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32BE_sigma) {
     UTF32Encoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1104,7 +1104,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32BE_syriacSemkath) {
     UTF32Encoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1117,7 +1117,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32BE_fullBlock) {
     UTF32Encoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1130,7 +1130,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32BE_cjk) {
     UTF32Encoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);
@@ -1143,7 +1143,7 @@ namespace {
 
   TEST(EncoderTest, Encode_UTF32BE_koala) {
     UTF32Encoding encoding(true);
-    refptr<Encoding::Encoder> encoder = encoding.CreateEncoder();
+    $<Encoding::Encoder> encoder = encoding.CreateEncoder();
     byte bytes[4];
 
     ResetBytes(bytes);

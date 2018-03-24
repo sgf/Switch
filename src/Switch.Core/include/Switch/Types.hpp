@@ -67,7 +67,7 @@ namespace Switch {
   /// Switch.Core
   /// @par Examples
   /// @code
-  /// refptr<Foo> foo = new_<Foo>();
+  /// $<Foo> foo = new_<Foo>();
   /// ...
   /// foo = null; // release the reference pointer.
   /// @endcode

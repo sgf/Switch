@@ -75,11 +75,11 @@ namespace {
       return true;
     }
 
-    refptr<std::mutex> guard = new_<std::mutex>();
-    refptr<std::condition_variable> signal = new_<std::condition_variable>();
-    refptr<int32> count = new_<int32>(0);
-    refptr<int32> maxCount = new_<int32>(Int32::MaxValue);
-    refptr<string> name = new_<string>();
+    $<std::mutex> guard = new_<std::mutex>();
+    $<std::condition_variable> signal = new_<std::condition_variable>();
+    $<int32> count = new_<int32>(0);
+    $<int32> maxCount = new_<int32>(Int32::MaxValue);
+    $<string> name = new_<string>();
   };
 }
 
@@ -166,7 +166,7 @@ RegisteredWaitHandle ThreadPool::RegisterWaitForSingleObject(WaitHandle& waitObj
   lock_(threadPoolAsynchronousIOItems.SyncRoot) {
     if (threadPoolAsynchronousIOItems.Count() == maxAsynchronousIOThreads)
       return result;
-    refptr<ThreadPoolAsynchronousIOItem> item = new_<ThreadPoolAsynchronousIOItem>(callBack, state, waitObject, millisecondsTimeoutInterval, executeOnlyOnce);
+    $<ThreadPoolAsynchronousIOItem> item = new_<ThreadPoolAsynchronousIOItem>(callBack, state, waitObject, millisecondsTimeoutInterval, executeOnlyOnce);
     result.item = item.ToPointer();
     threadPoolAsynchronousIOItems.Add(item);
     asynchronousIOSemaphore.Release();
@@ -231,7 +231,7 @@ void ThreadPool::Run() {
   while (!closed) {
     semaphore.WaitOne();
     if (!closed) {
-      refptr<ThreadPoolItem> item;
+      $<ThreadPoolItem> item;
       lock_(threadPoolItems.SyncRoot)
       item = threadPoolItems[0];
       threadPoolItems.RemoveAt(0);
@@ -244,7 +244,7 @@ void ThreadPool::AsynchronousIORun() {
   while (!closed) {
     asynchronousIOSemaphore.WaitOne();
     if (!closed) {
-      refptr<ThreadPoolAsynchronousIOItem> item;
+      $<ThreadPoolAsynchronousIOItem> item;
       lock_(threadPoolAsynchronousIOItems.SyncRoot)
       item = threadPoolAsynchronousIOItems[0];
       threadPoolAsynchronousIOItems.RemoveAt(0);

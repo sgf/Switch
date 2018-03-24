@@ -73,11 +73,11 @@ UTF32Encoding& UTF32Encoding::operator=(const UTF32Encoding& encoding) {
   return *this;
 }
 
-refptr<Encoding::Decoder> UTF32Encoding::CreateDecoder() const {
+$<Encoding::Decoder> UTF32Encoding::CreateDecoder() const {
   return new_<Decoder>(this->bigEndian);
 }
 
-refptr<Encoding::Encoder> UTF32Encoding::CreateEncoder() const {
+$<Encoding::Encoder> UTF32Encoding::CreateEncoder() const {
   return new_<Encoder>(this->bigEndian);
 }
 

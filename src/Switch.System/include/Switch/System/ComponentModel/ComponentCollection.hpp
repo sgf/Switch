@@ -41,7 +41,7 @@ namespace Switch {
 
         Any operator [](string name) {
           /*
-          for(refptr<Object> component : components) {
+          for($<Object> component : components) {
             if (component.As<IComponent>().GetSite().Name() == name)
               return component.ChangeType<IComponent>();
           }

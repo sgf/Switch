@@ -115,7 +115,7 @@ namespace EncodingUT {
     ASSERT_EQ(0, emptyString.Length());
   }
 
-  void GetByteCountTest(refptr<Encoding> encoding, int charByteSize, int piByteSize, int sigmaByteSize, int koalaByteSize) {
+  void GetByteCountTest($<Encoding> encoding, int charByteSize, int piByteSize, int sigmaByteSize, int koalaByteSize) {
     string unicodeString = "Pi " + Char(928) + " Sigma " + Char(931) + " KOALA " + Char(128040);
     Array<char32> chars = unicodeString.ToCharArray();
 
@@ -147,7 +147,7 @@ namespace EncodingUT {
     ASSERT_TRUE(join.Equals(strBytes));
   }
 
-  void GetBytesTest(refptr<Encoding> encoding, int charByteSize, int piByteSize, int sigmaByteSize, int koalaByteSize,
+  void GetBytesTest($<Encoding> encoding, int charByteSize, int piByteSize, int sigmaByteSize, int koalaByteSize,
     const string& unicodeBytes, const string& charBytes, const string& piBytes, const string& koalaBytes) {
     string unicodeString = "Pi " + Char(928) + " Sigma " + Char(931) + " KOALA " + Char(128040);
     string emptyString = "";

@@ -2373,7 +2373,7 @@ namespace Switch {
       static string ToString(NullPtr) { return "(null)"; }
 
       template<typename T>
-      static string ToString(refptr<T> value) { return value.ToString().c_str(); }
+      static string ToString($<T> value) { return value.ToString().c_str(); }
 
       template<typename T>
       static string ToString(ref<T> value) { return value.ToString().c_str(); }

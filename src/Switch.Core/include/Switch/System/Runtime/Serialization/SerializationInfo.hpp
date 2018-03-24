@@ -162,7 +162,7 @@ namespace Switch {
           void AddValue(const String& name, char32 value);
           template<typename T>
           void AddValue(const String& name, const System::Collections::Generic::IEnumerable<T>& value) {
-            AddValue(name, refptr<object>(new_<Array<T>>(value)), "System::Collections::Generic::IEnumerable");
+            AddValue(name, $<object>(new_<Array<T>>(value)), "System::Collections::Generic::IEnumerable");
           }
 
           System::Collections::Generic::Enumerator<System::Collections::Generic::KeyValuePair<System::String, SerializationEntry>> GetEnumerator() const;
@@ -185,7 +185,7 @@ namespace Switch {
           const Object& GetObject(const String& name) const;
 
           template<typename T>
-          refptr<T> GetValue(const String& name) const {
+          $<T> GetValue(const String& name) const {
             const SerializationEntry& entry = mItems[name];
             if (is<System::Runtime::Serialization::SerializationInfo>(entry.Value().ToObject()))
               return T::Deserialize(as<System::Runtime::Serialization::SerializationInfo>(entry.Value()).ToObject());
@@ -200,51 +200,51 @@ namespace Switch {
           int32 GetMemberCount() { return mItems.Count; }
 
         private:
-          void AddValue(const String& name, refptr<Object> value, const String& typeName);
+          void AddValue(const String& name, $<Object> value, const String& typeName);
           String objectType;
           System::Collections::Generic::Dictionary<String, SerializationEntry> mItems;
         };
 
-        template<> refptr<System::Boolean>
+        template<> $<System::Boolean>
         SerializationInfo::GetValue<System::Boolean>(const String& name) const;
 
-        template<> refptr<String>
+        template<> $<String>
         SerializationInfo::GetValue<String>(const String& name) const;
 
-        template<> refptr<System::Byte>
+        template<> $<System::Byte>
         SerializationInfo::GetValue<System::Byte>(const String& name) const;
 
-        template<> refptr<System::SByte>
+        template<> $<System::SByte>
         SerializationInfo::GetValue<System::SByte>(const String& name) const;
 
-        template<> refptr<System::Char>
+        template<> $<System::Char>
         SerializationInfo::GetValue<System::Char>(const String& name) const;
 
-        template<> refptr<System::DateTime>
+        template<> $<System::DateTime>
         SerializationInfo::GetValue<System::DateTime>(const String& name) const;
 
-        template<> refptr<System::Single>
+        template<> $<System::Single>
         SerializationInfo::GetValue<System::Single>(const String& name) const;
 
-        template<> refptr<System::Double>
+        template<> $<System::Double>
         SerializationInfo::GetValue<System::Double>(const String& name) const;
 
-        template<> refptr<System::Int16>
+        template<> $<System::Int16>
         SerializationInfo::GetValue<System::Int16>(const String& name) const;
 
-        template<> refptr<System::Int32>
+        template<> $<System::Int32>
         SerializationInfo::GetValue<System::Int32>(const String& name) const;
 
-        template<> refptr<System::Int64>
+        template<> $<System::Int64>
         SerializationInfo::GetValue<System::Int64>(const String& name) const;
 
-        template<> refptr<System::UInt16>
+        template<> $<System::UInt16>
         SerializationInfo::GetValue<System::UInt16>(const String& name) const;
 
-        template<> refptr<System::UInt32>
+        template<> $<System::UInt32>
         SerializationInfo::GetValue<System::UInt32>(const String& name) const;
 
-        template<> refptr<System::UInt64>
+        template<> $<System::UInt64>
         SerializationInfo::GetValue<System::UInt64>(const String& name) const;
       }
     }

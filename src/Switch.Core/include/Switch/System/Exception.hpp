@@ -142,7 +142,7 @@ namespace Switch {
       System::Runtime::CompilerServices::Caller caller;
       ref<Exception> innerException;
       int32 hresult = 0;
-      refptr<Array<String>> stackTrace;
+      $<Array<String>> stackTrace;
       mutable String whatMessage;
       /// @endcond
     };

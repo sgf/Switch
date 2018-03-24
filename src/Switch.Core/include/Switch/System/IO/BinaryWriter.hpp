@@ -39,7 +39,7 @@ namespace Switch {
         /// @param stream The stream pointer to write to.
         /// @exception ArgumentException stream is null.
         /// @exception ArgumentException stream is not writable.
-        BinaryWriter(refptr<Stream> stream) : stream(stream) {
+        BinaryWriter($<Stream> stream) : stream(stream) {
           if (!stream->CanWrite())
             throw ArgumentException(caller_);
         }
@@ -182,7 +182,7 @@ namespace Switch {
         virtual Stream& GetBaseStream() const {return *this->stream;}
 
       private:
-        mutable refptr<Stream> stream {Stream::Null().MemberwiseClone<NullStream>().template As<Stream>()};
+        mutable $<Stream> stream {Stream::Null().MemberwiseClone<NullStream>().template As<Stream>()};
       };
     }
   }

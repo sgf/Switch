@@ -564,7 +564,7 @@ namespace Switch {
       /// @remarks In contrast, a deep copy of an Array copies the elements and everything directly or indirectly referenced by the elements.
       /// @remarks The clone is of the same Type as the original Array.
       /// @remarks This method is an O(n) operation, where n is Length.
-      refptr<object> Clone() const override {return new_<Array<T, rank, TAllocator>>(*this);}
+      $<object> Clone() const override {return new_<Array<T, rank, TAllocator>>(*this);}
 
       bool Equals(const object& obj) const override {return this->GenericArrayObject<T, TAllocator>::Equals(obj);}
 
@@ -748,7 +748,7 @@ namespace Switch {
       /// @remarks In contrast, a deep copy of an Array copies the elements and everything directly or indirectly referenced by the elements.
       /// @remarks The clone is of the same Type as the original Array.
       /// @remarks This method is an O(n) operation, where n is Length.
-      refptr<object> Clone() const override {return new_<Array<T, 1, TAllocator>>(*this);}
+      $<object> Clone() const override {return new_<Array<T, 1, TAllocator>>(*this);}
 
       bool Equals(const object& obj) const override {return this->GenericArrayObject<T, TAllocator>::Equals(obj);}
 
@@ -860,7 +860,7 @@ namespace Switch {
       /// @remarks In contrast, a deep copy of an Array copies the elements and everything directly or indirectly referenced by the elements.
       /// @remarks The clone is of the same Type as the original Array.
       /// @remarks This method is an O(n) operation, where n is Length.
-      refptr<object> Clone() const override {return new_<Array<T, 2, TAllocator>>(*this);}
+      $<object> Clone() const override {return new_<Array<T, 2, TAllocator>>(*this);}
 
       bool Equals(const object& obj) const override {return this->GenericArrayObject<T, TAllocator>::Equals(obj);}
 
@@ -981,7 +981,7 @@ namespace Switch {
       /// @remarks In contrast, a deep copy of an Array copies the elements and everything directly or indirectly referenced by the elements.
       /// @remarks The clone is of the same Type as the original Array.
       /// @remarks This method is an O(n) operation, where n is Length.
-      refptr<object> Clone() const override {return new_<Array<T, 3, TAllocator>>(*this);}
+      $<object> Clone() const override {return new_<Array<T, 3, TAllocator>>(*this);}
 
       bool Equals(const object& obj) const override {return this->GenericArrayObject<T, TAllocator>::Equals(obj);}
 

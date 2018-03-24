@@ -58,11 +58,11 @@ CodePage437Encoding::CodePage437Encoding() : ANSIEncoding(437) {
 
 }
 
-refptr<Encoding::Decoder> CodePage437Encoding::CreateDecoder() const {
+$<Encoding::Decoder> CodePage437Encoding::CreateDecoder() const {
   return new_<Decoder>();
 }
 
-refptr<Encoding::Encoder> CodePage437Encoding::CreateEncoder() const {
+$<Encoding::Encoder> CodePage437Encoding::CreateEncoder() const {
   return new_<Encoder>();
 }
 
@@ -82,11 +82,11 @@ CodePage28591Encoding::CodePage28591Encoding() : ANSIEncoding(28591) {
 
 }
 
-refptr<Encoding::Decoder> CodePage28591Encoding::CreateDecoder() const {
+$<Encoding::Decoder> CodePage28591Encoding::CreateDecoder() const {
   return new_<Decoder>();
 }
 
-refptr<Encoding::Encoder> CodePage28591Encoding::CreateEncoder() const {
+$<Encoding::Encoder> CodePage28591Encoding::CreateEncoder() const {
   return new_<Encoder>();
 }
 
@@ -108,11 +108,11 @@ CodePage28592Encoding::CodePage28592Encoding() : ANSIEncoding(28592) {
 
 }
 
-refptr<Encoding::Decoder> CodePage28592Encoding::CreateDecoder() const {
+$<Encoding::Decoder> CodePage28592Encoding::CreateDecoder() const {
   return new_<Decoder>();
 }
 
-refptr<Encoding::Encoder> CodePage28592Encoding::CreateEncoder() const {
+$<Encoding::Encoder> CodePage28592Encoding::CreateEncoder() const {
   return new_<Encoder>();
 }
 

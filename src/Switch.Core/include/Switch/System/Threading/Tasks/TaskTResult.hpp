@@ -540,7 +540,7 @@ namespace Switch {
             };
           };
 
-          refptr<TaskData> data {new TaskData()};
+          $<TaskData> data {new TaskData()};
         };
       }
     }
