@@ -39,8 +39,8 @@ void Native::ApplicationApi::MessageLoop(const System::Windows::Forms::Form& mai
   }
 }
 
-DialogResult Native::ApplicationApi::ShowMessageBox(const string& message, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool displayHelpButton) {
-  return (DialogResult)MessageBox(GetActiveWindow(), message.w_str().c_str(), caption.w_str().c_str(), (uint32)buttons + (uint32)icon + (uint32)defaultButton + (uint32)options + (displayHelpButton ? 0x00004000L : 0));
+DialogResult Native::ApplicationApi::ShowMessageBox(intptr owner, const string& message, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool displayHelpButton) {
+  return (DialogResult)MessageBox(owner != IntPtr::Zero ? (HWND)owner : GetActiveWindow(), message.w_str().c_str(), caption.w_str().c_str(), (uint32)buttons + (uint32)icon + (uint32)defaultButton + (uint32)options + (displayHelpButton ? 0x00004000L : 0));
 }
 
 void Native::ApplicationApi::Start() {

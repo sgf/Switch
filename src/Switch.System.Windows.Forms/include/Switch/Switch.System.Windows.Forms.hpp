@@ -50,6 +50,7 @@
 #include "System/Windows/Forms/GroupBox.hpp"
 #include "System/Windows/Forms/HelpEventArgs.hpp"
 #include "System/Windows/Forms/HelpEventHandler.hpp"
+#include "System/Windows/Forms/HelpNavigator.hpp"
 #include "System/Windows/Forms/IDataObject.hpp"
 #include "System/Windows/Forms/ImageLayout.hpp"
 //#include "System/Windows/Forms/ImageList.hpp"

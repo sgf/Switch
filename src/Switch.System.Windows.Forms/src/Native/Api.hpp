@@ -59,7 +59,7 @@ namespace Native {
     static void Exit();
     static bool HasVisualStylesEnabled() { return visualStylesEnabled; }
     static void MessageLoop(const System::Windows::Forms::Form& mainForm, System::EventHandler idle);
-    static System::Windows::Forms::DialogResult ShowMessageBox(const string& message, const string& caption, System::Windows::Forms::MessageBoxButtons buttons, System::Windows::Forms::MessageBoxIcon icon, System::Windows::Forms::MessageBoxDefaultButton defaultButton, System::Windows::Forms::MessageBoxOptions options, bool displayHelpButton);
+    static System::Windows::Forms::DialogResult ShowMessageBox(intptr owner, const string& message, const string& caption, System::Windows::Forms::MessageBoxButtons buttons, System::Windows::Forms::MessageBoxIcon icon, System::Windows::Forms::MessageBoxDefaultButton defaultButton, System::Windows::Forms::MessageBoxOptions options, bool displayHelpButton);
     static void Start();
     static void Stop();
 
