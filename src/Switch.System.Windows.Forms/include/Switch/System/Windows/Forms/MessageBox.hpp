@@ -2,10 +2,11 @@
 /// @brief Contains Switch::System::Windows::Forms::MessageBox class.
 #pragma once
 
+#include <Switch/Any.hpp>
 #include <Switch/Static.hpp>
+#include <Switch/System/String.hpp>
 #include "../../../SystemWindowsFormsExport.hpp"
 #include "DialogResult.hpp"
-#include "Form.hpp"
 #include "IWin32Window.hpp"
 #include "HelpNavigator.hpp"
 #include "MessageBoxButtons.hpp"
@@ -28,7 +29,7 @@ namespace Switch {
         /// @par Examples
         /// The following code example demonstrate the use of MessageBox control.
         /// @include MessageBox.cpp
-        class system_windows_forms_export_ MessageBox static_, public Form {
+        class system_windows_forms_export_ MessageBox static_ {
         public:
           /// @brief Displays a message box in front of the specified object and with the specified text.
           /// @param owner An implementation of IWin32Window that will own the modal dialog box.
