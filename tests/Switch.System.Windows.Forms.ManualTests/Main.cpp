@@ -67,19 +67,19 @@ namespace ManualTests {
         if (result == DialogResult::OK)
           System::Diagnostics::Debug::WriteLine(string::Format("File = {0}", saveFileDialog.FileName));
       };
-      
+
       this->buttonFolder.Text = "Folder...";
       this->buttonFolder.Width = 110;
       this->buttonFolder.Location = System::Drawing::Point(10, 170);
       this->buttonFolder.Click += delegate_(const object & sender, const EventArgs & e) {
       };
-      
+
       this->buttonFont.Text = "Font...";
       this->buttonFont.Width = 110;
       this->buttonFont.Location = System::Drawing::Point(10, 210);
       this->buttonFont.Click += delegate_(const object & sender, const EventArgs & e) {
       };
-      
+
       this->Text = "Dialogs";
       this->Controls().AddRange({this->buttonMessage, this->buttonColor, this->buttonOpen, this->buttonSave, this->buttonFolder, this->buttonFont});
     }

@@ -39,7 +39,7 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   for (System::Collections::Generic::KeyValuePair<string, Array<string>> filter : openFileDialog.__get_filters__()) {
     Glib::RefPtr<Gtk::FileFilter> fileFilter = Gtk::FileFilter::create();
     fileFilter->set_name(filter.Key().c_str());
-    for(string pattern : filter.Value())
+    for (string pattern : filter.Value())
       fileFilter->add_pattern(pattern.c_str());
     fileChooserDialog.add_filter(fileFilter);
     if (filterIndex++ == openFileDialog.FilterIndex)
@@ -73,7 +73,7 @@ bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms
   for (System::Collections::Generic::KeyValuePair<string, Array<string>> filter : saveFileDialog.__get_filters__()) {
     Glib::RefPtr<Gtk::FileFilter> fileFilter = Gtk::FileFilter::create();
     fileFilter->set_name(filter.Key().c_str());
-    for(string pattern : filter.Value())
+    for (string pattern : filter.Value())
       fileFilter->add_pattern(pattern.c_str());
     fileChooserDialog.add_filter(fileFilter);
     if (filterIndex++ == saveFileDialog.FilterIndex)
