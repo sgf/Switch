@@ -20,12 +20,14 @@ namespace ManualTests {
 
     Form1() {
       this->buttonMessage.Text = "Message...";
+      this->buttonMessage.Width = 100;
       this->buttonMessage.Location = System::Drawing::Point(10, 10);
       this->buttonMessage.Click += delegate_(const object & sender, const EventArgs & e) {
         MessageBox::Show("This is an example on MessageBox.", "Demo message", MessageBoxButtons::OKCancel, MessageBoxIcon::Exclamation);
       };
 
       this->buttonColor.Text = "Color...";
+      this->buttonColor.Width = 100;
       this->buttonColor.Location = System::Drawing::Point(10, 50);
       this->buttonColor.Click += delegate_(const object & sender, const EventArgs & e) {
         ColorDialog colorDialog;
@@ -37,6 +39,7 @@ namespace ManualTests {
       };
 
       this->buttonOpen.Text = "Open...";
+      this->buttonOpen.Width = 100;
       this->buttonOpen.Location = System::Drawing::Point(10, 90);
       this->buttonOpen.Click += delegate_(const object & sender, const EventArgs & e) {
         OpenFileDialog openFileDialog;
@@ -51,6 +54,7 @@ namespace ManualTests {
       };
 
       this->buttonSave.Text = "Save...";
+      this->buttonSave.Width = 100;
       this->buttonSave.Location = System::Drawing::Point(10, 130);
       this->buttonSave.Click += delegate_(const object & sender, const EventArgs & e) {
         SaveFileDialog saveFileDialog;
@@ -61,9 +65,21 @@ namespace ManualTests {
         if (result == DialogResult::OK)
           System::Diagnostics::Debug::WriteLine(string::Format("File = {0}", saveFileDialog.FileName));
       };
-
-      this->Text = "Main Form";
-      this->Controls().AddRange({buttonMessage, buttonColor, buttonOpen, buttonSave});
+      
+      this->buttonFolder.Text = "Folder...";
+      this->buttonFolder.Width = 100;
+      this->buttonFolder.Location = System::Drawing::Point(10, 170);
+      this->buttonFolder.Click += delegate_(const object & sender, const EventArgs & e) {
+      };
+      
+      this->buttonFont.Text = "Font...";
+      this->buttonFont.Width = 100;
+      this->buttonFont.Location = System::Drawing::Point(10, 210);
+      this->buttonFont.Click += delegate_(const object & sender, const EventArgs & e) {
+      };
+      
+      this->Text = "Dialogs";
+      this->Controls().AddRange({this->buttonMessage, this->buttonColor, this->buttonOpen, this->buttonSave, this->buttonFolder, this->buttonFont});
     }
 
   private:
@@ -71,6 +87,8 @@ namespace ManualTests {
     Button buttonColor;
     Button buttonOpen;
     Button buttonSave;
+    Button buttonFolder;
+    Button buttonFont;
   };
 }
 
