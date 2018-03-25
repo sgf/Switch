@@ -17,6 +17,7 @@ DialogResult MessageBox::Show(const IWin32Window& owner, const string& text, con
   return ShowMessageBox(owner.Handle, text, caption, buttons, icon, defaultButton, options, displayHelpButton, "");
 }
 
+/*
 DialogResult MessageBox::Show(const IWin32Window& owner, const string& text, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, const string& helpFilePath) {
   return ShowMessageBox(owner.Handle, text, caption, buttons, icon, defaultButton, options, true, helpFilePath);
 }
@@ -28,11 +29,13 @@ DialogResult MessageBox::Show(const IWin32Window& owner, const string& text, con
 DialogResult MessageBox::Show(const IWin32Window& owner, const string& text, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, const string& helpFilePath, HelpNavigator navigator, any param) {
   return ShowMessageBox(owner.Handle, text, caption, buttons, icon, defaultButton, options, true, helpFilePath);
 }
+ */
 
 DialogResult MessageBox::Show(const string& text, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool displayHelpButton) {
   return ShowMessageBox(IntPtr::Zero, text, caption, buttons, icon, defaultButton, options, displayHelpButton, "");
 }
 
+/*
 DialogResult MessageBox::Show(const string& text, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, const string& helpFilePath) {
   return ShowMessageBox(IntPtr::Zero, text, caption, buttons, icon, defaultButton, options, true, helpFilePath);
 }
@@ -44,3 +47,4 @@ DialogResult MessageBox::Show(const string& text, const string& caption, Message
 DialogResult MessageBox::Show(const string& text, const string& caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, const string& helpFilePath, HelpNavigator navigator, any param) {
   return ShowMessageBox(IntPtr::Zero, text, caption, buttons, icon, defaultButton, options, true, helpFilePath);
 }
+*/
