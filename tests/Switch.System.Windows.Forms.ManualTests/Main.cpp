@@ -20,14 +20,14 @@ namespace ManualTests {
 
     Form1() {
       this->buttonMessage.Text = "Message...";
-      this->buttonMessage.Width = 100;
+      this->buttonMessage.Width = 110;
       this->buttonMessage.Location = System::Drawing::Point(10, 10);
       this->buttonMessage.Click += delegate_(const object & sender, const EventArgs & e) {
         MessageBox::Show("This is an example on MessageBox.", "Demo message", MessageBoxButtons::OKCancel, MessageBoxIcon::Exclamation);
       };
 
       this->buttonColor.Text = "Color...";
-      this->buttonColor.Width = 100;
+      this->buttonColor.Width = 110;
       this->buttonColor.Location = System::Drawing::Point(10, 50);
       this->buttonColor.Click += delegate_(const object & sender, const EventArgs & e) {
         ColorDialog colorDialog;
@@ -39,12 +39,13 @@ namespace ManualTests {
       };
 
       this->buttonOpen.Text = "Open...";
-      this->buttonOpen.Width = 100;
+      this->buttonOpen.Width = 110;
       this->buttonOpen.Location = System::Drawing::Point(10, 90);
       this->buttonOpen.Click += delegate_(const object & sender, const EventArgs & e) {
         OpenFileDialog openFileDialog;
-        openFileDialog.InitialDirectory = Environment::GetFolderPath(Environment::SpecialFolder::Desktop);
         openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+        openFileDialog.InitialDirectory = Environment::GetFolderPath(Environment::SpecialFolder::Desktop);
+        openFileDialog.Multiselect = true;
         System::Windows::Forms::DialogResult result = openFileDialog.ShowDialog();
         System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
         if (result == DialogResult::OK && !openFileDialog.Multiselect)
@@ -54,12 +55,13 @@ namespace ManualTests {
       };
 
       this->buttonSave.Text = "Save...";
-      this->buttonSave.Width = 100;
+      this->buttonSave.Width = 110;
       this->buttonSave.Location = System::Drawing::Point(10, 130);
       this->buttonSave.Click += delegate_(const object & sender, const EventArgs & e) {
         SaveFileDialog saveFileDialog;
         saveFileDialog.FileName = "Gammasoft.txt";
         saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+        saveFileDialog.InitialDirectory = Environment::GetFolderPath(Environment::SpecialFolder::Desktop);
         System::Windows::Forms::DialogResult result = saveFileDialog.ShowDialog();
         System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
         if (result == DialogResult::OK)
@@ -67,13 +69,13 @@ namespace ManualTests {
       };
       
       this->buttonFolder.Text = "Folder...";
-      this->buttonFolder.Width = 100;
+      this->buttonFolder.Width = 110;
       this->buttonFolder.Location = System::Drawing::Point(10, 170);
       this->buttonFolder.Click += delegate_(const object & sender, const EventArgs & e) {
       };
       
       this->buttonFont.Text = "Font...";
-      this->buttonFont.Width = 100;
+      this->buttonFont.Width = 110;
       this->buttonFont.Location = System::Drawing::Point(10, 210);
       this->buttonFont.Click += delegate_(const object & sender, const EventArgs & e) {
       };

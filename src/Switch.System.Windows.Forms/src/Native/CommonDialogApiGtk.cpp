@@ -29,26 +29,59 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
 }
 
 bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog& openFileDialog) {
-  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
-
   Gtk::FileChooserDialog fileChooserDialog(openFileDialog.Title().c_str(), Gtk::FILE_CHOOSER_ACTION_OPEN);
-  if (window != null) fileChooserDialog.set_transient_for(*window);
-  fileChooserDialog.set_modal(true);
   fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
   fileChooserDialog.add_button("Open", Gtk::RESPONSE_OK);
+  fileChooserDialog.set_current_folder(openFileDialog.InitialDirectory().c_str());
+  fileChooserDialog.set_current_name(openFileDialog.FileName().c_str());
+  fileChooserDialog.set_show_hidden(openFileDialog.ShowHiddenFiles);
+  int32 filterIndex = 1;
+  for (System::Collections::Generic::KeyValuePair<string, Array<string>> filter : openFileDialog.__get_filters__()) {
+    Glib::RefPtr<Gtk::FileFilter> fileFilter = Gtk::FileFilter::create();
+    fileFilter->set_name(filter.Key().c_str());
+    for(string pattern : filter.Value())
+      fileFilter->add_pattern(pattern.c_str());
+    fileChooserDialog.add_filter(fileFilter);
+    if (filterIndex++ == openFileDialog.FilterIndex)
+      fileChooserDialog.set_filter(fileFilter);
+  }
+  fileChooserDialog.set_modal(true);
+  fileChooserDialog.set_select_multiple(openFileDialog.Multiselect);
+  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
+  if (window != null) fileChooserDialog.set_transient_for(*window);
 
   if (fileChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
+  if (!openFileDialog.Multiselect)
+    openFileDialog.FileName = fileChooserDialog.get_filename();
+  else {
+    System::Collections::Generic::List<string> files;
+    for (auto file : fileChooserDialog.get_filenames())
+      files.Add(file);
+    openFileDialog.__set__file_names__(files.ToArray());
+  }
   return true;
 }
 
 bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms::SaveFileDialog& saveFileDialog) {
-  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
   Gtk::FileChooserDialog fileChooserDialog(saveFileDialog.Title().c_str(), Gtk::FILE_CHOOSER_ACTION_SAVE);
-  if (window != null) fileChooserDialog.set_transient_for(*window);
-  fileChooserDialog.set_modal(true);
   fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
   fileChooserDialog.add_button("Save", Gtk::RESPONSE_OK);
-  fileChooserDialog.set_filename("Undefined");
+  fileChooserDialog.set_current_folder(saveFileDialog.InitialDirectory().c_str());
+  fileChooserDialog.set_current_name(saveFileDialog.FileName().c_str());
+  fileChooserDialog.set_show_hidden(saveFileDialog.ShowHiddenFiles);
+  int32 filterIndex = 1;
+  for (System::Collections::Generic::KeyValuePair<string, Array<string>> filter : saveFileDialog.__get_filters__()) {
+    Glib::RefPtr<Gtk::FileFilter> fileFilter = Gtk::FileFilter::create();
+    fileFilter->set_name(filter.Key().c_str());
+    for(string pattern : filter.Value())
+      fileFilter->add_pattern(pattern.c_str());
+    fileChooserDialog.add_filter(fileFilter);
+    if (filterIndex++ == saveFileDialog.FilterIndex)
+      fileChooserDialog.set_filter(fileFilter);
+  }
+  fileChooserDialog.set_modal(true);
+  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
+  if (window != null) fileChooserDialog.set_transient_for(*window);
 
   if (fileChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
   return true;
