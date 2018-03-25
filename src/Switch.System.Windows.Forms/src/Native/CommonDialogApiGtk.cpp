@@ -34,7 +34,6 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
   fileChooserDialog.add_button("Open", Gtk::RESPONSE_OK);
   fileChooserDialog.set_current_folder(openFileDialog.InitialDirectory().c_str());
-  fileChooserDialog.set_current_name(openFileDialog.FileName().c_str());
   fileChooserDialog.set_show_hidden(openFileDialog.ShowHiddenFiles);
   int32 filterIndex = 1;
   for (System::Collections::Generic::KeyValuePair<string, Array<string>> filter : openFileDialog.__get_filters__()) {
