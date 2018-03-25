@@ -30,6 +30,7 @@ namespace Switch {
         class ColorDialog;
         class Control;
         enum class DialogResult;
+        class FolderBrowserDialog;
         class Form;
         class GroupBox;
         class Label;
@@ -83,6 +84,7 @@ namespace Native {
   class CommonDialog static_ {
   public:
     static bool RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog& colorDialog);
+    static bool RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog& folderBrowserDialog);
     static bool RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog& openFileDialog);
     static bool RunSaveFileDialog(intptr hwnd, System::Windows::Forms::SaveFileDialog& saveFileDialog);
   };

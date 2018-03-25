@@ -9,6 +9,7 @@
 #include "Api.hpp"
 #include <Switch/System/Buffer.hpp>
 #include "../../include/Switch/System/Windows/Forms/ColorDialog.hpp"
+#include "../../include/Switch/System/Windows/Forms/FolderBrowserDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/OpenFileDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/SaveFileDialog.hpp"
 
@@ -158,4 +159,7 @@ bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms
   return true;
 }
 
+bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog& folderBrowserDialog) {
+  return false;
+}
 #endif

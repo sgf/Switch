@@ -14,6 +14,30 @@ namespace SwitchUnitTests {
     ASSERT_FALSE(openFileDialog.ReadOnlyChecked);
   }
 
+  TEST(OpenFileDialogTest, Multiselect) {
+    OpenFileDialog openFileDialog;
+
+    openFileDialog.Multiselect = true;
+
+    ASSERT_TRUE(openFileDialog.Multiselect);
+  }
+
+  TEST(OpenFileDialogTest, ReadOnlyChecked) {
+    OpenFileDialog openFileDialog;
+
+    openFileDialog.ReadOnlyChecked = true;
+
+    ASSERT_TRUE(openFileDialog.ReadOnlyChecked);
+  }
+
+  TEST(OpenFileDialogTest, SafeFileName) {
+    OpenFileDialog openFileDialog;
+
+    openFileDialog.FileName = Path::Combine("Directory1", "Directory2", "Directory3", "MyFile.txt");
+
+    ASSERT_EQ("MyFile.txt", openFileDialog.SafeFileName);
+  }
+
   TEST(OpenFileDialogTest, Reset) {
     OpenFileDialog openFileDialog;
     openFileDialog.AddExtension = false;
@@ -32,7 +56,7 @@ namespace SwitchUnitTests {
     openFileDialog.ShowHelp = true;
     openFileDialog.ShowHiddenFiles = true;
     openFileDialog.SupportMultiDottedExtensions = true;
-    openFileDialog.Title = "Myopen file title";
+    openFileDialog.Title = "My open file title";
     openFileDialog.ValidateNames = false;
     openFileDialog.Multiselect = true;
     openFileDialog.ReadOnlyChecked = true;
@@ -60,29 +84,5 @@ namespace SwitchUnitTests {
     ASSERT_FALSE(openFileDialog.Multiselect);
     ASSERT_FALSE(openFileDialog.ReadOnlyChecked);
     ASSERT_EQ("", openFileDialog.SafeFileName);
-  }
-
-  TEST(OpenFileDialogTest, Multiselect) {
-    OpenFileDialog openFileDialog;
-
-    openFileDialog.Multiselect = true;
-
-    ASSERT_TRUE(openFileDialog.Multiselect);
-  }
-
-  TEST(OpenFileDialogTest, ReadOnlyChecked) {
-    OpenFileDialog openFileDialog;
-
-    openFileDialog.ReadOnlyChecked = true;
-
-    ASSERT_TRUE(openFileDialog.ReadOnlyChecked);
-  }
-
-  TEST(OpenFileDialogTest, SafeFileName) {
-    OpenFileDialog openFileDialog;
-
-    openFileDialog.FileName = Path::Combine("Directory1", "Directory2", "Directory3", "MyFile.txt");
-
-    ASSERT_EQ("MyFile.txt", openFileDialog.SafeFileName);
   }
 }

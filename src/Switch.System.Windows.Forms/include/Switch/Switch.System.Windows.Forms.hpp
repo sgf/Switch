@@ -37,7 +37,7 @@
 #include "System/Windows/Forms/FileDialog.hpp"
 #include "System/Windows/Forms/FileDialogCustomPlace.hpp"
 #include "System/Windows/Forms/FileDialogCustomPlaceCollection.hpp"
-//#include "System/Windows/Forms/FolderBrowserDialog.hpp"
+#include "System/Windows/Forms/FolderBrowserDialog.hpp"
 #include "System/Windows/Forms/Form.hpp"
 #include "System/Windows/Forms/FormBorderStyle.hpp"
 #include "System/Windows/Forms/FormClosedEventArgs.hpp"

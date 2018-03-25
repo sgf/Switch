@@ -13,6 +13,14 @@ namespace SwitchUnitTests {
     ASSERT_FALSE(saveFileDialog.CreatePrompt);
   }
 
+  TEST(SaveFileDialogTest, CreatePrompt) {
+    SaveFileDialog saveFileDialog;
+
+    saveFileDialog.CreatePrompt = true;
+
+    ASSERT_TRUE(saveFileDialog.CreatePrompt);
+  }
+
   TEST(SaveFileDialogTest, Reset) {
     SaveFileDialog saveFileDialog;
     saveFileDialog.AddExtension = false;
@@ -31,7 +39,7 @@ namespace SwitchUnitTests {
     saveFileDialog.ShowHelp = true;
     saveFileDialog.ShowHiddenFiles = true;
     saveFileDialog.SupportMultiDottedExtensions = true;
-    saveFileDialog.Title = "Myopen file title";
+    saveFileDialog.Title = "My save file title";
     saveFileDialog.ValidateNames = false;
     saveFileDialog.CreatePrompt = true;
 
@@ -56,13 +64,5 @@ namespace SwitchUnitTests {
     ASSERT_EQ("", saveFileDialog.Title);
     ASSERT_TRUE(saveFileDialog.ValidateNames);
     ASSERT_FALSE(saveFileDialog.CreatePrompt);
-  }
-
-  TEST(SaveFileDialogTest, CreatePrompt) {
-    SaveFileDialog saveFileDialog;
-
-    saveFileDialog.CreatePrompt = true;
-
-    ASSERT_TRUE(saveFileDialog.CreatePrompt);
   }
 }
