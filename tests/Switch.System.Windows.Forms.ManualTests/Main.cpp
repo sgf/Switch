@@ -49,10 +49,10 @@ namespace ManualTests {
         openFileDialog.Multiselect = true;
         System::Windows::Forms::DialogResult result = openFileDialog.ShowDialog();
         System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
-        if (result == DialogResult::OK && !openFileDialog.Multiselect)
+        if (result == DialogResult::OK) {
           System::Diagnostics::Debug::WriteLine(string::Format("File = {0}", openFileDialog.FileName));
-        if (result == DialogResult::OK && openFileDialog.Multiselect)
-          System::Diagnostics::Debug::WriteLine(string::Format("File = {0}", string::Join(Environment::NewLine, openFileDialog.FileNames)));
+          System::Diagnostics::Debug::WriteLine(string::Format("Files = {0}", string::Join(Environment::NewLine, openFileDialog.FileNames)));
+        }
       };
 
       this->buttonSave.Text = "Save...";

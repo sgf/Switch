@@ -54,10 +54,11 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   if (!openFileDialog.Multiselect)
     openFileDialog.FileName = fileChooserDialog.get_filename();
   else {
-    System::Collections::Generic::List<string> files;
+    System::Collections::Generic::List<string> faileNames;
     for (auto file : fileChooserDialog.get_filenames())
-      files.Add(file);
-    openFileDialog.__set__file_names__(files.ToArray());
+      faileNames.Add(file);
+    openFileDialog.FileName = faileNames[0];
+    openFileDialog.__set__file_names__(faileNames.ToArray());
   }
   return true;
 }

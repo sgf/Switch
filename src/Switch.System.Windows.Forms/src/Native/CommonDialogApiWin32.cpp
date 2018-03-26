@@ -76,9 +76,8 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   openFileName.lpstrCustomFilter = null;
   openFileName.nFilterIndex = openFileDialog.Filter() != "" ? openFileDialog.FilterIndex : 0;
 
-  wchar fileName[MAX_PATH];
-  wcscpy(fileName, openFileDialog.FileName().w_str().c_str());
-  openFileName.lpstrFile = fileName;
+  std::wstring fileName(MAX_PATH, ' ');
+  openFileName.lpstrFile = (LPWSTR)fileName.c_str();
   openFileName.nMaxFile = MAX_PATH;
 
   wchar fileTitle[MAX_PATH];
@@ -92,7 +91,7 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   std::wstring title = openFileDialog.Title().w_str();
   openFileName.lpstrTitle = title.c_str();
 
-  int32 flags = 0;
+  int32 flags = OFN_EXPLORER;
   if (openFileDialog.Multiselect) flags |= OFN_ALLOWMULTISELECT;
   if (!openFileDialog.DereferenceLinks) flags |= OFN_NODEREFERENCELINKS;
   if (openFileDialog.CheckFileExists) flags |= OFN_PATHMUSTEXIST;
@@ -106,9 +105,29 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   std::wstring defaultExt = openFileDialog.DefaultExt().w_str();
   openFileName.lpstrDefExt = defaultExt.c_str();
 
-  if (!GetOpenFileName(&openFileName)) return false;
+  BOOL result = GetOpenFileName(&openFileName);
+  if (!result  && CommDlgExtendedError() == 0) return false;
 
-  openFileDialog.FileName = fileName;
+  if (!result  && CommDlgExtendedError() == FNERR_BUFFERTOOSMALL) {
+    int32 size = (int32)*fileName.c_str();
+    fileName = std::wstring(size, ' ');
+    openFileName.lpstrFile = (LPWSTR)fileName.c_str();
+    result = GetOpenFileName(&openFileName);
+  }
+
+  if (!result  && CommDlgExtendedError() != 0)
+    throw InvalidOperationException(caller_);
+
+  if (!openFileDialog.Multiselect)
+    openFileDialog.FileName = fileName;
+  else {
+    System::Collections::Generic::List<string> fileNames;
+    string path = fileName;
+    for (int32 index = (int32)wcslen(fileName.c_str()) + 1; fileName.c_str()[index] != 0; index += (int32)wcslen(&fileName.c_str()[index]) + 1)
+      fileNames.Add(System::IO::Path::Combine(path, &fileName.c_str()[index]));
+    openFileDialog.FileName = fileNames[0];
+    openFileDialog.__set__file_names__(fileNames.ToArray());
+  }
   return true;
 }
 
