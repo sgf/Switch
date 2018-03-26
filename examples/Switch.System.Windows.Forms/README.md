@@ -1,4 +1,4 @@
-# Switch.System.Windows.Forms Examples
+# Switch.System.Windows.Forms (WinForms) Examples
 
 This folder contains all examples used by Switch Docmentation and more.
 
