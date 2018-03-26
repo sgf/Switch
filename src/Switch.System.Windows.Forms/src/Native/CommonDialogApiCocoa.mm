@@ -1,6 +1,7 @@
 #if defined(__APPLE__)
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
+#include <Switch/System/IO/Directory.hpp>
 #include "WindowProcedureApiCocoa.hpp"
 #include "../../include/Switch/System/Windows/Forms/ColorDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/FolderBrowserDialog.hpp"
@@ -183,6 +184,19 @@ bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms
 }
 
 bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog &folderBrowserDialog) {
-  return false;
+  NSOpenPanel* openPanel = [[[NSOpenPanel alloc] init] autorelease];
+  [openPanel setCanChooseFiles:NO];
+  [openPanel setCanChooseDirectories:YES];
+  [openPanel setAllowsMultipleSelection:NO];
+  [openPanel setShowsHiddenFiles:folderBrowserDialog.ShowHiddenFolders()];
+  string path = Environment::GetFolderPath(folderBrowserDialog.RootFolder);
+  if (folderBrowserDialog.SelectedPath != "" && System::IO::Directory::Exists(folderBrowserDialog.SelectedPath))
+    path = folderBrowserDialog.SelectedPath;
+  [openPanel setDirectoryURL:[NSURL fileURLWithPath:[NSString stringWithUTF8String:path.c_str()]]];
+
+  if ([openPanel runModal] == NSModalResponseCancel) return false;
+
+  folderBrowserDialog.SelectedPath = [[(NSURL*)[[openPanel URLs] objectAtIndex:0] path] UTF8String];
+  return true;
 }
 #endif

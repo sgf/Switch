@@ -14,6 +14,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ(Environment::SpecialFolder::Desktop, folderBrowserDialog.RootFolder);
     ASSERT_EQ("", folderBrowserDialog.SelectedPath);
     ASSERT_TRUE(folderBrowserDialog.ShowNewFolderButton);
+    ASSERT_FALSE(folderBrowserDialog.ShowHiddenFolders);
   }
 
   TEST(FolderBrowserDialogTest, Description) {
@@ -48,12 +49,21 @@ namespace SwitchUnitTests {
     ASSERT_FALSE(folderBrowserDialog.ShowNewFolderButton);
   }
 
+  TEST(FolderBrowserDialogTest, ShowHiddenFolders) {
+    FolderBrowserDialog folderBrowserDialog;
+
+    folderBrowserDialog.ShowHiddenFolders = true;
+
+    ASSERT_TRUE(folderBrowserDialog.ShowHiddenFolders);
+  }
+
   TEST(FolderBrowserDialogTest, Reset) {
     FolderBrowserDialog folderBrowserDialog;
     folderBrowserDialog.Description = "Browse for install path";
     folderBrowserDialog.RootFolder = Environment::SpecialFolder::MyDocuments;
     folderBrowserDialog.SelectedPath = "Gammasoft";
     folderBrowserDialog.ShowNewFolderButton = false;
+    folderBrowserDialog.ShowHiddenFolders = true;
 
     folderBrowserDialog.Reset();
 
@@ -61,5 +71,6 @@ namespace SwitchUnitTests {
     ASSERT_EQ(Environment::SpecialFolder::Desktop, folderBrowserDialog.RootFolder);
     ASSERT_EQ("", folderBrowserDialog.SelectedPath);
     ASSERT_TRUE(folderBrowserDialog.ShowNewFolderButton);
+    ASSERT_FALSE(folderBrowserDialog.ShowHiddenFolders);
   }
 }

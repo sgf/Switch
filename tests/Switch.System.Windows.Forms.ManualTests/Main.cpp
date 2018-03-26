@@ -1,5 +1,6 @@
 #include <Switch/System/Windows/Forms/Application.hpp>
 #include <Switch/System/Windows/Forms/ColorDialog.hpp>
+#include <Switch/System/Windows/Forms/FolderBrowserDialog.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
 #include <Switch/System/Windows/Forms/MessageBox.hpp>
 #include <Switch/System/Windows/Forms/OpenFileDialog.hpp>
@@ -72,6 +73,13 @@ namespace ManualTests {
       this->buttonFolder.Width = 110;
       this->buttonFolder.Location = System::Drawing::Point(10, 170);
       this->buttonFolder.Click += delegate_(const object & sender, const EventArgs & e) {
+        FolderBrowserDialog folderBrowserDialog;
+        folderBrowserDialog.RootFolder = Environment::SpecialFolder::Desktop;
+        folderBrowserDialog.ShowHiddenFolders = true;
+        System::Windows::Forms::DialogResult result = folderBrowserDialog.ShowDialog();
+        System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
+        if (result == DialogResult::OK)
+          System::Diagnostics::Debug::WriteLine(string::Format("Path = {0}", folderBrowserDialog.SelectedPath));
       };
 
       this->buttonFont.Text = "Font...";

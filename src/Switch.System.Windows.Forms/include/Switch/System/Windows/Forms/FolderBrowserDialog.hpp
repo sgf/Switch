@@ -82,6 +82,14 @@ namespace Switch {
             set_ {this->showNewFolderButton = value;}
           };
 
+          /// @brief Gets or sets a value that indicates whether the panel displays folders that are normally hidden from the user.
+          /// @return bool true if the dialog box shows hidden folders; otherwise false. the default value is false;
+          /// @remarks On Windows, this property does not have any effect.
+          property_<bool> ShowHiddenFolders {
+            get_ {return this->showHiddenFolders;},
+            set_ {this->showHiddenFolders = value;}
+          };
+
           /// @brief When overridden in a derived class, resets the properties of a common dialog box to their default values.
           void Reset() override;
 
@@ -93,6 +101,7 @@ namespace Switch {
           Environment::SpecialFolder rootFolder = Environment::SpecialFolder::Desktop;
           string selectedPath;
           bool showNewFolderButton = true;
+          bool showHiddenFolders = false;
           /// @endcond
         };
       }

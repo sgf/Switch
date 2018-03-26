@@ -13,6 +13,7 @@ void FolderBrowserDialog::Reset() {
   this->rootFolder = Environment::SpecialFolder::Desktop;
   this->selectedPath = "";
   this->showNewFolderButton = true;
+  this->showHiddenFolders = false;
 }
 
 bool FolderBrowserDialog::RunDialog(intptr hwndOwner) {
