@@ -162,6 +162,7 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
     Array<string> fileNames((int32)[urls count]);
     for (int32 index = 0; index < (int32)[urls count]; index++)
       fileNames[index] = [[(NSURL*)[urls objectAtIndex:index] path] UTF8String];
+    openFileDialog.FileName = fileNames[0];
     openFileDialog.__set__file_names__(fileNames);
   }
   return true;

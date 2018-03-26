@@ -109,7 +109,7 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   if (!result  && CommDlgExtendedError() == 0) return false;
 
   if (!result  && CommDlgExtendedError() == FNERR_BUFFERTOOSMALL) {
-    int32 size = (int32)*fileName.c_str();
+    int32 size = (int32) * fileName.c_str();
     fileName = std::wstring(size, ' ');
     openFileName.lpstrFile = (LPWSTR)fileName.c_str();
     result = GetOpenFileName(&openFileName);
