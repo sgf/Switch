@@ -5,6 +5,7 @@
 #undef set_
 
 #include <gtkmm.h>
+#include <Switch/System/IO/Directory.hpp>
 #include "WidgetGtk.hpp"
 #include "../../include/Switch/System/Windows/Forms/ColorDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/FolderBrowserDialog.hpp"
@@ -85,10 +86,20 @@ bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms
   if (window != null) fileChooserDialog.set_transient_for(*window);
 
   if (fileChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
+    saveFileDialog.FileName = fileChooserDialog.get_filename();
   return true;
 }
 
 bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog& folderBrowserDialog) {
-  return false;
+  Gtk::FileChooserDialog fileChooserDialog(folderBrowserDialog.Description().c_str(), Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
+  fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
+  fileChooserDialog.add_button("Open", Gtk::RESPONSE_OK);
+  string path = Environment::GetFolderPath(folderBrowserDialog.RootFolder);
+  if (folderBrowserDialog.SelectedPath != "" && System::IO::Directory::Exists(folderBrowserDialog.SelectedPath))
+    path = folderBrowserDialog.SelectedPath;
+  fileChooserDialog.set_current_folder(path.c_str());
+  if (fileChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
+  folderBrowserDialog.SelectedPath = fileChooserDialog.get_current_folder();
+  return true;
 }
 #endif
