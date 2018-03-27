@@ -192,14 +192,14 @@ bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::
 
   BROWSEINFO browserInfo;
   ZeroMemory(&browserInfo, sizeof(browserInfo));
- 
+
   browserInfo.hwndOwner = (HWND)hwnd;
   PIDLIST_ABSOLUTE rootPath;
   if (folderBrowserDialog.RootFolder != Environment::SpecialFolder::Desktop && SHParseDisplayName(Environment::GetFolderPath(folderBrowserDialog.RootFolder).w_str().c_str(), null, &rootPath, SFGAO_FILESYSTEM, null) == S_OK)
     browserInfo.pidlRoot = rootPath;
   browserInfo.lParam = reinterpret_cast<LPARAM>(folderBrowserDialog.SelectedPath().w_str().c_str());
   browserInfo.lpszTitle = folderBrowserDialog.Description().w_str().c_str();
-  
+
   int32 flags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
   if (!folderBrowserDialog.ShowNewFolderButton) flags += BIF_NONEWFOLDERBUTTON;
   browserInfo.ulFlags = flags;
