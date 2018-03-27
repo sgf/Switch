@@ -18,6 +18,6 @@ Ubuntu
 
 Gnome
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/OFolderBrowserDialogGD.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/FolderBrowserDialogGD.png)
 
 Gnome Dark
