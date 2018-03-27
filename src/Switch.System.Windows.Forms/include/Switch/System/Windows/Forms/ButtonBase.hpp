@@ -36,8 +36,20 @@ namespace Switch {
             set_ {this->autoElipsis = value;}
           };
 
+          /// @brief Gets or sets a value indicating whether the button control is the default button.(Inherited from ButtonBase.)
+          /// @return bool true if the button control is the default button; otherwise, false.
+          /// @remarks When the IsDefault property is set to true, the button is the default button for the Form. This means that the button is clicked when the ENTER key is pressed if no other button or any other control that captures the ENTER key has focus.
+          /// @remarks To specify the default button of a form, set the AcceptButton property of the form to the desired button.
+          property_<bool> IsDefault {
+            get_ {return this->isDefault;},
+            set_ {this->SetIsDefault(value);}
+          };
+
+        protected:
           /// @cond
+          void SetIsDefault(bool isDefault);
           bool autoElipsis = false;
+          bool isDefault = false;
           /// @endcond
         };
       }

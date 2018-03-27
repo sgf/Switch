@@ -24,7 +24,7 @@ intptr Native::ButtonApi::Create(const System::Windows::Forms::Button& button) {
   return (intptr)handle;
 }
 
-void Native::ButtonApi::SetIsDefault(const System::Windows::Forms::Button& button) {
+void Native::ButtonApi::SetIsDefault(const System::Windows::Forms::ButtonBase& button) {
 
 }
 

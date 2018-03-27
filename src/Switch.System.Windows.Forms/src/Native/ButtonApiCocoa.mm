@@ -40,7 +40,7 @@ intptr Native::ButtonApi::Create(const System::Windows::Forms::Button& button) {
   }
 }
 
-void Native::ButtonApi::SetIsDefault(const System::Windows::Forms::Button& button) {
+void Native::ButtonApi::SetIsDefault(const System::Windows::Forms::ButtonBase& button) {
   [(NSButton*)button.Handle() setKeyEquivalent: [NSString stringWithUTF8String:button.IsDefault ? "\r" : ""]];
 }
 

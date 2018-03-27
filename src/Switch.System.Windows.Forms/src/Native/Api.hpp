@@ -26,6 +26,7 @@ namespace Switch {
         enum class ArrangeStartingPosition;
         enum class BootMode;
         class Button;
+        class ButtonBase;
         class CheckBox;
         class ColorDialog;
         class Control;
@@ -71,7 +72,7 @@ namespace Native {
   class ButtonApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::Button& button);
-    static void SetIsDefault(const System::Windows::Forms::Button& button);
+    static void SetIsDefault(const System::Windows::Forms::ButtonBase& button);
   };
 
   class CheckBoxApi static_ {
