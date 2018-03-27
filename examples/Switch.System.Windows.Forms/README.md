@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Switch.System.Windows.Forms (WinForms) Examples
+=======
+# Switch.System.Windows.Forms Examples
+>>>>>>> develop
 
 This folder contains all examples used by Switch Docmentation and more.
 

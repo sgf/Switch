@@ -94,7 +94,22 @@ namespace {
     return false;
   }
 
-  static NSView* CreateFilterView(NSSavePanel* savePanel, const Array<System::Collections::Generic::KeyValuePair<string, Array<string>>>& filters, int filterIndex) {
+  static NSView* CreateFilterViewForColorDialog(NSColorPanel* colorPanel) {
+    NSButton* buttonCancel = [[[NSButton alloc] initWithFrame:NSMakeRect([colorPanel frame].size.width - 170, 0, 75, 30)] autorelease];
+    [buttonCancel setTitle:@"Cancel"];
+    [buttonCancel setBezelStyle: NSBezelStyleRounded];
+    NSButton* buttonOk = [[[NSButton alloc] initWithFrame:NSMakeRect([colorPanel frame].size.width - 85, 0, 75, 30)] autorelease];
+    [buttonOk setTitle:@"OK"];
+    [buttonOk setBezelStyle: NSBezelStyleRounded];
+
+    NSView* view = [[[NSView alloc] initWithFrame:NSMakeRect(5, 5, 350, 30 )] autorelease];
+    [view addSubview:buttonCancel];
+    [view addSubview:buttonOk];
+
+    return view;
+  }
+
+  static NSView* CreateFilterViewForFileDialog(NSSavePanel* savePanel, const Array<System::Collections::Generic::KeyValuePair<string, Array<string>>>& filters, int filterIndex) {
     NSPopUpButton* popUpButton = [[[NSPopUpButton alloc ] initWithFrame:NSMakeRect(62, 0, 256, 30) pullsDown:NO] autorelease];
     for (auto filter : filters)
       [popUpButton addItemWithTitle:[NSString stringWithUTF8String:filter.Key().c_str()]];
@@ -135,8 +150,13 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
   ColorPanelCocoa* colorPanel = [[[ColorPanelCocoa alloc] init] autorelease];
   [colorPanel setIsVisible:YES];
   [colorPanel setColor:FromColor(colorDialog.Color)];
+  [colorPanel setFloatingPanel:NO];
+  [[colorPanel accessoryView] setBoundsOrigin:NSMakePoint(0, 300)];
+  [colorPanel setViewsNeedDisplay:YES];
+  //[colorPanel setAccessoryView:CreateFilterViewForColorDialog(colorPanel)];
   [colorPanel show];
   colorDialog.Color = ToColor([colorPanel color]);
+
   return true;
 }
 
@@ -151,7 +171,7 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   [openPanel setDirectoryURL:[NSURL fileURLWithPath:[NSString stringWithUTF8String:openFileDialog.InitialDirectory().c_str()]]];
   [openPanel setNameFieldStringValue:[NSString stringWithUTF8String:openFileDialog.FileName().c_str()]];
   if (openFileDialog.__get_filters__().Count != 0)
-    [openPanel setAccessoryView:CreateFilterView(openPanel, openFileDialog.__get_filters__(), openFileDialog.FilterIndex - 1)];
+    [openPanel setAccessoryView:CreateFilterViewForFileDialog(openPanel, openFileDialog.__get_filters__(), openFileDialog.FilterIndex - 1)];
 
   if ([openPanel runModal] == NSModalResponseCancel) return false;
 
@@ -176,7 +196,7 @@ bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms
   [savePanel setDirectoryURL:[NSURL fileURLWithPath:[NSString stringWithUTF8String:saveFileDialog.InitialDirectory().c_str()]]];
   [savePanel setNameFieldStringValue:[NSString stringWithUTF8String:saveFileDialog.FileName().c_str()]];
   if (saveFileDialog.__get_filters__().Count != 0)
-    [savePanel setAccessoryView:CreateFilterView(savePanel, saveFileDialog.__get_filters__(), saveFileDialog.FilterIndex - 1)];
+    [savePanel setAccessoryView:CreateFilterViewForFileDialog(savePanel, saveFileDialog.__get_filters__(), saveFileDialog.FilterIndex - 1)];
 
   if ([savePanel runModal] == NSModalResponseCancel) return false;
 
