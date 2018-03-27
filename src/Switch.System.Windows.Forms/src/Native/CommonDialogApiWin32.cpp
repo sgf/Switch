@@ -5,6 +5,7 @@
 
 #include <windows.h>
 #include <CommCtrl.h>
+#include <ShlObj.h>
 #include <Switch/Undef.hpp>
 #include "Api.hpp"
 #include <Switch/System/Buffer.hpp>
@@ -30,6 +31,14 @@ namespace {
     }
     result[index] += '\0';
     return result;
+  }
+
+  static int CALLBACK BrowseFolderCallback(HWND hwnd, UINT message, LPARAM lParam, LPARAM lpData) {
+    if (message == BFFM_INITIALIZED) {
+      LPCTSTR path = reinterpret_cast<LPCTSTR>(lpData);
+      ::SendMessage(hwnd, BFFM_SETSELECTION, true, (LPARAM)path);
+    }
+    return 0;
   }
 }
 
@@ -179,6 +188,30 @@ bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms
 }
 
 bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog& folderBrowserDialog) {
-  return false;
+  CoInitializeEx(null, COINIT_APARTMENTTHREADED);
+
+  BROWSEINFO browserInfo;
+  ZeroMemory(&browserInfo, sizeof(browserInfo));
+ 
+  browserInfo.hwndOwner = (HWND)hwnd;
+  PIDLIST_ABSOLUTE rootPath;
+  if (folderBrowserDialog.RootFolder != Environment::SpecialFolder::Desktop && SHParseDisplayName(Environment::GetFolderPath(folderBrowserDialog.RootFolder).w_str().c_str(), null, &rootPath, SFGAO_FILESYSTEM, null) == S_OK)
+    browserInfo.pidlRoot = rootPath;
+  browserInfo.lParam = reinterpret_cast<LPARAM>(folderBrowserDialog.SelectedPath().w_str().c_str());
+  browserInfo.lpszTitle = folderBrowserDialog.Description().w_str().c_str();
+  
+  int32 flags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
+  if (!folderBrowserDialog.ShowNewFolderButton) flags += BIF_NONEWFOLDERBUTTON;
+  browserInfo.ulFlags = flags;
+  //browserInfo.lpfn = BrowseFolderCallback;
+
+  PCIDLIST_ABSOLUTE result = SHBrowseForFolder(&browserInfo);
+  if (!result) return false;
+
+  wchar path[MAX_PATH];
+  SHGetPathFromIDList(result, path);
+
+  folderBrowserDialog.SelectedPath = path;
+  return true;
 }
 #endif
