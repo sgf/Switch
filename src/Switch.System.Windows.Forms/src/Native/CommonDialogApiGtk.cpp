@@ -98,6 +98,8 @@ bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::
   if (folderBrowserDialog.SelectedPath != "" && System::IO::Directory::Exists(folderBrowserDialog.SelectedPath))
     path = folderBrowserDialog.SelectedPath;
   fileChooserDialog.set_current_folder(path.c_str());
+  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
+  if (window != null) fileChooserDialog.set_transient_for(*window);
   if (fileChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
   folderBrowserDialog.SelectedPath = fileChooserDialog.get_current_folder();
   return true;
