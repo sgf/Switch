@@ -34,6 +34,8 @@ Array<System::Drawing::FontFamily> Native::FontFamilyApi::GetInstalledFontFamili
 }
 
 System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const string& name) {
+  if (pangoFontFamilies == null)
+    pango_font_map_list_families(pango_cairo_font_map_get_default(), &pangoFontFamilies, &pangoFontFamiliesMax);
   for (int32 index = 0; index < pangoFontFamiliesMax; index++)
     if (GetName((intptr)index) == name)
       return System::Drawing::FontFamily((intptr)index);

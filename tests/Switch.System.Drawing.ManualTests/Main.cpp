@@ -13,12 +13,12 @@ namespace ManualTests {
   public:
     // The main entry point for the application.
     static void Main() {
-      Console::WriteLine("GenericMonospacef : {0}", FontFamily::GenericMonospace().Name);
-      Console::WriteLine("GenericSansSerif : {0}", FontFamily::GenericSansSerif().Name);
-      Console::WriteLine("GenericSerif : {0}", FontFamily::GenericSerif().Name);
-      Console::WriteLine("Families : {0}", System::Drawing::FontFamily::Families().Count);
+      Console::WriteLine("GenericMonospacef : \"{0}\"", FontFamily::GenericMonospace().Name);
+      Console::WriteLine("GenericSansSerif : \"{0}\"", FontFamily::GenericSansSerif().Name);
+      Console::WriteLine("GenericSerif : \"{0}\"", FontFamily::GenericSerif().Name);
+      Console::WriteLine("Families :");
       for (System::Drawing::FontFamily fontFamily : System::Drawing::FontFamily::Families())
-        Console::WriteLine("  fontFamily = {0}", fontFamily.Name);
+        Console::WriteLine("  fontFamily = \"{0}\"", fontFamily.Name);
     }
   };
 }
