@@ -86,7 +86,7 @@ bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms
   if (window != null) fileChooserDialog.set_transient_for(*window);
 
   if (fileChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
-    saveFileDialog.FileName = fileChooserDialog.get_filename();
+  saveFileDialog.FileName = fileChooserDialog.get_filename();
   return true;
 }
 
