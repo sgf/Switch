@@ -1,5 +1,6 @@
 #if defined(__linux__)
 #include "Api.hpp"
+#include <Switch/System/Diagnostics/Debug.hpp>
 
 #undef interface_
 #undef get_
@@ -19,13 +20,16 @@ namespace {
 };
 
 Array<System::Drawing::FontFamily> Native::FontFamilyApi::GetInstalledFontFamilies() {
+  // if (pangoFontFamilies != null) {
+  //   g_free (pangoFontFamilies);
+  //   pangoFontFamilies = null;
+  // }
+  if (pangoFontFamilies == null)
+    pango_font_map_list_families(pango_cairo_font_map_get_default(), &pangoFontFamilies, &pangoFontFamiliesMax);
   System::Collections::Generic::List<System::Drawing::FontFamily> families;
-
-  PangoFontMap* fontmap = pango_cairo_font_map_get_default();
-  pango_font_map_list_families (fontmap, &pangoFontFamilies, &pangoFontFamiliesMax);
   for (int32 index = 0; index < pangoFontFamiliesMax; index++)
     families.Add(System::Drawing::FontFamily((intptr)index));
-
+  families.Sort(delegate_(const System::Drawing::FontFamily& a, const System::Drawing::FontFamily& b) {return a.Name().CompareTo(b.Name);});
   return families.ToArray();
 }
 
@@ -38,11 +42,11 @@ System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const s
 
 string Native::FontFamilyApi::GetName(intptr handle) {
   if ((int32)handle >= pangoFontFamiliesMax) throw InvalidOperationException(caller_);
-  return pango_font_family_get_name (pangoFontFamilies[(int32)handle]);
+  return pango_font_family_get_name(pangoFontFamilies[(int32)handle]);
 }
 
 bool Native::FontFamilyApi::IsStyleAvailable(intptr handle, FontStyle style) {
-  if (handle == 0) return false;
+  if ((int32)handle >= pangoFontFamiliesMax) return false;
 
   /*
   if ((style & FontStyle::Italic) == FontStyle::Italic && result->lfItalic == 0) return false;
@@ -53,8 +57,6 @@ bool Native::FontFamilyApi::IsStyleAvailable(intptr handle, FontStyle style) {
 }
 
 void Native::FontFamilyApi::ReleaseResource(intptr handle) {
-  if (pangoFontFamilies != null)
-    g_free (pangoFontFamilies);
 }
 
 #endif
