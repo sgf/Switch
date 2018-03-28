@@ -94,6 +94,7 @@ namespace {
     return false;
   }
 
+  /*
   static NSView* CreateFilterViewForColorDialog(NSColorPanel* colorPanel) {
     NSButton* buttonCancel = [[[NSButton alloc] initWithFrame:NSMakeRect([colorPanel frame].size.width - 170, 0, 75, 30)] autorelease];
     [buttonCancel setTitle:@"Cancel"];
@@ -107,7 +108,7 @@ namespace {
     [view addSubview:buttonOk];
 
     return view;
-  }
+  }*/
 
   static NSView* CreateFilterViewForFileDialog(NSSavePanel* savePanel, const Array<System::Collections::Generic::KeyValuePair<string, Array<string>>>& filters, int filterIndex) {
     NSPopUpButton* popUpButton = [[[NSPopUpButton alloc ] initWithFrame:NSMakeRect(62, 0, 256, 30) pullsDown:NO] autorelease];

@@ -29,6 +29,9 @@ namespace Native {
     static string GetName(intptr handle);
     static bool IsStyleAvailable(intptr handle, System::Drawing::FontStyle style);
     static void ReleaseResource(intptr handle);
+    static string GenericFontFamilySerifName();
+    static string GenericFontFamilySansSerifName();
+    static string GenericFontFamilyMonospaceName();
   };
 
   class GdiApi static_ {

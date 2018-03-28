@@ -81,4 +81,16 @@ void Native::FontFamilyApi::ReleaseResource(intptr handle) {
     delete (LOGFONT*)handle;
 }
 
+string Native::FontFamilyApi::GenericFontFamilySerifName() {
+  return "Times New Roman";
+}
+
+string Native::FontFamilyApi::GenericFontFamilySansSerifName() {
+  return "Microsoft Sans Serif";
+}
+
+string Native::FontFamilyApi::GenericFontFamilyMonospaceName() {
+  return "Courier New";
+}
+
 #endif

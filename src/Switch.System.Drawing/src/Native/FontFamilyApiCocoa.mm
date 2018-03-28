@@ -69,4 +69,16 @@ void Native::FontFamilyApi::ReleaseResource(intptr handle) {
     delete (LogFont*)handle;
 }
 
+string Native::FontFamilyApi::GenericFontFamilySerifName() {
+  return "Times";
+}
+
+string Native::FontFamilyApi::GenericFontFamilySansSerifName() {
+  return "Helvetica";
+}
+
+string Native::FontFamilyApi::GenericFontFamilyMonospaceName() {
+  return "Courier";
+}
+
 #endif

@@ -3,23 +3,17 @@
 #include "../../../../include/Switch/System/Drawing/Text/InstalledFontCollection.hpp"
 #include "../../../Native/Api.hpp"
 
-namespace {
-  const string genericFontFamilySerifName = "Times New Roman";
-  const string genericFontFamilySansSerifName = "Microsoft Sans Serif";
-  const string genericFontFamilyMonospaceName = "Courier New";
-}
-
 System::Drawing::FontFamily::FontFamily(const string& name) {
   *this = Native::FontFamilyApi::GetFontFamilyFromName(name);
 }
 
 System::Drawing::FontFamily::FontFamily(System::Drawing::Text::GenericFontFamilies genericFamily) {
   if (genericFamily == System::Drawing::Text::GenericFontFamilies::Serif)
-    *this = System::Drawing::FontFamily(genericFontFamilySerifName);
+    *this = System::Drawing::FontFamily(Native::FontFamilyApi::GenericFontFamilySerifName());
   else if (genericFamily == System::Drawing::Text::GenericFontFamilies::SansSerif)
-    *this = System::Drawing::FontFamily(genericFontFamilySansSerifName);
+    *this = System::Drawing::FontFamily(Native::FontFamilyApi::GenericFontFamilySansSerifName());
   else
-    *this = System::Drawing::FontFamily(genericFontFamilyMonospaceName);
+    *this = System::Drawing::FontFamily(Native::FontFamilyApi::GenericFontFamilyMonospaceName());
 }
 
 System::Drawing::FontFamily::~FontFamily() {

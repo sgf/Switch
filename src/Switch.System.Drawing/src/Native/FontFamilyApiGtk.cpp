@@ -29,7 +29,7 @@ Array<System::Drawing::FontFamily> Native::FontFamilyApi::GetInstalledFontFamili
   System::Collections::Generic::List<System::Drawing::FontFamily> families;
   for (int32 index = 0; index < pangoFontFamiliesMax; index++)
     families.Add(System::Drawing::FontFamily((intptr)index));
-  families.Sort(delegate_(const System::Drawing::FontFamily& a, const System::Drawing::FontFamily& b) {return a.Name().CompareTo(b.Name);});
+  families.Sort(delegate_(const System::Drawing::FontFamily & a, const System::Drawing::FontFamily & b) {return a.Name().CompareTo(b.Name);});
   return families.ToArray();
 }
 
@@ -57,6 +57,18 @@ bool Native::FontFamilyApi::IsStyleAvailable(intptr handle, FontStyle style) {
 }
 
 void Native::FontFamilyApi::ReleaseResource(intptr handle) {
+}
+
+string Native::FontFamilyApi::GenericFontFamilySerifName() {
+  return "Serif";
+}
+
+string Native::FontFamilyApi::GenericFontFamilySansSerifName() {
+  return "Sans";
+}
+
+string Native::FontFamilyApi::GenericFontFamilyMonospaceName() {
+  return "Monospace";
 }
 
 #endif
