@@ -683,7 +683,7 @@ namespace Switch {
         /// @endcode
         String ToString() const override { return string::Format("[{0}: Name={1}, Size={2}, Units={3}, GdiCharSet={4}, GdiVerticalFont={5}]", this->GetType().Name, this->data->fontFamily.Name, this->data->size, (int32)this->data->unit, this->data->gdiCharSet, this->data->gdiVerticalFont); }
 
-      private:
+      //private:
         static System::Drawing::Font FromLogFontHandle(intptr lf, intptr hdc);
         float GetSizeInPoint() const;
 
