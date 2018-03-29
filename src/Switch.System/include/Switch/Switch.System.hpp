@@ -22,6 +22,7 @@
 #include "System/ComponentModel/IContainer.hpp"
 #include "System/ComponentModel/ISite.hpp"
 #include "System/ComponentModel/InvalidEnumArgumentException.hpp"
+#include "System/ComponentModel/Win32Exception.hpp"
 #include "System/Diagnostics/ConsoleTraceListener.hpp"
 #include "System/Diagnostics/Debug.hpp"
 #include "System/Diagnostics/DefaultTraceListener.hpp"

@@ -1,6 +1,8 @@
 #include "../../../../include/Switch/System/Drawing/Font.hpp"
+#include "../../../../include/Switch/System/Drawing/Graphics.hpp"
 #include "../../../Native/Api.hpp"
 #include <Switch/System/Tuple.hpp>
+#include <Switch/System/NotImplementedException.hpp>
 
 using namespace System;
 
@@ -111,23 +113,22 @@ System::Drawing::Font::Font::~Font() {
 }
 
 System::Drawing::Font System::Drawing::Font::FromHdc(intptr hdc) {
-  System::Drawing::Font font;
-  return font;
+  throw NotImplementedException(caller_);
 }
 
 System::Drawing::Font System::Drawing::Font::FromHFont(intptr hfont) {
-  System::Drawing::Font font;
-  //this->data->hfont = Native::Api::Font::CreateFromHandle(this->data->fontFamily);
-  return font;
+  throw NotImplementedException(caller_);
 }
 
 System::Drawing::Font System::Drawing::Font::FromLogFontHandle(intptr logfont, intptr hdc) {
-  System::Drawing::Font font;
-
-  return font;
+  throw NotImplementedException(caller_);
 }
 
 float System::Drawing::Font::GetHeight() const {
+  return 0;
+}
+
+float System::Drawing::Font::GetHeight(const Graphics& graphics) const {
   return 0;
 }
 

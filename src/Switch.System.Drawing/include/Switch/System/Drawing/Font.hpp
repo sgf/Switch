@@ -2,6 +2,7 @@
 /// @brief Contains Switch::System::Drawing::Font class.
 #pragma once
 
+#include <Switch/System/ComponentModel/Win32Exception.hpp>
 #include <Switch/System/Convert.hpp>
 #include <Switch/System/ICloneable.hpp>
 #include <Switch/System/String.hpp>
@@ -16,6 +17,10 @@ namespace Switch {
   namespace System {
     /// @brief The System::Drawing namespace provides access to GDI+ basic graphics functionality. More advanced functionality is provided in the System::Drawing::Drawing2D, System::Drawing::Imaging, and System::Drawing::Text namespaces.
     namespace Drawing {
+      /// @cond
+      class Graphics;
+      /// @endcond
+      
       /// @brief Defines a particular format for text, including font face, size, and style attributes. This class cannot be inherited.
       /// @par Library
       /// Switch.System.Drawing
@@ -514,13 +519,76 @@ namespace Switch {
         /// @endcode
         $<object> Clone() const override {return this->MemberwiseClone<Font>();}
 
+        /// @brief Indicates whether the specified object is a Font and has the same FontFamily, GdiVerticalFont, GdiCharSet, Style, Size, and Unit property values as this Font.
+        /// @param obj The object to test.
+        /// @return bool true if the obj parameter is a Font and has the same FontFamily, GdiVerticalFont, GdiCharSet, Style, Size, and Unit property values as this Font; otherwise, false.
+        /// @par Examples
+        /// The following code example is designed for use with Windows Forms, and it requires PaintEventArgse, which is a parameter of the Paint event handler. The code creates two Font objects and then tests whether they are equivalent.
+        /// @code
+        /// void Equals_Example(PaintEventArgs& e) {
+        ///   // Create a Font object.
+        ///   Font firstFont("Arial", 16);
+        ///
+        ///   // Create a second Font object.
+        ///   Font secondFont(FontFamily("Arial"), 16);
+        ///
+        ///   // Test to see if firstFont is identical to secondFont.
+        ///   bool fontTest = firstFont.Equals(secondFont);
+        ///
+        ///   // Display a message box with the result of the test.
+        ///   MessageBox::Show(Boolean(fontTest).ToString());
+        /// }
+        /// @endcode
+        bool Equals(const object& obj) const override {return is<Font>(obj) && this->data->fontFamily == as<Font>(obj).data->fontFamily && this->data->gdiCharSet == as<Font>(obj).data->gdiCharSet && this->data->gdiVerticalFont == as<Font>(obj).data->gdiVerticalFont && this->data->style == as<Font>(obj).data->style && this->data->size == as<Font>(obj).data->size && this->data->unit == as<Font>(obj).data->unit;}
+        
+        /// @brief Creates a Font from the specified Windows handle to a device context.
+        /// @param hdc A handle to a device context.
+        /// @return Font The Font this method creates.
+        /// @exception ArgumentException The font for the specified device context is not a TrueType font.
+        /// @remarks For this method to work, the hdc parameter must contain a handle to a device context in which a font is selected. This method will not work with an hdc handle acquired from a GDI+ Graphics object because the hdc handle does not have a font selected.
+        /// @warning Always throw NotImplementedExeption.
         static System::Drawing::Font FromHdc(intptr hdc);
 
+        /// @brief Creates a Font from the specified Windows handle.
+        /// @param hfont A Windows handle to a GDI font.
+        /// @return Font The Font this method creates.
+        /// @remarks For this method to work, the hdc parameter must contain a handle to a device context in which a font is selected. This method will not work with an hdc handle acquired from a GDI+ Graphics object because the hdc handle does not have a font selected.
+        /// @warning Always throw NotImplementedExeption.
+        /// @par Examples
+        /// The following code example is designed for use with Windows Forms, and it requires PaintEventArgse, which is a parameter of the Paint event handler. The code performs the following actions:
+        /// * Gets a handle to a GDI font.
+        /// * Creates a Font from that handle.
+        /// * Draws text to the screen, using the new Font.
+        /// @code
+        /// void FromHfont_Example(PaintEventArgs& e) {
+        ///
+        ///   // Get a handle for a GDI font.
+        ///   intptr hFont = (intptr)GetStockObject(0); // Win32 api (included in Windows.h)
+        ///
+        ///   // Create a Font object from hFont.
+        ///   Font hfontFont = Font::FromHfont(hFont);
+        ///
+        ///   // Use hfontFont to draw text to the screen.
+        ///   e.Graphics().DrawString("This font is from a GDI HFONT", hfontFont, Brushes::Black, 0, 0)
+        /// }
+        /// @endcode
         static System::Drawing::Font FromHFont(intptr hfont);
 
+        /// @brief Creates a Font from the specified GDI logical font (LOGFONT) structure.
+        /// @param lf An Object that represents the GDI LOGFONT structure from which to create the Font.
+        /// @return Font The Font that this method creates.
+        /// @remarks A GDI LOGFONT, or logical font, is a structure that contains 14 properties that describe a particular font. For more information, see "The Logical Font" in the Windows Development documentation at http://msdn.microsoft.com/library.
+        /// @warning Always throw NotImplementedExeption.
         template<typename object>
         static System::Drawing::Font FromLogFont(const object& lf) { return FromLogFont(lf, 0); }
 
+        /// @brief Creates a Font from the specified GDI logical font (LOGFONT) structure.
+        /// @param lf An Object that represents the GDI LOGFONT structure from which to create the Font.
+        /// @param hdc A handle to a device context that contains additional information about the lf structure.
+        /// @return Font The Font that this method creates.
+        /// @exception ArgumentException The font is not a TrueType font.
+        /// @remarks A GDI LOGFONT, or logical font, is a structure that contains 14 properties that describe a particular font. For more information, see "The Logical Font" in the Windows Development documentation at http://msdn.microsoft.com/library.
+        /// @warning Always throw NotImplementedExeption.
         template<typename object>
         static System::Drawing::Font FromLogFont(const object& lf, intptr hdc) { return FromLogFontHandle((intptr)&lf, hdc); }
 
@@ -531,14 +599,88 @@ namespace Switch {
         /// @remarks 2355*(0.3/2048)*96 = 33.11719
         float GetHeight() const;
 
-        bool IsStyleAvaible(const System::Drawing::FontStyle& style) const {
-          if (style == System::Drawing::FontStyle::Regular)
-            return true;
-          return System::Drawing::FontStyle(int(this->data->style) & int(style)) == style;
-        }
+        /// @brief Returns the line spacing, in the current unit of a specified Graphics, of this font.
+        /// @param graphics A Graphics that holds the vertical resolution, in dots per inch, of the display device as well as settings for page unit and page scale.
+        /// @return float The line spacing, in pixels, of this font.
+        /// @remarks The line spacing of a Font is the vertical distance between the base lines of two consecutive lines of text. Thus, the line spacing includes the blank space between lines along with the height of the character itself.
+        /// @remarks If the Unit property of the font is set to anything other than GraphicsUnit.Pixel, the height, in pixels, is calculated using the vertical resolution of the specified Graphics object. For example, suppose the font unit is inches and the font size is 0.3. Also suppose that for the corresponding font family, the em-height is 2048 and the line spacing is 2355. If the Graphics object has a Unit property value of GraphicsUnit.Pixel and a DpiY property value of 96 dots per inch, the height is calculated as follows:
+        /// @remarks 2355*(0.3/2048)*96 = 33.1171875
+        /// @remarks Continuing with the same example, suppose the Unit property of the Graphics object is set to GraphicsUnit.Millimeter rather than GraphicsUnit.Pixel. Then (using 1 inch = 25.4 millimeters) the height, in millimeters, is calculated as follows:
+        /// @remarks 2355*(0.3/2048)*25.4 = 8.762256
+        /// @par Examples
+        /// The following code example is designed for use with Windows Forms, and it requires PaintEventArgse, which is a parameter of the Paint event handler. The code performs the following actions:
+        /// * Creates a Font.
+        /// * Draws a line of text to the screen, using the new Font.
+        /// * Gets the height of the font.
+        /// * Draws a second line of text directly below the first line.
+        /// @code
+        /// void GetHeight_Example(PaintEventArgs& e) {
+        ///   // Create a Font object.
+        ///   Font myFont("Arial", 16);
+        ///
+        ///   //Draw text to the screen with myFont.
+        ///   e.Graphics().DrawString("This is the first line", myFont, Brushes::Black, PointF(0, 0));
+        ///
+        ///   //Get the height of myFont.
+        ///   float height = myFont.GetHeight(e.Graphics);
+        ///
+        ///   //Draw text immediately below the first line of text.
+        ///   e.Graphics.DrawString("This is the second line", myFont, Brushes::Black, PointF(0, height));
+        /// }
+        /// @endcode
+        float GetHeight(const Graphics& graphics) const;
 
+        /// @brief Returns the height, in pixels, of this Font when drawn to a device with the specified vertical resolution.
+        /// @param dpi The vertical resolution, in dots per inch, used to calculate the height of the font.
+        /// @return float The height, in pixels, of this Font.
+        /// @remarks If the Unit property of the font is set to anything other than GraphicsUnit.Pixel, the height (in pixels) is calculated using the vertical resolution of the screen display. For example, suppose the font unit is inches and the font size is 0.3. Also suppose that for the corresponding font family, the em-height is 2048 and the line spacing is 2355. If the specified vertical resolution is 96 dots per inch, the height is calculated as follows:
+        /// @remarks 2355*(0.3/2048)*96 = 33.1171875
+        float GetHeight(float dpi) const;
+
+        /// @brief Returns a handle to this Font.
+        /// @return intptr A Windows handle to this Font.
+        /// @exception Win32Exception The operation was unsuccessful.
+        /// @remarks When using this method, you must dispose of the resulting Hfont using the GDI DeleteObject method to ensure the resources are released.
+        /// @par Examples
+        /// The following code example creates a Font and then gets a handle to that Font. The example is designed for use with Windows Forms, and it requires PaintEventArgse, which is a parameter of the Paint event handler.
+        /// @code
+        /// void ToHfont_Example(PaintEventArgs& e) {
+        ///   // Create a Font object.
+        ///   Font myFont("Arial", 16);
+        ///
+        ///   // Get a handle to the Font object.
+        ///   intptr hFont = myFont.ToHfont();
+        ///
+        ///   // Display a message box with the value of hFont.
+        ///   MessageBox::Show(IntPtr(hFont).ToString());
+        ///
+        ///   //Dispose of the hFont.
+        ///   DeleteObject(hFont); // Win32 api (included in Windows.h)
+        /// }
+        /// @endcode
         intptr ToHFont() const {return this->data->hfont;}
 
+        /// @brief Returns a human-readable string representation of this Font.
+        /// @return string A string that represents this Font.
+        /// @remarks The returned string has the following format:
+        /// @remarks [Font: Name=fontName, Size=size, Units=units, GDiCharSet=gdiCharSet, GdiVerticalFont=boolean]
+        /// @par Examples
+        /// The following code example is designed for use with Windows Forms, and it requires PaintEventArgse, which is a parameter of the Paint event handler. The code performs the following actions:
+        /// * Creates a Font.
+        /// * Gets a string that represents the font.
+        /// * Displays the string in a message box.
+        /// @code
+        /// void ToString_Example(PaintEventArgs& e) {
+        ///   // Create a Font object.
+        ///   Font myFont("Arial", 16);
+        ///
+        ///   // Get a string that represents myFont.
+        ///   string fontString = myFont.ToString();
+        ///
+        ///   // Display a message box with fontString.
+        ///   MessageBox::Show(fontString);
+        /// }
+        /// @endcode
         String ToString() const override { return string::Format("[{0}: Name={1}, Size={2}, Units={3}, GdiCharSet={4}, GdiVerticalFont={5}]", this->GetType().Name, this->data->fontFamily.Name, this->data->size, (int32)this->data->unit, this->data->gdiCharSet, this->data->gdiVerticalFont); }
 
       private:
