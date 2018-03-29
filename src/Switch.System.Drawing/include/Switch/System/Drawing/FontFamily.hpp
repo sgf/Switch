@@ -44,6 +44,8 @@ namespace Switch {
           get_ {return this->GetName();}
         };
 
+        bool Equals(const object& obj) const override {return is<FontFamily>(obj) && this->Name == as<FontFamily>(obj).Name;}
+
         bool IsStyleAvailable(FontStyle style) const;
 
       private:
