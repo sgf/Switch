@@ -20,7 +20,7 @@ namespace Switch {
       /// @cond
       class Graphics;
       /// @endcond
-      
+
       /// @brief Defines a particular format for text, including font face, size, and style attributes. This class cannot be inherited.
       /// @par Library
       /// Switch.System.Drawing
@@ -540,7 +540,7 @@ namespace Switch {
         /// }
         /// @endcode
         bool Equals(const object& obj) const override {return is<Font>(obj) && this->data->fontFamily == as<Font>(obj).data->fontFamily && this->data->gdiCharSet == as<Font>(obj).data->gdiCharSet && this->data->gdiVerticalFont == as<Font>(obj).data->gdiVerticalFont && this->data->style == as<Font>(obj).data->style && this->data->size == as<Font>(obj).data->size && this->data->unit == as<Font>(obj).data->unit;}
-        
+
         /// @brief Creates a Font from the specified Windows handle to a device context.
         /// @param hdc A handle to a device context.
         /// @return Font The Font this method creates.

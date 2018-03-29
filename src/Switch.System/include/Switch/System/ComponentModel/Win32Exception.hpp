@@ -26,11 +26,11 @@ namespace Switch {
         /// @brief Create a new instance of class Win32Exception
         /// @remarks Message is set with the default message associate to the error.
         Win32Exception() : Exception() {}
-        
+
         /// @brief Create a new instance of class Win32Exception
         /// @remarks Message is set with the default message associate to the error.
         Win32Exception(int32 error) : Exception(), errorCode(error) {}
-        
+
         /// @brief Create a new instance of class Win32Exception
         /// @param value The Excetion to copy.
         /// @remarks Message is set with the default message associate to the error.
@@ -52,27 +52,27 @@ namespace Switch {
         /// @brief Create a new instance of class Win32Exception
         /// @param message Message string associate to the error.
         Win32Exception(const System::String& message) : Exception(message) {}
-        
+
         /// @brief Create a new instance of class Win32Exception
         /// @param message Message string associate to the error.
         Win32Exception(int32 error, const System::String& message) : Exception(message), errorCode(error) {}
-        
+
         /// @brief Create a new instance of class Win32Exception
         /// @param message Message string associate to the error.
         /// @param information Conatains current information of file and Number of line in the file where the exception is occurred. Typically #caller_.
         Win32Exception(const System::String& message, const System::Runtime::CompilerServices::Caller& information) : Exception(message, information) {}
-        
+
         /// @brief Create a new instance of class Win32Exception
         /// @param message Message string associate to the error.
         /// @param information Conatains current information of file and Number of line in the file where the exception is occurred. Typically #caller_.
         Win32Exception(int32 error, const System::String& message, const System::Runtime::CompilerServices::Caller& information) : Exception(message, information), errorCode(error) {}
-        
+
         /// @brief Create a new instance of class Win32Exception
         /// @param message Message string associate to the error.
         /// @param innerException The exception that is the cause of the current exception, or a null reference if no inner exception is specified.
         /// @param information Conatains current information of file and Number of line in the file where the exception is occurred. Typically #caller_.
         Win32Exception(const System::String& message, const System::Exception& innerException, const System::Runtime::CompilerServices::Caller& information) : Exception(message, innerException, information) {}
-        
+
         /// @brief Create a new instance of class Win32Exception
         /// @param message Message string associate to the error.
         /// @param innerException The exception that is the cause of the current exception, or a null reference if no inner exception is specified.
@@ -87,4 +87,3 @@ namespace Switch {
 }
 
 using namespace Switch;
-
