@@ -3,6 +3,7 @@
 #pragma once
 
 #include <Switch/System/Convert.hpp>
+#include <Switch/System/ICloneable.hpp>
 #include <Switch/System/String.hpp>
 #include "../../SystemDrawingExport.hpp"
 #include "FontFamily.hpp"
@@ -18,7 +19,7 @@ namespace Switch {
       /// @brief Defines a particular format for text, including font face, size, and style attributes. This class cannot be inherited.
       /// @par Library
       /// Switch.System.Drawing
-      class system_drawing_export_ Font final : public object {
+      class system_drawing_export_ Font final : public ICloneable, public object {
       public:
         /// @brief Initializes a new Font that uses the specified existing Font and FontStyle enumeration.
         /// @param prototype The existing Font from which to create the new Font.
@@ -495,6 +496,23 @@ namespace Switch {
         property_<GraphicsUnit, readonly_> Unit {
           get_ {return this->data->unit;}
         };
+
+        /// @brief Creates an exact copy of this Font.
+        /// @return $<objects> The Font this method creates, cast as an Object.
+        /// @par Examples
+        /// @code
+        /// void Clone_Example(PaintEventArgs e) {
+        ///   // Create a Font object.
+        ///   Font myFontFont("Arial", 16);
+        ///
+        ///   // Create a copy of myFont.
+        ///   $<Font> cloneFont = as<Font>(myFont.Clone());
+        ///
+        ///   // Use cloneFont to draw text to the screen.
+        ///   e.Graphics().DrawString("This is a cloned font", *cloneFont, Brushes::Black, 0, 0);
+        /// }
+        /// @endcode
+        $<object> Clone() const override {return this->MemberwiseClone<Font>();}
 
         static System::Drawing::Font FromHdc(intptr hdc);
 
