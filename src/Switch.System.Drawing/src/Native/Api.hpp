@@ -2,6 +2,8 @@
 
 #include <Switch/Static.hpp>
 #include <Switch/System/Array.hpp>
+#include "../../include/Switch/System/Drawing/Font.hpp"
+#include "../../include/Switch/System/Drawing/FontStyle.hpp"
 
 /// @cond
 namespace Switch {
@@ -12,6 +14,7 @@ namespace Switch {
       }
       class Brush;
       class Color;
+      class Font;
       class FontFamily;
       enum class FontStyle;
       enum class GraphicsUnit;
@@ -21,6 +24,14 @@ namespace Switch {
   }
 }
 /// @endcond
+
+struct __system_font_crerator__ {
+  System::Drawing::Font operator()(const string& name, float size, System::Drawing::FontStyle style) {
+    System::Drawing::Font result(name, size, style);
+    result.data->isSystemFont = true;
+    return result;
+  }
+};
 
 namespace Native {
   class BrushApi static_ {
@@ -33,6 +44,14 @@ namespace Native {
   public:
     static intptr CreateFont(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet, bool gdiVerticalFont);
     static void DeleteFont(intptr hfont);
+    static System::Drawing::Font GetCaptionFont();
+    static System::Drawing::Font GetDefaultFont();
+    static System::Drawing::Font GetDialogFont();
+    static System::Drawing::Font GetIconTitleFont();
+    static System::Drawing::Font GetMenuFont();
+    static System::Drawing::Font GetMessageBoxFont();
+    static System::Drawing::Font GetSmallCaptionFont();
+    static System::Drawing::Font GetStatusFont();
   };
 
   class FontFamilyApi static_ {

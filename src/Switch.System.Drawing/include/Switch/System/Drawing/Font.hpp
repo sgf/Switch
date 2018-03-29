@@ -11,6 +11,10 @@
 #include "FontStyle.hpp"
 #include "GraphicsUnit.hpp"
 
+/// @cond
+struct __system_font_crerator__;
+/// @endcond
+
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief The System namespace contains fundamental classes and base classes that define commonly-used value and reference data types, events and event handlers, interfaces, attributes, and processing exceptions.
@@ -683,7 +687,8 @@ namespace Switch {
         /// @endcode
         String ToString() const override { return string::Format("[{0}: Name={1}, Size={2}, Units={3}, GdiCharSet={4}, GdiVerticalFont={5}]", this->GetType().Name, this->data->fontFamily.Name, this->data->size, (int32)this->data->unit, this->data->gdiCharSet, this->data->gdiVerticalFont); }
 
-        //private:
+      private:
+        friend struct ::__system_font_crerator__;
         static System::Drawing::Font FromLogFontHandle(intptr lf, intptr hdc);
         float GetSizeInPoint() const;
 

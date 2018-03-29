@@ -2,6 +2,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
 #include "Api.hpp"
+#include "../../include/Switch/System/Drawing/Font.hpp"
 #include "../../include/Switch/System/Drawing/FontFamily.hpp"
 #include "../../include/Switch/System/Drawing/FontStyle.hpp"
 #include "../../include/Switch/System/Drawing/GraphicsUnit.hpp"
@@ -20,4 +21,35 @@ void Native::FontApi::DeleteFont(intptr hfont) {
   [(NSFont*)hfont release];
 }
 
+System::Drawing::Font Native::FontApi::GetCaptionFont() {
+  return __system_font_crerator__()("Times", 13.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetDefaultFont() {
+  return __system_font_crerator__()("Times", 13.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetDialogFont() {
+  return __system_font_crerator__()("Times", 13.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetIconTitleFont() {
+  return __system_font_crerator__()("Times", 13.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetMenuFont() {
+  return __system_font_crerator__()("Times", 13.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetMessageBoxFont() {
+  return __system_font_crerator__()("Times", 13.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetSmallCaptionFont() {
+  return __system_font_crerator__()("Times", 13.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetStatusFont() {
+  return __system_font_crerator__()("Times", 13.0f, FontStyle::Regular);
+}
 #endif

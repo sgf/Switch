@@ -18,4 +18,36 @@ intptr Native::FontApi::CreateFont(const System::Drawing::FontFamily& family, fl
 void Native::FontApi::DeleteFont(intptr hfont) {
 }
 
+System::Drawing::Font Native::FontApi::GetCaptionFont() {
+  return __system_font_crerator__()("Tahoma", 8.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetDefaultFont() {
+  return __system_font_crerator__()("Tahoma", 8.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetDialogFont() {
+  return __system_font_crerator__()("Tahoma", 8.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetIconTitleFont() {
+  return __system_font_crerator__()("Tahoma", 8.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetMenuFont() {
+  return __system_font_crerator__()("Tahoma", 8.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetMessageBoxFont() {
+  return __system_font_crerator__()("Tahoma", 8.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetSmallCaptionFont() {
+  return __system_font_crerator__()("Tahoma", 8.0f, FontStyle::Regular);
+}
+
+System::Drawing::Font Native::FontApi::GetStatusFont() {
+  return __system_font_crerator__()("Tahoma", 8.0f, FontStyle::Regular);
+}
+
 #endif

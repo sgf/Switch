@@ -1,4 +1,5 @@
 #include <Switch/System/Collections/Generic/List.hpp>
+#include <Switch/System/NotImplementedException.hpp>
 #include "../../../../include/Switch/System/Drawing/FontFamily.hpp"
 #include "../../../../include/Switch/System/Drawing/Text/InstalledFontCollection.hpp"
 #include "../../../Native/Api.hpp"
@@ -14,6 +15,10 @@ System::Drawing::FontFamily::FontFamily(System::Drawing::Text::GenericFontFamili
     *this = System::Drawing::FontFamily(Native::FontFamilyApi::GenericFontFamilySansSerifName());
   else
     *this = System::Drawing::FontFamily(Native::FontFamilyApi::GenericFontFamilyMonospaceName());
+}
+
+System::Drawing::FontFamily::FontFamily(const string& name, const System::Drawing::Text::FontCollection& fontCollection) {
+  throw NotImplementedException(caller_);
 }
 
 System::Drawing::FontFamily::~FontFamily() {
@@ -36,6 +41,10 @@ property_<System::Drawing::FontFamily, readonly_> System::Drawing::FontFamily::G
 property_<System::Drawing::FontFamily, readonly_> System::Drawing::FontFamily::GenericSerif {
   [] {return FontFamily(System::Drawing::Text::GenericFontFamilies::Serif);}
 };
+
+int32 System::Drawing::FontFamily::GetCellAscent(FontStyle style) {
+  throw NotImplementedException(caller_);
+}
 
 string System::Drawing::FontFamily::GetName() const {
   return Native::FontFamilyApi::GetName(this->data().handle);
