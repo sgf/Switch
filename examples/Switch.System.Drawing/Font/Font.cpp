@@ -10,7 +10,7 @@ namespace Examples {
     static void Main() {
       Font font1(FontFamily::GenericMonospace, 42.0f, FontStyle::Bold);
       Console::WriteLine("font1 = {0}", font1);
-      
+
       Font font2("Times", 24.0f);
       Console::WriteLine("font2 = {0}", font2);
 
