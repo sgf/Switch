@@ -3,11 +3,24 @@
 #include <Switch/Static.hpp>
 #include <Switch/System/Array.hpp>
 
-#include "../../include/Switch/System/Drawing/Brush.hpp"
-#include "../../include/Switch/System/Drawing/Color.hpp"
-#include "../../include/Switch/System/Drawing/FontFamily.hpp"
-#include "../../include/Switch/System/Drawing/Pen.hpp"
-#include "../../include/Switch/System/Drawing/Rectangle.hpp"
+/// @cond
+namespace Switch {
+  namespace System {
+    namespace Drawing {
+      namespace Drawing2D {
+        enum class DashStyle;
+      }
+      class Brush;
+      class Color;
+      class FontFamily;
+      enum class FontStyle;
+      enum class GraphicsUnit;
+      class Pen;
+      class Rectangle;
+    }
+  }
+}
+/// @endcond
 
 namespace Native {
   class BrushApi static_ {
@@ -16,10 +29,10 @@ namespace Native {
     static void DeleteBrush(intptr handle);
   };
 
-  class PenApi static_ {
+  class FontApi static_ {
   public:
-    static intptr CreatePen(const System::Drawing::Drawing2D::DashStyle& dashStyle, int32 width, const System::Drawing::Color& color);
-    static void DeletePen(intptr handle);
+    static intptr CreateFont(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet, bool gdiVerticalFont);
+    static void DeleteFont(intptr hfont);
   };
 
   class FontFamilyApi static_ {
@@ -45,6 +58,12 @@ namespace Native {
     static void DrawRectangle(intptr hdc, const System::Drawing::Pen& pen, int32 x, int32 y, int32 w, int32 h);
     static void FillPie(intptr hdc, const System::Drawing::Brush& brush, int32 x, int32 y, int32 w, int32 h, float startAngle, float sweepAngle);
     static void FillRectangle(intptr hdc, const System::Drawing::Brush& brush, int32 x, int32 y, int32 w, int32 h);
+  };
+
+  class PenApi static_ {
+  public:
+    static intptr CreatePen(const System::Drawing::Drawing2D::DashStyle& dashStyle, int32 width, const System::Drawing::Color& color);
+    static void DeletePen(intptr handle);
   };
 
   class SystemColorsApi static_ {

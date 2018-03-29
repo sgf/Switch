@@ -1,5 +1,7 @@
 #if defined(__linux__)
 #include "Api.hpp"
+#include "../../include/Switch/System/Drawing/Brush.hpp"
+#include "../../include/Switch/System/Drawing/Color.hpp"
 
 #undef interface_
 #undef get_

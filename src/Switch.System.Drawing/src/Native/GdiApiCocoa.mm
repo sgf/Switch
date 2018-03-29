@@ -4,6 +4,9 @@
 #include <Switch/System/Diagnostics/Debug.hpp>
 #include <Switch/System/ArgumentException.hpp>
 #include "Api.hpp"
+#include "../../include/Switch/System/Drawing/Brush.hpp"
+#include "../../include/Switch/System/Drawing/Pen.hpp"
+#include "../../include/Switch/System/Drawing/Rectangle.hpp"
 
 using namespace System;
 using namespace System::Drawing;

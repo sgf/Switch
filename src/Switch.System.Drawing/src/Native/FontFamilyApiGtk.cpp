@@ -1,6 +1,7 @@
 #if defined(__linux__)
 #include "Api.hpp"
-#include <Switch/System/Diagnostics/Debug.hpp>
+#include "../../include/Switch/System/Drawing/FontFamily.hpp"
+#include "../../include/Switch/System/Drawing/FontStyle.hpp"
 
 #undef interface_
 #undef get_

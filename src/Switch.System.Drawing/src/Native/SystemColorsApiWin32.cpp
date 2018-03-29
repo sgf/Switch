@@ -3,6 +3,7 @@
 #include <Switch/Undef.hpp>
 
 #include "Api.hpp"
+#include "../../include/Switch/System/Drawing/Color.hpp"
 
 using namespace System;
 

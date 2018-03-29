@@ -6,6 +6,7 @@
 
 #include <gtkmm.h>
 #include "Api.hpp"
+#include "../../include/Switch/System/Drawing/Color.hpp"
 
 using namespace System;
 using namespace Native;

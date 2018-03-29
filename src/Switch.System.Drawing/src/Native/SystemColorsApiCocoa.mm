@@ -3,6 +3,7 @@
 #import <Foundation/Foundation.h>
 
 #include "Api.hpp"
+#include "../../include/Switch/System/Drawing/Color.hpp"
 
 using namespace System;
 

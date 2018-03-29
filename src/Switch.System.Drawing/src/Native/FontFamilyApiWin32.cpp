@@ -7,8 +7,9 @@
 #include <Switch/Undef.hpp>
 
 #include "Api.hpp"
-#include <Switch/System/Diagnostics/Debug.hpp>
 #include <Switch/System/ArgumentException.hpp>
+#include "../../include/Switch/System/Drawing/FontFamily.hpp"
+#include "../../include/Switch/System/Drawing/FontStyle.hpp"
 
 using namespace System;
 using namespace System::Collections::Generic;

@@ -3,8 +3,9 @@
 #include <Switch/Undef.hpp>
 
 #include "Api.hpp"
-#include <Switch/System/Diagnostics/Debug.hpp>
-#include <Switch/System/ArgumentException.hpp>
+#include "../../include/Switch/System/Drawing/Drawing2D/DashStyle.hpp"
+#include "../../include/Switch/System/Drawing/Color.hpp"
+#include "../../include/Switch/System/Drawing/Pen.hpp"
 
 using namespace System;
 using namespace System::Drawing;

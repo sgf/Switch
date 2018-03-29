@@ -4,6 +4,8 @@
 #include <Switch/System/Diagnostics/Debug.hpp>
 #include <Switch/System/ArgumentException.hpp>
 #include "Api.hpp"
+#include "../../include/Switch/System/Drawing/FontFamily.hpp"
+#include "../../include/Switch/System/Drawing/FontStyle.hpp"
 
 using namespace System;
 using namespace System::Collections::Generic;
@@ -11,20 +13,20 @@ using namespace System::Drawing;
 
 namespace {
   struct LogFont : public object {
-    int32 lfHeight;
-    int32 lfWidth;
-    int32 lfEscapement;
-    int32 lfOrientation;
-    int32 lfWeight;
-    byte lfItalic;
-    byte lfUnderline;
-    byte lfStrikeOut;
-    byte lfCharSet;
-    byte lfOutPrecision;
-    byte lfClipPrecision;
-    byte lfQuality;
-    byte lfPitchAndFamily;
-    string lfFaceName;
+    int32 lfHeight = 1;
+    int32 lfWidth = 12;
+    int32 lfEscapement = 0;
+    int32 lfOrientation = 0;
+    int32 lfWeight = 1;
+    byte lfItalic = 0;
+    byte lfUnderline = 0;
+    byte lfStrikeOut = 0;
+    byte lfCharSet = 1;
+    byte lfOutPrecision = 0;
+    byte lfClipPrecision = 0;
+    byte lfQuality = 0;
+    byte lfPitchAndFamily = 0;
+    string lfFaceName = "";
   };
 }
 
