@@ -1,6 +1,7 @@
 #if defined(_WIN32)
 #include <windows.h>
 #include <Switch/Undef.hpp>
+#undef CreateFont
 
 #include "Api.hpp"
 #include "../../include/Switch/System/Drawing/FontFamily.hpp"

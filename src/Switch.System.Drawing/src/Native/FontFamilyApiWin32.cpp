@@ -8,6 +8,7 @@
 
 #include "Api.hpp"
 #include <Switch/System/ArgumentException.hpp>
+#include <Switch/System/Collections/Generic/SortedDictionary.hpp>
 #include "../../include/Switch/System/Drawing/FontFamily.hpp"
 #include "../../include/Switch/System/Drawing/FontStyle.hpp"
 
