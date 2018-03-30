@@ -14,15 +14,11 @@ namespace ManualTests {
   public:
     // The main entry point for the application.
     static void Main() {
-      Console::WriteLine("GenericMonospace : \"{0}\"", FontFamily::GenericMonospace().Name);
-      Console::WriteLine("GenericSansSerif : \"{0}\"", FontFamily::GenericSansSerif().Name);
-      Console::WriteLine("GenericSerif : \"{0}\"", FontFamily::GenericSerif().Name);
-      Console::WriteLine("Families : {0}", FontFamily::Families().Length);
-      for (System::Drawing::FontFamily fontFamily : System::Drawing::FontFamily::Families())
-        Console::WriteLine("  fontFamily = \"{0}\"", fontFamily.Name);
-
-      Font font("Wingdings 2", 23.0f, FontStyle::Bold);
+      Font font("Microsoft Sans Serif", 11.0f, GraphicsUnit::Pixel);
       Console::WriteLine("font = {0}", font);
+      Console::WriteLine("Size = {0}", font.Size);
+      Console::WriteLine("Unit = {0}", font.Unit);
+      Console::WriteLine("SizeInPoint = {0}", font.SizeInPoints);
     }
   };
 }

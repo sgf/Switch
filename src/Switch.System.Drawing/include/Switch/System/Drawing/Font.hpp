@@ -76,7 +76,7 @@ namespace Switch {
         /// @param style The FontStyle of the new font.
         /// @param unit The GraphicsUnit of the new font.
         /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
-        /// @remarks The resulting font has its Style property set to FontStyle.Regular.
+        /// @remarks The resulting font has its Style property set to FontStyle::Regular.
         Font(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit);
 
         /// @brief Initializes a new Font using a specified size, style, unit, and character set.
@@ -99,6 +99,14 @@ namespace Switch {
         /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
         /// @remarks The gdiCharSet parameter takes a value from the list defined in the Windows SDK header file WinGDI.h.
         Font(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet, bool gdiVerticalFont);
+
+        /// @brief Initializes a new Font using a specified size and unit. Sets the style to FontStyle::Regular.
+        /// @param family The FontFamily of the new Font.
+        /// @param emSize The em-size, in points, of the new font.
+        /// @param unit The GraphicsUnit of the new font.
+        /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
+        /// @remarks The resulting font has its Style property set to FontStyle::Regular.
+        Font(const System::Drawing::FontFamily& family, float emSize, System::Drawing::GraphicsUnit unit);
 
         /// @brief Initializes a new Font using a specified size.
         /// @param familyName A string representation of the FontFamily for the new Font.
@@ -155,7 +163,7 @@ namespace Switch {
         /// @param style The FontStyle of the new font.
         /// @param unit The GraphicsUnit of the new font.
         /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
-        /// @remarks The resulting font has its Style property set to FontStyle.Regular.
+        /// @remarks The resulting font has its Style property set to FontStyle::Regular.
         /// @par Examples
         /// The following code example demonstrates how to use the Font constructor and the Size, SizeInPoints, Name, Style, and Unit properties. This example is designed to be used with a Windows Form that contains a ComboBox named ComboBox1 that is populated with the strings "Bigger" and "Smaller". Paste the following code into the form and associate the ComboBox1_SelectedIndexChanged method with the SelectedIndexChanged event of the ComboBox control.
         /// @code
@@ -212,6 +220,14 @@ namespace Switch {
         /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
         /// @remarks The gdiCharSet parameter takes a value from the list defined in the Windows SDK header file WinGDI.h.
         Font(const string& familyName, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet, bool gdiVerticalFont);
+
+        /// @brief Initializes a new Font using a specified size and unit. Sets the style to FontStyle::Regular.
+        /// @param familyName A string representation of the FontFamily for the new Font.
+        /// @param emSize The em-size, in points, of the new font.
+        /// @param unit The GraphicsUnit of the new font.
+        /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
+        /// @remarks The resulting font has its Style property set to FontStyle::Regular.
+        Font(const string& familyName, float emSize, System::Drawing::GraphicsUnit unit);
 
         /// @cond
         Font() = default;
@@ -428,8 +444,8 @@ namespace Switch {
         ///   }
         /// }
         /// @endcode
-        property_<float, readonly_> SizeInPoint {
-          get_ {return this->GetSizeInPoint();}
+        property_<float, readonly_> SizeInPoints {
+          get_ {return this->GetSizeInPoints();}
         };
 
         /// @brief Gets a value that indicates whether this Font specifies a horizontal line through the font.
@@ -690,7 +706,7 @@ namespace Switch {
       private:
         friend struct ::__system_font_crerator__;
         static System::Drawing::Font FromLogFontHandle(intptr lf, intptr hdc);
-        float GetSizeInPoint() const;
+        float GetSizeInPoints() const;
 
         struct FontData {
           System::Drawing::FontFamily fontFamily;
@@ -699,7 +715,7 @@ namespace Switch {
           intptr hfont = IntPtr::Zero;
           bool isSystemFont = false;
           string originalFontName;
-          float size = .0f;
+          float size = 8.25f;
           string systemFontName;
           System::Drawing::FontStyle style = System::Drawing::FontStyle::Regular;
           System::Drawing::GraphicsUnit unit = System::Drawing::GraphicsUnit::Point;

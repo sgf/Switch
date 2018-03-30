@@ -42,7 +42,7 @@ namespace Native {
 
   class FontApi static_ {
   public:
-    static intptr CreateFont(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet, bool gdiVerticalFont);
+    static intptr CreateFont(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, byte gdiCharSet, bool gdiVerticalFont);
     static void DeleteFont(intptr hfont);
     static System::Drawing::Font GetCaptionFont();
     static System::Drawing::Font GetDefaultFont();
