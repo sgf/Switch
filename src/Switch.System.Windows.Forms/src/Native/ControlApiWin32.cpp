@@ -109,6 +109,9 @@ bool Native::ControlApi::SetFocus(const System::Windows::Forms::Control& control
   return ::SetFocus((HWND)control.Handle()) != NULL;
 }
 
+void Native::ControlApi::SetFont(const System::Windows::Forms::Control& control) {
+}
+
 void Native::ControlApi::SetForeColor(intptr hdc) {
   ref<System::Windows::Forms::Control> control = System::Windows::Forms::Control::FromHandle(GetHandleWindowFromDeviceContext(hdc));
   if (control != null)

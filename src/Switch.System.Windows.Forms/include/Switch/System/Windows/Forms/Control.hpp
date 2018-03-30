@@ -412,7 +412,7 @@ namespace Switch {
           static property_<System::Drawing::Color, readonly_> DefaultBackColor;
 
           static property_<System::Drawing::Font, readonly_> DefaultFont;
-          
+
           /// @brief Gets the default foreground color of the control.
           /// @return System::Drawing::Color The default foreground Color of the control. The default is SystemColors::ControlText.
           /// @remarks This is the default ForeColor property value of a nonparented control. Derived classes can have different defaults.
@@ -483,7 +483,7 @@ namespace Switch {
               }
             }
           };
-          
+
           /// @brief Gets or sets the foreground color of the control.
           /// @return System::Drawing::Color The foreground Color of the control. The default is the value of the DefaultForeColor property.
           /// @remarks The ForeColor property is an ambient property. An ambient property is a control property that, if not set, is retrieved from the parent control. For example, a Button will have the same BackColor as its parent Form by default. For more information about ambient properties, see the AmbientProperties class or the Control class overview.
@@ -1687,7 +1687,7 @@ namespace Switch {
           EventHandler EnabledChanged;
 
           EventHandler FontChanged;
-          
+
           /// @brief Occurs when the ForeColor property value changes.
           /// @remarks This event is raised if the ForeColor property is changed by either a programmatic modification or through interaction.
           /// @remarks For more information about handling events, see Handling and Raising Events.

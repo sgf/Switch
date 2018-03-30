@@ -107,6 +107,9 @@ bool Native::ControlApi::SetFocus(const System::Windows::Forms::Control& control
   return true;
 }
 
+void Native::ControlApi::SetFont(const System::Windows::Forms::Control& control) {
+}
+
 void Native::ControlApi::SetForeColor(intptr hdc) {
   ref<System::Windows::Forms::Control> control = System::Windows::Forms::Control::FromHandle(GetHandleWindowFromDeviceContext(hdc));
   ((Native::Widget*)control().Handle())->ForeColor(System::Environment::OSVersion().Platform == System::PlatformID::MacOSX && is<System::Windows::Forms::Button>(control) && as<System::Windows::Forms::Button>(control)().IsDefault ? System::Drawing::Color::White() : control().ForeColor());
