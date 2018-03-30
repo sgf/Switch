@@ -1,5 +1,6 @@
 #if defined(__linux__)
 #include "Api.hpp"
+#include "../../include/Switch/System/Drawing/Font.hpp"
 #include "../../include/Switch/System/Drawing/FontFamily.hpp"
 #include "../../include/Switch/System/Drawing/FontStyle.hpp"
 #include "../../include/Switch/System/Drawing/GraphicsUnit.hpp"

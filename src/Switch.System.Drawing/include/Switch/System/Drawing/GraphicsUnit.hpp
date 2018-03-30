@@ -14,7 +14,7 @@ namespace Switch {
       /// @par Library
       /// Switch.System.Drawing
       enum class GraphicsUnit {
-        /// @brief Specifies the unit of measure for the given data.
+        /// @brief Specifies the world coordinate system unit as the unit of measure.
         World = 0,
         /// @brief Specifies 1/75 inch as the unit of measure.
         Display = 1,

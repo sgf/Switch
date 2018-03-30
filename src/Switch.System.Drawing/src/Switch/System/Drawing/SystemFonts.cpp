@@ -35,4 +35,3 @@ property_<Font, readonly_> SystemFonts::SmallCaptionFont {
 property_<Font, readonly_> SystemFonts::StatusFont {
   [] {return Native::FontApi::GetStatusFont();}
 };
-

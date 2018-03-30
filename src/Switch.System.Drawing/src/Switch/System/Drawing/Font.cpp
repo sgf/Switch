@@ -132,15 +132,24 @@ float System::Drawing::Font::GetHeight(const Graphics& graphics) const {
   return 0;
 }
 
+namespace {
+  static float WorldToPoint(float world) {return world / 72.0;};
+  static float DisplayToPoint(float display) {return display / 75.0f / 72.0;};
+  static float PixelToPoint(float pixel) {return pixel;};
+  static float PointToPoint(float point) {return point;};
+  static float InchToPoint(float inch) {return inch / 72.0f;};
+  static float DocumentToPoint(float document) {return document / 300.0f / 72.0f;};
+  static float MilimeterToPoint(float milimeter) {return milimeter / 25.4f / 72.0f;};
+}
 float System::Drawing::Font::GetSizeInPoint() const {
   switch (this->data->unit) {
-  case GraphicsUnit::World: return this->data->size;
-  case GraphicsUnit::Display: return this->data->size;
-  case GraphicsUnit::Pixel: return this->data->size;
-  case GraphicsUnit::Point: return this->data->size;
-  case GraphicsUnit::Inch: return this->data->size;
-  case GraphicsUnit::Document: return this->data->size;
-  case GraphicsUnit::Millimeter: return this->data->size;
+  case GraphicsUnit::World: return WorldToPoint(this->data->size);
+  case GraphicsUnit::Display: return DisplayToPoint(this->data->size);
+  case GraphicsUnit::Pixel: return PixelToPoint(this->data->size);
+  case GraphicsUnit::Point: return PointToPoint(this->data->size);
+  case GraphicsUnit::Inch: return InchToPoint(this->data->size);
+  case GraphicsUnit::Document: return DocumentToPoint(this->data->size);
+  case GraphicsUnit::Millimeter: return MilimeterToPoint(this->data->size);
   default: return this->data->size;
   }
 }
