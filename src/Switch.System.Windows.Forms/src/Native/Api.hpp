@@ -106,6 +106,7 @@ namespace Native {
     static void SetClientSize(System::Windows::Forms::Control& control);
     static void SetEnabled(const System::Windows::Forms::Control& control);
     static bool SetFocus(const System::Windows::Forms::Control& control);
+    static void SetFont(const System::Windows::Forms::Control& control);
     static void SetForeColor(intptr hdc);
     static void SetForeColor(const System::Windows::Forms::Control& control);
     static void SetLocation(const System::Windows::Forms::Control& control);

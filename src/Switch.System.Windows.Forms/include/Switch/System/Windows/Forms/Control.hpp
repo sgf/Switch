@@ -411,6 +411,8 @@ namespace Switch {
           /// @endcode
           static property_<System::Drawing::Color, readonly_> DefaultBackColor;
 
+          static property_<System::Drawing::Font, readonly_> DefaultFont;
+          
           /// @brief Gets the default foreground color of the control.
           /// @return System::Drawing::Color The default foreground Color of the control. The default is SystemColors::ControlText.
           /// @remarks This is the default ForeColor property value of a nonparented control. Derived classes can have different defaults.
@@ -472,6 +474,16 @@ namespace Switch {
             }
           };
 
+          property_<System::Drawing::Font> Font {
+            get_ { return (!this->font.HasValue && this->parent != null) ? this->parent().Font : this->font.GetValueOrDefault(DefaultFont); },
+            set_ {
+              if (this->font != value) {
+                this->font = value;
+                this->OnFontChanged(EventArgs::Empty);
+              }
+            }
+          };
+          
           /// @brief Gets or sets the foreground color of the control.
           /// @return System::Drawing::Color The foreground Color of the control. The default is the value of the DefaultForeColor property.
           /// @remarks The ForeColor property is an ambient property. An ambient property is a control property that, if not set, is retrieved from the parent control. For example, a Button will have the same BackColor as its parent Form by default. For more information about ambient properties, see the AmbientProperties class or the Control class overview.
@@ -1674,6 +1686,8 @@ namespace Switch {
           /// @include EnableChangedEvent.cpp
           EventHandler EnabledChanged;
 
+          EventHandler FontChanged;
+          
           /// @brief Occurs when the ForeColor property value changes.
           /// @remarks This event is raised if the ForeColor property is changed by either a programmatic modification or through interaction.
           /// @remarks For more information about handling events, see Handling and Raising Events.
@@ -2481,6 +2495,8 @@ namespace Switch {
           /// When overriding OnEnabledChanged in a derived class, be sure to call the base class's OnEnabledChanged method so that registered delegates receive the event.
           virtual void OnEnabledChanged(const EventArgs& e);
 
+          virtual void OnFontChanged(const EventArgs& e);
+
           /// @brief Raises the ForeColorChanged event.
           /// @param e An EventArgs that contains the event data.
           /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
@@ -3088,6 +3104,7 @@ namespace Switch {
           System::Drawing::Color defaultBackColor;
           System::Drawing::Color defaultForeColor;
           bool enabled = true;
+          Nullable<System::Drawing::Font> font;
           Nullable<System::Drawing::Color> foreColor;
           mutable intptr handle = 0;
           static System::Collections::Generic::Dictionary<intptr, ref<Control>> handles;

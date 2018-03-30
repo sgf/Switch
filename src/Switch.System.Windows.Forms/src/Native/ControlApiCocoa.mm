@@ -1,10 +1,12 @@
 #if defined(__APPLE__)
 #include "WindowProcedureApiCocoa.hpp"
+#include "../../include/Switch/System/Windows/Forms/CheckBox.hpp"
+#include "../../include/Switch/System/Windows/Forms/Control.hpp"
 #include "../../include/Switch/System/Windows/Forms/GroupBox.hpp"
 #include "../../include/Switch/System/Windows/Forms/Label.hpp"
 #include "../../include/Switch/System/Windows/Forms/ProgressBar.hpp"
 #include "../../include/Switch/System/Windows/Forms/Screen.hpp"
-#include "../../include/Switch/System/Windows/Forms/Control.hpp"
+#include "../../include/Switch/System/Windows/Forms/RadioButton.hpp"
 #include "../../include/Switch/System/Windows/Forms/TabControl.hpp"
 #include "../../include/Switch/System/Windows/Forms/TabPage.hpp"
 
@@ -169,6 +171,11 @@ void Native::ControlApi::SetEnabled(const System::Windows::Forms::Control& contr
 
 bool Native::ControlApi::SetFocus(const System::Windows::Forms::Control& control) {
   return true;
+}
+
+void Native::ControlApi::SetFont(const System::Windows::Forms::Control& control) {
+  if (is<System::Windows::Forms::Button>(control) || is<System::Windows::Forms::CheckBox>(control) || is<System::Windows::Forms::Label>(control) || is<System::Windows::Forms::RadioButton>(control))
+    [(NSControl*)control.Handle() setFont:((NSFont*)control.Font().ToHFont())];
 }
 
 void Native::ControlApi::SetForeColor(intptr hdc) {

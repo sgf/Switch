@@ -21,8 +21,9 @@ namespace TimerFormExample {
       this->label.Parent = *this;
       this->label.Text = string::Format("{0:N1}", as<double>(this->counter) / 10);
       this->label.Location = System::Drawing::Point(10, 10);
+      this->label.Size = System::Drawing::Size(210, 70);
       //this->label.AutoSize = true;
-      //this->label.Font = System::Drawing::Font("Arial", 48, System::Drawing::FontStyle::Italic);
+      this->label.Font = System::Drawing::Font(this->label.Font().Name, 60, System::Drawing::FontStyle::Italic);
       this->label.ForeColor = System::Drawing::Color::DodgerBlue;
 
       this->timer.Interval = 100;

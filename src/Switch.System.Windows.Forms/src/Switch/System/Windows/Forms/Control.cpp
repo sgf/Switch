@@ -1,6 +1,7 @@
 #include <Switch/System/BitConverter.hpp>
 #include <Switch/System/Diagnostics/Debug.hpp>
 #include <Switch/System/Drawing/Graphics.hpp>
+#include <Switch/System/Drawing/SystemFonts.hpp>
 #include <Switch/System/Drawing/SolidBrush.hpp>
 #include "../../../../../include/Switch/System/Windows/Forms/Application.hpp"
 #include "../../../../../include/Switch/System/Windows/Forms/Control.hpp"
@@ -85,6 +86,10 @@ property_<System::Drawing::Color, readonly_> Control::DefaultBackColor {
   [] { return System::Drawing::SystemColors::Control(); }
 };
 
+property_<System::Drawing::Font, readonly_> Control::DefaultFont {
+  [] { return System::Drawing::SystemFonts::DefaultFont(); }
+};
+
 property_<System::Drawing::Color, readonly_> Control::DefaultForeColor {
   [] { return System::Drawing::SystemColors::ControlText(); }
 };
@@ -115,6 +120,7 @@ void Control::CreateHandle() {
   if (this->backColor.HasValue)
     Native::ControlApi::SetBackColor(*this);
   Native::ControlApi::SetEnabled(*this);
+  Native::ControlApi::SetFont(*this);
   if (this->foreColor.HasValue)
     Native::ControlApi::SetForeColor(*this);
   Native::ControlApi::SetTabStop(*this);
@@ -185,6 +191,12 @@ void Control::OnEnabledChanged(const EventArgs& e) {
   if (this->IsHandleCreated)
     Native::ControlApi::SetEnabled(*this);
   this->EnabledChanged(*this, e);
+}
+
+void Control::OnFontChanged(const EventArgs& e) {
+  if (this->IsHandleCreated)
+    Native::ControlApi::SetFont(*this);
+  this->FontChanged(*this, e);
 }
 
 void Control::OnForeColorChanged(const EventArgs& e) {

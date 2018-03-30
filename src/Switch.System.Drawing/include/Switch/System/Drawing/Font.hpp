@@ -234,6 +234,8 @@ namespace Switch {
         Font(const Switch::System::Drawing::Font& font) : data(font.data) {}
         Font& operator=(const Switch::System::Drawing::Font&) = default;
         ~Font();
+        bool operator<(const Font& font) const {return this->Name() < font.Name();}
+        bool operator>(const Font& font) const {return this->Name() > font.Name();}
         /// @endcond
 
         /// @brief Gets a value that indicates whether this Font is bold.
@@ -704,7 +706,9 @@ namespace Switch {
         String ToString() const override { return string::Format("[{0}: Name={1}, Size={2}, Units={3}, GdiCharSet={4}, GdiVerticalFont={5}]", this->GetType().Name, this->data->fontFamily.Name, this->data->size, (int32)this->data->unit, this->data->gdiCharSet, this->data->gdiVerticalFont); }
 
       private:
+        /// @cond
         friend struct ::__system_font_crerator__;
+        /// @endcond
         static System::Drawing::Font FromLogFontHandle(intptr lf, intptr hdc);
         float GetSizeInPoints() const;
 
