@@ -38,9 +38,6 @@ intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
   GetWindowRect(handle, &rect);
   form.Location = System::Drawing::Point(rect.left, rect.top);
   form.Size = System::Drawing::Size(rect.right - rect.left, rect.bottom - rect.top);
-
-  /// @todo to remove after create SetFont method...
-  PostMessage(handle, WM_SETFONT, WPARAM((HFONT)GetStockObject(DEFAULT_GUI_FONT)), TRUE);
   return (intptr)handle;
 }
 

@@ -36,8 +36,6 @@ intptr Native::TrackBarApi::Create(const System::Windows::Forms::TrackBar& track
   HWND handle = CreateWindowEx(0, TRACKBAR_CLASS, trackBar.Text().w_str().c_str(), style, trackBar.Left, trackBar.Top, trackBar.Width, trackBar.Height, (HWND)trackBar.Parent()().Handle(), (HMENU)0, __instance, (LPVOID)NULL);
   WindowProcedure::SetWindowTheme(handle);
   WindowProcedure::DefWindowProcs[(intptr)handle] = (WNDPROC)SetWindowLongPtr(handle, GWLP_WNDPROC, (LONG_PTR)WindowProcedure::WndProc);
-  /// @todo to remove after create SetFont method...
-  PostMessage(handle, WM_SETFONT, WPARAM((HFONT)GetStockObject(DEFAULT_GUI_FONT)), TRUE);
   return (intptr)handle;
 }
 
