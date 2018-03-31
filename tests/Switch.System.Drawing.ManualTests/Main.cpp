@@ -14,7 +14,7 @@ namespace ManualTests {
   public:
     // The main entry point for the application.
     static void Main() {
-      Font font("Microsoft Sans Serif", 11.0f, GraphicsUnit::Pixel);
+      Font font("Arial", 64.0f, GraphicsUnit::Pixel);
       Console::WriteLine("font = {0}", font);
       Console::WriteLine("Size = {0}", font.Size);
       Console::WriteLine("Unit = {0}", font.Unit);
