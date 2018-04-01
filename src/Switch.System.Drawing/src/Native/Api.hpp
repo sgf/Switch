@@ -4,6 +4,7 @@
 #include <Switch/System/Array.hpp>
 #include "../../include/Switch/System/Drawing/Font.hpp"
 #include "../../include/Switch/System/Drawing/FontStyle.hpp"
+#include "../../include/Switch/System/Drawing/FontFamily.hpp"
 
 /// @cond
 namespace Switch {
@@ -28,6 +29,15 @@ namespace Switch {
 struct __system_font_crerator__ {
   System::Drawing::Font operator()(const string& name, float size, System::Drawing::FontStyle style) {
     System::Drawing::Font result(name, size, style);
+    result.data->isSystemFont = true;
+    return result;
+  }
+
+  System::Drawing::Font operator()(intptr hfont, const string& name, float size, System::Drawing::FontStyle style) {
+    System::Drawing::Font result = System::Drawing::Font::FromHFont(hfont);
+    result.data->fontFamily = System::Drawing::FontFamily(name);
+    result.data->size = size;
+    result.data->style = style;
     result.data->isSystemFont = true;
     return result;
   }
