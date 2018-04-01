@@ -44,14 +44,8 @@ namespace Native {
   public:
     static intptr CreateFont(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, byte gdiCharSet, bool gdiVerticalFont);
     static void DeleteFont(intptr hfont);
-    static System::Drawing::Font GetCaptionFont();
-    static System::Drawing::Font GetDefaultFont();
-    static System::Drawing::Font GetDialogFont();
-    static System::Drawing::Font GetIconTitleFont();
-    static System::Drawing::Font GetMenuFont();
-    static System::Drawing::Font GetMessageBoxFont();
-    static System::Drawing::Font GetSmallCaptionFont();
-    static System::Drawing::Font GetStatusFont();
+    static float GetHeight(float emsize);
+    static float GetHeight(float emsize, intptr hdc);
   };
 
   class FontFamilyApi static_ {
@@ -120,6 +114,18 @@ namespace Native {
     static int32 GetWindow();
     static int32 GetWindowFrame();
     static int32 GetWindowText();
+  };
+
+  class SystemFontsApi static_ {
+  public:
+    static System::Drawing::Font GetCaptionFont();
+    static System::Drawing::Font GetDefaultFont();
+    static System::Drawing::Font GetDialogFont();
+    static System::Drawing::Font GetIconTitleFont();
+    static System::Drawing::Font GetMenuFont();
+    static System::Drawing::Font GetMessageBoxFont();
+    static System::Drawing::Font GetSmallCaptionFont();
+    static System::Drawing::Font GetStatusFont();
   };
 }
 

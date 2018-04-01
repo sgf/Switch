@@ -11,7 +11,7 @@ namespace HelloWorld {
       Application::EnableVisualStyles();
       Application::Run(MainForm());
     }
-    
+
     MainForm() {
       this->label.Text = "Hello, World!";
       this->label.Font = System::Drawing::Font("Arial", 34, System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic);
@@ -25,7 +25,7 @@ namespace HelloWorld {
       this->ClientSize = System::Drawing::Size(300, 300);
       this->Controls().Add(this->label);
     }
-    
+
   private:
     Label label;
   };

@@ -133,6 +133,8 @@ namespace Switch {
 
         static Graphics FromHdcInternal(intptr hdc);
 
+        intptr GetHdc() const {return this->hdc;}
+
       private:
         friend class Switch::System::Windows::Forms::Control;
         void SetRectangle(const Rectangle& clipRectangle) { this->clipRectangle = clipRectangle; }

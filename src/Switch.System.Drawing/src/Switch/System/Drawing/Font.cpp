@@ -141,11 +141,11 @@ System::Drawing::Font System::Drawing::Font::FromLogFontHandle(intptr logfont, i
 }
 
 float System::Drawing::Font::GetHeight() const {
-  return 0;
+  return Native::FontApi::GetHeight(this->data->size);
 }
 
 float System::Drawing::Font::GetHeight(const Graphics& graphics) const {
-  return 0;
+  return Native::FontApi::GetHeight(this->data->size, graphics.GetHdc());
 }
 
 float System::Drawing::Font::GetSizeInPoints() const {

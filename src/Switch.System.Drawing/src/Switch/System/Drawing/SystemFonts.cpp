@@ -5,33 +5,33 @@ using namespace System;
 using namespace System::Drawing;
 
 property_<Font, readonly_> SystemFonts::CaptionFont {
-  [] {return Native::FontApi::GetCaptionFont();}
+  [] {return Native::SystemFontsApi::GetCaptionFont();}
 };
 
 property_<Font, readonly_> SystemFonts::DefaultFont {
-  [] {return Native::FontApi::GetDefaultFont();}
+  [] {return Native::SystemFontsApi::GetDefaultFont();}
 };
 
 property_<Font, readonly_> SystemFonts::DialogFont {
-  [] {return Native::FontApi::GetDialogFont();}
+  [] {return Native::SystemFontsApi::GetDialogFont();}
 };
 
 property_<Font, readonly_> SystemFonts::IconTitleFont {
-  [] {return Native::FontApi::GetIconTitleFont();}
+  [] {return Native::SystemFontsApi::GetIconTitleFont();}
 };
 
 property_<Font, readonly_> SystemFonts::MenuFont {
-  [] {return Native::FontApi::GetMenuFont();}
+  [] {return Native::SystemFontsApi::GetMenuFont();}
 };
 
 property_<Font, readonly_> SystemFonts::MessageBoxFont {
-  [] {return Native::FontApi::GetMessageBoxFont();}
+  [] {return Native::SystemFontsApi::GetMessageBoxFont();}
 };
 
 property_<Font, readonly_> SystemFonts::SmallCaptionFont {
-  [] {return Native::FontApi::GetSmallCaptionFont();}
+  [] {return Native::SystemFontsApi::GetSmallCaptionFont();}
 };
 
 property_<Font, readonly_> SystemFonts::StatusFont {
-  [] {return Native::FontApi::GetStatusFont();}
+  [] {return Native::SystemFontsApi::GetStatusFont();}
 };
