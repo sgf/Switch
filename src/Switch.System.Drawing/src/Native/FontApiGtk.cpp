@@ -14,11 +14,11 @@
 using namespace System;
 using namespace System::Drawing;
 
-intptr Native::FontApi::CreateFont(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, byte gdiCharSet, bool gdiVerticalFont) {
+intptr Native::FontApi::Create(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, byte gdiCharSet, bool gdiVerticalFont) {
   return IntPtr::Zero;
 }
 
-void Native::FontApi::DeleteFont(intptr hfont) {
+void Native::FontApi::Destroy(intptr hfont) {
 }
 
 float Native::FontApi::GetHeight(float emSize) {

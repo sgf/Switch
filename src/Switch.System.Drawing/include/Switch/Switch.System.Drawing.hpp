@@ -11,6 +11,7 @@
 #include "System/Drawing/Imaging/PixelFormat.hpp"
 #include "System/Drawing/Text/FontCollection.hpp"
 #include "System/Drawing/Text/GenericFontFamilies.hpp"
+#include "System/Drawing/Text/InstalledFontCollection.hpp"
 #include "System/Drawing/Bitmap.hpp"
 #include "System/Drawing/Brush.hpp"
 #include "System/Drawing/CharacterRange.hpp"
@@ -31,4 +32,5 @@
 #include "System/Drawing/SizeF.hpp"
 #include "System/Drawing/SolidBrush.hpp"
 #include "System/Drawing/SystemColors.hpp"
+#include "System/Drawing/SystemFonts.hpp"
 #include "SystemDrawingExport.hpp"

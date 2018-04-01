@@ -14,14 +14,14 @@ System::Drawing::Font::Font(const Switch::System::Drawing::Font& prototype, Syst
   this->data->unit = prototype.data->unit;
   this->data->gdiCharSet = prototype.data->gdiCharSet;
   this->data->gdiVerticalFont = prototype.data->gdiVerticalFont;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emSize) {
   this->data->fontFamily = family;
   this->data->originalFontName = family.Name;
   this->data->size = emSize;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style) {
@@ -29,7 +29,7 @@ System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emS
   this->data->originalFontName = family.Name;
   this->data->size = emSize;
   this->data->style = style;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit) {
@@ -38,7 +38,7 @@ System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emS
   this->data->size = emSize;
   this->data->style = style;
   this->data->unit = unit;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet) {
@@ -48,7 +48,7 @@ System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emS
   this->data->style = style;
   this->data->unit = unit;
   this->data->gdiCharSet = gdiCharSet;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet, bool gdiVerticalFont) {
@@ -59,7 +59,7 @@ System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emS
   this->data->unit = unit;
   this->data->gdiCharSet = gdiCharSet;
   this->data->gdiVerticalFont = gdiVerticalFont;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emSize, System::Drawing::GraphicsUnit unit) {
@@ -67,14 +67,14 @@ System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emS
   this->data->originalFontName = family.Name;
   this->data->size = emSize;
   this->data->unit = unit;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const string& familyName, float emSize) {
   this->data->fontFamily = System::Drawing::FontFamily(familyName);
   this->data->originalFontName = familyName;
   this->data->size = emSize;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const string& familyName, float emSize, System::Drawing::FontStyle style) {
@@ -82,7 +82,7 @@ System::Drawing::Font::Font(const string& familyName, float emSize, System::Draw
   this->data->originalFontName = familyName;
   this->data->size = emSize;
   this->data->style = style;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const string& familyName, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit) {
@@ -91,7 +91,7 @@ System::Drawing::Font::Font(const string& familyName, float emSize, System::Draw
   this->data->size = emSize;
   this->data->style = style;
   this->data->unit = unit;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const string& familyName, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet) {
@@ -101,7 +101,7 @@ System::Drawing::Font::Font(const string& familyName, float emSize, System::Draw
   this->data->style = style;
   this->data->unit = unit;
   this->data->gdiCharSet = gdiCharSet;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const string& familyName, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet, bool gdiVerticalFont) {
@@ -112,7 +112,7 @@ System::Drawing::Font::Font(const string& familyName, float emSize, System::Draw
   this->data->unit = unit;
   this->data->gdiCharSet = gdiCharSet;
   this->data->gdiVerticalFont = gdiVerticalFont;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font(const string& familyName, float emSize, System::Drawing::GraphicsUnit unit) {
@@ -120,12 +120,12 @@ System::Drawing::Font::Font(const string& familyName, float emSize, System::Draw
   this->data->originalFontName = familyName;
   this->data->size = emSize;
   this->data->unit = unit;
-  this->data->hfont = Native::FontApi::CreateFont(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
+  this->data->hfont = Native::FontApi::Create(this->data->fontFamily, this->GetSizeInPoints(), this->data->style, this->data->gdiCharSet, this->data->gdiVerticalFont);
 }
 
 System::Drawing::Font::Font::~Font() {
   if (this->data.IsUnique() && this->data->hfont != IntPtr::Zero)
-    Native::FontApi::DeleteFont(this->data->hfont);
+    Native::FontApi::Destroy(this->data->hfont);
 }
 
 System::Drawing::Font System::Drawing::Font::FromHdc(intptr hdc) {

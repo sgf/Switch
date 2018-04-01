@@ -10,14 +10,14 @@
 using namespace System;
 using namespace System::Drawing;
 
-intptr Native::FontApi::CreateFont(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, byte gdiCharSet, bool gdiVerticalFont) {
+intptr Native::FontApi::Create(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, byte gdiCharSet, bool gdiVerticalFont) {
   NSFont* hfont = [NSFont fontWithName:[NSString stringWithUTF8String:family.Name().c_str()] size:emSize / 3 * 4];;
   if ((style & System::Drawing::FontStyle::Bold) == System::Drawing::FontStyle::Bold) hfont = [[NSFontManager sharedFontManager] convertFont:hfont toHaveTrait:NSFontBoldTrait];
   if ((style & System::Drawing::FontStyle::Italic) == System::Drawing::FontStyle::Italic) hfont = [[NSFontManager sharedFontManager] convertFont:hfont toHaveTrait:NSFontItalicTrait];
   return (intptr)hfont;
 }
 
-void Native::FontApi::DeleteFont(intptr hfont) {
+void Native::FontApi::Destroy(intptr hfont) {
   [(NSFont*)hfont release];
 }
 
