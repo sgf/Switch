@@ -75,7 +75,7 @@ This folder contains all examples used by Switch Docmentation and more.
 * **Process** Provides access to local and remote processes and enables you to start and stop local system processes.
 * **SerialPort** Represents a serial port resource.
 * **ServiceControler** Represents a Windows service and allows you to connect to a running or stopped service, manipulate it, or get information about it.
-* [Timer](./Timer) Implements a timer that raises an event at user-defined intervals. This timer is optimized for use in Windows Forms applications and must be used in a window.
+* [Timer](./TimerForm) Implements a timer that raises an event at user-defined intervals. This timer is optimized for use in Windows Forms applications and must be used in a window.
 
 ### Printing
 
