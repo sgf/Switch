@@ -53,11 +53,10 @@ private:
     this->Name = "Form1";
     this->ResumeLayout(false);
     this->PerformLayout();
-
   }
 
   void radioButton2_CheckedChanged(const object& sender, const EventArgs& e) {
-    radioButton1.Font = System::Drawing::Font("Microsoft Sans Serif", 9.0f, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, ((byte)(0)));
+    radioButton1.Font = System::Drawing::Font("Microsoft Sans Serif", 10.0f, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 0);
   }
 
   void radioButton1_FontChanged(const object& sender, const EventArgs& e) {
