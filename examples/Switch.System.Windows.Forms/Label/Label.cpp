@@ -14,7 +14,7 @@ namespace LabelExample {
 
     Form1() {
       this->Text = "Label example";
-      
+
       this->label1.Text = "label1";
       this->label1.Location = System::Drawing::Point(10, 10);
       this->label1.Parent = *this;

@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::TabControl and System::Windows::Forms::TabPage controls.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlGD.png)
-
-Gnome Dark

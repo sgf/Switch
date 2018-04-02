@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::Form control.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormGD.png)
-
-Gnome Dark

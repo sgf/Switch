@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::ProgressBar control.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ProgressBarW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ProgressBarM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ProgressBarU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ProgressBarG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ProgressBarGD.png)
-
-Gnome Dark

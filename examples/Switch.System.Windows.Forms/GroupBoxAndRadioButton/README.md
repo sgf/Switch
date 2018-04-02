@@ -3,22 +3,22 @@
 This example demonstrates the use of 
 System::Windows::Forms::GroupBox and System::Windows::Forms::RadioButton controls.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxAndRadioButtonW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxAndRadioButtonM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxAndRadioButtonU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxAndRadioButtonG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxAndRadioButtonGD.png)
-
-Gnome Dark

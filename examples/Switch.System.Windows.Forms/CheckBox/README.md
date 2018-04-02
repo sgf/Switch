@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::CheckBox control.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/CheckBoxW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/CheckBoxM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/CheckBoxU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/CheckBoxG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/CheckBoxGD.png)
-
-Gnome Dark

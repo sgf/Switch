@@ -1,23 +1,23 @@
-# OpenFileDialog
+# FolderBrowserDialog
 
-This example demonstrates the use of System::Windows::Forms::OpenFileDialog dialog.
+This example demonstrates the use of System::Windows::Forms::FolderBrowserDialog dialog.
+
+Windows :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/FolderBrowserDialogW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/FolderBrowserDialogM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/FolderBrowserDialogU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/FolderBrowserDialogG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/FolderBrowserDialogGD.png)
-
-Gnome Dark

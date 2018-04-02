@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::RichTextBox control.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/RichTextBoxW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/RichTextBoxM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/RichTextBoxU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/RichTextBoxG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/RichTextBoxGD.png)
-
-Gnome Dark

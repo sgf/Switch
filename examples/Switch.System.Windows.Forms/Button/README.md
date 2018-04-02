@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::Button control.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ButtonW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ButtonM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ButtonU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ButtonG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ButtonGD.png)
-
-Gnome Dark

@@ -2,22 +2,22 @@
 
 This example demonstrates the use of some controls.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SomeControlsW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SomeControlsM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SomeControlsU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SomeControlsG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SomeControlsGD.png)
-
-Gnome Dark

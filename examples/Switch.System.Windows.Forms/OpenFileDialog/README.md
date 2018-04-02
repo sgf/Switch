@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::OpenFileDialog dialog.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/OpenFileDialogW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/OpenFileDialogM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/OpenFileDialogU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/OpenFileDialogG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/OpenFileDialogGD.png)
-
-Gnome Dark

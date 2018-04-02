@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::Panel control.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/PanelGD.png)
-
-Gnome Dark

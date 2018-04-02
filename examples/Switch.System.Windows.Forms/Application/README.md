@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::Application class.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationGD.png)
-
-Gnome Dark

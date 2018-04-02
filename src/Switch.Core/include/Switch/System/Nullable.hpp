@@ -127,7 +127,14 @@ namespace Switch {
       /// @brief Retrieves the value of the current Nullable<T> object, or the object's default value.
       /// @return The value of the Value property if the HasValue property is true; otherwise, the default value of the current Nullable<T> object. The type of the default value is the type argument of the current Nullable<T> object, and the value of the default value consists solely of binary zeroes.
       /// @remarks The GetValueOrDefault method returns a value even if the HasValue property is false (unlike the Value property, which throws an exception).
-      T GetValueOrDefault() {
+      const T& GetValueOrDefault() const {
+        return GetValueOrDefault(T());
+      }
+
+      /// @brief Retrieves the value of the current Nullable<T> object, or the object's default value.
+      /// @return The value of the Value property if the HasValue property is true; otherwise, the default value of the current Nullable<T> object. The type of the default value is the type argument of the current Nullable<T> object, and the value of the default value consists solely of binary zeroes.
+      /// @remarks The GetValueOrDefault method returns a value even if the HasValue property is false (unlike the Value property, which throws an exception).
+      T& GetValueOrDefault() {
         return GetValueOrDefault(T());
       }
 
@@ -135,7 +142,17 @@ namespace Switch {
       /// @param A value to return if the HasValue property is false.
       /// @return The value of the Value property if the HasValue property is true; otherwise, the defaultValue parameter.
       /// @remarks The GetValueOrDefault method returns a value even if the HasValue property is false (unlike the Value property, which throws an exception).
-      T GetValueOrDefault(T defaultValue) {
+      const T& GetValueOrDefault(const T& defaultValue) const {
+        if (!this->hasValue)
+          return defaultValue;
+        return this->value;
+      }
+
+      /// @brief Retrieves the value of the current Nullable<T> object, or the specified default value.
+      /// @param A value to return if the HasValue property is false.
+      /// @return The value of the Value property if the HasValue property is true; otherwise, the defaultValue parameter.
+      /// @remarks The GetValueOrDefault method returns a value even if the HasValue property is false (unlike the Value property, which throws an exception).
+      T& GetValueOrDefault(T& defaultValue) {
         if (!this->hasValue)
           return defaultValue;
         return this->value;

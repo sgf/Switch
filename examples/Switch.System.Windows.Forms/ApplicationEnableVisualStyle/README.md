@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::Application::EnableVisualStyle method.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationEnableVisualStyleW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationEnableVisualStyleM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationEnableVisualStyleU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationEnableVisualStyleG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ApplicationEnableVisualStyleGD.png)
-
-Gnome Dark

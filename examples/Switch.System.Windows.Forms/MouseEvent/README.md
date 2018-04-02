@@ -2,22 +2,22 @@
 
 This example demonstrates the use of some mouse events.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/MouseEventW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/MouseEventM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/MouseEventU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/MouseEventG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/MouseEventGD.png)
-
-Gnome Dark

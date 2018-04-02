@@ -4,6 +4,7 @@
 
 #include <Switch/System/Collections/Generic/Dictionary.hpp>
 #include <Switch/System/Collections/Generic/List.hpp>
+#include <Switch/System/Diagnostics/Debug.hpp>
 #include <Switch/System/Drawing/Color.hpp>
 #include <Switch/System/Drawing/SolidBrush.hpp>
 #include <Switch/System/Drawing/SystemColors.hpp>
@@ -475,11 +476,12 @@ namespace Switch {
           };
 
           property_<System::Drawing::Font> Font {
-            get_ { return (!this->font.HasValue && this->parent != null) ? this->parent().Font : this->font.GetValueOrDefault(DefaultFont); },
+            get_ { return this->GetFont(); },
             set_ {
               if (this->font != value) {
                 this->font = value;
                 this->OnFontChanged(EventArgs::Empty);
+                System::Diagnostics::Debug::WriteLine("Set Font= {0}", this->font);
               }
             }
           };
@@ -3122,6 +3124,7 @@ namespace Switch {
           /// @endcond
 
         private:
+          System::Drawing::Font GetFont() const;
           static bool ReflectMessage(intptr hWnd, Message& m);
           intptr SendMessage(int32 msg, intptr wparam, intptr lparam) const;
           void WmCaptureChange(Message& message);

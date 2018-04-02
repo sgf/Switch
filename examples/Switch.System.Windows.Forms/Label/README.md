@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::Label control.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/LabelW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/LabelM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/LabelU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/LabelG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/LabelGD.png)
-
-Gnome Dark

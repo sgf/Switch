@@ -2,22 +2,22 @@
 
 The classic first application 'Hello World'.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/HelloWorldFormW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/HelloWorldFormM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/HelloWorldFormU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/HelloWorldFormG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/HelloWorldFormGD.png)
-
-Gnome Dark

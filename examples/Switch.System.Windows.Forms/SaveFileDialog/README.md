@@ -2,24 +2,24 @@
 
 This example demonstrates the use of System::Windows::Forms::SaveFileDialog dialog.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SaveFileDialog1W.png)
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SaveFileDialog2W.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SaveFileDialog1M.png)
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SaveFileDialog2M.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SaveFileDialogU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SaveFileDialogG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SaveFileDialogGD.png)
-
-Gnome Dark

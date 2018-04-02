@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::Control::WndProc method.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/WndProcW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/WndProcM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/WndProcU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/WndProcG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/WndProcGD.png)
-
-Gnome Dark

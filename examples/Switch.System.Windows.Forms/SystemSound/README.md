@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Media::SystemSound component.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SystemSoundW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SystemSoundM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SystemSoundU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SystemSoundG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/SystemSoundGD.png)
-
-Gnome Dark

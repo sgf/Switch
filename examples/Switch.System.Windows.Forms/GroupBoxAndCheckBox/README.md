@@ -3,23 +3,23 @@
 This example demonstrates the use of 
 System::Windows::Forms::GroupBox and System::Windows::Forms::CheckBox controls.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxAndCheckBoxW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxAndCheckBoxM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxAndCheckBoxU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxAndCheckBoxG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxAndCheckBoxGD.png)
-
-Gnome Dark
 

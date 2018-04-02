@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::ColorDialog dialog.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColorDialogW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColorDialogM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColorDialogU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColorDialogG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColorDialogGD.png)
-
-Gnome Dark

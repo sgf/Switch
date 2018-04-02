@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::RadioButton control.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/RadioButtonW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/RadioButtonM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/RadioButtonU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/RadioButtonG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/RadioButtonGD.png)
-
-Gnome Dark

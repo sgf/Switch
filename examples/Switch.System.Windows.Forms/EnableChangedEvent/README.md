@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::Control::EnableChaned event.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/EnableChangedEventW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/EnableChangedEventM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/EnableChangedEventU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/EnableChangedEventG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/EnableChangedEventGD.png)
-
-Gnome Dark

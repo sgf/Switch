@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::Timer componant.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TimerFormW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TimerFormM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TimerFormU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TimerFormG.png)
 
-Gnome
+Gnome Dark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/TimerFormGD.png)
-
-Gnome Dark

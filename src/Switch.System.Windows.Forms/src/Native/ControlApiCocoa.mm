@@ -1,5 +1,6 @@
 #if defined(__APPLE__)
 #include "WindowProcedureApiCocoa.hpp"
+#include <Switch/System/Diagnostics/Debug.hpp>
 #include "../../include/Switch/System/Windows/Forms/CheckBox.hpp"
 #include "../../include/Switch/System/Windows/Forms/Control.hpp"
 #include "../../include/Switch/System/Windows/Forms/GroupBox.hpp"
@@ -174,6 +175,7 @@ bool Native::ControlApi::SetFocus(const System::Windows::Forms::Control& control
 }
 
 void Native::ControlApi::SetFont(const System::Windows::Forms::Control& control) {
+  System::Diagnostics::Debug::WriteLine("control = {0}, font = {1}", control.Text, control.Font);
   if (is<System::Windows::Forms::Button>(control) || is<System::Windows::Forms::CheckBox>(control) || is<System::Windows::Forms::Label>(control) || is<System::Windows::Forms::RadioButton>(control))
     [(NSControl*)control.Handle() setFont:((NSFont*)control.Font().ToHFont())];
 }

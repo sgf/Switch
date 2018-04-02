@@ -2,22 +2,22 @@
 
 This example demonstrates the use of System::Windows::Forms::GroupBox control.
 
+Windows :
+
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxW.png)
 
-Windows
+macOS :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxM.png)
 
-macOS
+Ubuntu :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxU.png)
 
-Ubuntu
+Gnome :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxG.png)
 
-Gnome
+GnomeDark :
 
 ![GitHub Logo](../../../docs/Pictures/Examples/Forms/GroupBoxGD.png)
-
-GnomeDark
