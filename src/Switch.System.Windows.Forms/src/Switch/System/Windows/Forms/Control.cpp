@@ -160,14 +160,6 @@ void Control::Hide() {
   this->Visible = false;
 }
 
-System::Drawing::Font Control::GetFont() const {
-  System::Drawing::Font font;
-  if (!this->font.HasValue && this->parent) font = this->parent().Font();
-  font = this->font.GetValueOrDefault(DefaultFont);
-  System::Diagnostics::Debug::WriteLine("Get Font= {0}", this->font);
-  return font;
-}
-
 void Control::Invalidate(bool invalidateChildren) {
   if (this->IsHandleCreated)
     Native::ControlApi::Invalidate(*this, invalidateChildren);

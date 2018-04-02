@@ -79,6 +79,7 @@ namespace Switch {
             this->visible = false;
             this->SetStyle(ControlStyles::UserPaint, false);
             //this->BackColor = System::Drawing::SystemColors::Window;
+            this->font = DefaultFont;
           }
 
           /// @brief Gets or sets the button on the form that is clicked when the user presses the ENTER key.

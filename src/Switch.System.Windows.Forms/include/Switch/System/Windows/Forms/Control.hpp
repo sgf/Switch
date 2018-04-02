@@ -476,12 +476,11 @@ namespace Switch {
           };
 
           property_<System::Drawing::Font> Font {
-            get_ { return this->GetFont(); },
+            get_ { return !this->font.HasValue && this->parent ? this->parent().Font() : this->font.GetValueOrDefault(DefaultFont);},
             set_ {
               if (this->font != value) {
                 this->font = value;
                 this->OnFontChanged(EventArgs::Empty);
-                System::Diagnostics::Debug::WriteLine("Set Font= {0}", this->font);
               }
             }
           };
@@ -3124,7 +3123,6 @@ namespace Switch {
           /// @endcond
 
         private:
-          System::Drawing::Font GetFont() const;
           static bool ReflectMessage(intptr hWnd, Message& m);
           intptr SendMessage(int32 msg, intptr wparam, intptr lparam) const;
           void WmCaptureChange(Message& message);

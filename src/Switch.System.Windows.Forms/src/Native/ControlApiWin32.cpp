@@ -109,7 +109,6 @@ bool Native::ControlApi::SetFocus(const System::Windows::Forms::Control& control
 }
 
 void Native::ControlApi::SetFont(const System::Windows::Forms::Control& control) {
-  System::Diagnostics::Debug::WriteLine(string::Format("control = {0}, font= {1}", control.Text, control.Font));
   SendMessage(control.Handle(), WM_SETFONT, control.Font().ToHFont(), TRUE);
 }
 
