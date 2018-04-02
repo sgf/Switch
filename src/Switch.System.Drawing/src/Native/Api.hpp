@@ -29,6 +29,7 @@ namespace Switch {
 struct __system_font_crerator__ {
   System::Drawing::Font operator()(const string& name, float size, System::Drawing::FontStyle style) {
     System::Drawing::Font result(name, size, style);
+    result.data->gdiCharSet = 0;
     result.data->isSystemFont = true;
     return result;
   }
@@ -36,9 +37,10 @@ struct __system_font_crerator__ {
   System::Drawing::Font operator()(intptr hfont, const string& name, float size, System::Drawing::FontStyle style) {
     System::Drawing::Font result = System::Drawing::Font::FromHFont(hfont);
     result.data->fontFamily = System::Drawing::FontFamily(name);
+    result.data->gdiCharSet = 0;
+    result.data->isSystemFont = true;
     result.data->size = size;
     result.data->style = style;
-    result.data->isSystemFont = true;
     return result;
   }
 };

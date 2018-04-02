@@ -5,6 +5,7 @@
 
 #include <Switch/System/EventArgs.hpp>
 #include <Switch/System/Drawing/SystemColors.hpp>
+#include <Switch/System/Drawing/SystemFonts.hpp>
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -28,6 +29,7 @@ void Form::Close() {
 void Form::CreateHandle() {
   if (!this->backColor.HasValue && System::Environment::OSVersion().Platform == System::PlatformID::Unix)
     this->backColor = System::Drawing::SystemColors::Window;
+  this->font = System::Drawing::SystemFonts::DefaultFont;
   this->messageActions[WM_CLOSE] = {*this, &Form::WmClose};
   this->handle = Native::FormApi::Create(*this);
   this->Control::CreateHandle();

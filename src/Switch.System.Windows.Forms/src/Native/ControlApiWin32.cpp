@@ -9,6 +9,7 @@
 #undef SendMessage
 #include "WindowProcedureApiWin32.hpp"
 #include "../../include/Switch/System/Windows/Forms/Control.hpp"
+#include <Switch/System/Diagnostics/Debug.hpp>
 
 using namespace System;
 using namespace System::Drawing;
@@ -108,7 +109,8 @@ bool Native::ControlApi::SetFocus(const System::Windows::Forms::Control& control
 }
 
 void Native::ControlApi::SetFont(const System::Windows::Forms::Control& control) {
-  PostMessage((HWND)control.Handle(), WM_SETFONT, (WPARAM)control.Font().ToHFont(), TRUE);
+  System::Diagnostics::Debug::WriteLine(string::Format("control = {0}, font= {1}", control.Text, control.Font));
+  SendMessage(control.Handle(), WM_SETFONT, control.Font().ToHFont(), TRUE);
 }
 
 void Native::ControlApi::SetForeColor(intptr hdc) {
