@@ -475,6 +475,27 @@ namespace Switch {
             }
           };
 
+          /// @brief Gets or sets the font of the text displayed by the control.
+          /// @return System::Drawing::Font The Font to apply to the text displayed by the control. The default is the value of the DefaultFont property.
+          /// @remarks The Font property is an ambient property. An ambient property is a control property that, if not set, is retrieved from the parent control. For example, a Button will have the same BackColor as its parent Form by default. For more information about ambient properties, see the AmbientProperties class or the Control class overview.
+          /// @remarks Because the Font is immutable (meaning that you cannot adjust any of its properties), you can only assign the Font property a new Font. However, you can base the new font on the existing font.
+          /// @remarks The following is an example of how to adjust the existing font to make it bold:
+          /// @code
+          /// myControl.Font = System::Drawing::Font(myControl.Font, myControl.Font().Style | FontStyle::Bold);
+          /// @endcode
+          /// @par Not to Inheritors
+          /// When overriding the Font property in a derived class, use the base class's Font property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setaccessors of the Font property; you can override only one if needed.
+          /// @par Examples
+          /// The following code example displays a FontDialog to the user and changes the Font of a DateTimePicker control. This example requires that you have a Form with Button and a DateTimePicker on it.
+          /// @code
+          /// void myButton_Click(const object& sender, const EventArgs& e) {
+          ///   FontDialog myFontDialog;
+          ///   if(myFontDialog.ShowDialog() == DialogResult::OK) {
+          ///     // Set the control's font.
+          ///     myDateTimePicker.Font = myFontDialog.Font;
+          ///   }
+          /// }
+          /// @endcode
           property_<System::Drawing::Font> Font {
             get_ { return !this->font.HasValue && this->parent ? this->parent().Font() : this->font.GetValueOrDefault(DefaultFont);},
             set_ {
@@ -1687,6 +1708,12 @@ namespace Switch {
           /// @include EnableChangedEvent.cpp
           EventHandler EnabledChanged;
 
+          /// @brief Occurs when the Font property value changes.
+          /// @remarks This event is raised if the Font property is changed by either a programmatic modification or through interaction.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates the FontChanged event.
+          /// @include FontChangedEvent.cpp
           EventHandler FontChanged;
 
           /// @brief Occurs when the ForeColor property value changes.
@@ -2496,6 +2523,36 @@ namespace Switch {
           /// When overriding OnEnabledChanged in a derived class, be sure to call the base class's OnEnabledChanged method so that registered delegates receive the event.
           virtual void OnEnabledChanged(const EventArgs& e);
 
+          /// @brief Raises the FontChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnFontChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnFontChanged in a derived class, be sure to call the base class's OnFontChanged method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example is an event-raising method that is executed when the Text property value changes. The Control class has several methods with the name pattern OnPropertyNameChanged that raise the corresponding PropertyNameChanged event when the PropertyName value changes (PropertyName represents the name of the corresponding property).<br><br>
+          /// The following code example changes the ForeColor of a TextBox derived class displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive. This example requires that you have a class that derives from the TextBox class.
+          /// @code
+          /// void OnTextChanged(const System::EventArgs& e) override {
+          ///   try {
+          ///     // Convert the text to a Double and determine
+          ///     // if it is a negative number.
+          ///     if (Double::Parse(this->Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       this->ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       this->ForeColor = Color::Black;
+          ///     }
+          ///   } catch (...) {
+          ///     // If there is an error, display the
+          ///     // text using the system colors.
+          ///     this->ForeColor = SystemColors::ControlText;
+          ///   }
+          ///
+          ///   this->TextBox::OnTextChanged(e);
+          /// }
+          /// @endcode
           virtual void OnFontChanged(const EventArgs& e);
 
           /// @brief Raises the ForeColorChanged event.
