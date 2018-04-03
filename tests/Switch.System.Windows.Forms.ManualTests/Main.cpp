@@ -90,7 +90,7 @@ namespace ManualTests {
       };
 
       this->Text = "Dialogs";
-      this->Font = System::Drawing::Font("Arial", 16.0f, System::Drawing::FontStyle::Italic);
+      //this->Font = System::Drawing::Font("Arial", 16.0f, System::Drawing::FontStyle::Italic);
       this->Controls().AddRange({this->buttonMessage, this->buttonColor, this->buttonOpen, this->buttonSave, this->buttonFolder, this->buttonFont});
     }
 

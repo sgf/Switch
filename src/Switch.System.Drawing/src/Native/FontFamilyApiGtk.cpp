@@ -40,7 +40,11 @@ System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const s
   for (int32 index = 0; index < pangoFontFamiliesMax; index++)
     if (GetName((intptr)index) == name)
       return System::Drawing::FontFamily((intptr)index);
-  throw ArgumentException(caller_);
+  string defaultFontName = Native::SystemFontsApi::GetDefaultFont().Name;
+  for (int32 index = 0; index < pangoFontFamiliesMax; index++)
+    if (GetName((intptr)index) == defaultFontName)
+      return System::Drawing::FontFamily((intptr)index);
+  return System::Drawing::FontFamily((intptr)0);
 }
 
 string Native::FontFamilyApi::GetName(intptr handle) {

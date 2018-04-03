@@ -28,7 +28,8 @@ namespace TimerFormExample {
 
       this->timer.Interval = 100;
       this->timer.Tick += delegate_(const object & sender, const EventArgs & e) {
-        this->label.Text = string::Format("{0:N1}", as<double>(++this->counter) / 10);
+        if (this->counter == 73) return;
+        this->label.Text = string::Format("{0:F1}", as<double>(++this->counter) / 10);
       };
 
       this->button.Parent = *this;

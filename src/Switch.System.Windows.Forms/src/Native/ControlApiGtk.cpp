@@ -83,11 +83,11 @@ intptr Native::ControlApi::SendMessage(intptr handle, int32 msg, intptr wparam, 
 
 void Native::ControlApi::SetBackColor(intptr hdc) {
   ref<System::Windows::Forms::Control> control = System::Windows::Forms::Control::FromHandle(GetHandleWindowFromDeviceContext(hdc));
-  ((Native::Widget*)control().Handle())->BackColor(System::Environment::OSVersion().Platform == System::PlatformID::MacOSX && is<System::Windows::Forms::Button>(control) && as<System::Windows::Forms::Button>(control)().IsDefault ? System::Drawing::SystemColors::Highlight() : control().BackColor());
+  ((Native::Widget*)control().Handle())->BackColor(control().BackColor());
 }
 
 void Native::ControlApi::SetBackColor(const System::Windows::Forms::Control& control) {
-  ((Native::Widget*)control.Handle())->BackColor(System::Environment::OSVersion().Platform == System::PlatformID::MacOSX && is<System::Windows::Forms::Button>(control) && as<System::Windows::Forms::Button>(control).IsDefault ? System::Drawing::SystemColors::Highlight() : control.BackColor());
+  ((Native::Widget*)control.Handle())->BackColor(control.BackColor());
 }
 
 void Native::ControlApi::SetClientSize(System::Windows::Forms::Control& control) {
@@ -108,15 +108,17 @@ bool Native::ControlApi::SetFocus(const System::Windows::Forms::Control& control
 }
 
 void Native::ControlApi::SetFont(const System::Windows::Forms::Control& control) {
+  Pango::FontDescription* fd = (Pango::FontDescription*)control.Font().ToHFont();
+  ((Native::Widget*)control.Handle())->ToWidget().override_font(*(Pango::FontDescription*)control.Font().ToHFont());
 }
 
 void Native::ControlApi::SetForeColor(intptr hdc) {
   ref<System::Windows::Forms::Control> control = System::Windows::Forms::Control::FromHandle(GetHandleWindowFromDeviceContext(hdc));
-  ((Native::Widget*)control().Handle())->ForeColor(System::Environment::OSVersion().Platform == System::PlatformID::MacOSX && is<System::Windows::Forms::Button>(control) && as<System::Windows::Forms::Button>(control)().IsDefault ? System::Drawing::Color::White() : control().ForeColor());
+  ((Native::Widget*)control().Handle())->ForeColor(control().ForeColor());
 }
 
 void Native::ControlApi::SetForeColor(const System::Windows::Forms::Control& control) {
-  ((Native::Widget*)control.Handle())->ForeColor(System::Environment::OSVersion().Platform == System::PlatformID::MacOSX && is<System::Windows::Forms::Button>(control) && as<System::Windows::Forms::Button>(control).IsDefault ? System::Drawing::Color::White() : control.ForeColor());
+  ((Native::Widget*)control.Handle())->ForeColor(control.ForeColor());
 }
 
 void Native::ControlApi::SetLocation(const System::Windows::Forms::Control& control) {

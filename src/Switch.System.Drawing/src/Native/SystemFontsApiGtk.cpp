@@ -15,35 +15,43 @@ using namespace System;
 using namespace System::Drawing;
 
 System::Drawing::Font Native::SystemFontsApi::GetCaptionFont() {
-  return __system_font_crerator__()("Sans", 12.0f, FontStyle::Regular);
+  Pango::FontDescription fontDescription = Gtk::Button().get_style_context()->get_font();
+  return __system_font_crerator__()(fontDescription.get_family().c_str(), fontDescription.get_size() / PANGO_SCALE, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetDefaultFont() {
-  return __system_font_crerator__()("Sans", 12.0f, FontStyle::Regular);
+  Pango::FontDescription fontDescription = Gtk::Button().get_style_context()->get_font();
+  return __system_font_crerator__()(fontDescription.get_family().c_str(), fontDescription.get_size() / PANGO_SCALE, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetDialogFont() {
-  return __system_font_crerator__()("Sans", 12.0f, FontStyle::Regular);
+  Pango::FontDescription fontDescription = Gtk::Button().get_style_context()->get_font();
+  return __system_font_crerator__()(fontDescription.get_family().c_str(), fontDescription.get_size() / PANGO_SCALE, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetIconTitleFont() {
-  return __system_font_crerator__()("Sans", 12.0f, FontStyle::Regular);
+  Pango::FontDescription fontDescription = Gtk::Button().get_style_context()->get_font();
+  return __system_font_crerator__()(fontDescription.get_family().c_str(), fontDescription.get_size() / PANGO_SCALE, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetMenuFont() {
-  return __system_font_crerator__()("Sans", 12.0f, FontStyle::Regular);
+  Pango::FontDescription fontDescription = Gtk::Button().get_style_context()->get_font();
+  return __system_font_crerator__()(fontDescription.get_family().c_str(), fontDescription.get_size() / PANGO_SCALE, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetMessageBoxFont() {
-  return __system_font_crerator__()("Sans", 12.0f, FontStyle::Regular);
+  Pango::FontDescription fontDescription = Gtk::Button().get_style_context()->get_font();
+  return __system_font_crerator__()(fontDescription.get_family().c_str(), fontDescription.get_size() / PANGO_SCALE, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetSmallCaptionFont() {
-  return __system_font_crerator__()("Sans", 12.0f, FontStyle::Regular);
+  Pango::FontDescription fontDescription = Gtk::Button().get_style_context()->get_font();
+  return __system_font_crerator__()(fontDescription.get_family().c_str(), fontDescription.get_size() / PANGO_SCALE, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetStatusFont() {
-  return __system_font_crerator__()("Sans", 12.0f, FontStyle::Regular);
+  Pango::FontDescription fontDescription = Gtk::Button().get_style_context()->get_font();
+  return __system_font_crerator__()(fontDescription.get_family().c_str(), fontDescription.get_size() / PANGO_SCALE, FontStyle::Regular);
 }
 
 #endif
