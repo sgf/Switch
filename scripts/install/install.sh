@@ -1,23 +1,23 @@
 echo "Install Switch libraries version $switch_version, copyright Gammasoft, 2018"
 echo ""
 
-# ________________________________________________________________________________________
-#                                                             Detecting linux distribution
+# ______________________________________________________________________________
+#                                                   Detecting linux distribution
 OSTYPE=`uname -a`
 if [[ "$OSTYPE" == *"Linux"* ]]; then
   OSTYPE=`lsb_release -si`;
 fi
 
-# ________________________________________________________________________________________
-#                             install needed packages and libraries for known distribution
+# ______________________________________________________________________________
+#                   install needed packages and libraries for known distribution
 case "$OSTYPE" in
   *"Darwin"*) brew update; brew install cmake -y;;
   *"Debian"* | *"elementary"* | *"LinuxMint"* | *"Ubuntu"*) sudo apt update; sudo apt install clang cmake libgtkmm-3.0-dev libssl-dev uuid-dev -y;;
   *"CentOS"* | *"Fedora"* | *"RedHat"*) sudo yum update; sudo yum install clang cmake3 gtkmm30-devel libuuid-devel uuid-devel -y;;
 esac
 
-# ________________________________________________________________________________________
-#                                                       generate, build and install Switch
+# ______________________________________________________________________________
+#                                             generate, build and install Switch
 mkdir -p build/examples
 pushd build
 if [[ "$OSTYPE" == *"MSYS"* ]] || [[ "$OSTYPE" == *"MINGW64"* ]]; then
@@ -38,8 +38,8 @@ else
 fi
 popd
 
-# ________________________________________________________________________________________
-#                                                             generate and launch examples
+# ______________________________________________________________________________
+#                                                   generate and launch examples
 pushd build/examples
 if [[ "$OSTYPE" == *"MSYS"* ]] || [[ "$OSTYPE" == *"MINGW"* ]]; then
   cmake ../../examples -DCMAKE_INSTALL_PREFIX=/c/usr/local "$@"
