@@ -108,7 +108,6 @@ bool Native::ControlApi::SetFocus(const System::Windows::Forms::Control& control
 }
 
 void Native::ControlApi::SetFont(const System::Windows::Forms::Control& control) {
-  Pango::FontDescription* fd = (Pango::FontDescription*)control.Font().ToHFont();
   ((Native::Widget*)control.Handle())->ToWidget().override_font(*(Pango::FontDescription*)control.Font().ToHFont());
 }
 

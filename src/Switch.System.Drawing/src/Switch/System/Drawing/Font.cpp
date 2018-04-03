@@ -133,7 +133,11 @@ System::Drawing::Font System::Drawing::Font::FromHdc(intptr hdc) {
 }
 
 System::Drawing::Font System::Drawing::Font::FromHFont(intptr hfont) {
-  throw NotImplementedException(caller_);
+  System::Drawing::Font font;
+  font.data->hfont = hfont;
+  Native::FontApi::GetInformation(font.data->hfont, font.data->originalFontName, font.data->size, font.data->style);
+  font.data->fontFamily = System::Drawing::FontFamily(font.data->originalFontName);
+  return font;
 }
 
 System::Drawing::Font System::Drawing::Font::FromLogFontHandle(intptr logfont, intptr hdc) {

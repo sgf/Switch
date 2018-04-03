@@ -26,7 +26,11 @@ namespace Switch {
 }
 /// @endcond
 
-struct __system_font_crerator__ {
+struct __system_drawing_font_accessor__ {
+  void operator()(System::Drawing::Font& font) {
+    font.data->isSystemFont = true;
+  }
+
   System::Drawing::Font operator()(const string& name, float size, System::Drawing::FontStyle style) {
     System::Drawing::Font result(name, size, style);
     result.data->gdiCharSet = 0;
@@ -56,6 +60,7 @@ namespace Native {
   public:
     static intptr Create(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, byte gdiCharSet, bool gdiVerticalFont);
     static void Destroy(intptr hfont);
+    static void GetInformation(intptr hfont, string& name, float& size, System::Drawing::FontStyle& style);
     static float GetHeight(float emsize);
     static float GetHeight(float emsize, intptr hdc);
   };

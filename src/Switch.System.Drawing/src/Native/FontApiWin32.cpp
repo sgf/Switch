@@ -20,6 +20,9 @@ void Native::FontApi::Destroy(intptr hfont) {
   DeleteObject((HGDIOBJ)hfont);
 }
 
+void Native::FontApi::GetInformation(intptr hfont, string& name, float& size, System::Drawing::FontStyle& style) {
+}
+
 float Native::FontApi::GetHeight(float emSize) {
   return GetHeight(emSize, (intptr)GetDC(GetActiveWindow()));
 }

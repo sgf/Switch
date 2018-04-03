@@ -16,36 +16,36 @@ using namespace System;
 using namespace System::Drawing;
 
 System::Drawing::Font Native::SystemFontsApi::GetCaptionFont() {
-  return __system_font_crerator__()("Segoe UI", 9.0f, FontStyle::Regular);
+  return __system_drawing_font_accessor__()("Segoe UI", 9.0f, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetDefaultFont() {
   ///   Font::CreateFrom, WPARAM((HFONT)GetStockObject(DEFAULT_GUI_FONT)), TRUE);
-  return __system_font_crerator__()("Microsoft Sans Serif", 8.25f, FontStyle::Regular);
+  return __system_drawing_font_accessor__()("Microsoft Sans Serif", 8.25f, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetDialogFont() {
-  return __system_font_crerator__()("Tahoma", 8.0f, FontStyle::Regular);
+  return __system_drawing_font_accessor__()("Tahoma", 8.0f, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetIconTitleFont() {
-  return __system_font_crerator__()("Segoe UI", 9.0f, FontStyle::Regular);
+  return __system_drawing_font_accessor__()("Segoe UI", 9.0f, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetMenuFont() {
-  return __system_font_crerator__()("Segoe UI", 9.0f, FontStyle::Regular);
+  return __system_drawing_font_accessor__()("Segoe UI", 9.0f, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetMessageBoxFont() {
-  return __system_font_crerator__()("Tahoma", 8.0f, FontStyle::Regular);
+  return __system_drawing_font_accessor__()("Tahoma", 8.0f, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetSmallCaptionFont() {
-  return __system_font_crerator__()("Segoe UI", 9.0f, FontStyle::Regular);
+  return __system_drawing_font_accessor__()("Segoe UI", 9.0f, FontStyle::Regular);
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetStatusFont() {
-  return __system_font_crerator__()("Segoe UI", 9.0f, FontStyle::Regular);
+  return __system_drawing_font_accessor__()("Segoe UI", 9.0f, FontStyle::Regular);
 }
 
 #endif

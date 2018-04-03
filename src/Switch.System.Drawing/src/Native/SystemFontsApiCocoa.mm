@@ -10,50 +10,51 @@ using namespace System;
 using namespace System::Drawing;
 
 System::Drawing::Font Native::SystemFontsApi::GetCaptionFont() {
-  NSFont* hfont = [NSFont titleBarFontOfSize:[NSFont systemFontSize]];
-  return __system_font_crerator__()([[hfont fontName] UTF8String], (float)[hfont pointSize] / 4 * 3, FontStyle::Regular);
-  [hfont release];
+  System::Drawing::Font font = System::Drawing::Font::FromHFont((intptr)[NSFont titleBarFontOfSize:[NSFont systemFontSize]]);
+  __system_drawing_font_accessor__()(font);
+  return font;
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetDefaultFont() {
-  NSFont* hfont = [NSFont systemFontOfSize:[NSFont systemFontSize]];
-  return __system_font_crerator__()([[hfont fontName] UTF8String], (float)[hfont pointSize] / 4 * 3, FontStyle::Regular);
-  [hfont release];
+  System::Drawing::Font font = System::Drawing::Font::FromHFont((intptr)[NSFont systemFontOfSize:[NSFont systemFontSize]]);
+  __system_drawing_font_accessor__()(font);
+  return font;
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetDialogFont() {
-  NSFont* hfont = [NSFont paletteFontOfSize:[NSFont systemFontSize]];
-  return __system_font_crerator__()([[hfont fontName] UTF8String], (float)[hfont pointSize] / 4 * 3, FontStyle::Regular);
-  [hfont release];
+  System::Drawing::Font font = System::Drawing::Font::FromHFont((intptr)[NSFont paletteFontOfSize:[NSFont systemFontSize]]);
+  __system_drawing_font_accessor__()(font);
+  return font;
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetIconTitleFont() {
-  NSFont* hfont = [NSFont titleBarFontOfSize:[NSFont systemFontSize]];
-  return __system_font_crerator__()([[hfont fontName] UTF8String], (float)[hfont pointSize] / 4 * 3, FontStyle::Regular);
-  [hfont release];
+  System::Drawing::Font font = System::Drawing::Font::FromHFont((intptr)[NSFont titleBarFontOfSize:[NSFont systemFontSize]]);
+  __system_drawing_font_accessor__()(font);
+  return font;
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetMenuFont() {
-  NSFont* hfont = [NSFont menuFontOfSize:[NSFont systemFontSize]];
-  return __system_font_crerator__()([[hfont fontName] UTF8String], (float)[hfont pointSize] / 4 * 3, FontStyle::Regular);
-  [hfont release];
+  System::Drawing::Font font = System::Drawing::Font::FromHFont((intptr)[NSFont menuFontOfSize:[NSFont systemFontSize]]);
+  __system_drawing_font_accessor__()(font);
+  return font;
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetMessageBoxFont() {
-  NSFont* hfont = [NSFont messageFontOfSize:[NSFont systemFontSize]];
-  return __system_font_crerator__()([[hfont fontName] UTF8String], (float)[hfont pointSize] / 4 * 3, FontStyle::Regular);
-  [hfont release];
+  System::Drawing::Font font = System::Drawing::Font::FromHFont((intptr)[NSFont messageFontOfSize:[NSFont systemFontSize]]);
+  __system_drawing_font_accessor__()(font);
+  return font;
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetSmallCaptionFont() {
-  NSFont* hfont = [NSFont titleBarFontOfSize:[NSFont systemFontSize]];
-  return __system_font_crerator__()([[hfont fontName] UTF8String], (float)[hfont pointSize] / 4 * 3, FontStyle::Regular);
-  [hfont release];
+  System::Drawing::Font font = System::Drawing::Font::FromHFont((intptr)[NSFont titleBarFontOfSize:[NSFont systemFontSize]]);
+  __system_drawing_font_accessor__()(font);
+  return font;
 }
 
 System::Drawing::Font Native::SystemFontsApi::GetStatusFont() {
-  NSFont* hfont = [NSFont titleBarFontOfSize:[NSFont systemFontSize]];
-  return __system_font_crerator__()([[hfont fontName] UTF8String], (float)[hfont pointSize] / 4 * 3, FontStyle::Regular);
-  [hfont release];
+  System::Drawing::Font font = System::Drawing::Font::FromHFont((intptr)[NSFont titleBarFontOfSize:[NSFont systemFontSize]]);
+  __system_drawing_font_accessor__()(font);
+  return font;
 }
+
 #endif

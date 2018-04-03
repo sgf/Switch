@@ -12,7 +12,7 @@
 #include "GraphicsUnit.hpp"
 
 /// @cond
-struct __system_font_crerator__;
+struct __system_drawing_font_accessor__;
 /// @endcond
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
@@ -707,7 +707,7 @@ namespace Switch {
 
       private:
         /// @cond
-        friend struct ::__system_font_crerator__;
+        friend struct ::__system_drawing_font_accessor__;
         /// @endcond
         static System::Drawing::Font FromLogFontHandle(intptr lf, intptr hdc);
         float GetSizeInPoints() const;
