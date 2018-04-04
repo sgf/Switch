@@ -2,6 +2,7 @@
 #include <Switch/System/Windows/Forms/Application.hpp>
 #include <Switch/System/Windows/Forms/ColorDialog.hpp>
 #include <Switch/System/Windows/Forms/FolderBrowserDialog.hpp>
+#include <Switch/System/Windows/Forms/FontDialog.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
 #include <Switch/System/Windows/Forms/MessageBox.hpp>
 #include <Switch/System/Windows/Forms/OpenFileDialog.hpp>
@@ -87,6 +88,9 @@ namespace ManualTests {
       this->buttonFont.Width = 110;
       this->buttonFont.Location = System::Drawing::Point(10, 210);
       this->buttonFont.Click += delegate_(const object & sender, const EventArgs & e) {
+        FontDialog fontDialog;
+        System::Windows::Forms::DialogResult result = fontDialog.ShowDialog();
+        System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
       };
 
       this->Text = "Dialogs";

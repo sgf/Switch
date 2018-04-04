@@ -30,6 +30,25 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
   return true;
 }
 
+bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog &fontDialog) {
+   return true;
+}
+
+bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog& folderBrowserDialog) {
+  Gtk::FileChooserDialog fileChooserDialog(folderBrowserDialog.Description().c_str(), Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
+  fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
+  fileChooserDialog.add_button("Open", Gtk::RESPONSE_OK);
+  string path = Environment::GetFolderPath(folderBrowserDialog.RootFolder);
+  if (folderBrowserDialog.SelectedPath != "" && System::IO::Directory::Exists(folderBrowserDialog.SelectedPath))
+    path = folderBrowserDialog.SelectedPath;
+  fileChooserDialog.set_current_folder(path.c_str());
+  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
+  if (window != null) fileChooserDialog.set_transient_for(*window);
+  if (fileChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
+  folderBrowserDialog.SelectedPath = fileChooserDialog.get_current_folder();
+  return true;
+}
+
 bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog& openFileDialog) {
   Gtk::FileChooserDialog fileChooserDialog(openFileDialog.Title().c_str(), Gtk::FILE_CHOOSER_ACTION_OPEN);
   fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
@@ -90,18 +109,4 @@ bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms
   return true;
 }
 
-bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog& folderBrowserDialog) {
-  Gtk::FileChooserDialog fileChooserDialog(folderBrowserDialog.Description().c_str(), Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
-  fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
-  fileChooserDialog.add_button("Open", Gtk::RESPONSE_OK);
-  string path = Environment::GetFolderPath(folderBrowserDialog.RootFolder);
-  if (folderBrowserDialog.SelectedPath != "" && System::IO::Directory::Exists(folderBrowserDialog.SelectedPath))
-    path = folderBrowserDialog.SelectedPath;
-  fileChooserDialog.set_current_folder(path.c_str());
-  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
-  if (window != null) fileChooserDialog.set_transient_for(*window);
-  if (fileChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
-  folderBrowserDialog.SelectedPath = fileChooserDialog.get_current_folder();
-  return true;
-}
 #endif
