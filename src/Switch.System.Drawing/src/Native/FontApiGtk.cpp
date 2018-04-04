@@ -30,12 +30,12 @@ void Native::FontApi::Destroy(intptr hfont) {
 void Native::FontApi::GetInformation(intptr hfont, string& name, float& size, System::Drawing::FontStyle& style) {
 }
 
-float Native::FontApi::GetHeight(float emSize) {
-  return GetHeight(emSize, IntPtr::Zero);
-}
-
 float Native::FontApi::GetHeight(float emSize, intptr hdc) {
   return emSize / 3 * 4;
+}
+
+float Native::FontApi::GetSize(float height, intptr hdc) {
+  return height / 4 * 3;
 }
 
 #endif

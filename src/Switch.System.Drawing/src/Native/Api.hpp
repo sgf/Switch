@@ -61,8 +61,8 @@ namespace Native {
     static intptr Create(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, byte gdiCharSet, bool gdiVerticalFont);
     static void Destroy(intptr hfont);
     static void GetInformation(intptr hfont, string& name, float& size, System::Drawing::FontStyle& style);
-    static float GetHeight(float emsize);
     static float GetHeight(float emsize, intptr hdc);
+    static float GetSize(float heigth, intptr hdc);
   };
 
   class FontFamilyApi static_ {

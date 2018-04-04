@@ -145,7 +145,7 @@ System::Drawing::Font System::Drawing::Font::FromLogFontHandle(intptr logfont, i
 }
 
 float System::Drawing::Font::GetHeight() const {
-  return Native::FontApi::GetHeight(this->data->size);
+  return Native::FontApi::GetHeight(this->data->size, IntPtr::Zero);
 }
 
 float System::Drawing::Font::GetHeight(const Graphics& graphics) const {
