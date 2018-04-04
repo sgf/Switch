@@ -164,3 +164,8 @@ float System::Drawing::Font::GetSizeInPoints() const {
   default: return this->data->size;
   }
 }
+
+float System::Drawing::Font::GetSize(float height, intptr hdc) {
+  return Native::FontApi::GetSize(height, hdc);
+}
+

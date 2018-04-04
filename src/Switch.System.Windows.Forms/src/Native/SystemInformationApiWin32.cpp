@@ -6,6 +6,7 @@
 #include <Switch/Undef.hpp>
 #include <Switch/System/Drawing/Font.hpp>
 #include <Switch/System/Drawing/Size.hpp>
+#include <Switch/System/Drawing/SystemFonts.hpp>
 #include "Api.hpp"
 #include "../../include/Switch/System/Windows/Forms/ArrangeDirection.hpp"
 #include "../../include/Switch/System/Windows/Forms/ArrangeStartingPosition.hpp"
@@ -297,10 +298,7 @@ Size Native::SystemInformationApi::GetMenuCheckSize() {
 }
 
 Font Native::SystemInformationApi::GetMenuFont() {
-  NONCLIENTMETRICS value;
-  value.cbSize = sizeof(value);
-  SystemParametersInfo(SPI_GETNONCLIENTMETRICS, value.cbSize, &value, 0);
-  return Font::FromLogFont((intptr)&value.lfMenuFont);
+  return Drawing::SystemFonts::MenuFont;
 }
 
 int32 Native::SystemInformationApi::GetMenuHeight() {

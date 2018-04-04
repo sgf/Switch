@@ -575,7 +575,6 @@ namespace Switch {
         /// @param hfont A Windows handle to a GDI font.
         /// @return Font The Font this method creates.
         /// @remarks For this method to work, the hdc parameter must contain a handle to a device context in which a font is selected. This method will not work with an hdc handle acquired from a GDI+ Graphics object because the hdc handle does not have a font selected.
-        /// @warning Always throw NotImplementedExeption.
         /// @par Examples
         /// The following code example is designed for use with Windows Forms, and it requires PaintEventArgse, which is a parameter of the Paint event handler. The code performs the following actions:
         /// * Gets a handle to a GDI font.
@@ -600,9 +599,8 @@ namespace Switch {
         /// @param lf An Object that represents the GDI LOGFONT structure from which to create the Font.
         /// @return Font The Font that this method creates.
         /// @remarks A GDI LOGFONT, or logical font, is a structure that contains 14 properties that describe a particular font. For more information, see "The Logical Font" in the Windows Development documentation at http://msdn.microsoft.com/library.
-        /// @warning Always throw NotImplementedExeption.
         template<typename object>
-        static System::Drawing::Font FromLogFont(const object& lf) { return FromLogFont(lf, 0); }
+        static System::Drawing::Font FromLogFont(const object& lf) { return FromLogFont(lf, IntPtr::Zero); }
 
         /// @brief Creates a Font from the specified GDI logical font (LOGFONT) structure.
         /// @param lf An Object that represents the GDI LOGFONT structure from which to create the Font.
@@ -610,9 +608,14 @@ namespace Switch {
         /// @return Font The Font that this method creates.
         /// @exception ArgumentException The font is not a TrueType font.
         /// @remarks A GDI LOGFONT, or logical font, is a structure that contains 14 properties that describe a particular font. For more information, see "The Logical Font" in the Windows Development documentation at http://msdn.microsoft.com/library.
-        /// @warning Always throw NotImplementedExeption.
         template<typename object>
-        static System::Drawing::Font FromLogFont(const object& lf, intptr hdc) { return FromLogFontHandle((intptr)&lf, hdc); }
+        static System::Drawing::Font FromLogFont(const object& lf, intptr hdc) {
+          System::Drawing::FontStyle style = FontStyle::Regular;
+          if (lf.lfWeight >= 700) style += FontStyle::Bold;
+          if (lf.lfItalic) style += FontStyle::Italic;
+          if (lf.lfUnderline) style += FontStyle::Underline;
+          return System::Drawing::Font(lf.lfFaceName, GetSize((float)lf.lfHeight, hdc), style);
+        }
 
         /// @brief Returns the line spacing, in pixels, of this font.
         /// @return float The line spacing, in pixels, of this font.
@@ -711,6 +714,7 @@ namespace Switch {
         /// @endcond
         static System::Drawing::Font FromLogFontHandle(intptr lf, intptr hdc);
         float GetSizeInPoints() const;
+        static float GetSize(float height, intptr hdc);
 
         struct FontData {
           System::Drawing::FontFamily fontFamily;

@@ -1,6 +1,7 @@
 #if defined(__APPLE__)
 #include <Switch/System/Drawing/Font.hpp>
 #include <Switch/System/Drawing/Size.hpp>
+#include <Switch/System/Drawing/SystemFonts.hpp>
 #include "Api.hpp"
 #include "../../include/Switch/System/Windows/Forms/ArrangeDirection.hpp"
 #include "../../include/Switch/System/Windows/Forms/ArrangeStartingPosition.hpp"
@@ -234,7 +235,7 @@ System::Drawing::Size Native::SystemInformationApi::GetMenuCheckSize() {
 }
 
 System::Drawing::Font Native::SystemInformationApi::GetMenuFont() {
-  return System::Drawing::Font::FromLogFont((intptr)0);
+  return Drawing::SystemFonts::MenuFont;
 }
 
 int32 Native::SystemInformationApi::GetMenuHeight() {

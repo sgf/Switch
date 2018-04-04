@@ -11,33 +11,12 @@ using namespace System;
 using namespace System::Collections::Generic;
 using namespace System::Drawing;
 
-namespace {
-  struct LogFont : public object {
-    int32 lfHeight = 1;
-    int32 lfWidth = 12;
-    int32 lfEscapement = 0;
-    int32 lfOrientation = 0;
-    int32 lfWeight = 1;
-    byte lfItalic = 0;
-    byte lfUnderline = 0;
-    byte lfStrikeOut = 0;
-    byte lfCharSet = 1;
-    byte lfOutPrecision = 0;
-    byte lfClipPrecision = 0;
-    byte lfQuality = 0;
-    byte lfPitchAndFamily = 0;
-    string lfFaceName = "";
-  };
-}
-
 System::Array<System::Drawing::FontFamily> Native::FontFamilyApi::GetInstalledFontFamilies() {
   NSArray* fonts = [[[NSFontManager sharedFontManager] availableFontFamilies] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
   List<System::Drawing::FontFamily> families;
   for (NSString *item in fonts) {
-    //NSFont* font = [[NSFontManager sharedFontManager] fontWithFamily:item traits:NSItalicFontMask|NSBoldFontMask weight:0 size:12];
-    LogFont* logFont = new LogFont();
-    logFont->lfFaceName = [item UTF8String];
-    families.Add(System::Drawing::FontFamily((intptr)logFont));
+    string* familyName = new string([item UTF8String]);
+    families.Add(System::Drawing::FontFamily((intptr)familyName));
   }
   return families.ToArray();
 }
@@ -45,14 +24,13 @@ System::Array<System::Drawing::FontFamily> Native::FontFamilyApi::GetInstalledFo
 System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const string& name) {
   if ([[NSFontManager sharedFontManager] availableMembersOfFontFamily:[NSString stringWithUTF8String:name.c_str()]] == nil)
     throw ArgumentException(caller_);
-  LogFont* logFont = new LogFont();
-  logFont->lfFaceName = name;
-  return System::Drawing::FontFamily((intptr)logFont);
+  string* familyName = new string(name);
+  return System::Drawing::FontFamily((intptr)familyName);
 }
 
 string Native::FontFamilyApi::GetName(intptr handle) {
   if (handle == 0) return "";
-  return ((LogFont*)handle)->lfFaceName;
+  return *(string*)handle;
 }
 
 bool Native::FontFamilyApi::IsStyleAvailable(intptr handle, System::Drawing::FontStyle style) {
@@ -68,7 +46,7 @@ bool Native::FontFamilyApi::IsStyleAvailable(intptr handle, System::Drawing::Fon
 
 void Native::FontFamilyApi::ReleaseResource(intptr handle) {
   if (handle != 0)
-    delete (LogFont*)handle;
+    delete (string*)handle;
 }
 
 string Native::FontFamilyApi::GenericFontFamilySerifName() {
