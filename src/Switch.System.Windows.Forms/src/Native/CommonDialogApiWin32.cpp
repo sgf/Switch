@@ -73,34 +73,34 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
   return true;
 }
 
-bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog &fontDialog) {
+bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog& fontDialog) {
   return true;
 }
 
 bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog& folderBrowserDialog) {
   CoInitializeEx(null, COINIT_APARTMENTTHREADED);
-  
+
   BROWSEINFO browserInfo;
   ZeroMemory(&browserInfo, sizeof(browserInfo));
-  
+
   browserInfo.hwndOwner = (HWND)hwnd;
   PIDLIST_ABSOLUTE rootPath;
   if (folderBrowserDialog.RootFolder != Environment::SpecialFolder::Desktop && SHParseDisplayName(Environment::GetFolderPath(folderBrowserDialog.RootFolder).w_str().c_str(), null, &rootPath, SFGAO_FILESYSTEM, null) == S_OK)
     browserInfo.pidlRoot = rootPath;
   browserInfo.lParam = reinterpret_cast<LPARAM>(folderBrowserDialog.SelectedPath().w_str().c_str());
   browserInfo.lpszTitle = folderBrowserDialog.Description().w_str().c_str();
-  
+
   int32 flags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
   if (!folderBrowserDialog.ShowNewFolderButton) flags += BIF_NONEWFOLDERBUTTON;
   browserInfo.ulFlags = flags;
   //browserInfo.lpfn = BrowseFolderCallback;
-  
+
   PCIDLIST_ABSOLUTE result = SHBrowseForFolder(&browserInfo);
   if (!result) return false;
-  
+
   wchar path[MAX_PATH];
   SHGetPathFromIDList(result, path);
-  
+
   folderBrowserDialog.SelectedPath = path;
   return true;
 }

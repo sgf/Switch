@@ -172,9 +172,9 @@ bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::
   if (folderBrowserDialog.SelectedPath != "" && System::IO::Directory::Exists(folderBrowserDialog.SelectedPath))
     path = folderBrowserDialog.SelectedPath;
   [openPanel setDirectoryURL:[NSURL fileURLWithPath:[NSString stringWithUTF8String:path.c_str()]]];
-  
+
   if ([openPanel runModal] == NSModalResponseCancel) return false;
-  
+
   folderBrowserDialog.SelectedPath = [[(NSURL*)[[openPanel URLs] objectAtIndex:0] path] UTF8String];
   return true;
 }
@@ -185,7 +185,7 @@ bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::Fo
   [fontPanel setEnabled:YES];
   [fontPanel setIsVisible:YES];
   //if ([fontPanel runModal] == NSModalResponseCancel) return false;
-  
+
   return true;
 }
 

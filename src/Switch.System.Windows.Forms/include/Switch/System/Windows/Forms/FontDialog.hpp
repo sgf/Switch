@@ -4,6 +4,7 @@
 
 #include <Switch/System/Drawing/Color.hpp>
 #include <Switch/System/Drawing/Font.hpp>
+#include <Switch/System/EventHandler.hpp>
 #include "../../../System/Windows/Forms/CommonDialog.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
@@ -63,7 +64,7 @@ namespace Switch {
             get_ {return this->allowScriptChange;},
             set_ {this->allowScriptChange = value;}
           };
-          
+
           /// @brief Gets or sets a value indicating whether the dialog box allows graphics device interface (GDI) font simulations.
           /// @return bool true if font simulations are allowed; otherwise, false. The default value is true.
           property_<bool> AllowSimulations {
@@ -77,14 +78,14 @@ namespace Switch {
             get_ {return this->allowVectorFonts;},
             set_ {this->allowVectorFonts = value;}
           };
-          
+
           /// @brief Gets or sets a value indicating whether the dialog box displays both vertical and horizontal fonts or only horizontal fonts.
           /// @return bool true if both vertical and horizontal fonts are allowed; otherwise, false. The default value is true.
           property_<bool> AllowVerticalFonts {
             get_ {return this->allowVerticalFonts;},
             set_ {this->allowVerticalFonts = value;}
           };
-          
+
           /// @brief Gets or sets the selected font color.
           /// @return System::Drawing::Color The color of the selected font. The default value is Black.
           /// @par Examples
@@ -113,7 +114,7 @@ namespace Switch {
             get_ {return this->fixedPitchOnly;},
             set_ {this->fixedPitchOnly = value;}
           };
-          
+
           /// @brief Gets or sets the selected font.
           /// @return System::Drawing::font The selected font.
           /// @par Examples
@@ -135,7 +136,7 @@ namespace Switch {
             get_ {return this->font;},
             set_ {this->font = value;}
           };
-          
+
           /// @brief Gets or sets a value indicating whether the dialog box specifies an error condition if the user attempts to select a font or style that does not exist.
           /// @return bool true if the dialog box specifies an error condition when the user tries to select a font or style that does not exist; otherwise, false. The default is false.
           /// @par Examples
@@ -260,7 +261,7 @@ namespace Switch {
             get_ {return this->maxSize;},
             set_ {this->maxSize = value;}
           };
-          
+
           /// @brief Gets or sets the minimum point size a user can select.
           /// @return int32 The minimum point size a user can select. The default is 0.
           /// @remarks In order for the maximum and minimum size settings to take effect, MaxSize must be greater than MinSize, and both must be greater than 0.
@@ -324,31 +325,183 @@ namespace Switch {
             get_ {return this->minSize;},
             set_ {this->minSize = value;}
           };
-          
+
+          /// @brief Gets or sets a value indicating whether the dialog box allows selection of fonts for all non-OEM and Symbol character sets, as well as the ANSI character set.
+          /// @return bool true if selection of fonts for all non-OEM and Symbol character sets, as well as the ANSI character set, is allowed; otherwise, false. The default value is false.
           property_<bool> ScriptOnly {
             get_ {return this->scriptOnly;},
             set_ {this->scriptOnly = value;}
           };
 
+          /// @brief Gets or sets a value indicating whether the dialog box contains an Apply button.
+          /// @return bool true if the dialog box contains an Apply button; otherwise, false. The default value is false.
+          /// @par Examples
+          /// The following code example shows how to apply the selections in a FontDialog to the text in a RichTextBox. In the event handler that displays the dialog box, the example initializes the ShowApply property to true and then displays the FontDialog. In the Apply event handler, the Font property is assigned to the Control.Font property.
+          /// @code
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   // Sets the ShowApply property, then displays the dialog.
+          ///   fontDialog1.ShowApply = true;
+          ///   fontDialog1.ShowDialog();
+          /// }
+          ///
+          /// void fontDialog1_Apply(const object& sender, const System::EventArgs& e) {
+          ///   // Applies the selected font to the selected text.
+          ///   richTextBox1.Font = fontDialog1.Font;
+          /// }
+          /// @endcode
           property_<bool> ShowApply {
             get_ {return this->showApply;},
             set_ {this->showApply = value;}
           };
-          
+
+          /// @brief Gets or sets a value indicating whether the dialog box displays the color choice.
+          /// @return bool true if the dialog box displays the color choice; otherwise, false. The default value is false.
+          /// @par Examples
+          /// The following code example uses ShowDialog to display a FontDialog. This code requires that a Form has already been created with a TextBox and button placed on it. It also requires that the fontDialog1 has been created. The Font contains the size information but not the color information.
+          /// @code
+          /// void button1_Click(const object& sender, const System::EventArgs& e) {
+          ///   fontDialog1.ShowColor = true;
+          ///
+          ///   fontDialog1.Font = textBox1.Font;
+          ///   fontDialog1.Color = textBox1.ForeColor;
+          ///
+          ///   if (fontDialog1.ShowDialog() != DialogResult::Cancel) {
+          ///     textBox1.Font = fontDialog1.Font ;
+          ///     textBox1.ForeColor = fontDialog1.Color;
+          ///   }
+          /// }
+          /// @endcode
           property_<bool> ShowColor {
             get_ {return this->showColor;},
             set_ {this->showColor = value;}
           };
 
+          /// @brief Gets or sets a value indicating whether the dialog box contains controls that allow the user to specify strikethrough, underline, and text color options.
+          /// @return bool true if the dialog box contains controls to set strikethrough, underline, and text color options; otherwise, false. The default value is true.
+          /// @par Examples
+          /// The following code example demonstrates using the MinSize, MaxSize, ShowEffects and FontMustExist members and handling the Apply event. To run this example paste the following code in a form containing a FontDialog named fontDialog1 and a Button named Button1.
+          /// @code
+          /// void Button1_Click(const System::Object& sender, const System::EventArgs& e) {
+          ///   // Set FontMustExist to true, which causes message box error
+          ///   // if the user enters a font that does not exist.
+          ///   fontDialog1.FontMustExist = true;
+          ///
+          ///   // Associate the method handling the Apply event with the event.
+          ///   fontDialog1.Apply += System::EventHandler(*this, &Form1::FontDialog1_Apply);
+          ///
+          ///   // Set a minimum and maximum size to be
+          ///   // shown in the FontDialog.
+          ///   fontDialog1.MaxSize = 32;
+          ///   fontDialog1.MinSize = 18;
+          ///
+          ///   // Show the Apply button in the dialog.
+          ///   fontDialog1.ShowApply = true;
+          ///
+          ///   // Do not show effects such as Underline
+          ///   // and Bold.
+          ///   fontDialog1.ShowEffects = false;
+          ///
+          ///   // Save the existing font.
+          ///   System::Drawing::Font oldFont = this->Font;
+          ///
+          ///   //Show the dialog, and get the result
+          ///   DialogResult result = fontDialog1.ShowDialog();
+          ///
+          ///   // If the OK button in the Font dialog box is clicked,
+          ///   // set all the controls' fonts to the chosen font by calling
+          ///   // the FontDialog1_Apply method.
+          ///   if (result == DialogResult::OK) {
+          ///     FontDialog1_Apply(this->Button1, System.EventArgs());
+          ///   }
+          ///   // If Cancel is clicked, set the font back to
+          ///   // the original font.
+          ///   else if (result == DialogResult::Cancel) {
+          ///     this.Font = oldFont;
+          ///     for (ref<Control> containedControl : this->Controls()) {
+          ///       containedControl.Font = oldFont;
+          ///     }
+          ///   }
+          /// }
+          ///
+          /// // Handle the Apply event by setting all controls' fonts to
+          /// // the chosen font.
+          /// void FontDialog1_Apply(const object& sender, const System::EventArgs& e) {
+          ///   this->Font = fontDialog1.Font;
+          ///   for (ref<Control> containedControl : this->Controls()) {
+          ///     containedControl.Font = fontDialog1.Font;
+          ///   }
+          /// }
+          /// @endcode
           property_<bool> ShowEffects {
             get_ {return this->showEffects;},
             set_ {this->showEffects = value;}
           };
-          
+
+          /// @brief Gets or sets a value indicating whether the dialog box displays a Help button.
+          /// @return bool true if the dialog box displays a Help button; otherwise, false. The default value is false.
           property_<bool> ShowHelp {
             get_ {return this->showHelp;},
             set_ {this->showHelp = value;}
           };
+
+          /// @brief Occurs when the user clicks the Apply button in the font dialog box.
+          /// @remarks Every time the Apply button is clicked, another Apply event is raised.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates using the MinSize, MaxSize, ShowEffects and FontMustExist members and handling the Apply event. To run this example paste the following code in a form containing a FontDialog named fontDialog1 and a Button named Button1.
+          /// @code
+          /// void Button1_Click(const System::Object& sender, const System::EventArgs& e) {
+          ///   // Set FontMustExist to true, which causes message box error
+          ///   // if the user enters a font that does not exist.
+          ///   fontDialog1.FontMustExist = true;
+          ///
+          ///   // Associate the method handling the Apply event with the event.
+          ///   fontDialog1.Apply += System::EventHandler(*this, &Form1::FontDialog1_Apply);
+          ///
+          ///   // Set a minimum and maximum size to be
+          ///   // shown in the FontDialog.
+          ///   fontDialog1.MaxSize = 32;
+          ///   fontDialog1.MinSize = 18;
+          ///
+          ///   // Show the Apply button in the dialog.
+          ///   fontDialog1.ShowApply = true;
+          ///
+          ///   // Do not show effects such as Underline
+          ///   // and Bold.
+          ///   fontDialog1.ShowEffects = false;
+          ///
+          ///   // Save the existing font.
+          ///   System::Drawing::Font oldFont = this->Font;
+          ///
+          ///   //Show the dialog, and get the result
+          ///   DialogResult result = fontDialog1.ShowDialog();
+          ///
+          ///   // If the OK button in the Font dialog box is clicked,
+          ///   // set all the controls' fonts to the chosen font by calling
+          ///   // the FontDialog1_Apply method.
+          ///   if (result == DialogResult::OK) {
+          ///     FontDialog1_Apply(this->Button1, System.EventArgs());
+          ///   }
+          ///   // If Cancel is clicked, set the font back to
+          ///   // the original font.
+          ///   else if (result == DialogResult::Cancel) {
+          ///     this.Font = oldFont;
+          ///     for (ref<Control> containedControl : this->Controls()) {
+          ///       containedControl.Font = oldFont;
+          ///     }
+          ///   }
+          /// }
+          ///
+          /// // Handle the Apply event by setting all controls' fonts to
+          /// // the chosen font.
+          /// void FontDialog1_Apply(const object& sender, const System::EventArgs& e) {
+          ///   this->Font = fontDialog1.Font;
+          ///   for (ref<Control> containedControl : this->Controls()) {
+          ///     containedControl.Font = fontDialog1.Font;
+          ///   }
+          /// }
+          /// @endcode
+          EventHandler Apply;
 
           /// @brief When overridden in a derived class, resets the properties of a common dialog box to their default values.
           void Reset() override;

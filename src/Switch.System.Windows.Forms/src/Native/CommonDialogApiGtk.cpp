@@ -30,8 +30,8 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
   return true;
 }
 
-bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog &fontDialog) {
-   return true;
+bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog& fontDialog) {
+  return true;
 }
 
 bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog& folderBrowserDialog) {
