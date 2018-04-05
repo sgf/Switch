@@ -19,7 +19,7 @@ using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog& colorDialog) {
+bool Native::CommonDialogApi::RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog& colorDialog) {
   Gtk::ColorChooserDialog colorChooserDialog("");
   Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
   if (window != null) colorChooserDialog.set_transient_for(*window);
@@ -31,7 +31,7 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
   return true;
 }
 
-bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog& fontDialog) {
+bool Native::CommonDialogApi::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog& fontDialog) {
   Gtk::FontChooserDialog fontChooserDialog("");
   Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
   if (window != null) fontChooserDialog.set_transient_for(*window);
@@ -43,7 +43,7 @@ bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::Fo
   return true;
 }
 
-bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog& folderBrowserDialog) {
+bool Native::CommonDialogApi::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog& folderBrowserDialog) {
   Gtk::FileChooserDialog fileChooserDialog(folderBrowserDialog.Description().c_str(), Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
   fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
   fileChooserDialog.add_button("Open", Gtk::RESPONSE_OK);
@@ -58,7 +58,7 @@ bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::
   return true;
 }
 
-bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog& openFileDialog) {
+bool Native::CommonDialogApi::RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog& openFileDialog) {
   Gtk::FileChooserDialog fileChooserDialog(openFileDialog.Title().c_str(), Gtk::FILE_CHOOSER_ACTION_OPEN);
   fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
   fileChooserDialog.add_button("Open", Gtk::RESPONSE_OK);
@@ -92,7 +92,7 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   return true;
 }
 
-bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms::SaveFileDialog& saveFileDialog) {
+bool Native::CommonDialogApi::RunSaveFileDialog(intptr hwnd, System::Windows::Forms::SaveFileDialog& saveFileDialog) {
   Gtk::FileChooserDialog fileChooserDialog(saveFileDialog.Title().c_str(), Gtk::FILE_CHOOSER_ACTION_SAVE);
   fileChooserDialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
   fileChooserDialog.add_button("Save", Gtk::RESPONSE_OK);

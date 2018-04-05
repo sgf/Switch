@@ -148,7 +148,7 @@ namespace {
   }
 }
 
-bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog &colorDialog) {
+bool Native::CommonDialogApi::RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog &colorDialog) {
   ColorPanelCocoa* colorPanel = [[[ColorPanelCocoa alloc] init] autorelease];
   [colorPanel setIsVisible:YES];
   [colorPanel setColor:FromColor(colorDialog.Color)];
@@ -162,7 +162,7 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
   return true;
 }
 
-bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog &folderBrowserDialog) {
+bool Native::CommonDialogApi::RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog &folderBrowserDialog) {
   NSOpenPanel* openPanel = [[[NSOpenPanel alloc] init] autorelease];
   [openPanel setCanChooseFiles:NO];
   [openPanel setCanChooseDirectories:YES];
@@ -179,7 +179,7 @@ bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::
   return true;
 }
 
-bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog& fontDialog) {
+bool Native::CommonDialogApi::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog& fontDialog) {
   NSFontPanel* fontPanel = [NSFontPanel sharedFontPanel];
   [fontPanel setPanelFont:(NSFont *)fontDialog.Font().ToHFont() isMultiple:YES];
   [fontPanel setEnabled:YES];
@@ -189,7 +189,7 @@ bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::Fo
   return true;
 }
 
-bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog &openFileDialog) {
+bool Native::CommonDialogApi::RunOpenFileDialog(intptr hwnd, System::Windows::Forms::OpenFileDialog &openFileDialog) {
   NSOpenPanel* openPanel = [[[NSOpenPanel alloc] init] autorelease];
   [openPanel setMessage:[NSString stringWithUTF8String:openFileDialog.Title().c_str()]];
   [openPanel setCanChooseFiles:YES];
@@ -217,7 +217,7 @@ bool Native::CommonDialog::RunOpenFileDialog(intptr hwnd, System::Windows::Forms
   return true;
 }
 
-bool Native::CommonDialog::RunSaveFileDialog(intptr hwnd, System::Windows::Forms::SaveFileDialog &saveFileDialog) {
+bool Native::CommonDialogApi::RunSaveFileDialog(intptr hwnd, System::Windows::Forms::SaveFileDialog &saveFileDialog) {
   NSSavePanel* savePanel = [[[NSSavePanel alloc] init] autorelease];
   [savePanel setMessage:[NSString stringWithUTF8String:saveFileDialog.Title().c_str()]];
   [savePanel setCanCreateDirectories:YES];

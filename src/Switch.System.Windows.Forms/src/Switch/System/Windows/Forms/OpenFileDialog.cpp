@@ -32,5 +32,5 @@ void OpenFileDialog::Reset() {
 }
 
 bool OpenFileDialog::RunDialog(intptr hwndOwner) {
-  return Native::CommonDialog::RunOpenFileDialog(hwndOwner, *this);
+  return Native::CommonDialogApi::RunOpenFileDialog(hwndOwner, *this);
 }

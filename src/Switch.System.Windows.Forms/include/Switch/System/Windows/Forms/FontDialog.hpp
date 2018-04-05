@@ -259,7 +259,13 @@ namespace Switch {
           /// @endcode
           property_<int32> MaxSize {
             get_ {return this->maxSize;},
-            set_ {this->maxSize = value;}
+            set_ {
+              if (value < 0)
+                this->maxSize = 0;
+              else
+                this->maxSize = value;
+              if (this->maxSize > 0 && this->maxSize < this->MinSize) this->minSize = this->maxSize;
+            }
           };
 
           /// @brief Gets or sets the minimum point size a user can select.
@@ -323,7 +329,13 @@ namespace Switch {
           /// @endcode
           property_<int32> MinSize {
             get_ {return this->minSize;},
-            set_ {this->minSize = value;}
+            set_ {
+              if (value < 0)
+                this->minSize = 0;
+              else
+                this->minSize = value;
+              if (this->maxSize > 0 && this->maxSize < this->MinSize) this->maxSize = this->minSize;
+            }
           };
 
           /// @brief Gets or sets a value indicating whether the dialog box allows selection of fonts for all non-OEM and Symbol character sets, as well as the ANSI character set.

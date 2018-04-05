@@ -3,6 +3,8 @@
 #pragma once
 
 #include <Switch/System/Object.hpp>
+#include <Switch/Property.hpp>
+#include <Switch/Static.hpp>
 #include <Switch/System/Collections/Generic/List.hpp>
 #include "../../../SystemWindowsFormsExport.hpp"
 
@@ -22,7 +24,7 @@ namespace Switch {
         /// * Get a predefined DataFormats.Format object for a format name or ID number.
         /// * Add a new format name/ID number pair to the static list in this class, and to register the format with the Windows registry as a Clipboard format when you pass it the format name.
         /// @remarks You can get the Id number or format Name from the appropriate property in the DataFormats.Format instance.
-        class system_windows_forms_export_ DataFormats : public object {
+        class system_windows_forms_export_ DataFormats static_ {
         public:
           /// @brief Represents a Clipboard format type.
           /// @remarks A format type consists of a text-based format name and an ID number. The format name/ID number pair can define a system Clipboard or other format.
@@ -39,67 +41,97 @@ namespace Switch {
           /// @endcode
           class Format : public object {
           public:
+            /// @cond
             Format() : id(0) {}
-            Format(int32 id, const string& name) : id(id), name(name) {}
+            Format(const Format& format) : name(format.name), id(format.id) {}
+            Format& operator=(const Format& format) = default;
+            /// @endcond
 
-            int32 Id() const { return this->id; }
-            const string& Name() const { return this->name; }
+            /// @remarks This API supports the product infrastructure and is not intended to be used directly from your code.
+            /// @brief Initializes a new instance of the DataFormats.Format class with a Boolean that indicates whether a Win32 handle is expected.
+            /// @param name The name of this format.
+            /// @param id The ID number for this format.
+            /// @par Examples
+            /// The following code example creates a new format for a name and unique ID number. The new format does not require a Windows handle. It requires that textBox1 has been instantiated.
+            /// @code
+            /// void CreateMyFormat2() {
+            ///   DataFormats::Format myFormat("AnotherNewFormat", 20916);
+            ///
+            ///   // Displays the contents of myFormat.
+            ///   textBox1.Text = "ID value: "_s + myFormat.Id + '\n' + "Format name: "_s + myFormat.Name;
+            /// }
+            /// @endcode
+            Format(const string& name, int32 id) : name(name), id(id) {}
+
+            /// @brief Gets the ID number for this format.
+            /// @return int32 The ID number for this format.
+            property_<int32, readonly_> Id {
+              get_ {return this->id;}
+            };
+
+            /// @brief Gets the name of this format.
+            /// @return string The name of this format.
+            property_<string, readonly_> Name {
+              get_ {return this->name;}
+            };
 
           private:
-            int32 id;
             string name;
-            static System::Collections::Generic::List<Format> formats;
+            int32 id;
           };
 
-          static string Riff() {return "RiffAudio"; }
+          /// @brief Specifies a Windows bitmap format. This static field is read-only.
+          /// @remarks A bitmap represents a computer graphic as an array of bits in memory, and these bits represent the attributes of the individual pixels in an image.
+          /// @remarks This field is used by the IDataObject interface and the DataObject class to specify the data type.
+          /// @remarks When adding to an IDataObject or to an implementation of DataObject, use this field as the format for the IDataObject.SetData and DataObject.SetData methods.
+          /// @remarks To see if an object of this type exists, use this field as the format for the IDataObject.GetDataPresent and DataObject.GetDataPresent methods.
+          /// @remarks To get an object of this type, use this as the format for the IDataObject.GetData and DataObject.GetData methods.
+          static property_<string, readonly_> Bitmap;
 
-          static string Palette() {return "Palette"; }
+          static property_<string, readonly_> CommaSeparatedValue;
 
-          static string PenData() {return "PenData"; }
+          static property_<string, readonly_> Dib;
 
-          static string Rtf() {return "Rich Text Format"; }
+          static property_<string, readonly_> Dif;
 
-          static string Serializable() {return "WindowsForms10PersistentObject"; }
+          static property_<string, readonly_> EnhancedMetafile;
 
-          static string StringFormat() {return "System::String"; }
+          static property_<string, readonly_> FileDrop;
 
-          static string SymbolicLink() {return "SymbolicLink"; }
+          static property_<string, readonly_> Html;
 
-          static string Text() {return "Text"; }
+          static property_<string, readonly_> Locale;
 
-          static string Tiff() {return "Tiff"; }
+          static property_<string, readonly_> MetafilePict;
 
-          static string UnicodeText() {return "UnicodeText"; }
+          static property_<string, readonly_> OemText;
 
-          static string OemText() {return "OEMText"; }
+          static property_<string, readonly_> Palette;
 
-          static string Bitmap() {return "Bitmap"; }
+          static property_<string, readonly_> PenData;
 
-          static string CommaSeparatedValue() {return "Csv"; }
+          static property_<string, readonly_> Riff;
 
-          static string Dib() {return "DeviceIndependentBitmap"; }
+          static property_<string, readonly_> Rtf;
 
-          static string Dif() {return "DataInterchangeFormat"; }
+          static property_<string, readonly_> Serializable;
 
-          static string EnhancedMetafile() {return "EnhancedMetafile"; }
+          static property_<string, readonly_> StringFormat;
 
-          static string FileDrop() {return "FileDrop"; }
+          static property_<string, readonly_> SymbolicLink;
 
-          static string Html() {return "HTML Format"; }
+          static property_<string, readonly_> Text;
 
-          static string Locale() {return "Locale"; }
+          static property_<string, readonly_> Tiff;
 
-          static string MetafilePict() {return "MetaFilePict"; }
+          static property_<string, readonly_> UnicodeText;
 
-          static string WaveAudio() {return "WaveAudio"; }
+          static property_<string, readonly_> WaveAudio;
 
-          static $<DataFormats> GetFormat(const string& format) {
-            return new DataFormats();
-          }
+          static Format GetFormat(const string& name);
 
         private:
-          DataFormats() {
-          }
+          static System::Collections::Generic::List<Format> formats;
         };
       }
     }

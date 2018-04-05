@@ -2,8 +2,8 @@
 /// @brief Contains Switch::System::Collections::Specialized::StringCollection class.
 #pragma once
 
-#include "../../String.hpp"
-#include "../Generic/List.hpp"
+#include <Switch/System/String.hpp>
+#include <Switch/System/Collections/Generic/List.hpp>
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {

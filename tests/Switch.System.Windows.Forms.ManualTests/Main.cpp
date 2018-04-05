@@ -1,15 +1,4 @@
-#include <Switch/System/Drawing/SystemFonts.hpp>
-#include <Switch/System/Windows/Forms/Application.hpp>
-#include <Switch/System/Windows/Forms/ColorDialog.hpp>
-#include <Switch/System/Windows/Forms/FolderBrowserDialog.hpp>
-#include <Switch/System/Windows/Forms/FontDialog.hpp>
-#include <Switch/System/Windows/Forms/Form.hpp>
-#include <Switch/System/Windows/Forms/Label.hpp>
-#include <Switch/System/Windows/Forms/MessageBox.hpp>
-#include <Switch/System/Windows/Forms/OpenFileDialog.hpp>
-#include <Switch/System/Windows/Forms/SaveFileDialog.hpp>
-#include <Switch/System/Diagnostics/Debug.hpp>
-#include <Switch/Startup.hpp>
+#include <Switch/Switch.System.Windows.Forms.hpp>
 
 using namespace System;
 using namespace System::Windows::Forms;

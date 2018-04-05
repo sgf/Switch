@@ -2,8 +2,8 @@
 /// @brief Contains Switch::System::Collections::Specialized::StringEnumerator class.
 #pragma once
 
-#include "../../String.hpp"
-#include "../Generic/IEnumerator.hpp"
+#include <Switch/System/String.hpp>
+#include <Switch/System/Collections/Generic/IEnumerator.hpp>
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {

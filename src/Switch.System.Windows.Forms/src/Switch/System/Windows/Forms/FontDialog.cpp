@@ -1,5 +1,6 @@
 #include "../../../../Native/Api.hpp"
 #include "../../../../../include/Switch/System/Windows/Forms/FontDialog.hpp"
+#include <Switch/System/Drawing/SystemFonts.hpp>
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -13,9 +14,9 @@ void FontDialog::Reset() {
   this->allowVectorFonts  = true;
   this->allowVerticalFonts = true;
   this->allowScriptChange = true;
-  this->Color = System::Drawing::Color::Black;
+  this->Color = System::Drawing::SystemColors::ControlText;
   this->fixedPitchOnly = false;
-  this->Font = System::Drawing::Font(System::Drawing::FontFamily::GenericSansSerif, 8.25f);
+  this->Font = System::Drawing::SystemFonts::DefaultFont;
   this->fontMustExist = false;
   this->maxSize = 0;
   this->minSize = 0;
@@ -27,5 +28,5 @@ void FontDialog::Reset() {
 }
 
 bool FontDialog::RunDialog(intptr hwndOwner) {
-  return Native::CommonDialog::RunFontDialog(hwndOwner, *this);
+  return Native::CommonDialogApi::RunFontDialog(hwndOwner, *this);
 }

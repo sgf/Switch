@@ -31,5 +31,5 @@ void SaveFileDialog::Reset() {
 }
 
 bool SaveFileDialog::RunDialog(intptr hwndOwner) {
-  return Native::CommonDialog::RunSaveFileDialog(hwndOwner, *this);
+  return Native::CommonDialogApi::RunSaveFileDialog(hwndOwner, *this);
 }

@@ -17,5 +17,5 @@ void FolderBrowserDialog::Reset() {
 }
 
 bool FolderBrowserDialog::RunDialog(intptr hwndOwner) {
-  return Native::CommonDialog::RunFolderBrowserDialog(hwndOwner, *this);
+  return Native::CommonDialogApi::RunFolderBrowserDialog(hwndOwner, *this);
 }

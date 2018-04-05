@@ -20,5 +20,5 @@ void ColorDialog::Reset() {
 }
 
 bool ColorDialog::RunDialog(intptr hwndOwner) {
-  return Native::CommonDialog::RunColorDialog(hwndOwner, *this);
+  return Native::CommonDialogApi::RunColorDialog(hwndOwner, *this);
 }

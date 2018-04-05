@@ -155,7 +155,7 @@ namespace Switch {
           ///   }
           ///
           ///   // Always call the base class hook procedure.
-          ///   return this->CommonDialog::HookProc(hWnd, msg, wParam, lParam);
+          ///   return this->CommonDialogApi::HookProc(hWnd, msg, wParam, lParam);
           /// }
           /// @endcode
           virtual intptr HookProc(intptr hWnd, int32 msg, intptr wparam, intptr lparam);

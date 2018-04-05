@@ -83,7 +83,13 @@ namespace Native {
     static void SetChecked(const System::Windows::Forms::CheckBox& checkBox);
   };
 
-  class CommonDialog static_ {
+  class ClipboardApi static_ {
+  public:
+    static int32 RegisterFormat(const string& format);
+    static int32 GetIdBitmap();
+  };
+
+  class CommonDialogApi static_ {
   public:
     static bool RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog& colorDialog);
     static bool RunFolderBrowserDialog(intptr hwnd, System::Windows::Forms::FolderBrowserDialog& folderBrowserDialog);
