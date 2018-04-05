@@ -8,6 +8,7 @@
 #include <Switch/System/IO/Directory.hpp>
 #include "WidgetGtk.hpp"
 #include "../../include/Switch/System/Windows/Forms/ColorDialog.hpp"
+#include "../../include/Switch/System/Windows/Forms/FontDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/FolderBrowserDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/OpenFileDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/SaveFileDialog.hpp"
@@ -19,18 +20,26 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog& colorDialog) {
-  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
   Gtk::ColorChooserDialog colorChooserDialog("");
+  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
   if (window != null) colorChooserDialog.set_transient_for(*window);
   colorChooserDialog.set_modal(true);
   colorChooserDialog.set_rgba(Native::Widget::FromColor(colorDialog.Color));
 
   if (colorChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
-  if (colorChooserDialog.get_rgba() != Native::Widget::FromColor(colorDialog.Color)) colorDialog.Color = Native::Widget::ToColor(colorChooserDialog.get_rgba());
+  colorDialog.Color = Native::Widget::ToColor(colorChooserDialog.get_rgba());
   return true;
 }
 
 bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog& fontDialog) {
+  Gtk::FontChooserDialog fontChooserDialog("");
+  Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
+  if (window != null) fontChooserDialog.set_transient_for(*window);
+  fontChooserDialog.set_font_desc(*(Pango::FontDescription*)fontDialog.Font().ToHFont());
+
+  if (fontChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
+  Pango::FontDescription* font = new Pango::FontDescription(fontChooserDialog.get_font_desc());
+  fontDialog.Font = System::Drawing::Font::FromHFont((intptr)font);
   return true;
 }
 

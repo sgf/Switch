@@ -28,6 +28,10 @@ void Native::FontApi::Destroy(intptr hfont) {
 }
 
 void Native::FontApi::GetInformation(intptr hfont, string& name, float& size, System::Drawing::FontStyle& style) {
+  name = ((Pango::FontDescription*)hfont)->get_family().c_str();
+  size = ((Pango::FontDescription*)hfont)->get_size() / PANGO_SCALE;
+  if (((Pango::FontDescription*)hfont)->get_style() & Pango::STYLE_ITALIC) style|= System::Drawing::FontStyle::Italic;
+  if (((Pango::FontDescription*)hfont)->get_weight() >= Pango::WEIGHT_BOLD) style |= System::Drawing::FontStyle::Bold;
 }
 
 float Native::FontApi::GetHeight(float emSize, intptr hdc) {
