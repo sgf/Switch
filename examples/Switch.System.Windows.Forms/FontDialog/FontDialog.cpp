@@ -13,7 +13,8 @@ namespace ColorDialogExample {
     }
 
     Form1() {
-      this->label.Text = string::Format("The quick brown fox jumps over the lazy dog.\n"
+      this->label.Text = string::Format(
+          "The quick brown fox jumps over the lazy dog.\n"
           "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.\n"
           "0123456789+-*/%~^&|=<>≤≥±÷≠{{[()]}},;:.?¿!¡\n"
           "àçéèêëïî@@°_#§$ù£€æœøπµ©®∞\\\"'\n"
