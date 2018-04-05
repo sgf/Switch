@@ -16,7 +16,7 @@ using namespace System::Windows::Forms;
 System::Collections::Generic::Dictionary<intptr, ref<Control>> Control::handles;
 
 namespace {
-   struct ShowDebugTrace {
+  struct ShowDebugTrace {
     static constexpr bool AllWindowMessages = true;
     static constexpr bool MouseWindowMessage = true;
     static constexpr bool WindowMessage = true;

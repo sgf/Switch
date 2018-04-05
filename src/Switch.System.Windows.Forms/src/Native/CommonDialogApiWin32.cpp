@@ -60,9 +60,9 @@ bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::C
   if (colorDialog.ShowHelp) flags |= CC_SHOWHELP;
   if (colorDialog.SolidColorOnly) flags |= CC_SOLIDCOLOR;
   chooseColor.Flags = flags;
-  
+
   if (!ChooseColor(&chooseColor)) return false;
-  
+
   colorDialog.Color = System::Drawing::Color::FromArgb(255, GetRValue(chooseColor.rgbResult), GetGValue(chooseColor.rgbResult), GetBValue(chooseColor.rgbResult));
   for (int32 index = 0; index < colorDialog.CustomColors().Length; index++)
     colorDialog.CustomColors()[index] = System::Drawing::Color::FromArgb(255, GetRValue(customColors[index]), GetGValue(customColors[index]), GetBValue(customColors[index]));

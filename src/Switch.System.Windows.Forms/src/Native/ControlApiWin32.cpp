@@ -115,9 +115,8 @@ void Native::ControlApi::SetFont(const System::Windows::Forms::Control& control)
 
 void Native::ControlApi::SetForeColor(intptr hdc) {
   ref<System::Windows::Forms::Control> control = System::Windows::Forms::Control::FromHandle(GetHandleWindowFromDeviceContext(hdc));
-  if (control != null) {
+  if (control != null)
     SetTextColor((HDC)hdc, ColorToRgb(control().ForeColor));
-  }
 }
 
 void Native::ControlApi::SetForeColor(const System::Windows::Forms::Control& control) {
