@@ -11,6 +11,7 @@
 #include <Switch/System/Buffer.hpp>
 #include "../../include/Switch/System/Windows/Forms/ColorDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/FolderBrowserDialog.hpp"
+#include "../../include/Switch/System/Windows/Forms/FontDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/OpenFileDialog.hpp"
 #include "../../include/Switch/System/Windows/Forms/SaveFileDialog.hpp"
 
@@ -44,36 +45,28 @@ namespace {
 
 bool Native::CommonDialog::RunColorDialog(intptr hwnd, System::Windows::Forms::ColorDialog& colorDialog) {
   CHOOSECOLOR chooseColor;
-  COLORREF customColors[16];
-  for (int32 index = 0; index < colorDialog.CustomColors().Length; index++)
-    customColors[index] = RGB(colorDialog.CustomColors()[index].R, colorDialog.CustomColors()[index].G, colorDialog.CustomColors()[index].B);
   memset(&chooseColor, 0, sizeof(chooseColor));
   chooseColor.lStructSize = sizeof(chooseColor);
   chooseColor.hwndOwner = hwnd != IntPtr::Zero ? (HWND)hwnd : GetActiveWindow();
   chooseColor.rgbResult = RGB(colorDialog.Color().R, colorDialog.Color().G, colorDialog.Color().B);
+  COLORREF customColors[16];
+  for (int32 index = 0; index < colorDialog.CustomColors().Length; index++)
+    customColors[index] = RGB(colorDialog.CustomColors()[index].R, colorDialog.CustomColors()[index].G, colorDialog.CustomColors()[index].B);
   chooseColor.lpCustColors = customColors;
   int flags = CC_RGBINIT; // | CC_ENABLEHOOK;
-  if (!colorDialog.AllowFullOpen)
-    flags += CC_PREVENTFULLOPEN;
-  if (colorDialog.AnyColor)
-    flags += CC_ANYCOLOR;
-  if (colorDialog.FullOpen && colorDialog.AllowFullOpen)
-    flags += CC_FULLOPEN;
-  if (colorDialog.ShowHelp)
-    flags += CC_SHOWHELP;
-  if (colorDialog.SolidColorOnly)
-    flags += CC_SOLIDCOLOR;
+  if (!colorDialog.AllowFullOpen) flags |= CC_PREVENTFULLOPEN;
+  if (colorDialog.AnyColor) flags |= CC_ANYCOLOR;
+  if (colorDialog.FullOpen && colorDialog.AllowFullOpen) flags |= CC_FULLOPEN;
+  if (colorDialog.ShowHelp) flags |= CC_SHOWHELP;
+  if (colorDialog.SolidColorOnly) flags |= CC_SOLIDCOLOR;
   chooseColor.Flags = flags;
+  
   if (!ChooseColor(&chooseColor)) return false;
-  if (chooseColor.rgbResult != RGB(colorDialog.Color().R, colorDialog.Color().G, colorDialog.Color().B)) colorDialog.Color = System::Drawing::Color::FromArgb(255, GetRValue(chooseColor.rgbResult), GetGValue(chooseColor.rgbResult), GetBValue(chooseColor.rgbResult));
-
+  
+  colorDialog.Color = System::Drawing::Color::FromArgb(255, GetRValue(chooseColor.rgbResult), GetGValue(chooseColor.rgbResult), GetBValue(chooseColor.rgbResult));
   for (int32 index = 0; index < colorDialog.CustomColors().Length; index++)
     colorDialog.CustomColors()[index] = System::Drawing::Color::FromArgb(255, GetRValue(customColors[index]), GetGValue(customColors[index]), GetBValue(customColors[index]));
 
-  return true;
-}
-
-bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog& fontDialog) {
   return true;
 }
 
@@ -91,7 +84,7 @@ bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::
   browserInfo.lpszTitle = folderBrowserDialog.Description().w_str().c_str();
 
   int32 flags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
-  if (!folderBrowserDialog.ShowNewFolderButton) flags += BIF_NONEWFOLDERBUTTON;
+  if (!folderBrowserDialog.ShowNewFolderButton) flags |= BIF_NONEWFOLDERBUTTON;
   browserInfo.ulFlags = flags;
   //browserInfo.lpfn = BrowseFolderCallback;
 
@@ -102,6 +95,39 @@ bool Native::CommonDialog::RunFolderBrowserDialog(intptr hwnd, System::Windows::
   SHGetPathFromIDList(result, path);
 
   folderBrowserDialog.SelectedPath = path;
+  return true;
+}
+
+bool Native::CommonDialog::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog& fontDialog) {
+  CHOOSEFONT chooseFont;
+  memset(&chooseFont, 0, sizeof(chooseFont));
+  chooseFont.lStructSize = sizeof(chooseFont);
+  chooseFont.hwndOwner = (HWND)hwnd;
+  LOGFONT logFont;
+  GetObject((HANDLE)fontDialog.Font().ToHFont(), sizeof(logFont), &logFont);
+  chooseFont.lpLogFont = &logFont;
+  chooseFont.iPointSize = as<int32>(fontDialog.Font().SizeInPoints());
+  int32 flags = CF_SCREENFONTS | CF_INITTOLOGFONTSTRUCT | CF_TTONLY;
+  if (!fontDialog.AllowSimulations) flags |= CF_NOSIMULATIONS;
+  if (!fontDialog.AllowVectorFonts) flags |= CF_NOVECTORFONTS;
+  if (!fontDialog.AllowVerticalFonts) flags |= CF_NOVERTFONTS;
+  if (!fontDialog.AllowScriptChange) flags |= CF_SELECTSCRIPT;
+  if (fontDialog.FixedPitchOnly) flags |= CF_FIXEDPITCHONLY;
+  if (fontDialog.FontMustExist) flags |= CF_FORCEFONTEXIST;
+  if (fontDialog.ScriptOnly) flags |= CF_SCRIPTSONLY;
+  if (fontDialog.ShowApply) flags |= CF_APPLY;
+  if (fontDialog.ShowColor || fontDialog.ShowEffects) flags |= CF_EFFECTS;
+  if (fontDialog.ShowHelp) flags |= CF_SHOWHELP;
+  if (fontDialog.MaxSize > 0 || fontDialog.MinSize > 0) flags |= CF_LIMITSIZE;
+  chooseFont.Flags = flags;
+  chooseFont.rgbColors = RGB(fontDialog.Color().R, fontDialog.Color().G, fontDialog.Color().B);
+  chooseFont.nSizeMax = fontDialog.MaxSize;
+  chooseFont.nSizeMin = fontDialog.MinSize;
+  if (!ChooseFont(&chooseFont)) return false;
+
+  fontDialog.Font = System::Drawing::Font::FromLogFont(logFont);
+  fontDialog.Color = System::Drawing::Color::FromArgb(255, GetRValue(chooseFont.rgbColors), GetGValue(chooseFont.rgbColors), GetBValue(chooseFont.rgbColors));
+
   return true;
 }
 

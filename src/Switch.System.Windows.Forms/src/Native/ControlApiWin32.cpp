@@ -92,6 +92,7 @@ void Native::ControlApi::SetBackColor(const System::Windows::Forms::Control& con
     form = form().Parent();
   SendMessage(form().Handle(), WM_ERASEBKGND, (intptr)hdc, 0);
   ReleaseDC((HWND)control.Handle(), hdc);
+  RedrawWindow((HWND)form->Handle(), null, null, RDW_INVALIDATE);
 }
 
 void Native::ControlApi::SetClientSize(System::Windows::Forms::Control& control) {
@@ -114,12 +115,19 @@ void Native::ControlApi::SetFont(const System::Windows::Forms::Control& control)
 
 void Native::ControlApi::SetForeColor(intptr hdc) {
   ref<System::Windows::Forms::Control> control = System::Windows::Forms::Control::FromHandle(GetHandleWindowFromDeviceContext(hdc));
-  if (control != null)
+  if (control != null) {
     SetTextColor((HDC)hdc, ColorToRgb(control().ForeColor));
+  }
 }
 
 void Native::ControlApi::SetForeColor(const System::Windows::Forms::Control& control) {
-  SetForeColor((intptr)GetDC((HWND)control.Handle()));
+  HDC hdc = GetDC((HWND)control.Handle());
+  ref<System::Windows::Forms::Control> form = control;
+  while (form().Parent() != null)
+    form = form().Parent();
+  SendMessage(form().Handle(), WM_CTLCOLOR, (intptr)hdc, control.Handle);
+  ReleaseDC((HWND)control.Handle(), hdc);
+  RedrawWindow((HWND)form->Handle(), null, null, RDW_INVALIDATE);
 }
 
 void Native::ControlApi::SetLocation(const System::Windows::Forms::Control& control) {

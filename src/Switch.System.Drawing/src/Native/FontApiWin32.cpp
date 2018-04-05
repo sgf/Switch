@@ -6,6 +6,7 @@
 #include <Switch/Undef.hpp>
 
 #include "Api.hpp"
+#include <Switch/System/Math.hpp>
 #include "../../include/Switch/System/Drawing/FontFamily.hpp"
 #include "../../include/Switch/System/Drawing/FontStyle.hpp"
 
@@ -36,7 +37,7 @@ float Native::FontApi::GetHeight(float emSize, intptr hdc) {
 }
 
 float Native::FontApi::GetSize(float height, intptr hdc) {
-  return height / (float)GetDeviceCaps(hdc == IntPtr::Zero ? GetDC(GetActiveWindow()) : (HDC)hdc, LOGPIXELSY) * 72.0f;
+  return Math::Abs(height * 72.0f / (float)GetDeviceCaps(hdc == IntPtr::Zero ? GetDC(GetActiveWindow()) : (HDC)hdc, LOGPIXELSY));
 }
 
 #endif

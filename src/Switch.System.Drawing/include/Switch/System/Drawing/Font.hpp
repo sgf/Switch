@@ -712,7 +712,6 @@ namespace Switch {
         /// @cond
         friend struct ::__system_drawing_font_accessor__;
         /// @endcond
-        static System::Drawing::Font FromLogFontHandle(intptr lf, intptr hdc);
         float GetSizeInPoints() const;
         static float GetSize(float height, intptr hdc);
 

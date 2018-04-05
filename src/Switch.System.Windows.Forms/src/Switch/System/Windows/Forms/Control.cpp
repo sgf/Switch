@@ -16,8 +16,7 @@ using namespace System::Windows::Forms;
 System::Collections::Generic::Dictionary<intptr, ref<Control>> Control::handles;
 
 namespace {
-  /*
-  struct ShowDebugTrace {
+   struct ShowDebugTrace {
     static constexpr bool AllWindowMessages = true;
     static constexpr bool MouseWindowMessage = true;
     static constexpr bool WindowMessage = true;
@@ -28,7 +27,7 @@ namespace {
     return true;
     //return message.Msg != WM_TIMER && message.Msg != WM_PAINT && message.Msg != WM_ERASEBKGND;
     //return !message.ToString().Contains("WM_NULL");
-  }*/
+  }
 
   MouseButtons MessageToMouseButtons(Message message) {
     if (message.Msg == WM_LBUTTONDBLCLK || message.Msg == WM_LBUTTONDOWN || message.Msg == WM_LBUTTONUP)
@@ -177,6 +176,8 @@ void Control::OnBackColorChanged(const EventArgs& e) {
   if (this->IsHandleCreated)
     Native::ControlApi::SetBackColor(*this);
   this->BackColorChanged(*this, e);
+  for (ref<Control> control : this->controls)
+    control->OnParentBackColorChanged(e);
 }
 
 void Control::OnClientSizeChanged(const EventArgs& e) {
@@ -197,18 +198,37 @@ void Control::OnFontChanged(const EventArgs& e) {
   if (this->IsHandleCreated)
     Native::ControlApi::SetFont(*this);
   this->FontChanged(*this, e);
+  for (ref<Control> control : this->controls)
+    control->OnParentFontChanged(e);
 }
 
 void Control::OnForeColorChanged(const EventArgs& e) {
   if (this->IsHandleCreated)
     Native::ControlApi::SetForeColor(*this);
   this->ForeColorChanged(*this, e);
+  for (ref<Control> control : this->controls)
+    control->OnParentForeColorChanged(e);
 }
 
 void Control::OnLocationChanged(const EventArgs& e) {
   if (this->IsHandleCreated)
     Native::ControlApi::SetLocation(*this);
   this->LocationChanged(*this, e);
+}
+
+void Control::OnParentBackColorChanged(const EventArgs& e) {
+  if (this->IsHandleCreated && !this->backColor.HasValue)
+    Native::ControlApi::SetBackColor(*this);
+}
+
+void Control::OnParentForeColorChanged(const EventArgs& e) {
+  if (this->IsHandleCreated && !this->foreColor.HasValue)
+    Native::ControlApi::SetForeColor(*this);
+}
+
+void Control::OnParentFontChanged(const EventArgs& e) {
+  if (this->IsHandleCreated && !this->font.HasValue)
+    Native::ControlApi::SetFont(*this);
 }
 
 void Control::OnParentChanged(const EventArgs& e) {

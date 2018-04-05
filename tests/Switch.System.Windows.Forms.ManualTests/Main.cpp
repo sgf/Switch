@@ -4,6 +4,7 @@
 #include <Switch/System/Windows/Forms/FolderBrowserDialog.hpp>
 #include <Switch/System/Windows/Forms/FontDialog.hpp>
 #include <Switch/System/Windows/Forms/Form.hpp>
+#include <Switch/System/Windows/Forms/Label.hpp>
 #include <Switch/System/Windows/Forms/MessageBox.hpp>
 #include <Switch/System/Windows/Forms/OpenFileDialog.hpp>
 #include <Switch/System/Windows/Forms/SaveFileDialog.hpp>
@@ -91,10 +92,13 @@ namespace ManualTests {
         FontDialog fontDialog;
         System::Windows::Forms::DialogResult result = fontDialog.ShowDialog();
         System::Diagnostics::Debug::WriteLine(string::Format("result = {0}", result));
+        if (result == DialogResult::OK) {
+          System::Diagnostics::Debug::WriteLine(string::Format("Font = {0}", fontDialog.Font));
+          System::Diagnostics::Debug::WriteLine(string::Format("Color = {0}", fontDialog.Color));
+        }
       };
 
       this->Text = "Dialogs";
-      //this->Font = System::Drawing::Font("Arial", 16.0f, System::Drawing::FontStyle::Italic);
       this->Controls().AddRange({this->buttonMessage, this->buttonColor, this->buttonOpen, this->buttonSave, this->buttonFolder, this->buttonFont});
     }
 

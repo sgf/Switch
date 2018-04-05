@@ -140,10 +140,6 @@ System::Drawing::Font System::Drawing::Font::FromHFont(intptr hfont) {
   return font;
 }
 
-System::Drawing::Font System::Drawing::Font::FromLogFontHandle(intptr logfont, intptr hdc) {
-  throw NotImplementedException(caller_);
-}
-
 float System::Drawing::Font::GetHeight() const {
   return Native::FontApi::GetHeight(this->data->size, IntPtr::Zero);
 }

@@ -22,7 +22,7 @@ void FontDialog::Reset() {
   this->scriptOnly = false;
   this->showApply = false;
   this->ShowColor = false;
-  this->ShowEffects = false;
+  this->ShowEffects = true;
   this->ShowHelp = false;
 }
 

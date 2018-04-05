@@ -59,7 +59,7 @@ System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const s
   ReleaseDC(NULL, hdc);
   if (result != null)
     return System::Drawing::FontFamily((intptr)result);
-  throw ArgumentException(caller_);
+  return System::Drawing::FontFamily::GenericSansSerif;
 }
 
 string Native::FontFamilyApi::GetName(intptr handle) {
