@@ -30,9 +30,13 @@ namespace Switch {
     /// @param ref Reference to store.
     Ref(const T& ref) { Reset(ref); }
 
-    /// @brief Copy a Reference specified
-    /// @param ref Reference to copy.
+    /// @cond
     Ref(const Ref& ref) : ptr(ref.ptr) {}
+    Ref& operator=(const Ref& ref) {
+      Reset(*ref.ptr);
+      return *this;
+    }
+    /// @endcond
 
     Ref(NullPtr) : ptr(null) {}
 
@@ -248,11 +252,6 @@ namespace Switch {
 
     Ref<T>& operator=(const T& ref) {
       Reset(ref);
-      return *this;
-    }
-
-    Ref<T>& operator=(const Ref<T>& ref) {
-      Reset(*ref.ptr);
       return *this;
     }
 

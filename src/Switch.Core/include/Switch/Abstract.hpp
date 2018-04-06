@@ -10,6 +10,9 @@ namespace Switch {
   /// @par Library
   /// Switch.Core
   struct core_export_ Abstract : public System::Object {
+  protected:
+    Abstract() {}
+  public:
     ~Abstract() override = 0;
   };
 

@@ -5,7 +5,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-static const int32 CFTEXT = 1;
+static const int32 CF_TEXT = 1;
 static const int32 CF_BITMAP = 2;
 static const int32 CF_METAFILEPICT = 3;
 static const int32 CF_SYLK = 4;
@@ -80,7 +80,7 @@ int32 Native::ClipboardApi::GetIdSymbolicLink() {
 }
 
 int32 Native::ClipboardApi::GetIdText() {
-  return CFTEXT;
+  return CF_TEXT;
 }
 
 int32 Native::ClipboardApi::GetIdTiff() {

@@ -20,7 +20,7 @@ namespace Switch {
         /// @remarks To have the derived button control display an image, set the Image property or the ImageList and ImageIndex properties. The image can be aligned on the button control by setting the ImageAlign property. Likewise, to align the Text displayed on the button control, set the TextAlign property.
         /// @remarks The FlatStyle property determines the style and appearance of the control. If the FlatStyle property is set to FlatStyle.System, the user's operating system determines the appearance of the control.
         class system_windows_forms_export_ ButtonBase : public Control {
-        public:
+        protected:
           /// @brief Initializes a new instance of the ButtonBase class.
           ButtonBase() {}
 
@@ -28,6 +28,7 @@ namespace Switch {
           ButtonBase(const string& text, int32 left, int32 top, int32 height, int32 width) : Control(text, left, top, height, width) {}
           /// @endcond
 
+        public:
           /// @brief Gets or sets a value indicating whether the ellipsis character (...) appears at the right edge of the control, denoting that the control text extends beyond the specified length of the control.
           /// @return bool true if the additional label text is to be indicated by an ellipsis; otherwise, false. The default is true.
           /// @remarks Set AutoEllipsis to true to display text that extends beyond the width of the control when the user passes over the control with the mouse. You must set the control's AutoSize property to false if you want AutoEllipsis to be true. If AutoSize is true, the control will grow to fit the text and an ellipsis will not appear.

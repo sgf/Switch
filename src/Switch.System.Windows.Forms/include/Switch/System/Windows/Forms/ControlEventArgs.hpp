@@ -5,7 +5,7 @@
 #include <Switch/System/EventArgs.hpp>
 
 #include "../../../SystemWindowsFormsExport.hpp"
-#include "UICues.hpp"
+#include "Control.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
@@ -70,9 +70,6 @@ namespace Switch {
         /// @endcode
         class system_windows_forms_export_ ControlEventArgs : public EventArgs {
         public:
-          /// @brief nitializes a new instance of the ControlEventArgs class.
-          ControlEventArgs() {}
-
           /// @brief nitializes a new instance of the ControlEventArgs class for the specified control.
           /// @param control The Control to store in this event.
           /// @par Examples
@@ -120,7 +117,12 @@ namespace Switch {
           ///   }
           /// }
           /// @endcode
-          ControlEventArgs(const System::Windows::Forms::Control& control) : control(&control) {}
+          ControlEventArgs(ref<System::Windows::Forms::Control> control) : control(control) {}
+
+          /// @cond
+          ControlEventArgs(const ControlEventArgs& controlEventArgs) : control(controlEventArgs.control) {}
+          ControlEventArgs& operator=(const ControlEventArgs& controlEventArgs) = default;
+          /// @endcond
 
           /// @brief Gets the control object used by this event.
           /// @return The Control used by this event.
@@ -169,10 +171,12 @@ namespace Switch {
           ///   }
           /// }
           /// @endcode
-          const System::Windows::Forms::Control& Control() const { return *control; }
+          property_<ref<System::Windows::Forms::Control>, readonly_> Control {
+            get_ {return this->control;}
+          };
 
         private:
-          const System::Windows::Forms::Control* control;
+          ref<System::Windows::Forms::Control> control;
         };
       }
     }

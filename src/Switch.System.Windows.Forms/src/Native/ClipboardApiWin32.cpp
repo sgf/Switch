@@ -68,7 +68,7 @@ int32 Native::ClipboardApi::GetIdSymbolicLink() {
 }
 
 int32 Native::ClipboardApi::GetIdText() {
-  return CFTEXT;
+  return CF_TEXT;
 }
 
 int32 Native::ClipboardApi::GetIdTiff() {

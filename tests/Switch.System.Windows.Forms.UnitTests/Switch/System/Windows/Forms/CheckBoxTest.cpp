@@ -62,4 +62,10 @@ namespace SwitchUnitTests {
     ASSERT_TRUE(checkBox.Checked);
     ASSERT_EQ(6, result);
   }
+
+  TEST(CheckBoxTest, CheckStateWithBadValue) {
+    CheckBox checkBox;
+
+    ASSERT_THROW(checkBox.CheckState = (CheckState)42, System::ComponentModel::InvalidEnumArgumentException);
+  }
 }
