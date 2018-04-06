@@ -14,7 +14,7 @@ namespace Switch {
         enum class DashStyle;
       }
       class Brush;
-      class Color;
+      struct Color;
       class Font;
       class FontFamily;
       enum class FontStyle;
