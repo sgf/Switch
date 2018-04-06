@@ -90,7 +90,35 @@ property_<string, readonly_> DataFormats::WaveAudio {
 
 System::Collections::Generic::List<DataFormats::Format> DataFormats::formats = {
   {Bitmap, Native::ClipboardApi::GetIdBitmap()},
+  {Dib, Native::ClipboardApi::GetIdDib()},
+  {Dif, Native::ClipboardApi::GetIdDif()},
+  {EnhancedMetafile, Native::ClipboardApi::GetIdEnhancedMetafile()},
+  {FileDrop, Native::ClipboardApi::GetIdFileDrop()},
+  {Locale, Native::ClipboardApi::GetIdLocale()},
+  {MetafilePict, Native::ClipboardApi::GetIdMetafilePict()},
+  {OemText, Native::ClipboardApi::GetIdOemText()},
+  {Palette, Native::ClipboardApi::GetIdPalette()},
+  {PenData, Native::ClipboardApi::GetIdPenData()},
+  {Riff, Native::ClipboardApi::GetIdRiff()},
+  {SymbolicLink, Native::ClipboardApi::GetIdSymbolicLink()},
+  {Text, Native::ClipboardApi::GetIdText()},
+  {Tiff, Native::ClipboardApi::GetIdTiff()},
+  {UnicodeText, Native::ClipboardApi::GetIdUnicodeText()},
+  {WaveAudio, Native::ClipboardApi::GetIdWaveAudio()},
 };
+
+DataFormats::Format DataFormats::GetFormat(int32 id) {
+  for (auto format : formats)
+    if (id == format.Id)
+      return format;
+
+  string name = Native::ClipboardApi::GetFormatName(id);
+  if (name == "") name = string::Format("Format{0}", id);
+ 
+  Format format(name, id);
+  formats.Add(format);
+  return format;
+}
 
 DataFormats::Format DataFormats::GetFormat(const string& name) {
   for (auto format : formats)
@@ -101,5 +129,7 @@ DataFormats::Format DataFormats::GetFormat(const string& name) {
     if (name.Equals(format.Name, true))
       return format;
 
-  return Format(name, Native::ClipboardApi::RegisterFormat(name));
+  Format format(name, Native::ClipboardApi::RegisterFormat(name));
+  formats.Add(format);
+  return format;
 }

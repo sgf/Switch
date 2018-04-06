@@ -86,7 +86,23 @@ namespace Native {
   class ClipboardApi static_ {
   public:
     static int32 RegisterFormat(const string& format);
+    static string GetFormatName(int32 id);
     static int32 GetIdBitmap();
+    static int32 GetIdDib();
+    static int32 GetIdDif();
+    static int32 GetIdEnhancedMetafile();
+    static int32 GetIdFileDrop();
+    static int32 GetIdLocale();
+    static int32 GetIdMetafilePict();
+    static int32 GetIdOemText();
+    static int32 GetIdPalette();
+    static int32 GetIdPenData();
+    static int32 GetIdRiff();
+    static int32 GetIdSymbolicLink();
+    static int32 GetIdText();
+    static int32 GetIdTiff();
+    static int32 GetIdUnicodeText();
+    static int32 GetIdWaveAudio();
   };
 
   class CommonDialogApi static_ {

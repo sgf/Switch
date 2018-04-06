@@ -68,6 +68,7 @@ namespace SwitchUnitTests {
     Control control;
     Color result;
     control.BackColorChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result = as<Control>(sender).BackColor;
     };
 
@@ -89,9 +90,11 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.LocationChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 2;
     };
     control.SizeChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 3;
     };
 
@@ -124,9 +127,11 @@ namespace SwitchUnitTests {
     Control control1, control2, control3;
     int32 result = 1;
     control2.ParentChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control2));
       result += 2;
     };
     control3.ParentChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control3));
       result += 3;
     };
 
@@ -151,6 +156,7 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.EnabledChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 2;
     };
 
@@ -164,6 +170,7 @@ namespace SwitchUnitTests {
     Control control;
     Color result;
     control.ForeColorChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result = as<Control>(sender).ForeColor;
     };
 
@@ -185,6 +192,7 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.SizeChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 3;
     };
 
@@ -207,6 +215,7 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.LocationChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 2;
     };
 
@@ -220,6 +229,7 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.LocationChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 2;
     };
 
@@ -241,6 +251,7 @@ namespace SwitchUnitTests {
     Control control1, control2;
     int32 result = 1;
     control2.ParentChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control2));
       result += 2;
     };
 
@@ -261,6 +272,7 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.SizeChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 3;
     };
 
@@ -274,6 +286,7 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.TabStopChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 2;
     };
 
@@ -287,6 +300,7 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.TextChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 2;
     };
 
@@ -300,6 +314,7 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.LocationChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 2;
     };
 
@@ -313,6 +328,7 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.VisibleChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 2;
     };
 
@@ -326,6 +342,7 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.SizeChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 3;
     };
 
@@ -428,6 +445,7 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.VisibleChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 2;
     };
 
@@ -441,9 +459,11 @@ namespace SwitchUnitTests {
     Control control;
     int32 result = 1;
     control.LocationChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 2;
     };
     control.SizeChanged += delegate_(const object & sender, const EventArgs & e) {
+      ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result += 3;
     };
 

@@ -6,6 +6,7 @@
 
 #include "../../../SystemWindowsFormsExport.hpp"
 #include "DragDropEffects.hpp"
+#include "IDataObject.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
@@ -73,29 +74,30 @@ namespace Switch {
           /// @brief Initializes a new instance of the DragEventArgs class.
           DragEventArgs() {}
           /// @brief Initializes a new instance of the ControlEventArgs class for the specified control.
-          DragEventArgs(const object& data, DragDropEffects allowedEffect, DragDropEffects effect, int32 keystate, int32 x, int32 y) : data(&data), allowedEffect(allowedEffect), effect(effect), keyState(keystate), x(x), y(y) {}
+          /// @param data The data associated with this event.
+          /// @param mkeyState The current state of the SHIFT, CTRL, and ALT keys.
+          /// @param x The x-coordinate of the mouse cursor in pixels.
+          /// @param y The y-coordinate of the mouse cursor in pixels.
+          /// @param allowedEffects One of the DragDropEffects values.
+          /// @param effect One of the DragDropEffects values.
+          DragEventArgs($<IDataObject> data, int32 keystate, int32 x, int32 y, DragDropEffects allowedEffect, DragDropEffects effect) : data(data), allowedEffect(allowedEffect), effect(effect), keyState(keystate), x(x), y(y) {}
 
           /// @cond
           DragEventArgs(const DragEventArgs& dragEventArgs) : data(dragEventArgs.data), allowedEffect(dragEventArgs.allowedEffect), effect(dragEventArgs.effect), keyState(dragEventArgs.keyState), x(dragEventArgs.x), y(dragEventArgs.y) {}
-          DragEventArgs& operator =(const DragEventArgs dragEventArgs) {
-            this->data = dragEventArgs.data;
-            this->allowedEffect = dragEventArgs.allowedEffect;
-            this->effect = dragEventArgs.effect;
-            this->keyState = dragEventArgs.keyState;
-            this->x = dragEventArgs.x;
-            this->y = dragEventArgs.y;
-            return *this;
-          }
+          DragEventArgs& operator=(const DragEventArgs& dragEventArgs) = default;
           /// @endcond
 
           /// @brief Gets which drag-and-drop operations are allowed by the originator (or source) of the drag event.
-          /// @return One of the DragDropEffects values.
+          /// @return DragDropEffects One of the DragDropEffects values.
+          /// @remarks When a control initiates a drag-and-drop operation by calling the Control.DoDragDrop method, it specifies the permissible effects of the operation. For example, when you drag a file from a source, if the file is read-only (or from a read-only storage medium such as a CD), the source will indicate that the file can be copied, but not transferred, to the target.
+          /// @remarks Before attempting to perform an operation on the dragged data, you should examine this property to ensure that the operation is allowed.
           property_<DragDropEffects, readonly_> AllowedEffect {
             get_ {return this->allowedEffect;}
           };
 
-          property_<const object&, readonly_> Data {
-            get_->const object& {return *this->data;}
+          /// @brief Gets the IDataObject that contains the data associated with this event.
+          property_<$<IDataObject>, readonly_> Data {
+            get_ {return this->data;}
           };
 
           /// @brief Gets or sets the target drop effect in a drag-and-drop operation.
@@ -228,7 +230,7 @@ namespace Switch {
           };
 
         private:
-          const object* data = null;
+          $<IDataObject> data;
           DragDropEffects allowedEffect = DragDropEffects::None;
           DragDropEffects effect = DragDropEffects::None;
           int32 keyState = 0;

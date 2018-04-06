@@ -250,7 +250,7 @@ namespace Switch {
           /// @remarks The OnCheckStateChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
           /// @par Notes to Inheritors
           /// When overriding OnCheckStateChanged in a derived class, be sure to call the base class's OnCheckStateChanged method so that registered delegates receive the event.
-          virtual void OnCheckStateChanged(const EventArgs& e) {this->CheckedChanged(*this, e);}
+          virtual void OnCheckStateChanged(const EventArgs& e) {this->CheckStateChanged(*this, e);}
 
           /// @brief Raises the Click event.
           /// @param e An EventArgs that contains the event data.

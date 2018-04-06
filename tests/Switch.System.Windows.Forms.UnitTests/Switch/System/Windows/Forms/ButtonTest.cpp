@@ -9,17 +9,18 @@ namespace SwitchUnitTests {
   TEST(ButtonTest, DefaultConstructor) {
     Button button;
 
-    ASSERT_FALSE(button.IsDefault);
     ASSERT_EQ(Point(0, 0), button.Location);
     ASSERT_EQ(Size(75, 25), button.Size);
     ASSERT_EQ("", button.Text);
+
+    ASSERT_FALSE(button.IsDefault);
   }
 
   TEST(ButtonTest, IsDefault) {
     Button button;
-
+    
     button.IsDefault = true;
-
+    
     ASSERT_TRUE(button.IsDefault);
   }
 }

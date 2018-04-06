@@ -65,11 +65,17 @@ namespace Switch {
         /// }
         /// @endcode
         enum class DragDropEffects {
+          /// @brief The drop target does not accept the data.
           None = 0,
+          /// @brief The data from the drag source is copied to the drop target.
           Copy = 0b1,
+          /// @brief The data from the drag source is moved to the drop target.
           Move = 0x10,
+          /// @brief The data from the drag source is linked to the drop target.
           Link = 0b100,
+          /// @brief The target can be scrolled while dragging to locate a drop position that is not currently visible in the target.
           Scroll = 0b1000000000000000,
+          /// @brief The combination of the Copy, Move, and Scroll effects.
           All = 0b1000000000000111,
         };
       }
