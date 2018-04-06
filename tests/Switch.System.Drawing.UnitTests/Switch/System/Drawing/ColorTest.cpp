@@ -5,7 +5,7 @@ using namespace System;
 using namespace System::Drawing;
 
 namespace SwitchUnitTests {
-  TEST(ColorTest, Ctor) {
+  TEST(ColorTest, DefaultConstructor ) {
     Drawing::Color color;
     ASSERT_EQ(0x00, color.A());
     ASSERT_EQ(0x00, color.R());
@@ -17,6 +17,10 @@ namespace SwitchUnitTests {
     ASSERT_FALSE(color.IsSystemColor());
     ASSERT_EQ("0", color.Name());
     ASSERT_EQ("Color [Empty]", color.ToString());
+  }
+  
+  TEST(ColorTest, CopyConstructor ) {
+    
   }
 
   TEST(ColorTest, FromKnownColor) {

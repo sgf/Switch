@@ -76,4 +76,3 @@ namespace SwitchUnitTests {
     ASSERT_EQ(42, brush2->GetNativeBrush());
   }
 }
-

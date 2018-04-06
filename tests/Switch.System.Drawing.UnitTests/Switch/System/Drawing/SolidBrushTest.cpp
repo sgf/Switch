@@ -46,4 +46,3 @@ namespace SwitchUnitTests {
     ASSERT_EQ(Color::Green, solidBrush2->Color);
   }
 }
-

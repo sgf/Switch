@@ -4,6 +4,10 @@
 using namespace System;
 using namespace System::Drawing;
 
+property_<Color, readonly_> Color::Empty {
+  [] {return Color();}
+};
+
 property_<Color, readonly_> Color::Transparent {
   [] {return Color::FromKnownColor(KnownColor::Transparent);}
 };

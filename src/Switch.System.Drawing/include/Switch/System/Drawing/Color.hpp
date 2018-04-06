@@ -18,8 +18,11 @@ namespace Switch {
       /// @brief Represents an ARGB (alpha, red, green, blue) color.
       /// @par Library
       /// Switch.System.Drawing
-      class system_drawing_export_ Color : public object, public IComparable {
+      struct system_drawing_export_ Color : public object, public IComparable {
       public:
+        /// @brief Represents a color that is null.
+        static property_<Color, readonly_> Empty;
+        
         /// @brief Gets a system-defined color that has an ARGB value of 0x00FFFFFF. This field is constant.
         static property_<Color, readonly_> Transparent;
 
@@ -482,7 +485,7 @@ namespace Switch {
         property_<byte, readonly_> R {
           get_ {return byte((this->argb & 0x00FF0000) >> 16);}
         };
-
+        
         /// @brief Gets the name of this Color.
         /// @return string The name of this Color.
         property_<string, readonly_> Name {
@@ -492,7 +495,7 @@ namespace Switch {
         /// @brief Specifies whether this Color class is uninitialized.
         /// @return bool Returns true if this color is uninitialized; otherwise, false.
         property_<bool, readonly_> IsEmpty {
-          get_ {return this->argb == 0 && this->knownColor == (KnownColor)0;}
+          get_ {return this->Equals(Empty);}
         };
 
         /// @brief Gets a value indicating whether this Color structure is a predefined color. Predefined colors are represented by the elements of the KnownColor enumeration.
