@@ -83,16 +83,16 @@ namespace Switch {
           ///
           template<typename T>
           $<object> GetData() const {return null;}
-          
+
           virtual bool GetDataPresent(const string& format) const = 0;
 
           virtual bool GetDataPresent(const string& format, bool autoConvert) const = 0;
 
           template<typename T>
           bool GetDataPresent() const {return false;}
-          
+
           virtual Array<string> GetFormats() const = 0;
-          
+
           virtual Array<string> GetFormats(bool autoConvert) const = 0;
         };
       }
