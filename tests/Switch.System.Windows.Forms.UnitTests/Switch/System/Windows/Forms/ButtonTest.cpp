@@ -18,9 +18,9 @@ namespace SwitchUnitTests {
 
   TEST(ButtonTest, IsDefault) {
     Button button;
-    
+
     button.IsDefault = true;
-    
+
     ASSERT_TRUE(button.IsDefault);
   }
 }

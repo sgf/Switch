@@ -21,24 +21,24 @@ namespace SwitchUnitTests {
   TEST(CheckBoxTest, AutoCheck) {
     CheckBox checkBox;
     checkBox.AutoCheck = false;
-    
+
     ASSERT_FALSE(checkBox.AutoCheck);
   }
 
   TEST(CheckBoxTest, Checked) {
     CheckBox checkBox;
     int32 result = 1;
-    checkBox.CheckedChanged += delegate_(const object& sender, const EventArgs& e) {
+    checkBox.CheckedChanged += delegate_(const object & sender, const EventArgs & e) {
       ASSERT_TRUE(object::ReferenceEquals(sender, checkBox));
       result += 2;
     };
-    checkBox.CheckStateChanged += delegate_(const object& sender, const EventArgs& e) {
+    checkBox.CheckStateChanged += delegate_(const object & sender, const EventArgs & e) {
       ASSERT_TRUE(object::ReferenceEquals(sender, checkBox));
       result += 3;
     };
-    
+
     checkBox.Checked = true;
-    
+
     ASSERT_TRUE(checkBox.Checked);
     ASSERT_EQ(CheckState::Checked, checkBox.CheckState);
     ASSERT_EQ(6, result);
@@ -47,17 +47,17 @@ namespace SwitchUnitTests {
   TEST(CheckBoxTest, CheckState) {
     CheckBox checkBox;
     int32 result = 1;
-    checkBox.CheckedChanged += delegate_(const object& sender, const EventArgs& e) {
+    checkBox.CheckedChanged += delegate_(const object & sender, const EventArgs & e) {
       ASSERT_TRUE(object::ReferenceEquals(sender, checkBox));
       result += 2;
     };
-    checkBox.CheckStateChanged += delegate_(const object& sender, const EventArgs& e) {
+    checkBox.CheckStateChanged += delegate_(const object & sender, const EventArgs & e) {
       ASSERT_TRUE(object::ReferenceEquals(sender, checkBox));
       result += 3;
     };
 
     checkBox.CheckState = CheckState::Checked;
-    
+
     ASSERT_EQ(CheckState::Checked, checkBox.CheckState);
     ASSERT_TRUE(checkBox.Checked);
     ASSERT_EQ(6, result);

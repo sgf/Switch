@@ -114,7 +114,7 @@ DataFormats::Format DataFormats::GetFormat(int32 id) {
 
   string name = Native::ClipboardApi::GetFormatName(id);
   if (name == "") name = string::Format("Format{0}", id);
- 
+
   Format format(name, id);
   formats.Add(format);
   return format;

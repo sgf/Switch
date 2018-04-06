@@ -96,7 +96,7 @@ namespace Switch {
           };
 
           /// @brief Gets the IDataObject that contains the data associated with this event.
-          property_<$<IDataObject>, readonly_> Data {
+          property_ < $<IDataObject>, readonly_ > Data {
             get_ {return this->data;}
           };
 
