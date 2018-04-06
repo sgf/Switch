@@ -22,7 +22,7 @@ namespace Switch {
       public:
         /// @brief Represents a color that is null.
         static property_<Color, readonly_> Empty;
-        
+
         /// @brief Gets a system-defined color that has an ARGB value of 0x00FFFFFF. This field is constant.
         static property_<Color, readonly_> Transparent;
 
@@ -485,7 +485,7 @@ namespace Switch {
         property_<byte, readonly_> R {
           get_ {return byte((this->argb & 0x00FF0000) >> 16);}
         };
-        
+
         /// @brief Gets the name of this Color.
         /// @return string The name of this Color.
         property_<string, readonly_> Name {
