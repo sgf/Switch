@@ -50,12 +50,6 @@ struct __system_drawing_font_accessor__ {
 };
 
 namespace Native {
-  class BrushApi static_ {
-  public:
-    static intptr CreateSolidBrush(const System::Drawing::Color& color);
-    static void DeleteBrush(intptr handle);
-  };
-
   class FontApi static_ {
   public:
     static intptr Create(const System::Drawing::FontFamily& family, float emSize, System::Drawing::FontStyle style, byte gdiCharSet, bool gdiVerticalFont);
@@ -94,6 +88,12 @@ namespace Native {
   public:
     static intptr CreatePen(const System::Drawing::Drawing2D::DashStyle& dashStyle, int32 width, const System::Drawing::Color& color);
     static void DeletePen(intptr handle);
+  };
+
+  class SolidBrushApi static_ {
+  public:
+    static intptr Create(const System::Drawing::Color& color);
+    static void Release(intptr handle);
   };
 
   class SystemColorsApi static_ {

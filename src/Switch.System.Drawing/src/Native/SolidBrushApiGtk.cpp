@@ -12,11 +12,11 @@
 using namespace System;
 using namespace System::Drawing;
 
-intptr Native::BrushApi::CreateSolidBrush(const Color& color) {
+intptr Native::SolidBrushApi::Create(const Color& color) {
   return IntPtr::Zero;
 }
 
-void Native::BrushApi::DeleteBrush(intptr handle) {
+void Native::SolidBrushApi::Release(intptr handle) {
 }
 
 #endif

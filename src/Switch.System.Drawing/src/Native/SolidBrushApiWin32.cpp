@@ -9,11 +9,11 @@
 using namespace System;
 using namespace System::Drawing;
 
-intptr Native::BrushApi::CreateSolidBrush(const Color& color) {
+intptr Native::SolidBrushApi::Create(const Color& color) {
   return (intptr)::CreateSolidBrush(RGB(color.R, color.G, color.B));
 }
 
-void Native::BrushApi::DeleteBrush(intptr handle) {
+void Native::SolidBrushApi::Release(intptr handle) {
   DeleteObject((HGDIOBJ)handle);
 }
 
