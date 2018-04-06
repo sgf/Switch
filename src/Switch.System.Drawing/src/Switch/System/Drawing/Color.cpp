@@ -614,7 +614,7 @@ Color Color::FromKnownColor(KnownColor color) {
 }
 
 bool Color::Equals(const Color& value) const {
-  return this->argb == value.argb && this->knownColor == value.knownColor;
+  return this->argb == value.argb;
 }
 
 bool Color::Equals(const object& obj) const {

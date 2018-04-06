@@ -18,6 +18,22 @@ namespace Switch {
       /// @brief Represents an ARGB (alpha, red, green, blue) color.
       /// @par Library
       /// Switch.System.Drawing
+      /// @remarks Named colors are represented by using the properties of the Color structure. For more information about these colors, see Colors by Name.
+      /// @remarks The color of each pixel is represented as a 32-bit number: 8 bits each for alpha, red, green, and blue (ARGB). Each of the four components is a number from 0 through 255, with 0 representing no intensity and 255 representing full intensity. The alpha component specifies the transparency of the color: 0 is fully transparent, and 255 is fully opaque. To determine the alpha, red, green, or blue component of a color, use the A, R, G, or B property, respectively. You can create a custom color by using one of the FromArgb methods
+      /// @par Examples
+      /// The following code example demonstrates the A, R, G, and B properties of a Color, and the Implicit(Size to SizeF) member.<br><br>
+      /// This example is designed to be used with a Windows Form. Paste the code into the form and call the ShowPropertiesOfSlateBlue method from the form's Paint event-handling method, passing e as PaintEventArgs.
+      /// @code
+      /// void ShowPropertiesOfSlateBlue(PaintEventArgs& e) {
+      ///   Color slateBlue = Color::FromName("SlateBlue");
+      ///   byte g = slateBlue.G;
+      ///   byte b = slateBlue.B;
+      ///   byte r = slateBlue.R;
+      ///   byte a = slateBlue.A;
+      ///   string text = String::Format("Slate Blue has these ARGB values: Alpha:{0}, red:{1}, green: {2}, blue {3}", a, r, g, b);
+      ///   e.Graphics().DrawString(text, Font(this->Font, FontStyle::Italic), SolidBrush(slateBlue), RectangleF(PointF(0.0F, 0.0F), this->Size));
+      /// }
+      /// @endcode
       struct system_drawing_export_ Color : public object, public IComparable {
       public:
         /// @brief Represents a color that is null.
@@ -451,16 +467,26 @@ namespace Switch {
 
         /// @cond
         Color(const Color& color) : argb(color.argb), knownColor(color.knownColor) {}
-        Color& operator =(const Color& color) {
-          this->argb = color.argb;
-          this->knownColor = color.knownColor;
-          return *this;
-        }
+        Color& operator=(const Color& color) = default;
         /// @endcond
 
         /// @brief Gets the alpha component value of this Color class.
         /// @return byte The alpha component value of this Color.
         /// @remarks The color of each pixel is represented as a 32-bit number: 8 bits each for alpha, red, green, and blue (ARGB). The alpha component specifies the transparency of the color: 0 is fully transparent, and 255 is fully opaque. Likewise, an A value of 255 represents an opaque color. An A value from 1 through 254 represents a semitransparent color. The color becomes more opaque as A approaches 255.
+        /// @par Examples
+        /// The following code example demonstrates the A, R, G, and B properties of a Color, and the Implicit(Size to SizeF) member.<br><br>
+        /// This example is designed to be used with a Windows Form. Paste the code into the form and call the ShowPropertiesOfSlateBlue method from the form's Paint event-handling method, passing e as PaintEventArgs.
+        /// @code
+        /// void ShowPropertiesOfSlateBlue(PaintEventArgs& e) {
+        ///   Color slateBlue = Color::FromName("SlateBlue");
+        ///   byte g = slateBlue.G;
+        ///   byte b = slateBlue.B;
+        ///   byte r = slateBlue.R;
+        ///   byte a = slateBlue.A;
+        ///   string text = String::Format("Slate Blue has these ARGB values: Alpha:{0}, red:{1}, green: {2}, blue {3}", a, r, g, b);
+        ///   e.Graphics().DrawString(text, Font(this->Font, FontStyle::Italic), SolidBrush(slateBlue), RectangleF(PointF(0.0F, 0.0F), this->Size));
+        /// }
+        /// @endcode
         property_<byte, readonly_> A {
           get_ {return byte((this->argb & 0xFF000000) >> 24);}
         };
@@ -468,6 +494,20 @@ namespace Switch {
         /// @brief Gets the blue component value of this Color class.
         /// @return byte The blue component value of this Color.
         /// @remarks The color of each pixel is represented as a 32-bit number: 8 bits each for alpha, red, green, and blue (ARGB). The alpha component specifies the transparency of the color: 0 is fully transparent, and 255 is fully opaque. Likewise, an A value of 255 represents an opaque color. An A value from 1 through 254 represents a semitransparent color. The color becomes more opaque as A approaches 255.
+        /// @par Examples
+        /// The following code example demonstrates the A, R, G, and B properties of a Color, and the Implicit(Size to SizeF) member.<br><br>
+        /// This example is designed to be used with a Windows Form. Paste the code into the form and call the ShowPropertiesOfSlateBlue method from the form's Paint event-handling method, passing e as PaintEventArgs.
+        /// @code
+        /// void ShowPropertiesOfSlateBlue(PaintEventArgs& e) {
+        ///   Color slateBlue = Color::FromName("SlateBlue");
+        ///   byte g = slateBlue.G;
+        ///   byte b = slateBlue.B;
+        ///   byte r = slateBlue.R;
+        ///   byte a = slateBlue.A;
+        ///   string text = String::Format("Slate Blue has these ARGB values: Alpha:{0}, red:{1}, green: {2}, blue {3}", a, r, g, b);
+        ///   e.Graphics().DrawString(text, Font(this->Font, FontStyle::Italic), SolidBrush(slateBlue), RectangleF(PointF(0.0F, 0.0F), this->Size));
+        /// }
+        /// @endcode
         property_<byte, readonly_> B {
           get_ {return byte(this->argb & 0x000000FF);}
         };
@@ -475,21 +515,22 @@ namespace Switch {
         /// @brief Gets the green component value of this Color class.
         /// @return byte The green component value of this Color.
         /// @remarks The color of each pixel is represented as a 32-bit number: 8 bits each for alpha, red, green, and blue (ARGB). The alpha component specifies the transparency of the color: 0 is fully transparent, and 255 is fully opaque. Likewise, an A value of 255 represents an opaque color. An A value from 1 through 254 represents a semitransparent color. The color becomes more opaque as A approaches 255.
+        /// @par Examples
+        /// The following code example demonstrates the A, R, G, and B properties of a Color, and the Implicit(Size to SizeF) member.<br><br>
+        /// This example is designed to be used with a Windows Form. Paste the code into the form and call the ShowPropertiesOfSlateBlue method from the form's Paint event-handling method, passing e as PaintEventArgs.
+        /// @code
+        /// void ShowPropertiesOfSlateBlue(PaintEventArgs& e) {
+        ///   Color slateBlue = Color::FromName("SlateBlue");
+        ///   byte g = slateBlue.G;
+        ///   byte b = slateBlue.B;
+        ///   byte r = slateBlue.R;
+        ///   byte a = slateBlue.A;
+        ///   string text = String::Format("Slate Blue has these ARGB values: Alpha:{0}, red:{1}, green: {2}, blue {3}", a, r, g, b);
+        ///   e.Graphics().DrawString(text, Font(this->Font, FontStyle::Italic), SolidBrush(slateBlue), RectangleF(PointF(0.0F, 0.0F), this->Size));
+        /// }
+        /// @endcode
         property_<byte, readonly_> G {
           get_ {return byte((this->argb & 0x0000FF00) >> 8);}
-        };
-
-        /// @brief Gets the red component value of this Color class.
-        /// @return byte The red component value of this Color.
-        /// @remarks The color of each pixel is represented as a 32-bit number: 8 bits each for alpha, red, green, and blue (ARGB). The alpha component specifies the transparency of the color: 0 is fully transparent, and 255 is fully opaque. Likewise, an A value of 255 represents an opaque color. An A value from 1 through 254 represents a semitransparent color. The color becomes more opaque as A approaches 255.
-        property_<byte, readonly_> R {
-          get_ {return byte((this->argb & 0x00FF0000) >> 16);}
-        };
-
-        /// @brief Gets the name of this Color.
-        /// @return string The name of this Color.
-        property_<string, readonly_> Name {
-          get_ {return this->GetName();}
         };
 
         /// @brief Specifies whether this Color class is uninitialized.
@@ -500,6 +541,7 @@ namespace Switch {
 
         /// @brief Gets a value indicating whether this Color structure is a predefined color. Predefined colors are represented by the elements of the KnownColor enumeration.
         /// @return bool Returns true if this Color was created from a predefined color by using either the FromName method or the FromKnownColor method; otherwise, false.
+        /// @remarks This property does not do a comparison of the ARGB values. Therefore, when the IsKnownColor property is applied to a Color structure that is created by using the FromArgb method, IsKnownColor returns false, even if the ARGB value matches the ARGB value of a predefined color.
         property_<bool, readonly_> IsKnownColor {
           get_ {return this->knownColor != (KnownColor)0;}
         };
@@ -514,6 +556,33 @@ namespace Switch {
         /// @return bool Returns true if this Color was created from a system color by using either the FromName method or the FromKnownColor method; otherwise, false.
         property_<bool, readonly_> IsSystemColor {
           get_ {return this->GetIsSystemColor();}
+        };
+
+        /// @brief Gets the name of this Color.
+        /// @return string The name of this Color.
+        property_<string, readonly_> Name {
+          get_ {return this->GetName();}
+        };
+
+        /// @brief Gets the red component value of this Color class.
+        /// @return byte The red component value of this Color.
+        /// @remarks The color of each pixel is represented as a 32-bit number: 8 bits each for alpha, red, green, and blue (ARGB). The alpha component specifies the transparency of the color: 0 is fully transparent, and 255 is fully opaque. Likewise, an A value of 255 represents an opaque color. An A value from 1 through 254 represents a semitransparent color. The color becomes more opaque as A approaches 255.
+        /// @par Examples
+        /// The following code example demonstrates the A, R, G, and B properties of a Color, and the Implicit(Size to SizeF) member.<br><br>
+        /// This example is designed to be used with a Windows Form. Paste the code into the form and call the ShowPropertiesOfSlateBlue method from the form's Paint event-handling method, passing e as PaintEventArgs.
+        /// @code
+        /// void ShowPropertiesOfSlateBlue(PaintEventArgs& e) {
+        ///   Color slateBlue = Color::FromName("SlateBlue");
+        ///   byte g = slateBlue.G;
+        ///   byte b = slateBlue.B;
+        ///   byte r = slateBlue.R;
+        ///   byte a = slateBlue.A;
+        ///   string text = String::Format("Slate Blue has these ARGB values: Alpha:{0}, red:{1}, green: {2}, blue {3}", a, r, g, b);
+        ///   e.Graphics().DrawString(text, Font(this->Font, FontStyle::Italic), SolidBrush(slateBlue), RectangleF(PointF(0.0F, 0.0F), this->Size));
+        /// }
+        /// @endcode
+        property_<byte, readonly_> R {
+          get_ {return byte((this->argb & 0x00FF0000) >> 16);}
         };
 
         /// @brief Creates a Color class from a 32-bit ARGB value.
@@ -580,15 +649,31 @@ namespace Switch {
         /// @return string A string that represents this Size.
         String ToString() const override;
 
+        /// @brief Compares the current instance with another object of the same type.
+        /// @param obj An object to compare with this instance.
+        /// @return int32 A 32-bit signed integer that indicates the relative order of the objects being compared. The return value has these meanings:
+        /// | result            | Condition                                                   ,             |
+        /// |-------------------|---------------------------------------------------------------------------|
+        /// | Less than zero    | This instance is false and obj is true.                                   |
+        /// | Zero              | This instance and obj are equal (either both are true or both are false). |
+        /// | Greater than zero | This instance is true and obj is false.  -or- obj is null reference.      |
         int32 CompareTo(const IComparable& obj) const override {
-          if (!is<Color>(obj))
-            return 1;
-
+          if (!is<Color>(obj)) return 1;
           return CompareTo(as<Color>(obj));
         }
 
-        int32 CompareTo(const Color& color) const {return Int32(this->argb).CompareTo(color);}
+        /// @brief Compares this instance to a specified Color object and returns an indication of their relative values.
+        /// @param value An Color object to compare with this instance.
+        /// @return int32 A 32-bit signed integer that indicates the relative order of the objects being compared. The return value has these meanings:
+        /// | result            | Condition                                                                   |
+        /// |-------------------|-----------------------------------------------------------------------------|
+        /// | Less than zero    | This instance is false and value is true.                                   |
+        /// | Zero              | This instance and value are equal (either both are true or both are false). |
+        /// | Greater than zero | This instance is true and value is false.  -or- value is null reference.    |
+        int32 CompareTo(const Color& color) const {return Int32(this->argb).CompareTo(color.argb);}
 
+        /// @brief Serves as a hash function for a particular type.
+        /// @return int32 A hash code for the current object.
         int32 GetHashCode() const override { return this->argb; }
 
       private :
