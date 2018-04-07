@@ -11,6 +11,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ(0x00, color.R());
     ASSERT_EQ(0x00, color.G());
     ASSERT_EQ(0x00, color.B());
+    ASSERT_EQ(0x00000000, color.ToArgb());
     ASSERT_TRUE(color.IsEmpty());
     ASSERT_FALSE(color.IsKnownColor());
     ASSERT_FALSE(color.IsNamedColor);
@@ -56,12 +57,40 @@ namespace SwitchUnitTests {
     ASSERT_EQ(0x34, Color::FromArgb(0x12345678).R());
     ASSERT_EQ(0x56, Color::FromArgb(0x12345678).G());
     ASSERT_EQ(0x78, Color::FromArgb(0x12345678).B());
+    ASSERT_EQ(0x12345678, Color::FromArgb(0x12345678).ToArgb());
     ASSERT_FALSE(Color::FromArgb(0x12345678).IsEmpty());
     ASSERT_FALSE(Color::FromArgb(0x12345678).IsKnownColor());
     ASSERT_FALSE(Color::FromArgb(0x12345678).IsNamedColor());
     ASSERT_FALSE(Color::FromArgb(0x12345678).IsSystemColor());
     ASSERT_EQ("12345678", Color::FromArgb(0x12345678).Name());
     ASSERT_EQ("Color [A=18, R=52, G=86, B=120]", Color::FromArgb(0x12345678).ToString());
+  }
+
+  TEST(ColorTest, FromArgbWithAlphaAndColor) {
+    ASSERT_EQ(0x80, Color::FromArgb(0x80, Color::Blue).A);
+    ASSERT_EQ(0x00, Color::FromArgb(0x80, Color::Blue).R());
+    ASSERT_EQ(0x00, Color::FromArgb(0x80, Color::Blue).G());
+    ASSERT_EQ(0xFF, Color::FromArgb(0x80, Color::Blue).B());
+    ASSERT_FALSE(Color::FromArgb(0x80, Color::Blue).IsEmpty());
+    ASSERT_FALSE(Color::FromArgb(0x80, Color::Blue).IsKnownColor());
+    ASSERT_FALSE(Color::FromArgb(0x80, Color::Blue).IsNamedColor());
+    ASSERT_FALSE(Color::FromArgb(0x80, Color::Blue).IsSystemColor());
+    ASSERT_EQ("800000FF", Color::FromArgb(0x80, Color::Blue).Name());
+    ASSERT_EQ("Color [A=128, R=0, G=0, B=255]", Color::FromArgb(0x80, Color::Blue).ToString());
+  }
+
+  TEST(ColorTest, FromArgbWithSeparateAlphaAndColor) {
+    ASSERT_EQ(0x12, Color::FromArgb(0x12, 0x34, 0x56, 0x78).A());
+    ASSERT_EQ(0x34, Color::FromArgb(0x12, 0x34, 0x56, 0x78).R());
+    ASSERT_EQ(0x56, Color::FromArgb(0x12, 0x34, 0x56, 0x78).G());
+    ASSERT_EQ(0x78, Color::FromArgb(0x12, 0x34, 0x56, 0x78).B());
+    ASSERT_EQ(0x12345678, Color::FromArgb(0x12, 0x34, 0x56, 0x78).ToArgb());
+    ASSERT_FALSE(Color::FromArgb(0x12, 0x34, 0x56, 0x78).IsEmpty());
+    ASSERT_FALSE(Color::FromArgb(0x12, 0x34, 0x56, 0x78).IsKnownColor());
+    ASSERT_FALSE(Color::FromArgb(0x12, 0x34, 0x56, 0x78).IsNamedColor());
+    ASSERT_FALSE(Color::FromArgb(0x12, 0x34, 0x56, 0x78).IsSystemColor());
+    ASSERT_EQ("12345678", Color::FromArgb(0x12, 0x34, 0x56, 0x78).Name());
+    ASSERT_EQ("Color [A=18, R=52, G=86, B=120]", Color::FromArgb(0x12, 0x34, 0x56, 0x78).ToString());
   }
 
   TEST(ColorTest, FromName) {
@@ -76,6 +105,46 @@ namespace SwitchUnitTests {
     ASSERT_FALSE(colorAliceBlue.IsSystemColor());
     ASSERT_EQ("AliceBlue", colorAliceBlue.Name());
     ASSERT_EQ("Color [AliceBlue]", colorAliceBlue.ToString());
+  }
+
+  TEST(ColorTest, GetHAshCode) {
+    ASSERT_EQ(0x12345678, Color::FromArgb(0x12345678).GetHashCode());
+  }
+
+  TEST(ColorTest, Compare) {
+    Color color1 = Color::FromArgb(0x00000001);
+    Color color2 = Color::FromArgb(0x00000002);
+    Color color3 = Color::FromArgb(0x00000002);
+    ASSERT_TRUE(color1 < color2);
+    ASSERT_FALSE(color2 < color1);
+    ASSERT_TRUE(color2 > color1);
+    ASSERT_FALSE(color1 > color2);
+    ASSERT_TRUE(color2 <= color3);
+    ASSERT_FALSE(color2 <= color1);
+    ASSERT_TRUE(color2 >= color3);
+    ASSERT_FALSE(color1 >= color3);
+  }
+
+  TEST(ColorTest, Equality) {
+    Color color1 = Color::FromArgb(0x00000001);
+    Color color2 = Color::FromArgb(0x00000001);
+    ASSERT_TRUE(color1 == color2);
+  }
+
+  TEST(ColorTest, Inequality) {
+    Color color1 = Color::FromArgb(0x00000001);
+    Color color2 = Color::FromArgb(0x00000002);
+    ASSERT_FALSE(color1 == color2);
+  }
+
+  TEST(ColorTest, Empty) {
+    ASSERT_EQ(0x00000000, Color::Empty().ToArgb());
+    ASSERT_TRUE(Color::Empty().IsEmpty());
+    ASSERT_FALSE(Color::Empty().IsKnownColor());
+    ASSERT_FALSE(Color::Empty().IsNamedColor());
+    ASSERT_FALSE(Color::Empty().IsSystemColor());
+    ASSERT_EQ("0", Color::Empty().Name());
+    ASSERT_EQ("Color [Empty]", Color::Empty().ToString());
   }
 
   TEST(ColorTest, Transparent) {
