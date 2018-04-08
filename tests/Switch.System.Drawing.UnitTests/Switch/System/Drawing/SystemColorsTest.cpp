@@ -5,7 +5,7 @@ using namespace System;
 using namespace System::Drawing;
 
 namespace SwitchUnitTests {
-  TEST(SystemColorTest, ActiveBorder) {
+  TEST(SystemColorsTest, ActiveBorder) {
     //ASSERT_EQ(0xFFB4B4B4u, (unsigned)Drawing::SystemColors::ActiveBorder().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ActiveBorder().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ActiveBorder().IsKnownColor());
@@ -15,7 +15,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ActiveBorder]", Drawing::SystemColors::ActiveBorder().ToString());
   }
 
-  TEST(SystemColorTest, ActiveCaption) {
+  TEST(SystemColorsTest, ActiveCaption) {
     //ASSERT_EQ(0xFF99B4D1u, (unsigned)Drawing::SystemColors::ActiveCaption().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ActiveCaption().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ActiveCaption().IsKnownColor());
@@ -25,7 +25,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ActiveCaption]", Drawing::SystemColors::ActiveCaption().ToString());
   }
 
-  TEST(SystemColorTest, ActiveCaptionText) {
+  TEST(SystemColorsTest, ActiveCaptionText) {
     //ASSERT_EQ(0xFF000000u, (unsigned)Drawing::SystemColors::ActiveCaptionText().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ActiveCaptionText().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ActiveCaptionText().IsKnownColor());
@@ -35,7 +35,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ActiveCaptionText]", Drawing::SystemColors::ActiveCaptionText().ToString());
   }
 
-  TEST(SystemColorTest, AppWorkspace) {
+  TEST(SystemColorsTest, AppWorkspace) {
     //ASSERT_EQ(0xFFABABABu, (unsigned)Drawing::SystemColors::AppWorkspace().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::AppWorkspace().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::AppWorkspace().IsKnownColor());
@@ -45,7 +45,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [AppWorkspace]", Drawing::SystemColors::AppWorkspace().ToString());
   }
 
-  TEST(SystemColorTest, Control) {
+  TEST(SystemColorsTest, Control) {
     //ASSERT_EQ(0xFFF0F0F0u, (unsigned)Drawing::SystemColors::Control().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::Control().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::Control().IsKnownColor());
@@ -55,7 +55,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [Control]", Drawing::SystemColors::Control().ToString());
   }
 
-  TEST(SystemColorTest, ControlDark) {
+  TEST(SystemColorsTest, ControlDark) {
     //ASSERT_EQ(0xFFA0A0A0u, (unsigned)Drawing::SystemColors::ControlDark().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ControlDark().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ControlDark().IsKnownColor());
@@ -65,7 +65,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ControlDark]", Drawing::SystemColors::ControlDark().ToString());
   }
 
-  TEST(SystemColorTest, ControlDarkDark) {
+  TEST(SystemColorsTest, ControlDarkDark) {
     //ASSERT_EQ(0xFF696969u, (unsigned)Drawing::SystemColors::ControlDarkDark().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ControlDarkDark().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ControlDarkDark().IsKnownColor());
@@ -75,7 +75,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ControlDarkDark]", Drawing::SystemColors::ControlDarkDark().ToString());
   }
 
-  TEST(SystemColorTest, ControlLight) {
+  TEST(SystemColorsTest, ControlLight) {
     //ASSERT_EQ(0xFFE3E3E3u, (unsigned)Drawing::SystemColors::ControlLight().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ControlLight().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ControlLight().IsKnownColor());
@@ -85,7 +85,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ControlLight]", Drawing::SystemColors::ControlLight().ToString());
   }
 
-  TEST(SystemColorTest, ControlLightLight) {
+  TEST(SystemColorsTest, ControlLightLight) {
     //ASSERT_EQ(0xFFFFFFFFu, (unsigned)Drawing::SystemColors::ControlLightLight().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ControlLightLight().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ControlLightLight().IsKnownColor());
@@ -95,7 +95,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ControlLightLight]", Drawing::SystemColors::ControlLightLight().ToString());
   }
 
-  TEST(SystemColorTest, ControlText) {
+  TEST(SystemColorsTest, ControlText) {
     //ASSERT_EQ(0xFF000000u, (unsigned)Drawing::SystemColors::ControlText().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ControlText().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ControlText().IsKnownColor());
@@ -105,7 +105,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ControlText]", Drawing::SystemColors::ControlText().ToString());
   }
 
-  TEST(SystemColorTest, Desktop) {
+  TEST(SystemColorsTest, Desktop) {
     //ASSERT_EQ(0xFF000000u, (unsigned)Drawing::SystemColors::Desktop().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::Desktop().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::Desktop().IsKnownColor());
@@ -115,7 +115,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [Desktop]", Drawing::SystemColors::Desktop().ToString());
   }
 
-  TEST(SystemColorTest, GrayText) {
+  TEST(SystemColorsTest, GrayText) {
     //ASSERT_EQ(0xFF6D6D6Du, (unsigned)Drawing::SystemColors::GrayText().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::GrayText().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::GrayText().IsKnownColor());
@@ -125,7 +125,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [GrayText]", Drawing::SystemColors::GrayText().ToString());
   }
 
-  TEST(SystemColorTest, Highlight) {
+  TEST(SystemColorsTest, Highlight) {
     //ASSERT_EQ(0xFF3399FFu, (unsigned)Drawing::SystemColors::Highlight().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::Highlight().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::Highlight().IsKnownColor());
@@ -135,7 +135,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [Highlight]", Drawing::SystemColors::Highlight().ToString());
   }
 
-  TEST(SystemColorTest, HighlightText) {
+  TEST(SystemColorsTest, HighlightText) {
     //ASSERT_EQ(0xFFFFFFFFu, (unsigned)Drawing::SystemColors::HighlightText().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::HighlightText().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::HighlightText().IsKnownColor());
@@ -145,7 +145,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [HighlightText]", Drawing::SystemColors::HighlightText().ToString());
   }
 
-  TEST(SystemColorTest, HotTrack) {
+  TEST(SystemColorsTest, HotTrack) {
     //ASSERT_EQ(0xFF0066CCu, (unsigned)Drawing::SystemColors::HotTrack().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::HotTrack().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::HotTrack().IsKnownColor());
@@ -155,7 +155,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [HotTrack]", Drawing::SystemColors::HotTrack().ToString());
   }
 
-  TEST(SystemColorTest, InactiveBorder) {
+  TEST(SystemColorsTest, InactiveBorder) {
     //ASSERT_EQ(0xFFF4F7FCu, (unsigned)Drawing::SystemColors::InactiveBorder().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::InactiveBorder().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::InactiveBorder().IsKnownColor());
@@ -165,7 +165,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [InactiveBorder]", Drawing::SystemColors::InactiveBorder().ToString());
   }
 
-  TEST(SystemColorTest, InactiveCaption) {
+  TEST(SystemColorsTest, InactiveCaption) {
     //ASSERT_EQ(0xFFBFCDDBu, (unsigned)Drawing::SystemColors::InactiveCaption().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::InactiveCaption().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::InactiveCaption().IsKnownColor());
@@ -175,7 +175,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [InactiveCaption]", Drawing::SystemColors::InactiveCaption().ToString());
   }
 
-  TEST(SystemColorTest, InactiveCaptionText) {
+  TEST(SystemColorsTest, InactiveCaptionText) {
     //ASSERT_EQ(0xFF000000u, (unsigned)Drawing::SystemColors::InactiveCaptionText().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::InactiveCaptionText().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::InactiveCaptionText().IsKnownColor());
@@ -185,7 +185,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [InactiveCaptionText]", Drawing::SystemColors::InactiveCaptionText().ToString());
   }
 
-  TEST(SystemColorTest, Info) {
+  TEST(SystemColorsTest, Info) {
     //ASSERT_EQ(0xFFFFFFE1u, (unsigned)Drawing::SystemColors::Info().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::Info().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::Info().IsKnownColor());
@@ -195,7 +195,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [Info]", Drawing::SystemColors::Info().ToString());
   }
 
-  TEST(SystemColorTest, InfoText) {
+  TEST(SystemColorsTest, InfoText) {
     //ASSERT_EQ(0xFF000000u, (unsigned)Drawing::SystemColors::InfoText().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::InfoText().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::InfoText().IsKnownColor());
@@ -205,7 +205,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [InfoText]", Drawing::SystemColors::InfoText().ToString());
   }
 
-  TEST(SystemColorTest, Menu) {
+  TEST(SystemColorsTest, Menu) {
     //ASSERT_EQ(0xFFF0F0F0u, (unsigned)Drawing::SystemColors::Menu().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::Menu().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::Menu().IsKnownColor());
@@ -215,7 +215,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [Menu]", Drawing::SystemColors::Menu().ToString());
   }
 
-  TEST(SystemColorTest, MenuText) {
+  TEST(SystemColorsTest, MenuText) {
     //ASSERT_EQ(0xFF000000u, (unsigned)Drawing::SystemColors::MenuText().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::MenuText().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::MenuText().IsKnownColor());
@@ -225,7 +225,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [MenuText]", Drawing::SystemColors::MenuText().ToString());
   }
 
-  TEST(SystemColorTest, ScrollBar) {
+  TEST(SystemColorsTest, ScrollBar) {
     //ASSERT_EQ(0xFFC8C8C8u, (unsigned)Drawing::SystemColors::ScrollBar().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ScrollBar().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ScrollBar().IsKnownColor());
@@ -235,7 +235,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ScrollBar]", Drawing::SystemColors::ScrollBar().ToString());
   }
 
-  TEST(SystemColorTest, Window) {
+  TEST(SystemColorsTest, Window) {
     //ASSERT_EQ(0xFFFFFFFFu, (unsigned)Drawing::SystemColors::Window().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::Window().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::Window().IsKnownColor());
@@ -245,7 +245,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [Window]", Drawing::SystemColors::Window().ToString());
   }
 
-  TEST(SystemColorTest, WindowFrame) {
+  TEST(SystemColorsTest, WindowFrame) {
     //ASSERT_EQ(0xFF646464u, (unsigned)Drawing::SystemColors::WindowFrame().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::WindowFrame().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::WindowFrame().IsKnownColor());
@@ -255,7 +255,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [WindowFrame]", Drawing::SystemColors::WindowFrame().ToString());
   }
 
-  TEST(SystemColorTest, WindowText) {
+  TEST(SystemColorsTest, WindowText) {
     //ASSERT_EQ(0xFF000000u, (unsigned)Drawing::SystemColors::WindowText().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::WindowText().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::WindowText().IsKnownColor());
@@ -265,7 +265,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [WindowText]", Drawing::SystemColors::WindowText().ToString());
   }
 
-  TEST(SystemColorTest, ButtonFace) {
+  TEST(SystemColorsTest, ButtonFace) {
     //ASSERT_EQ(0xFFF0F0F0u, (unsigned)Drawing::SystemColors::ButtonFace().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ButtonFace().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ButtonFace().IsKnownColor());
@@ -275,7 +275,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ButtonFace]", Drawing::SystemColors::ButtonFace().ToString());
   }
 
-  TEST(SystemColorTest, ButtonHighlight) {
+  TEST(SystemColorsTest, ButtonHighlight) {
     //ASSERT_EQ(0xFFFFFFFFu, (unsigned)Drawing::SystemColors::ButtonHighlight().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ButtonHighlight().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ButtonHighlight().IsKnownColor());
@@ -285,7 +285,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ButtonHighlight]", Drawing::SystemColors::ButtonHighlight().ToString());
   }
 
-  TEST(SystemColorTest, ButtonShadow) {
+  TEST(SystemColorsTest, ButtonShadow) {
     //ASSERT_EQ(0xFFF0F0F0u, (unsigned)Drawing::SystemColors::ButtonShadow().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::ButtonShadow().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::ButtonShadow().IsKnownColor());
@@ -295,7 +295,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [ButtonShadow]", Drawing::SystemColors::ButtonShadow().ToString());
   }
 
-  TEST(SystemColorTest, GradientActiveCaption) {
+  TEST(SystemColorsTest, GradientActiveCaption) {
     //ASSERT_EQ(0xFFB9D1EAu, (unsigned)Drawing::SystemColors::GradientActiveCaption().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::GradientActiveCaption().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::GradientActiveCaption().IsKnownColor());
@@ -305,7 +305,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [GradientActiveCaption]", Drawing::SystemColors::GradientActiveCaption().ToString());
   }
 
-  TEST(SystemColorTest, GradientInactiveCaption) {
+  TEST(SystemColorsTest, GradientInactiveCaption) {
     //ASSERT_EQ(0xFFD7E4F2u, (unsigned)Drawing::SystemColors::GradientInactiveCaption().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::GradientInactiveCaption().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::GradientInactiveCaption().IsKnownColor());
@@ -315,7 +315,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [GradientInactiveCaption]", Drawing::SystemColors::GradientInactiveCaption().ToString());
   }
 
-  TEST(SystemColorTest, MenuBar) {
+  TEST(SystemColorsTest, MenuBar) {
     //ASSERT_EQ(0xFFF0F0F0u, (unsigned)Drawing::SystemColors::MenuBar().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::MenuBar().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::MenuBar().IsKnownColor());
@@ -325,7 +325,7 @@ namespace SwitchUnitTests {
     ASSERT_EQ("Color [MenuBar]", Drawing::SystemColors::MenuBar().ToString());
   }
 
-  TEST(SystemColorTest, MenuHighlight) {
+  TEST(SystemColorsTest, MenuHighlight) {
     //ASSERT_EQ(0xFF3399FFu, (unsigned)Drawing::SystemColors::MenuHighlight().ToArgb());
     ASSERT_FALSE(Drawing::SystemColors::MenuHighlight().IsEmpty());
     ASSERT_TRUE(Drawing::SystemColors::MenuHighlight().IsKnownColor());
