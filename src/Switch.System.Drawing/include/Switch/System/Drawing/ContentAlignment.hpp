@@ -13,6 +13,25 @@ namespace Switch {
       /// @brief Specifies alignment of content on the drawing surface.
       /// @par Library
       /// Switch.System.Drawing
+      /// @par Examples
+      /// The following code example demonstrates how to use the Point.Point and Size constructors and the System.Drawing.ContentAlignment enumeration. To run this example paste this code into a Windows Form that contains a label named Label1 and call the IntializeLabel1 method in the form's constructor.
+      /// @code
+      /// void InitializeLabel1() {
+      ///   // Set a border.
+      ///   label1.BorderStyle = BorderStyle::FixedSingle;
+      ///
+      ///   // Set the size, constructing a size from two integers.
+      ///   label1.Size = System::Drawing::Size(100, 50);
+      ///
+      ///   // Set the location, constructing a point from a 32-bit integer
+      ///   // (using hexadecimal).
+      ///   label1.Location = System::Drawing::Point(0x280028);
+      ///
+      ///   // Set and align the text on the lower-right side of the label.
+      ///   label1.TextAlign = ContentAlignment::BottomRight;
+      ///   label1.Text = "Bottom Right Alignment";
+      /// }
+      /// @endcode
       enum class ContentAlignment {
         /// @brief Content is vertically aligned at the top, and horizontally aligned on the left.
         TopLeft = 1,
