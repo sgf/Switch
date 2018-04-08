@@ -73,7 +73,7 @@ System::Drawing::Font::Font(const System::Drawing::FontFamily& family, float emS
 System::Drawing::Font::Font(const string& familyName, float emSize) {
   try {
     this->data->fontFamily = System::Drawing::FontFamily(familyName);
-  } catch(const System::ArgumentException& e) {
+  } catch (const System::ArgumentException& e) {
     this->data->fontFamily = System::Drawing::FontFamily::GenericSansSerif;
   }
   this->data->originalFontName = familyName;
@@ -84,7 +84,7 @@ System::Drawing::Font::Font(const string& familyName, float emSize) {
 System::Drawing::Font::Font(const string& familyName, float emSize, System::Drawing::FontStyle style) {
   try {
     this->data->fontFamily = System::Drawing::FontFamily(familyName);
-  } catch(const System::ArgumentException& e) {
+  } catch (const System::ArgumentException& e) {
     this->data->fontFamily = System::Drawing::FontFamily::GenericSansSerif;
   }
   this->data->originalFontName = familyName;
@@ -96,7 +96,7 @@ System::Drawing::Font::Font(const string& familyName, float emSize, System::Draw
 System::Drawing::Font::Font(const string& familyName, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit) {
   try {
     this->data->fontFamily = System::Drawing::FontFamily(familyName);
-  } catch(const System::ArgumentException& e) {
+  } catch (const System::ArgumentException& e) {
     this->data->fontFamily = System::Drawing::FontFamily::GenericSansSerif;
   }
   this->data->originalFontName = familyName;
@@ -109,7 +109,7 @@ System::Drawing::Font::Font(const string& familyName, float emSize, System::Draw
 System::Drawing::Font::Font(const string& familyName, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet) {
   try {
     this->data->fontFamily = System::Drawing::FontFamily(familyName);
-  } catch(const System::ArgumentException& e) {
+  } catch (const System::ArgumentException& e) {
     this->data->fontFamily = System::Drawing::FontFamily::GenericSansSerif;
   }
   this->data->originalFontName = familyName;
@@ -123,7 +123,7 @@ System::Drawing::Font::Font(const string& familyName, float emSize, System::Draw
 System::Drawing::Font::Font(const string& familyName, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet, bool gdiVerticalFont) {
   try {
     this->data->fontFamily = System::Drawing::FontFamily(familyName);
-  } catch(const System::ArgumentException& e) {
+  } catch (const System::ArgumentException& e) {
     this->data->fontFamily = System::Drawing::FontFamily::GenericSansSerif;
   }
   this->data->originalFontName = familyName;
@@ -138,7 +138,7 @@ System::Drawing::Font::Font(const string& familyName, float emSize, System::Draw
 System::Drawing::Font::Font(const string& familyName, float emSize, System::Drawing::GraphicsUnit unit) {
   try {
     this->data->fontFamily = System::Drawing::FontFamily(familyName);
-  } catch(const System::ArgumentException& e) {
+  } catch (const System::ArgumentException& e) {
     this->data->fontFamily = System::Drawing::FontFamily::GenericSansSerif;
   }
   this->data->originalFontName = familyName;
