@@ -33,19 +33,21 @@ namespace Examples {
 
 startup_(Examples::Program);
 
-// This code can produces the following output:
+// This code can produces the following output on macOS:
 //
-// color = Color [Control]
-// Argb = 0xFFE2E2E2
-// Alpha = 255
-// Red = 226
-// Green = 226
-// Blue = 226
+// SystemFont::DefaultFont :
+// font = [Font: Name=.AppleSystemUIFont, Size=9.75, Units=3, GdiCharSet=1, GdiVerticalFont=False]
+// IsSystemFont = True
+// Name = .AppleSystemUIFont
+// Size = 9.75 Point
+// SizeInPoints = 9.75 Point
+// Style = Regular
 //
-// color = Color [ActiveCaptionText]
-// Argb = 0xFF000000
-// Alpha = 255
-// Red = 0
-// Green = 0
-// Blue = 0
+// SystemFont::CaptionFont :
+// font = [Font: Name=.AppleSystemUIFont, Size=9.75, Units=3, GdiCharSet=1, GdiVerticalFont=False]
+// IsSystemFont = True
+// Name = .AppleSystemUIFont
+// Size = 9.75 Point
+// SizeInPoints = 9.75 Point
+// Style = Regular
 //
