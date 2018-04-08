@@ -31,6 +31,7 @@
 #include "System/Drawing/Size.hpp"
 #include "System/Drawing/SizeF.hpp"
 #include "System/Drawing/SolidBrush.hpp"
+#include "System/Drawing/StringAlignment.hpp"
 #include "System/Drawing/SystemColors.hpp"
 #include "System/Drawing/SystemFonts.hpp"
 #include "SystemDrawingExport.hpp"

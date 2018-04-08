@@ -112,7 +112,7 @@ namespace Switch {
         /// @param familyName A string representation of the FontFamily for the new Font.
         /// @param emSize The em-size, in points, of the new font.
         /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
-        /// @remarks The resulting font has its Style property set to Regular and its Unit property set to Point.
+        /// @remarks The resulting font has its Style property set to FontStyle.Regular and its Unit property set to GraphicsUnit.Point. Windows Forms applications support TrueType fonts and have limited support for OpenType fonts. If the familyName parameter specifies a font that is not installed on the machine running the application or is not supported, Microsoft Sans Serif will be substituted.
         Font(const string& familyName, float emSize);
 
         /// @brief Initializes a new Font using a specified size and style.
@@ -120,7 +120,7 @@ namespace Switch {
         /// @param emSize The em-size, in points, of the new font.
         /// @param style The FontStyle of the new font.
         /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
-        /// @remarks The resulting font has its Unit property set to Point.
+        /// @remarks The resulting font has its Unit property set to Point. Windows Forms applications support TrueType fonts and have limited support for OpenType fonts. If the familyName parameter specifies a font that is not installed on the machine running the application or is not supported, Microsoft Sans Serif will be substituted.
         /// @par Examples
         /// The following code example demonstrates how to use the Font constructor and the Size, SizeInPoints, Name, Style, and Unit properties. This example is designed to be used with a Windows Form that contains a ComboBox named ComboBox1 that is populated with the strings "Bigger" and "Smaller". Paste the following code into the form and associate the ComboBox1_SelectedIndexChanged method with the SelectedIndexChanged event of the ComboBox control.
         /// @code
@@ -163,7 +163,7 @@ namespace Switch {
         /// @param style The FontStyle of the new font.
         /// @param unit The GraphicsUnit of the new font.
         /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
-        /// @remarks The resulting font has its Style property set to FontStyle::Regular.
+        /// @remarks Windows Forms applications support TrueType fonts and have limited support for OpenType fonts. If the familyName parameter specifies a font that is not installed on the machine running the application or is not supported, Microsoft Sans Serif will be substituted.
         /// @par Examples
         /// The following code example demonstrates how to use the Font constructor and the Size, SizeInPoints, Name, Style, and Unit properties. This example is designed to be used with a Windows Form that contains a ComboBox named ComboBox1 that is populated with the strings "Bigger" and "Smaller". Paste the following code into the form and associate the ComboBox1_SelectedIndexChanged method with the SelectedIndexChanged event of the ComboBox control.
         /// @code
@@ -206,7 +206,7 @@ namespace Switch {
         /// @param style The FontStyle of the new font.
         /// @param unit The GraphicsUnit of the new font.
         /// @param gdiCharSet GDI character set to use for the new font.
-        /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
+        /// @exception The gdiCharSet parameter takes a value from the list defined in the Windows SDK header file WinGDI.h. Windows Forms applications support TrueType fonts and have limited support for OpenType fonts. If the familyName parameter specifies a font that is not installed on the machine running the application or is not supported, Microsoft Sans Serif will be substituted.
         /// @remarks The gdiCharSet parameter takes a value from the list defined in the Windows SDK header file WinGDI.h.
         Font(const string& familyName, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet);
 
@@ -217,7 +217,7 @@ namespace Switch {
         /// @param unit The GraphicsUnit of the new font.
         /// @param gdiCharSet GDI character set to use for the new font.
         /// @param gdiVerticalFont A Boolean value indicating whether the new font is derived from a GDI vertical font.
-        /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
+        /// @exception The gdiCharSet parameter takes a value from the list defined in the Windows SDK header file WinGDI.h. If the familyName parameter specifies a font that is not installed on the machine running the application or is not supported, Microsoft Sans Serif will be substituted.
         /// @remarks The gdiCharSet parameter takes a value from the list defined in the Windows SDK header file WinGDI.h.
         Font(const string& familyName, float emSize, System::Drawing::FontStyle style, System::Drawing::GraphicsUnit unit, byte gdiCharSet, bool gdiVerticalFont);
 
@@ -226,7 +226,7 @@ namespace Switch {
         /// @param emSize The em-size, in points, of the new font.
         /// @param unit The GraphicsUnit of the new font.
         /// @exception ArgumentException emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.
-        /// @remarks The resulting font has its Style property set to FontStyle::Regular.
+        /// @remarks The resulting font has its Style property set to FontStyle.Regular.
         Font(const string& familyName, float emSize, System::Drawing::GraphicsUnit unit);
 
         /// @cond

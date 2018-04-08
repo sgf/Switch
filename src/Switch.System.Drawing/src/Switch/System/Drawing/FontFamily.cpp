@@ -5,6 +5,7 @@
 #include "../../../Native/Api.hpp"
 
 System::Drawing::FontFamily::FontFamily(const string& name) {
+  if (name == "") throw ArgumentException(caller_);
   *this = Native::FontFamilyApi::GetFontFamilyFromName(name);
 }
 
@@ -43,6 +44,10 @@ property_<System::Drawing::FontFamily, readonly_> System::Drawing::FontFamily::G
 };
 
 int32 System::Drawing::FontFamily::GetCellAscent(FontStyle style) {
+  throw NotImplementedException(caller_);
+}
+
+int32 System::Drawing::FontFamily::GetCellDescent(FontStyle style) {
   throw NotImplementedException(caller_);
 }
 

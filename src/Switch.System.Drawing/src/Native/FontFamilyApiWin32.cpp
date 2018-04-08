@@ -57,9 +57,8 @@ System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const s
   LOGFONTW* result = null;
   EnumFontFamiliesEx(hdc, &logFont, EnumFamilyFromNameCallback, (LPARAM)&result, 0);
   ReleaseDC(NULL, hdc);
-  if (result != null)
-    return System::Drawing::FontFamily((intptr)result);
-  return System::Drawing::FontFamily::GenericSansSerif;
+  if (result == null) throw ArgumentException(caller_);
+  return System::Drawing::FontFamily((intptr)result);
 }
 
 string Native::FontFamilyApi::GetName(intptr handle) {

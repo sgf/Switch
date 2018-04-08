@@ -16,6 +16,7 @@
 #include "RectangleF.hpp"
 #include "Size.hpp"
 #include "SizeF.hpp"
+#include "StringAlignment.hpp"
 
 /// @cond
 namespace Switch {
@@ -34,12 +35,6 @@ namespace Switch {
   namespace System {
     /// @brief The System::Drawing namespace provides access to GDI+ basic graphics functionality. More advanced functionality is provided in the System::Drawing::Drawing2D, System::Drawing::Imaging, and System::Drawing::Text namespaces.
     namespace Drawing {
-      enum class StringAlignment {
-        Near,
-        Center,
-        Far
-      };
-
       /// @par Library
       /// Switch.System.Drawing
       class system_drawing_export_ StringFormat {
