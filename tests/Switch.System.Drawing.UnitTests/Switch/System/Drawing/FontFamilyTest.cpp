@@ -1,4 +1,5 @@
 #include <Switch/System/NotImplementedException.hpp>
+#include <Switch/System/Drawing/Text/InstalledFontCollection.hpp>
 #include <Switch/System/Drawing/FontFamily.hpp>
 #include <gtest/gtest.h>
 
@@ -26,7 +27,27 @@ namespace SwitchUnitTests {
 
   TEST(FontFamilyTest, ContructorWithName) {
     FontFamily fontFamily(FontFamily::Families()[1].Name);
+    
+    ASSERT_EQ(FontFamily::Families()[1].Name, fontFamily.Name);
+  }
 
+  TEST(FontFamilyTest, ContructorWithNameAndFontCollection) {
+    FontFamily fontFamily(System::Drawing::Text::InstalledFontCollection().Families()[1].Name);
+    
+    ASSERT_EQ(System::Drawing::Text::InstalledFontCollection().Families()[1].Name, fontFamily.Name);
+  }
+
+  TEST(FontFamilyTest, CopyContructor) {
+    FontFamily fontFamily = FontFamily(FontFamily::Families()[1].Name);
+    
+    ASSERT_EQ(FontFamily::Families()[1].Name, fontFamily.Name);
+  }
+
+  TEST(FontFamilyTest, CopyOperator) {
+    FontFamily fontFamily;
+    
+    fontFamily = FontFamily(FontFamily::Families()[1].Name);
+    
     ASSERT_EQ(FontFamily::Families()[1].Name, fontFamily.Name);
   }
 

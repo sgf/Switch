@@ -19,7 +19,12 @@ System::Drawing::FontFamily::FontFamily(System::Drawing::Text::GenericFontFamili
 }
 
 System::Drawing::FontFamily::FontFamily(const string& name, const System::Drawing::Text::FontCollection& fontCollection) {
-  throw NotImplementedException(caller_);
+  for (FontFamily fontFamily : fontCollection.Families())
+    if (name == fontFamily.Name) {
+      *this = fontFamily;
+      return;
+    }
+  throw ArgumentException(caller_);
 }
 
 System::Drawing::FontFamily::~FontFamily() {
