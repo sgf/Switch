@@ -70,10 +70,10 @@ namespace SwitchUnitTests {
   }
 
   TEST(FontFamilyTest, GetCellAscent) {
-    //ASSERT_THROW(FontFamily::GenericSansSerif().GetCellAscent(Switch::System::Drawing::FontStyle::Regular), NotImplementedException);
+    ASSERT_NO_THROW(FontFamily::GenericSansSerif().GetCellAscent(Switch::System::Drawing::FontStyle::Regular));
   }
 
   TEST(FontFamilyTest, GetCellDescent) {
-    //ASSERT_THROW(FontFamily::GenericSansSerif().GetCellDescent(Switch::System::Drawing::FontStyle::Regular), NotImplementedException);
+    ASSERT_NO_THROW(FontFamily::GenericSansSerif().GetCellDescent(Switch::System::Drawing::FontStyle::Regular));
   }
 }
