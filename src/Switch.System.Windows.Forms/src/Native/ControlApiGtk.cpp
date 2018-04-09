@@ -37,6 +37,10 @@ intptr Native::ControlApi::GetHandleWindowFromDeviceContext(intptr hdc) {
   return hdc;
 }
 
+System::Drawing::Size Native::ControlApi::GetTextSize(const System::Windows::Forms::Control& control) {
+  return System::Drawing::Size();
+}
+
 void Native::ControlApi::Invalidate(const System::Windows::Forms::Control& control, bool invalidateChildren) {
 
 }

@@ -11,6 +11,39 @@ using namespace System;
 using namespace System::Collections::Generic;
 using namespace System::Drawing;
 
+string Native::FontFamilyApi::GenericFontFamilySerifName() {
+  return "Times";
+}
+
+string Native::FontFamilyApi::GenericFontFamilySansSerifName() {
+  return "Helvetica";
+}
+
+string Native::FontFamilyApi::GenericFontFamilyMonospaceName() {
+  return "Courier";
+}
+
+int32 Native::FontFamilyApi::GetCellAscent(const string& name, System::Drawing::FontStyle style) {
+  NSFont* font = [[NSFont fontWithName:[NSString stringWithUTF8String:name.c_str()] size:Native::FontApi::GetHeight(9, IntPtr::Zero)] autorelease];
+  if ((style & System::Drawing::FontStyle::Bold) == System::Drawing::FontStyle::Bold) font = [[NSFontManager sharedFontManager] convertFont:font toHaveTrait:NSFontBoldTrait];
+  if ((style & System::Drawing::FontStyle::Italic) == System::Drawing::FontStyle::Italic) font = [[NSFontManager sharedFontManager] convertFont:font toHaveTrait:NSFontItalicTrait];
+  return (int32)[font ascender];
+}
+
+int32 Native::FontFamilyApi::GetCellDescent(const string& name, System::Drawing::FontStyle style) {
+  NSFont* font = [[NSFont fontWithName:[NSString stringWithUTF8String:name.c_str()] size:Native::FontApi::GetHeight(9, IntPtr::Zero)] autorelease];
+  if ((style & System::Drawing::FontStyle::Bold) == System::Drawing::FontStyle::Bold) font = [[NSFontManager sharedFontManager] convertFont:font toHaveTrait:NSFontBoldTrait];
+  if ((style & System::Drawing::FontStyle::Italic) == System::Drawing::FontStyle::Italic) font = [[NSFontManager sharedFontManager] convertFont:font toHaveTrait:NSFontItalicTrait];
+  return (int32)[font descender];
+}
+
+System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const string& name) {
+  if ([[NSFontManager sharedFontManager] availableMembersOfFontFamily:[NSString stringWithUTF8String:name.c_str()]] == nil)
+    throw ArgumentException(caller_);
+  string* familyName = new string(name);
+  return System::Drawing::FontFamily((intptr)familyName);
+}
+
 System::Array<System::Drawing::FontFamily> Native::FontFamilyApi::GetInstalledFontFamilies() {
   NSArray* fonts = [[[NSFontManager sharedFontManager] availableFontFamilies] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
   List<System::Drawing::FontFamily> families;
@@ -19,13 +52,6 @@ System::Array<System::Drawing::FontFamily> Native::FontFamilyApi::GetInstalledFo
     families.Add(System::Drawing::FontFamily((intptr)familyName));
   }
   return families.ToArray();
-}
-
-System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const string& name) {
-  if ([[NSFontManager sharedFontManager] availableMembersOfFontFamily:[NSString stringWithUTF8String:name.c_str()]] == nil)
-    throw ArgumentException(caller_);
-  string* familyName = new string(name);
-  return System::Drawing::FontFamily((intptr)familyName);
 }
 
 string Native::FontFamilyApi::GetName(intptr handle) {
@@ -48,17 +74,4 @@ void Native::FontFamilyApi::ReleaseResource(intptr handle) {
   if (handle != 0)
     delete (string*)handle;
 }
-
-string Native::FontFamilyApi::GenericFontFamilySerifName() {
-  return "Times";
-}
-
-string Native::FontFamilyApi::GenericFontFamilySansSerifName() {
-  return "Helvetica";
-}
-
-string Native::FontFamilyApi::GenericFontFamilyMonospaceName() {
-  return "Courier";
-}
-
 #endif

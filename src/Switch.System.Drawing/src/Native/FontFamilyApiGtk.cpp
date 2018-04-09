@@ -20,6 +20,35 @@ namespace {
   static int32 pangoFontFamiliesMax = 0;
 };
 
+string Native::FontFamilyApi::GenericFontFamilySerifName() {
+  return "Serif";
+}
+
+string Native::FontFamilyApi::GenericFontFamilySansSerifName() {
+  return "Sans";
+}
+
+string Native::FontFamilyApi::GenericFontFamilyMonospaceName() {
+  return "Monospace";
+}
+
+int32 Native::FontFamilyApi::GetCellAscent(const string& name, System::Drawing::FontStyle style) {
+  return 0;
+}
+
+int32 Native::FontFamilyApi::GetCellDescent(const string& name, System::Drawing::FontStyle style) {
+  return 0;
+}
+
+System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const string& name) {
+  if (pangoFontFamilies == null)
+    pango_font_map_list_families(pango_cairo_font_map_get_default(), &pangoFontFamilies, &pangoFontFamiliesMax);
+  for (int32 index = 0; index < pangoFontFamiliesMax; index++)
+    if (GetName((intptr)index) == name)
+      return System::Drawing::FontFamily((intptr)index);
+  throw ArgumentException(caller_);
+}
+
 Array<System::Drawing::FontFamily> Native::FontFamilyApi::GetInstalledFontFamilies() {
   // if (pangoFontFamilies != null) {
   //   g_free (pangoFontFamilies);
@@ -32,15 +61,6 @@ Array<System::Drawing::FontFamily> Native::FontFamilyApi::GetInstalledFontFamili
     families.Add(System::Drawing::FontFamily((intptr)index));
   families.Sort(delegate_(const System::Drawing::FontFamily & a, const System::Drawing::FontFamily & b) {return a.Name().CompareTo(b.Name);});
   return families.ToArray();
-}
-
-System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const string& name) {
-  if (pangoFontFamilies == null)
-    pango_font_map_list_families(pango_cairo_font_map_get_default(), &pangoFontFamilies, &pangoFontFamiliesMax);
-  for (int32 index = 0; index < pangoFontFamiliesMax; index++)
-    if (GetName((intptr)index) == name)
-      return System::Drawing::FontFamily((intptr)index);
-  throw ArgumentException(caller_);
 }
 
 string Native::FontFamilyApi::GetName(intptr handle) {
@@ -60,18 +80,6 @@ bool Native::FontFamilyApi::IsStyleAvailable(intptr handle, FontStyle style) {
 }
 
 void Native::FontFamilyApi::ReleaseResource(intptr handle) {
-}
-
-string Native::FontFamilyApi::GenericFontFamilySerifName() {
-  return "Serif";
-}
-
-string Native::FontFamilyApi::GenericFontFamilySansSerifName() {
-  return "Sans";
-}
-
-string Native::FontFamilyApi::GenericFontFamilyMonospaceName() {
-  return "Monospace";
 }
 
 #endif

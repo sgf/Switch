@@ -120,6 +120,7 @@ namespace Native {
     static void DefWndProc(System::Windows::Forms::Message& message);
     static void Destroy(const System::Windows::Forms::Control& control);
     static intptr GetHandleWindowFromDeviceContext(intptr hdc);
+    static System::Drawing::Size GetTextSize(const System::Windows::Forms::Control& control);
     static void Invalidate(const System::Windows::Forms::Control& control, bool invalidateChildren);
     static void Invalidate(const System::Windows::Forms::Control& control, const System::Drawing::Rectangle& rect, bool invalidateChildren);
     static System::Drawing::Point PointToClient(const System::Windows::Forms::Control& control, const System::Drawing::Point& point);

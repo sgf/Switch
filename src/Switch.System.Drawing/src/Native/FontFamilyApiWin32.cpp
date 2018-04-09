@@ -38,6 +38,48 @@ namespace {
   }
 }
 
+string Native::FontFamilyApi::GenericFontFamilySerifName() {
+  return "Times New Roman";
+}
+
+string Native::FontFamilyApi::GenericFontFamilySansSerifName() {
+  return "Microsoft Sans Serif";
+}
+
+string Native::FontFamilyApi::GenericFontFamilyMonospaceName() {
+  return "Courier New";
+}
+
+int32 Native::FontFamilyApi::GetCellAscent(const string& name, System::Drawing::FontStyle style) {
+  TEXTMETRIC textMetric;
+  HDC hdc = GetDC(null);
+  //HFONT oldHFont = (HFONT)SelectObject(hdc, (HFONT)Native::FontApi::CreateFont(GetFontFamilyFromName(name), 9.0f, style, 0, false).ToHFont());
+  GetTextMetrics(hdc, &textMetric);
+  //SelectObject(hdc, oldHFont);
+  ReleaseDC(null, hdc);
+  return textMetric.tmAscent;
+}
+
+int32 Native::FontFamilyApi::GetCellDescent(const string& name, System::Drawing::FontStyle style) {
+  TEXTMETRIC textMetric;
+  HDC hdc = GetDC(null);
+  //HFONT oldHFont = (HFONT)SelectObject(hdc, (HFONT)Native::FontApi::CreateFont(GetFontFamilyFromName(name), 9.0f, style, 0, false).ToHFont());
+  GetTextMetrics(hdc, &textMetric);
+  //SelectObject(hdc, oldHFont);
+  ReleaseDC(null, hdc);
+  return textMetric.tmDescent;
+}
+
+System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const string& name) {
+  HDC hdc = GetDC(NULL);
+  LOGFONT logFont = CreateLOGFONTWithNameAndCharSet(name, DEFAULT_CHARSET);
+  LOGFONTW* result = null;
+  EnumFontFamiliesEx(hdc, &logFont, EnumFamilyFromNameCallback, (LPARAM)&result, 0);
+  ReleaseDC(NULL, hdc);
+  if (result == null) throw ArgumentException(caller_);
+  return System::Drawing::FontFamily((intptr)result);
+}
+
 Array<System::Drawing::FontFamily> Native::FontFamilyApi::GetInstalledFontFamilies() {
   HDC hdc = GetDC(NULL);
   LOGFONT logFont = CreateLOGFONTWithNameAndCharSet("", DEFAULT_CHARSET);
@@ -49,16 +91,6 @@ Array<System::Drawing::FontFamily> Native::FontFamilyApi::GetInstalledFontFamili
   for (auto item : logFonts)
     families[index++] = System::Drawing::FontFamily((intptr)item.Value());
   return  families;
-}
-
-System::Drawing::FontFamily Native::FontFamilyApi::GetFontFamilyFromName(const string& name) {
-  HDC hdc = GetDC(NULL);
-  LOGFONT logFont = CreateLOGFONTWithNameAndCharSet(name, DEFAULT_CHARSET);
-  LOGFONTW* result = null;
-  EnumFontFamiliesEx(hdc, &logFont, EnumFamilyFromNameCallback, (LPARAM)&result, 0);
-  ReleaseDC(NULL, hdc);
-  if (result == null) throw ArgumentException(caller_);
-  return System::Drawing::FontFamily((intptr)result);
 }
 
 string Native::FontFamilyApi::GetName(intptr handle) {
@@ -80,18 +112,6 @@ bool Native::FontFamilyApi::IsStyleAvailable(intptr handle, FontStyle style) {
 void Native::FontFamilyApi::ReleaseResource(intptr handle) {
   if (handle != 0)
     delete (LOGFONT*)handle;
-}
-
-string Native::FontFamilyApi::GenericFontFamilySerifName() {
-  return "Times New Roman";
-}
-
-string Native::FontFamilyApi::GenericFontFamilySansSerifName() {
-  return "Microsoft Sans Serif";
-}
-
-string Native::FontFamilyApi::GenericFontFamilyMonospaceName() {
-  return "Courier New";
 }
 
 #endif

@@ -82,6 +82,11 @@ intptr Native::ControlApi::GetHandleWindowFromDeviceContext(intptr hdc) {
   return hdc;
 }
 
+System::Drawing::Size Native::ControlApi::GetTextSize(const System::Windows::Forms::Control &control) {
+  NSSize size = [[NSString stringWithUTF8String:control.Text().c_str()] sizeWithAttributes:[NSDictionary dictionaryWithObject:(NSFont*)control.Font().ToHFont() forKey:NSFontAttributeName]];
+  return System::Drawing::Size(size.width, size.height);
+}
+
 void Native::ControlApi::Invalidate(const System::Windows::Forms::Control& control, bool invalidateChildren) {
 }
 

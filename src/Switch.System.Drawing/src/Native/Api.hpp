@@ -61,14 +61,16 @@ namespace Native {
 
   class FontFamilyApi static_ {
   public:
-    static System::Array<System::Drawing::FontFamily> GetInstalledFontFamilies();
-    static System::Drawing::FontFamily GetFontFamilyFromName(const string& name);
-    static string GetName(intptr handle);
-    static bool IsStyleAvailable(intptr handle, System::Drawing::FontStyle style);
-    static void ReleaseResource(intptr handle);
     static string GenericFontFamilySerifName();
     static string GenericFontFamilySansSerifName();
     static string GenericFontFamilyMonospaceName();
+    static int32 GetCellAscent(const string& name, System::Drawing::FontStyle style);
+    static int32 GetCellDescent(const string& name, System::Drawing::FontStyle style);
+    static System::Drawing::FontFamily GetFontFamilyFromName(const string& name);
+    static System::Array<System::Drawing::FontFamily> GetInstalledFontFamilies();
+    static string GetName(intptr handle);
+    static bool IsStyleAvailable(intptr handle, System::Drawing::FontStyle style);
+    static void ReleaseResource(intptr handle);
   };
 
   class GdiApi static_ {

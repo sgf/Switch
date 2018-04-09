@@ -49,11 +49,11 @@ property_<System::Drawing::FontFamily, readonly_> System::Drawing::FontFamily::G
 };
 
 int32 System::Drawing::FontFamily::GetCellAscent(FontStyle style) {
-  throw NotImplementedException(caller_);
+  return Native::FontFamilyApi::GetCellAscent(this->GetName(), style);
 }
 
 int32 System::Drawing::FontFamily::GetCellDescent(FontStyle style) {
-  throw NotImplementedException(caller_);
+  return Native::FontFamilyApi::GetCellDescent(this->GetName(), style);
 }
 
 string System::Drawing::FontFamily::GetName() const {

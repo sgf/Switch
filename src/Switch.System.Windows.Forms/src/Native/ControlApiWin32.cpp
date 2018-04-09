@@ -46,6 +46,14 @@ intptr Native::ControlApi::GetHandleWindowFromDeviceContext(intptr hdc) {
   return (intptr)WindowFromDC((HDC)hdc);
 }
 
+System::Drawing::Size Native::ControlApi::GetTextSize(const System::Windows::Forms::Control& control) {
+  SIZE size;
+  HDC hdc = GetDC((HWND)control.Handle())
+    GetTextExtentPoint32(hdc, control.Text().w_str().c_str(), &size);
+  ReleaseDC(HWND)control.Handle(), hdc);
+  return System::Drawing::Size(size.cx, control.Text().Length, size.cy);
+}
+
 void Native::ControlApi::Invalidate(const System::Windows::Forms::Control& control, bool invalidateChildren) {
   if (invalidateChildren)
     RedrawWindow((HWND)control.Handle(), null, null, RDW_INVALIDATE | RDW_ERASE | RDW_ALLCHILDREN);
