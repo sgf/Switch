@@ -53,20 +53,24 @@ string Native::FontFamilyApi::GenericFontFamilyMonospaceName() {
 int32 Native::FontFamilyApi::GetCellAscent(const string& name, System::Drawing::FontStyle style) {
   TEXTMETRIC textMetric;
   HDC hdc = GetDC(null);
-  //HFONT oldHFont = (HFONT)SelectObject(hdc, (HFONT)Native::FontApi::CreateFont(GetFontFamilyFromName(name), 9.0f, style, 0, false).ToHFont());
+  HFONT hfont = (HFONT)Native::FontApi::Create(GetFontFamilyFromName(name), 9.0f, style, 0, false);
+  HFONT oldHFont = (HFONT)SelectObject(hdc, hfont);
   GetTextMetrics(hdc, &textMetric);
-  //SelectObject(hdc, oldHFont);
+  SelectObject(hdc, oldHFont);
   ReleaseDC(null, hdc);
+  DeleteObject(hfont);
   return textMetric.tmAscent;
 }
 
 int32 Native::FontFamilyApi::GetCellDescent(const string& name, System::Drawing::FontStyle style) {
   TEXTMETRIC textMetric;
   HDC hdc = GetDC(null);
-  //HFONT oldHFont = (HFONT)SelectObject(hdc, (HFONT)Native::FontApi::CreateFont(GetFontFamilyFromName(name), 9.0f, style, 0, false).ToHFont());
+  HFONT hfont = (HFONT)Native::FontApi::Create(GetFontFamilyFromName(name), 9.0f, style, 0, false);
+  HFONT oldHFont = (HFONT)SelectObject(hdc, hfont);
   GetTextMetrics(hdc, &textMetric);
-  //SelectObject(hdc, oldHFont);
+  SelectObject(hdc, oldHFont);
   ReleaseDC(null, hdc);
+  DeleteObject(hfont);
   return textMetric.tmDescent;
 }
 
