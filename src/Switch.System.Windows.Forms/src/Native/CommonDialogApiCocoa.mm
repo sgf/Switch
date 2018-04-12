@@ -71,6 +71,30 @@ namespace {
 }
 @end
 
+@interface FontPanelCocoa : NSFontPanel {
+  bool close;
+}
+- (BOOL)windowShouldClose:(id)sender;
+- (void) show;
+
+@end
+
+@implementation FontPanelCocoa
+- (BOOL)windowShouldClose:(id)sender {
+  self->close = true;
+  return YES;
+}
+
+- (void) show {
+  self->close = false;
+  NSEvent *event;
+  do {
+    event = [NSApp nextEventMatchingMask:(NSEventMaskAny & ~NSEventMaskSystemDefined) untilDate:[NSDate dateWithTimeIntervalSinceNow:0] inMode:NSDefaultRunLoopMode dequeue:YES];
+    Native::WindowProcedure::WndProc(event);
+  } while (self->close == false);
+}
+@end
+
 namespace {
   static bool PatternCompare(const string& fileName, const string& pattern) {
     if (string::IsNullOrEmpty(pattern))
@@ -179,13 +203,52 @@ bool Native::CommonDialogApi::RunFolderBrowserDialog(intptr hwnd, System::Window
   return true;
 }
 
-bool Native::CommonDialogApi::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog& fontDialog) {
-  NSFontPanel* fontPanel = [NSFontPanel sharedFontPanel];
-  [fontPanel setPanelFont:(NSFont *)fontDialog.Font().ToHFont() isMultiple:YES];
-  [fontPanel setEnabled:YES];
-  [fontPanel setIsVisible:YES];
-  //if ([fontPanel runModal] == NSModalResponseCancel) return false;
+void MyClose(id sender) {
+  [NSApp stopModal];
+}
 
+@interface NSButtonOk : NSButton
+- (IBAction) Click:(id)sender;
+@end
+
+@implementation NSButtonOk
+- (IBAction) Click:(id)sender {
+  [NSApp stopModal];
+}
+@end
+
+@interface NSSwitchFontPanel : NSPanel {
+  NSFontPanel* fontPanel;
+}
+- (instancetype)init;
+@end
+
+@implementation NSSwitchFontPanel
+- (instancetype)init {
+  return self;
+}
+
+@end
+
+bool Native::CommonDialogApi::RunFontDialog(intptr hwnd, System::Windows::Forms::FontDialog& fontDialog) {
+  /*
+  NSFont* font = (NSFont *)fontDialog.Font().ToHFont();
+  NSFontPanel* fontPanel = [NSFontPanel sharedFontPanel];
+  [fontPanel setPanelFont:font isMultiple:YES];
+  [fontPanel setEnabled:YES];
+  NSView* view = [[[NSView alloc] initWithFrame:NSMakeRect(5, 5, 350, 30 )] autorelease];
+  NSButton* buttonOk = [NSButton buttonWithTitle:@"OK" target:[NSButtonOk alloc] action: @selector(Click:)];
+  [view addSubview:buttonOk];
+  [fontPanel setAccessoryView:view];
+  if ([NSApp runModalForWindow:fontPanel] == NSModalResponseCancel) return false;
+  [fontPanel setIsVisible:NO];
+  fontDialog.Font = System::Drawing::Font::FromHFont((intptr)font);
+   */
+  
+  NSSwitchFontPanel* fontPanel = [[[NSSwitchFontPanel alloc] init] autorelease];
+  
+  [fontPanel setIsVisible:YES];
+  
   return true;
 }
 

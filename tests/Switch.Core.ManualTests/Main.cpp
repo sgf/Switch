@@ -1,7 +1,4 @@
-#include <Switch/Startup.hpp>
-#include <Switch/System/Console.hpp>
-#include <Switch/System/IO/SeekOrigin.hpp>
-#include <Switch/System/Environment.hpp>
+#include <Switch/Switch.Core.hpp>
 
 using namespace System;
 

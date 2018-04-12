@@ -10,11 +10,21 @@ namespace SwitchUnitTests {
   TEST(ControlTest, DefaultConstructor) {
     Control control;
 
+    ASSERT_FALSE(control.AllowDrop);
+    ASSERT_EQ(AnchorStyles::None, control.Anchor);
+    ASSERT_EQ(Point(0, 0), control.AutoScrollOffset);
+    ASSERT_FALSE(control.AutoSize);
     ASSERT_EQ(Control::DefaultBackColor, control.BackColor);
     ASSERT_EQ(0, control.Bottom);
     ASSERT_EQ(Rectangle(0, 0, 0, 0), control.Bounds);
+    ASSERT_FALSE(control.CanFocus);
+    ASSERT_TRUE(control.CanSelect);
+    ASSERT_EQ(Rectangle(0, 0, 0, 0), control.ClientRectangle);
     ASSERT_EQ(Size(0, 0), control.ClientSize);
+    ASSERT_EQ("Gammasoft", control.CompanyName);
+    ASSERT_FALSE(control.ContainsFocus);
     ASSERT_EQ(0, control.Controls().Count);
+    ASSERT_FALSE(control.Created);
     ASSERT_EQ(Control::DefaultForeColor, control.ForeColor);
     ASSERT_FALSE(control.HasChildren);
     ASSERT_EQ(0, control.Height);
@@ -64,6 +74,38 @@ namespace SwitchUnitTests {
     ASSERT_EQ("control", control.Text);
   }
 
+  TEST(ControlTest, AllowDrop) {
+    Control control;
+    
+    control.AllowDrop = true;
+    
+    ASSERT_TRUE(control.AllowDrop);
+  }
+
+  TEST(ControlTest, Anchor) {
+    Control control;
+    
+    control.Anchor = AnchorStyles::Left;
+    
+    ASSERT_EQ(AnchorStyles::Left, control.Anchor);
+  }
+
+  TEST(ControlTest, AutoScrollOffset) {
+    Control control;
+    
+    control.AutoScrollOffset = Point(1, 2);
+    
+    ASSERT_EQ(Point(1, 2), control.AutoScrollOffset);
+  }
+
+  TEST(ControlTest, AutoSize) {
+    Control control;
+    
+    control.AutoSize = true;
+    
+    ASSERT_TRUE(control.AutoSize);
+  }
+
   TEST(ControlTest, BackColor) {
     Control control;
     Color result;
@@ -71,9 +113,9 @@ namespace SwitchUnitTests {
       ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result = as<Control>(sender).BackColor;
     };
-
+    
     control.BackColor = Color::SpringGreen;
-
+    
     ASSERT_EQ(Color::SpringGreen, control.BackColor);
     ASSERT_EQ(Color::SpringGreen, result);
   }
@@ -112,7 +154,7 @@ namespace SwitchUnitTests {
 
     control.ClientSize = System::Drawing::Size(3, 4);
 
-    ASSERT_EQ(System::Drawing::Rectangle(0, 0, 3, 4), control.ClientRectangle);
+    ASSERT_EQ(Rectangle(0, 0, 3, 4), control.ClientRectangle);
   }
 
   TEST(ControlTest, ClientSize) {

@@ -13,6 +13,7 @@
 #include <Switch/System/ComponentModel/Component.hpp>
 #include <Switch/System/ComponentModel/EventHandlerList.hpp>
 #include "../../../SystemWindowsFormsExport.hpp"
+#include "AnchorStyles.hpp"
 #include "ControlStyles.hpp"
 #include "InvalidateEventHandler.hpp"
 #include "IWin32Window.hpp"
@@ -136,13 +137,10 @@ namespace Switch {
             }
 
           private:
-            void Insert(int32 index, const ref<Control>& value) override {}
-
             friend Control;
             explicit ControlCollection(ref<Control> controlContainer) : controlContainer(controlContainer) {}
-
+            void Insert(int32 index, const ref<Control>& value) override {}
             void ChangeParent(ref<Control> value);
-
             void RemoveParent(ref<Control> value);
             ref<Control> controlContainer;
           };
@@ -208,6 +206,150 @@ namespace Switch {
               this->DestroyHandle();
           }
           /// @endcond
+
+          /// @brief Gets or sets a value indicating whether the control can accept data that the user drags onto it.
+          /// @return true if drag-and-drop operations are allowed in the control; otherwise, false. The default is false.
+          /// @par Notes to Inheritors
+          /// When overriding the AllowDrop property in a derived class, use the base class's AllowDrop property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setaccessors of the AllowDrop property; you can override only one if needed.
+          /// @par Examples
+          /// The following code example enables the user to drag an image or image file onto the form, and have it be displayed at the point on it is dropped. The OnPaint method is overridden to repaint the image each time the form is painted; otherwise the image would only persist until the next repainting. The DragEnter event-handling method determines the type of data being dragged into the form and provides the appropriate feedback. The DragDrop event-handling method displays the image on the form, if an Image can be created from the data. Because the DragEventArgs.X and DragEventArgs.Y values are screen coordinates, the example uses the PointToClient method to convert them to client coordinates.
+          /// @code
+          /// $<System::Drawing::Image> picture;
+          /// System::rawing::Point pictureLocation;
+          ///
+          /// Form1() {
+          ///   // Enable drag-and-drop operations and
+          ///   // add handlers for DragEnter and DragDrop.
+          ///   this->AllowDrop = true;
+          ///   this->DragDrop += DragEventHandler(*this, &Form1::Form1_DragDrop);
+          ///   this->DragEnter += DragEventHandler(*this, &Form1::Form1_DragEnter);
+          /// }
+          ///
+          /// void OnPaint(PaintEventArgs& e) override {
+          ///   // If there is an image and it has a location,
+          ///   // paint it when the Form is repainted.
+          ///   this->Form::OnPaint(e);
+          ///   if (this.picture != null && this->pictureLocation != Point::Empty) {
+          ///     e.Graphics().DrawImage(*this->picture, this->pictureLocation);
+          ///   }
+          /// }
+          ///
+          /// void Form1_DragDrop(const object& sender, DragEventArgs& e) {
+          ///   // Handle FileDrop data.
+          ///   if(e.Data().GetDataPresent(DataFormats::FileDrop)) {
+          ///     // Assign the file names to a string array, in
+          ///     // case the user has selected multiple files.
+          ///     $<Array<string>> files = as<Array<string>>(e.Data().GetData(DataFormats::FileDrop));
+          ///     try {
+          ///       // Assign the first image to the picture variable.
+          ///       this->picture = Image::FromFile(files()[0]);
+          ///       // Set the picture location equal to the drop point.
+          ///       this->pictureLocation = this->PointToClient(System::Drawing::Point(e.X, e.Y));
+          ///     } catch(const Exception& ex) {
+          ///       MessageBox::Show(ex.Message);
+          ///       return;
+          ///     }
+          ///   }
+          ///
+          ///   // Handle Bitmap data.
+          ///   if(e.Data().GetDataPresent(DataFormats::Bitmap)) {
+          ///     try {
+          ///       // Create an Image and assign it to the picture variable.
+          ///       this->picture = as<Image>(e.Data().GetData(DataFormats::Bitmap));
+          ///       // Set the picture location equal to the drop point.
+          ///       this.pictureLocation = this.PointToClient(new Point(e.X, e.Y) );
+          ///     } catch(const Exception& ex) {
+          ///       MessageBox::Show(ex.Message);
+          ///       return;
+          ///     }
+          ///   }
+          ///   // Force the form to be redrawn with the image.
+          ///   this->Invalidate();
+          /// }
+          ///
+          /// void Form1_DragEnter(const object& sender, DragEventArgs& e) {
+          ///   // If the data is a file or a bitmap, display the copy cursor.
+          ///   if (e.Data().GetDataPresent(DataFormats::Bitmap) ||  e.Data().GetDataPresent(DataFormats::FileDrop)) {
+          ///     e.Effect = DragDropEffects::Copy;
+          ///   } else {
+          ///     e.Effect = DragDropEffects::None;
+          ///   }
+          /// }
+          /// @endcode
+          property_<bool> AllowDrop {
+            get_ {return this->allowDrop;},
+            set_ {
+              if (this->allowDrop != value)
+                this->allowDrop = value;
+            }
+          };
+          
+          /// @brief Gets or sets the edges of the container to which a control is bound and determines how a control is resized with its parent.
+          /// @return A bitwise combination of the AnchorStyles values. The default is Top and Left.
+          /// @remarks Use the Anchor property to define how a control is automatically resized as its parent control is resized. Anchoring a control to its parent control ensures that the anchored edges remain in the same position relative to the edges of the parent control when the parent control is resized.
+          /// @remarks You can anchor a control to one or more edges of its container. For example, if you have a Form with a Button whose Anchor property value is set to Top and Bottom, the Button is stretched to maintain the anchored distance to the top and bottom edges of the Form as the Height of the Form is increased.
+          /// @note The Anchor and Dock properties are mutually exclusive. Only one can be set at a time, and the last one set takes precedence.
+          /// @par Notes to Inheritors
+          /// When overriding the Anchor property in a derived class, use the base class's Anchor property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setaccessors of the Anchor property; you can override only one if needed.
+          /// @par EXamples
+          /// The following code example adds a Button to a form and sets some of its common properties. The example anchors the button to the bottom-right corner of the form so it keeps its relative position as the form is resized. Next it sets the BackgroundImage and resizes the button to the same size as the Image. The example then sets the TabStop to true and sets the TabIndex property. Lastly, it adds an event handler to handle the Click event of the button. This example requires that you have an ImageList named imageList1.
+          /// @cond
+          /// Button button1;
+          ///
+          /// // Add a button to a form and set some of its common properties.
+          /// void AddMyButton() {
+          ///   // Anchor the button to the bottom right corner of the form
+          ///   button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+          ///
+          ///   // Assign a background image.
+          ///   button1.BackgroundImage = imageList1.Images[0];
+          ///
+          ///   // Specify the layout style of the background image. Tile is the default.
+          ///   button1.BackgroundImageLayout = ImageLayout.Center;
+          ///
+          ///   // Make the button the same size as the image.
+          ///   button1.Size = button1.BackgroundImage().Size;
+          ///
+          ///   // Set the button's TabIndex and TabStop properties.
+          ///   button1.TabIndex = 1;
+          ///   button1.TabStop = true;
+          ///
+          ///   // Add a delegate to handle the Click event.
+          ///   button1.Click += System.EventHandler(*this, &Fomr1::button1_Click);
+          ///
+          ///   // Add the button to the form.
+          ///   this->Controls().Add(button1);
+          /// }
+          /// @endcond
+          property_<AnchorStyles> Anchor {
+            get_ {return this->anchor;},
+              set_ {this->SetAnchor(value);
+            }
+          };
+          
+          /// @brief Gets or sets where this control is scrolled to in ScrollControlIntoView.
+          /// @return A Point specifying the scroll location. The default is the upper-left corner of the control.
+          property_<System::Drawing::Point> AutoScrollOffset {
+            get_ { return this->autoScrollOffset; },
+            set_ {
+              if (this->autoScrollOffset != value)
+                this->autoScrollOffset = value;
+            }
+          };
+
+          /// @brief This API supports the product infrastructure and is not intended to be used directly from your code.<br><br>
+          /// This property is not relevant for this class.
+          /// @return true if enabled; otherwise, false.
+          /// @remarks This property is not relevant for this class.
+          property_<bool> AutoSize {
+            get_ {return this->autoSize;},
+            set_ {
+              if (this->autoSize != value) {
+                this->autoSize = value;
+                this->OnAutoSizeChanged(EventArgs::Empty);
+              }
+            }
+          };
 
           /// @brief Gets or sets the background color for the control.
           /// @param color A Color that represents the background color of the control. The default is the value of the DefaultBackColor property.
@@ -313,7 +455,74 @@ namespace Switch {
               this->Size(value.Size());
             }
           };
-
+          
+          /// @brief Gets a value indicating whether the control can receive focus.
+          /// @return true if the control can receive focus; otherwise, false.
+          /// @remarks In order for a control to receive input focus, the control must have a handle assigned to it, and the Visible and Enabled properties must both be set to true for both the control and all its parent controls, and the control must be a form or the control's outermost parent must be a form.
+          /// @par Examples
+          /// The following code example sets focus to the specified Control, if it can receive focus.
+          /// @code
+          /// void ControlSetFocus(Control& control) {
+          ///   // Set focus to the control, if it can receive focus.
+          ///   if(control.CanFocus) {
+          ///     control.Focus();
+          ///   }
+          /// }
+          /// @endcode
+          property_<bool, readonly_> CanFocus {
+            get_ {return this->canFocus;}
+          };
+          
+          /// @brief Gets a value indicating whether the control can be selected.
+          /// @return true if the control can be selected; otherwise, false.
+          /// @remarks This property returns true if the Selectable value of System.Windows.Forms.ControlStyles is set to true, is contained in another control, the control itself is visible and enabled, and all its parent controls are visible and enabled.
+          /// @remarks The Windows Forms controls in the following list are not selectable and will return a value of false for the CanSelect property. Controls derived from these controls are also not selectable.
+          /// * Panel
+          /// * GroupBox
+          /// * PictureBox
+          /// * ProgressBar
+          /// * Splitter
+          /// * Label
+          /// * LinkLabel (when there is no link present in the control)
+          /// @par Examples
+          /// The following code example selects the specified Control, if it is selectable.
+          /// @code
+          /// void ControlSelect(Control& control) {
+          ///   // Select the control, if it can be selected.
+          ///   if(control.CanSelect) {
+          ///     control.Select();
+          ///   }
+          /// }
+          /// @endcode
+          property_<bool, readonly_> CanSelect {
+            get_ {return this->canSelect;}
+          };
+          
+          /// @brief Gets or sets a value indicating whether the control has captured the mouse.
+          /// @return true if the control has captured the mouse; otherwise, false.
+          /// @remarks When a control has captured the mouse, it receives mouse input whether or not the cursor is within its borders. The mouse is typically only captured during drag operations.
+          /// @remarks Only the foreground window can capture the mouse. When a background window attempts to do so, the window receives messages only for mouse events that occur when the mouse cursor is within the visible portion of the window. Also, even if the foreground window has captured the mouse, the user can still click another window, bringing it to the foreground.
+          /// @remarks When the mouse is captured, shortcut keys should not work.
+          /// @par Examples
+          /// The following code example demonstrates the Capture property. To run this example paste the following code in a form containing a Label named label1 and two ListBox controls named listbox1 and listbox2. Ensure the form and controls' MouseDown event is associated with the method in this example.
+          /// @code
+          /// // This method handles the mouse down event for all the controls on the form.
+          /// // When a control has captured the mouse the control's name will be output on label1.
+          /// void Control_MouseDown(const System::Object& sender, const System::Windows::Forms::MouseEventArgs& e) {
+          ///   const Control& control = as<Control>(sender);
+          ///   if (control.Capture) {
+          ///     label1.Text = control.Name + " has captured the mouse"_s;
+          ///   }
+          /// }
+          /// @endcode
+          property_<bool> Capture {
+            get_ {return this->capture;},
+            set_ {
+              if (this->capture != value)
+                this->capture = value;
+            }
+          };
+          
           /// @brief Gets the rectangle that represents the client area of the control.
           /// @return A Rectangle that represents the client area of the control.
           /// @remarks The client area of a control is the bounds of the control, minus the nonclient elements such as scroll bars, borders, title bars, and menus.
@@ -370,6 +579,27 @@ namespace Switch {
             }
           };
 
+          /// @brief Gets the name of the company or creator of the application containing the control.
+          /// @return The company name or creator of the application containing the control.
+          /// @par Examples
+          /// The following code example displays information about the application in a Label contained by a Form. This example requires that the CompanyName, ProductName and ProductVersion have been set.
+          /// @code
+          /// void AboutDialog_Load(const object& sender, const EventArgs& e) {
+          ///   // Display the application information in the label.
+          ///   this->labelVersionInfo.Text = this->CompanyName + "  "_s + this->ProductName + "  Version: "_s + this->ProductVersion;
+          /// }
+          /// @endcode
+          property_<string, readonly_> CompanyName {
+            get_ {return this->GetCompanyName();}
+          };
+          
+          /// @brief Gets a value indicating whether the control, or one of its child controls, currently has the input focus.
+          /// @return true if the control or one of its child controls currently has the input focus; otherwise, false.
+          /// @remarks You can use this property to determine whether a control or any of the controls contained within it has the input focus. To determine whether the control has focus, regardless of whether any of its child controls have focus, use the Focused property. To give a control the input focus, use the Focus or Select methods.
+          property_<bool, readonly_> ContainsFocus {
+            get_ {return this->containsFocus;}
+          };
+
           /// @brief Gets the collection of controls contained within the control.
           /// @param controls A Control.ControlCollection representing the collection of controls contained within the control.
           /// @remarks A Control can act as a parent to a collection of controls. For example, when several controls are added to a Form, each of the controls is a member of the Control.ControlCollection assigned to the Controls property of the form, which is derived from the Control class.
@@ -388,6 +618,13 @@ namespace Switch {
           /// @endcode
           property_<ControlCollection&, readonly_> Controls {
             get_->ControlCollection& {return this->controls; }
+          };
+          
+          /// @brief Gets a value indicating whether the control has been created.
+          /// @return true if the control has been created; otherwise, false.
+          /// @remarks The Created property returns true if the Control was successfully created even though the control's handle might not have been created or recreated yet.
+          property_<bool, readonly_> Created {
+            get_ {return this->created;}
           };
 
           /// @brief Gets the default background color of the control.
@@ -504,6 +741,14 @@ namespace Switch {
                 this->OnFontChanged(EventArgs::Empty);
               }
             }
+          };
+          
+          /// @brief Gets or sets the height of the font of the control.
+          /// @return The height of the Font of the control in pixels.
+          ///
+          property_<int32> FontHeight {
+            get_ {return this->Font().Height();},
+            set_ {this->Font = System::Drawing::Font(this->Font().FontFamily, value, this->Font().Style, Drawing::GraphicsUnit::Pixel, this->Font().GdiCharSet, this->Font().GdiVerticalFont);}
           };
 
           /// @brief Gets or sets the foreground color of the control.
@@ -785,6 +1030,26 @@ namespace Switch {
           property_<ref<Control>> Parent {
             get_ {return this->parent;},
             set_ {this->SetParent(value);}
+          };
+          
+          /// @brief Gets the product name of the assembly containing the control.
+          /// @return The product name of the assembly containing the control.
+          property_<string, readonly_> ProductName {
+            get_ {return this->GetProductName();}
+          };
+
+          /// @brief Gets the version of the assembly containing the control.
+          /// @return The file version of the assembly containing the control.
+          /// @par Examples
+          /// The following code example displays information about the application in a Label contained by a Form. This example requires that the CompanyName, ProductName and ProductVersion have been set.
+          /// @code
+          /// void AboutDialog_Load(const object& sender, const EventArgs& e) {
+          ///   // Display the application information in the label.
+          ///   this->labelVersionInfo.Text = this->CompanyName + "  "_s + this->ProductName + "  Version: "_s + this->ProductVersion;
+          /// }
+          /// @endcode
+          property_<string, readonly_> ProductVersion {
+            get_ {return this->GetProductVersion();}
           };
 
           /// @brief Gets the distance, in pixels, between the right edge of the control and the left edge of its container's client area.
@@ -1091,7 +1356,7 @@ namespace Switch {
             get_ { return this->size.Width(); },
             set_ { this->Size(System::Drawing::Size(value, this->size.Height())); }
           };
-
+          
           /// @brief Forces the creation of the visible control, including the creation of the handle and any visible child controls.
           /// @remarks The CreateControl method forces a handle to be created for the control and its child controls. This method is used when you need a handle immediately for manipulation of the control or its children; simply calling a control's constructor does not create the Handle.
           /// @remarks CreateControl does not create a control handle if the control's Visible property is false. You can either call the CreateHandle method or access the Handle property to create the control's handle regardless of the control's visibility, but in this case, no window handles are created for the control's children.
@@ -1283,9 +1548,7 @@ namespace Switch {
           /// The following code example demonstrates how to use the PerformLayout method. It also demonstrates ways in which the Layout event is raised. In this example, the Click event handler for Button1 explicitly calls PerformLayout. The Click event handler for Button2 implicitly calls PerformLayout. PerformLayout is also called when the form is loaded. Button3 returns the control to the state it was in when loaded. In each case, the Layout event is raised.<br><br>
           /// This is a complete example. To run the example, paste the following code in a blank form.
           /// @include PerformLayout.cpp
-          void PerformLayout() {
-
-          }
+          void PerformLayout();
 
           /// @brief Computes the location of the specified screen point into client coordinates.
           /// @param point The screen coordinate Point to convert.
@@ -1559,6 +1822,11 @@ namespace Switch {
           /// @include WndProc.cpp
           virtual void WndProc(Message& message);
 
+          /// @brief This API supports the product infrastructure and is not intended to be used directly from your code.<br><br>
+          /// This event is not relevant for this class.
+          /// @remarks This event is not relevant for this class.
+          EventHandler AutoSizeChanged;
+          
           /// @brief Occurs when the value of the BackColor property changes.
           /// @remarks This event is raised if the BackColor property is changed by either a programmatic modification or user interaction.
           /// @remarks For more information about handling events, see Handling and Raising Events.
@@ -2294,6 +2562,13 @@ namespace Switch {
           EventHandler VisibleChanged;
 
         protected:
+          /// @brief Gets a value indicating whether the ImeMode property can be set to an active value, to enable IME support.
+          /// @return true in all cases.
+          /// @remarks Derived classes can override this property to return false if IME is not supported.
+          property_<bool, readonly_> CanEnableIme {
+            get_ {return this->canEnableIme;}
+          };
+          
           /// @brief Gets the default size of the control.
           /// @return System::Drawing::Size The default Size of the control.
           /// @remarks The DefaultSize property represents the Size of the control when it is initially created. You can adjust the size of the control by setting its Size property value.
@@ -2320,28 +2595,21 @@ namespace Switch {
           /// When overriding DestroyHandle in a derived class, be sure to call the base class's DestroyHandle method to ensure that the handle is destroyed.
           virtual void DestroyHandle();
 
+          /// @brief Gets the computed size for the control.
+          /// @return The computed size.
+          /// @par Notes to Inheritors
+          /// Override GetAutoSize() method used by AutoSize property.
+          /// @remarks The value of the Handle property is a Windows HWND. If the handle has not yet been created, referencing this property will force the handle to be created.
+          virtual System::Drawing::Size GetAutoSize() const;
+
           /// @brief Gets the default size of the control.
           /// @return Switch::System::Drawing::Size The default Size of the control.
           /// @remarks The DefaultSize property represents the Size of the control when it is initially created. You can adjust the size of the control by setting its Size property value.
           /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
           /// @par Notes to Inheritors
-          /// Override GetDefaultsize() method used by DefaultSize property.
+          /// Override GetDefaultSize() method used by DefaultSize property.
           virtual System::Drawing::Size GetDefaultSize() const { return System::Drawing::Size(0, 0); }
-
-          /// @brief Sets the parent container of the control.
-          /// @return Control A Control that represents the parent or container control of the control.
-          /// @remarks Setting the Parent property value to null removes the control from the Control.ControlCollection of its current parent control.
-          /// @par Notes to Inheritors
-          /// Overide SetParent() method used by Parent property.
-          virtual void SetParent(ref<Control> parent) {
-            if (this->parent != parent) {
-              if (parent == null && this->parent != null)
-                this->parent().controls.Remove(*this);
-              else
-                const_cast<Control&>(parent()).controls.Add(*this);
-            }
-          }
-
+  
           /// @brief Gets the window handle that the control is bound to.
           /// @return intptr An IntPtr that contains the window handle (HWND) of the control.
           /// @remarks The value of the Handle property is a Windows HWND. If the handle has not yet been created, referencing this property will force the handle to be created.
@@ -2351,6 +2619,42 @@ namespace Switch {
             return this->handle;
           }
 
+          /// @brief Gets the name of the company or creator of the application containing the control.
+          /// @return The company name or creator of the application containing the control.
+          /// @par Examples
+          /// The following code example displays information about the application in a Label contained by a Form. This example requires that the CompanyName, ProductName and ProductVersion have been set.
+          /// @code
+          /// void AboutDialog_Load(const object& sender, const EventArgs& e) {
+          ///   // Display the application information in the label.
+          ///   this->labelVersionInfo.Text = this->CompanyName + "  "_s + this->ProductName + "  Version: "_s + this->ProductVersion;
+          /// }
+          /// @endcode
+          virtual string GetCompanyName() const {return "Gammasoft";}
+
+          /// @brief Gets the product name of the assembly containing the control.
+          /// @return The product name of the assembly containing the control.
+          /// @par Examples
+          /// The following code example displays information about the application in a Label contained by a Form. This example requires that the CompanyName, ProductName and ProductVersion have been set.
+          /// @code
+          /// void AboutDialog_Load(const object& sender, const EventArgs& e) {
+          ///   // Display the application information in the label.
+          ///   this->labelVersionInfo.Text = this->CompanyName + "  "_s + this->ProductName + "  Version: "_s + this->ProductVersion;
+          /// }
+          /// @endcode
+          virtual string GetProductName() const {return "Switch";}
+
+          /// @brief Gets the version of the assembly containing the control.
+          /// @return The file version of the assembly containing the control.
+          /// @par Examples
+          /// The following code example displays information about the application in a Label contained by a Form. This example requires that the CompanyName, ProductName and ProductVersion have been set.
+          /// @code
+          /// void AboutDialog_Load(const object& sender, const EventArgs& e) {
+          ///   // Display the application information in the label.
+          ///   this->labelVersionInfo.Text = this->CompanyName + "  "_s + this->ProductName + "  Version: "_s + this->ProductVersion;
+          /// }
+          /// @endcode
+          virtual string GetProductVersion() const {return Environment::Version().ToString();}
+          
           /// @brief Retrieves the value of the specified control style bit for the control.
           /// @param falg The ControlStyles bit to return the value from.
           /// @return bool true if the specified control style bit is set to true; otherwise, false.
@@ -2367,24 +2671,13 @@ namespace Switch {
           /// @endcode
           virtual bool GetStyle(ControlStyles flag) { return ((int32)this->style & (int32)flag) == (int32)flag; }
 
-          /// @brief Sets a specified ControlStyles flag to either true or false.
-          /// @param flag The ControlStyles bit to set.
-          /// @param value rue to apply the specified style to the control; otherwise, false.
-          /// @remarks Control style bit flags are used to categorize supported behavior. A control can enable a style by calling the SetStyle method and passing in the appropriate ControlStyles bit (or bits) and the Boolean value to set the bit(s) to. To determine the value assigned to a specified ControlStyles bit, use the GetStyle method and pass in the ControlStyles member to evaluate.
-          /// @warning Setting the control style bits can substantially change the behavior of the control. Review the ControlStyles enumeration documentation to understand the effects of changing the control style bits before calling the SetStyle method.
-          /// @par Examples
-          /// The following code example enables double-buffering on a Form and updates the styles to reflect the changes.
-          /// @code
-          /// public void EnableDoubleBuffering() {
-          ///   // Set the value of the double-buffering style bits to true.
-          ///   this->SetStyle(ControlStyles::DoubleBuffer |
-          ///                  ControlStyles::UserPaint |
-          ///                  ControlStyles::AllPaintingInWmPaint,
-          ///                  true);
-          ///   this->UpdateStyles();
-          /// }
-          /// @endcode
-          virtual void SetStyle(ControlStyles flag, bool value) { this->style = value ? (ControlStyles)((int32)this->state | (int32)flag) : (ControlStyles)((int32)this->style & ~(int32)flag); }
+          /// @brief Raises the AutoSizeChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnAutoSizeChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnAutoSizeChanged in a derived class, be sure to call the base class's OnAutoSizeChanged method so that registered delegates receive the event.
+          virtual void OnAutoSizeChanged(const EventArgs& e);
 
           /// @brief Raises the BackColorChanged event.
           /// @param e An EventArgs that contains the event data.
@@ -3250,11 +3543,93 @@ namespace Switch {
           /// @endcode
           virtual void OnVisibleChanged(const EventArgs& e);
 
+        /// @brief Sets the edges of the container to which a control is bound and determines how a control is resized with its parent.
+        /// @param value A bitwise combination of the AnchorStyles values. The default is Top and Left.
+        /// @remarks Use the Anchor property to define how a control is automatically resized as its parent control is resized. Anchoring a control to its parent control ensures that the anchored edges remain in the same position relative to the edges of the parent control when the parent control is resized.
+        /// @remarks You can anchor a control to one or more edges of its container. For example, if you have a Form with a Button whose Anchor property value is set to Top and Bottom, the Button is stretched to maintain the anchored distance to the top and bottom edges of the Form as the Height of the Form is increased.
+        /// @note The Anchor and Dock properties are mutually exclusive. Only one can be set at a time, and the last one set takes precedence.
+        /// @par Notes to Inheritors
+        /// When overriding the Anchor property in a derived class, use the base class's Anchor property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setaccessors of the Anchor property; you can override only one if needed.
+        /// @par EXamples
+        /// The following code example adds a Button to a form and sets some of its common properties. The example anchors the button to the bottom-right corner of the form so it keeps its relative position as the form is resized. Next it sets the BackgroundImage and resizes the button to the same size as the Image. The example then sets the TabStop to true and sets the TabIndex property. Lastly, it adds an event handler to handle the Click event of the button. This example requires that you have an ImageList named imageList1.
+        /// @cond
+        /// Button button1;
+        ///
+        /// // Add a button to a form and set some of its common properties.
+        /// void AddMyButton() {
+        ///   // Anchor the button to the bottom right corner of the form
+        ///   button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        ///
+        ///   // Assign a background image.
+        ///   button1.BackgroundImage = imageList1.Images[0];
+        ///
+        ///   // Specify the layout style of the background image. Tile is the default.
+        ///   button1.BackgroundImageLayout = ImageLayout.Center;
+        ///
+        ///   // Make the button the same size as the image.
+        ///   button1.Size = button1.BackgroundImage().Size;
+        ///
+        ///   // Set the button's TabIndex and TabStop properties.
+        ///   button1.TabIndex = 1;
+        ///   button1.TabStop = true;
+        ///
+        ///   // Add a delegate to handle the Click event.
+        ///   button1.Click += System.EventHandler(*this, &Fomr1::button1_Click);
+        ///
+        ///   // Add the button to the form.
+        ///   this->Controls().Add(button1);
+        /// }
+        /// @endcond
+        virtual void SetAnchor(AnchorStyles value);
+        
+        /// @brief Sets the parent container of the control.
+        /// @return Control A Control that represents the parent or container control of the control.
+        /// @remarks Setting the Parent property value to null removes the control from the Control.ControlCollection of its current parent control.
+        /// @par Notes to Inheritors
+        /// Overide SetParent() method used by Parent property.
+        virtual void SetParent(ref<Control> parent) {
+          if (this->parent != parent) {
+            if (parent == null && this->parent != null)
+              this->parent().controls.Remove(*this);
+            else
+              const_cast<Control&>(parent()).controls.Add(*this);
+          }
+        }
+
+          /// @brief Sets a specified ControlStyles flag to either true or false.
+          /// @param flag The ControlStyles bit to set.
+          /// @param value rue to apply the specified style to the control; otherwise, false.
+          /// @remarks Control style bit flags are used to categorize supported behavior. A control can enable a style by calling the SetStyle method and passing in the appropriate ControlStyles bit (or bits) and the Boolean value to set the bit(s) to. To determine the value assigned to a specified ControlStyles bit, use the GetStyle method and pass in the ControlStyles member to evaluate.
+          /// @warning Setting the control style bits can substantially change the behavior of the control. Review the ControlStyles enumeration documentation to understand the effects of changing the control style bits before calling the SetStyle method.
+          /// @par Examples
+          /// The following code example enables double-buffering on a Form and updates the styles to reflect the changes.
+          /// @code
+          /// public void EnableDoubleBuffering() {
+          ///   // Set the value of the double-buffering style bits to true.
+          ///   this->SetStyle(ControlStyles::DoubleBuffer |
+          ///                  ControlStyles::UserPaint |
+          ///                  ControlStyles::AllPaintingInWmPaint,
+          ///                  true);
+          ///   this->UpdateStyles();
+          /// }
+          /// @endcode
+          virtual void SetStyle(ControlStyles flag, bool value) { this->style = value ? (ControlStyles)((int32)this->state | (int32)flag) : (ControlStyles)((int32)this->style & ~(int32)flag); }
+          
           /// @cond
+          bool allowDrop = false;
+          AnchorStyles anchor = AnchorStyles::None;
+          System::Drawing::Point autoScrollOffset;
+          bool autoSize = false;
           Nullable<System::Drawing::Color> backColor;
           mutable System::Drawing::SolidBrush backBrush {System::Drawing::SystemColors::Control};
+          bool canEnableIme = true;
+          bool canFocus = false;
+          bool canSelect = true;
+          bool capture = false;
           System::Drawing::Size clientSize;
+          bool containsFocus = false;
           ControlCollection controls {*this};
+          bool created = false;
           System::Drawing::Color defaultBackColor;
           System::Drawing::Color defaultForeColor;
           bool enabled = true;
@@ -3276,8 +3651,10 @@ namespace Switch {
           /// @endcond
 
         private:
+          bool GetState(State flag) const { return ((int32)this->state & (int32)flag) == (int32)flag; }
           static bool ReflectMessage(intptr hWnd, Message& m);
           intptr SendMessage(int32 msg, intptr wparam, intptr lparam) const;
+          void SetState(State flag, bool value) { this->state = value ? (State)((int32)this->state | (int32)flag) : (State)((int32)this->state & ~(int32)flag); }
           void WmCaptureChange(Message& message);
           void WmClose(Message& message);
           void WmCommand(Message& message);
@@ -3322,9 +3699,6 @@ namespace Switch {
           void WmUpdateUIState(Message& message);
           void WmWindowPosChanged(Message& message);
           void WmWindowPosChanging(Message& message);
-
-          bool GetState(State flag) const { return ((int32)this->state & (int32)flag) == (int32)flag; }
-          void SetState(State flag, bool value) { this->state = value ? (State)((int32)this->state | (int32)flag) : (State)((int32)this->state & ~(int32)flag); }
 
           enum class State {
             Empty = 0,

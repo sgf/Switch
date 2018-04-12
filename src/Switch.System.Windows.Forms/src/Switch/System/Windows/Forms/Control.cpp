@@ -94,6 +94,10 @@ property_<System::Drawing::Color, readonly_> Control::DefaultForeColor {
   [] { return System::Drawing::SystemColors::ControlText(); }
 };
 
+System::Drawing::Size Control::GetAutoSize() const {
+  return Native::ControlApi::GetTextSize(*this);
+}
+
 void Control::CreateControl() {
   if (this->size.IsEmpty())
     this->size = this->DefaultSize;
@@ -112,6 +116,8 @@ void Control::CreateHandle() {
   handles.Add(this->handle, *this);
   this->backBrush = System::Drawing::SolidBrush(this->BackColor);
   Native::ControlApi::SetParent(*this); // Must be first
+  if (this->AutoSize)
+    this->Size = this->GetAutoSize();
   if (this->setClientSizeAfterHandleCreated)
     Native::ControlApi::SetClientSize(*this);
   else
@@ -128,6 +134,7 @@ void Control::CreateHandle() {
   if (this->setFocusAfterHandleCreated)
     Native::ControlApi::SetFocus(*this);
   Native::ControlApi::SetVisible(*this); // Must be last
+  this->created = true;
 }
 
 void Control::DestroyHandle() {
@@ -170,6 +177,12 @@ void Control::Invalidate(const System::Drawing::Rectangle& rect, bool invalidate
   if (this->IsHandleCreated)
     Native::ControlApi::Invalidate(*this, rect, invalidateChildren);
   this->OnInvalidated(InvalidateEventArgs(rect));
+}
+
+void Control::OnAutoSizeChanged(const EventArgs& e) {
+  if (this->AutoSize)
+    this->Size = this->GetAutoSize();
+  this->AutoSizeChanged(*this, e);
 }
 
 void Control::OnBackColorChanged(const EventArgs& e) {
@@ -243,6 +256,8 @@ void Control::OnSizeChanged(const EventArgs& e) {
     Native::ControlApi::SetSize(*this);
   else
     setClientSizeAfterHandleCreated = false;
+  if (this->AutoSize)
+    this->Size = this->GetAutoSize();
   this->SizeChanged(*this, e);
 }
 
@@ -253,6 +268,8 @@ void Control::OnTabStopChanged(const EventArgs& e) {
 }
 
 void Control::OnTextChanged(const EventArgs& e) {
+  if (this->AutoSize)
+    this->Size = this->GetAutoSize();
   if (this->IsHandleCreated)
     Native::ControlApi::SetText(*this);
   this->TextChanged(*this, e);
@@ -264,6 +281,10 @@ void Control::OnVisibleChanged(const EventArgs& e) {
   if (this->IsHandleCreated)
     Native::ControlApi::SetVisible(*this);
   this->VisibleChanged(*this, e);
+}
+
+void Control::PerformLayout() {
+  
 }
 
 System::Drawing::Point Control::PointToClient(System::Drawing::Point point) const {
@@ -283,6 +304,12 @@ bool Control::ReflectMessage(intptr hWnd, Message& message) {
   if (control == null) return false;
   message.Result = control().SendMessage(WM_REFLECT + message.Msg, message.WParam, message.LParam);
   return true;
+}
+
+void Control::SetAnchor(AnchorStyles value) {
+  if (this->anchor != value) {
+    this->anchor = value;
+  }
 }
 
 intptr Control::SendMessage(int32 msg, intptr wparam, intptr lparam) const {

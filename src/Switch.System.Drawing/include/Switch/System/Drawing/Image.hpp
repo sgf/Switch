@@ -110,9 +110,9 @@ namespace Switch {
           get_ {return this->size;}
         };
 
-        property_<const object&> Tag {
-          get_->const object& {return *this->tag;},
-          set_ {this->tag = &value;}
+        property_<ref<object>> Tag {
+          get_ {return this->tag;},
+          set_ {this->tag = value;}
         };
 
         property_<float, readonly_> VerticalResolution {
@@ -163,7 +163,7 @@ namespace Switch {
         Array<byte> rawData;
         Imaging::ImageFormat rawFormat;
         System::Drawing::Size size;
-        const object* tag = null;
+        ref<object> tag;
         float verticalResolution = 1.0f;
         /// @endcond
       };

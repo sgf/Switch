@@ -477,6 +477,11 @@ namespace Switch {
   /// @endcode
   template<typename T, typename ...Args>
   $<T> new_(Args&& ... args) {return $<T>(new T(args...));}
+
+  /// @cond
+  template<typename T>
+  $<T> new_(const T& arg) {return $<T>(new T(arg));}
+  /// @endcond
 }
 
 using namespace Switch;
