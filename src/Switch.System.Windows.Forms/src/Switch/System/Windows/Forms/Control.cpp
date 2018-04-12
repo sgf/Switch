@@ -180,7 +180,7 @@ void Control::Invalidate(const System::Drawing::Rectangle& rect, bool invalidate
 }
 
 void Control::OnAutoSizeChanged(const EventArgs& e) {
-  if (this->AutoSize)
+  if (this->IsHandleCreated && this->AutoSize)
     this->Size = this->GetAutoSize();
   this->AutoSizeChanged(*this, e);
 }
@@ -252,12 +252,12 @@ void Control::OnParentChanged(const EventArgs& e) {
 }
 
 void Control::OnSizeChanged(const EventArgs& e) {
-  if (this->IsHandleCreated)
+  if (this->IsHandleCreated) {
     Native::ControlApi::SetSize(*this);
-  else
+    if (this->AutoSize)
+      this->Size = this->GetAutoSize();
+  } else
     setClientSizeAfterHandleCreated = false;
-  if (this->AutoSize)
-    this->Size = this->GetAutoSize();
   this->SizeChanged(*this, e);
 }
 
@@ -268,10 +268,11 @@ void Control::OnTabStopChanged(const EventArgs& e) {
 }
 
 void Control::OnTextChanged(const EventArgs& e) {
-  if (this->AutoSize)
-    this->Size = this->GetAutoSize();
-  if (this->IsHandleCreated)
+  if (this->IsHandleCreated) {
+    if (this->AutoSize)
+      this->Size = this->GetAutoSize();
     Native::ControlApi::SetText(*this);
+  )
   this->TextChanged(*this, e);
 }
 
