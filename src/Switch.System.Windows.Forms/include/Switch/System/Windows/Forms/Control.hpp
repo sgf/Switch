@@ -650,6 +650,36 @@ namespace Switch {
           /// @endcode
           static property_<System::Drawing::Color, readonly_> DefaultBackColor;
 
+          /// @brief Gets the default font of the control.
+          /// @return The default Font of the control. The value returned will vary depending on the user's operating system the local culture setting of their system.
+          /// @exception The default font or the regional alternative fonts are not installed on the client computer.
+          /// @remarks The following table describes the value returned by DefaultFont depending on the operating system and local culture.
+          /// | System/and or Culture                  | Font                                                              |
+          /// |----------------------------------------|-------------------------------------------------------------------|
+          /// | Windows NT 4x, Japanese version        | MS UI Gothic, 9 point.                                            |
+          /// | Arabic Windows                         | Tahoma, 8 point.                                                  |
+          /// | Other Windows operating system/culture | MS Shell Dlg logical font, typically Microsoft San Serif 8 point. |
+          /// | macOS                                  | .AppleSystemUIFont 9.75 point.                                    |
+          /// | Linux                                  |                                                                   |
+          /// @remarks MS Shell Dlg maps to a font set in the system registry.
+          /// @remarks If the previous fonts are not installed, the default font is Tahoma, 8 point. If Tahoma, 8 point, is not installed, DefaultFontreturns the value of the GenericSansSerif property
+          /// @par examples
+          /// The following code example demonstrates how to use the DefaultBackColor, DefaultFont, and DefaultForeColor members. To run the example, paste the following code in a form containing a ListBox called ListBox1. Call the Populate_ListBox method in the form's constructor or Load event-handling method.
+          /// @code
+          /// // The following method displays the default font,
+          /// // background color and foreground color values for the ListBox
+          /// // control. The values are displayed in the ListBox, itself.
+          ///
+          /// void Populate_ListBox() {
+          ///   listBox1.Dock = DockStyle::Bottom;
+          ///
+          ///   // Display the values in the read-only properties
+          ///   // DefaultBackColor, DefaultFont, DefaultForecolor.
+          ///   listBox1.Items().Add("Default BackColor: "_s + listBox.DefaultBackColor().ToString());
+          ///   listBox1.Items().Add("Default Font: "_s + listBox.DefaultFont().ToString());
+          ///   listBox1.Items().Add("Default ForeColor:"_s + listBox.DefaultForeColor().ToString());
+          /// }
+          /// @endcode
           static property_<System::Drawing::Font, readonly_> DefaultFont;
 
           /// @brief Gets the default foreground color of the control.

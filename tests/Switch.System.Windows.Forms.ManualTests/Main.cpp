@@ -12,6 +12,7 @@ namespace ManualTests {
     }
 
     Form1() {
+      System::Diagnostics::Debug::WriteLine(string::Format("DefaultFont = {0}", Control::DefaultFont));
       this->buttonMessage.Text = "Message...";
       this->buttonMessage.Width = 110;
       this->buttonMessage.Location = System::Drawing::Point(10, 10);

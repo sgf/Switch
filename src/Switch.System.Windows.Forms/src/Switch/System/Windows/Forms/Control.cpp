@@ -272,7 +272,7 @@ void Control::OnTextChanged(const EventArgs& e) {
     if (this->AutoSize)
       this->Size = this->GetAutoSize();
     Native::ControlApi::SetText(*this);
-  )
+  }
   this->TextChanged(*this, e);
 }
 
