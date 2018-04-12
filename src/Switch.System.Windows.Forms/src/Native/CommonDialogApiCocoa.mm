@@ -244,11 +244,11 @@ bool Native::CommonDialogApi::RunFontDialog(intptr hwnd, System::Windows::Forms:
   [fontPanel setIsVisible:NO];
   fontDialog.Font = System::Drawing::Font::FromHFont((intptr)font);
    */
-  
+
   NSSwitchFontPanel* fontPanel = [[[NSSwitchFontPanel alloc] init] autorelease];
-  
+
   [fontPanel setIsVisible:YES];
-  
+
   return true;
 }
 

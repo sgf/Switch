@@ -283,7 +283,7 @@ namespace Switch {
                 this->allowDrop = value;
             }
           };
-          
+
           /// @brief Gets or sets the edges of the container to which a control is bound and determines how a control is resized with its parent.
           /// @return A bitwise combination of the AnchorStyles values. The default is Top and Left.
           /// @remarks Use the Anchor property to define how a control is automatically resized as its parent control is resized. Anchoring a control to its parent control ensures that the anchored edges remain in the same position relative to the edges of the parent control when the parent control is resized.
@@ -323,10 +323,11 @@ namespace Switch {
           /// @endcond
           property_<AnchorStyles> Anchor {
             get_ {return this->anchor;},
-              set_ {this->SetAnchor(value);
+            set_ {
+              this->SetAnchor(value);
             }
           };
-          
+
           /// @brief Gets or sets where this control is scrolled to in ScrollControlIntoView.
           /// @return A Point specifying the scroll location. The default is the upper-left corner of the control.
           property_<System::Drawing::Point> AutoScrollOffset {
@@ -455,7 +456,7 @@ namespace Switch {
               this->Size(value.Size());
             }
           };
-          
+
           /// @brief Gets a value indicating whether the control can receive focus.
           /// @return true if the control can receive focus; otherwise, false.
           /// @remarks In order for a control to receive input focus, the control must have a handle assigned to it, and the Visible and Enabled properties must both be set to true for both the control and all its parent controls, and the control must be a form or the control's outermost parent must be a form.
@@ -472,7 +473,7 @@ namespace Switch {
           property_<bool, readonly_> CanFocus {
             get_ {return this->canFocus;}
           };
-          
+
           /// @brief Gets a value indicating whether the control can be selected.
           /// @return true if the control can be selected; otherwise, false.
           /// @remarks This property returns true if the Selectable value of System.Windows.Forms.ControlStyles is set to true, is contained in another control, the control itself is visible and enabled, and all its parent controls are visible and enabled.
@@ -497,7 +498,7 @@ namespace Switch {
           property_<bool, readonly_> CanSelect {
             get_ {return this->canSelect;}
           };
-          
+
           /// @brief Gets or sets a value indicating whether the control has captured the mouse.
           /// @return true if the control has captured the mouse; otherwise, false.
           /// @remarks When a control has captured the mouse, it receives mouse input whether or not the cursor is within its borders. The mouse is typically only captured during drag operations.
@@ -522,7 +523,7 @@ namespace Switch {
                 this->capture = value;
             }
           };
-          
+
           /// @brief Gets the rectangle that represents the client area of the control.
           /// @return A Rectangle that represents the client area of the control.
           /// @remarks The client area of a control is the bounds of the control, minus the nonclient elements such as scroll bars, borders, title bars, and menus.
@@ -592,7 +593,7 @@ namespace Switch {
           property_<string, readonly_> CompanyName {
             get_ {return this->GetCompanyName();}
           };
-          
+
           /// @brief Gets a value indicating whether the control, or one of its child controls, currently has the input focus.
           /// @return true if the control or one of its child controls currently has the input focus; otherwise, false.
           /// @remarks You can use this property to determine whether a control or any of the controls contained within it has the input focus. To determine whether the control has focus, regardless of whether any of its child controls have focus, use the Focused property. To give a control the input focus, use the Focus or Select methods.
@@ -619,7 +620,7 @@ namespace Switch {
           property_<ControlCollection&, readonly_> Controls {
             get_->ControlCollection& {return this->controls; }
           };
-          
+
           /// @brief Gets a value indicating whether the control has been created.
           /// @return true if the control has been created; otherwise, false.
           /// @remarks The Created property returns true if the Control was successfully created even though the control's handle might not have been created or recreated yet.
@@ -742,7 +743,7 @@ namespace Switch {
               }
             }
           };
-          
+
           /// @brief Gets or sets the height of the font of the control.
           /// @return The height of the Font of the control in pixels.
           ///
@@ -1031,7 +1032,7 @@ namespace Switch {
             get_ {return this->parent;},
             set_ {this->SetParent(value);}
           };
-          
+
           /// @brief Gets the product name of the assembly containing the control.
           /// @return The product name of the assembly containing the control.
           property_<string, readonly_> ProductName {
@@ -1356,7 +1357,7 @@ namespace Switch {
             get_ { return this->size.Width(); },
             set_ { this->Size(System::Drawing::Size(value, this->size.Height())); }
           };
-          
+
           /// @brief Forces the creation of the visible control, including the creation of the handle and any visible child controls.
           /// @remarks The CreateControl method forces a handle to be created for the control and its child controls. This method is used when you need a handle immediately for manipulation of the control or its children; simply calling a control's constructor does not create the Handle.
           /// @remarks CreateControl does not create a control handle if the control's Visible property is false. You can either call the CreateHandle method or access the Handle property to create the control's handle regardless of the control's visibility, but in this case, no window handles are created for the control's children.
@@ -1826,7 +1827,7 @@ namespace Switch {
           /// This event is not relevant for this class.
           /// @remarks This event is not relevant for this class.
           EventHandler AutoSizeChanged;
-          
+
           /// @brief Occurs when the value of the BackColor property changes.
           /// @remarks This event is raised if the BackColor property is changed by either a programmatic modification or user interaction.
           /// @remarks For more information about handling events, see Handling and Raising Events.
@@ -2568,7 +2569,7 @@ namespace Switch {
           property_<bool, readonly_> CanEnableIme {
             get_ {return this->canEnableIme;}
           };
-          
+
           /// @brief Gets the default size of the control.
           /// @return System::Drawing::Size The default Size of the control.
           /// @remarks The DefaultSize property represents the Size of the control when it is initially created. You can adjust the size of the control by setting its Size property value.
@@ -2609,7 +2610,7 @@ namespace Switch {
           /// @par Notes to Inheritors
           /// Override GetDefaultSize() method used by DefaultSize property.
           virtual System::Drawing::Size GetDefaultSize() const { return System::Drawing::Size(0, 0); }
-  
+
           /// @brief Gets the window handle that the control is bound to.
           /// @return intptr An IntPtr that contains the window handle (HWND) of the control.
           /// @remarks The value of the Handle property is a Windows HWND. If the handle has not yet been created, referencing this property will force the handle to be created.
@@ -2654,7 +2655,7 @@ namespace Switch {
           /// }
           /// @endcode
           virtual string GetProductVersion() const {return Environment::Version().ToString();}
-          
+
           /// @brief Retrieves the value of the specified control style bit for the control.
           /// @param falg The ControlStyles bit to return the value from.
           /// @return bool true if the specified control style bit is set to true; otherwise, false.
@@ -3543,58 +3544,58 @@ namespace Switch {
           /// @endcode
           virtual void OnVisibleChanged(const EventArgs& e);
 
-        /// @brief Sets the edges of the container to which a control is bound and determines how a control is resized with its parent.
-        /// @param value A bitwise combination of the AnchorStyles values. The default is Top and Left.
-        /// @remarks Use the Anchor property to define how a control is automatically resized as its parent control is resized. Anchoring a control to its parent control ensures that the anchored edges remain in the same position relative to the edges of the parent control when the parent control is resized.
-        /// @remarks You can anchor a control to one or more edges of its container. For example, if you have a Form with a Button whose Anchor property value is set to Top and Bottom, the Button is stretched to maintain the anchored distance to the top and bottom edges of the Form as the Height of the Form is increased.
-        /// @note The Anchor and Dock properties are mutually exclusive. Only one can be set at a time, and the last one set takes precedence.
-        /// @par Notes to Inheritors
-        /// When overriding the Anchor property in a derived class, use the base class's Anchor property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setaccessors of the Anchor property; you can override only one if needed.
-        /// @par EXamples
-        /// The following code example adds a Button to a form and sets some of its common properties. The example anchors the button to the bottom-right corner of the form so it keeps its relative position as the form is resized. Next it sets the BackgroundImage and resizes the button to the same size as the Image. The example then sets the TabStop to true and sets the TabIndex property. Lastly, it adds an event handler to handle the Click event of the button. This example requires that you have an ImageList named imageList1.
-        /// @cond
-        /// Button button1;
-        ///
-        /// // Add a button to a form and set some of its common properties.
-        /// void AddMyButton() {
-        ///   // Anchor the button to the bottom right corner of the form
-        ///   button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-        ///
-        ///   // Assign a background image.
-        ///   button1.BackgroundImage = imageList1.Images[0];
-        ///
-        ///   // Specify the layout style of the background image. Tile is the default.
-        ///   button1.BackgroundImageLayout = ImageLayout.Center;
-        ///
-        ///   // Make the button the same size as the image.
-        ///   button1.Size = button1.BackgroundImage().Size;
-        ///
-        ///   // Set the button's TabIndex and TabStop properties.
-        ///   button1.TabIndex = 1;
-        ///   button1.TabStop = true;
-        ///
-        ///   // Add a delegate to handle the Click event.
-        ///   button1.Click += System.EventHandler(*this, &Fomr1::button1_Click);
-        ///
-        ///   // Add the button to the form.
-        ///   this->Controls().Add(button1);
-        /// }
-        /// @endcond
-        virtual void SetAnchor(AnchorStyles value);
-        
-        /// @brief Sets the parent container of the control.
-        /// @return Control A Control that represents the parent or container control of the control.
-        /// @remarks Setting the Parent property value to null removes the control from the Control.ControlCollection of its current parent control.
-        /// @par Notes to Inheritors
-        /// Overide SetParent() method used by Parent property.
-        virtual void SetParent(ref<Control> parent) {
-          if (this->parent != parent) {
-            if (parent == null && this->parent != null)
-              this->parent().controls.Remove(*this);
-            else
-              const_cast<Control&>(parent()).controls.Add(*this);
+          /// @brief Sets the edges of the container to which a control is bound and determines how a control is resized with its parent.
+          /// @param value A bitwise combination of the AnchorStyles values. The default is Top and Left.
+          /// @remarks Use the Anchor property to define how a control is automatically resized as its parent control is resized. Anchoring a control to its parent control ensures that the anchored edges remain in the same position relative to the edges of the parent control when the parent control is resized.
+          /// @remarks You can anchor a control to one or more edges of its container. For example, if you have a Form with a Button whose Anchor property value is set to Top and Bottom, the Button is stretched to maintain the anchored distance to the top and bottom edges of the Form as the Height of the Form is increased.
+          /// @note The Anchor and Dock properties are mutually exclusive. Only one can be set at a time, and the last one set takes precedence.
+          /// @par Notes to Inheritors
+          /// When overriding the Anchor property in a derived class, use the base class's Anchor property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setaccessors of the Anchor property; you can override only one if needed.
+          /// @par EXamples
+          /// The following code example adds a Button to a form and sets some of its common properties. The example anchors the button to the bottom-right corner of the form so it keeps its relative position as the form is resized. Next it sets the BackgroundImage and resizes the button to the same size as the Image. The example then sets the TabStop to true and sets the TabIndex property. Lastly, it adds an event handler to handle the Click event of the button. This example requires that you have an ImageList named imageList1.
+          /// @cond
+          /// Button button1;
+          ///
+          /// // Add a button to a form and set some of its common properties.
+          /// void AddMyButton() {
+          ///   // Anchor the button to the bottom right corner of the form
+          ///   button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+          ///
+          ///   // Assign a background image.
+          ///   button1.BackgroundImage = imageList1.Images[0];
+          ///
+          ///   // Specify the layout style of the background image. Tile is the default.
+          ///   button1.BackgroundImageLayout = ImageLayout.Center;
+          ///
+          ///   // Make the button the same size as the image.
+          ///   button1.Size = button1.BackgroundImage().Size;
+          ///
+          ///   // Set the button's TabIndex and TabStop properties.
+          ///   button1.TabIndex = 1;
+          ///   button1.TabStop = true;
+          ///
+          ///   // Add a delegate to handle the Click event.
+          ///   button1.Click += System.EventHandler(*this, &Fomr1::button1_Click);
+          ///
+          ///   // Add the button to the form.
+          ///   this->Controls().Add(button1);
+          /// }
+          /// @endcond
+          virtual void SetAnchor(AnchorStyles value);
+
+          /// @brief Sets the parent container of the control.
+          /// @return Control A Control that represents the parent or container control of the control.
+          /// @remarks Setting the Parent property value to null removes the control from the Control.ControlCollection of its current parent control.
+          /// @par Notes to Inheritors
+          /// Overide SetParent() method used by Parent property.
+          virtual void SetParent(ref<Control> parent) {
+            if (this->parent != parent) {
+              if (parent == null && this->parent != null)
+                this->parent().controls.Remove(*this);
+              else
+                const_cast<Control&>(parent()).controls.Add(*this);
+            }
           }
-        }
 
           /// @brief Sets a specified ControlStyles flag to either true or false.
           /// @param flag The ControlStyles bit to set.
@@ -3614,7 +3615,7 @@ namespace Switch {
           /// }
           /// @endcode
           virtual void SetStyle(ControlStyles flag, bool value) { this->style = value ? (ControlStyles)((int32)this->state | (int32)flag) : (ControlStyles)((int32)this->style & ~(int32)flag); }
-          
+
           /// @cond
           bool allowDrop = false;
           AnchorStyles anchor = AnchorStyles::None;

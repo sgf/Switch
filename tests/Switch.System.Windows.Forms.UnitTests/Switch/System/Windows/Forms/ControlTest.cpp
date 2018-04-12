@@ -76,33 +76,33 @@ namespace SwitchUnitTests {
 
   TEST(ControlTest, AllowDrop) {
     Control control;
-    
+
     control.AllowDrop = true;
-    
+
     ASSERT_TRUE(control.AllowDrop);
   }
 
   TEST(ControlTest, Anchor) {
     Control control;
-    
+
     control.Anchor = AnchorStyles::Left;
-    
+
     ASSERT_EQ(AnchorStyles::Left, control.Anchor);
   }
 
   TEST(ControlTest, AutoScrollOffset) {
     Control control;
-    
+
     control.AutoScrollOffset = Point(1, 2);
-    
+
     ASSERT_EQ(Point(1, 2), control.AutoScrollOffset);
   }
 
   TEST(ControlTest, AutoSize) {
     Control control;
-    
+
     control.AutoSize = true;
-    
+
     ASSERT_TRUE(control.AutoSize);
   }
 
@@ -113,9 +113,9 @@ namespace SwitchUnitTests {
       ASSERT_TRUE(object::ReferenceEquals(sender, control));
       result = as<Control>(sender).BackColor;
     };
-    
+
     control.BackColor = Color::SpringGreen;
-    
+
     ASSERT_EQ(Color::SpringGreen, control.BackColor);
     ASSERT_EQ(Color::SpringGreen, result);
   }

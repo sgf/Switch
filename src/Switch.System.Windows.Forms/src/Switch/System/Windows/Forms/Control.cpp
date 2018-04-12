@@ -284,7 +284,7 @@ void Control::OnVisibleChanged(const EventArgs& e) {
 }
 
 void Control::PerformLayout() {
-  
+
 }
 
 System::Drawing::Point Control::PointToClient(System::Drawing::Point point) const {
@@ -307,9 +307,8 @@ bool Control::ReflectMessage(intptr hWnd, Message& message) {
 }
 
 void Control::SetAnchor(AnchorStyles value) {
-  if (this->anchor != value) {
+  if (this->anchor != value)
     this->anchor = value;
-  }
 }
 
 intptr Control::SendMessage(int32 msg, intptr wparam, intptr lparam) const {
