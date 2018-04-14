@@ -53,7 +53,7 @@ namespace Switch {
   /*previousInstance is always NULL */\
   /*commandLine can retrieve with __argc and __argv global variables*/\
   /*commandShow can retrieve with GetStartupInfo() function */\
-  return main(__argc, __argv);\
+  return main(__argc, __argv); \
 }\
 int __startup_force_to_end_with_semicolon__ = 0
 }
