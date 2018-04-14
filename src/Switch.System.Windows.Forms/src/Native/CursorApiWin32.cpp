@@ -19,16 +19,21 @@ void Native::CursorApi::Destroy(intptr handle) {
 }
 
 System::Drawing::Point Native::CursorApi::GetPosition() {
-  return System::Drawing::Point();
+  POINT position;
+  GetCursorPos(&position);
+  return System::Drawing::Point(position.x, position.y);
 }
 
 void Native::CursorApi::SetPosition(const System::Drawing::Point& position) {
+  SetCursorPos(position.X, position.Y);
 }
 
 void Native::CursorApi::Hide() {
+  ShowCursor(FALSE);
 }
 
 void Native::CursorApi::Show() {
+  ShowCursor(TRUE);
 }
 
 #endif

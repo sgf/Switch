@@ -12,143 +12,143 @@ using namespace System;
 using namespace System::Windows::Forms;
 
 intptr Native::CursorsApi::AppStarting() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_APPSTARTING);
 }
 
 intptr Native::CursorsApi::Arrow() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::CloseHand() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::ContextualMenu() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::Cross() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_CROSS);
 }
 
 intptr Native::CursorsApi::Default() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::DisappearingItem() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::DragCopy() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::DragLink() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::Hand() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_HAND);
 }
 
 intptr Native::CursorsApi::Help() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_HELP);
 }
 
 intptr Native::CursorsApi::HSplit() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_SIZEWE);
 }
 
 intptr Native::CursorsApi::IBeam() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_IBEAM);
 }
 
 intptr Native::CursorsApi::No() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_NO);
 }
 
 intptr Native::CursorsApi::NoMove2D() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_NO);
 }
 
 intptr Native::CursorsApi::NoMoveHoriz() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_NO);
 }
 
 intptr Native::CursorsApi::NoMoveVert() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_NO);
 }
 
 intptr Native::CursorsApi::OpenHand() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::PanEast() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::PanNE() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::PanNorth() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::PanNW() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::PanSE() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::PanSouth() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::PanSW() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::PanWest() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_ARROW);
 }
 
 intptr Native::CursorsApi::SizeAll() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_SIZEALL);
 }
 
 intptr Native::CursorsApi::SizeNESW() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_SIZENESW);
 }
 
 intptr Native::CursorsApi::SizeNS() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_SIZENS);
 }
 
 intptr Native::CursorsApi::SizeNWSE() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_SIZENWSE);
 }
 
 intptr Native::CursorsApi::SizeWE() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_SIZEWE);
 }
 
 intptr Native::CursorsApi::UpArrow() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_UPARROW);
 }
 
 intptr Native::CursorsApi::VIBeam() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_IBEAM);
 }
 
 intptr Native::CursorsApi::VSplit() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_SIZENS);
 }
 
 intptr Native::CursorsApi::WaitCursor() {
-  return IntPtr::Zero;
+  return (intptr)LoadCursor(GetModuleHandle(NULL), IDC_WAIT);
 }
 
 #endif

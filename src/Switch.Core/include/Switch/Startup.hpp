@@ -11,8 +11,6 @@
 #if !(defined(WIN32) && defined(DECLARE_HANDLE))
 using HINSTANCE = struct HINSTANCE__ { int unused; }*;
 #endif
-core_export_ extern HINSTANCE __instance;
-core_export_ extern int __commandShow;
 
 #if !defined(_WIN32)
 #define __argc 0
@@ -50,8 +48,10 @@ namespace Switch {
   } \
   \
   int WinMain(HINSTANCE instance, HINSTANCE previousInstance, char* commandLine, int commandShow) {\
-    __instance = instance;\
-    __commandShow = commandShow;\
+    /*instance can retrieve with GetModuleHandle(NULL) function */\
+    /*previousInstance is always NULL */\
+    /*commandLine can retrieve with __argc and __argv global variables*/\
+    /*commandShow can retrieve with GetStartupInfo() function */\
     return main(__argc, __argv);\
   }\
   int __startup_force_to_end_with_semicolon__ = 0

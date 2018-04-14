@@ -19,14 +19,10 @@ namespace ManualTests {
       };
 
       this->panel.Location = System::Drawing::Point(10, 50);
-      this->panel.MouseEnter += delegate_(const object & sender, const EventArgs & e) {
-        System::Windows::Forms::Cursor::Hide();
-      };
-
-      this->panel.MouseLeave += delegate_(const object & sender, const EventArgs & e) {
-        System::Windows::Forms::Cursor::Show();
-      };
-
+      this->panel.BackColor = System::Drawing::Color::White;
+      this->panel.BorderStyle = BorderStyle::Fixed3D;
+      this->panel.Cursor = Cursors::AppStarting;
+ 
       this->Controls().AddRange({this->button, this->panel});
     }
 

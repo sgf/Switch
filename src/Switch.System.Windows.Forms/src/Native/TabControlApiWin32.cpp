@@ -13,15 +13,13 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-core_export_ extern HINSTANCE __instance;
-
 intptr Native::TabControlApi::Create(const System::Windows::Forms::TabControl& tabControl) {
   static INITCOMMONCONTROLSEX icc;
   icc.dwSize = sizeof(INITCOMMONCONTROLSEX);
   icc.dwICC = ICC_TAB_CLASSES;
   InitCommonControlsEx(&icc);
 
-  HWND handle = CreateWindowEx(WS_EX_CONTROLPARENT, WC_TABCONTROL, tabControl.Text().w_str().c_str(), WS_CHILD | WS_CLIPSIBLINGS, tabControl.Left, tabControl.Top, tabControl.Width, tabControl.Height, (HWND)tabControl.Parent()().Handle(), (HMENU)0, __instance, (LPVOID)NULL);
+  HWND handle = CreateWindowEx(WS_EX_CONTROLPARENT, WC_TABCONTROL, tabControl.Text().w_str().c_str(), WS_CHILD | WS_CLIPSIBLINGS, tabControl.Left, tabControl.Top, tabControl.Width, tabControl.Height, (HWND)tabControl.Parent()().Handle(), (HMENU)0, GetModuleHandle(NULL), (LPVOID)NULL);
   WindowProcedure::SetWindowTheme(handle);
   WindowProcedure::DefWindowProcs[(intptr)handle] = (WNDPROC)SetWindowLongPtr(handle, GWLP_WNDPROC, (LONG_PTR)WindowProcedure::WndProc);
   return (intptr)handle;

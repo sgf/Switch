@@ -9,8 +9,6 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-core_export_ extern HINSTANCE __instance;
-
 namespace {
   static System::Collections::Generic::Dictionary<intptr, delegate<void>> ticks;
   void CALLBACK TimerProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {

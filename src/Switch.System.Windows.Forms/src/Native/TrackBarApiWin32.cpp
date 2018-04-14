@@ -11,8 +11,6 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-core_export_ extern HINSTANCE __instance;
-
 intptr Native::TrackBarApi::Create(const System::Windows::Forms::TrackBar& trackBar) {
   static INITCOMMONCONTROLSEX icc;
   icc.dwSize = sizeof(INITCOMMONCONTROLSEX);
@@ -33,7 +31,7 @@ intptr Native::TrackBarApi::Create(const System::Windows::Forms::TrackBar& track
     break;
   case TickStyle::Both: style |= TBS_AUTOTICKS | TBS_BOTH; break;
   }
-  HWND handle = CreateWindowEx(0, TRACKBAR_CLASS, trackBar.Text().w_str().c_str(), style, trackBar.Left, trackBar.Top, trackBar.Width, trackBar.Height, (HWND)trackBar.Parent()().Handle(), (HMENU)0, __instance, (LPVOID)NULL);
+  HWND handle = CreateWindowEx(0, TRACKBAR_CLASS, trackBar.Text().w_str().c_str(), style, trackBar.Left, trackBar.Top, trackBar.Width, trackBar.Height, (HWND)trackBar.Parent()().Handle(), (HMENU)0, GetModuleHandle(NULL), (LPVOID)NULL);
   WindowProcedure::SetWindowTheme(handle);
   WindowProcedure::DefWindowProcs[(intptr)handle] = (WNDPROC)SetWindowLongPtr(handle, GWLP_WNDPROC, (LONG_PTR)WindowProcedure::WndProc);
   return (intptr)handle;

@@ -15,8 +15,6 @@ using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-core_export_ extern HINSTANCE __instance;
-
 namespace {
   inline COLORREF ColorToRgb(const Color& color) {
     return RGB(color.R, color.G, color.B);
@@ -24,7 +22,7 @@ namespace {
 }
 
 intptr Native::ControlApi::Create(const System::Windows::Forms::Control& control) {
-  HWND handle = CreateWindowEx(0, WC_DIALOG, control.Text().w_str().c_str(), WS_CHILD, control.Left, control.Top, control.Width, control.Height, (HWND)control.Parent()().Handle(), (HMENU)0, __instance, (LPVOID)NULL);
+  HWND handle = CreateWindowEx(0, WC_DIALOG, control.Text().w_str().c_str(), WS_CHILD, control.Left, control.Top, control.Width, control.Height, (HWND)control.Parent()().Handle(), (HMENU)0, GetModuleHandle(NULL), (LPVOID)NULL);
   WindowProcedure::SetWindowTheme(handle);
   WindowProcedure::DefWindowProcs[(intptr)handle] = (WNDPROC)SetWindowLongPtr(handle, GWLP_WNDPROC, (LONG_PTR)WindowProcedure::WndProc);
   return (intptr)handle;
@@ -110,6 +108,7 @@ void Native::ControlApi::SetClientSize(System::Windows::Forms::Control& control)
 }
 
 void Native::ControlApi::SetCursor(const System::Windows::Forms::Control& control) {
+  SetWindowLongPtr((HWND)control.Handle(), GCLP_HCURSOR, (LONG_PTR)control.Cursor().Handle());
 }
 
 void Native::ControlApi::SetEnabled(const System::Windows::Forms::Control& control) {
