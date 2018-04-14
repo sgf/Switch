@@ -13,7 +13,7 @@ intptr Native::CursorApi::Create() {
 
 void Native::CursorApi::Destroy(intptr handle) {
   if (handle != IntPtr::Zero) {
-    
+
   }
 }
 
