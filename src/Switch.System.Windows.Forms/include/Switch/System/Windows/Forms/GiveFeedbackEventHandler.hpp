@@ -17,7 +17,7 @@ namespace Switch {
         /// @brief Represents the method that handles the GiveFeedback event of a Control.
         /// @par Library
         /// Switch.System.Windows.Forms
-        /// @param sender he object where the event handler is attached.
+        /// @param sender The object where the event handler is attached.
         /// @param e The event data.
         /// @remarks When you create a GiveFeedbackEventHandler delegate, you identify the method that will handle the event. To associate the event with your event handler, add an instance of the delegate to the event. The event handler is called whenever the event occurs, unless you remove the delegate. For more information about handling events with delegates, see Handling and Raising Events.
         /// @remarks The following example demonstrates a drag-and-drop operation between two ListBox controls. The example calls the DoDragDrop method when the drag action starts. The drag action starts if the mouse has moved more than SystemInformation.DragSize from the mouse location during the MouseDown event. The IndexFromPoint method is used to determine the index of the item to drag during the MouseDown event.

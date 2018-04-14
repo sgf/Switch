@@ -129,6 +129,7 @@ namespace Native {
     static void SetBackColor(intptr hdc);
     static void SetBackColor(const System::Windows::Forms::Control& control);
     static void SetClientSize(System::Windows::Forms::Control& control);
+    static void SetCursor(const System::Windows::Forms::Control& control);
     static void SetEnabled(const System::Windows::Forms::Control& control);
     static bool SetFocus(const System::Windows::Forms::Control& control);
     static void SetFont(const System::Windows::Forms::Control& control);
@@ -148,6 +149,55 @@ namespace Native {
         return ids[id];
       return System::Int32(id).ToString();
     }
+  };
+
+  class CursorApi static_ {
+  public:
+    static intptr Create();
+    static void Destroy(intptr handle);
+    static System::Drawing::Point GetPosition();
+    static void Hide();
+    static void SetPosition(const System::Drawing::Point& poisition);
+    static void Show();
+  };
+
+  class CursorsApi static_ {
+  public:
+    static intptr AppStarting();
+    static intptr Arrow();
+    static intptr CloseHand();
+    static intptr ContextualMenu();
+    static intptr Cross();
+    static intptr Default();
+    static intptr DisappearingItem();
+    static intptr DragCopy();
+    static intptr DragLink();
+    static intptr Hand();
+    static intptr Help();
+    static intptr HSplit();
+    static intptr IBeam();
+    static intptr No();
+    static intptr NoMove2D();
+    static intptr NoMoveHoriz();
+    static intptr NoMoveVert();
+    static intptr OpenHand();
+    static intptr PanEast();
+    static intptr PanNE();
+    static intptr PanNorth();
+    static intptr PanNW();
+    static intptr PanSE();
+    static intptr PanSouth();
+    static intptr PanSW();
+    static intptr PanWest();
+    static intptr SizeAll();
+    static intptr SizeNESW();
+    static intptr SizeNS();
+    static intptr SizeNWSE();
+    static intptr SizeWE();
+    static intptr UpArrow();
+    static intptr VIBeam();
+    static intptr VSplit();
+    static intptr WaitCursor();
   };
 
   class FormApi static_ {

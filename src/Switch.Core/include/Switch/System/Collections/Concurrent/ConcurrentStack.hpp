@@ -156,7 +156,7 @@ namespace Switch {
 
           /// @brief Attempts to pop and return multiple objects from the top of the ConcurrentStack<T> atomically.
           /// @param items The Array to which objects popped from the top of the ConcurrentStack<T> will be added.
-          /// @param startIndex he zero-based offset in items at which to begin inserting elements from the top of the ConcurrentStack<T>.
+          /// @param startIndex The zero-based offset in items at which to begin inserting elements from the top of the ConcurrentStack<T>.
           /// @param count The number of elements to be popped from top of the ConcurrentStack<T> and inserted into items.
           /// @return Int32 The number of objects successfully popped from the top of the stack and inserted in items.
           /// @exception ArgumentNullException items is a null.

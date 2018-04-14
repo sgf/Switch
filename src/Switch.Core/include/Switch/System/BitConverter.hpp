@@ -196,7 +196,7 @@ namespace Switch {
 
       /// @brief Returns a Boolean value converted from one byte at a specified position in a byte array.
       /// @param value An array of bytes.
-      /// @param startIndex he starting position within value.
+      /// @param startIndex The starting position within value.
       /// @return bool true if the byte at startIndex in value is nonzero; otherwise, false.
       /// @exception ArgumentNullException value is null
       /// @exception ArgumentOutOfRangeException startIndex is less than zero or greater than the length of value minus 1.
@@ -211,7 +211,7 @@ namespace Switch {
 
       /// @brief Returns a char32 converted from two bytes at a specified position in a byte array.
       /// @param value An array of bytes.
-      /// @param startIndex he starting position within value.
+      /// @param startIndex The starting position within value.
       /// @return A char32 formed by four bytes beginning at startIndex.
       /// @exception ArgumentException startIndex equals the length of value minus 1.
       /// @exception ArgumentNullException value is null
@@ -221,7 +221,7 @@ namespace Switch {
 
       /// @brief Returns a double-precision floating point number converted from eight bytes at a specified position in a byte array.
       /// @param value An array of bytes.
-      /// @param startIndex he starting position within value.
+      /// @param startIndex The starting position within value.
       /// @return A double precision floating point number formed by eight bytes beginning at startIndex.
       /// @exception ArgumentException startIndex equals the length of value minus 1.
       /// @exception ArgumentNullException value is null
@@ -231,7 +231,7 @@ namespace Switch {
 
       /// @brief Returns a 16-bit signed integer converted from two bytes at a specified position in a byte array.
       /// @param value An array of bytes.
-      /// @param startIndex he starting position within value.
+      /// @param startIndex The starting position within value.
       /// @return A 16-bit signed integer formed by two bytes beginning at startIndex.
       /// @exception ArgumentException startIndex equals the length of value minus 1.
       /// @exception ArgumentNullException value is null
@@ -241,7 +241,7 @@ namespace Switch {
 
       /// @brief Returns a 32-bit signed integer converted from two bytes at a specified position in a byte array.
       /// @param value An array of bytes.
-      /// @param startIndex he starting position within value.
+      /// @param startIndex The starting position within value.
       /// @return A 32-bit signed integer formed by four bytes beginning at startIndex.
       /// @exception ArgumentException startIndex equals the length of value minus 1.
       /// @exception ArgumentNullException value is null
@@ -251,7 +251,7 @@ namespace Switch {
 
       /// @brief Returns a 64-bit signed integer converted from two bytes at a specified position in a byte array.
       /// @param value An array of bytes.
-      /// @param startIndex he starting position within value.
+      /// @param startIndex The starting position within value.
       /// @return A 64-bit signed integer formed by eight bytes beginning at startIndex.
       /// @exception ArgumentException startIndex equals the length of value minus 1.
       /// @exception ArgumentNullException value is null
@@ -261,7 +261,7 @@ namespace Switch {
 
       /// @brief Returns a single-precision floating point number converted from eight bytes at a specified position in a byte array.
       /// @param value An array of bytes.
-      /// @param startIndex he starting position within value.
+      /// @param startIndex The starting position within value.
       /// @return A single precision floating point number formed by eight bytes beginning at startIndex.
       /// @exception ArgumentException startIndex equals the length of value minus 1.
       /// @exception ArgumentNullException value is null
@@ -271,7 +271,7 @@ namespace Switch {
 
       /// @brief Returns a 16-bit unsigned integer converted from two bytes at a specified position in a byte array.
       /// @param value An array of bytes.
-      /// @param startIndex he starting position within value.
+      /// @param startIndex The starting position within value.
       /// @return A 16-bit unsigned integer formed by two bytes beginning at startIndex.
       /// @exception ArgumentException startIndex equals the length of value minus 1.
       /// @exception ArgumentNullException value is null
@@ -287,7 +287,7 @@ namespace Switch {
 
       /// @brief Returns a 32-bit signed integer converted from two bytes at a specified position in a byte array.
       /// @param value An array of bytes.
-      /// @param startIndex he starting position within value.
+      /// @param startIndex The starting position within value.
       /// @return A 32-bit signed integer formed by four bytes beginning at startIndex.
       /// @exception ArgumentException startIndex equals the length of value minus 1.
       /// @exception ArgumentNullException value is null
@@ -303,7 +303,7 @@ namespace Switch {
 
       /// @brief Returns a 64-bit unsigned integer converted from two bytes at a specified position in a byte array.
       /// @param value An array of bytes.
-      /// @param startIndex he starting position within value.
+      /// @param startIndex The starting position within value.
       /// @return A 64-bit unsigned integer formed by eight bytes beginning at startIndex.
       /// @exception ArgumentException startIndex equals the length of value minus 1.
       /// @exception ArgumentNullException value is null

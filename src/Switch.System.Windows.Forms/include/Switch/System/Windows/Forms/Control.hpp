@@ -15,6 +15,8 @@
 #include "../../../SystemWindowsFormsExport.hpp"
 #include "AnchorStyles.hpp"
 #include "ControlStyles.hpp"
+#include "CreateParams.hpp"
+#include "Cursors.hpp"
 #include "InvalidateEventHandler.hpp"
 #include "IWin32Window.hpp"
 #include "KeyEventHandler.hpp"
@@ -386,7 +388,7 @@ namespace Switch {
           /// @brief Gets the distance, in pixels, between the bottom edge of the control and the top edge of its container's client area.
           /// @param value An Int32 representing the distance, in pixels, between the bottom edge of the control and the top edge of its container's client area.
           /// @remarks The value of this property is equal to the sum of the Top property value, and the Height property value.
-          /// @remarks he Bottom property is a read-only property. You can manipulate this property value by changing the value of the Top or Height properties or calling the SetBounds, SetBoundsCore, UpdateBounds, or SetClientSizeCore methods.
+          /// @remarks The Bottom property is a read-only property. You can manipulate this property value by changing the value of the Top or Height properties or calling the SetBounds, SetBoundsCore, UpdateBounds, or SetClientSizeCore methods.
           /// @par examples
           /// The following code example uses the Bottom property to define the lower limit of a TextBox control relative to the client area of the container.
           /// @code
@@ -628,6 +630,41 @@ namespace Switch {
             get_ {return this->created;}
           };
 
+          /// @brief Gets or sets the cursor that is displayed when the mouse pointer is over the control.
+          /// @return A Cursor that represents the cursor to display when the mouse pointer is over the control.
+          /// @remarks Assign a Cursor to the Cursor property of the control to change the cursor displayed when the mouse pointer is over the control. To temporarily change the mouse cursor for all controls on your application set the Cursor.Current property. Typically you would set the Cursor.Current property to a wait cursor when populating a ComboBox or saving or loading a file.
+          /// @remarks The Cursor property is an ambient property. An ambient property is a control property that, if not set, is retrieved from the parent control. For example, a Button will have the same BackColor as its parent Form by default. For more information about ambient properties, see the AmbientProperties class or the Control class overview.
+          /// @par Notes to Inheritors
+          /// When overriding the Cursor property in a derived class, use the base class's Cursor property to extend the base implementation. Otherwise, you must provide all the implementation. You are not required to override both the get and setmethods of the Cursor property; you can override only one if needed.
+          /// @par Examples
+          /// The following code example fills a ComboBox with the user's available logical drives. The example also sets the combo box's Cursor property so the Cursors.Hand cursor is displayed when the mouse pointer is over the drop-down button. This code requires that you have a Form with a ComboBox on it.
+          /// @code
+          /// void Form1_Load(const object& sender, const EventArgs& e) {
+          ///   // Display the hand cursor when the mouse pointer
+          ///   // is over the combo box drop-down button.
+          ///   comboBox1.Cursor = Cursors::Hand;
+          ///
+          ///   // Fill the combo box with all the logical
+          ///   // drives available to the user.
+          ///   try {
+          ///     for (string logicalDrive : Environment::GetLogicalDrives()) {
+          ///       comboBox1.Items().Add(logicalDrive);
+          ///     }
+          ///   } catch(const Exception& ex) {
+          ///     MessageBox.Show(ex.Message);
+          ///   }
+          /// }
+          /// @endcode
+          property_<System::Windows::Forms::Cursor> Cursor {
+            get_ {return this->cursor;},
+            set_ {
+              if (this->cursor != value) {
+                this->cursor = value;
+                this->OnCursorChanged(EventArgs::Empty);
+              }
+            }
+          };
+
           /// @brief Gets the default background color of the control.
           /// @return System::Drawing::Color The default background Color of the control. The default is SystemColors::Control.
           /// @remarks This is the default BackColor property value of a generic top-level control. Derived classes can have different defaults.
@@ -660,7 +697,7 @@ namespace Switch {
           /// | Arabic Windows                         | Tahoma, 8 point.                                                  |
           /// | Other Windows operating system/culture | MS Shell Dlg logical font, typically Microsoft San Serif 8 point. |
           /// | macOS                                  | .AppleSystemUIFont 9.75 point.                                    |
-          /// | Linux                                  |                                                                   |
+          /// | Linux                                  | Cantarell 11 point.                                               |
           /// @remarks MS Shell Dlg maps to a font set in the system registry.
           /// @remarks If the previous fonts are not installed, the default font is Tahoma, 8 point. If Tahoma, 8 point, is not installed, DefaultFontreturns the value of the GenericSansSerif property
           /// @par examples
@@ -1942,6 +1979,14 @@ namespace Switch {
           /// @endcode
           EventHandler ClientSizeChanged;
 
+          /// @brief Occurs when the value of the Cursor property changes.
+          /// @remarks This event is raised if the Cursor property is changed by either a programmatic modification or user interaction.
+          /// @remarks For more information about handling events, see Handling and Raising Events.
+          /// @par Examples
+          /// The following code example demonstrates changing the mouse cursor using the Control.Cursor property, the Cursor class, and the Cursors class. The example creates a form that contains a ComboBox control, a Panel control, and a ListView control. TheComboBox contains all cursors provided by the Cursors class. When the user selects a mouse cursor in the ComboBox, the Control.Cursor property is set to the selected cursor, which updates the cursor for the Panel. The ListView is updated every time the Control.CursorChanged event occurs.
+          /// @include Cursor.cpp
+          EventHandler CursorChanged;
+
           /// @brief Occurs when the control is double-clicked.
           /// @remarks A double-click is determined by the mouse settings of the user's operating System. The user can set the time between clicks of a mouse button that should be considered a double-click rather than two clicks. The Click event is raised every time a control is double-clicked. For example, if you have event handlers for the Click and DoubleClick events of a Form, the Click and DoubleClick events are raised when the form is double-clicked and both methods are called. If a control is double-clicked and that control does not support the DoubleClick event, the Click event might be raised twice.
           /// @remarks You must set the StandardDoubleClick and StandardClick values of ControlStyles to true for this event to be raised. These values might already be set to true if you are inheriting from existing Windows Forms controls.
@@ -2600,6 +2645,15 @@ namespace Switch {
             get_ {return this->canEnableIme;}
           };
 
+          /// @brief Gets the required creation parameters when the control handle is created.
+          /// @return A CreateParams that contains the required creation parameters when the handle to the control is created.
+          /// @remarks The CreateParams property should not be overridden and used to adjust the properties of your derived control. Properties such as the CreateParams.Caption, CreateParams.Width, and CreateParams.Height should be set by the corresponding properties in your control such as Control.Text, Control.Width and Control.Height. The CreateParams should only be extended when you are wrapping a standard Windows control class or to set styles not provided by the Windows Forms namespace. For more information about creating control parameters, see the CreateWindow and CreateWindowEx functions and the CREATESTRUCTstructure documentation.
+          /// @par Notes to Inheritors
+          /// When overriding the CreateParams property in a derived class, use the base class's CreateParams property to extend the base implementation. Otherwise, you must provide all the implementation.
+          property_<System::Windows::Forms::CreateParams, readonly_> CreateParams {
+            get_ {return this->createParams;}
+          };
+
           /// @brief Gets the default size of the control.
           /// @return System::Drawing::Size The default Size of the control.
           /// @remarks The DefaultSize property represents the Size of the control when it is initially created. You can adjust the size of the control by setting its Size property value.
@@ -2798,6 +2852,38 @@ namespace Switch {
           /// @par Notes to Inheritors
           /// When overriding OnCreateControl in a derived class, be sure to call the base class's OnCreateControl method so that registered delegates receive the event.
           virtual void OnCreateControl() {}
+
+          /// @brief Raises the CursorChanged event.
+          /// @param e An EventArgs that contains the event data.
+          /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
+          /// @remarks The OnCursorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+          /// @par Notes to Inheritors
+          /// When overriding OnCursorChanged in a derived class, be sure to call the base class's OnCursorChanged method so that registered delegates receive the event.
+          /// @par Examples
+          /// The following code example is an event-raising method that is executed when the Text property value changes. The Control class has several methods with the name pattern OnPropertyNameChanged that raise the corresponding PropertyNameChanged event when the PropertyName value changes (PropertyName represents the name of the corresponding property).<br><br>
+          /// The following code example changes the ForeColor of a TextBox derived class displaying currency data. The example converts the text to a decimal number and changes the ForeColor to Color.Red if the number is negative and to Color.Black if the number is positive. This example requires that you have a class that derives from the TextBox class.
+          /// @code
+          /// void OnTextChanged(const System::EventArgs& e) override {
+          ///   try {
+          ///     // Convert the text to a Double and determine
+          ///     // if it is a negative number.
+          ///     if (Double::Parse(this->Text) < 0) {
+          ///       // If the number is negative, display it in Red.
+          ///       this->ForeColor = Color::Red;
+          ///     } else {
+          ///       // If the number is not negative, display it in Black.
+          ///       this->ForeColor = Color::Black;
+          ///     }
+          ///   } catch (...) {
+          ///     // If there is an error, display the
+          ///     // text using the system colors.
+          ///     this->ForeColor = SystemColors::ControlText;
+          ///   }
+          ///
+          ///   this->TextBox::OnTextChanged(e);
+          /// }
+          /// @endcode
+          virtual void OnCursorChanged(const EventArgs& e);
 
           /// @brief Raises the DoubleClick event.
           /// @param e An EventArgs that contains the event data.
@@ -3661,6 +3747,8 @@ namespace Switch {
           bool containsFocus = false;
           ControlCollection controls {*this};
           bool created = false;
+          System::Windows::Forms::CreateParams createParams;
+          System::Windows::Forms::Cursor cursor = System::Windows::Forms::Cursors::Default;
           System::Drawing::Color defaultBackColor;
           System::Drawing::Color defaultForeColor;
           bool enabled = true;

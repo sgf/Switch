@@ -173,6 +173,13 @@ void Native::ControlApi::SetClientSize(System::Windows::Forms::Control& control)
   }
 }
 
+void Native::ControlApi::SetCursor(const System::Windows::Forms::Control& control) {
+  //if (is<System::Windows::Forms::Button>(control))
+  //  [(NSButton*)control.Handle() addCursorRect:[(NSButton*)control.Handle() bounds] cursor:[(NSCursor*)control.Cursor().Handle()]];
+  //[(NSView*)control.Handle() addCursorRect:[(NSView*)control.Handle() bounds] cursor:[(NSCursor*)control.Cursor().Handle()]];
+  //[(NSView*)control.Handle() addCursorRect:[(NSView*)control.Handle() bounds] cursor:[(NSCursor*)control.Cursor().Handle()]];
+}
+
 void Native::ControlApi::SetEnabled(const System::Windows::Forms::Control& control) {
   //if (!is<System::Windows::Forms::ContainerControl>(control) && !is<System::Windows::Forms::ProgressBar>(control))
   //  [(NSControl*)control.Handle() setEnabled:control.Enabled()];

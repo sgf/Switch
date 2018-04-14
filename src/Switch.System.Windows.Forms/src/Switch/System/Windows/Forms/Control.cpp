@@ -125,6 +125,7 @@ void Control::CreateHandle() {
   Native::ControlApi::SetLocation(*this); // Must be after SetClientSize or SetSize
   if (this->backColor.HasValue)
     Native::ControlApi::SetBackColor(*this);
+  Native::ControlApi::SetCursor(*this);
   Native::ControlApi::SetEnabled(*this);
   Native::ControlApi::SetFont(*this);
   if (this->foreColor.HasValue)
@@ -200,6 +201,12 @@ void Control::OnClientSizeChanged(const EventArgs& e) {
   else
     setClientSizeAfterHandleCreated = true;
   this->ClientSizeChanged(*this, e);
+}
+
+void Control::OnCursorChanged(const EventArgs& e) {
+  if (this->IsHandleCreated)
+    Native::ControlApi::SetCursor(*this);
+  this->CursorChanged(*this, e);
 }
 
 void Control::OnEnabledChanged(const EventArgs& e) {

@@ -102,6 +102,9 @@ void Native::ControlApi::SetClientSize(System::Windows::Forms::Control& control)
     control.Size = control.ClientSize;
 }
 
+void Native::ControlApi::SetCursor(const System::Windows::Forms::Control& control) {
+}
+
 void Native::ControlApi::SetEnabled(const System::Windows::Forms::Control& control) {
   ((Native::Widget*)control.Handle())->ToWidget().set_sensitive(control.Enabled);
 }
