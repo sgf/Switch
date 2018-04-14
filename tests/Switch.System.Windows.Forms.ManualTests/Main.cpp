@@ -22,7 +22,7 @@ namespace ManualTests {
       this->panel.BackColor = System::Drawing::Color::White;
       this->panel.BorderStyle = BorderStyle::Fixed3D;
       this->panel.Cursor = Cursors::AppStarting;
- 
+
       this->Controls().AddRange({this->button, this->panel});
     }
 

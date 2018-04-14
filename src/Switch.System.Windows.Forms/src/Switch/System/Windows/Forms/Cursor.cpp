@@ -16,7 +16,7 @@ Cursor::~Cursor() {
 
 property_<System::Drawing::Point> Cursor::Position {
   []() {return Native::CursorApi::GetPosition();},
-  [](const System::Drawing::Point& value) {Native::CursorApi::SetPosition(value);}
+  [](const System::Drawing::Point & value) {Native::CursorApi::SetPosition(value);}
 };
 
 void Cursor::Hide() {
