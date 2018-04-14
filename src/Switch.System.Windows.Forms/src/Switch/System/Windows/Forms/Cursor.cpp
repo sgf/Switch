@@ -2,6 +2,7 @@
 #include "../../../../Native/Api.hpp"
 
 using namespace System;
+using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 Cursor::Cursor(intptr handle) {
@@ -15,7 +16,7 @@ Cursor::~Cursor() {
 
 property_<System::Drawing::Point> Cursor::Position {
   []() {return Native::CursorApi::GetPosition();},
-  [](const auto & value) {Native::CursorApi::SetPosition(value);}
+  [](const System::Drawing::Point& value) {Native::CursorApi::SetPosition(value);}
 };
 
 void Cursor::Hide() {

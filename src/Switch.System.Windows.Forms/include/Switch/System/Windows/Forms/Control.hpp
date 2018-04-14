@@ -816,7 +816,7 @@ namespace Switch {
           ///
           property_<int32> FontHeight {
             get_ {return this->Font().Height();},
-            set_ {this->Font = System::Drawing::Font(this->Font().FontFamily, value, this->Font().Style, Drawing::GraphicsUnit::Pixel, this->Font().GdiCharSet, this->Font().GdiVerticalFont);}
+            set_ {this->Font = System::Drawing::Font(this->Font().FontFamily, (float)value, this->Font().Style, Drawing::GraphicsUnit::Pixel, this->Font().GdiCharSet, this->Font().GdiVerticalFont);}
           };
 
           /// @brief Gets or sets the foreground color of the control.
