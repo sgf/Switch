@@ -108,7 +108,7 @@ void Native::ControlApi::SetClientSize(System::Windows::Forms::Control& control)
 }
 
 void Native::ControlApi::SetCursor(const System::Windows::Forms::Control& control) {
-  SetWindowLongPtr((HWND)control.Handle(), GCLP_HCURSOR, (LONG_PTR)control.Cursor().Handle());
+  ::SetCursor((HCURSOR)control.Cursor().Handle());
 }
 
 void Native::ControlApi::SetEnabled(const System::Windows::Forms::Control& control) {

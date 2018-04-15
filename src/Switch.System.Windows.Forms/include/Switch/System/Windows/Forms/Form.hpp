@@ -79,6 +79,7 @@ namespace Switch {
             this->visible = false;
             this->SetStyle(ControlStyles::UserPaint, false);
             //this->BackColor = System::Drawing::SystemColors::Window;
+            this->cursor = DefaultCursor;
             this->font = DefaultFont;
           }
 

@@ -35,6 +35,8 @@ namespace Switch {
           Cursor() {}
           Cursor(const Cursor& cursor) : data(cursor.data) {}
           Cursor& operator=(const Cursor&) = default;
+          bool operator<(const Cursor& cursor) const { return this->data->handle < cursor.data->handle; }
+          bool operator>(const Cursor& cursor) const { return this->data->handle > cursor.data->handle; }
           ~Cursor();
           /// @endcond
 

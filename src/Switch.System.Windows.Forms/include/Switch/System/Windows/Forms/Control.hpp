@@ -656,7 +656,7 @@ namespace Switch {
           /// }
           /// @endcode
           property_<System::Windows::Forms::Cursor> Cursor {
-            get_ {return this->cursor;},
+            get_ {return !this->cursor.HasValue && this->parent ? this->parent().Cursor() : this->cursor.GetValueOrDefault(DefaultCursor);},
             set_ {
               if (this->cursor != value) {
                 this->cursor = value;
@@ -686,6 +686,8 @@ namespace Switch {
           /// }
           /// @endcode
           static property_<System::Drawing::Color, readonly_> DefaultBackColor;
+
+          static property_<System::Windows::Forms::Cursor, readonly_> DefaultCursor;
 
           /// @brief Gets the default font of the control.
           /// @return The default Font of the control. The value returned will vary depending on the user's operating system the local culture setting of their system.
@@ -3748,7 +3750,7 @@ namespace Switch {
           ControlCollection controls {*this};
           bool created = false;
           System::Windows::Forms::CreateParams createParams;
-          System::Windows::Forms::Cursor cursor = System::Windows::Forms::Cursors::Default;
+          Nullable<System::Windows::Forms::Cursor> cursor;
           System::Drawing::Color defaultBackColor;
           System::Drawing::Color defaultForeColor;
           bool enabled = true;

@@ -60,6 +60,22 @@ namespace {
 
 ref<Control> Control::controlEntered;
 
+property_<System::Drawing::Color, readonly_> Control::DefaultBackColor{
+  [] { return System::Drawing::SystemColors::Control(); }
+};
+
+property_<System::Windows::Forms::Cursor, readonly_> Control::DefaultCursor{
+  [] { return System::Windows::Forms::Cursors::Default(); }
+};
+
+property_<System::Drawing::Font, readonly_> Control::DefaultFont{
+  [] { return System::Drawing::SystemFonts::DefaultFont(); }
+};
+
+property_<System::Drawing::Color, readonly_> Control::DefaultForeColor{
+  [] { return System::Drawing::SystemColors::ControlText(); }
+};
+
 void Control::ControlCollection::ChangeParent(ref<Control> value) {
   if (value().parent != null)
     value().parent().controls.Remove(value);
@@ -81,18 +97,6 @@ Control::Control() {
   SetStyle(ControlStyles((int32)ControlStyles::AllPaintingInWmPaint | (int32)ControlStyles::UserPaint | (int32)ControlStyles::StandardClick | (int32)ControlStyles::StandardDoubleClick | (int32)ControlStyles::UseTextForAccessibility | (int32)ControlStyles::Selectable), true);
   this->size = GetDefaultSize();
 }
-
-property_<System::Drawing::Color, readonly_> Control::DefaultBackColor {
-  [] { return System::Drawing::SystemColors::Control(); }
-};
-
-property_<System::Drawing::Font, readonly_> Control::DefaultFont {
-  [] { return System::Drawing::SystemFonts::DefaultFont(); }
-};
-
-property_<System::Drawing::Color, readonly_> Control::DefaultForeColor {
-  [] { return System::Drawing::SystemColors::ControlText(); }
-};
 
 System::Drawing::Size Control::GetAutoSize() const {
   return Native::ControlApi::GetTextSize(*this);
@@ -205,7 +209,8 @@ void Control::OnClientSizeChanged(const EventArgs& e) {
 
 void Control::OnCursorChanged(const EventArgs& e) {
   if (this->IsHandleCreated)
-    Native::ControlApi::SetCursor(*this);
+    //Native::ControlApi::SetCursor(*this);
+    SendMessage(WM_SETCURSOR, this->handle, (intptr)1);
   this->CursorChanged(*this, e);
 }
 
@@ -609,7 +614,10 @@ void Control::WmShowWindow(Message& message) {
 
 void Control::WmSetCursor(Message& message) {
   //System::Diagnostics::Debug::WriteLineIf(ShowDebugTrace::WindowMessage, "Control::WmSetCursor message=" + message + ", name=" + this->name);
-  this->DefWndProc(message);
+  if (message.WParam == this->handle && (message.LParam & (intptr)0xFFFF) == (intptr)1)
+    Native::ControlApi::SetCursor(*this);
+  else
+    this->DefWndProc(message);
 }
 
 void Control::WmSetFocus(Message& message) {

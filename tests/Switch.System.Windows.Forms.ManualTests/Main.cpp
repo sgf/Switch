@@ -21,7 +21,7 @@ namespace ManualTests {
       this->panel.Location = System::Drawing::Point(10, 50);
       this->panel.BackColor = System::Drawing::Color::White;
       this->panel.BorderStyle = BorderStyle::Fixed3D;
-      this->panel.Cursor = Cursors::AppStarting;
+      this->panel.Cursor = Cursors::Hand;
 
       this->Controls().AddRange({this->button, this->panel});
     }
