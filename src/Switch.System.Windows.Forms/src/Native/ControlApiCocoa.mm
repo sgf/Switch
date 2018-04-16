@@ -174,10 +174,12 @@ void Native::ControlApi::SetClientSize(System::Windows::Forms::Control& control)
 }
 
 void Native::ControlApi::SetCursor(const System::Windows::Forms::Control& control) {
-  //if (is<System::Windows::Forms::Button>(control))
-  //  [(NSButton*)control.Handle() addCursorRect:[(NSButton*)control.Handle() bounds] cursor:[(NSCursor*)control.Cursor().Handle()]];
-  //[(NSView*)control.Handle() addCursorRect:[(NSView*)control.Handle() bounds] cursor:[(NSCursor*)control.Cursor().Handle()]];
-  //[(NSView*)control.Handle() addCursorRect:[(NSView*)control.Handle() bounds] cursor:[(NSCursor*)control.Cursor().Handle()]];
+  /*
+  if (is<System::Windows::Forms::Form>(control))
+    [(NSWindow*)control.Handle() enableCursorRects];
+  if (is<System::Windows::Forms::Panel>(control) || is<System::Windows::Forms::Form>(control))
+    [(NSView*)control.Handle() addCursorRect:[(NSView*)control.Handle() bounds] cursor:(NSCursor*)control.Cursor().Handle()];
+   */
 }
 
 void Native::ControlApi::SetEnabled(const System::Windows::Forms::Control& control) {

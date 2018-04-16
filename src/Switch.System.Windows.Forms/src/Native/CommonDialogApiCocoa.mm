@@ -197,7 +197,11 @@ bool Native::CommonDialogApi::RunFolderBrowserDialog(intptr hwnd, System::Window
     path = folderBrowserDialog.SelectedPath;
   [openPanel setDirectoryURL:[NSURL fileURLWithPath:[NSString stringWithUTF8String:path.c_str()]]];
 
-  if ([openPanel runModal] == NSModalResponseCancel) return false;
+  NSModalResponse response = [openPanel runModal];
+  NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
+  [NSApp runModalSession:session];
+  [NSApp endModalSession:session];
+  if (response == NSModalResponseCancel) return false;
 
   folderBrowserDialog.SelectedPath = [[(NSURL*)[[openPanel URLs] objectAtIndex:0] path] UTF8String];
   return true;
@@ -265,7 +269,11 @@ bool Native::CommonDialogApi::RunOpenFileDialog(intptr hwnd, System::Windows::Fo
   if (openFileDialog.__get_filters__().Count != 0)
     [openPanel setAccessoryView:CreateFilterViewForFileDialog(openPanel, openFileDialog.__get_filters__(), openFileDialog.FilterIndex - 1)];
 
-  if ([openPanel runModal] == NSModalResponseCancel) return false;
+  NSModalResponse response = [openPanel runModal];
+  NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
+  [NSApp runModalSession:session];
+  [NSApp endModalSession:session];
+  if (response == NSModalResponseCancel) return false;
 
   if (!openFileDialog.Multiselect)
     openFileDialog.FileName = [[(NSURL*)[[openPanel URLs] objectAtIndex:0] path] UTF8String];
@@ -290,7 +298,11 @@ bool Native::CommonDialogApi::RunSaveFileDialog(intptr hwnd, System::Windows::Fo
   if (saveFileDialog.__get_filters__().Count != 0)
     [savePanel setAccessoryView:CreateFilterViewForFileDialog(savePanel, saveFileDialog.__get_filters__(), saveFileDialog.FilterIndex - 1)];
 
-  if ([savePanel runModal] == NSModalResponseCancel) return false;
+  NSModalResponse response = [savePanel runModal];
+  NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
+  [NSApp runModalSession:session];
+  [NSApp endModalSession:session];
+  if (response == NSModalResponseCancel) return false;
 
   saveFileDialog.FileName = [[[savePanel URL] path] UTF8String];
   return true;

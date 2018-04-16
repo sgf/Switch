@@ -93,11 +93,13 @@ namespace Native {
     }
 
     static void MouseMoveEvent(NSEvent* event, System::Windows::Forms::Control& control) {
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_SETCURSOR, (intptr)control.Handle(), (intptr)0x20000001, 0, (intptr)event);
+      control.WndProc(message);
       if (hover) {
-        System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_MOUSEHOVER, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
+        message = System::Windows::Forms::Message::Create((intptr)event.window, WM_MOUSEHOVER, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
         control.WndProc(message);
       }
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_MOUSEMOVE, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
+      message = System::Windows::Forms::Message::Create((intptr)event.window, WM_MOUSEMOVE, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
       control.WndProc(message);
     }
 

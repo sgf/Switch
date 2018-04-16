@@ -31,71 +31,48 @@ namespace {
 
     static void CreateAppication() {
       @autoreleasepool {
+        NSMenu* applicationMenu = [[NSMenu alloc] initWithTitle:@"Application"];
+        [applicationMenu addItem:[[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString([NSString stringWithUTF8String:"About %@"] , nil), [[NSProcessInfo processInfo] processName]] action:@selector(orderFrontStandardAboutPanel:) keyEquivalent:@""]];
+        [applicationMenu addItem:[NSMenuItem separatorItem]];
+        NSMenuItem* servicesMenuItem = [applicationMenu addItemWithTitle:NSLocalizedString([NSString stringWithUTF8String:"Services"], nil) action:nil keyEquivalent:@""];
+        NSMenu* servicesMenu = [[NSMenu alloc] initWithTitle:@""];
+        [applicationMenu setSubmenu:servicesMenu forItem:servicesMenuItem];
+        [applicationMenu addItem:[NSMenuItem separatorItem]];
+        [applicationMenu addItemWithTitle:[NSString stringWithFormat:NSLocalizedString([NSString stringWithUTF8String:"Hide %@"],nil), [[NSProcessInfo processInfo] processName]] action:@selector(hide:) keyEquivalent:@"h"];
+        NSMenuItem* hidOtherMenuItem = [applicationMenu addItemWithTitle:NSLocalizedString([NSString stringWithUTF8String:"Hide Others"] , nil) action:@selector(hideOtherApplications:) keyEquivalent:@"h"];
+        [hidOtherMenuItem setKeyEquivalentModifierMask:(NSEventModifierFlagOption|NSEventModifierFlagCommand)];
+        [applicationMenu addItemWithTitle:NSLocalizedString([NSString stringWithUTF8String:"Show All"] , nil) action:@selector(unhideAllApplications:) keyEquivalent:@""];
+        [applicationMenu addItem:[NSMenuItem separatorItem]];
+        [applicationMenu addItem:[[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString([NSString stringWithUTF8String:"Quit %@"] , nil), [[NSProcessInfo processInfo] processName]] action:@selector(terminate:) keyEquivalent:@"q"]];
+        
+        NSMenuItem* applicationMenuItem = [[NSMenuItem alloc] init];
+        [applicationMenuItem setSubmenu:applicationMenu];
+ 
+        NSMenu* windowMenu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"Window" , nil)];
+        
+        NSMenuItem* windowMenuItem = [[NSMenuItem alloc] init];
+        [windowMenuItem setSubmenu:windowMenu];
+        
+        NSMenu* helpMenu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"Help" , nil)];
+        
+        NSMenuItem* helpMenuItem = [[NSMenuItem alloc] init];
+        [helpMenuItem setSubmenu:helpMenu];
+
+        NSMenu* mainMenu = [[NSMenu alloc] init];
+        [mainMenu addItem:applicationMenuItem];
+        [mainMenu addItem:windowMenuItem];
+        [mainMenu addItem:helpMenuItem];
+
         [NSApplication sharedApplication];
+        [NSApp setMainMenu:mainMenu];
+        [NSApp setServicesMenu:servicesMenu];
+        [NSApp setWindowsMenu:windowMenu];
+        [NSApp setHelpMenu:helpMenu];
+        [NSApp setServicesMenu:servicesMenu];
         [NSApp finishLaunching];
         IgnoreMessages();
         [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
       }
-    }
-
-    static void CreateMenuBar() {
-      static BOOL donethat = NO;
-      if (donethat) return;
-      donethat = YES;
-      NSMenu *mainmenu, *services = nil, *appleMenu;
-      NSMenuItem *menuItem;
-      NSString *title;
-      
-      NSString *nsappname = [[[NSBundle mainBundle] performSelector:@selector(localizedInfoDictionary)] objectForKey:@"CFBundleName"];
-      if (nsappname == nil)
-        nsappname = [[NSProcessInfo processInfo] processName];
-      appleMenu = [[NSMenu alloc] initWithTitle:@""];
-      /* Add menu items */
-      title = [NSString stringWithFormat:NSLocalizedString([NSString stringWithUTF8String:"About %@"],nil), nsappname];
-      //menuItem = [appleMenu addItemWithTitle:title action:@selector(showPanel) keyEquivalent:@""];
-      //FLaboutItemTarget *about = [[FLaboutItemTarget alloc] init];
-      //[menuItem setTarget:about];
-      [appleMenu addItem:[NSMenuItem separatorItem]];
-      // Print front window
-      title = NSLocalizedString([NSString stringWithUTF8String:"Print Front Window"], nil);
-      if ([title length] > 0) {
-        menuItem = [appleMenu addItemWithTitle:title action:@selector(printPanel) keyEquivalent:@""];
-        //[menuItem setTarget:about];
-        [menuItem setEnabled:YES];
-        [appleMenu addItem:[NSMenuItem separatorItem]];
-      }
-      // Services Menu
-      services = [[NSMenu alloc] initWithTitle:@""];
-      menuItem = [appleMenu addItemWithTitle:NSLocalizedString([NSString stringWithUTF8String:"Services"], nil) action:nil keyEquivalent:@""];
-      [appleMenu setSubmenu:services forItem:menuItem];
-      [appleMenu addItem:[NSMenuItem separatorItem]];
-      // Hide AppName
-      title = [NSString stringWithFormat:NSLocalizedString([NSString stringWithUTF8String:"Hide %@"],nil), nsappname];
-      [appleMenu addItemWithTitle:title action:@selector(hide:) keyEquivalent:@"h"];
-      // Hide Others
-      menuItem = [appleMenu addItemWithTitle:NSLocalizedString([NSString stringWithUTF8String:"Hide Others"] , nil) action:@selector(hideOtherApplications:) keyEquivalent:@"h"];
-      [menuItem setKeyEquivalentModifierMask:(NSEventModifierFlagOption|NSEventModifierFlagCommand)];
-      // Show All
-      [appleMenu addItemWithTitle:NSLocalizedString([NSString stringWithUTF8String:"Show All"] , nil) action:@selector(unhideAllApplications:) keyEquivalent:@""];
-      [appleMenu addItem:[NSMenuItem separatorItem]];
-      // Quit AppName
-      title = [NSString stringWithFormat:NSLocalizedString([NSString stringWithUTF8String:"Quit %@"] , nil), nsappname];
-      menuItem = [appleMenu addItemWithTitle:title action:@selector(terminate:) keyEquivalent:@"q"];
-      //[menuItem setTarget:about];
-      
-      /* Put menu into the menubar */
-      menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
-      [menuItem setSubmenu:appleMenu];
-      mainmenu = [[NSMenu alloc] initWithTitle:@""];
-      [mainmenu addItem:menuItem];
-      [NSApp setMainMenu:mainmenu];
-      if (services) {
-        [NSApp setServicesMenu:services];
-        [services release];
-      }
-      [mainmenu release];
-      [appleMenu release];
-      [menuItem release];
     }
     
   private:
@@ -219,13 +196,15 @@ DialogResult Native::ApplicationApi::ShowMessageBox(intptr owner, const string& 
     if (displayHelpButton)
       [alert setShowsHelp:YES];
     DialogResult result = showModal[buttons](alert);
+    NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
+    [NSApp runModalSession:session];
+    [NSApp endModalSession:session];
     return result;
   }
 }
 
 void Native::ApplicationApi::Start() {
   ApplicationCocoaApi::CreateAppication();
-  ApplicationCocoaApi::CreateMenuBar();
 }
 
 void Native::ApplicationApi::Stop() {
