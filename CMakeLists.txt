@@ -1,7 +1,8 @@
 #_______________________________________________________________________________
 #                                                                        Project
 cmake_minimum_required(VERSION 3.2)
-project(Switch VERSION 0.7.1)
+include(scripts/cmake/Version.cmake)
+project(Switch VERSION ${SWITCH_VERSION})
 set(PROJECT_BRIEF "Native C++ port of .Net Framework on Windows, macOS, Linux, iOS and android.")
 set(PROJECT_AUTHOR gammasoft71)
 set(PROJECT_LOGO "${CMAKE_CURRENT_SOURCE_DIR}/docs/Pictures/Switch80x80.png")

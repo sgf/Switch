@@ -1,9 +1,14 @@
 #_______________________________________________________________________________
 #                                                                        Project
 cmake_minimum_required(VERSION 3.2)
-project(Examples)
+include(../scripts/cmake/Version.cmake)
+project(Examples VERSION ${SWITCH_VERSION})
 set(PROJECT_BRIEF "These examples show how to use Switch.")
 set(PROJECT_AUTHOR gammasoft71)
+
+#_______________________________________________________________________________
+#                                                             add Switch package
+find_package(Switch REQUIRED)
 
 #_______________________________________________________________________________
 #                                                                  Build Options

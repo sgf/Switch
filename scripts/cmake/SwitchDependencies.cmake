@@ -11,6 +11,17 @@ if (MSVC)
 endif()
 
 #_______________________________________________________________________________
+#                                                        set application version
+if (NOT APPLICATION_VERSION)
+  set(APPLICATION_VERSION "${PROJECT_VERSION}")
+  if(MSVC)
+  elseif (APPLE)
+    set(MACOSX_BUNDLE_BUNDLE_VERSION ${APPLICATION_VERSION})
+  elseif (UNIX)
+  endif()
+endif()
+
+#_______________________________________________________________________________
 #                                                          add external packages
 if(NOT APPLE AND NOT ANDROID AND NOT CMAKE_HOST_SOLARIS AND UNIX)
   find_package(PkgConfig REQUIRED)
@@ -23,6 +34,16 @@ if(NOT APPLE AND NOT ANDROID AND NOT CMAKE_HOST_SOLARIS AND UNIX)
 endif ()
 
 #_______________________________________________________________________________
+#                                                  SetSwitchApplicationCopyright
+macro(SetSwitchApplicationCopyright APPLICATION_COPYRIGHT)
+  if(MSVC)
+  elseif (APPLE)
+    set(MACOSX_BUNDLE_COPYRIGHT ${APPLICATION_COPYRIGHT})
+  elseif (UNIX)
+  endif()
+endmacro()
+
+#_______________________________________________________________________________
 #                                                       SetSwitchApplicationIcon
 macro(SetSwitchApplicationIcon PATH_APPLICATION_ICON)
   if(MSVC)
@@ -31,6 +52,46 @@ macro(SetSwitchApplicationIcon PATH_APPLICATION_ICON)
     configure_file(${PATH_APPLICATION_ICON}.icns ${CMAKE_CURRENT_BINARY_DIR}/application.icns COPYONLY)
     set(MACOSX_BUNDLE_ICON_FILE application.icns)
     set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/application.icns PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+  elseif (UNIX)
+  endif()
+endmacro()
+
+#_______________________________________________________________________________
+#                                                 SetSwitchApplicationIdentifier
+macro(SetSwitchApplicationIdentifier APPLICATION_IDENTIFIER)
+  if(MSVC)
+  elseif (APPLE)
+    set(MACOSX_BUNDLE_GUI_IDENTIFIER "${APPLICATION_IDENTIFIER}")
+  elseif (UNIX)
+  endif()
+endmacro()
+
+#_______________________________________________________________________________
+#                                                SetSwitchApplicationInformation
+macro(SetSwitchApplicationInformation APPLICATION_INFORMATION)
+  if(MSVC)
+  elseif (APPLE)
+    set(MACOSX_BUNDLE_INFO_STRING "${APPLICATION_INFORMATION}")
+  elseif (UNIX)
+  endif()
+endmacro()
+
+#_______________________________________________________________________________
+#                                                       SetSwitchApplicationName
+macro(SetSwitchApplicationName APPLICATION_NAME)
+  if(MSVC)
+  elseif (APPLE)
+    set(MACOSX_BUNDLE_BUNDLE_NAME "${APPLICATION_NAME}")
+  elseif (UNIX)
+  endif()
+endmacro()
+
+#_______________________________________________________________________________
+#                                                    SetSwitchApplicationVersion
+macro(SetSwitchApplicationVersion APPLICATION_VERSION)
+  if(MSVC)
+  elseif (APPLE)
+    set(MACOSX_BUNDLE_BUNDLE_VERSION "${APPLICATION_VERSION}")
   elseif (UNIX)
   endif()
 endmacro()

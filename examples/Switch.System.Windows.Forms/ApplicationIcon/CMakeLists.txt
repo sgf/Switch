@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.2)
 
 Project(ApplicationIcon)
-
 find_package(Switch REQUIRED)
-SetSwitchApplicationIcon(Gammasoft)
+SetSwitchApplicationCopyright("© 2010 - 2018 by Gammasoft")
+SetSwitchApplicationIcon(Enterprise)
+SetSwitchApplicationIdentifier("org.gammasoft.ApplicationIcon")
+SetSwitchApplicationInformation("This example shows how to use Switch")
 add_executable(ApplicationIcon ${SWITCH_GUI} ApplicationIcon.cpp)
 target_link_libraries(ApplicationIcon Switch.System.Windows.Forms)
