@@ -19,8 +19,12 @@ namespace ManualTests {
       this->radioButton2.Checked = true;
       this->radioButton2.Location = System::Drawing::Point(10, 40);
 
+      this->control.Location = System::Drawing::Point(10, 70);
+      this->control.Size = System::Drawing::Size(100, 30);
+      this->control.Cursor = Cursors::Hand;
+
       this->tabPage1.Text = "page 1";
-      this->tabPage1.Controls().AddRange({this->radioButton1, this->radioButton2});
+      this->tabPage1.Controls().AddRange({this->radioButton1, this->radioButton2, this->control});
 
       this->tabPage2.Text = "page 2";
 
@@ -30,11 +34,13 @@ namespace ManualTests {
 
       this->Text = "Manual Test application";
       this->Controls().AddRange({this->tabControl});
+      this->BackColor = System::Drawing::Color::LightBlue;
     }
 
   private:
     RadioButton radioButton1;
     RadioButton radioButton2;
+    Control control;
     TabControl tabControl;
     TabPage tabPage1;
     TabPage tabPage2;

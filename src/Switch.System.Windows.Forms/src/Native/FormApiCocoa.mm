@@ -11,13 +11,15 @@ using namespace System::Collections::Generic;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-@interface CocoaFormPanel : NSView
+@interface CocoaFormPanel : NSScrollView
 @property (strong) NSCursor* cursor;
 @end
 
 @implementation CocoaFormPanel
 - (id)initWithFrame:(NSRect)bounds {
   [super initWithFrame:bounds];
+  [self setBorderType:NSNoBorder];
+  [self setDrawsBackground:NO];
   return self;
 }
 
@@ -90,7 +92,6 @@ namespace Native {
     void IsDefault(bool isDefault) {}
     System::Drawing::Point Location() const {return this->bounds.Location;}
     void Location(IWidget* parent, const System::Drawing::Point& location) override {[this->handle setFrameOrigin:NSMakePoint(location.X + ScreenOffset().Width, location.Y + ScreenOffset().Height)];}
-    Native::LocationOffset LocationOffset() const override {return Native::LocationOffset::Form;}
     void RemoveParent() override {}
     System::Drawing::Size Size() const override {return System::Drawing::Size([this->handle frame].size.width, [this->handle frame].size.height);}
     void Size(const System::Drawing::Size& size) override {[this->handle setFrame:NSMakeRect(0, 0, size.Width, size.Height) display:YES];}

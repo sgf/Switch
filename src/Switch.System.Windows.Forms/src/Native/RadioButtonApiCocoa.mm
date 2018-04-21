@@ -62,7 +62,7 @@ using namespace System::Windows::Forms;
 @end
 
 namespace Native {
-  class RadioButton : public Control<CocoaRadioButton> {
+  class RadioButton : public WidgetControl<CocoaRadioButton> {
   public:
     RadioButton(const string& text) {this->handle = [[CocoaRadioButton alloc] initWithTitle:[NSString stringWithUTF8String:text.c_str()] withIWidget:this];}
     void BackColor(const System::Drawing::Color& color) override {[this->handle setBackgroundColor:ToNSColor(color)];}

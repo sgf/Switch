@@ -62,7 +62,7 @@ using namespace System::Windows::Forms;
 @end
 
 namespace Native {
-  class Button : public Control<CocoaButton> {
+  class Button : public WidgetControl<CocoaButton> {
   public:
     Button(const string& text, int32 height) {this->handle = [[CocoaButton alloc] initWithTitle:[NSString stringWithUTF8String:text.c_str()] withHeight:height withIWidget:this];}
     void BackColor(const System::Drawing::Color& color) override {[this->handle setBackgroundColor:ToNSColor(color)];}

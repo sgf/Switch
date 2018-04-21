@@ -34,7 +34,7 @@ using namespace System::Windows::Forms;
 @end
 
 namespace Native {
-  class GroupBox : public Control<CocoaGroupBox> {
+  class GroupBox : public WidgetControl<CocoaGroupBox> {
   public:
     GroupBox(const string& text) {this->handle = [[CocoaGroupBox alloc] initWithTitle:[NSString stringWithUTF8String:text.c_str()] IWidget:this];}
     

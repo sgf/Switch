@@ -62,7 +62,7 @@ using namespace System::Windows::Forms;
 @end
 
 namespace Native {
-  class CheckBox : public Control<CocoaCheckBox> {
+  class CheckBox : public WidgetControl<CocoaCheckBox> {
   public:
     CheckBox(const string& text) {this->handle = [[CocoaCheckBox alloc] initWithTitle:[NSString stringWithUTF8String:text.c_str()] withIWidget:this];}
     void BackColor(const System::Drawing::Color& color) override {[this->handle setBackgroundColor:ToNSColor(color)];}

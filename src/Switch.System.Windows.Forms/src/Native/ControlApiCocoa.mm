@@ -17,31 +17,54 @@ using namespace System::Collections::Generic;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-@interface ControlCocoa : NSControl
-- (IBAction) Click:(id)sender;
+@interface CocoaControl : NSScrollView
+@property (strong) NSCursor* cursor;
+@property Native::IWidget* widget;
 @end
 
-@implementation ControlCocoa
-- (IBAction) Click:(id)sender {
-  System::Drawing::Point mouseDownLocation;
-  Message event = Message::Create((intptr)sender, WM_LBUTTONUP, 0, mouseDownLocation.X() + (mouseDownLocation.Y() << 16), 0, 0);
-  const_cast<Control&>(Native::WindowProcedure::Controls[(intptr)sender]()).WndProc(event);
+@implementation CocoaControl
+- (id)initWithIWidget:(Native::IWidget*)iWidget {
+  [super init];
+  [self setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
+  [self setBorderType:NSNoBorder];
+  [self setDrawsBackground:NO];
+  [self setWidget:iWidget];
+  return self;
+}
+
+- (void)resetCursorRects {
+  [super resetCursorRects];
+  if ([self cursor] != nil)
+    [self addCursorRect:[self bounds] cursor:[self cursor]];
 }
 @end
 
-intptr Native::ControlApi::Create(const System::Windows::Forms::Control& control) {
-  ControlCocoa *handle = [[[ControlCocoa alloc] init] autorelease];
-  if (is<System::Windows::Forms::Form>(control.Parent()))
-    [[(NSWindow*)control.Parent()().Handle() contentView] addSubview: handle];
+namespace Native {
+  class Control : public WidgetControl<CocoaControl> {
+  public:
+    Control() {this->handle = [[CocoaControl alloc] initWithIWidget:this];}
+    void BackColor(const System::Drawing::Color& color) override {}
+    System::Drawing::Size ClientSize() const override {return System::Drawing::Size([this->handle frame].size.width, [this->handle frame].size.height);}
+    void ClientSize(const System::Drawing::Size& size) override {[this->handle setFrameSize:NSMakeSize(size.Width, size.Height)];}
+    void Cursor(const System::Windows::Forms::Cursor& cursor) override {[this->handle setCursor:(NSCursor *)cursor.Handle()];}
+    void Enabled(bool enabled) override {}
+    void Font(const System::Drawing::Font& font) override {}
+    void ForeColor(const System::Drawing::Color& color) override {}
+    void IsDefault(bool isDefault) {}
+    void RemoveParent() override {[this->handle removeFromSuperview];}
+    System::Drawing::Size Size() const override {return System::Drawing::Size([this->handle frame].size.width, [this->handle frame].size.height);}
+    void Size(const System::Drawing::Size& size) override {[this->handle setFrameSize:NSMakeSize(size.Width, size.Height)];}
+    void Text(const string& text) override {}
+    NSView* View() override {return this->handle;}
+    void Visible(bool visible) override {[this->handle setHidden:visible ? NO : YES];}
+  };
+}
 
-  [handle setStringValue:[NSString stringWithUTF8String:control.Text().c_str()]];
-  [handle setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
-  [handle setWantsLayer:YES];
-  [handle setTarget:handle];
-  [handle setAction:@selector(Click:)];
-  Native::WindowProcedure::Controls[(intptr)handle] = control;
-  SendMessage((intptr)handle, WM_CREATE, IntPtr::Zero, IntPtr::Zero);
-  return (intptr)handle;
+intptr Native::ControlApi::Create(const System::Windows::Forms::Control& control) {
+  Native::Control* widget = new Native::Control();
+  Native::WindowProcedure::Controls[(intptr)widget] = control;
+  SendMessage((intptr)widget->Handle(), WM_CREATE, IntPtr::Zero, IntPtr::Zero);
+  return (intptr)widget;
 }
 
 void Native::ControlApi::DefWndProc(System::Windows::Forms::Message& message) {

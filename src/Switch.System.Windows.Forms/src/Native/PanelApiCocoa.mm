@@ -28,7 +28,7 @@ using namespace System::Windows::Forms;
 @end
 
 namespace Native {
-  class Panel : public Control<CocoaPanel> {
+  class Panel : public WidgetControl<CocoaPanel> {
   public:
     Panel() {this->handle = [[CocoaPanel alloc] initWithIWidget:this];}
     void BackColor(const System::Drawing::Color& color) override {[this->handle setBackgroundColor:ToNSColor(color)];}

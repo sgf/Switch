@@ -13,7 +13,6 @@
 namespace Native {
   enum class LocationOffset {
     None,
-    Form,
     GroupBox,
   };
   
@@ -65,10 +64,10 @@ namespace Native {
   };
   
   template<typename T>
-  class Control : public Widget<T> {
+  class WidgetControl : public Widget<T> {
   public:
-    Control() {}
-    ~Control() {
+    WidgetControl() {}
+    ~WidgetControl() {
       if (this->handle != null)
         [this->handle release];
     }
@@ -76,7 +75,6 @@ namespace Native {
     void Location(IWidget* parent, const System::Drawing::Point& location) override {
       switch (parent->LocationOffset()) {
         case Native::LocationOffset::None: [this->handle setFrameOrigin:NSMakePoint(location.X, location.Y)]; break;
-        case Native::LocationOffset::Form: [this->handle setFrameOrigin:NSMakePoint(location.X, [parent->View() frame].size.height - [this->View() frame].size.height - location.Y)]; break;
         case Native::LocationOffset::GroupBox: [this->handle setFrameOrigin:NSMakePoint(location.X, [parent->View() frame].size.height - [this->View() frame].size.height - location.Y)]; break;
       }
     }

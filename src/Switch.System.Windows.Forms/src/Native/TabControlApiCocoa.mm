@@ -38,11 +38,10 @@ using namespace System::Windows::Forms;
   [self setWantsLayer:YES];
   [[self layer] setBackgroundColor:[backgroundColor CGColor]];
 }
-
 @end
 
 namespace Native {
-  class TabControl : public Control<CocoaTabControl> {
+  class TabControl : public WidgetControl<CocoaTabControl> {
   public:
     TabControl() {this->handle = [[CocoaTabControl alloc] initWithIWidget:this];}
     
