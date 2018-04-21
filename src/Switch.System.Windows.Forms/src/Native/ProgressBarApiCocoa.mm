@@ -11,11 +11,11 @@ intptr Native::ProgressBarApi::Create(const System::Windows::Forms::ProgressBar&
     NSProgressIndicator* handle = [[[NSProgressIndicator alloc] init] autorelease];
     [[(NSWindow*)progressBar.Parent()().Handle() contentView] addSubview: handle];
     
-    Native::WindowProcedure::Controls[(intptr)handle] = progressBar;
+    //Native::WindowProcedure::Controls[(intptr)handle] = progressBar;
     [handle setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
     [handle setIndeterminate:progressBar.Style == ProgressBarStyle::Marquee];
-    Message message = Message::Create((intptr)handle, WM_CREATE, 0, 0, 0, IntPtr::Zero);
-    const_cast<System::Windows::Forms::ProgressBar&>(progressBar).WndProc(message);
+    //Message message = Message::Create((intptr)handle, WM_CREATE, 0, 0, 0, IntPtr::Zero);
+    //const_cast<System::Windows::Forms::ProgressBar&>(progressBar).WndProc(message);
     return (intptr)handle;
   }
 }

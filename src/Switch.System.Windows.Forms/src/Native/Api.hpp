@@ -30,6 +30,7 @@ namespace Switch {
         class CheckBox;
         class ColorDialog;
         class Control;
+        class Cursor;
         enum class DialogResult;
         class FolderBrowserDialog;
         class FontDialog;

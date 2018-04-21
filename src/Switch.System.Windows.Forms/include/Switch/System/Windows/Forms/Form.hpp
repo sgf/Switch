@@ -78,7 +78,8 @@ namespace Switch {
           Form() : ContainerControl("", 0, 0, 300, 300) {
             this->visible = false;
             this->SetStyle(ControlStyles::UserPaint, false);
-            //this->BackColor = System::Drawing::SystemColors::Window;
+            this->BackColor = DefaultBackColor;
+            this->ForeColor = DefaultForeColor;
             this->cursor = DefaultCursor;
             this->font = DefaultFont;
           }

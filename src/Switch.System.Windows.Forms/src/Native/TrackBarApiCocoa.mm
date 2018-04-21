@@ -12,8 +12,8 @@ using namespace System::Windows::Forms;
 
 @implementation SliderCocoa
 - (IBAction) ValueChanged:(id)sender {
-  Message event = Message::Create((intptr)sender, [self isVertical] ? WM_VSCROLL : WM_HSCROLL, 0, (intptr)sender, 0, 0);
-  Native::WindowProcedure::Controls[(intptr)sender]().Parent()().WndProc(event);
+  //Message event = Message::Create((intptr)sender, [self isVertical] ? WM_VSCROLL : WM_HSCROLL, 0, (intptr)sender, 0, 0);
+  //Native::WindowProcedure::Controls[(intptr)sender]().Parent()().WndProc(event);
 }
 @end
 
@@ -21,14 +21,14 @@ intptr Native::TrackBarApi::Create(const System::Windows::Forms::TrackBar& track
   @autoreleasepool {
     SliderCocoa* handle = [[[SliderCocoa alloc] init] autorelease];
     [[(NSWindow*)trackBar.Parent()().Handle() contentView] addSubview: handle];
-    Native::WindowProcedure::Controls[(intptr)handle] = trackBar;
+    //Native::WindowProcedure::Controls[(intptr)handle] = trackBar;
     [handle setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
     [handle setTarget:handle];
     [handle setAction:@selector(ValueChanged:)];
 
     //[handle setIndeterminate:trackBar.Style == ProgressBarStyle::Marquee];
-    Message message = Message::Create((intptr)handle, WM_CREATE, 0, 0, 0, IntPtr::Zero);
-    const_cast<System::Windows::Forms::TrackBar&>(trackBar).WndProc(message);
+    //Message message = Message::Create((intptr)handle, WM_CREATE, 0, 0, 0, IntPtr::Zero);
+    //const_cast<System::Windows::Forms::TrackBar&>(trackBar).WndProc(message);
     return (intptr)handle;
   }
 }

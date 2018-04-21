@@ -12,23 +12,32 @@ namespace ManualTests {
     }
 
     Form1() {
-      this->button.Text = "Click";
-      this->button.Location = System::Drawing::Point(10, 10);
-      this->button.Click += delegate_(const object & sender, const EventArgs & e) {
-        System::Windows::Forms::Cursor::Position = System::Drawing::Point(20, 20);
-      };
+      this->radioButton1.Text = "radioButton1";
+      this->radioButton1.Location = System::Drawing::Point(10, 10);
 
-      this->panel.Location = System::Drawing::Point(10, 50);
-      this->panel.BackColor = System::Drawing::Color::White;
-      this->panel.BorderStyle = BorderStyle::Fixed3D;
-      this->panel.Cursor = Cursors::Hand;
+      this->radioButton2.Text = "radioButton2";
+      this->radioButton2.Checked = true;
+      this->radioButton2.Location = System::Drawing::Point(10, 40);
 
-      this->Controls().AddRange({this->button, this->panel});
+      this->tabPage1.Text = "page 1";
+      this->tabPage1.Controls().AddRange({this->radioButton1, this->radioButton2});
+
+      this->tabPage2.Text = "page 2";
+
+      this->tabControl.Location = System::Drawing::Point(10, 10);
+      this->tabControl.Size = System::Drawing::Size(280, 280);
+      this->tabControl.TabPages().AddRange({this->tabPage1, this->tabPage2});
+
+      this->Text = "Manual Test application";
+      this->Controls().AddRange({this->tabControl});
     }
 
   private:
-    Button button;
-    Panel panel;
+    RadioButton radioButton1;
+    RadioButton radioButton2;
+    TabControl tabControl;
+    TabPage tabPage1;
+    TabPage tabPage2;
   };
 }
 

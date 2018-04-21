@@ -21,7 +21,9 @@ namespace Switch {
         /// @include GroupBox.cpp
         class system_windows_forms_export_ GroupBox : public ContainerControl {
         public:
-          GroupBox();
+          GroupBox() : ContainerControl("", 0, 0, 200, 100) {
+            this->SetStyle(ControlStyles::UserPaint, false);
+          }
 
         protected:
           /// @brief Creates a handle for the control

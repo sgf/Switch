@@ -43,7 +43,7 @@ System::Drawing::Size Native::SystemInformationApi::GetCaptionButtonSize() {
 }
 
 int32 Native::SystemInformationApi::GetCaptionHeight() {
-  return 23;
+  return 22;
 }
 
 int32 Native::SystemInformationApi::GetCaretBlinkTime() {

@@ -1,3 +1,5 @@
+#pragma once
+
 #if defined(__APPLE__)
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
@@ -51,55 +53,55 @@ namespace Native {
     }
 
     static void MouseEnterEvent(NSEvent* event, System::Windows::Forms::Control& control) {
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_MOUSEENTER, notUsed, notUsed, 0, (intptr)event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)[event window], WM_MOUSEENTER, notUsed, notUsed, 0, (intptr)event);
       hover = true;
       control.WndProc(message);
     }
 
     static void MouseLeaveEvent(NSEvent* event, System::Windows::Forms::Control& control) {
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_MOUSELEAVE, notUsed, notUsed, 0, (intptr)event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)[event window], WM_MOUSELEAVE, notUsed, notUsed, 0, (intptr)event);
       hover = false;
       control.WndProc(message);
     }
 
     static void LeftMouseDownEvent(NSEvent* event, System::Windows::Forms::Control& control) {
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_LBUTTONDOWN, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)[event window], WM_LBUTTONDOWN, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
       control.WndProc(message);
     }
 
     static void LeftMouseUpEvent(NSEvent* event, System::Windows::Forms::Control& control) {
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_LBUTTONUP, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)[event window], WM_LBUTTONUP, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
       control.WndProc(message);
     }
 
     static void OtherMouseUpEvent(NSEvent* event, System::Windows::Forms::Control& control) {
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_MBUTTONUP, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)[event window], WM_MBUTTONUP, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
       control.WndProc(message);
     }
 
     static void OtherMouseDownEvent(NSEvent* event, System::Windows::Forms::Control& control) {
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_MBUTTONDOWN, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)[event window], WM_MBUTTONDOWN, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
       control.WndProc(message);
     }
 
     static void RightMouseDownEvent(NSEvent* event, System::Windows::Forms::Control& control) {
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_RBUTTONDOWN, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)[event window], WM_RBUTTONDOWN, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
       control.WndProc(message);
     }
 
     static void RightMouseUpEvent(NSEvent* event, System::Windows::Forms::Control& control) {
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_RBUTTONUP, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)[event window], WM_RBUTTONUP, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
       control.WndProc(message);
     }
 
     static void MouseMoveEvent(NSEvent* event, System::Windows::Forms::Control& control) {
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)event.window, WM_SETCURSOR, (intptr)control.Handle(), (intptr)0x20000001, 0, (intptr)event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)[event window], WM_SETCURSOR, (intptr)control.Handle(), (intptr)0x20000001, 0, (intptr)event);
       control.WndProc(message);
       if (hover) {
-        message = System::Windows::Forms::Message::Create((intptr)event.window, WM_MOUSEHOVER, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
+        message = System::Windows::Forms::Message::Create((intptr)[event window], WM_MOUSEHOVER, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
         control.WndProc(message);
       }
-      message = System::Windows::Forms::Message::Create((intptr)event.window, WM_MOUSEMOVE, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
+      message = System::Windows::Forms::Message::Create((intptr)[event window], WM_MOUSEMOVE, GetMouseButtonState(event), (GetMouseYCoordinateRelativeToClientArea(event, control) << 16) + GetMouseXCoordinateRelativeToClientArea(event, control), 0, (intptr)event);
       control.WndProc(message);
     }
 
