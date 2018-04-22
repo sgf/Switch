@@ -15,7 +15,7 @@ namespace Native {
     None,
     GroupBox,
   };
-  
+
   class IWidget interface_ {
   public:
     virtual void AddChild(IWidget* child) = 0;
@@ -36,10 +36,10 @@ namespace Native {
     virtual void Text(const string& text) = 0;
     virtual void Visible(bool visible) = 0;
     virtual NSView* View() = 0;
-    
+
   protected:
   };
-  
+
   template<typename T>
   class Widget : public IWidget {
   public:
@@ -48,7 +48,7 @@ namespace Native {
       if (this->handle != null)
         [this->handle release];
     }
-    
+
     void AddChild(IWidget* child) override {[this->View() addSubview:child->View()];}
     NSObject* Handle() override {return this->handle;}
     Native::LocationOffset LocationOffset() const override {return Native::LocationOffset::None;}
@@ -58,11 +58,11 @@ namespace Native {
       const_cast<System::Windows::Forms::Control&>(Native::WindowProcedure::Controls[(intptr)handle]()).WndProc(message);
       return message.Result;
     }
-    
+
   protected:
     T* handle = null;
   };
-  
+
   template<typename T>
   class WidgetControl : public Widget<T> {
   public:
@@ -71,11 +71,11 @@ namespace Native {
       if (this->handle != null)
         [this->handle release];
     }
-    
+
     void Location(IWidget* parent, const System::Drawing::Point& location) override {
       switch (parent->LocationOffset()) {
-        case Native::LocationOffset::None: [this->handle setFrameOrigin:NSMakePoint(location.X, location.Y)]; break;
-        case Native::LocationOffset::GroupBox: [this->handle setFrameOrigin:NSMakePoint(location.X, [parent->View() frame].size.height - [this->View() frame].size.height - location.Y)]; break;
+      case Native::LocationOffset::None: [this->handle setFrameOrigin:NSMakePoint(location.X, location.Y)]; break;
+      case Native::LocationOffset::GroupBox: [this->handle setFrameOrigin:NSMakePoint(location.X, [parent->View() frame].size.height - [this->View() frame].size.height - location.Y)]; break;
       }
     }
     Native::LocationOffset LocationOffset() const override {return Native::LocationOffset::None;}
