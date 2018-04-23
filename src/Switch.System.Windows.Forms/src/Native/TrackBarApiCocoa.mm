@@ -133,7 +133,6 @@ int32 Native::TrackBarApi::GetValue(const System::Windows::Forms::TrackBar& trac
 }
 
 void Native::TrackBarApi::SetValue(const System::Windows::Forms::TrackBar& trackBar) {
-  System::Diagnostics::Debug::WriteLine(string::Format("value = {0}", trackBar.Value));
   ((Native::TrackBar*)trackBar.Handle())->Value(trackBar.Value);
 }
 
