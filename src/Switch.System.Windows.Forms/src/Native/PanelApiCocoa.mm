@@ -15,6 +15,7 @@ using namespace System::Windows::Forms;
 - (id)initWithIWidget:(Native::IWidget*)iWidget {
   [super init];
   [self setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
+  [self setDrawsBackground:NO];
   [self setBorderType:NSNoBorder];
   [self setWidget:iWidget];
   return self;
@@ -31,7 +32,10 @@ namespace Native {
   class Panel : public WidgetControl<CocoaPanel> {
   public:
     Panel() {this->handle = [[CocoaPanel alloc] initWithIWidget:this];}
-    void BackColor(const System::Drawing::Color& color) override {[this->handle setBackgroundColor:ToNSColor(color)];}
+    void BackColor(const System::Drawing::Color& color) override {
+      [this->handle setDrawsBackground:color != System::Drawing::Color::Transparent ? YES : NO];
+      [this->handle setBackgroundColor:ToNSColor(color)];
+    }
     void BorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
       switch (borderStyle) {
         case BorderStyle::None : [this->handle setBorderType:NSNoBorder]; break;

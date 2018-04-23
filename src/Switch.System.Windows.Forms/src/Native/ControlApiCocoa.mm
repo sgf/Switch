@@ -76,8 +76,6 @@ void Native::ControlApi::DefWndProc(System::Windows::Forms::Message& message) {
 }
 
 void Native::ControlApi::Destroy(const System::Windows::Forms::Control& control) {
-  if (!is<System::Windows::Forms::Button>(control))
-    return;
   Native::WindowProcedure::Controls.Remove((intptr)((Native::IWidget*)control.Handle())->Handle());
   Message message = Message::Create((intptr)((Native::IWidget*)control.Handle())->Handle(), WM_DESTROY, 0, 0, 0, IntPtr::Zero);
   const_cast<System::Windows::Forms::Control&>(control).WndProc(message);

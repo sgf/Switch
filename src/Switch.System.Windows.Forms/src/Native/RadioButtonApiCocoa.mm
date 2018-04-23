@@ -74,8 +74,8 @@ namespace Native {
     void ForeColor(const System::Drawing::Color& color) override {[this->handle setForeColor:ToNSColor(color)];}
     void IsDefault(bool isDefault) {[this->handle setKeyEquivalent: [NSString stringWithUTF8String:isDefault ? "\r" : ""]];}
     void RemoveParent() override {[this->handle removeFromSuperview];}
-    System::Drawing::Size Size() const override {return System::Drawing::Size([this->handle frame].size.width - 2, [this->handle frame].size.height - 2);}
-    void Size(const System::Drawing::Size& size) override {[this->handle setSize:NSMakeSize(size.Width + 2, size.Height + 2)];}
+    System::Drawing::Size Size() const override {return System::Drawing::Size([this->handle frame].size.width, [this->handle frame].size.height);}
+    void Size(const System::Drawing::Size& size) override {[this->handle setSize:NSMakeSize(size.Width, size.Height)];}
     void State(int state) {[this->handle setState:state];}
     void Text(const string& text) override {[this->handle setTitle:[NSString stringWithUTF8String:text.c_str()]];}
     NSView* View() override {return this->handle;}

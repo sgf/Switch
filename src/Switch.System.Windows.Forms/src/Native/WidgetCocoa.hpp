@@ -11,10 +11,10 @@
 #include "Api.hpp"
 
 namespace Native {
-  enum class LocationOffset {
+  /* enum class LocationOffset {
     None,
     GroupBox,
-  };
+  }; */
 
   class IWidget interface_ {
   public:
@@ -28,7 +28,7 @@ namespace Native {
     virtual void ForeColor(const System::Drawing::Color& color) = 0;
     virtual NSObject* Handle() = 0;
     virtual void Location(IWidget* parent, const System::Drawing::Point& location) = 0;
-    virtual Native::LocationOffset LocationOffset() const = 0;
+    //virtual Native::LocationOffset LocationOffset() const = 0;
     virtual void RemoveParent() = 0;
     virtual intptr SendMessage(intptr handle, int32 msg, intptr wparam, intptr lparam) = 0;
     virtual System::Drawing::Size Size() const = 0;
@@ -51,11 +51,11 @@ namespace Native {
 
     void AddChild(IWidget* child) override {[this->View() addSubview:child->View()];}
     NSObject* Handle() override {return this->handle;}
-    Native::LocationOffset LocationOffset() const override {return Native::LocationOffset::None;}
+    //Native::LocationOffset LocationOffset() const override {return Native::LocationOffset::None;}
     static NSColor* ToNSColor(const System::Drawing::Color& color) {return [NSColor colorWithCalibratedRed:as<double>(color.R()) / 0xFF green:as<double>(color.G()) / 0xFF blue:as<double>(color.B()) / 0xFF alpha:as<double>(color.A()) / 0xFF];}
     intptr SendMessage(intptr handle, int32 msg, intptr wparam, intptr lparam) override {
       System::Windows::Forms::Message message = System::Windows::Forms::Message::Create(handle, msg, wparam, lparam, 0);
-      const_cast<System::Windows::Forms::Control&>(Native::WindowProcedure::Controls[(intptr)handle]()).WndProc(message);
+      const_cast<System::Windows::Forms::Control&>(Native::WindowProcedure::Controls[(intptr)this->handle]()).WndProc(message);
       return message.Result;
     }
 
@@ -67,18 +67,20 @@ namespace Native {
   class WidgetControl : public Widget<T> {
   public:
     WidgetControl() {}
-    ~WidgetControl() {
-      if (this->handle != null)
-        [this->handle release];
-    }
 
     void Location(IWidget* parent, const System::Drawing::Point& location) override {
+      [this->handle setFrameOrigin:NSMakePoint(location.X, location.Y)];
+    }
+
+    /*
+    void Location(IWidget* parent, const System::Drawing::Point& location) override {
       switch (parent->LocationOffset()) {
-      case Native::LocationOffset::None: [this->handle setFrameOrigin:NSMakePoint(location.X, location.Y)]; break;
-      case Native::LocationOffset::GroupBox: [this->handle setFrameOrigin:NSMakePoint(location.X, [parent->View() frame].size.height - [this->View() frame].size.height - location.Y)]; break;
+        case Native::LocationOffset::None: [this->handle setFrameOrigin:NSMakePoint(location.X, location.Y)]; break;
+        case Native::LocationOffset::GroupBox: [this->handle setFrameOrigin:NSMakePoint(location.X, [parent->View() frame].size.height - [this->View() frame].size.height - location.Y)]; break;
       }
     }
     Native::LocationOffset LocationOffset() const override {return Native::LocationOffset::None;}
+     */
   };
 
 }

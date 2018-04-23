@@ -69,7 +69,6 @@ namespace Switch {
 
           property_<int32> Value {
             get_ {
-              this->value = this->GetValue();
               return this->value;
             },
             set_{ this->SetValue(value); },

@@ -47,7 +47,12 @@ namespace {
         
         NSMenuItem* applicationMenuItem = [[NSMenuItem alloc] init];
         [applicationMenuItem setSubmenu:applicationMenu];
- 
+
+        NSMenu* viewMenu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"View" , nil)];
+
+        NSMenuItem* viewMenuItem = [[NSMenuItem alloc] init];
+        [viewMenuItem setSubmenu:viewMenu];
+
         NSMenu* windowMenu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"Window" , nil)];
         
         NSMenuItem* windowMenuItem = [[NSMenuItem alloc] init];
@@ -60,6 +65,7 @@ namespace {
 
         NSMenu* mainMenu = [[NSMenu alloc] init];
         [mainMenu addItem:applicationMenuItem];
+        [mainMenu addItem:viewMenuItem];
         [mainMenu addItem:windowMenuItem];
         [mainMenu addItem:helpMenuItem];
 
