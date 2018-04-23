@@ -20,4 +20,14 @@ intptr Native::LabelApi::Create(const System::Windows::Forms::Label& label) {
   return (intptr)handle;
 }
 
+void Native::LabelApi::SetBorderStyle(const System::Windows::Forms::Label& label) {
+  SetWindowLongPtr((HWND)label.Handle(), GWL_STYLE, GetWindowLongPtr((HWND)label.Handle(), GWL_STYLE) & ~WS_BORDER);
+  SetWindowLongPtr((HWND)label.Handle(), GWL_EXSTYLE, GetWindowLongPtr((HWND)label.Handle(), GWL_EXSTYLE) & ~WS_EX_CLIENTEDGE);
+  switch (label.BorderStyle) {
+  case BorderStyle::FixedSingle: SetWindowLongPtr((HWND)label.Handle(), GWL_STYLE, GetWindowLongPtr((HWND)label.Handle(), GWL_STYLE) | WS_BORDER); break;
+  case BorderStyle::Fixed3D: SetWindowLongPtr((HWND)label.Handle(), GWL_EXSTYLE, GetWindowLongPtr((HWND)label.Handle(), GWL_EXSTYLE) | WS_EX_CLIENTEDGE); break;
+  }
+  SetWindowPos((HWND)label.Handle(), NULL, 0, 0, 0, 0, SWP_DRAWFRAME | SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER);
+}
+
 #endif

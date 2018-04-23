@@ -13,7 +13,6 @@ using namespace System::Windows::Forms;
 - (IBAction) Click:(id)sender;
 - (id)initWithTitle:(NSString*)title withIWidget:(Native::IWidget*)iWidget;
 - (void)resetCursorRects;
-- (void)setBackgroundColor:(NSColor*)color;
 - (void)setForeColor:(NSColor*)color;
 - (void)setSize:(NSSize)size;
 @end
@@ -29,6 +28,7 @@ using namespace System::Windows::Forms;
   [self setAction:@selector(Click:)];
   [self setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
   [self setBezeled:NO];
+  [self setBordered:NO];
   [self setDrawsBackground:NO];
   [self setEditable:NO];
   [self setSelectable:NO];
@@ -44,11 +44,6 @@ using namespace System::Windows::Forms;
     [self addCursorRect:[self bounds] cursor:[self cursor]];
 }
 
-- (void)setBackgroundColor:(NSColor*)color {
-  [self setDrawsBackground:YES];
-  [super setBackgroundColor:color];
-}
-
 - (void)setForeColor:(NSColor*)color {
   [self setTextColor:color];
 }
@@ -62,7 +57,16 @@ namespace Native {
   class Label : public WidgetControl<CocoaLabel> {
   public:
     Label(const string& text) {this->handle = [[CocoaLabel alloc] initWithTitle:[NSString stringWithUTF8String:text.c_str()] withIWidget:this];}
-    void BackColor(const System::Drawing::Color& color) override {[this->handle setBackgroundColor:ToNSColor(color)];}
+    void BackColor(const System::Drawing::Color& color) override {
+      [this->handle setDrawsBackground:color != System::Drawing::Color::Transparent ? YES : NO];
+      [this->handle setBackgroundColor:ToNSColor(color)];}
+    void BorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
+      switch (borderStyle) {
+        case BorderStyle::None : [this->handle setBordered:NO]; break;
+        case BorderStyle::FixedSingle : [this->handle setBordered:YES]; break;
+        case BorderStyle::Fixed3D : [this->handle setBezeled:YES]; break;
+      }
+    }
     System::Drawing::Size ClientSize() const override {return System::Drawing::Size([this->handle frame].size.width, [this->handle frame].size.height);}
     void ClientSize(const System::Drawing::Size& size) override {[this->handle setFrameSize:NSMakeSize(size.Width, size.Height)];}
     void Cursor(const System::Windows::Forms::Cursor& cursor) override {[this->handle setCursor:(NSCursor *)cursor.Handle()];}
@@ -83,6 +87,10 @@ intptr Native::LabelApi::Create(const System::Windows::Forms::Label& label) {
   Native::WindowProcedure::Controls[(intptr)widget->Handle()] = label;
   widget->SendMessage((intptr)widget->Handle(), WM_CREATE, IntPtr::Zero, IntPtr::Zero);
   return (intptr)widget;
+}
+
+void Native::LabelApi::SetBorderStyle(const System::Windows::Forms::Label& label) {
+  ((Native::Label*)label.Handle())->BorderStyle(label.BorderStyle);
 }
 
 #endif

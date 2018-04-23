@@ -34,11 +34,11 @@ namespace PanelExample {
     }
 
   private:
-    Panel lineSeparator;
-    Panel lineRed;
-    Panel lineGreen;
-    Panel lineBlue;
-    Panel lineSeparator2;
+    Label lineSeparator;
+    Label lineRed;
+    Label lineGreen;
+    Label lineBlue;
+    Label lineSeparator2;
   };
 }
 

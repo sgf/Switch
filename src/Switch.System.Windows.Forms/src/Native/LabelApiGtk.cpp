@@ -38,4 +38,7 @@ intptr Native::LabelApi::Create(const System::Windows::Forms::Label& label) {
   return (intptr)handle;
 }
 
+void Native::LabelApi::SetBorderStyle(const System::Windows::Forms::Label& label) {
+}
+
 #endif

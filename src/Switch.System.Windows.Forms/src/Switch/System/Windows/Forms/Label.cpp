@@ -9,4 +9,13 @@ using namespace System::Windows::Forms;
 void Label::CreateHandle() {
   this->handle = Native::LabelApi::Create(*this);
   this->Control::CreateHandle();
+  Native::LabelApi::SetBorderStyle(*this);
+}
+
+void Label::SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
+  if (this->borderStyle != borderStyle) {
+    this->borderStyle = borderStyle;
+    if (this->IsHandleCreated)
+      Native::LabelApi::SetBorderStyle(*this);
+  }
 }

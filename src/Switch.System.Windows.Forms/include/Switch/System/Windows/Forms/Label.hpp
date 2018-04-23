@@ -3,7 +3,8 @@
 #pragma once
 
 #include "../../../SystemWindowsFormsExport.hpp"
-#include "ButtonBase.hpp"
+#include "Control.hpp"
+#include "BorderStyle.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
@@ -29,6 +30,11 @@ namespace Switch {
             this->TabStop = false;
           }
 
+          property_<System::Windows::Forms::BorderStyle> BorderStyle {
+            get_{return this->borderStyle;},
+            set_{this->SetBorderStyle(value);}
+          };
+
         protected:
           /// @brief Creates a handle for the control
           /// @remarks You typically should not call the CreateHandle method directly. The preferred method is to call the CreateControl method, which forces a handle to be created for the control and its child controls when the control is created.
@@ -39,6 +45,12 @@ namespace Switch {
           /// @brief Gets the default size of the control.
           /// @return Switch::System::Drawing::Size The default Size of the control.
           System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(100, 23); }
+
+          virtual void SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle);
+
+          /// @cond
+          System::Windows::Forms::BorderStyle borderStyle = System::Windows::Forms::BorderStyle::None;
+          /// @endcond
         };
       }
     }

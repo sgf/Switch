@@ -13,6 +13,7 @@ namespace ManualTests {
 
     Form1() {
       this->label1.Text = "label1";
+      this->label1.BorderStyle = BorderStyle::Fixed3D;
       this->label1.Location = System::Drawing::Point(10, 10);
       this->label1.ForeColor = System::Drawing::Color::Red;
 
