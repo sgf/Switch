@@ -204,7 +204,7 @@ namespace Native {
   class FormApi static_ {
   public:
     static void Close(System::Windows::Forms::Form& form);
-    static intptr Create(System::Windows::Forms::Form& form);
+    static intptr Create(System::Windows::Forms::Form& form, bool withClientsize);
   };
 
   class GroupBoxApi static_ {

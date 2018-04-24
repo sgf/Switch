@@ -3781,6 +3781,7 @@ namespace Switch {
           bool tabStop = true;
           string text;
           bool visible = true;
+          bool setClientSizeAfterHandleCreated = false;
           /// @endcond
 
         private:
@@ -3841,7 +3842,6 @@ namespace Switch {
 
           static ref<Control> controlEntered;
           bool setFocusAfterHandleCreated = false;
-          bool setClientSizeAfterHandleCreated = false;
         };
       }
     }

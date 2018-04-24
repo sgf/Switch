@@ -72,7 +72,7 @@ namespace Native {
     void Text(const string& text) override {}
     NSView* View() override {return this->handle;}
     void Visible(bool visible) override {[this->handle setHidden:visible ? NO : YES];}
-    
+
   private:
     System::Windows::Forms::BorderStyle borderStyle = System::Windows::Forms::BorderStyle::None;
   };

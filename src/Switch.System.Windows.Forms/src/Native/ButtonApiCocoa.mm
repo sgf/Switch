@@ -66,8 +66,6 @@ namespace Native {
   public:
     Button(const string& text, int32 height) {this->handle = [[CocoaButton alloc] initWithTitle:[NSString stringWithUTF8String:text.c_str()] withHeight:height withIWidget:this];}
     void BackColor(const System::Drawing::Color& color) override {[this->handle setBackgroundColor:ToNSColor(color)];}
-    System::Drawing::Size ClientSize() const override {return System::Drawing::Size([this->handle frame].size.width, [this->handle frame].size.height);}
-    void ClientSize(const System::Drawing::Size& size) override {[this->handle setFrameSize:NSMakeSize(size.Width, size.Height)];}
     void Cursor(const System::Windows::Forms::Cursor& cursor) override {[this->handle setCursor:(NSCursor *)cursor.Handle()];}
     void Enabled(bool enabled) override {[this->handle setEnabled:enabled];}
     void Font(const System::Drawing::Font& font) override {[this->handle setFont:((NSFont*)font.ToHFont())];}

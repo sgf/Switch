@@ -17,7 +17,7 @@ void Native::FormApi::Close(System::Windows::Forms::Form& form) {
   CloseWindow((HWND)form.Handle());
 }
 
-intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
+intptr Native::FormApi::Create(System::Windows::Forms::Form& form, bool withClientsize) {
   System::Drawing::Rectangle bounds = form.Bounds;
   bounds.X = bounds.X + Screen::AllScreens()[0].WorkingArea().X;
   bounds.Y = bounds.Y + Screen::AllScreens()[0].WorkingArea().Y;

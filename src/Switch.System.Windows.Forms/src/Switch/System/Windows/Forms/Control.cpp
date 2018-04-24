@@ -203,7 +203,7 @@ void Control::OnClientSizeChanged(const EventArgs& e) {
   if (this->IsHandleCreated)
     Native::ControlApi::SetClientSize(*this);
   else
-    setClientSizeAfterHandleCreated = true;
+    this->setClientSizeAfterHandleCreated = true;
   this->ClientSizeChanged(*this, e);
 }
 
@@ -269,7 +269,7 @@ void Control::OnSizeChanged(const EventArgs& e) {
     if (this->AutoSize)
       this->Size = this->GetAutoSize();
   } else
-    setClientSizeAfterHandleCreated = false;
+    this->setClientSizeAfterHandleCreated = false;
   this->SizeChanged(*this, e);
 }
 

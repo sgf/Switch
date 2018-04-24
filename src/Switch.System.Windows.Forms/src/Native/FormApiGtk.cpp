@@ -50,7 +50,7 @@ void Native::FormApi::Close(System::Windows::Forms::Form& form) {
   ((Native::Form*)form.Handle())->close();
 }
 
-intptr Native::FormApi::Create(System::Windows::Forms::Form& form) {
+intptr Native::FormApi::Create(System::Windows::Forms::Form& form, bool withClientsize) {
   static Microsoft::Win32::RegistryKey key = Microsoft::Win32::Registry::CurrentUser().CreateSubKey("Gammasoft71").CreateSubKey("Switch").CreateSubKey("Forms");
   static int location = as<Int32>(key.GetValue("DefaultLocation", 20));
   static bool nextLocation = Convert::ToBoolean(as<Int32>(key.GetValue("NextLocation", 1))); // Strangely, on Windows the first location is used 2 times; this boolean simumate it.
