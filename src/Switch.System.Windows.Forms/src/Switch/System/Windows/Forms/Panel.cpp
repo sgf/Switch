@@ -14,6 +14,7 @@ void Panel::CreateHandle() {
   this->handle = Native::PanelApi::Create(*this);
   this->Control::CreateHandle();
   Native::PanelApi::SetBorderStyle(*this);
+  Native::ControlApi::SetLocation(*this);
 }
 
 void Panel::SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle) {

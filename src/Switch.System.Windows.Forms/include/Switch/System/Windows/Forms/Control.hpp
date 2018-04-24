@@ -3213,7 +3213,19 @@ namespace Switch {
           /// @remarks The OnMouseDown method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
           /// @par Notes to Inheritors
           /// When overriding OnMouseDown in a derived class, be sure to call the base class's OnMouseDown method so that registered delegates receive the event.
-          virtual void OnMouseDown(const MouseEventArgs& e) { this->MouseDown(*this, e); }
+          virtual void OnMouseDown(const MouseEventArgs& e) {
+            /*
+            System::Drawing::Point mouseLocation = e.Location;
+            if (this->Parent != null)
+              mouseLocation.Offset(-this->Left, -this->Top);
+            for (ref<Control> control : this->controls)
+              if (control->Bounds().Contains(mouseLocation)) {
+                control->OnMouseDown(MouseEventArgs(e.Button, mouseLocation, e.Clicks, e.Delta));
+                return;
+              }
+             */
+            this->MouseDown(*this, e);
+          }
 
           /// @brief Raises the MouseEnter event.
           /// @param e An EventArgs that contains the event data.

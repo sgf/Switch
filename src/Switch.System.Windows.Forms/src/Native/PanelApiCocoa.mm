@@ -36,14 +36,30 @@ namespace Native {
       [this->handle setDrawsBackground:color != System::Drawing::Color::Transparent ? YES : NO];
       [this->handle setBackgroundColor:ToNSColor(color)];
     }
+
     void BorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
-      switch (borderStyle) {
+      this->borderStyle = borderStyle;
+      switch (this->borderStyle) {
         case BorderStyle::None : [this->handle setBorderType:NSNoBorder]; break;
         case BorderStyle::FixedSingle : [this->handle setBorderType:NSLineBorder]; break;
         case BorderStyle::Fixed3D : [this->handle setBorderType:NSBezelBorder]; break;
       }
     }
-    System::Drawing::Size ClientSize() const override {return System::Drawing::Size([this->handle frame].size.width, [this->handle frame].size.height);}
+
+    System::Drawing::Point ClientLocation() const override {
+      switch (this->borderStyle) {
+        case BorderStyle::None : return {0, 0};
+        case BorderStyle::FixedSingle : return {1, 1};
+        case BorderStyle::Fixed3D : return {2, 2};
+      }
+    }
+    System::Drawing::Size ClientSize() const override {
+      switch (this->borderStyle) {
+        case BorderStyle::None : return System::Drawing::Size([this->handle frame].size.width, [this->handle frame].size.height);
+        case BorderStyle::FixedSingle : return System::Drawing::Size([this->handle frame].size.width - 2, [this->handle frame].size.height - 2);
+        case BorderStyle::Fixed3D : return System::Drawing::Size([this->handle frame].size.width - 4, [this->handle frame].size.height - 4);
+      }
+    }
     void ClientSize(const System::Drawing::Size& size) override {[this->handle setFrameSize:NSMakeSize(size.Width, size.Height)];}
     void Cursor(const System::Windows::Forms::Cursor& cursor) override {[this->handle setCursor:(NSCursor *)cursor.Handle()];}
     void Enabled(bool enabled) override {}
@@ -56,6 +72,9 @@ namespace Native {
     void Text(const string& text) override {}
     NSView* View() override {return this->handle;}
     void Visible(bool visible) override {[this->handle setHidden:visible ? NO : YES];}
+    
+  private:
+    System::Windows::Forms::BorderStyle borderStyle = System::Windows::Forms::BorderStyle::None;
   };
 }
 

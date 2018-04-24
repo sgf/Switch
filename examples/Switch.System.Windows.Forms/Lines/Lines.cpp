@@ -17,16 +17,16 @@ namespace PanelExample {
       this->lineSeparator.Bounds = System::Drawing::Rectangle(10, 10, 280, 2);
 
       this->lineRed.BackColor = System::Drawing::Color::Red;
-      this->lineRed.Bounds = System::Drawing::Rectangle(10, 20, 1, 250);
+      this->lineRed.Bounds = System::Drawing::Rectangle(10, 20, 2, 250);
 
       this->lineGreen.BackColor = System::Drawing::Color::Green;
-      this->lineGreen.Bounds = System::Drawing::Rectangle(150, 20, 1, 250);
+      this->lineGreen.Bounds = System::Drawing::Rectangle(149, 20, 2, 250);
 
       this->lineBlue.BackColor = System::Drawing::Color::Blue;
-      this->lineBlue.Bounds = System::Drawing::Rectangle(290, 20, 1, 250);
+      this->lineBlue.Bounds = System::Drawing::Rectangle(288, 20, 2, 250);
 
       this->lineSeparator2.BorderStyle = BorderStyle::FixedSingle;
-      this->lineSeparator2.Bounds = System::Drawing::Rectangle(10, 280, 280, 1);
+      this->lineSeparator2.Bounds = System::Drawing::Rectangle(10, 278, 280, 2);
 
       this->ClientSize = System::Drawing::Size(300, 300);
       this->Text = "Lines example";

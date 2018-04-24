@@ -15,6 +15,7 @@ using HINSTANCE = struct HINSTANCE__ { int unused; }*;
 #if !defined(_WIN32)
 #define __argc 0
 #define __argv null
+#define __stdcall
 #endif
 /// @endcond
 
@@ -47,7 +48,7 @@ namespace Switch {
     return Startup::Run(mainClass::Main, System::Environment::SetCommandLineArgs(argv, argc));\
   } \
   \
-  int WinMain(HINSTANCE instance, HINSTANCE previousInstance, char* commandLine, int commandShow) {\
+  int __stdcall WinMain(HINSTANCE instance, HINSTANCE previousInstance, char* commandLine, int commandShow) {\
     return main(__argc, __argv); \
   }\
   int __startup_force_to_end_with_semicolon__ = 0

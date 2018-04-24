@@ -25,17 +25,17 @@ namespace{
 @end
 
 intptr Native::TimerApi::Create(int32 interval, delegate<void> tick) {
-  TimerCocoa* handle = [[[TimerCocoa alloc] init] autorelease];
+  TimerCocoa* handle = [[TimerCocoa alloc] init];
   ticks[(intptr)handle] = tick;
-  handle.timer = [NSTimer timerWithTimeInterval:(double)interval/1000 target:handle selector:@selector(TimerProc:) userInfo:handle repeats:YES];
-  NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
-  [runLoop addTimer:handle.timer forMode:NSDefaultRunLoopMode];
+  [handle setTimer:[NSTimer timerWithTimeInterval:(double)interval/1000 target:handle selector:@selector(TimerProc:) userInfo:handle repeats:YES]];
+  [[NSRunLoop mainRunLoop] addTimer:handle.timer forMode:NSDefaultRunLoopMode];
   return (intptr)handle;
 }
 
 void Native::TimerApi::Destroy(intptr handle) {
   [[(TimerCocoa*)handle timer] invalidate];
   ticks.Remove(handle);
+  [(TimerCocoa*)handle release];
 }
 
 #endif

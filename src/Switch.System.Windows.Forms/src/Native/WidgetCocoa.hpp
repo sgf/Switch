@@ -20,6 +20,7 @@ namespace Native {
   public:
     virtual void AddChild(IWidget* child) = 0;
     virtual void BackColor(const System::Drawing::Color& color) = 0;
+    virtual System::Drawing::Point ClientLocation() const = 0;
     virtual System::Drawing::Size ClientSize() const = 0;
     virtual void ClientSize(const System::Drawing::Size& size) = 0;
     virtual void Cursor(const System::Windows::Forms::Cursor& cursor) = 0;
@@ -51,6 +52,7 @@ namespace Native {
 
     void AddChild(IWidget* child) override {[this->View() addSubview:child->View()];}
     NSObject* Handle() override {return this->handle;}
+    System::Drawing::Point ClientLocation() const override {return {0, 0};}
     //Native::LocationOffset LocationOffset() const override {return Native::LocationOffset::None;}
     static NSColor* ToNSColor(const System::Drawing::Color& color) {return [NSColor colorWithCalibratedRed:as<double>(color.R()) / 0xFF green:as<double>(color.G()) / 0xFF blue:as<double>(color.B()) / 0xFF alpha:as<double>(color.A()) / 0xFF];}
     intptr SendMessage(intptr handle, int32 msg, intptr wparam, intptr lparam) override {
@@ -69,7 +71,7 @@ namespace Native {
     WidgetControl() {}
 
     void Location(IWidget* parent, const System::Drawing::Point& location) override {
-      [this->handle setFrameOrigin:NSMakePoint(location.X, location.Y)];
+      [this->handle setFrameOrigin:NSMakePoint(location.X + this->ClientLocation().X, location.Y + this->ClientLocation().X)];
     }
 
     /*
