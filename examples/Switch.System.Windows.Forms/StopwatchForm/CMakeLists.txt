@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.2)
+
+project(StopwatchForm)
+find_package(Switch REQUIRED)
+SetSwitchApplicationCopyright("© 2010 - 2018 by Gammasoft")
+SetSwitchApplicationIcon(Stopwatch)
+SetSwitchApplicationIdentifier("org.gammasoft.StopwatchForm")
+SetSwitchApplicationInformation("This example shows how to use Switch")
+add_executable(StopwatchForm ${SWITCH_GUI} StopwatchForm.cpp)
+target_link_libraries(StopwatchForm Switch.System.Windows.Forms)

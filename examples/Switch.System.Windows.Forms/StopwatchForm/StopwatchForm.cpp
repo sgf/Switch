@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Diagnostics;
 using namespace System::Windows::Forms;
 
-namespace Chrono {
+namespace StopwatchForm {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -55,6 +55,8 @@ namespace Chrono {
       this->Text = "Chrono";
       this->StartPosition = FormStartPosition::CenterScreen;
       this->ClientSize = System::Drawing::Size(275, 115);
+      this->FormBorderStyle = FormBorderStyle::FixedSingle;
+      this->MaximizeBox = false;
     }
 
   private:
@@ -103,4 +105,4 @@ namespace Chrono {
   };
 }
 
-startup_(Chrono::Form1);
+startup_(StopwatchForm::Form1);
