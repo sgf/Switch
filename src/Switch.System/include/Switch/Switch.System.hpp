@@ -112,6 +112,8 @@
 #include "System/Threading/BarrierPostPhaseException.hpp"
 #include "System/Threading/Semaphore.hpp"
 #include "System/Threading/SemaphoreFullException.hpp"
+#include "System/Threading/ThreadExceptionEventArgs.hpp"
+#include "System/Threading/ThreadExceptionEventHandler.hpp"
 #include "System/Uri.hpp"
 #include "System/UriComponents.hpp"
 #include "System/UriFormat.hpp"
