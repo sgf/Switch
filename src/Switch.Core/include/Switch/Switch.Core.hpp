@@ -81,6 +81,8 @@
 #include "System/IO/TextWriter.hpp"
 #include "System/Linq/Enumerable.hpp"
 #include "System/Linq/Linq.hpp"
+#include "System/Reflection/Assembly.hpp"
+#include "System/Reflection/AssemblyAttribute.hpp"
 #include "System/Runtime/CompilerServices/Caller.hpp"
 #include "System/Runtime/Serialization/Formatter.hpp"
 #include "System/Runtime/Serialization/ISerializable.hpp"

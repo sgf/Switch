@@ -162,6 +162,10 @@ endif()
 set(CMAKE_DEBUG_POSTFIX d)
 
 #_______________________________________________________________________________
+#                                          set switch libraries version variable
+add_definitions(-DSWITCH_LIBRARY_VERSION="${PROJECT_VERSION}")
+
+#_______________________________________________________________________________
 #                                                         executable output path
 if ("${CMAKE_BUILD_TYPE}" STREQUAL "")
   set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})

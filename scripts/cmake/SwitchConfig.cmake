@@ -25,6 +25,13 @@ find_package(ZLIB REQUIRED)
 find_package(PNG REQUIRED)
 
 #_______________________________________________________________________________
+#                                        set switch application version variable
+if (NOT SWITCH_APPLICATION_VERSION)
+  set(SWITCH_APPLICATION_VERSION "${APPLICATION_VERSION}")
+  add_definitions(-DSWITCH_APPLICATION_VERSION="${SWITCH_APPLICATION_VERSION}")
+endif()
+
+#_______________________________________________________________________________
 #                                                                  set libraries
 set(SWITCH_LIBRARY Switch.TUnit.Core Switch.System.Windows.Forms
   Switch.System.Drawing Switch.System.Core Switch.System Switch.Core)
