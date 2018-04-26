@@ -46,6 +46,7 @@
 #include "System/Windows/Forms/FormClosedEventHandler.hpp"
 #include "System/Windows/Forms/FormClosingEventArgs.hpp"
 #include "System/Windows/Forms/FormClosingEventHandler.hpp"
+#include "System/Windows/Forms/FormCollection.hpp"
 #include "System/Windows/Forms/FormStartPosition.hpp"
 #include "System/Windows/Forms/GiveFeedbackEventArgs.hpp"
 #include "System/Windows/Forms/GiveFeedbackEventHandler.hpp"
