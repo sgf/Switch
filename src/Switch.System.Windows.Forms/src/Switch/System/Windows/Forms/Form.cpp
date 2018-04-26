@@ -42,7 +42,7 @@ DialogResult Form::ShowDialog() const {
     Application::mainForm().FormClosed += delegate_(const object & sender, const FormClosedEventArgs & e) {
       Application::Exit();
     };
-    Application::MessageLoop();
+    Application::RunMessageLoop();
     Application::mainForm = null;
   }
   return this->dialogResult;
