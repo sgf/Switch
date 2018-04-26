@@ -18,4 +18,4 @@ AssemblyCulture_("");
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // In not specify or empty or "*" the cmake project version is used.
 
-AssemblyVersion_("1.2.3");
+AssemblyVersion_("*");

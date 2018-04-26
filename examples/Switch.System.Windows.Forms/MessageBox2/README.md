@@ -3,20 +3,20 @@ This example demonstrates the use of System::Windows::Forms::MessageBox control.
 
 Windows :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/MessageBoxW.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/MessageBox2W.png)
 
 macOS :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/MessageBoxM.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/MessageBox2M.png)
 
 Ubuntu :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/MessageBoxU.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/MessageBox2U.png)
 
 Gnome :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/MessageBoxG.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/MessageBox2G.png)
 
 Gnome Dark :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/MessageBoxGD.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/MessageBox2GD.png)

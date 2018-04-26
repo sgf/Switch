@@ -20,7 +20,7 @@ namespace MessageBoxExample {
       this->editCaption.Text = "Switch";
       this->editCaption.Location = System::Drawing::Point(90, 10);
       this->editCaption.Width = 330;
-      this->editCaption.Height = 20;
+       this->editCaption.BorderStyle = BorderStyle::Fixed3D;
       this->editCaption.BackColor = System::Drawing::Color::White;
 
       this->labelMessage.Text = "Message :";
@@ -30,11 +30,12 @@ namespace MessageBoxExample {
       this->editMessage.Text = "It's fantastic !";
       this->editMessage.Location = System::Drawing::Point(90, 40);
       this->editMessage.Width = 330;
-      this->editMessage.Height = 20;
+      this->editMessage.BorderStyle = BorderStyle::Fixed3D;
       this->editMessage.BackColor = System::Drawing::Color::White;
 
       this->radioButtonOk.Text = "Ok";
       this->radioButtonOk.Location = System::Drawing::Point(10, 30);
+      this->radioButtonOk.Width = 180;
       this->radioButtonOk.Checked = true;
       this->radioButtonOk.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::OK;
@@ -42,30 +43,35 @@ namespace MessageBoxExample {
 
       this->radioButtonOkCancel.Text = "OkCancel";
       this->radioButtonOkCancel.Location = System::Drawing::Point(10, 60);
+      this->radioButtonOkCancel.Width = 180;
       this->radioButtonOkCancel.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::OKCancel;
       };
 
       this->radioButtonAbortRetryIgnore.Text = "AbortRetryIgnore";
       this->radioButtonAbortRetryIgnore.Location = System::Drawing::Point(10, 90);
+      this->radioButtonAbortRetryIgnore.Width = 180;
       this->radioButtonAbortRetryIgnore.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::AbortRetryIgnore;
       };
 
       this->radioButtonYesNoCancel.Text = "YesNoCancel";
       this->radioButtonYesNoCancel.Location = System::Drawing::Point(10, 120);
+      this->radioButtonYesNoCancel.Width = 180;
       this->radioButtonYesNoCancel.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::YesNoCancel;
       };
 
       this->radioButtonYesNo.Text = "YesNo";
       this->radioButtonYesNo.Location = System::Drawing::Point(10, 150);
+      this->radioButtonYesNo.Width = 180;
       this->radioButtonYesNo.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::YesNo;
       };
 
       this->radioButtonRetryCancel.Text = "RetryCancel";
       this->radioButtonRetryCancel.Location = System::Drawing::Point(10, 180);
+      this->radioButtonRetryCancel.Width = 180;
       this->radioButtonRetryCancel.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxButtons = MessageBoxButtons::RetryCancel;
       };
@@ -77,6 +83,7 @@ namespace MessageBoxExample {
 
       this->radioButtonNone.Text = "None";
       this->radioButtonNone.Location = System::Drawing::Point(10, 30);
+      this->radioButtonNone.Width = 180;
       this->radioButtonNone.Checked = true;
       this->radioButtonNone.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::None;
@@ -84,48 +91,56 @@ namespace MessageBoxExample {
 
       this->radioButtonHand.Text = "Hand";
       this->radioButtonHand.Location = System::Drawing::Point(10, 60);
+      this->radioButtonHand.Width = 180;
       this->radioButtonHand.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Hand;
       };
 
       this->radioButtonStop.Text = "Stop";
       this->radioButtonStop.Location = System::Drawing::Point(10, 90);
+      this->radioButtonStop.Width = 180;
       this->radioButtonStop.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Stop;
       };
 
       this->radioButtonError.Text = "Error";
       this->radioButtonError.Location = System::Drawing::Point(10, 120);
+      this->radioButtonError.Width = 180;
       this->radioButtonError.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Error;
       };
 
       this->radioButtonQuestion.Text = "Question";
       this->radioButtonQuestion.Location = System::Drawing::Point(10, 150);
+      this->radioButtonQuestion.Width = 180;
       this->radioButtonQuestion.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Question;
       };
 
       this->radioButtonExclamation.Text = "Exclamation";
       this->radioButtonExclamation.Location = System::Drawing::Point(10, 180);
+      this->radioButtonExclamation.Width = 180;
       this->radioButtonExclamation.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Exclamation;
       };
 
       this->radioButtonWarning.Text = "Warning";
       this->radioButtonWarning.Location = System::Drawing::Point(10, 210);
+      this->radioButtonWarning.Width = 180;
       this->radioButtonWarning.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Warning;
       };
 
       this->radioButtonAsterisk.Text = "Asterisk";
       this->radioButtonAsterisk.Location = System::Drawing::Point(10, 240);
+      this->radioButtonAsterisk.Width = 180;
       this->radioButtonAsterisk.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Asterisk;
       };
 
       this->radioButtonInformation.Text = "Information";
       this->radioButtonInformation.Location = System::Drawing::Point(10, 270);
+      this->radioButtonInformation.Width = 180;
       this->radioButtonInformation.Click += delegate_(const object & sender, const EventArgs & e) {
         this->messageBoxIcon = MessageBoxIcon::Information;
       };

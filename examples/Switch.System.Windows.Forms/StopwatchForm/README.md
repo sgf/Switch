@@ -1,23 +1,23 @@
-# Form
+# Stopwatch
 
-This example demonstrates the use of System::Windows::Forms::Form control.
+This example demonstrates the use of Stopwatch class, Label and Button controls.
 
 Windows :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormW.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchW.png)
 
 macOS :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormM.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchM.png)
 
 Ubuntu :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormU.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchU.png)
 
 Gnome :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormG.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchG.png)
 
 Gnome Dark :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/FormGD.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchGD.png)
