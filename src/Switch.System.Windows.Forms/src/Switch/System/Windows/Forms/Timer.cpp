@@ -26,3 +26,7 @@ void Timer::SetInterval(int32 interval) {
     }
   }
 }
+
+void Timer::OnTick(const EventArgs& e) {
+  this->Tick(*this, e);
+}
