@@ -60,10 +60,10 @@ namespace Native {
       if (withClientSize)
         this->ClientSize(size);
 
-      static Microsoft::Win32::RegistryKey key = Microsoft::Win32::Registry::CurrentUser().CreateSubKey("Gammasoft71").CreateSubKey("Switch").CreateSubKey("Forms");
-      static int32 defaultLocation = as<Int32>(key.GetValue("DefaultLocation", 20));
+      static Microsoft::Win32::RegistryKey key = Microsoft::Win32::Registry::CurrentUser().CreateSubKey("Software").CreateSubKey("Gammasoft71").CreateSubKey("Switch").CreateSubKey(Environment::Version().ToString()).CreateSubKey("Forms");
+      static int32 defaultLocation = as<Int32>(key.GetValue("DefaultFormLocation", 20));
       // Strangely, on Windows the first location is used 2 times; this boolean simumate it.
-      static bool nextLocation = Convert::ToBoolean(as<Int32>(key.GetValue("NextLocation", 1)));
+      static bool nextLocation = Convert::ToBoolean(as<Int32>(key.GetValue("NextFormLocation", 1)));
 
       this->bounds = {this->Location(), this->Size()};
       switch (startPosition) {
@@ -79,8 +79,8 @@ namespace Native {
         nextLocation = !(nextLocation == true && defaultLocation == 20);
         if (nextLocation)
           defaultLocation = defaultLocation < 180 ? defaultLocation + 20 : 20;
-        key.SetValue("DefaultLocation", as<int32>(defaultLocation), Microsoft::Win32::RegistryValueKind::DWord);
-        key.SetValue("NextLocation", nextLocation, Microsoft::Win32::RegistryValueKind::DWord);
+        key.SetValue("DefaultFormLocation", as<int32>(defaultLocation), Microsoft::Win32::RegistryValueKind::DWord);
+        key.SetValue("NextFormLocation", nextLocation, Microsoft::Win32::RegistryValueKind::DWord);
       }
       
       if (withClientSize)
