@@ -258,7 +258,7 @@ namespace Switch {
           /// startup_(Class1);
           /// @endcode
           Switch::System::EventHandler Tick;
-          
+
           /// @brief Starts the timer.
           /// @remarks You can also start the timer by setting the Enabled property to true.
           /// @par Examples
@@ -313,7 +313,7 @@ namespace Switch {
           /// startup_(Class1);
           /// @endcode
           void Start() {this->Enabled = true;}
-          
+
           /// @brief Stops the timer.
           /// @remarks You can also stop the timer by setting the Enabled property to false. A Timer object may be enabled and disabled multiple times within the same application session.
           /// @remarks Calling Start after you have disabled a Timer by calling Stop will cause the Timer to restart the interrupted interval. If your Timer is set for a 5000-millisecond interval, and you call Stop at around 3000 milliseconds, calling Start will cause the Timer to wait 5000 milliseconds before raising the Tick event.
@@ -377,7 +377,7 @@ namespace Switch {
           /// @remarks This method is called for each timer tick. It calls any methods that are added through Tick. If you are inheriting from Timer, you can override this method.
           /// @remarks Raising an event invokes the event handler through a delegate. For more information, see Handling and Raising Events.
           virtual void OnTick(const EventArgs& e);
-          
+
         private:
           void SetEnabled(bool enabled);
           void SetInterval(int32 interval);

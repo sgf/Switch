@@ -23,11 +23,11 @@ struct __assembly_attribute__ {
 class AssemblyCompanyAttribute final : public object {
 public:
   AssemblyCompanyAttribute(const string& company) : company(company) {}
-  
+
   property_<string, readonly_> Company {
     get_ {return this->company;}
   };
-  
+
 private:
   string company;
 };
@@ -42,35 +42,35 @@ namespace Switch {
       class AssemblyCompanyAttribute final : public object {
       public:
         AssemblyCompanyAttribute(const string& company) : company(company) {}
-        
+
         property_<string, readonly_> Company {
           get_ {return this->company;}
         };
-        
+
       private:
         string company;
       };
-      
+
       class AssemblyConfigurationAttribute final : public object {
       public:
         AssemblyConfigurationAttribute(const string& configuration) : configuration(configuration) {}
-        
+
         property_<string, readonly_> Configuration {
           get_ {return this->configuration;}
         };
-        
+
       private:
         string configuration;
       };
-      
+
       class AssemblyCopyrightAttribute final : public object {
       public:
         AssemblyCopyrightAttribute(const string& copyright) : copyright(copyright) {}
-        
+
         property_<string, readonly_> Copyright {
           get_ {return this->copyright;}
         };
-        
+
       private:
         string copyright;
       };
@@ -81,34 +81,34 @@ namespace Switch {
 using namespace Switch;
 
 #define AssemblyCompany_(company) \
-__assembly_attribute__ __assemblyCompanyAttribute {"company", company}
+  __assembly_attribute__ __assemblyCompanyAttribute {"company", company}
 
 #define AssemblyConfiguration_(configuration) \
-__assembly_attribute__ __assemblyConfigurationAttribute {"configuration", configuration}
+  __assembly_attribute__ __assemblyConfigurationAttribute {"configuration", configuration}
 
 #define AssemblyCopyright_(copyright) \
-__assembly_attribute__ __assemblyCopyrightAttribute {"copyright", copyright}
+  __assembly_attribute__ __assemblyCopyrightAttribute {"copyright", copyright}
 
 #define AssemblyCulture_(culture) \
-__assembly_attribute__ __assemblyCultureAttribute {"culture", culture}
+  __assembly_attribute__ __assemblyCultureAttribute {"culture", culture}
 
 #define AssemblyDescription_(description) \
-__assembly_attribute__ __assemblyDescriptionAttribute {"description", description}
+  __assembly_attribute__ __assemblyDescriptionAttribute {"description", description}
 
 #define AssemblyGuid_(guid) \
-__assembly_attribute__ __assemblyGuidAttribute {"guid", guid}
+  __assembly_attribute__ __assemblyGuidAttribute {"guid", guid}
 
 #define AssemblyIdentifier_(identifier) \
-__assembly_attribute__ __assemblyIdentifierAttribute {"identifier", identifier}
+  __assembly_attribute__ __assemblyIdentifierAttribute {"identifier", identifier}
 
 #define AssemblyProduct_(product) \
-__assembly_attribute__ __assemblyProductAttribute {"product", product}
+  __assembly_attribute__ __assemblyProductAttribute {"product", product}
 
 #define AssemblyVersion_(version) \
-__assembly_attribute__ __assemblyVersionAttribute {"version", version == "" || version == "*" ? SWITCH_APPLICATION_VERSION : version}
+  __assembly_attribute__ __assemblyVersionAttribute {"version", version == "" || version == "*" ? SWITCH_APPLICATION_VERSION : version}
 
 #define AssemblyTitle_(title) \
-__assembly_attribute__ __assemblyTitleAttribute {"title", title}
+  __assembly_attribute__ __assemblyTitleAttribute {"title", title}
 
 #define AssemblyTrademark_(trademark) \
-__assembly_attribute__ __assemblyTrademarkAttribute {"trademark", trademark}
+  __assembly_attribute__ __assemblyTrademarkAttribute {"trademark", trademark}

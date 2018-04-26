@@ -123,7 +123,7 @@ void Application::RunMessageLoop() {
   EnterThreadModal(object(), EventArgs::Empty);
   try {
     Native::ApplicationApi::MessageLoop(mainForm(), Idle);
-  } catch(const Exception& exception) {
+  } catch (const Exception& exception) {
     OnThreadException(exception);
   }
   LeaveThreadModal(object(), EventArgs::Empty);

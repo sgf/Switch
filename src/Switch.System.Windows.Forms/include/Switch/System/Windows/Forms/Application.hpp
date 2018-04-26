@@ -46,13 +46,13 @@ namespace Switch {
           /// @remarks ProductVersion first looks to see if the assembly containing the main executable has the AssemblyInformationalVersion attribute on it. If this attribute exists, it is used for both ProductVersion and CommonAppDataPath. If this attribute does not exist, both properties use the version of the executable file instead.
           /// @remarks The path will be different depending on whether the Windows Forms application is deployed using ClickOnce. ClickOnce applications are stored in a per-user application cache in the C:\Documents and Settings\username directory. For more information, see Accessing Local and Remote Data in ClickOnce Applications.
           static property_<string, readonly_> CommonAppDataPath;
-          
+
           /// @brief Gets the registry key for the application data that is shared among all users.
           /// @return A RegistryKey representing the registry key of the application data that is shared among all users.
           /// @remarks If the key does not exist, it is created in the following format:
           /// @remarks LocalMachine\Software\CompanyName\ProductName\ProductVersion
           static property_<Microsoft::Win32::RegistryKey, readonly_> CommonAppDataRegistry;
-          
+
           /// @brief Gets the company name associated with the application.
           /// @return The company name.
           /// @par Examples
@@ -75,7 +75,7 @@ namespace Switch {
           /// @remarks Base Path\CompanyName\ProductName\ProductVersion
           /// @remarks A typical base path is C:\Documents and Settings\username\Local Settings\Application Data. This path will be different, however, if the Windows Forms application is deployed by using ClickOnce. ClickOnce creates its own application data directory that is isolated from all other applications. For more information, see Accessing Local and Remote Data in ClickOnce Applications.
           static property_<string, readonly_> LocalUserAppDataPath;
-          
+
           /// @brief Gets a value indicating whether a message loop exists on this thread.
           /// @return true if a message loop exists; otherwise, false.
           /// @remarks When hosting Windows Forms in other environments, such as unmanaged applications, this property will always return false. Use RegisterMessageLoop to instruct Windows Forms if the hosting environment still has an active message loop.
@@ -85,7 +85,7 @@ namespace Switch {
           /// @return A FormCollection containing all the currently open forms owned by this application.
           /// @remarks The OpenForms property represents a read-only collection of forms owned by the application. This collection can be searched by index position or by the Name of the Form.
           static property_<FormCollection, readonly_> OpenForms;
-          
+
           /// @brief Gets the product name associated with this application.
           /// @return The product name.
           /// @remarks ProductName is taken from the metadata of the assembly containing the main form of the current application. You can set it by setting AssemblyProductAttribute inside of your assembly manifest. For more information, see Assembly Manifest.
@@ -110,7 +110,7 @@ namespace Switch {
           /// }
           /// @endcode
           static property_<string, readonly_> ProductVersion;
-          
+
           /// @brief Occurs when the application is about to shut down.
           /// @remarks You must attach the event handlers to the Exit event to perform unhandled, required tasks before the application stops running. You can close files opened by this application, or dispose of objects that garbage collection did not reclaim.
           /// @remarks Because this is a static event, you must detach any event handlers attached to this event in the ApplicationExit event handler itself. If you do not detach these handlers, they will remain attached to the event and continue to consume memory.
@@ -152,14 +152,14 @@ namespace Switch {
           /// }
           /// @endcode
           static EventHandler LeaveThreadModal;
-          
+
           /// @brief Occurs when an untrapped thread exception is thrown.
           /// @remarks This event allows your Windows Forms application to handle otherwise unhandled exceptions that occur in Windows Forms threads. Attach your event handlers to the ThreadException event to deal with these exceptions, which will leave your application in an unknown state. Where possible, exceptions should be handled by a structured exception handling block.
           /// @remarks You can change whether this callback is used for unhandled Windows Forms thread exceptions by setting SetUnhandledExceptionMode. To catch exceptions that occur in threads not created and owned by Windows Forms, use the UnhandledException event handler.
           /// @note To guarantee that no activations of this event are missed, you must attach a handler before you call Application.Run.
           /// @warning Because this is a static event, you must detach your event handlers when your application is disposed, or memory leaks will result.
           static System::Threading::ThreadExceptionEventHandler ThreadException;
-          
+
           /// @brief Occurs when a thread is about to shut down. When the main thread for an application is about to be shut down, this event is raised first, followed by an ApplicationExit event.
           /// @remarks You must attach the event handlers to the ThreadExit event to perform any unhandled, required tasks before the thread stops running. Close files opened by this thread, or dispose of objects that the garbage collector did not reclaim.
           /// @warning Because this is a static event, you must detach your event handlers when your application is disposed, or memory leaks will result.
@@ -216,7 +216,7 @@ namespace Switch {
           /// }
           /// @endcode
           static void Exit();
-          
+
           /// @brief Exits the message loop on the current thread and closes all windows on the thread.
           /// @remarks Use this method to exit the message loop of the current thread. This method causes the call to Run for the current thread to return. To exit the entire application, call Exit.
           static void ExitThread();

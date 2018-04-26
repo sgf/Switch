@@ -32,12 +32,12 @@ namespace FormExample {
       this->productName.BorderStyle = BorderStyle::Fixed3D;
       this->productName.Location = Point(120, 40);
       this->productName.Width = 170;
-      
+
       this->productVersion.Text = Application::ProductVersion;
       this->productVersion.BorderStyle = BorderStyle::Fixed3D;
       this->productVersion.Location = Point(120, 70);
       this->productVersion.Width = 170;
-      
+
       this->Text = "Form with assembly info";
       this->Controls().AddRange({this->company, this->product, this->version, this->companyName, this->productName, this->productVersion});
       this->ClientSize = System::Drawing::Size(300, 105);
