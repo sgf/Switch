@@ -42,21 +42,27 @@ namespace Switch {
 
         /// @brief Gets a SafeRegistryHandle object that represents the registry key that the current RegistryKey object encapsulates.
         /// @return intptr The handle to the registry key.
-        intptr Handle() const { return this->handle->Handle(); }
+        property_<intptr, readonly_> Handle {
+          get_ {return this->handle->Handle();}
+        };
 
         /// @brief Retrieves the name of the key.
         /// @return System::String The absolute (qualified) name of the key.
-        const System::String& Name() const { return this->name; }
+        property_ <System::String, readonly_> Name {
+          get_ {return this->name;}
+        };
 
         /// @brief Retrieves the count of subkeys of the current key.
         /// @return Int32 The number of subkeys of the current key.
-        int32 SubKeyCount() const;
+        property_<int32, readonly_> SubKeyCount {
+          get_ {return GetSubKeyCount();}
+        };
 
         /// @brief Retrieves the count of subkeys of the current key.
         /// @return Int32 The number of subkeys of the current key.
-        int32 ValueCount() const {
-          return this->values.Count;
-        }
+        property_<int32, readonly_> ValueCount {
+          get_ {return this->values.Count();}
+        };
 
         /// @brief Closes the key and flushes it to disk if its contents have been modified.
         /// @remarks Calling this method on system keys will have no effect, because system keys are never closed.
@@ -257,6 +263,7 @@ namespace Switch {
       private:
         friend class Registry;
         RegistryKey(RegistryHive hkey);
+        int32 GetSubKeyCount() const;
         void Load();
 
         template<typename T>

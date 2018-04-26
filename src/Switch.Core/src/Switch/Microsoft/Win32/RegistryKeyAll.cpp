@@ -75,7 +75,7 @@ RegistryKey::RegistryKey(RegistryHive rhive)  : name(ToName(rhive)), permission(
 RegistryKey::~RegistryKey() {
 }
 
-int32 RegistryKey::SubKeyCount() const {
+int32 RegistryKey::GetSubKeyCount() const {
   return DirectoryInfo(this->path).GetDirectories().Count;
 }
 

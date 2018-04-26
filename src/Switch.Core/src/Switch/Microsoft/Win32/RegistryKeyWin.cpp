@@ -36,7 +36,7 @@ RegistryKey::~RegistryKey() {
   Close();
 }
 
-int32 RegistryKey::SubKeyCount() const {
+int32 RegistryKey::GetSubKeyCount() const {
   return Native::RegistryApi::NumberOfSubKey(this->handle->Handle());
 }
 
