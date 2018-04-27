@@ -20,7 +20,7 @@ namespace MessageBoxExample {
       this->editCaption.Text = "Switch";
       this->editCaption.Location = System::Drawing::Point(90, 10);
       this->editCaption.Width = 330;
-       this->editCaption.BorderStyle = BorderStyle::Fixed3D;
+      this->editCaption.BorderStyle = BorderStyle::Fixed3D;
       this->editCaption.BackColor = System::Drawing::Color::White;
 
       this->labelMessage.Text = "Message :";

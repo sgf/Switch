@@ -22,7 +22,7 @@ namespace VStyles {
       this->ClientSize = System::Drawing::Size(300, 286);
       this->Controls().Add(this->button1);
 
-      this->Text = "Application.EnableVisualStyles Example";
+      this->Text = "Application::EnableVisualStyles Example";
     }
   };
 }
