@@ -2,7 +2,9 @@
 #include <Switch/System/IO/Directory.hpp>
 #include <Switch/System/IO/Path.hpp>
 #include <Switch/System/ArgumentException.hpp>
-#include <Switch/System/Reflection/AssemblyAttribute.hpp>
+#include <Switch/System/Reflection/AssemblyCompanyAttribute.hpp>
+#include <Switch/System/Reflection/AssemblyProductAttribute.hpp>
+#include <Switch/System/Reflection/AssemblyVersionAttribute.hpp>
 #include "../../../../Native/Api.hpp"
 #include "../../../../../include/Switch/System/Windows/Forms/Application.hpp"
 
@@ -32,9 +34,9 @@ property_<Microsoft::Win32::RegistryKey, readonly_> Application::CommonAppDataRe
 
 property_<string, readonly_> Application::CompanyName {
   [] {
-    if (!__assembly_company_attribute__() || __assembly_company_attribute__().ToObject() == "")
+    if (!__assembly_company_attribute__() || __assembly_company_attribute__()->Company == "")
       return System::IO::Path::GetFileNameWithoutExtension(ExecutablePath);
-    return __assembly_company_attribute__().ToObject();
+    return __assembly_company_attribute__()->Company();
   }
 };
 
@@ -61,17 +63,17 @@ property_<FormCollection, readonly_> Application::OpenForms {
 
 property_<string, readonly_> Application::ProductName {
   [] {
-    if (!__assembly_product_attribute__() || __assembly_company_attribute__().ToObject() == "")
+    if (!__assembly_product_attribute__() || __assembly_product_attribute__()->Product == "")
       return System::IO::Path::GetFileNameWithoutExtension(ExecutablePath);
-    return __assembly_product_attribute__().ToObject();
+    return __assembly_product_attribute__()->Product();
   }
 };
 
 property_<string, readonly_> Application::ProductVersion {
   [] {
-    if (!__assembly_version_attribute__() || __assembly_version_attribute__().ToObject() == "")
-      return Version(0, 0, 0).ToString();
-    return __assembly_version_attribute__().ToObject();
+    if (!__assembly_version_attribute__() || __assembly_version_attribute__()->Version == "")
+      return string(SWITCH_APPLICATION_VERSION);
+    return __assembly_version_attribute__()->Version();
   }
 };
 
