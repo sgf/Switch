@@ -12,7 +12,9 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 ref<System::Windows::Forms::Form> __mainForm;
+
 bool __quit = false;
+bool __isActive = false;
 
 namespace {
   class ApplicationCocoaApi static_ {
@@ -21,11 +23,17 @@ namespace {
       @autoreleasepool {
         messageLoopRunning = true;
         while (messageLoopRunning && !__quit) {
+          if ([NSApp isActive] && !__isActive)
+            Native::ControlApi::SendMessage(__mainForm ? __mainForm->Handle : IntPtr::Zero, WM_ACTIVATEAPP, (intptr)true, (intptr)System::Threading::Thread::CurrentThread().ManagedThreadId());
+          else if (![NSApp isActive] && __isActive)
+            Native::ControlApi::SendMessage(__mainForm ? __mainForm->Handle : IntPtr::Zero, WM_ACTIVATEAPP, (intptr)false, (intptr)System::Threading::Thread::CurrentThread().ManagedThreadId());
+          __isActive = [NSApp isActive];
           NSEvent* event = idle.IsEmpty() ? GetMessage() : PeekMessage();
           if (event != nil)
             DispatchMessage(event);
           idle(object(), EventArgs());
         }
+        Native::ControlApi::SendMessage(__mainForm->Handle, WM_ACTIVATEAPP, (intptr)false, (intptr)System::Threading::Thread::CurrentThread().ManagedThreadId());
       }
     }
 
@@ -214,7 +222,6 @@ void Native::ApplicationApi::Start() {
 }
 
 void Native::ApplicationApi::Stop() {
-  // no implementation
 }
 
 #endif
