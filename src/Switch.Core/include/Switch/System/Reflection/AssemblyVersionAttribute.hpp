@@ -53,4 +53,4 @@ $<System::Reflection::AssemblyVersionAttribute>& __assembly_version_attribute__(
 /// @endcond
 
 #define AssemblyVersion_(version) \
-  System::Reflection::AssemblyVersionAttribute __assemblyVersionAttribute {version == "" || version == "*" ? SWITCH_APPLICATION_VERSION : version, object()}
+  System::Reflection::AssemblyVersionAttribute __assemblyVersionAttribute {string(version) == "" || string(version) == "*" ? SWITCH_APPLICATION_VERSION : version, object()}
