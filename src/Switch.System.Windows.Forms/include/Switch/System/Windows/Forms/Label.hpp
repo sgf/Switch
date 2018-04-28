@@ -3,6 +3,7 @@
 #pragma once
 
 #include "../../../SystemWindowsFormsExport.hpp"
+#include <Switch/System/Drawing/ContentAlignment.hpp>
 #include "Control.hpp"
 #include "BorderStyle.hpp"
 
@@ -35,6 +36,11 @@ namespace Switch {
             set_{this->SetBorderStyle(value);}
           };
 
+          property_<System::Drawing::ContentAlignment> TextAlign {
+            get_{return this->textAlign;},
+            set_{this->SetTextAlign(value);}
+          };
+
         protected:
           /// @brief Creates a handle for the control
           /// @remarks You typically should not call the CreateHandle method directly. The preferred method is to call the CreateControl method, which forces a handle to be created for the control and its child controls when the control is created.
@@ -47,9 +53,11 @@ namespace Switch {
           System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(100, 23); }
 
           virtual void SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle);
+          virtual void SetTextAlign(System::Drawing::ContentAlignment textAlign);
 
           /// @cond
           System::Windows::Forms::BorderStyle borderStyle = System::Windows::Forms::BorderStyle::None;
+          System::Drawing::ContentAlignment textAlign = System::Drawing::ContentAlignment::TopLeft;
           /// @endcond
         };
       }

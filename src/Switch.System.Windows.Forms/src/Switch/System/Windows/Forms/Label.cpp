@@ -10,6 +10,7 @@ void Label::CreateHandle() {
   this->handle = Native::LabelApi::Create(*this);
   this->Control::CreateHandle();
   Native::LabelApi::SetBorderStyle(*this);
+  Native::LabelApi::SetTextAlign(*this);
 }
 
 void Label::SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
@@ -17,5 +18,13 @@ void Label::SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
     this->borderStyle = borderStyle;
     if (this->IsHandleCreated)
       Native::LabelApi::SetBorderStyle(*this);
+  }
+}
+
+void Label::SetTextAlign(System::Drawing::ContentAlignment textAlign) {
+  if (this->textAlign != textAlign) {
+    this->textAlign = textAlign;
+    if (this->IsHandleCreated)
+      Native::LabelApi::SetTextAlign(*this);
   }
 }

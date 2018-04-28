@@ -1,6 +1,7 @@
 #include <Switch/Switch.System.Windows.Forms.hpp>
 
 using namespace System;
+using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace ManualTests {
@@ -12,15 +13,23 @@ namespace ManualTests {
     }
 
     Form1() {
+      this->label.Text = "Hello, World!";
+      this->label.Location = Point {10, 10};
+      this->label.BorderStyle = BorderStyle::Fixed3D;
+      this->label.TextAlign = ContentAlignment::MiddleCenter;
+      this->label.Height = 80;
+      this->label.Width = 200;
       this->Text = "Manual Test application";
       this->StartPosition = FormStartPosition::CenterScreen;
       this->ClientSize = Drawing::Size {800, 100};
       //this->MaximizeBox = false;
       //this->MinimizeBox = false;
-      this->FormBorderStyle = FormBorderStyle::None;
+      //this->FormBorderStyle = FormBorderStyle::None;
+      this->Controls().Add(this->label);
     }
 
   private:
+    Label label;
   };
 }
 

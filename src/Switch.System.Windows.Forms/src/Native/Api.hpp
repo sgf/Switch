@@ -215,7 +215,8 @@ namespace Native {
   class LabelApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::Label& label);
-    static void SetBorderStyle(const System::Windows::Forms::Label& panel);
+    static void SetBorderStyle(const System::Windows::Forms::Label& label);
+    static void SetTextAlign(const System::Windows::Forms::Label& label);
   };
 
   class PanelApi static_ {

@@ -77,6 +77,19 @@ namespace Native {
     System::Drawing::Size Size() const override {return System::Drawing::Size([this->handle frame].size.width, [this->handle frame].size.height);}
     void Size(const System::Drawing::Size& size) override {[this->handle setSize:NSMakeSize(size.Width, size.Height)];}
     void Text(const string& text) override {[this->handle setStringValue:[NSString stringWithUTF8String:text.c_str()]];}
+    void TextAlign(System::Drawing::ContentAlignment textAlign) {
+      switch (textAlign) {
+        case System::Drawing::ContentAlignment::TopLeft: [this->handle setAlignment:NSTextAlignment::NSTextAlignmentLeft]; break;
+        case System::Drawing::ContentAlignment::MiddleLeft: [this->handle setAlignment:NSTextAlignment::NSTextAlignmentLeft]; break;
+        case System::Drawing::ContentAlignment::BottomLeft: [this->handle setAlignment:NSTextAlignment::NSTextAlignmentLeft]; break;
+        case System::Drawing::ContentAlignment::TopCenter: [this->handle setAlignment:NSTextAlignment::NSTextAlignmentCenter]; break;
+        case System::Drawing::ContentAlignment::MiddleCenter: [this->handle setAlignment:NSTextAlignment::NSTextAlignmentCenter]; break;
+        case System::Drawing::ContentAlignment::BottomCenter: [this->handle setAlignment:NSTextAlignment::NSTextAlignmentCenter]; break;
+        case System::Drawing::ContentAlignment::TopRight: [this->handle setAlignment:NSTextAlignment::NSTextAlignmentRight]; break;
+        case System::Drawing::ContentAlignment::MiddleRight: [this->handle setAlignment:NSTextAlignment::NSTextAlignmentRight]; break;
+        case System::Drawing::ContentAlignment::BottomRight: [this->handle setAlignment:NSTextAlignment::NSTextAlignmentRight]; break;
+      }
+    }
     NSView* View() override {return this->handle;}
     void Visible(bool visible) override {[this->handle setHidden:visible ? NO : YES];}
   };
@@ -91,6 +104,10 @@ intptr Native::LabelApi::Create(const System::Windows::Forms::Label& label) {
 
 void Native::LabelApi::SetBorderStyle(const System::Windows::Forms::Label& label) {
   ((Native::Label*)label.Handle())->BorderStyle(label.BorderStyle);
+}
+
+void Native::LabelApi::SetTextAlign(const System::Windows::Forms::Label &label) {
+  ((Native::Label*)label.Handle())->TextAlign(label.TextAlign);
 }
 
 #endif

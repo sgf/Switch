@@ -27,9 +27,11 @@ namespace StopwatchForm {
 
       this->chrono.Parent = *this;
       this->chrono.BorderStyle = BorderStyle::Fixed3D;
-      this->chrono.Bounds = System::Drawing::Rectangle(87, 10, 100, 50);
+      this->chrono.Bounds = System::Drawing::Rectangle(10, 10, 255, 50);
       this->chrono.BackColor = Drawing::Color::LightGreen;
-      //this->chrono.TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+      this->chrono.ForeColor = Drawing::Color::DarkGreen;
+      this->chrono.Font = System::Drawing::Font(System::Drawing::FontFamily::GenericMonospace, 24.0f);
+      this->chrono.TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
       this->chrono.Text = "00:00:00.000";
 
       this->startStop.Parent = *this;
