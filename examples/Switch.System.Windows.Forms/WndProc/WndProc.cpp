@@ -33,9 +33,9 @@ namespace WindowsApplication1 {
       case WM_ACTIVATEAPP:
         // The WParam value identifies what is occurring.
         bool appActive = (((int)m.WParam != 0));
-        System::Diagnostics::Debug::Debug::WriteLine(string::Format("appActive = {0}", appActive));
-        this->label.BackColor =  appActive ? System::Drawing::Color::LightBlue : System::Drawing::Color::LightGray;
-        this->label.ForeColor =  appActive ? System::Drawing::SystemColors::ActiveCaptionText : System::Drawing::SystemColors::InactiveCaptionText;
+        System::Diagnostics::Debug::WriteLine(string::Format("appActive = {0}", appActive));
+        this->label.BackColor = appActive ? System::Drawing::Color::LightBlue : System::Drawing::Color::LightGray;
+        this->label.ForeColor = appActive ? System::Drawing::SystemColors::ActiveCaptionText : System::Drawing::SystemColors::InactiveCaptionText;
         this->label.Text = appActive ? "Application is active" : "Application is inactive";
         break;
       }
