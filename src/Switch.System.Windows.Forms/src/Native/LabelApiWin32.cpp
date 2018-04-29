@@ -30,7 +30,7 @@ void Native::LabelApi::SetBorderStyle(const System::Windows::Forms::Label& label
   SetWindowPos((HWND)label.Handle(), NULL, 0, 0, 0, 0, SWP_DRAWFRAME | SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER);
 }
 
-void Native::LabelApi::SetTextAlign(const System::Windows::Forms::Label &label) {
+void Native::LabelApi::SetTextAlign(const System::Windows::Forms::Label& label) {
 }
 
 #endif

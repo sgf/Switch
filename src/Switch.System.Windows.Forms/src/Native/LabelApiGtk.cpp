@@ -41,7 +41,7 @@ intptr Native::LabelApi::Create(const System::Windows::Forms::Label& label) {
 void Native::LabelApi::SetBorderStyle(const System::Windows::Forms::Label& label) {
 }
 
-void Native::LabelApi::SetTextAlign(const System::Windows::Forms::Label &label) {
+void Native::LabelApi::SetTextAlign(const System::Windows::Forms::Label& label) {
 }
 
 #endif
