@@ -1,3 +1,5 @@
+[![Switch](docs/Pictures/Menu/Switch.png)]()[![Switch](docs/Pictures/Menu/Gallery.png)]()[![Switch](docs/Pictures/Menu/Examples.png)]()[![Switch](docs/Pictures/Menu/Downloads.png)]()[![Switch](docs/Pictures/Menu/Documentation.png)]()[![Switch](docs/Pictures/Menu/Project.png)]()[![Switch](docs/Pictures/Menu/Sources.png)]()[![Switch](docs/Pictures/Menu/Contact.png)]()[![Switch](docs/Pictures/Menu/Gammasoft.png)]()
+
 [![GitHub Logo](docs/Pictures/SwitchNativeC++port.png)](https://gammasoft71.github.io/Switch)
 ____________________________________________________________________________________
 
