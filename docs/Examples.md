@@ -88,15 +88,15 @@ target_link_libraries(HelloWorldForm Switch.System.Windows.Forms)
 
 Running application on Windows:
 
-![HelloWorldForms](Pictures/Examples/Forms/HelloWorldFormW.png)
+![HelloWorldForms](Pictures/Examples/Forms/HelloWorldMessageBoxW.png)
 
 Running application on macOS:
 
-![HelloWorldForms](Pictures/Examples/Forms/HelloWorldFormM.png)
+![HelloWorldForms](Pictures/Examples/Forms/HelloWorldMessageBoxM.png)
 
 Running application on Ubuntu:
 
-![HelloWorldForms](Pictures/Examples/Forms/HelloWorldFormU.png)
+![HelloWorldForms](Pictures/Examples/Forms/HelloWorldMessageBoxU.png)
 
 # TUnit
 
