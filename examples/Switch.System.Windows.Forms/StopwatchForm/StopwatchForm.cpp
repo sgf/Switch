@@ -2,6 +2,7 @@
 
 using namespace System;
 using namespace System::Diagnostics;
+using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace StopwatchForm {
@@ -16,9 +17,9 @@ namespace StopwatchForm {
     Form1() {
       /*
       Array<MenuItem> actionMenu = {
-        {"Start", {*this, &Form1::OnStartStopClick}, Shortcut::CmdS},
-        {"Pause", {*this, &Form1::OnPauseResumeClick}, Shortcut::CmdP},
-        {"Reset", {*this, &Form1::OnResetClick}, Shortcut::CmdR}
+        {"Start", EventHandler(*this, &Form1::OnStartStopClick), Shortcut::CmdS},
+        {"Pause", EventHandler(*this, &Form1::OnPauseResumeClick), Shortcut::CmdP},
+        {"Reset", EventHandler(*this, &Form1::OnResetClick), Shortcut::CmdR}
       };
 
       this->mainMenu.MenuItems().Add(MenuItem("Action", actionMenu));
@@ -27,32 +28,32 @@ namespace StopwatchForm {
 
       this->chrono.Parent = *this;
       this->chrono.BorderStyle = BorderStyle::Fixed3D;
-      this->chrono.Bounds = System::Drawing::Rectangle(10, 10, 255, 50);
-      this->chrono.BackColor = Drawing::Color::LightGreen;
-      this->chrono.ForeColor = Drawing::Color::DarkGreen;
-      this->chrono.Font = System::Drawing::Font(System::Drawing::FontFamily::GenericMonospace, 24.0f);
-      this->chrono.TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+      this->chrono.Bounds = Rectangle(20, 10, 235, 50);
+      this->chrono.BackColor = System::Drawing::Color::LightGreen;
+      this->chrono.ForeColor = System::Drawing::Color::DarkGreen;
+      this->chrono.Font = System::Drawing::Font(System::Drawing::FontFamily::GenericMonospace, 22.0f);
+      this->chrono.TextAlign = ContentAlignment::MiddleCenter;
       this->chrono.Text = "00:00:00.000";
 
       this->startStop.Parent = *this;
-      this->startStop.Location = System::Drawing::Point(10, 80);
+      this->startStop.Location = Point(10, 80);
       this->startStop.Text = "Start";
-      this->startStop.Click += {*this, &Form1::OnStartStopClick};
+      this->startStop.Click += EventHandler(*this, &Form1::OnStartStopClick);
 
       this->pauseResume.Parent = *this;
-      this->pauseResume.Location = System::Drawing::Point(100, 80);
+      this->pauseResume.Location = Point(100, 80);
       this->pauseResume.Text = "Pause";
       this->pauseResume.Enabled = false;
-      this->pauseResume.Click += {*this, &Form1::OnPauseResumeClick};
+      this->pauseResume.Click += EventHandler(*this, &Form1::OnPauseResumeClick);
 
       this->reset.Parent = *this;
-      this->reset.Location = System::Drawing::Point(190, 80);
+      this->reset.Location = Point(190, 80);
       this->reset.Text = "Reset";
       this->reset.Enabled = false;
-      this->reset.Click += {*this, &Form1::OnResetClick};
+      this->reset.Click += EventHandler(*this, &Form1::OnResetClick);
 
       this->timer.Interval = 31;
-      this->timer.Tick += {*this, &Form1::OnTimerTick};
+      this->timer.Tick += EventHandler(*this, &Form1::OnTimerTick);
 
       this->Text = "Chrono";
       this->StartPosition = FormStartPosition::CenterScreen;
@@ -68,9 +69,9 @@ namespace StopwatchForm {
       else
         this->stopwatch.Start();
 
-      this->timer.Enabled = true;
-      this->pauseResume.Enabled = this->stopwatch.IsRunning;
-      this->startStop.Text = this->stopwatch.IsRunning ? "Stop" : "Start";
+      this->timer.Enabled = this->stopwatch.IsRunning;
+      this->pauseResume.Enabled = this->timer.Enabled;
+      this->startStop.Text = this->timer.Enabled ? "Stop" : "Start";
       this->reset.Enabled = !this->timer.Enabled || !this->stopwatch.IsRunning;
     }
 
