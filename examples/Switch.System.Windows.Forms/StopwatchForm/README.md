@@ -4,20 +4,20 @@ This example demonstrates the use of Stopwatch class, Label and Button controls.
 
 Windows :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchW.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchFormW.png)
 
 macOS :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchM.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchFormM.png)
 
 Ubuntu :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchU.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchFormU.png)
 
 Gnome :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchG.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchFormG.png)
 
 Gnome Dark :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchGD.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/StopwatchFormGD.png)

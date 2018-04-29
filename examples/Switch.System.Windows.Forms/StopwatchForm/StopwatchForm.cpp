@@ -55,9 +55,9 @@ namespace StopwatchForm {
       this->timer.Interval = 31;
       this->timer.Tick += EventHandler(*this, &Form1::OnTimerTick);
 
-      this->Text = "Chrono";
+      this->Text = "Stopwatch";
       this->StartPosition = FormStartPosition::CenterScreen;
-      this->ClientSize = System::Drawing::Size(275, 115);
+      this->ClientSize = System::Drawing::Size(275, 120);
       this->FormBorderStyle = FormBorderStyle::FixedSingle;
       this->MaximizeBox = false;
     }
