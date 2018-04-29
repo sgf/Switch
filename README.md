@@ -1,7 +1,6 @@
-[![Switch](docs/Pictures/Menu/Switch.png)]()[![Switch](docs/Pictures/Menu/Gallery.png)]()[![Switch](docs/Pictures/Menu/Examples.png)]()[![Switch](docs/Pictures/Menu/Downloads.png)]()[![Switch](docs/Pictures/Menu/Documentation.png)]()[![Switch](docs/Pictures/Menu/Project.png)]()[![Switch](docs/Pictures/Menu/Sources.png)]()[![Switch](docs/Pictures/Menu/Contact.png)]()[![Switch](docs/Pictures/Menu/Gammasoft.png)]()
+[![Switch](docs/Pictures/Menu/Switch.png)](docs/Home.md)[![Switch](docs/Pictures/Menu/Gallery.png)](docs/Gallery.md)[![Switch](docs/Pictures/Menu/Examples.png)](docs/Examples.md)[![Switch](docs/Pictures/Menu/Downloads.png)](docs/Downloads.md)[![Switch](docs/Pictures/Menu/Documentation.png)](docs/Documentation.md)[![Switch](docs/Pictures/Menu/Project.png)](https://sourceforge.net/projects/switchpro)[![Switch](docs/Pictures/Menu/Sources.png)](https://github.com/gammasoft71/switch)[![Switch](docs/Pictures/Menu/Contact.png)](docs/Contact.md)[![Switch](docs/Pictures/Menu/Gammasoft.png)](https://gammasoft71.wixsite.com/gammasoft)
 
-[![GitHub Logo](docs/Pictures/SwitchNativeC++port.png)](https://gammasoft71.github.io/Switch)
-____________________________________________________________________________________
+### Native C++ port of .Net Framework on Windows, macOS, Linux, iOS and android. 
 
 [![build status](https://travis-ci.org/gammasoft71/Switch.svg)](https://travis-ci.org/gammasoft71/Switch) 
 [![Build status](https://ci.appveyor.com/api/projects/status/kjfq2sl5bc99kut6?svg=true)](https://ci.appveyor.com/project/gammasoft71/Switch)
