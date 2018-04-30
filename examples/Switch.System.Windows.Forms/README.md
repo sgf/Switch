@@ -37,10 +37,10 @@ This folder contains all examples used by Switch Docmentation and more.
 ### Containers
 
 * **FlowLayoutPanel** Represents a panel that dynamically lays out its contents horizontally or vertically.
-* [GroupBox](./GroupBox) Represents a Windows control that displays a frame around a group of controls with an optional caption.
 * [Form](./Form) Represents a window or dialog box that makes up an application's user interfa
+* [GroupBox](./GroupBox) Represents a Windows control that displays a frame around a group of controls with an optional caption.
 * [Panel](./Panel) Used to group collections of controls.
-* **SlipContainer** Represents a control consisting of a movable bar that divides a container's display area into two resizable panels.
+* **SplitContainer** Represents a control consisting of a movable bar that divides a container's display area into two resizable panels.
 * [TabControl](./TabControl) Manages a related set of tab pages.
 * **TableLayoutPanel** Represents a panel that dynamically lays out its contents in a grid composed of rows and columns.
 
