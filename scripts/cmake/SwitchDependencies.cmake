@@ -32,6 +32,62 @@ if(NOT APPLE AND NOT ANDROID AND NOT CMAKE_HOST_SOLARIS AND UNIX)
   include_directories(${GTKMM_INCLUDE_DIRS})
   link_directories(${GTKMM_LIBRARY_DIRS})
 endif ()
+  
+#_______________________________________________________________________________
+#                                                               ReadAssemblyInfo
+macro(ReadAssemblyInfo ASSEMBLY_INFO)
+  file(READ "${CMAKE_CURRENT_SOURCE_DIR}/${ASSEMBLY_INFO}" ASSEMBLY_INFO_STRING)
+  string(REPLACE "\n" ";" ASSEMBLY_INFO_LIST ${ASSEMBLY_INFO_STRING})
+  list(REMOVE_ITEM ASSEMBLY_INFO_LIST "")
+  
+  foreach(ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LIST})
+    string(STRIP ${ASSEMBLY_INFO_LINE} ASSEMBLY_INFO_LINE)
+    if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyCopyright_*)")
+      string(REGEX MATCH "\\(.*\\)" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      string(REPLACE "(\"" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      string(REPLACE "\")" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      SetSwitchApplicationCopyright("${ASSEMBLY_INFO_LINE}")
+    endif()
+
+    string(STRIP ${ASSEMBLY_INFO_LINE} ASSEMBLY_INFO_LINE)
+    if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyIdentifier_*)")
+      string(REGEX MATCH "\\(.*\\)" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      string(REPLACE "(\"" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      string(REPLACE "\")" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      SetSwitchApplicationIdentifier("${ASSEMBLY_INFO_LINE}")
+    endif()
+
+    if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyDescription_*)")
+      string(REGEX MATCH "\\(.*\\)" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      string(REPLACE "(\"" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      string(REPLACE "\")" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      SetSwitchApplicationInformation("${ASSEMBLY_INFO_LINE}")
+    endif()
+
+    if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyVersion_*)")
+      string(REGEX MATCH "\\(.*\\)" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      string(REPLACE "(\"" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      string(REPLACE "\")" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      if ("${ASSEMBLY_INFO_LINE}" STREQUAL "" OR "${ASSEMBLY_INFO_LINE}" STREQUAL "*")
+        if (APPLICATION_VERSION)
+          SetSwitchApplicationVersion("${APPLICATION_VERSION}")
+        else()
+          SetSwitchApplicationVersion("${PROJECT_VERSION}")
+        endif()
+      else()
+        SetSwitchApplicationVersion("${ASSEMBLY_INFO_LINE}")
+      endif()  
+    endif()
+
+    if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyProduct_*)")
+      string(REGEX MATCH "\\(.*\\)" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      string(REPLACE "(\"" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      string(REPLACE "\")" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
+      SetSwitchApplicationName("${ASSEMBLY_INFO_LINE}")
+    endif()
+
+  endforeach()
+endmacro()
 
 #_______________________________________________________________________________
 #                                                  SetSwitchApplicationCopyright
@@ -98,6 +154,12 @@ macro(SetSwitchApplicationVersion APPLICATION_VER)
 endmacro()
 
 #_______________________________________________________________________________
+#                                 read Properties/AssemblyInfo.cpp file if exist
+if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Properties/AssemblyInfo.cpp")
+  ReadAssemblyInfo("Properties/AssemblyInfo.cpp")
+endif()
+
+#_______________________________________________________________________________
 #                                               set default SWITCH_RESOURCE_FILE
 if(MSVC)
   if (EXISTS ${CMAKE_INSTALL_PREFIX}/resource/Switch/default.rc)
@@ -151,59 +213,3 @@ elseif (APPLE)
 elseif(UNIX)
   set(SWITCH_SYSTEM_DRAWING_LINK_LIBRARIES ${GTKMM_LIBRARIES})
 endif ()
-
-#_______________________________________________________________________________
-#                                 read Properties/AssemblyInfo.cpp file if exist
-if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Properties/AssemblyInfo.cpp")
-  file(READ "${CMAKE_CURRENT_SOURCE_DIR}/Properties/AssemblyInfo.cpp" ASSEMBLY_INFO_STRING)
-  string(REPLACE "\n" ";" ASSEMBLY_INFO_LIST ${ASSEMBLY_INFO_STRING})
-  list(REMOVE_ITEM ASSEMBLY_INFO_LIST "")
-  
-  foreach(ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LIST})
-    string(STRIP ${ASSEMBLY_INFO_LINE} ASSEMBLY_INFO_LINE)
-    if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyCopyright_*)")
-      string(REGEX MATCH "\\(.*\\)" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      string(REPLACE "(\"" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      string(REPLACE "\")" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      SetSwitchApplicationCopyright("${ASSEMBLY_INFO_LINE}")
-    endif()
-
-    string(STRIP ${ASSEMBLY_INFO_LINE} ASSEMBLY_INFO_LINE)
-    if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyIdentifier_*)")
-      string(REGEX MATCH "\\(.*\\)" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      string(REPLACE "(\"" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      string(REPLACE "\")" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      SetSwitchApplicationIdentifier("${ASSEMBLY_INFO_LINE}")
-    endif()
-
-    if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyDescription_*)")
-      string(REGEX MATCH "\\(.*\\)" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      string(REPLACE "(\"" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      string(REPLACE "\")" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      SetSwitchApplicationInformation("${ASSEMBLY_INFO_LINE}")
-    endif()
-
-    if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyVersion_*)")
-      string(REGEX MATCH "\\(.*\\)" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      string(REPLACE "(\"" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      string(REPLACE "\")" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      if ("${ASSEMBLY_INFO_LINE}" STREQUAL "" OR "${ASSEMBLY_INFO_LINE}" STREQUAL "*")
-        if (APPLICATION_VERSION)
-          SetSwitchApplicationVersion("${APPLICATION_VERSION}")
-        else()
-          SetSwitchApplicationVersion("${PROJECT_VERSION}")
-        endif()
-      else()
-        SetSwitchApplicationVersion("${ASSEMBLY_INFO_LINE}")
-      endif()  
-    endif()
-
-    if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyProduct_*)")
-      string(REGEX MATCH "\\(.*\\)" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      string(REPLACE "(\"" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      string(REPLACE "\")" "" ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LINE})
-      SetSwitchApplicationName("${ASSEMBLY_INFO_LINE}")
-    endif()
-
-  endforeach()
-endif()
