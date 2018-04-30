@@ -32,14 +32,14 @@ if(NOT APPLE AND NOT ANDROID AND NOT CMAKE_HOST_SOLARIS AND UNIX)
   include_directories(${GTKMM_INCLUDE_DIRS})
   link_directories(${GTKMM_LIBRARY_DIRS})
 endif ()
-  
+
 #_______________________________________________________________________________
 #                                                               ReadAssemblyInfo
 macro(ReadAssemblyInfo ASSEMBLY_INFO)
   file(READ "${CMAKE_CURRENT_SOURCE_DIR}/${ASSEMBLY_INFO}" ASSEMBLY_INFO_STRING)
   string(REPLACE "\n" ";" ASSEMBLY_INFO_LIST ${ASSEMBLY_INFO_STRING})
   list(REMOVE_ITEM ASSEMBLY_INFO_LIST "")
-  
+
   foreach(ASSEMBLY_INFO_LINE ${ASSEMBLY_INFO_LIST})
     string(STRIP ${ASSEMBLY_INFO_LINE} ASSEMBLY_INFO_LINE)
     if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyCopyright_*)")
@@ -76,7 +76,7 @@ macro(ReadAssemblyInfo ASSEMBLY_INFO)
         endif()
       else()
         SetSwitchApplicationVersion("${ASSEMBLY_INFO_LINE}")
-      endif()  
+      endif()
     endif()
 
     if (${ASSEMBLY_INFO_LINE} MATCHES "(AssemblyProduct_*)")
