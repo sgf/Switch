@@ -1,10 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
 project(RichTextBox)
-find_package(Switch REQUIRED)
-SetSwitchApplicationCopyright("© 2010 - 2018 by Gammasoft")
-SetSwitchApplicationIdentifier("org.gammasoft.RichTextBox")
-SetSwitchApplicationInformation("This example shows how to use Switch")
-add_custom_target(RichTextBox SOURCES RichTextBox.cpp)
-#add_executable(RichTextBox ${SWITCH_GUI} RichTextBox.cpp)
+add_custom_target(RichTextBox SOURCES RichTextBox.cpp Properties/AssemblyInfo.cpp)
+#add_executable(RichTextBox ${SWITCH_GUI} RichTextBox.cpp Properties/AssemblyInfo.cpp)
 #target_link_libraries(RichTextBox Switch.System.Windows.Forms)

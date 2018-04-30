@@ -5,7 +5,7 @@
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-AssemblyTitle_("Label sxample");
+AssemblyTitle_("Label example");
 AssemblyDescription_("This example shows how to use Switch Label control");
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");

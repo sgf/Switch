@@ -5,7 +5,7 @@
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-AssemblyTitle_("DataFormatsGetFormat sxample");
+AssemblyTitle_("DataFormatsGetFormat example");
 AssemblyDescription_("This example shows how to use Switch DataFormatsGetFormat object");
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
