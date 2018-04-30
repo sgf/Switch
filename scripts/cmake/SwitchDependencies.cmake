@@ -1,39 +1,4 @@
 #_______________________________________________________________________________
-#                                                                   standard C++
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-#_______________________________________________________________________________
-#                                                              add compile flags
-if (MSVC)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4251 /wd4275")
-  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /bigobj")
-endif()
-
-#_______________________________________________________________________________
-#                                                        set application version
-if (NOT APPLICATION_VERSION)
-  set(APPLICATION_VERSION "${PROJECT_VERSION}")
-  if(MSVC)
-  elseif (APPLE)
-    set(MACOSX_BUNDLE_BUNDLE_VERSION ${APPLICATION_VERSION})
-  elseif (UNIX)
-  endif()
-endif()
-
-#_______________________________________________________________________________
-#                                                          add external packages
-if(NOT APPLE AND NOT ANDROID AND NOT CMAKE_HOST_SOLARIS AND UNIX)
-  find_package(PkgConfig REQUIRED)
-  pkg_check_modules(GTKMM gtkmm-3.0)
-  if(NOT GTKMM_FOUND)
-    message(FATAL_ERROR "gtkmm-3.0 not found!")
-  endif()
-  include_directories(${GTKMM_INCLUDE_DIRS})
-  link_directories(${GTKMM_LIBRARY_DIRS})
-endif ()
-
-#_______________________________________________________________________________
 #                                                               ReadAssemblyInfo
 macro(ReadAssemblyInfo ASSEMBLY_INFO)
   file(READ "${CMAKE_CURRENT_SOURCE_DIR}/${ASSEMBLY_INFO}" ASSEMBLY_INFO_STRING)
@@ -126,9 +91,9 @@ endmacro()
 #                                                SetSwitchApplicationInformation
 macro(SetSwitchApplicationInformation APPLICATION_INFORMATION)
   if(MSVC)
-  elseif (APPLE)
-    set(MACOSX_BUNDLE_INFO_STRING "${APPLICATION_INFORMATION}")
-  elseif (UNIX)
+    elseif (APPLE)
+  set(MACOSX_BUNDLE_INFO_STRING "${APPLICATION_INFORMATION}")
+    elseif (UNIX)
   endif()
 endmacro()
 
@@ -136,9 +101,9 @@ endmacro()
 #                                                       SetSwitchApplicationName
 macro(SetSwitchApplicationName APPLICATION_NAME)
   if(MSVC)
-  elseif (APPLE)
-    set(MACOSX_BUNDLE_BUNDLE_NAME "${APPLICATION_NAME}")
-  elseif (UNIX)
+    elseif (APPLE)
+  set(MACOSX_BUNDLE_BUNDLE_NAME "${APPLICATION_NAME}")
+    elseif (UNIX)
   endif()
 endmacro()
 
@@ -154,7 +119,38 @@ macro(SetSwitchApplicationVersion APPLICATION_VER)
 endmacro()
 
 #_______________________________________________________________________________
-#                                 read Properties/AssemblyInfo.cpp file if exist
+#                                                                   standard C++
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+#_______________________________________________________________________________
+#                                                              add compile flags
+if (MSVC)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4251 /wd4275")
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /bigobj")
+endif()
+
+#_______________________________________________________________________________
+#                                                          add external packages
+if(NOT APPLE AND NOT ANDROID AND NOT CMAKE_HOST_SOLARIS AND UNIX)
+  find_package(PkgConfig REQUIRED)
+  pkg_check_modules(GTKMM gtkmm-3.0)
+  if(NOT GTKMM_FOUND)
+    message(FATAL_ERROR "gtkmm-3.0 not found!")
+  endif()
+  include_directories(${GTKMM_INCLUDE_DIRS})
+  link_directories(${GTKMM_LIBRARY_DIRS})
+endif ()
+
+#_______________________________________________________________________________
+#                                                        set application version
+if (NOT APPLICATION_VERSION)
+  set(APPLICATION_VERSION "${PROJECT_VERSION}")
+  SetSwitchApplicationVersion(${APPLICATION_VERSION})
+endif()
+
+#_______________________________________________________________________________
+#        set application informations if Properties/AssemblyInfo.cpp file exists
 if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Properties/AssemblyInfo.cpp")
   ReadAssemblyInfo("Properties/AssemblyInfo.cpp")
 endif()
