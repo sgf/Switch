@@ -10,6 +10,6 @@ namespace Examples {
       Application::Run(Form());
     }
   };
-};
+}
 
 startup_(Examples::Program);
