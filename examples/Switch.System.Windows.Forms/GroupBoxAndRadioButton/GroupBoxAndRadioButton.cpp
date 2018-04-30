@@ -24,15 +24,18 @@ namespace GroupBoxAndRadioButtonExample {
 
       this->radio1.Parent = this->groupBox1;
       this->radio1.Location = System::Drawing::Point(10, 30);
+      this->radio1.Width = 115;
       this->radio1.Text = "radio button 1";
       this->radio1.Checked = true;
 
       this->radio2.Parent = this->groupBox1;
       this->radio2.Location = System::Drawing::Point(10, 60);
+      this->radio2.Width = 115;
       this->radio2.Text = "radio button 2";
 
       this->radio3.Parent = this->groupBox1;
       this->radio3.Location = System::Drawing::Point(10, 90);
+      this->radio3.Width = 115;
       this->radio3.Text = "radio button 3";
 
       this->groupBox2.Parent = *this;
@@ -41,15 +44,18 @@ namespace GroupBoxAndRadioButtonExample {
 
       this->radio4.Parent = this->groupBox2;
       this->radio4.Location = System::Drawing::Point(10, 30);
+      this->radio4.Width = 115;
       this->radio4.Text = "radio button 4";
 
       this->radio5.Parent = this->groupBox2;
       this->radio5.Location = System::Drawing::Point(10, 60);
+      this->radio5.Width = 115;
       this->radio5.Text = "radio button 5";
       this->radio5.Checked = true;
 
       this->radio6.Parent = this->groupBox2;
       this->radio6.Location = System::Drawing::Point(10, 90);
+      this->radio6.Width = 115;
       this->radio6.Text = "radio button 6";
     }
 
