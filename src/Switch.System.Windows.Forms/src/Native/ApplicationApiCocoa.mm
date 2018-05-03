@@ -210,9 +210,11 @@ DialogResult Native::ApplicationApi::ShowMessageBox(intptr owner, const string& 
     if (displayHelpButton)
       [alert setShowsHelp:YES];
     DialogResult result = showModal[buttons](alert);
-    NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
-    [NSApp runModalSession:session];
-    [NSApp endModalSession:session];
+    if (NSApp != null && [NSApp mainWindow] != null) {
+      NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
+      [NSApp runModalSession:session];
+      [NSApp endModalSession:session];
+    }
     return result;
   }
 }
