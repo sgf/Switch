@@ -198,9 +198,11 @@ bool Native::CommonDialogApi::RunFolderBrowserDialog(intptr hwnd, System::Window
   [openPanel setDirectoryURL:[NSURL fileURLWithPath:[NSString stringWithUTF8String:path.c_str()]]];
 
   NSModalResponse response = [openPanel runModal];
-  NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
-  [NSApp runModalSession:session];
-  [NSApp endModalSession:session];
+  if (NSApp != null && [NSApp mainWindow] != null) {
+    NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
+    [NSApp runModalSession:session];
+    [NSApp endModalSession:session];
+  }
   if (response == NSModalResponseCancel) return false;
 
   folderBrowserDialog.SelectedPath = [[(NSURL*)[[openPanel URLs] objectAtIndex:0] path] UTF8String];
@@ -270,9 +272,11 @@ bool Native::CommonDialogApi::RunOpenFileDialog(intptr hwnd, System::Windows::Fo
     [openPanel setAccessoryView:CreateFilterViewForFileDialog(openPanel, openFileDialog.__get_filters__(), openFileDialog.FilterIndex - 1)];
 
   NSModalResponse response = [openPanel runModal];
-  NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
-  [NSApp runModalSession:session];
-  [NSApp endModalSession:session];
+  if (NSApp != null && [NSApp mainWindow] != null) {
+    NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
+    [NSApp runModalSession:session];
+    [NSApp endModalSession:session];
+  }
   if (response == NSModalResponseCancel) return false;
 
   if (!openFileDialog.Multiselect)
@@ -299,9 +303,11 @@ bool Native::CommonDialogApi::RunSaveFileDialog(intptr hwnd, System::Windows::Fo
     [savePanel setAccessoryView:CreateFilterViewForFileDialog(savePanel, saveFileDialog.__get_filters__(), saveFileDialog.FilterIndex - 1)];
 
   NSModalResponse response = [savePanel runModal];
-  NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
-  [NSApp runModalSession:session];
-  [NSApp endModalSession:session];
+  if (NSApp != null && [NSApp mainWindow] != null) {
+    NSModalSession session = [NSApp beginModalSessionForWindow:[NSApp mainWindow]];
+    [NSApp runModalSession:session];
+    [NSApp endModalSession:session];
+  }
   if (response == NSModalResponseCancel) return false;
 
   saveFileDialog.FileName = [[[savePanel URL] path] UTF8String];
