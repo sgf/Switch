@@ -4,6 +4,7 @@
 
 #include <Switch/System/Object.hpp>
 #include <Switch/System/IComparable.hpp>
+#include <Switch/System/Math.hpp>
 #include <Switch/System/String.hpp>
 #include <Switch/System/Collections/Generic/Dictionary.hpp>
 #include "../../SystemDrawingExport.hpp"
@@ -585,70 +586,6 @@ namespace Switch {
           get_ {return byte((this->argb & 0x00FF0000) >> 16);}
         };
 
-        /// @brief Creates a Color class from a 32-bit ARGB value.
-        /// @param argb A value specifying the 32-bit ARGB value
-        /// @return Color The Color structure that this method creates.
-        /// @remarks The byte-ordering of the 32-bit ARGB value is AARRGGBB. The most significant byte (MSB), represented by AA, is the alpha component value. The second, third, and fourth bytes, represented by RR, GG, and BB, respectively, are the color components red, green, and blue, respectively.
-        static Color FromArgb(int32 argb) { return Color(argb); }
-
-        /// @brief Creates a Color class from the specified name of a predefined color.
-        /// @param name A string that is the name of a predefined color. Valid names are the same as the names of the elements of the KnownColor enumeration.
-        /// @return Color The Color structure that this method creates.
-        /// @remarks A predefined color is also called a known color and is represented by an element of the KnownColor enumeration. If the name parameter is not the valid name of a predefined color, the FromName method creates a Color structure that has an ARGB value of 0 (that is, all ARGB components are 0).
-        static Color FromName(const string& name);
-
-        /// @brief Creates a Color class from the specified Color structure, but with the new specified alpha value. Although this method allows a 32-bit value to be passed for the alpha value, the value is limited to 8 bits.
-        /// @param alpha The alpha value for the new Color. Valid values are 0 through 255.
-        /// @param baseColor The Color from which to create the new Color.
-        /// @return Color The Color structure that this method creates.
-        /// @exception ArgumentException alpha is less than 0 or greater than 255.
-        /// @remarks The byte-ordering of the 32-bit ARGB value is AARRGGBB. The most significant byte (MSB), represented by AA, is the alpha component value. The second, third, and fourth bytes, represented by RR, GG, and BB, respectively, are the color components red, green, and blue, respectively.
-        static Color FromArgb(int32 alpha, const Color& baseColor);
-
-        /// @brief Creates a Color class from the four ARGB component (alpha, red, green, and blue) values. Although this method allows a 32-bit value to be passed for each component, the value of each component is limited to 8 bits.
-        /// @param alpha The alpha value for the new Color. Valid values are 0 through 255.
-        /// @param red The red component. Valid values are 0 through 255.
-        /// @param green The green component. Valid values are 0 through 255.
-        /// @param blue The blue component. Valid values are 0 through 255.
-        /// @return Color The Color structure that this method creates.
-        /// @exception ArgumentException alpha, red, green or blue is less than 0 or greater than 255.
-        /// @remarks The byte-ordering of the 32-bit ARGB value is AARRGGBB. The most significant byte (MSB), represented by AA, is the alpha component value. The second, third, and fourth bytes, represented by RR, GG, and BB, respectively, are the color components red, green, and blue, respectively.
-        static Color FromArgb(int32 alpha, int32 red, int32 green, int32 blue);
-
-        /// @brief Creates a Color class from the four ARGB component (alpha, red, green, and blue) values. Although this method allows a 32-bit value to be passed for each component, the value of each component is limited to 8 bits.
-        /// @param alpha The alpha value for the new Color. Valid values are 0 through 255.
-        /// @param red The red component. Valid values are 0 through 255.
-        /// @param green The green component. Valid values are 0 through 255.
-        /// @param blue The blue component. Valid values are 0 through 255.
-        /// @return Color The Color structure that this method creates.
-        /// @exception ArgumentException alpha is less than 0 or greater than 255.
-        /// @remarks The byte-ordering of the 32-bit ARGB value is AARRGGBB. The most significant byte (MSB), represented by AA, is the alpha component value. The second, third, and fourth bytes, represented by RR, GG, and BB, respectively, are the color components red, green, and blue, respectively.
-        static Color FromKnownColor(KnownColor color);
-
-        /// @brief Gets the 32-bit ARGB value of this Color class.
-        /// @return int32 The 32-bit ARGB value of this Color.
-        /// @remarks The byte-ordering of the 32-bit ARGB value is AARRGGBB. The most significant byte (MSB), represented by AA, is the alpha component value. The second, third, and fourth bytes, represented by RR, GG, and BB, respectively, are the color components red, green, and blue, respectively.
-        int32 ToArgb() const { return this->argb; }
-
-        /// @brief Gets the KnownColor value of this Color class.
-        /// @return KnownColor An element of the KnownColor enumeration, if the Color is created from a predefined color by using either the FromName method or the FromKnownColor method; otherwise, 0.
-        /// @remarks A predefined color is also called a known color and is represented by an element of the KnownColor enumeration. When the ToKnownColor method is applied to a Color structure that is created by using the FromArgb method, ToKnownColor returns 0, even if the ARGB value matches the ARGB value of a predefined color. ToKnownColor also returns 0 when it is applied to a Color structure that is created by using the FromName method with a string name that is not valid.
-        KnownColor ToKnownColor() const { return this->knownColor; }
-
-        /// @brief Determines whether this instance of Int32 and a specified object, which must also be a Int32 object, have the same value.
-        /// @param value The Int32 to compare with the current object.
-        /// @return bool true if the specified value is equal to the current object. otherwise, false.
-        bool Equals(const Color& value) const;
-
-        /// @brief Determines whether this instance of Int32 and a specified object, which must also be a Int32 object, have the same value.
-        /// @param obj The object to compare with the current object.
-        /// @return bool true if the specified object is equal to the current object. otherwise, false.
-        bool Equals(const object& obj) const override;
-
-        /// @brief reates a human-readable string that represents this Size class.
-        /// @return string A string that represents this Size.
-        String ToString() const override;
-
         /// @brief Compares the current instance with another object of the same type.
         /// @param obj An object to compare with this instance.
         /// @return int32 A 32-bit signed integer that indicates the relative order of the objects being compared. The return value has these meanings:
@@ -672,9 +609,297 @@ namespace Switch {
         /// | Greater than zero | This instance is true and value is false.  -or- value is null reference.    |
         int32 CompareTo(const Color& color) const {return Int32(this->argb).CompareTo(color.argb);}
 
+        /// @brief Determines whether this instance of Int32 and a specified object, which must also be a Int32 object, have the same value.
+        /// @param value The Int32 to compare with the current object.
+        /// @return bool true if the specified value is equal to the current object. otherwise, false.
+        bool Equals(const Color& value) const;
+
+        /// @brief Determines whether this instance of Int32 and a specified object, which must also be a Int32 object, have the same value.
+        /// @param obj The object to compare with the current object.
+        /// @return bool true if the specified object is equal to the current object. otherwise, false.
+        bool Equals(const object& obj) const override;
+
+        /// @brief Creates a Color class from a 32-bit ARGB value.
+        /// @param argb A value specifying the 32-bit ARGB value
+        /// @return Color The Color structure that this method creates.
+        /// @remarks The byte-ordering of the 32-bit ARGB value is AARRGGBB. The most significant byte (MSB), represented by AA, is the alpha component value. The second, third, and fourth bytes, represented by RR, GG, and BB, respectively, are the color components red, green, and blue, respectively.
+        static Color FromArgb(int32 argb) { return Color(argb); }
+
+        /// @brief Creates a Color class from the specified Color structure, but with the new specified alpha value. Although this method allows a 32-bit value to be passed for the alpha value, the value is limited to 8 bits.
+        /// @param alpha The alpha value for the new Color. Valid values are 0 through 255.
+        /// @param baseColor The Color from which to create the new Color.
+        /// @return Color The Color structure that this method creates.
+        /// @exception ArgumentException alpha is less than 0 or greater than 255.
+        /// @remarks The byte-ordering of the 32-bit ARGB value is AARRGGBB. The most significant byte (MSB), represented by AA, is the alpha component value. The second, third, and fourth bytes, represented by RR, GG, and BB, respectively, are the color components red, green, and blue, respectively.
+        static Color FromArgb(int32 alpha, const Color& baseColor);
+
+        /// @brief Creates a Color class from the four ARGB component (alpha, red, green, and blue) values. Although this method allows a 32-bit value to be passed for each component, the value of each component is limited to 8 bits.
+        /// @param alpha The alpha value for the new Color. Valid values are 0 through 255.
+        /// @param red The red component. Valid values are 0 through 255.
+        /// @param green The green component. Valid values are 0 through 255.
+        /// @param blue The blue component. Valid values are 0 through 255.
+        /// @return Color The Color structure that this method creates.
+        /// @exception ArgumentException alpha, red, green or blue is less than 0 or greater than 255.
+        /// @remarks The byte-ordering of the 32-bit ARGB value is AARRGGBB. The most significant byte (MSB), represented by AA, is the alpha component value. The second, third, and fourth bytes, represented by RR, GG, and BB, respectively, are the color components red, green, and blue, respectively.
+        static Color FromArgb(int32 alpha, int32 red, int32 green, int32 blue);
+
+        /// @brief Creates a Color class from the three HSV component (hue, saturation, and brightness) values.
+        /// @param hue The Color saturation. The saturation ranges from 0.0 through 1.0, where 0.0 is grayscale and 1.0 is the most saturated.
+        /// @param saturation The Color saturation. The saturation ranges from 0.0 through 1.0, where 0.0 is grayscale and 1.0 is the most saturated.
+        /// @param brightness The Color lightness. The lightness ranges from 0.0 through 1.0, where 0.0 represents black and 1.0 represents white.
+        static Color FromHsb(float hue, float saturation, float brightness) {
+          // algorithm version (see https://www.programmingalgorithms.com/algorithm/hsv-to-rgb)
+          if (saturation == 0)
+            return Color::FromArgb(255, (byte)(brightness * 255.0), (byte)(brightness * 255.0), (byte)(brightness * 255.0));
+
+          hue = hue == 360 ? 0 : hue / 60;
+
+          float f = hue - Math::Truncate(hue);
+          float p = brightness * (1.0 - saturation);
+          float q = brightness * (1.0 - (saturation * f));
+          float t = brightness * (1.0 - (saturation * (1.0 - f)));
+
+          switch ((int)Math::Truncate(hue)) {
+          case 0: return Color::FromArgb(255, (byte)(brightness * 255.0), (byte)(t * 255.0), (byte)(p * 255.0));
+          case 1: return Color::FromArgb(255, (byte)(q * 255.0), (byte)(brightness * 255.0), (byte)(p * 255.0));
+          case 2: return Color::FromArgb(255, (byte)(p * 255.0), (byte)(brightness * 255.0), (byte)(t * 255.0));
+          case 3: return Color::FromArgb(255, (byte)(p * 255.0), (byte)(q * 255.0), (byte)(brightness * 255.0));
+          case 4: return Color::FromArgb(255, (byte)(t * 255.0), (byte)(p * 255.0), (byte)(brightness * 255.0));
+          default: return Color::FromArgb(255, (byte)(brightness * 255.0), (byte)(p * 255.0), (byte)(q * 255.0));
+          }
+        }
+
+        /// @brief Creates a Color class from the four ARGB component (alpha, red, green, and blue) values. Although this method allows a 32-bit value to be passed for each component, the value of each component is limited to 8 bits.
+        /// @param alpha The alpha value for the new Color. Valid values are 0 through 255.
+        /// @param red The red component. Valid values are 0 through 255.
+        /// @param green The green component. Valid values are 0 through 255.
+        /// @param blue The blue component. Valid values are 0 through 255.
+        /// @return Color The Color structure that this method creates.
+        /// @exception ArgumentException alpha is less than 0 or greater than 255.
+        /// @remarks The byte-ordering of the 32-bit ARGB value is AARRGGBB. The most significant byte (MSB), represented by AA, is the alpha component value. The second, third, and fourth bytes, represented by RR, GG, and BB, respectively, are the color components red, green, and blue, respectively.
+        static Color FromKnownColor(KnownColor color);
+
+        /// @brief Creates a Color class from the specified name of a predefined color.
+        /// @param name A string that is the name of a predefined color. Valid names are the same as the names of the elements of the KnownColor enumeration.
+        /// @return Color The Color structure that this method creates.
+        /// @remarks A predefined color is also called a known color and is represented by an element of the KnownColor enumeration. If the name parameter is not the valid name of a predefined color, the FromName method creates a Color structure that has an ARGB value of 0 (that is, all ARGB components are 0).
+        static Color FromName(const string& name);
+
+        /// @brief Gets the hue-saturation-brightness (HSB) brightness value for this Color structure.
+        /// @return The lightness of this Color. The lightness ranges from 0.0 through 1.0, where 0.0 represents black and 1.0 represents white.
+        /// @par Examples
+        /// The following code example is designed for use with Windows Forms, and it requires PaintEventArgse, which is a parameter of the Paint event handler. The code performs the following actions:
+        /// * Creates an instance of a Color structure, redShade, to be used for comparisons.
+        /// * Iterates through the KnownColor enumeration elements to find all known colors that have the same lightness as redShade. The iterations are terminated when 15 matches are found or the value of the loop counter is greater than the last KnownColor element.
+        /// * During each iteration, saves the KnownColor element—if it matches the criteria—in an array.
+        /// * Uses a brush to paint rectangles.
+        /// The first rectangle is painted the color represented by redShade. Each of the other rectangles is painted a KnownColor that matches the hue of the redShade.
+        /// @code
+        /// void KnownColorBrightnessExample2(PaintEventArgs& e) {
+        ///   Graphics g = e.Graphics;
+        ///
+        ///   // Color structures. One is a variable used for temporary storage. The other
+        ///   // is a constant used for comparisons.
+        ///   Color someColor = Color::FromArgb(0);
+        ///   Color redShade = Color::FromArgb(255, 200, 0, 100);
+        ///
+        ///   // Array to store KnownColor values that match the hue of the redShade
+        ///   // color.
+        ///   Array<KnownColor> colorMatches(15);
+        ///
+        ///   // Number of matches found.
+        ///   int count = 0;
+        ///
+        ///   // Iterate through the KnownColor enums until 15 matches are found.
+        ///   for (KnownColor enumValue = 0; enumValue <= KnownColor::YellowGreen && count < 15; enumValue++) {
+        ///     someColor = Color::FromKnownColor(enumValue);
+        ///     if (someColor.GetBrightness() == redShade.GetBrightness())
+        ///       colorMatches[count++] = enumValue;
+        ///   }
+        ///
+        ///   // Display the redShade color and its argb value.
+        ///   SolidBrush  myBrush1(redShade);
+        ///   Font myFont("Arial", 12);
+        ///   int x = 20;
+        ///   int y = 20;
+        ///   someColor = redShade;
+        ///   g.FillRectangle(myBrush1, x, y, 100, 30);
+        ///   g.DrawString(someColor.ToString(), myFont, Brushes::Black, x + 120, y);
+        ///
+        ///   // Iterate through the matches that were found and display each color that
+        ///   // corresponds with the enum value in the array. also display the name of
+        ///   // the KnownColor.
+        ///   for (int i = 0; i < count; i++) {
+        ///     y += 40;
+        ///     someColor = Color::FromKnownColor(colorMatches[i]);
+        ///     myBrush1.Color = someColor;
+        ///     g.FillRectangle(myBrush1, x, y, 100, 30);
+        ///     g.DrawString(someColor.ToString(), myFont, Brushes::Black, x + 120, y);
+        ///   }
+        /// }
+        /// @endcode
+        float GetBrightness() const {
+          // .net version (see https://referencesource.microsoft.com/#System.Drawing/commonui/System/Drawing/Color.cs,9103fd761ca562ae)
+          //return ((float)Math::Max(Math::Max(this->R, this->G), this->B) + (float)Math::Min(Math::Min(this->R, this->G), this->B)) / 255.0 / 2.0;
+          // algorithm  version (see https://www.programmingalgorithms.com/algorithm/rgb-to-hsv)
+          return (float)Math::Max(Math::Max(this->R, this->G), this->B) / 255.0;
+        }
+
         /// @brief Serves as a hash function for a particular type.
         /// @return int32 A hash code for the current object.
-        int32 GetHashCode() const override { return this->argb; }
+        int32 GetHashCode() const override {return this->argb;}
+
+        /// @brief Gets the hue-saturation-brightness (HSB) hue value, in degrees, for this Color structure.
+        /// @return The hue, in degrees, of this Color. The hue is measured in degrees, ranging from 0.0 through 360.0, in HSL color space.
+        /// @par Examples
+        /// The following code example is designed for use with Windows Forms, and it requires PaintEventArgse, which is a parameter of the Paint event handler. The code performs the following actions:
+        /// * Creates an instance of a Color structure, redShade, to be used for comparisons.
+        /// * Iterates through the KnownColor enumeration elements to find all known colors that have the same hue as redShade. The iterations are terminated when 15 matches are found or the value of the loop counter is greater than the last KnownColor element.
+        /// * During each iteration, saves the KnownColor element—if it matches the criteria—in an array.
+        /// * Uses a brush to paint rectangles.
+        /// The first rectangle is painted the color represented by redShade. Each of the other rectangles is painted a KnownColor that matches the hue of the redShade.
+        /// @code
+        /// void GetHueExample(PaintEventArgs& e) {
+        ///   Graphics g = e.Graphics;
+        ///
+        ///   // Color structures. One is a variable used for temporary storage. The other
+        ///   // is a constant used for comparisons.
+        ///   Color someColor = Color::FromArgb(0);
+        ///   Color redShade = Color::FromArgb(255, 200, 0, 100);
+        ///
+        ///   // Array to store KnownColor values that match the hue of the redShade
+        ///   // color.
+        ///   Array<KnownColor> colorMatches(15);
+        ///
+        ///   // Number of matches found.
+        ///   int count = 0;
+        ///
+        ///   // Iterate through the KnownColor enums until 15 matches are found.
+        ///   for (KnownColor enumValue = 0; enumValue <= KnownColor::YellowGreen && count < 15; enumValue++) {
+        ///     someColor = Color::FromKnownColor(enumValue);
+        ///     if (someColor.GetHue() == redShade.GetHue())
+        ///       colorMatches[count++] = enumValue;
+        ///   }
+        ///
+        ///   // Display the redShade color and its argb value.
+        ///   SolidBrush  myBrush1(redShade);
+        ///   Font myFont("Arial", 12);
+        ///   int x = 20;
+        ///   int y = 20;
+        ///   someColor = redShade;
+        ///   g.FillRectangle(myBrush1, x, y, 100, 30);
+        ///   g.DrawString(someColor.ToString(), myFont, Brushes::Black, x + 120, y);
+        ///
+        ///   // Iterate through the matches that were found and display each color that
+        ///   // corresponds with the enum value in the array. also display the name of
+        ///   // the KnownColor.
+        ///   for (int i = 0; i < count; i++) {
+        ///     y += 40;
+        ///     someColor = Color::FromKnownColor(colorMatches[i]);
+        ///     myBrush1.Color = someColor;
+        ///     g.FillRectangle(myBrush1, x, y, 100, 30);
+        ///     g.DrawString(someColor.ToString(), myFont, Brushes::Black, x + 120, y);
+        ///   }
+        /// }
+        /// @endcode
+        float GetHue() const {
+          if (R == G && G == B)
+            return 0.0;
+
+          float r = (float)this->R() / 255.0f;
+          float g = (float)this->G() / 255.0f;
+          float b = (float)this->B() / 255.0f;
+
+          float max = (float)Math::Max(Math::Max(r, g), b);
+          float min = (float)Math::Min(Math::Min(r, g), b);
+
+          float delta = max - min;
+
+          float hue = 0.0;
+          if (r == max) hue = (g - b) / delta;
+          else if (g == max) hue = 2 + (b - r) / delta;
+          else if (b == max) hue = 4 + (r - g) / delta;
+          hue *= 60;
+
+          if (hue < 0.0) hue += 360.0;
+          return hue;
+        }
+
+        /// @brief Gets the hue-saturation-brightness (HSB) saturation value for this Color structure.
+        /// @return The saturation of this Color. The saturation ranges from 0.0 through 1.0, where 0.0 is grayscale and 1.0 is the most saturated.
+        /// @par Examples
+        /// The following code example is designed for use with Windows Forms, and it requires PaintEventArgse, which is a parameter of the Paint event handler. The code performs the following actions:
+        /// * Creates an instance of a Color structure, redShade, to be used for comparisons.
+        /// * Iterates through the KnownColor enumeration elements to find all known colors that have the same saturation as redShade. The iterations are terminated when 15 matches are found or the value of the loop counter is greater than the last KnownColor element.
+        /// * During each iteration, saves the KnownColor element—if it matches the criteria—in an array.
+        /// * Uses a brush to paint rectangles.
+        /// The first rectangle is painted the color represented by redShade. Each of the other rectangles is painted a KnownColor that matches the hue of the redShade.
+        /// @code
+        /// void GetSatExample(PaintEventArgs& e) {
+        ///   Graphics g = e.Graphics;
+        ///
+        ///   // Color structures. One is a variable used for temporary storage. The other
+        ///   // is a constant used for comparisons.
+        ///   Color someColor = Color::FromArgb(0);
+        ///   Color redShade = Color::FromArgb(255, 200, 0, 100);
+        ///
+        ///   // Array to store KnownColor values that match the hue of the redShade
+        ///   // color.
+        ///   Array<KnownColor> colorMatches(15);
+        ///
+        ///   // Number of matches found.
+        ///   int count = 0;
+        ///
+        ///   // Iterate through the KnownColor enums until 15 matches are found.
+        ///   for (KnownColor enumValue = 0; enumValue <= KnownColor::YellowGreen && count < 15; enumValue++) {
+        ///     someColor = Color::FromKnownColor(enumValue);
+        ///     if (someColor.GetSaturation() == redShade.GetSaturation())
+        ///       colorMatches[count++] = enumValue;
+        ///   }
+        ///
+        ///   // Display the redShade color and its argb value.
+        ///   SolidBrush  myBrush1(redShade);
+        ///   Font myFont("Arial", 12);
+        ///   int x = 20;
+        ///   int y = 20;
+        ///   someColor = redShade;
+        ///   g.FillRectangle(myBrush1, x, y, 100, 30);
+        ///   g.DrawString(someColor.ToString(), myFont, Brushes::Black, x + 120, y);
+        ///
+        ///   // Iterate through the matches that were found and display each color that
+        ///   // corresponds with the enum value in the array. also display the name of
+        ///   // the KnownColor.
+        ///   for (int i = 0; i < count; i++) {
+        ///     y += 40;
+        ///     someColor = Color::FromKnownColor(colorMatches[i]);
+        ///     myBrush1.Color = someColor;
+        ///     g.FillRectangle(myBrush1, x, y, 100, 30);
+        ///     g.DrawString(someColor.ToString(), myFont, Brushes::Black, x + 120, y);
+        ///   }
+        /// }
+        /// @endcode
+        float GetSaturation() const {
+          float max = (float)Math::Max(Math::Max(this->R, this->G), this->B) / 255.0;
+          float min = (float)Math::Min(Math::Min(this->R, this->G), this->B) / 255.0;
+
+          if (max == min) return 0.0;
+
+          return (max + min) <= 1.0 ? (max - min) / (max + min) : (max - min) / (2 - max - min);
+        }
+
+        /// @brief Gets the 32-bit ARGB value of this Color class.
+        /// @return int32 The 32-bit ARGB value of this Color.
+        /// @remarks The byte-ordering of the 32-bit ARGB value is AARRGGBB. The most significant byte (MSB), represented by AA, is the alpha component value. The second, third, and fourth bytes, represented by RR, GG, and BB, respectively, are the color components red, green, and blue, respectively.
+        int32 ToArgb() const { return this->argb; }
+
+        /// @brief Gets the KnownColor value of this Color class.
+        /// @return KnownColor An element of the KnownColor enumeration, if the Color is created from a predefined color by using either the FromName method or the FromKnownColor method; otherwise, 0.
+        /// @remarks A predefined color is also called a known color and is represented by an element of the KnownColor enumeration. When the ToKnownColor method is applied to a Color structure that is created by using the FromArgb method, ToKnownColor returns 0, even if the ARGB value matches the ARGB value of a predefined color. ToKnownColor also returns 0 when it is applied to a Color structure that is created by using the FromName method with a string name that is not valid.
+        KnownColor ToKnownColor() const { return this->knownColor; }
+
+        /// @brief reates a human-readable string that represents this Size class.
+        /// @return string A string that represents this Size.
+        String ToString() const override;
 
       private :
         explicit Color(int32 argb) : argb(argb), knownColor((KnownColor)0) {}
