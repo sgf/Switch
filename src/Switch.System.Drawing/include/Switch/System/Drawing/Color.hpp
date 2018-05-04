@@ -650,22 +650,22 @@ namespace Switch {
         static Color FromHsb(float hue, float saturation, float brightness) {
           // algorithm version (see https://www.programmingalgorithms.com/algorithm/hsv-to-rgb)
           if (saturation == 0)
-            return Color::FromArgb(255, (byte)(brightness * 255.0), (byte)(brightness * 255.0), (byte)(brightness * 255.0));
+            return Color::FromArgb(255, (byte)(brightness * 255.0f), (byte)(brightness * 255.0f), (byte)(brightness * 255.0f));
 
           hue = hue == 360 ? 0 : hue / 60;
 
-          float f = hue - Math::Truncate(hue);
-          float p = brightness * (1.0 - saturation);
-          float q = brightness * (1.0 - (saturation * f));
-          float t = brightness * (1.0 - (saturation * (1.0 - f)));
+          float f = hue - (float)Math::Truncate(hue);
+          float p = brightness * (1.0f - saturation);
+          float q = brightness * (1.0f - (saturation * f));
+          float t = brightness * (1.0f - (saturation * (1.0f - f)));
 
           switch ((int)Math::Truncate(hue)) {
-          case 0: return Color::FromArgb(255, (byte)(brightness * 255.0), (byte)(t * 255.0), (byte)(p * 255.0));
-          case 1: return Color::FromArgb(255, (byte)(q * 255.0), (byte)(brightness * 255.0), (byte)(p * 255.0));
-          case 2: return Color::FromArgb(255, (byte)(p * 255.0), (byte)(brightness * 255.0), (byte)(t * 255.0));
-          case 3: return Color::FromArgb(255, (byte)(p * 255.0), (byte)(q * 255.0), (byte)(brightness * 255.0));
-          case 4: return Color::FromArgb(255, (byte)(t * 255.0), (byte)(p * 255.0), (byte)(brightness * 255.0));
-          default: return Color::FromArgb(255, (byte)(brightness * 255.0), (byte)(p * 255.0), (byte)(q * 255.0));
+          case 0: return Color::FromArgb(255, (byte)(brightness * 255.0f), (byte)(t * 255.0f), (byte)(p * 255.0f));
+          case 1: return Color::FromArgb(255, (byte)(q * 255.0f), (byte)(brightness * 255.0f), (byte)(p * 255.0f));
+          case 2: return Color::FromArgb(255, (byte)(p * 255.0f), (byte)(brightness * 255.0f), (byte)(t * 255.0f));
+          case 3: return Color::FromArgb(255, (byte)(p * 255.0f), (byte)(q * 255.0f), (byte)(brightness * 255.0f));
+          case 4: return Color::FromArgb(255, (byte)(t * 255.0f), (byte)(p * 255.0f), (byte)(brightness * 255.0f));
+          default: return Color::FromArgb(255, (byte)(brightness * 255.0f), (byte)(p * 255.0f), (byte)(q * 255.0f));
           }
         }
 
@@ -742,7 +742,7 @@ namespace Switch {
           // .net version (see https://referencesource.microsoft.com/#System.Drawing/commonui/System/Drawing/Color.cs,9103fd761ca562ae)
           //return ((float)Math::Max(Math::Max(this->R, this->G), this->B) + (float)Math::Min(Math::Min(this->R, this->G), this->B)) / 255.0 / 2.0;
           // algorithm  version (see https://www.programmingalgorithms.com/algorithm/rgb-to-hsv)
-          return (float)Math::Max(Math::Max(this->R, this->G), this->B) / 255.0;
+          return (float)Math::Max(Math::Max(this->R, this->G), this->B) / 255.0f;
         }
 
         /// @brief Serves as a hash function for a particular type.
@@ -879,12 +879,12 @@ namespace Switch {
         /// }
         /// @endcode
         float GetSaturation() const {
-          float max = (float)Math::Max(Math::Max(this->R, this->G), this->B) / 255.0;
-          float min = (float)Math::Min(Math::Min(this->R, this->G), this->B) / 255.0;
+          float max = (float)Math::Max(Math::Max(this->R, this->G), this->B) / 255.0f;
+          float min = (float)Math::Min(Math::Min(this->R, this->G), this->B) / 255.0f;
 
-          if (max == min) return 0.0;
+          if (max == min) return 0.0f;
 
-          return (max + min) <= 1.0 ? (max - min) / (max + min) : (max - min) / (2 - max - min);
+          return (max + min) <= 1.0f ? (max - min) / (max + min) : (max - min) / (2 - max - min);
         }
 
         /// @brief Gets the 32-bit ARGB value of this Color class.
