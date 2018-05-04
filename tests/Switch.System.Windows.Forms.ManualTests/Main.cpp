@@ -15,6 +15,7 @@ namespace ManualTests {
     Form1() {
       this->label.Text = "Hello, World!";
       this->label.Location = Point {10, 10};
+      this->label.BackColor = System::Drawing::Color::White;
       this->label.BorderStyle = BorderStyle::Fixed3D;
       this->label.TextAlign = ContentAlignment::MiddleCenter;
       this->label.Height = 80;

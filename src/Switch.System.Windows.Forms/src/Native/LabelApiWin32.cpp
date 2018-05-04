@@ -10,11 +10,26 @@
 #include "../../include/Switch/System/Windows/Forms/Label.hpp"
 
 using namespace System;
+using namespace System::Drawing;
 using namespace System::Windows::Forms;
 using namespace Native;
 
 intptr Native::LabelApi::Create(const System::Windows::Forms::Label& label) {
-  HWND handle = CreateWindowEx(0, WC_STATIC, label.Text().w_str().c_str(), WS_CHILD, label.Left, label.Top, label.Width, label.Height, (HWND)label.Parent()().Handle(), (HMENU)0, GetModuleHandle(NULL), (LPVOID)NULL);
+  int32 style = 0;
+  switch (label.TextAlign()) {
+  case ContentAlignment::TopLeft:
+  case ContentAlignment::MiddleLeft:
+  case ContentAlignment::BottomLeft: style |= SS_LEFT; break;
+
+  case ContentAlignment::TopRight:
+  case ContentAlignment::MiddleRight:
+  case ContentAlignment::BottomRight: style |= SS_RIGHT; break;
+
+  case ContentAlignment::TopCenter:
+  case ContentAlignment::MiddleCenter:
+  case ContentAlignment::BottomCenter: style |= SS_CENTER; break;
+  }
+  HWND handle = CreateWindowEx(0, WC_STATIC, label.Text().w_str().c_str(), WS_CHILD | style, label.Left, label.Top, label.Width, label.Height, (HWND)label.Parent()().Handle(), (HMENU)0, GetModuleHandle(NULL), (LPVOID)NULL);
   WindowProcedure::SetWindowTheme(handle);
   WindowProcedure::DefWindowProcs[(intptr)handle] = (WNDPROC)SetWindowLongPtr(handle, GWLP_WNDPROC, (LONG_PTR)WindowProcedure::WndProc);
   return (intptr)handle;
@@ -31,6 +46,7 @@ void Native::LabelApi::SetBorderStyle(const System::Windows::Forms::Label& label
 }
 
 void Native::LabelApi::SetTextAlign(const System::Windows::Forms::Label& label) {
+  ::SetTextAlign(GetDC((HWND)label.Handle()), (uint32)label.TextAlign());
 }
 
 #endif
