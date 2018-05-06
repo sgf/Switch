@@ -10,7 +10,7 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace Native {
-class Panel : public Widget<Gtk::Frame> {
+  class Panel : public Widget<Gtk::Frame> {
   public:
     Panel() {
       this->handle = new Gtk::Frame();
@@ -26,9 +26,9 @@ class Panel : public Widget<Gtk::Frame> {
 
     void BorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
       switch (borderStyle) {
-        case System::Windows::Forms::BorderStyle::None: this->handle->set_shadow_type(Gtk::SHADOW_NONE); break;
-        case System::Windows::Forms::BorderStyle::FixedSingle: this->handle->set_shadow_type(Gtk::SHADOW_IN); break;
-        case System::Windows::Forms::BorderStyle::Fixed3D: this->handle->set_shadow_type(Gtk::SHADOW_ETCHED_IN); break;
+      case System::Windows::Forms::BorderStyle::None: this->handle->set_shadow_type(Gtk::SHADOW_NONE); break;
+      case System::Windows::Forms::BorderStyle::FixedSingle: this->handle->set_shadow_type(Gtk::SHADOW_IN); break;
+      case System::Windows::Forms::BorderStyle::Fixed3D: this->handle->set_shadow_type(Gtk::SHADOW_ETCHED_IN); break;
       }
     }
 

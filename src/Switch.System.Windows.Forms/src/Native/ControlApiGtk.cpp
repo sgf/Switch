@@ -141,7 +141,7 @@ void Native::ControlApi::SetLocation(const System::Windows::Forms::Control& cont
 void Native::ControlApi::SetParent(const System::Windows::Forms::Control& control) {
   ((Native::IWidget*)control.Handle())->RemoveParent();
   if (control.Parent != null) {
-    ((Native::IWidget *) control.Parent()->Handle())->AddChild((IWidget *) control.Handle());
+    ((Native::IWidget*) control.Parent()->Handle())->AddChild((IWidget*) control.Handle());
     SetLocation(control);
     SetVisible(control);
   }

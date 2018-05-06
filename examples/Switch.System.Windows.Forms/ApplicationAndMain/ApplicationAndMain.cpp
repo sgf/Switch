@@ -11,6 +11,7 @@ namespace Examples {
   };
 }
 
+// startup_(Examples::Program);
 // You can write following lines instead "startup_(Examples::Program);" helper call :
 
 // The main entry point for the application.
