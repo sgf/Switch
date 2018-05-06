@@ -10,13 +10,16 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace Native {
-  class GroupBox : public Widget, public Gtk::Frame {
+  class GroupBox : public Widget<Gtk::Frame> {
   public:
     GroupBox() {
-      this->RegisterEvent();
-      this->add(this->fixed);
+      this->handle = new Gtk::Frame();
+      this->handle->set_shadow_type(Gtk::SHADOW_IN);
 
-      this->signal_show().connect(delegate_ {
+      this->RegisterEvent();
+      this->handle->add(this->fixed);
+
+      this->handle->signal_show().connect(delegate_ {
         this->fixed.show();
       });
     }
@@ -25,7 +28,7 @@ namespace Native {
 
     Gtk::Container& Container() override {return this->fixed;}
 
-    void Text(const string& text) override {this->set_label(text.c_str());}
+    void Text(const string& text) override {this->handle->set_label(text.c_str());}
 
   private:
     Gtk::Fixed fixed;
@@ -36,8 +39,7 @@ intptr Native::GroupBoxApi::Create(const System::Windows::Forms::GroupBox& group
   Native::GroupBox* handle = new Native::GroupBox();
   handle->Move(groupBox.Location().X, groupBox.Location().Y);
   handle->Text(groupBox.Text);
-  handle->set_shadow_type(Gtk::SHADOW_IN);
-  handle->show();
+  handle->Visible(true);
   return (intptr)handle;
 }
 

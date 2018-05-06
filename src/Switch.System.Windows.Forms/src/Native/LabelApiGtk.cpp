@@ -9,24 +9,28 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace Native {
-  class Label : public Widget, public Gtk::Label {
+  class Label : public Widget<Gtk::Label> {
   public:
     Label() {
-      //LIGN_START);
-      //this->set_justify(Gtk::JUSTIFY_LEFT);
-      gtk_label_set_xalign(this->gobj(), textAlignLeft);
-      gtk_label_set_yalign(this->gobj(), textAlignTop);
+      this->handle = new Gtk::Label();
       this->RegisterEvent();
     }
-    void Text(const string& text) override {this->set_label(text.c_str());}
+    void Text(const string& text) override {this->handle->set_label(text.c_str());}
 
-  private:
-    constexpr static float textAlignLeft = 0;
-    constexpr static float textAlignMidle = 0.5;
-    constexpr static float textAlignRigth = 1;
-    constexpr static float textAlignTop = 0;
-    constexpr static float textAlignCenter = 0.5;
-    constexpr static float textAlignBottom = 1;
+    void TextAlign(System::Drawing::ContentAlignment contentAlignment) {
+      switch(contentAlignment) {
+        case System::Drawing::ContentAlignment::BottomCenter : this->handle->set_alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_END); break;
+        case System::Drawing::ContentAlignment::BottomLeft : this->handle->set_alignment(Gtk::ALIGN_START, Gtk::ALIGN_END); break;
+        case System::Drawing::ContentAlignment::BottomRight : this->handle->set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_END); break;
+        case System::Drawing::ContentAlignment::MiddleCenter : this->handle->set_alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_CENTER); break;
+        case System::Drawing::ContentAlignment::MiddleLeft : this->handle->set_alignment(Gtk::ALIGN_START, Gtk::ALIGN_CENTER); break;
+        case System::Drawing::ContentAlignment::MiddleRight : this->handle->set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_CENTER); break;
+        case System::Drawing::ContentAlignment::TopCenter : this->handle->set_alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_START); break;
+        case System::Drawing::ContentAlignment::TopLeft : this->handle->set_alignment(Gtk::ALIGN_START, Gtk::ALIGN_START); break;
+        case System::Drawing::ContentAlignment::TopRight : this->handle->set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_START); break;
+      }
+
+    }
   };
 }
 
@@ -34,7 +38,7 @@ intptr Native::LabelApi::Create(const System::Windows::Forms::Label& label) {
   Native::Label* handle = new Native::Label();
   handle->Move(label.Location().X, label.Location().Y);
   handle->Text(label.Text);
-  handle->show();
+  handle->Visible(true);
   return (intptr)handle;
 }
 
@@ -42,6 +46,7 @@ void Native::LabelApi::SetBorderStyle(const System::Windows::Forms::Label& label
 }
 
 void Native::LabelApi::SetTextAlign(const System::Windows::Forms::Label& label) {
+  ((Native::Label*)label.Handle())->TextAlign(label.TextAlign);
 }
 
 #endif

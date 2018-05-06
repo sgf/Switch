@@ -10,9 +10,16 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace Native {
-  class Control : public Widget, public Gtk::Widget {
+  struct GtkWidget : public Gtk::Widget {
+    GtkWidget() {}
+  };
+
+  class Control : public Widget<GtkWidget> {
   public:
-    Control() {this->RegisterEvent();}
+    Control() {
+      this->handle = new GtkWidget();
+      this->RegisterEvent();
+    }
     void Text(const string& text) override {}
   };
 }
@@ -21,7 +28,7 @@ intptr Native::ControlApi::Create(const System::Windows::Forms::Control& control
   Native::Control* handle = new Native::Control();
   handle->Move(control.Location().X, control.Location().Y);
   handle->Text(control.Text);
-  handle->show();
+  handle->Visible(true);
   return (intptr)handle;
 }
 
@@ -30,7 +37,7 @@ void Native::ControlApi::DefWndProc(System::Windows::Forms::Message& message) {
 }
 
 void Native::ControlApi::Destroy(const System::Windows::Forms::Control& control) {
-  delete (Gtk::Widget*)control.Handle();
+  delete (IWidget*)control.Handle();
 }
 
 intptr Native::ControlApi::GetHandleWindowFromDeviceContext(intptr hdc) {
@@ -87,15 +94,15 @@ intptr Native::ControlApi::SendMessage(intptr handle, int32 msg, intptr wparam, 
 
 void Native::ControlApi::SetBackColor(intptr hdc) {
   ref<System::Windows::Forms::Control> control = System::Windows::Forms::Control::FromHandle(GetHandleWindowFromDeviceContext(hdc));
-  ((Native::Widget*)control().Handle())->BackColor(control().BackColor());
+  ((IWidget*)control().Handle())->BackColor(control().BackColor());
 }
 
 void Native::ControlApi::SetBackColor(const System::Windows::Forms::Control& control) {
-  ((Native::Widget*)control.Handle())->BackColor(control.BackColor());
+  ((IWidget*)control.Handle())->BackColor(control.BackColor());
 }
 
 void Native::ControlApi::SetClientSize(System::Windows::Forms::Control& control) {
-  ((Native::Widget*)control.Handle())->ToWidget().set_size_request(control.ClientSize().Width, control.ClientSize().Height);
+  ((IWidget*)control.Handle())->ClientSize(control.ClientSize);
   if (is<System::Windows::Forms::Form>(control))
     control.Size = System::Drawing::Size::Add(control.ClientSize, {0, SystemInformationApi::GetCaptionHeight()});
   else
@@ -106,63 +113,63 @@ void Native::ControlApi::SetCursor(const System::Windows::Forms::Control& contro
 }
 
 void Native::ControlApi::SetEnabled(const System::Windows::Forms::Control& control) {
-  ((Native::Widget*)control.Handle())->ToWidget().set_sensitive(control.Enabled);
+  ((IWidget*)control.Handle())->Enabled(control.Enabled);
 }
 
 bool Native::ControlApi::SetFocus(const System::Windows::Forms::Control& control) {
-  ((Native::Widget*)control.Handle())->ToWidget().grab_focus();
+  ((IWidget*)control.Handle())->Focus();
   return true;
 }
 
 void Native::ControlApi::SetFont(const System::Windows::Forms::Control& control) {
-  ((Native::Widget*)control.Handle())->ToWidget().override_font(*(Pango::FontDescription*)control.Font().ToHFont());
+  ((IWidget*)control.Handle())->Font(control.Font);
 }
 
 void Native::ControlApi::SetForeColor(intptr hdc) {
   ref<System::Windows::Forms::Control> control = System::Windows::Forms::Control::FromHandle(GetHandleWindowFromDeviceContext(hdc));
-  ((Native::Widget*)control().Handle())->ForeColor(control().ForeColor());
+  ((IWidget*)control().Handle())->ForeColor(control().ForeColor());
 }
 
 void Native::ControlApi::SetForeColor(const System::Windows::Forms::Control& control) {
-  ((Native::Widget*)control.Handle())->ForeColor(control.ForeColor());
+  ((IWidget*)control.Handle())->ForeColor(control.ForeColor());
 }
 
 void Native::ControlApi::SetLocation(const System::Windows::Forms::Control& control) {
-  ((Native::Widget*)control.Handle())->Move(control.Location().X, control.Location().Y);
+  ((IWidget*)control.Handle())->Move(control.Location().X, control.Location().Y);
 }
 
 void Native::ControlApi::SetParent(const System::Windows::Forms::Control& control) {
-  if (control.Parent() != null) {
-    //((Native::Widget*)control.Handle())->ToWidget().reparent(((Native::Widget*)control.Parent()().Handle())->Container());
-    ((Native::Widget*)control.Parent()().Handle())->Container().add(((Native::Widget*)control.Handle())->ToWidget());
+  ((Native::IWidget*)control.Handle())->RemoveParent();
+  if (control.Parent != null) {
+    ((Native::IWidget *) control.Parent()->Handle())->AddChild((IWidget *) control.Handle());
     SetLocation(control);
     SetVisible(control);
+  }
+  if (control.Parent() != null) {
+    //((Native::Widget*)control.Handle())->ToWidget().reparent(((Native::Widget*)control.Parent()().Handle())->Container());
   }
 }
 
 void Native::ControlApi::SetSize(System::Windows::Forms::Control& control) {
   if (is<System::Windows::Forms::Form>(control)) {
-    ((Native::Widget*)control.Handle())->ToWidget().set_size_request(control.Width, control.Height - SystemInformationApi::GetCaptionHeight());
+    ((Native::IWidget*)control.Handle())->Size(System::Drawing::Size::Subtract(control.Size, {0, SystemInformationApi::GetCaptionHeight()}));
     control.ClientSize = System::Drawing::Size::Subtract(control.Size, {0, SystemInformationApi::GetCaptionHeight()});
   } else {
-    ((Native::Widget*)control.Handle())->ToWidget().set_size_request(control.Width, control.Height);
+    ((Native::IWidget*)control.Handle())->Size(control.Size);
     control.ClientSize = control.Size;
   }
 }
 
 void Native::ControlApi::SetTabStop(const System::Windows::Forms::Control& control) {
-  ((Native::Widget*)control.Handle())->ToWidget().set_can_focus(control.TabStop);
+  ((Native::IWidget*)control.Handle())->TabStop(control.TabStop);
 }
 
 void Native::ControlApi::SetText(const System::Windows::Forms::Control& control) {
-  ((Native::Widget*)control.Handle())->Text(control.Text);
+  ((Native::IWidget*)control.Handle())->Text(control.Text);
 }
 
 void Native::ControlApi::SetVisible(const System::Windows::Forms::Control& control) {
-  if (control.Visible)
-    ((Gtk::Widget*)control.Handle())->show();
-  else
-    ((Gtk::Widget*)control.Handle())->hide();
+  ((Native::IWidget*)control.Handle())->Visible(control.Visible);
 }
 
 #endif

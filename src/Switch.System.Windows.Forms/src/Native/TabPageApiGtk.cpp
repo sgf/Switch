@@ -11,14 +11,15 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace Native {
-  class TabPage : public Widget, public Gtk::Frame {
+  class TabPage : public Widget<Gtk::Frame> {
   public:
     TabPage() {
+      this->handle = new Gtk::Frame();
       this->RegisterEvent();
-      this->add(this->scrolledWindow);
+      this->handle->add(this->scrolledWindow);
       this->scrolledWindow.add(this->fixed);
 
-      this->signal_show().connect(delegate_ {
+      this->handle->signal_show().connect(delegate_ {
         this->scrolledWindow.show();
         this->fixed.show();
       });

@@ -17,6 +17,7 @@ namespace ManualTests {
       this->label.Location = Point {10, 10};
       this->label.BackColor = System::Drawing::Color::White;
       this->label.BorderStyle = BorderStyle::Fixed3D;
+      this->label.ForeColor = System::Drawing::Color::Black;
       this->label.TextAlign = ContentAlignment::MiddleCenter;
       this->label.Height = 80;
       this->label.Width = 200;

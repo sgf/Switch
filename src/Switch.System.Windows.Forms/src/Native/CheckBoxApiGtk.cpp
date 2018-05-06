@@ -9,10 +9,17 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace Native {
-  class CheckBox : public Widget, public Gtk::CheckButton {
+  class CheckBox : public Widget<Gtk::CheckButton> {
   public:
-    CheckBox() {this->RegisterEvent();}
-    void Text(const string& text) override {this->set_label(text.c_str());}
+    CheckBox() {
+      this->handle = new Gtk::CheckButton();
+      this->RegisterEvent();
+    }
+    void SetCheckState(System::Windows::Forms::CheckState checkState) {
+      ((Gtk::CheckButton*)this->handle)->set_inconsistent(checkState == System::Windows::Forms::CheckState::Indeterminate);
+      ((Gtk::CheckButton*)this->handle)->set_active(checkState == System::Windows::Forms::CheckState::Checked);
+    }
+    void Text(const string& text) override {((Gtk::CheckButton*)this->handle)->set_label(text.c_str());}
   };
 }
 
@@ -20,7 +27,7 @@ intptr Native::CheckBoxApi::Create(const System::Windows::Forms::CheckBox& check
   Native::CheckBox* handle = new Native::CheckBox();
   handle->Move(checkBox.Location().X, checkBox.Location().Y);
   handle->Text(checkBox.Text);
-  handle->show();
+  handle->Visible(true);
   return (intptr)handle;
 }
 
@@ -29,13 +36,7 @@ void Native::CheckBoxApi::SetAutoCheck(const System::Windows::Forms::CheckBox& c
 }
 
 void Native::CheckBoxApi::SetChecked(const System::Windows::Forms::CheckBox& checkBox) {
-  if (checkBox.CheckState == System::Windows::Forms::CheckState::Indeterminate) {
-    ((Native::CheckBox*)checkBox.Handle())->set_active(false);
-    ((Native::CheckBox*) checkBox.Handle())->set_inconsistent(true);
-  } else {
-    ((Native::CheckBox*) checkBox.Handle())->set_inconsistent(false);
-    ((Native::CheckBox*)checkBox.Handle())->set_active(checkBox.Checked);
-  }
+  ((Native::CheckBox*)checkBox.Handle())->SetCheckState(checkBox.CheckState);
 }
 
 #endif

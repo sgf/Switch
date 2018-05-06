@@ -9,10 +9,18 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace Native {
-  class RadioButton : public Widget, public Gtk::RadioButton {
+  class RadioButton : public Widget<Gtk::RadioButton> {
   public:
-    RadioButton() {this->RegisterEvent();}
-    void Text(const string& text) override {this->set_label(text.c_str());}
+    RadioButton() {
+      this->handle = new Gtk::RadioButton();
+      this->RegisterEvent();
+    }
+    void Checked(bool checked) {this->handle->set_active(checked);}
+    void ResetGroup() {this->handle->reset_group();}
+    void Group(IWidget* group) {
+      this->handle->set_group(group->RadioButtonGroup());
+    }
+    void Text(const string& text) override {this->handle->set_label(text.c_str());}
   };
 }
 
@@ -20,18 +28,18 @@ intptr Native::RadioButtonApi::Create(const System::Windows::Forms::RadioButton&
   Native::RadioButton* handle = new Native::RadioButton();
   handle->Move(radioButton.Location().X, radioButton.Location().Y);
   handle->Text(radioButton.Text);
-  handle->show();
+  handle->Visible(true);
   return (intptr)handle;
 }
 
 void Native::RadioButtonApi::SetChecked(const System::Windows::Forms::RadioButton& radioButton) {
-  ((Native::RadioButton*)radioButton.Handle())->set_active(radioButton.Checked);
+  ((Native::RadioButton*)radioButton.Handle())->Checked(radioButton.Checked);
 }
 
 void Native::RadioButtonApi::SetGroup(const System::Windows::Forms::RadioButton& radioButton) {
-  ((Native::RadioButton*)radioButton.Handle())->reset_group();
+  ((Native::RadioButton*)radioButton.Handle())->ResetGroup();
   if (radioButton.Parent != null)
-    ((Native::RadioButton*)radioButton.Handle())->set_group(((Native::Widget*)radioButton.Parent()().Handle())->RadioButtonGroup());
+    ((Native::RadioButton*)radioButton.Handle())->Group((Native::IWidget*)radioButton.Parent()().Handle());
 }
 
 #endif

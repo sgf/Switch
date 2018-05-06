@@ -13,21 +13,26 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace Native {
-  class Form : public Widget, public Gtk::Window {
+  class Form : public Widget<Gtk::Window> {
   public:
     Form() {
+      this->handle = new Gtk::Window();
       this->RegisterEvent();
-      this->add(this->scrolledWindow);
+      this->handle->add(this->scrolledWindow);
       this->scrolledWindow.add(this->fixed);
 
-      this->signal_show().connect(delegate_ {
+      this->handle->signal_show().connect(delegate_ {
         this->scrolledWindow.show();
         this->fixed.show();
       });
 
-      this->signal_hide().connect(delegate_ {
+      this->handle->signal_hide().connect(delegate_ {
         System::Windows::Forms::Control::FromHandle((intptr)this)().Visible = false;
       });
+    }
+
+    void Close() {
+      this->handle->close();
     }
 
     const Gtk::Container& Container() const override {return this->fixed;}
@@ -35,10 +40,10 @@ namespace Native {
     Gtk::Container& Container() override {return this->fixed;}
 
     void Move(int32 x, int32 y) override {
-      this->Gtk::Window::move(x + Screen::AllScreens()[0].WorkingArea().X, y + Screen::AllScreens()[0].WorkingArea().Y);
+      this->handle->move(x + Screen::AllScreens()[0].WorkingArea().X, y + Screen::AllScreens()[0].WorkingArea().Y);
     }
 
-    void Text(const string& text) override {this->set_title(text.c_str());}
+    void Text(const string& text) override {this->handle->set_title(text.c_str());}
 
   private:
     Gtk::ScrolledWindow scrolledWindow;
@@ -47,7 +52,7 @@ namespace Native {
 }
 
 void Native::FormApi::Close(System::Windows::Forms::Form& form) {
-  ((Native::Form*)form.Handle())->close();
+  ((Native::Form*)form.Handle())->Close();
 }
 
 intptr Native::FormApi::Create(System::Windows::Forms::Form& form, bool withClientsize) {

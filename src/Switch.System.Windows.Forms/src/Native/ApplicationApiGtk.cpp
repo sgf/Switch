@@ -38,7 +38,7 @@ void Native::ApplicationApi::MessageLoop(const System::Windows::Forms::Form& mai
     idle.Invoke(object(), EventArgs::Empty);
     return mainForm.Visible() && !idle.IsEmpty();
   });
-  exitCode = __application__->run(as<Gtk::Window>(((Native::IWidget*)mainForm.Handle())->ToWidget()));
+  exitCode = __application__->run(*as<Gtk::Window>(((Native::IWidget*)mainForm.Handle())->Handle()));
 }
 
 namespace {

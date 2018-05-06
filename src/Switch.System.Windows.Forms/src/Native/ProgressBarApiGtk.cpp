@@ -9,52 +9,65 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace Native {
-  class ProgressBar : public Widget, public Gtk::ProgressBar {
+  class ProgressBar : public Widget<Gtk::ProgressBar> {
   public:
-    ProgressBar() {this->RegisterEvent();}
+    ProgressBar() {
+      this->handle = new Gtk::ProgressBar();
+      this->RegisterEvent();
+    }
     void BackColor(const System::Drawing::Color& color) override {}
-
+    void Marquee(bool marquee, int32 animationSpeed) {
+      if (marquee) {
+        this->isMarquee = true;
+        this->marquee = g_timeout_add(animationSpeed, MarqueeProc, (gpointer)this);
+      } else {
+        if (this->isMarquee == true) {
+          g_source_remove(this->marquee);
+          this->isMarquee = false;
+        }
+      }
+    }
+    void Maximum(int32 maximum) {this->maximum = maximum;}
+    void Minimum(int32 minimum) {this->minimum = minimum;}
+    void Pulse() {this->handle->pulse();}
     void Text(const string& text) override {}
+    void Value(int32 value) {this->handle->set_fraction((double)value / ((double)this->maximum - (double)this->minimum));}
+
+  private:
+    static int MarqueeProc(gpointer progressBar) {
+      ((Native::ProgressBar*)progressBar)->Pulse();
+      return 1;
+    }
+
     guint marquee = 0;
     bool isMarquee = false;
+    int32 maximum = 100;
+    int32 minimum = 0;
   };
-
-  int MarqueeProc(gpointer progressBar) {
-    ((Native::ProgressBar*)progressBar)->pulse();
-    return 1;
-  }
 }
 
 intptr Native::ProgressBarApi::Create(const System::Windows::Forms::ProgressBar& progressBar) {
   Native::ProgressBar* handle = new Native::ProgressBar();
   handle->Move(progressBar.Location().X, progressBar.Location().Y);
   handle->Text(progressBar.Text);
-  handle->show();
+  handle->Visible(true);
   return (intptr)handle;
 }
 
 void Native::ProgressBarApi::SetMaximum(const System::Windows::Forms::ProgressBar& progressBar) {
-  // no implementation
+  ((Native::ProgressBar*)progressBar.Handle())->Maximum(progressBar.Maximum);
 }
 
 void Native::ProgressBarApi::SetMinimum(const System::Windows::Forms::ProgressBar& progressBar) {
-  // no implementation
+  ((Native::ProgressBar*)progressBar.Handle())->Minimum(progressBar.Minimum);
 }
 
 void Native::ProgressBarApi::SetMarquee(const System::Windows::Forms::ProgressBar& progressBar) {
-  if (progressBar.Style == ProgressBarStyle::Marquee) {
-    ((Native::ProgressBar*)progressBar.Handle())->isMarquee = true;
-    ((Native::ProgressBar*)progressBar.Handle())->marquee = g_timeout_add(progressBar.MarqueeAnimationSpeed(), MarqueeProc, (gpointer)progressBar.Handle());
-  } else {
-    if (((Native::ProgressBar*)progressBar.Handle())->isMarquee == true) {
-      g_source_remove(((Native::ProgressBar*)progressBar.Handle())->marquee);
-      ((Native::ProgressBar*)progressBar.Handle())->isMarquee = false;
-    }
-  }
+  ((Native::ProgressBar*)progressBar.Handle())->Marquee(progressBar.Style == System::Windows::Forms::ProgressBarStyle::Marquee, progressBar.MarqueeAnimationSpeed);
 }
 
 void Native::ProgressBarApi::SetValue(const System::Windows::Forms::ProgressBar& progressBar) {
-  ((Native::ProgressBar*)progressBar.Handle())->set_fraction(double(progressBar.Value()) / (double(progressBar.Maximum()) - double(progressBar.Minimum)));
+  ((Native::ProgressBar*)progressBar.Handle())->Value(progressBar.Value);
 }
 
 #endif

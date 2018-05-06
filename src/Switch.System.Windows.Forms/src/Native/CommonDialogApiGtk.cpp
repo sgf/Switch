@@ -24,10 +24,10 @@ bool Native::CommonDialogApi::RunColorDialog(intptr hwnd, System::Windows::Forms
   Gtk::Window* window = hwnd != IntPtr::Zero ? (Gtk::Window*)hwnd : __application__->get_active_window();
   if (window != null) colorChooserDialog.set_transient_for(*window);
   colorChooserDialog.set_modal(true);
-  colorChooserDialog.set_rgba(Native::Widget::FromColor(colorDialog.Color));
+  colorChooserDialog.set_rgba(Native::Widget<Gtk::Widget>::FromColor(colorDialog.Color));
 
   if (colorChooserDialog.run() == Gtk::RESPONSE_CANCEL) return false;
-  colorDialog.Color = Native::Widget::ToColor(colorChooserDialog.get_rgba());
+  colorDialog.Color = Native::Widget<Gtk::Widget>::ToColor(colorChooserDialog.get_rgba());
   return true;
 }
 

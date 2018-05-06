@@ -26,6 +26,7 @@ namespace FormExample {
       this->companyName.Text = Application::CompanyName;
       this->companyName.BorderStyle = BorderStyle::Fixed3D;
       this->companyName.BackColor = System::Drawing::Color::White;
+      this->companyName.ForeColor = System::Drawing::Color::Black;
       this->companyName.Location = Point(120, 10);
       this->companyName.TextAlign = ContentAlignment::MiddleLeft;
       this->companyName.Width = 170;
@@ -33,6 +34,7 @@ namespace FormExample {
       this->productName.Text = Application::ProductName;
       this->productName.BorderStyle = BorderStyle::Fixed3D;
       this->productName.BackColor = System::Drawing::Color::White;
+      this->productName.ForeColor = System::Drawing::Color::Black;
       this->productName.Location = Point(120, 40);
       this->productName.TextAlign = ContentAlignment::MiddleLeft;
       this->productName.Width = 170;
@@ -40,6 +42,7 @@ namespace FormExample {
       this->productVersion.Text = Application::ProductVersion;
       this->productVersion.BorderStyle = BorderStyle::Fixed3D;
       this->productVersion.BackColor = System::Drawing::Color::White;
+      this->productVersion.ForeColor = System::Drawing::Color::Black;
       this->productVersion.Location = Point(120, 70);
       this->productVersion.TextAlign = ContentAlignment::MiddleLeft;
       this->productVersion.Width = 170;

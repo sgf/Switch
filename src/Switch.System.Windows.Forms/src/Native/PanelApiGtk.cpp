@@ -10,17 +10,26 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
 namespace Native {
-  class Panel : public Widget, public Gtk::Frame {
+class Panel : public Widget<Gtk::Frame> {
   public:
     Panel() {
+      this->handle = new Gtk::Frame();
       this->RegisterEvent();
-      this->add(this->scrolledWindow);
+      this->handle->add(this->scrolledWindow);
       this->scrolledWindow.add(this->fixed);
 
-      this->signal_show().connect(delegate_ {
+      this->handle->signal_show().connect(delegate_ {
         this->scrolledWindow.show();
         this->fixed.show();
       });
+    }
+
+    void BorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
+      switch (borderStyle) {
+        case System::Windows::Forms::BorderStyle::None: this->handle->set_shadow_type(Gtk::SHADOW_NONE); break;
+        case System::Windows::Forms::BorderStyle::FixedSingle: this->handle->set_shadow_type(Gtk::SHADOW_IN); break;
+        case System::Windows::Forms::BorderStyle::Fixed3D: this->handle->set_shadow_type(Gtk::SHADOW_ETCHED_IN); break;
+      }
     }
 
     const Gtk::Container& Container() const override {return this->fixed;}
@@ -39,16 +48,12 @@ intptr Native::PanelApi::Create(const System::Windows::Forms::Panel& panel) {
   Native::Panel* handle = new Native::Panel();
   handle->Move(panel.Location().X, panel.Location().Y);
   handle->Text(panel.Text);
-  handle->show();
+  handle->Visible(true);
   return (intptr)handle;
 }
 
 void Native::PanelApi::SetBorderStyle(const System::Windows::Forms::Panel& panel) {
-  switch (panel.BorderStyle) {
-  case System::Windows::Forms::BorderStyle::None: ((Native::Panel*)panel.Handle())->set_shadow_type(Gtk::SHADOW_NONE); break;
-  case System::Windows::Forms::BorderStyle::FixedSingle: ((Native::Panel*)panel.Handle())->set_shadow_type(Gtk::SHADOW_IN); break;
-  case System::Windows::Forms::BorderStyle::Fixed3D: ((Native::Panel*)panel.Handle())->set_shadow_type(Gtk::SHADOW_ETCHED_IN); break;
-  }
+  ((Native::Panel*)panel.Handle())->BorderStyle(panel.BorderStyle);
 }
 
 #endif

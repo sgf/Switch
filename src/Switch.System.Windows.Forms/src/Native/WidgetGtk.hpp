@@ -12,19 +12,43 @@
 namespace Native {
   class IWidget interface_ {
   public:
-    virtual const Gtk::Widget& ToWidget() const = 0;
-    virtual Gtk::Widget& ToWidget() = 0;
+    virtual void AddChild(IWidget* child) = 0;
+    virtual void BackColor(const System::Drawing::Color& color) = 0;
+    virtual void ClientSize(const System::Drawing::Size& size) = 0;
+    virtual const Gtk::Container& Container() const = 0;
+    virtual Gtk::Container& Container() = 0;
+    virtual void Enabled(bool enabled) = 0;
+    virtual void Focus() = 0;
+    virtual void Font(const System::Drawing::Font& font) = 0;
+    virtual void ForeColor(const System::Drawing::Color& color) = 0;
+    virtual Gtk::Widget* Handle() = 0;
+    virtual void Move(int32 x, int32 y) = 0;
+    virtual Gtk::RadioButtonGroup& RadioButtonGroup() = 0;
+    virtual void RegisterEvent() = 0;
+    virtual void RemoveParent() = 0;
+    virtual void Size(const System::Drawing::Size& size) = 0;
+    virtual void TabStop(bool tabStop) = 0;
+    virtual void Text(const string& text) = 0;
+    virtual void Visible(bool visible) = 0;
   };
 
+  template<typename T>
   class Widget : public IWidget {
   public:
-    virtual void BackColor(const System::Drawing::Color& color) {this->ToWidget().override_background_color(FromColor(color));}
-
-    virtual const Gtk::Container& Container() const {return as<Gtk::Container>(this->ToWidget());}
-
-    virtual Gtk::Container& Container() {return as<Gtk::Container>(this->ToWidget());}
-
-    virtual void ForeColor(const System::Drawing::Color& color) {this->ToWidget().override_color(FromColor(color));}
+    Widget() {}
+    ~Widget() {
+      if (this->handle != null)
+        delete this->handle;
+    }
+    void AddChild(IWidget* child) override {this->Container().add(*child->Handle());}
+    void BackColor(const System::Drawing::Color& color) override {this->handle->override_background_color(FromColor(color));}
+    void ClientSize(const System::Drawing::Size& size) override {this->handle->set_size_request(size.Width, size.Height);}
+    const Gtk::Container& Container() const override {return as<Gtk::Container>(*this->handle);}
+    Gtk::Container& Container() override {return as<Gtk::Container>(*this->handle);}
+    void Enabled(bool enabled) override {this->handle->set_sensitive(enabled);}
+    void Focus() override {this->handle->grab_focus();}
+    void Font(const System::Drawing::Font& font) override {this->handle->override_font(*(Pango::FontDescription*)font.ToHFont());}
+    void ForeColor(const System::Drawing::Color& color) override {this->handle->override_color(FromColor(color));}
 
     static Gdk::RGBA FromColor(const System::Drawing::Color& color) {
       Gdk::RGBA result;
@@ -32,28 +56,23 @@ namespace Native {
       return result;
     }
 
-    virtual void Move(int32 x, int32 y) {
-      if (is<Gtk::Fixed>(this->ToWidget().get_parent())) {
+    Gtk::Widget* Handle() override {return this->handle;}
+
+    void Move(int32 x, int32 y) override {
+      if (is<Gtk::Fixed>(this->handle->get_parent())) {
         int offset = 0;
-        if (is<Gtk::Frame>(as<Gtk::Fixed>(this->ToWidget().get_parent())->get_parent()))
+        if (is<Gtk::Frame>(as<Gtk::Fixed>(this->handle->get_parent())->get_parent()))
           offset = -20;
-        as<Gtk::Fixed>(this->ToWidget().get_parent())->child_property_x(this->ToWidget()) = x;
-        as<Gtk::Fixed>(this->ToWidget().get_parent())->child_property_y(this->ToWidget()) = y + offset;
+        as<Gtk::Fixed>(this->handle->get_parent())->child_property_x(*this->handle) = x;
+        as<Gtk::Fixed>(this->handle->get_parent())->child_property_y(*this->handle) = y + offset;
       }
     }
 
-    Gtk::RadioButtonGroup& RadioButtonGroup() {return this->radioButtonGroup;}
+    Gtk::RadioButtonGroup& RadioButtonGroup() override {return this->radioButtonGroup;}
 
-    virtual void RegisterEvent() {
-      this->ToWidget().signal_event().connect(delegate_(GdkEvent * event)->bool {
-        System::Collections::Generic::Dictionary<int32, System::Delegate<int32, GdkEvent&>> events {
-          {GDK_BUTTON_PRESS, {*this, &Widget::GdkButtonPress}},
-          {GDK_BUTTON_RELEASE, {*this, &Widget::GdkButtonRelease}},
-          {GDK_DESTROY, {*this, &Widget::GdkDestroy}},
-          {GDK_ENTER_NOTIFY, {*this, &Widget::GdkEnterNotify}},
-          {GDK_LEAVE_NOTIFY, {*this, &Widget::GdkLeaveNotify}},
-          {GDK_MOTION_NOTIFY, {*this, &Widget::GdkMotionNotify}},
-        };
+    void RegisterEvent() override {
+      this->handle->signal_event().connect(delegate_(GdkEvent * event)->bool {
+        System::Collections::Generic::Dictionary<int32, System::Delegate<int32, GdkEvent&>> events {{GDK_BUTTON_PRESS, {*this, &Widget<T>::GdkButtonPress}}, {GDK_BUTTON_RELEASE, {*this, &Widget<T>::GdkButtonRelease}}, {GDK_DESTROY, {*this, &Widget<T>::GdkDestroy}}, {GDK_ENTER_NOTIFY, {*this, &Widget<T>::GdkEnterNotify}}, {GDK_LEAVE_NOTIFY, {*this, &Widget<T>::GdkLeaveNotify}}, {GDK_MOTION_NOTIFY, {*this, &Widget<T>::GdkMotionNotify}}};
 
         if (events.ContainsKey(event->type))
           events[event->type](*event);
@@ -64,20 +83,24 @@ namespace Native {
       });
     }
 
+    void RemoveParent() override {}
+
+    void Size(const System::Drawing::Size& size) override {this->handle->set_size_request(size.Width, size.Height);}
+
     //void DefWndProc(Message& message) {};
+    void TabStop(bool tabStop) override {this->handle->set_can_focus(tabStop);}
 
-    virtual void Show() {return this->ToWidget().show();}
+    static System::Drawing::Color ToColor(const Gdk::RGBA& color) {return System::Drawing::Color::FromArgb(color.get_alpha() * 255, color.get_red() * 255, color.get_green() * 255, color.get_blue() * 255);}
 
-    virtual void Text(const string& text) = 0;
-
-    static System::Drawing::Color ToColor(const Gdk::RGBA& color) {
-      System::Drawing::Color result = System::Drawing::Color::FromArgb(color.get_alpha() * 255, color.get_red() * 255, color.get_green() * 255, color.get_blue() * 255);
-      return result;
+    void Visible(bool visible) override {
+      if (visible)
+        this->handle->show();
+      else
+        this->handle->hide();
     }
 
-    const Gtk::Widget& ToWidget() const override {return as<Gtk::Widget>(*this);}
-
-    Gtk::Widget& ToWidget() override {return as<Gtk::Widget>(*this);}
+  protected:
+    T* handle = null;
 
   private:
     int32 GetMouseButtonDown() const {
