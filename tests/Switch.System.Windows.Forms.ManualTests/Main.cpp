@@ -35,4 +35,8 @@ namespace ManualTests {
   };
 }
 
-startup_(ManualTests::Form1);
+//startup_(ManualTests::Form1);
+int main(int argc, char* argv[]) {
+  Environment::SetCommandLineArgs(argv, argc);
+  ManualTests::Form1::Main();
+}

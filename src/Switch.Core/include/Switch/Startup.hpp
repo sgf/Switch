@@ -7,18 +7,6 @@
 #include "Static.hpp"
 #include "System/Environment.hpp"
 
-/// @cond
-#if !(defined(WIN32) && defined(DECLARE_HANDLE))
-using HINSTANCE = struct HINSTANCE__ { int unused; }*;
-#endif
-
-#if !defined(_WIN32)
-#define __argc 0
-#define __argv null
-#define __stdcall
-#endif
-/// @endcond
-
 namespace Switch {
   /// @brief Defines the entry point to be called when the application loads. Generally this is set either to the main form in your application or to the Main procedure that should run when the application starts.
   /// @par Library
@@ -47,15 +35,5 @@ namespace Switch {
     };\
     return Startup::Run(mainClass::Main, System::Environment::SetCommandLineArgs(argv, argc));\
   } \
-  \
-  int __stdcall WinMain(HINSTANCE instance, HINSTANCE previousInstance, char* commandLine, int commandShow) {\
-    return main(__argc, __argv); \
-  }\
   int __startup_force_to_end_with_semicolon__ = 0
 }
-
-// Notes on WinMain parameters :
-// instance can retrieve with GetModuleHandle(NULL) function
-// previousInstance is always NULL
-// commandLine can retrieve with __argc and __argv global variables
-// commandShow can retrieve with GetStartupInfo() function

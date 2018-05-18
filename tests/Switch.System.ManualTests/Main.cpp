@@ -1,26 +1,21 @@
-#define TRACE
-#include <Switch/Startup.hpp>
-#include <Switch/System/Console.hpp>
-#include <Switch/System/Environment.hpp>
-#include <Switch/System/Diagnostics/TextWriterTraceListener.hpp>
-#include <Switch/System/Diagnostics/Trace.hpp>
-#include <Switch/System/IO/Directory.hpp>
+#include <Switch/Switch.System.hpp>
 
 using namespace System;
 using namespace System::Diagnostics;
 using namespace System::IO;
 
 namespace ManualTests {
-  class Program {
+  class Program static_ {
   public:
     // The main entry point for the application.
     static void Main() {
-      Trace::Listeners().Add(TextWriterTraceListener(Path::Combine(Environment::GetFolderPath(Environment::SpecialFolder::Desktop), "User.log")));
-
-      Trace::WriteLine("This is the first line");
-      Trace::Flush();
+      Console::WriteLine("Hello, World!");
     }
   };
 }
 
-startup_(ManualTests::Program);
+//startup_(ManualTests::Program);
+int main(int argc, char* argv[]) {
+  Environment::SetCommandLineArgs(argv, argc);
+  ManualTests::Program::Main();
+}
