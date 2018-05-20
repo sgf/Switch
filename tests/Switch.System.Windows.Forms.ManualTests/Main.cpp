@@ -7,11 +7,6 @@ using namespace System::Windows::Forms;
 namespace ManualTests {
   class Form1 : public Form {
   public:
-    static void Main() {
-      Application::EnableVisualStyles();
-      Application::Run(Form1());
-    }
-
     Form1() {
       this->label.Text = "Hello, World!";
       this->label.Location = Point {10, 10};
@@ -35,8 +30,8 @@ namespace ManualTests {
   };
 }
 
-//startup_(ManualTests::Form1);
 int main(int argc, char* argv[]) {
   Environment::SetCommandLineArgs(argv, argc);
-  ManualTests::Form1::Main();
+  Application::EnableVisualStyles();
+  Application::Run(ManualTests::Form1());
 }
