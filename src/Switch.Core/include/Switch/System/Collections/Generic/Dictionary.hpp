@@ -38,21 +38,21 @@ namespace Switch {
         /// Finally, the example demonstrates the Remove method.
         /// @include Dictionary.cpp
         template<typename TKey, typename TValue, typename TAllocator = Allocator<std::pair<const TKey, TValue>>>
-            class Dictionary : public Object, public Linq::Extension::Enumerable<Dictionary<TKey, TValue, TAllocator>, KeyValuePair<TKey, TValue>>, public IDictionary<TKey, TValue> {
-public:
+        class Dictionary : public Object, public Linq::Extension::Enumerable<Dictionary<TKey, TValue, TAllocator>, KeyValuePair<TKey, TValue>>, public IDictionary<TKey, TValue> {
+        public:
           using Item = KeyValuePair<TKey, TValue>;
-
+          
           /// @brief Represents the collection of keys in a Dictionary<TKey, TValue>. This class cannot be inherited.
           using KeyCollection = typename IDictionary<TKey, TValue>::KeyCollection;
-
+          
           /// @brief Represents the collection of values in a Dictionary<TKey, TValue>. This class cannot be inherited.
           using ValueCollection = typename IDictionary<TKey, TValue>::ValueCollection;
-
+          
           /// @brief Initializes a new instance of the Dictionary<TKey, TValue> class that is empty and has the default initial capacity (512 items).
           /// @remarks Every key in a Dictionary<TKey, TValue> must be unique according to the default equality comparer.
           /// @remarks The Dictionary<TKey, TValue> class is ! thread safe.
           Dictionary() : operationNumber(0) {}
-
+          
           /// @brief Initializes a new instance of the Dictionary<TKey, TValue> class that contains elements copied from the specified IDictionary<TKey, TValue>.
           /// @param dictionary The IDictionary<TKey, TValue> whose elements are copied to the new Dictionary<TKey, TValue>.
           /// @remarks Every key in a Dictionary<TKey, TValue> must be unique according to the default equality comparer.
@@ -61,14 +61,21 @@ public:
             for (const auto& item : dictionary)
               Add(item);
           }
-
+          
           /// @cond
           Dictionary(Dictionary&& dictionary) : hashmap(Move(dictionary.hashmap)), comparer(dictionary.comparer), operationNumber(dictionary.operationNumber) {
             dictionary.comparer.Reset();
             dictionary.operationNumber = 0;
           }
+          template<typename THash>
+          Dictionary(const std::unordered_map<TKey, TValue, THash>& hashmap) {
+            for (const auto& item : hashmap)
+              Add(item.first, item.second);
+          }
+          template<typename THash>
+          Dictionary(std::unordered_map<TKey, TValue, THash>&& hashmap) : hashmap(Mode(hashmap)) {}
           /// @endcond
-
+          
           /// @brief Initializes a new instance of the Dictionary<TKey, TValue> class that contains elements copied from the specified IDictionary<TKey, TValue>.
           /// @param dictionary The IDictionary<TKey, TValue> whose elements are copied to the new Dictionary<TKey, TValue>.
           /// @exception ArgumentNullException The parameters dictionary is null.
@@ -78,7 +85,7 @@ public:
             for (const auto& item : dictionary)
               Add(item);
           }
-
+          
           /// @brief Initializes a new instance of the Dictionary<TKey, TValue> class with Tkey and TValue array specified.
           /// @param array An array of Tkey and TValue to initialize Dictionnary.
           /// @param capacity The number of elements that the new list can initially store (maximum 512 items).
@@ -88,23 +95,23 @@ public:
             for (const auto& item : array)
               Add(item);
           }
-
+          
           /// @brief Initializes a new instance of the Dictionary and copy array[] T.
           /// @param array the Array to copy.
           /// @remarks The Dictionary class is ! thread safe.
           template<int32 len>
           Dictionary(const Item(&array)[len]) : operationNumber(0) {
             for (int32 index = 0; index < len; index++)
-                this->Add(array[index]);
+              this->Add(array[index]);
           }
-
+          
           /// @cond
           Dictionary(InitializerList<KeyValuePair<TKey, TValue>> il) : operationNumber(0) {
             for (typename InitializerList<Item>::const_iterator iterator = il.begin(); iterator != il.end(); ++iterator)
               this->Add(*iterator);
           }
           /// @endcond
-
+          
           /// @brief Adds an KeyValuePair<TKey, TValue> object to the end of the Dictionary<TKey, TValue>.
           /// @param keyValue The pointer object to be added to the end of the Dictionary<TKey, TValue>. The value can ! be null for reference types.
           /// @exception ArgumentNullException The parameters keyValue is null.
@@ -113,8 +120,8 @@ public:
           /// @par Examples
           /// The following sample show how to use Add function:
           /// @include DictionaryAdd.cpp
-          void Add(const Item& item) override {Add(item.Key(), item.Value());}
-
+          void Add(const Item& item) override {Add(item.Key, item.Value);}
+          
           /// @brief Adds an element with the provided key and value to the Dictionary<TKey,TValue>.
           /// @param key The object to use as the key of the element to add.
           /// @param value The object to use as the value of the element to add.
@@ -128,23 +135,23 @@ public:
               throw ArgumentException(caller_);
             (*this)[key] = value;
           }
-
+          
           /// @brief Removes all elements from the List<T>.
           void Clear() override {this->hashmap.clear();}
-
+          
           /// @brief Determines whether an element is in the Dictionary<TKey,TValue>.
           /// @param keyValue The object to be added to the end of the Dictionary<TKey,TValue>. The value can ! be null for reference types.
           bool Contains(const KeyValuePair<TKey, TValue>& item) const override {
             if (!ContainsKey(item.Key()))
               return false;
-
+            
             return (*this)[item.Key()] == item.Value();
           }
-
+          
           /// @brief Determines whether an element is in the Dictionary<TKey,TValue>.
           /// @param key The object to be added to the end of the Dictionary<TKey,TValue>. The value can ! be null for reference types.
           bool ContainsKey(const TKey& key) const override {return this->hashmap.find(key) != this->hashmap.end();}
-
+          
           /// @brief Determines whether an element is in the Dictionary<TKey,TValue>.
           /// @param value The object to be added to the end of the Dictionary<TKey,TValue>. The value can ! be null for reference types.
           bool ContainsValue(const TValue& value) const {
@@ -153,7 +160,7 @@ public:
                 return true;
             return false;
           }
-
+          
           /// @brief Copies the entire Dictionary<TKey,TValue> to a compatible one-dimensional array.
           /// @param array The one-dimensional Array that is the destination of the elements copied from ICollection. The Array must have zero-based indexing.
           /// @return Int32 Number of elements copied.
@@ -161,7 +168,7 @@ public:
           /// @exception ArgumentOutOfRangeException The index is greater then number elements of Dictionary<TKey,TValue>
           /// @remarks The elements are copied to the Array in the same order in which the enumerator iterates through the List<T>.
           void CopyTo(System::Array<KeyValuePair<TKey, TValue>>& array) const {CopyTo(array, 0);}
-
+          
           /// @brief Copies the entire Dictionary<TKey,TValue> to a compatible one-dimensional array, starting at the specified index of the target array.
           /// @param array The one-dimensional Array that is the destination of the elements copied from ICollection. The Array must have zero-based indexing.
           /// @param index The zero-based index in array at which copying begins;
@@ -176,15 +183,15 @@ public:
             for (const Item& item : *this)
               array[count++] = Item(item);
           }
-
+          
           /// @brief Gets the total number of elements the internal data structure.
           /// @return Int32 The number of elements that the Dictionary<TKey,TValue> can contain.
           int32 GetCapacity() const {return static_cast<int32>(this->hashmap.size());}
-
+          
           /// @brief Returns an enumerator that iterates through the Dictionary<TKey,TValue>.
           /// @return Int32 A Dictionary<TKey,TValue>::Enumerator for the Dictionary<TKey,TValue>.
           System::Collections::Generic::Enumerator<KeyValuePair<TKey, TValue>> GetEnumerator() const override {return System::Collections::Generic::Enumerator<KeyValuePair<TKey, TValue>>(new_<Dictionary::Enumerator>(*((Dictionary*)this)));}
-
+          
           /// @brief Removes the first occurrence of a specific object from the Dictionary<TKey, TValue>.
           /// @param keyValue The object to remove from the Dictionary<TKey, TValue>. The value can ! be null.
           /// @return true if item is successfully removed; otherwise, false. This method also returns false if item was ! found in the Dictionary<TKey, TValue>.
@@ -196,7 +203,7 @@ public:
             this->hashmap.erase(item.Key());
             return true;
           }
-
+          
           /// @brief Removes the first occurrence of a specific object from the Dictionary<TKey, TValue>.
           /// @param key The object to remove from the Dictionary<TKey, TValue>. The value can ! be null.
           /// @return Boolean true if item is successfully removed; otherwise, false. This method also returns false if item was ! found in the Dictionary<TKey, TValue>.
@@ -208,7 +215,7 @@ public:
             this->hashmap.erase(key);
             return true;
           }
-
+          
           /// @brief Gets the value associated with the specified key.
           /// @param key The key of the value to get.
           /// @param value When this method returns, contains the value associated with the specified key, if the key is found; otherwise, the default value for the type of the value parameter. This parameter is passed uninitialized.
@@ -220,7 +227,7 @@ public:
             value = (*this)[key];
             return true;
           }
-
+          
           /// @brief Set the element at the specified key. If the key is ! found, the element is added at the specified key.
           /// @param key The key of the element to set.
           /// @return TValue The element at the specified key.
@@ -232,7 +239,7 @@ public:
             this->operationNumber++;
             return this->hashmap[key];
           }
-
+          
           /// @brief Gets the element at the specified index.
           /// @param key The key of the element to get.
           /// @return TValue The element at the specified key.
@@ -246,7 +253,7 @@ public:
               throw ArgumentException(caller_);
             return const_cast<std::unordered_map<TKey, TValue, Hasher, EqualTo, TAllocator>&>(this->hashmap)[key];
           }
-
+          
           /// @brief Clears the list and insert the elements of the list given in argument.
           /// @param dictionnary the list which elements will be inserted from
           /// @return List<T> the list
@@ -256,19 +263,19 @@ public:
             this->operationNumber++;
             return *this;
           }
-
-private:
+          
+        private:
           class Hasher {
           public:
             size_t operator()(const TKey& key) const { return Switch::GetHashCode(key); }
           };
-
+          
           class EqualTo {
           public:
             bool operator()(const TKey& a, const TKey& b) const {return a == b; }
           };
-
-public:
+          
+        public:
           /// @cond
           class const_iterator : public std::iterator<std::input_iterator_tag, System::Collections::Generic::KeyValuePair<TKey, TValue>> {
           public:
@@ -279,11 +286,11 @@ public:
             bool operator==(const const_iterator& rhs) const {return this->value == rhs.value;}
             bool operator!=(const const_iterator& rhs) const {return this->value != rhs.value;}
             const System::Collections::Generic::KeyValuePair<TKey, TValue> operator*() {return System::Collections::Generic::KeyValuePair<TKey, TValue>((*value).first, (*value).second);}
-
+            
           private:
             typename std::unordered_map<TKey, TValue, Hasher, EqualTo, TAllocator>::const_iterator value;
           };
-
+          
           class iterator : public std::iterator<std::input_iterator_tag, System::Collections::Generic::KeyValuePair<TKey, TValue>> {
           public:
             iterator(const typename std::unordered_map<TKey, TValue, Hasher, EqualTo, TAllocator>::iterator& value) : value(value) {}
@@ -293,56 +300,56 @@ public:
             bool operator==(const iterator& rhs) {return this->value == rhs.value;}
             bool operator!=(const iterator& rhs) {return this->value != rhs.value;}
             System::Collections::Generic::KeyValuePair<TKey, TValue> operator*() {return System::Collections::Generic::KeyValuePair<TKey, TValue>((*value).first, (*value).second);}
-
+            
           private:
             typename std::unordered_map<TKey, TValue, Hasher, EqualTo, TAllocator>::iterator value;
           };
-
+          
           const_iterator cbegin() const {return const_iterator(this->hashmap.begin());}
           const_iterator cend() const {return const_iterator(this->hashmap.end());}
           iterator begin() {return iterator(this->hashmap.begin());}
           const_iterator begin() const {return const_iterator(this->hashmap.begin());}
           iterator end() {return iterator(this->hashmap.end());}
           const_iterator end() const {return const_iterator(this->hashmap.end());}
-
+          
           class Enumerator : public Object, public IEnumerator<KeyValuePair<TKey, TValue>> {
           public:
             Enumerator(Dictionary& dictionary) : dictionary(dictionary) {Reset();}
-
+            
             Enumerator(const Enumerator& enumerator) : operationNumber(enumerator.operationNumber), dictionary(enumerator.dictionary), currentKeyValuePair(enumerator.currentKeyValuePair), iterator(enumerator.iterator), beforeFirst(enumerator.beforeFirst) {}
-
+            
             void Reset() {
               this->operationNumber = this->dictionary.operationNumber;
               this->iterator = this->dictionary.hashmap.begin();
               this->beforeFirst = true;
             }
-
+            
             virtual bool MoveNext() {
               if (this->operationNumber != this->dictionary.operationNumber)
                 throw System::InvalidOperationException(caller_);
-
+              
               if (IsFinished())
                 return false;
-
+              
               if (this->beforeFirst)
                 this->beforeFirst = false;
               else
                 this->iterator++;
-
+              
               if (IsFinished())
                 return false;
-
+              
               this->currentKeyValuePair = new_<Item>((*this->iterator).first, (*this->iterator).second);
               return true;
             }
-
+            
           protected:
             const KeyValuePair<TKey, TValue>& GetCurrent() const {
               if (this->beforeFirst || IsFinished())
                 throw System::InvalidOperationException(caller_);
               return *this->currentKeyValuePair;
             }
-
+            
             bool IsFinished() const {return this->iterator == this->dictionary.hashmap.end();}
             int64 operationNumber;
             Dictionary& dictionary;
@@ -350,33 +357,33 @@ public:
             typename std::unordered_map<TKey, TValue, Hasher, EqualTo, TAllocator>::iterator iterator;
             bool beforeFirst;
           };
-
-protected:
+          
+        protected:
           std::unordered_map<TKey, TValue, Hasher, EqualTo, TAllocator> hashmap;
           $< IComparer<TKey>> comparer;
           int64 operationNumber;
           Object syncRoot;
           /// @endcond
-
-private:
+          
+        private:
           int32 GetCount() const override {return static_cast<int32>(this->hashmap.size());}
           bool GetIsReadOnly() const override {return false;}
           bool GetIsSynchronized() const override {return false;}
-
+          
           KeyCollection GetKeys() const override {
             KeyCollection keys;
             for (auto item : this->hashmap)
               keys.Add(item.first);
             return keys;
           }
-
+          
           ValueCollection GetValues() const override {
             ValueCollection values;
             for (auto item : this->hashmap)
               values.Add(item.second);
             return values;
           }
-
+          
           const Object& GetSyncRoot() const override {return syncRoot;}
         };
       }
@@ -385,4 +392,5 @@ private:
 }
 
 using namespace Switch;
+
 

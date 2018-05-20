@@ -64,10 +64,6 @@ namespace Switch {
           /// @param list the List<T> which elements will be inserted from
           List(const List& list) : list(list.list), operationNumber(list.operationNumber) {}
 
-          /// @cond
-          List(List&& list) : list(Move(list.list)) {list.operationNumber = 0;}
-          /// @endcond
-
           /// @brief Initializes a new instance of the List<T> class that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.
           /// @param collection The collection whose elements are copied to the new list.
           /// @exception ArgumentNullException The parameters collection is null or element reference null in collection.
@@ -109,6 +105,9 @@ namespace Switch {
           }
 
           /// @cond
+          List(List&& list) : list(Move(list.list)) {list.operationNumber = 0;}
+          List(const std::vector<T>& list) : list(list) {}
+          List(std::vector<T>&& list) : list(Move(list)) {}
           List(InitializerList<T> il) : operationNumber(0) {
             for (const T& item : il)
               this->Add(item);
