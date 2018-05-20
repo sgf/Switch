@@ -6,6 +6,7 @@
 #include "RefPtr.hpp"
 #include "Types.hpp"
 
+/// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Return true if specified value is the specified Type. A Is expression takes the following form:
   /// @par Library

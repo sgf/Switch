@@ -7,6 +7,7 @@
 #include "Static.hpp"
 #include "System/Environment.hpp"
 
+/// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Defines the entry point to be called when the application loads. Generally this is set either to the main form in your application or to the Main procedure that should run when the application starts.
   /// @par Library

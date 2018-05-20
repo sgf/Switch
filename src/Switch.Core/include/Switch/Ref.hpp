@@ -10,6 +10,7 @@
 #include "NullPtr.hpp"
 #include "Types.hpp"
 
+/// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Represent a reference.
   /// @par Library
