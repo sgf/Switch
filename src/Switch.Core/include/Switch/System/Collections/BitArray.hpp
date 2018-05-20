@@ -82,7 +82,7 @@ namespace Switch {
         BitArray(const std::bitset<s>& bitArray) {
           this->length = (int32)s;
           while (this->bitArray.Count < GetListLength(this->length)) this->bitArray.Add(0);
-          
+
           for (int32 index = 0; index < (int32)s; index++)
             Set(index, bitArray.test(index));
         }
