@@ -350,6 +350,10 @@ Array<string> Environment::SetCommandLineArgs(char* argv[], int argc) {
   consoleInterceptSignals = new_<ConsoleInterceptSignals>();
   signalCatcher = new_<SignalCatcher>();
   System::Threading::Thread::RegisterCurrentThread();
+  if (argv == null) {
+    commandLineArgs = new_<Array<string>>();
+    return Array<string>();
+  }
   commandLineArgs = new_<Array<string>>(std::vector<string>(argv, argv + argc));
   return Array<string>(std::vector<string>(argv + 1, argv + argc));
 }
