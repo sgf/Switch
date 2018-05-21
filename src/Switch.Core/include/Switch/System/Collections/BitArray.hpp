@@ -2,6 +2,7 @@
 /// @brief Contains Switch::System::Collections::BitArray class.
 #pragma once
 
+#include <bitset>
 #include "../../InitializerList.hpp"
 #include "../../Property.hpp"
 #include "../../Types.hpp"

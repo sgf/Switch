@@ -6,12 +6,12 @@ namespace Examples {
     static void Main() {
       object lock;
 
-      // The first way : easy with Switch keyword :
+      // The first way : easy with Switch lock_ keyword :
       lock_(lock) {
         System::Console::WriteLine("Run in threadsafe mode...");
       }
 
-      // The second way : with Switch Monitor :
+      // The second way : with Switch Monitor class :
       System::Threading::Monitor::Enter(lock);
       try {
         System::Console::WriteLine("Run in threadsafe mode...");
@@ -20,7 +20,7 @@ namespace Examples {
         System::Threading::Monitor::Exit(lock);
       }
 
-      // The third way : with your own Lockguard object :
+      // The third way : with your own RAII LockGuard object :
       struct LockGuard {
         explicit LockGuard(const object& lock) : lock(lock) {System::Threading::Monitor::Enter(this->lock);}
         ~LockGuard() {System::Threading::Monitor::Exit(this->lock);}
@@ -35,7 +35,6 @@ namespace Examples {
         LockGuard lockGuard(lock);
         System::Console::WriteLine("Run in threadsafe mode...");
       }
-
     }
   };
 }
