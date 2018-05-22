@@ -70,7 +70,7 @@ int32 Native::TrackBarApi::GetValue(const System::Windows::Forms::TrackBar& trac
 }
 
 void Native::TrackBarApi::SetValue(const System::Windows::Forms::TrackBar& trackBar) {
-  SendMessage((HWND)trackBar.Handle(), TBM_SETPOS, trackBar.Value(), 0);
+  SendMessage((HWND)trackBar.Handle(), TBM_SETPOS, TRUE, trackBar.Value());
 }
 
 #endif
