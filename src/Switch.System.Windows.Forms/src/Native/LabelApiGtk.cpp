@@ -15,16 +15,16 @@ namespace Native {
     void Text(const string& text) override {this->handle->set_label(text.c_str());}
 
     void TextAlign(System::Drawing::ContentAlignment contentAlignment) {
-      switch(contentAlignment) {
-        case System::Drawing::ContentAlignment::BottomCenter : this->handle->set_alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_END); break;
-        case System::Drawing::ContentAlignment::BottomLeft : this->handle->set_alignment(Gtk::ALIGN_START, Gtk::ALIGN_END); break;
-        case System::Drawing::ContentAlignment::BottomRight : this->handle->set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_END); break;
-        case System::Drawing::ContentAlignment::MiddleCenter : this->handle->set_alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_CENTER); break;
-        case System::Drawing::ContentAlignment::MiddleLeft : this->handle->set_alignment(Gtk::ALIGN_START, Gtk::ALIGN_CENTER); break;
-        case System::Drawing::ContentAlignment::MiddleRight : this->handle->set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_CENTER); break;
-        case System::Drawing::ContentAlignment::TopCenter : this->handle->set_alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_START); break;
-        case System::Drawing::ContentAlignment::TopLeft : this->handle->set_alignment(Gtk::ALIGN_START, Gtk::ALIGN_START); break;
-        case System::Drawing::ContentAlignment::TopRight : this->handle->set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_START); break;
+      switch (contentAlignment) {
+      case System::Drawing::ContentAlignment::BottomCenter : this->handle->set_alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_END); break;
+      case System::Drawing::ContentAlignment::BottomLeft : this->handle->set_alignment(Gtk::ALIGN_START, Gtk::ALIGN_END); break;
+      case System::Drawing::ContentAlignment::BottomRight : this->handle->set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_END); break;
+      case System::Drawing::ContentAlignment::MiddleCenter : this->handle->set_alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_CENTER); break;
+      case System::Drawing::ContentAlignment::MiddleLeft : this->handle->set_alignment(Gtk::ALIGN_START, Gtk::ALIGN_CENTER); break;
+      case System::Drawing::ContentAlignment::MiddleRight : this->handle->set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_CENTER); break;
+      case System::Drawing::ContentAlignment::TopCenter : this->handle->set_alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_START); break;
+      case System::Drawing::ContentAlignment::TopLeft : this->handle->set_alignment(Gtk::ALIGN_START, Gtk::ALIGN_START); break;
+      case System::Drawing::ContentAlignment::TopRight : this->handle->set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_START); break;
       }
 
     }

@@ -9,6 +9,7 @@
 core_export_ void __throw_cast_exception__();
 /// @endcond
 
+/// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Used to static cast a type into another type. A To expression takes the following form:
   /// @par Library

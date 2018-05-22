@@ -11,16 +11,14 @@ namespace Switch {
   }
 }
 
-class core_export_ __opaque_lock_guard__ final {
-public:
+struct core_export_ __opaque_lock_guard__ final {
   explicit __opaque_lock_guard__(const Switch::System::Object& lock);
-  ~__opaque_lock_guard__();
-
-private:
   __opaque_lock_guard__() = delete;
   __opaque_lock_guard__(const __opaque_lock_guard__&) = delete;
   __opaque_lock_guard__& operator=(const __opaque_lock_guard__&) = delete;
+  ~__opaque_lock_guard__();
 
+private:
   const Switch::System::Object& lock;
 };
 /// @endcond

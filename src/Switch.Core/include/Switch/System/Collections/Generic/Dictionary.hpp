@@ -67,6 +67,13 @@ public:
             dictionary.comparer.Reset();
             dictionary.operationNumber = 0;
           }
+          template<typename THash>
+          Dictionary(const std::unordered_map<TKey, TValue, THash>& hashmap) {
+            for (const auto& item : hashmap)
+              Add(item.first, item.second);
+          }
+          template<typename THash>
+          Dictionary(std::unordered_map<TKey, TValue, THash>&& hashmap) : hashmap(Mode(hashmap)) {}
           /// @endcond
 
           /// @brief Initializes a new instance of the Dictionary<TKey, TValue> class that contains elements copied from the specified IDictionary<TKey, TValue>.
@@ -113,7 +120,7 @@ public:
           /// @par Examples
           /// The following sample show how to use Add function:
           /// @include DictionaryAdd.cpp
-          void Add(const Item& item) override {Add(item.Key(), item.Value());}
+          void Add(const Item& item) override {Add(item.Key, item.Value);}
 
           /// @brief Adds an element with the provided key and value to the Dictionary<TKey,TValue>.
           /// @param key The object to use as the key of the element to add.
@@ -385,4 +392,3 @@ private:
 }
 
 using namespace Switch;
-

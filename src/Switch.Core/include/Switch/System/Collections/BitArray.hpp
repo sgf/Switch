@@ -2,6 +2,7 @@
 /// @brief Contains Switch::System::Collections::BitArray class.
 #pragma once
 
+#include <bitset>
 #include "../../InitializerList.hpp"
 #include "../../Property.hpp"
 #include "../../Types.hpp"
@@ -78,6 +79,15 @@ namespace Switch {
 
         /// @cond
         BitArray(BitArray&& bits) : bitArray(Move(bits.bitArray)), length(bits.length) {bits.length = 0;}
+        template<size s>
+        BitArray(const std::bitset<s>& bitArray) {
+          this->length = (int32)s;
+          while (this->bitArray.Count < GetListLength(this->length)) this->bitArray.Add(0);
+
+          for (int32 index = 0; index < (int32)s; index++)
+            Set(index, bitArray.test(index));
+        }
+
         /// @endcond
 
         /// @brief Initializes a new instance of the BitArray class that can hold the specified number of bit values, which are initially set to false.

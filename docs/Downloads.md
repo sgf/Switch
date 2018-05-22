@@ -32,7 +32,7 @@ git clone https://github.com/gammasoft71/Switch .
 
 ```shell
 cd C:\Users\YourName\Switch\
-install.bat
+install.cmd
 ```
 
    *Remarks, this operation depand of your hardware and can be very long*

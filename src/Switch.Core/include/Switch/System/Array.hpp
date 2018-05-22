@@ -370,7 +370,7 @@ namespace Switch {
         this->upperBound.push_back(length - 1);
       }
 
-      explicit GenericArrayObject(const Collections::Generic::IEnumerable<T>& enumerable) {
+      GenericArrayObject(const Collections::Generic::IEnumerable<T>& enumerable) {
         for (const auto& value : enumerable)
           this->array.push_back(value);
         this->length = (int32)this->array.size();
@@ -378,9 +378,14 @@ namespace Switch {
         this->upperBound.push_back(this->length - 1);
       }
 
-      explicit GenericArrayObject(const std::vector<T>& array) : length((int32)array.size()) {
-        for (T value : array)
-          this->array.push_back(value);
+      GenericArrayObject(const std::vector<T>& array) : length((int32)array.size()) {
+        this->array = array;
+        this->lowerBound.push_back(0);
+        this->upperBound.push_back(length - 1);
+      }
+
+      GenericArrayObject(std::vector<T>&& array) : length((int32)array.size()) {
+        this->array = std::move(array);
         this->lowerBound.push_back(0);
         this->upperBound.push_back(length - 1);
       }
@@ -455,7 +460,6 @@ namespace Switch {
 
       int32 length = 0;
       int64 operationNumber = 0;
-      //std::vector<T, TAllocator> array;
       std::vector<typename std::conditional<std::is_same<bool, T>::value, char, T>::type, TAllocator> array;
       std::vector<int32> lowerBound;
       std::vector<int32> upperBound;
@@ -615,7 +619,7 @@ namespace Switch {
       /// The following code example demonstrates different methods to create an array.
       /// @include ArrayConstructor.cpp
       template<int32 length>
-      explicit Array(const T(&array)[length]) : GenericArrayObject<T, TAllocator>(array, length) {}
+      Array(const T(&array)[length]) : GenericArrayObject<T, TAllocator>(array, length) {}
 
       /// @brief Initializes a new instance of the Array and copy array[] T with length specified.
       /// @param array the Array to copy.
@@ -632,7 +636,7 @@ namespace Switch {
       /// @par Examples
       /// The following code example demonstrates different methods to create an array.
       /// @include ArrayConstructor.cpp
-      explicit Array(const Collections::Generic::IEnumerable<T>& enumerable) : GenericArrayObject<T, TAllocator>(enumerable) {}
+      Array(const Collections::Generic::IEnumerable<T>& enumerable) : GenericArrayObject<T, TAllocator>(enumerable) {}
 
       /// @brief Initializes a new instance of the Array and copy array Array specified.
       /// @param array the Array to copy.
@@ -640,12 +644,13 @@ namespace Switch {
       /// @par Examples
       /// The following code example demonstrates different methods to create an array.
       /// @include ArrayConstructor.cpp
-      explicit Array(const Collections::Generic::IList<T>& list) : GenericArrayObject<T, TAllocator>(list) {}
+      Array(const Collections::Generic::IList<T>& list) : GenericArrayObject<T, TAllocator>(list) {}
 
       /// @cond
       Array(const Array& array) : GenericArrayObject<T, TAllocator>((GenericArrayObject<T, TAllocator>&)array) {}
       Array(const Array&& array) : GenericArrayObject<T, TAllocator>(Move((GenericArrayObject<T, TAllocator> &&)array)) {}
-      explicit Array(const std::vector<T>& array) : GenericArrayObject<T, TAllocator>(array) {}
+      Array(const std::vector<T>& array) : GenericArrayObject<T, TAllocator>(array) {}
+      Array(std::vector<T>&& array) : GenericArrayObject<T, TAllocator>(array) {}
       Array(InitializerList<T> il) : GenericArrayObject<T, TAllocator>(il) {}
 
       Array& operator=(const Array& array) {

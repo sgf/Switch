@@ -30,6 +30,7 @@ class core_export_ __opaque_sub_object__ {
 };
 /// @endcond
 
+/// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief Represents a Reference Pointer class. A $ is a memory-managing pointer to an object.
   /// @par Library

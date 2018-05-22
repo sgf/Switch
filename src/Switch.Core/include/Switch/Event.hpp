@@ -40,6 +40,7 @@ private:
 };
 /// @endcond
 
+/// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
 namespace Switch {
   /// @brief The #event_ keyword is used to declare an event in a publisher class.
   /// @par Library

@@ -558,6 +558,16 @@ namespace Switch {
       static Array<String> GetLogicalDrives();
 
       /// @brief Initailize CommandLineArgs with specified command line arguments.
+      /// @return Array<string> An empty string array.
+      /// @exception InvalidOperationException Call more than once. CommandeLine has already been set and is not empty.
+      /// @remarks This methode must be call only once in main.
+      /// @remarks if you use #startup_(default) you don't need to call this method; otherwise if you use the standerd C++ main method you need to call it.
+      /// @par Example
+      /// This example show how to call SetCommandLineArgs with sandard C++ main method:
+      /// @include Main5.cpp
+      static Array<string> SetCommandLineArgs() {return SetCommandLineArgs(null, 0);}
+
+      /// @brief Initailize CommandLineArgs with specified command line arguments.
       /// @param argv Command line arguments.
       /// @param argc Number of command line arguments.
       /// @return Array<string> A string array that contains the arguments without the command line.
