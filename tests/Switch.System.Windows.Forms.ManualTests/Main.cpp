@@ -8,6 +8,7 @@ namespace ManualTests {
   class Form1 : public Form {
   public:
     Form1() {
+      this->label.Name = "label";
       this->label.Text = "Hello, World!";
       this->label.Location = Point {10, 10};
       this->label.BackColor = System::Drawing::Color::White;
@@ -16,7 +17,7 @@ namespace ManualTests {
       this->label.TextAlign = ContentAlignment::MiddleCenter;
       this->label.Height = 80;
       this->label.Width = 200;
-      this->Cursor = Cursors::AppStarting;
+      this->Name = "form1";
       this->Text = "Manual Test application";
       this->StartPosition = FormStartPosition::CenterScreen;
       this->ClientSize = Drawing::Size {800, 100};

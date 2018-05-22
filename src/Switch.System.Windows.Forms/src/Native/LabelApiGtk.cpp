@@ -12,8 +12,8 @@ namespace Native {
   class Label : public Widget<Gtk::Label> {
   public:
     Label() {}
+    void Cursor(const System::Windows::Forms::Cursor& cursor) override {} // do nothing because gtkmm was a bug if label change cursor then all widget cursor was modified by the label cursor, and it's impossible to remove.
     void Text(const string& text) override {this->handle->set_label(text.c_str());}
-
     void TextAlign(System::Drawing::ContentAlignment contentAlignment) {
       switch (contentAlignment) {
       case System::Drawing::ContentAlignment::BottomCenter : this->handle->set_alignment(Gtk::ALIGN_CENTER, Gtk::ALIGN_END); break;
