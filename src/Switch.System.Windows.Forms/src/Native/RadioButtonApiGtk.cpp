@@ -11,10 +11,7 @@ using namespace System::Windows::Forms;
 namespace Native {
   class RadioButton : public Widget<Gtk::RadioButton> {
   public:
-    RadioButton() {
-      this->handle = new Gtk::RadioButton();
-      this->RegisterEvent();
-    }
+    RadioButton() {}
     void Checked(bool checked) {this->handle->set_active(checked);}
     void ResetGroup() {this->handle->reset_group();}
     void Group(IWidget* group) {

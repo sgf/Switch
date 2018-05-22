@@ -11,10 +11,7 @@ using namespace System::Windows::Forms;
 namespace Native {
   class ProgressBar : public Widget<Gtk::ProgressBar> {
   public:
-    ProgressBar() {
-      this->handle = new Gtk::ProgressBar();
-      this->RegisterEvent();
-    }
+    ProgressBar() {}
     void BackColor(const System::Drawing::Color& color) override {}
     void Marquee(bool marquee, int32 animationSpeed) {
       if (marquee) {

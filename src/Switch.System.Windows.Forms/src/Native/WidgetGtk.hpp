@@ -8,6 +8,7 @@
 #include <Switch/System/Drawing/Color.hpp>
 #include "../../include/Switch/System/Windows/Forms/Control.hpp"
 #include "Api.hpp"
+#include "../../../../../../../../usr/include/glibmm-2.4/glibmm/refptr.h"
 
 namespace Native {
   class IWidget interface_ {
@@ -17,6 +18,7 @@ namespace Native {
     virtual void ClientSize(const System::Drawing::Size& size) = 0;
     virtual const Gtk::Container& Container() const = 0;
     virtual Gtk::Container& Container() = 0;
+    virtual void Cursor(const System::Windows::Forms::Cursor& cursor) = 0;
     virtual void Enabled(bool enabled) = 0;
     virtual void Focus() = 0;
     virtual void Font(const System::Drawing::Font& font) = 0;
@@ -35,7 +37,15 @@ namespace Native {
   template<typename T>
   class Widget : public IWidget {
   public:
-    Widget() {}
+    Widget() {
+      this->handle = new T();
+      this->RegisterEvent();
+    }
+    template <typename TParam>
+    Widget(const TParam& param) {
+      this->handle = new T(param);
+      this->RegisterEvent();
+    }
     ~Widget() {
       if (this->handle != null)
         delete this->handle;
@@ -45,6 +55,10 @@ namespace Native {
     void ClientSize(const System::Drawing::Size& size) override {this->handle->set_size_request(size.Width, size.Height);}
     const Gtk::Container& Container() const override {return as<Gtk::Container>(*this->handle);}
     Gtk::Container& Container() override {return as<Gtk::Container>(*this->handle);}
+    void Cursor(const System::Windows::Forms::Cursor& cursor) override {
+      if (this->handle->get_window())
+        this->handle->get_window()->set_cursor(Gdk::Cursor::create(this->handle->get_display(), (const char*)cursor.Handle()));
+    }
     void Enabled(bool enabled) override {this->handle->set_sensitive(enabled);}
     void Focus() override {this->handle->grab_focus();}
     void Font(const System::Drawing::Font& font) override {this->handle->override_font(*(Pango::FontDescription*)font.ToHFont());}
@@ -160,8 +174,8 @@ namespace Native {
     }
 
     int32 GdkDestroy(GdkEvent& event) {
-      //System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)this, WM_CLOSE, notUsed, notUsed, 0, (intptr)&event);
-      //return this->WndProc(message);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)this, WM_DESTROY, notUsed, notUsed, 0, (intptr)&event);
+      return this->WndProc(message);
       return 0;
     }
 
@@ -176,7 +190,9 @@ namespace Native {
     }
 
     int32 GdkMotionNotify(GdkEvent& event) {
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)this, WM_MOUSEMOVE, GetMouseButtonState(event), ((int32)event.button.y << 16) + event.button.x, 0, (intptr)&event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)this, WM_SETCURSOR, (intptr)this, (intptr)0x20000001, 0, (intptr)&event);
+      this->WndProc(message);
+      message = System::Windows::Forms::Message::Create((intptr)this, WM_MOUSEMOVE, GetMouseButtonState(event), ((int32)event.button.y << 16) + event.button.x, 0, (intptr)&event);
       return this->WndProc(message);
     }
 

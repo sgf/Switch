@@ -13,10 +13,7 @@ namespace Native {
   class GroupBox : public Widget<Gtk::Frame> {
   public:
     GroupBox() {
-      this->handle = new Gtk::Frame();
       this->handle->set_shadow_type(Gtk::SHADOW_IN);
-
-      this->RegisterEvent();
       this->handle->add(this->fixed);
 
       this->handle->signal_show().connect(delegate_ {

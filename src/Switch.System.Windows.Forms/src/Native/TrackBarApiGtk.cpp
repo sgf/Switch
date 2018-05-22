@@ -11,10 +11,8 @@ using namespace System::Windows::Forms;
 namespace Native {
   class TrackBar : public Widget<Gtk::Scale> {
   public:
-    explicit TrackBar(Orientation orientation) {
-      this->handle = new Gtk::Scale(orientation == Orientation::Horizontal ? Gtk::ORIENTATION_HORIZONTAL : Gtk::ORIENTATION_VERTICAL);
+    explicit TrackBar(Orientation orientation) : Widget<Gtk::Scale>(orientation == Orientation::Horizontal ? Gtk::ORIENTATION_HORIZONTAL : Gtk::ORIENTATION_VERTICAL) {
       this->handle->set_draw_value(false);
-      this->RegisterEvent();
     }
     void AddMark(int32 value, Gtk::PositionType position) {this->handle->add_mark(value, position, "");}
     void ClearMarks() {this->handle->clear_marks();}

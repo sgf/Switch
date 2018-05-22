@@ -11,10 +11,7 @@ using namespace System::Windows::Forms;
 namespace Native {
   class CheckBox : public Widget<Gtk::CheckButton> {
   public:
-    CheckBox() {
-      this->handle = new Gtk::CheckButton();
-      this->RegisterEvent();
-    }
+    CheckBox() {}
     void SetCheckState(System::Windows::Forms::CheckState checkState) {
       ((Gtk::CheckButton*)this->handle)->set_inconsistent(checkState == System::Windows::Forms::CheckState::Indeterminate);
       ((Gtk::CheckButton*)this->handle)->set_active(checkState == System::Windows::Forms::CheckState::Checked);

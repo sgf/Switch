@@ -11,10 +11,7 @@ using namespace System::Windows::Forms;
 namespace Native {
   class Button : public Widget<Gtk::Button> {
   public:
-    Button() {
-      this->handle = new Gtk::Button();
-      this->RegisterEvent();
-    }
+    Button() {}
     void Text(const string& text) override {((Gtk::Button*)this->handle)->set_label(text.c_str());}
   };
 }

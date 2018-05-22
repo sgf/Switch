@@ -16,8 +16,6 @@ namespace Native {
   class Form : public Widget<Gtk::Window> {
   public:
     Form() {
-      this->handle = new Gtk::Window();
-      this->RegisterEvent();
       this->handle->add(this->scrolledWindow);
       this->scrolledWindow.add(this->fixed);
 

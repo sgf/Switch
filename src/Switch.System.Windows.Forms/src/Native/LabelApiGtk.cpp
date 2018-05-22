@@ -11,10 +11,7 @@ using namespace System::Windows::Forms;
 namespace Native {
   class Label : public Widget<Gtk::Label> {
   public:
-    Label() {
-      this->handle = new Gtk::Label();
-      this->RegisterEvent();
-    }
+    Label() {}
     void Text(const string& text) override {this->handle->set_label(text.c_str());}
 
     void TextAlign(System::Drawing::ContentAlignment contentAlignment) {

@@ -13,8 +13,6 @@ namespace Native {
 class Panel : public Widget<Gtk::Frame> {
   public:
     Panel() {
-      this->handle = new Gtk::Frame();
-      this->RegisterEvent();
       this->handle->add(this->scrolledWindow);
       this->scrolledWindow.add(this->fixed);
 

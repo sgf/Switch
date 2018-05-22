@@ -16,10 +16,7 @@ namespace Native {
 
   class Control : public Widget<GtkWidget> {
   public:
-    Control() {
-      this->handle = new GtkWidget();
-      this->RegisterEvent();
-    }
+    Control() {}
     void Text(const string& text) override {}
   };
 }
@@ -110,6 +107,7 @@ void Native::ControlApi::SetClientSize(System::Windows::Forms::Control& control)
 }
 
 void Native::ControlApi::SetCursor(const System::Windows::Forms::Control& control) {
+  ((IWidget*)control.Handle())->Cursor(control.Cursor);
 }
 
 void Native::ControlApi::SetEnabled(const System::Windows::Forms::Control& control) {

@@ -13,10 +13,7 @@ using namespace System::Windows::Forms;
 namespace Native {
   class TabControl : public Widget<Gtk::Notebook> {
   public:
-    TabControl() {
-      this->handle = new Gtk::Notebook();
-      this->RegisterEvent();
-    }
+    TabControl() {}
 
     void InsertPage(IWidget* tabPage, const string& text, int32 index) {this->handle->insert_page(*tabPage->Handle(), text.c_str(), index);}
     void RemovePage(int32 index) {this->handle->remove_page(index);}

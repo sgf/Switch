@@ -14,8 +14,6 @@ namespace Native {
   class TabPage : public Widget<Gtk::Frame> {
   public:
     TabPage() {
-      this->handle = new Gtk::Frame();
-      this->RegisterEvent();
       this->handle->add(this->scrolledWindow);
       this->scrolledWindow.add(this->fixed);
 
