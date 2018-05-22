@@ -4,7 +4,7 @@ using namespace System;
 
 namespace std {
   template<> struct hash<any> {
-    size operator()(any value) const {return value.GetHashCode();}
+    Switch::size operator()(any value) const {return value.GetHashCode();}
   };
 }
 
