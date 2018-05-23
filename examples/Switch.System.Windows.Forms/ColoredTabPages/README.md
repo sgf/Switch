@@ -4,20 +4,20 @@ This example demonstrates the use of System::Windows::Forms::TabControl and Syst
 
 Windows :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlW.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColoredTabPagesW.png)
 
 macOS :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlM.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColoredTabPagesM.png)
 
 Ubuntu :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlU.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColoredTabPagesU.png)
 
 Gnome :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlG.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColoredTabPagesG.png)
 
 Gnome Dark :
 
-![GitHub Logo](../../../docs/Pictures/Examples/Forms/TabControlGD.png)
+![GitHub Logo](../../../docs/Pictures/Examples/Forms/ColoredTabPagesGD.png)

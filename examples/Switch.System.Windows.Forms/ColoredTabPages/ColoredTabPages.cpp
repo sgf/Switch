@@ -15,16 +15,16 @@ namespace ColoredTabPagesExample {
     Form1() {
       this->tabPageRed.Text = "Red";
       this->tabPageRed.BackColor = System::Drawing::Color::Red;
-      
+
       this->tabPageGreen.Text = "Green";
       this->tabPageGreen.BackColor = System::Drawing::Color::Green;
-      
+
       this->tabPageBlue.Text = "Blue";
       this->tabPageBlue.BackColor = System::Drawing::Color::Blue;
-      
+
       this->tabPageYellow.Text = "Yellow";
       this->tabPageYellow.BackColor = System::Drawing::Color::Yellow;
-      
+
       this->tabControl1.Location = System::Drawing::Point(10, 10);
       this->tabControl1.Size = System::Drawing::Size(370, 250);
       this->tabControl1.TabPages().AddRange({this->tabPageRed, this->tabPageGreen, this->tabPageBlue, this->tabPageYellow});
