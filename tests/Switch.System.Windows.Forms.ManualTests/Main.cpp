@@ -4,36 +4,27 @@ using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-namespace ManualTests {
-  class Form1 : public Form {
-  public:
-    Form1() {
-      this->label.Name = "label";
-      this->label.Text = "Hello, World!";
-      this->label.Location = Point {10, 10};
-      this->label.BackColor = System::Drawing::Color::White;
-      this->label.BorderStyle = BorderStyle::Fixed3D;
-      this->label.ForeColor = System::Drawing::Color::Black;
-      this->label.TextAlign = ContentAlignment::MiddleCenter;
-      this->label.Height = 80;
-      this->label.Width = 200;
-      this->Name = "form1";
-      this->Text = "Manual Test application";
-      this->StartPosition = FormStartPosition::CenterScreen;
-      this->ClientSize = Drawing::Size {800, 100};
-      //this->MaximizeBox = false;
-      //this->MinimizeBox = false;
-      //this->FormBorderStyle = FormBorderStyle::None;
-      this->Controls().Add(this->label);
-    }
-
-  private:
-    Label label;
-  };
-}
-
 int main(int argc, char* argv[]) {
   Environment::SetCommandLineArgs(argv, argc);
   Application::EnableVisualStyles();
-  Application::Run(ManualTests::Form1());
+
+  Label label1;
+  label1.Location = Point {10, 10};
+  label1.BackColor = System::Drawing::Color::White;
+  label1.BorderStyle = BorderStyle::Fixed3D;
+  label1.ForeColor = System::Drawing::Color::Black;
+  label1.Name = "label1";
+  label1.Text = "Hello, World!";
+  label1.TextAlign = ContentAlignment::MiddleCenter;
+  label1.Height = 80;
+  label1.Width = 200;
+  
+  Form form1;
+  form1.ClientSize = Drawing::Size {800, 100};
+  form1.Controls().Add(label1);
+  form1.Name = "form1";
+  form1.StartPosition = FormStartPosition::CenterScreen;
+  form1.Text = "ManualTests application";
+
+  Application::Run(form1);
 }

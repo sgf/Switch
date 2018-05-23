@@ -1,2 +1,2 @@
-@set switch_version=0.7.1
+@set switch_version=0.8.0
 @call scripts\install\install.cmd %*
