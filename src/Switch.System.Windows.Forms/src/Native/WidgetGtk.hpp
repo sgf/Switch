@@ -124,7 +124,7 @@ namespace Native {
     T* handle = null;
 
   private:
-     static ref<System::Windows::Forms::Control> GetChildAtPoint(const System::Windows::Forms::Control& control, System::Drawing::Point& point) {
+    static ref<System::Windows::Forms::Control> GetChildAtPoint(const System::Windows::Forms::Control& control, System::Drawing::Point& point) {
       ref<System::Windows::Forms::Control> target = control;
       if (target->Parent != null)
         point.Offset(-target->Left, -target->Top);
@@ -139,7 +139,7 @@ namespace Native {
       return target;
     }
 
-   int32 GetMouseButtonDown() const {
+    int32 GetMouseButtonDown() const {
       switch (this->button) {
       case 0: throw System::Exception(caller_);
       case 1: return WM_LBUTTONDOWN;
