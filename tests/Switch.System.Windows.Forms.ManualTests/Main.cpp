@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
   label1.TextAlign = ContentAlignment::MiddleCenter;
   label1.Height = 80;
   label1.Width = 200;
-  
+
   Form form1;
   form1.ClientSize = Drawing::Size {800, 100};
   form1.Controls().Add(label1);
