@@ -8,10 +8,13 @@ using namespace System;
 using namespace System::Windows::Forms;
 
 intptr Native::CursorsApi::AppStarting() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load application starting cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::Arrow() {
@@ -51,10 +54,13 @@ intptr Native::CursorsApi::Hand() {
 }
 
 intptr Native::CursorsApi::Help() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load help cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::HSplit() {
@@ -70,24 +76,33 @@ intptr Native::CursorsApi::No() {
 }
 
 intptr Native::CursorsApi::NoMove2D() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load n o move two direction cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::NoMoveHoriz() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load n o move horizontal cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::NoMoveVert() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load no move vertical cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::OpenHand() {
@@ -99,10 +114,13 @@ intptr Native::CursorsApi::PanEast() {
 }
 
 intptr Native::CursorsApi::PanNE() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load north east cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::PanNorth() {
@@ -110,17 +128,23 @@ intptr Native::CursorsApi::PanNorth() {
 }
 
 intptr Native::CursorsApi::PanNW() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load north west cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::PanSE() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load south east cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::PanSouth() {
@@ -128,10 +152,13 @@ intptr Native::CursorsApi::PanSouth() {
 }
 
 intptr Native::CursorsApi::PanSW() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load south west cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::PanWest() {
@@ -139,17 +166,23 @@ intptr Native::CursorsApi::PanWest() {
 }
 
 intptr Native::CursorsApi::SizeAll() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load size all cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::SizeNESW() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load size all cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::SizeNS() {
@@ -157,10 +190,13 @@ intptr Native::CursorsApi::SizeNS() {
 }
 
 intptr Native::CursorsApi::SizeNWSE() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load size all cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::SizeWE() {
@@ -168,10 +204,13 @@ intptr Native::CursorsApi::SizeWE() {
 }
 
 intptr Native::CursorsApi::UpArrow() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load size all cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 intptr Native::CursorsApi::VIBeam() {
@@ -183,10 +222,13 @@ intptr Native::CursorsApi::VSplit() {
 }
 
 intptr Native::CursorsApi::WaitCursor() {
+  /*
   NSImage* image = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
   // load size all cursor image...
   NSCursor* cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(0, 0)];
   return (intptr)cursor;
+   */
+  return (intptr)[NSCursor arrowCursor];
 }
 
 #endif

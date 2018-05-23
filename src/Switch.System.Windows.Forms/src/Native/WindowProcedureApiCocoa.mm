@@ -60,12 +60,14 @@ int32 Native::WindowProcedure::GetMouseYCoordinateRelativeToClientArea(NSEvent* 
 }
 
 void Native::WindowProcedure::MouseEnterEvent(NSEvent* event, System::Windows::Forms::Control& control) {
+  //System::Diagnostics::Debug::WriteLine(string::Format("WM_MOUSEENTER on {0}", control.Name));
   System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)[event window], WM_MOUSEENTER, notUsed, notUsed, 0, (intptr)event);
   hover = true;
   control.WndProc(message);
 }
 
 void Native::WindowProcedure::MouseLeaveEvent(NSEvent* event, System::Windows::Forms::Control& control) {
+  //System::Diagnostics::Debug::WriteLine(string::Format("WM_MOUSELEAVE on {0}", control.Name));
   System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)[event window], WM_MOUSELEAVE, notUsed, notUsed, 0, (intptr)event);
   hover = false;
   control.WndProc(message);
@@ -74,6 +76,7 @@ void Native::WindowProcedure::MouseLeaveEvent(NSEvent* event, System::Windows::F
 void Native::WindowProcedure::LeftMouseDownEvent(NSEvent* event, System::Windows::Forms::Control& control) {
   System::Drawing::Point location(GetMouseXCoordinateRelativeToClientArea(event, control), GetMouseYCoordinateRelativeToClientArea(event, control));
   ref<System::Windows::Forms::Control> target = GetChildAtPoint(control, location);
+  //System::Diagnostics::Debug::WriteLine(string::Format("WM_LBUTTONDOWN at {0} on {1}", location, target->Name));
   System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)((Native::IWidget*)target->Handle())->Handle(), WM_LBUTTONDOWN, GetMouseButtonState(event), location.X + (location.Y << 16), 0, (intptr)event);
   target->WndProc(message);
 }
@@ -81,6 +84,7 @@ void Native::WindowProcedure::LeftMouseDownEvent(NSEvent* event, System::Windows
 void Native::WindowProcedure::LeftMouseUpEvent(NSEvent* event, System::Windows::Forms::Control& control) {
   System::Drawing::Point location(GetMouseXCoordinateRelativeToClientArea(event, control), GetMouseYCoordinateRelativeToClientArea(event, control));
   ref<System::Windows::Forms::Control> target = GetChildAtPoint(control, location);
+  //System::Diagnostics::Debug::WriteLine(string::Format("WM_LBUTTONUP at {0} on {1}", location, target->Name));
   System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)((Native::IWidget*)target->Handle())->Handle(), WM_LBUTTONUP, GetMouseButtonState(event), location.X + (location.Y << 16), 0, (intptr)event);
   target->WndProc(message);
 }
@@ -88,6 +92,7 @@ void Native::WindowProcedure::LeftMouseUpEvent(NSEvent* event, System::Windows::
 void Native::WindowProcedure::OtherMouseUpEvent(NSEvent* event, System::Windows::Forms::Control& control) {
   System::Drawing::Point location(GetMouseXCoordinateRelativeToClientArea(event, control), GetMouseYCoordinateRelativeToClientArea(event, control));
   ref<System::Windows::Forms::Control> target = GetChildAtPoint(control, location);
+  //System::Diagnostics::Debug::WriteLine(string::Format("WM_MBUTTONUP at {0} on {1}", location, target->Name));
   System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)((Native::IWidget*)target->Handle())->Handle(), WM_MBUTTONUP, GetMouseButtonState(event), location.X + (location.Y << 16), 0, (intptr)event);
   target->WndProc(message);
 }
@@ -95,6 +100,7 @@ void Native::WindowProcedure::OtherMouseUpEvent(NSEvent* event, System::Windows:
 void Native::WindowProcedure::OtherMouseDownEvent(NSEvent* event, System::Windows::Forms::Control& control) {
   System::Drawing::Point location(GetMouseXCoordinateRelativeToClientArea(event, control), GetMouseYCoordinateRelativeToClientArea(event, control));
   ref<System::Windows::Forms::Control> target = GetChildAtPoint(control, location);
+  //System::Diagnostics::Debug::WriteLine(string::Format("WM_MBUTTONDOWN at {0} on {1}", location, target->Name));
   System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)((Native::IWidget*)target->Handle())->Handle(), WM_MBUTTONDOWN, GetMouseButtonState(event), location.X + (location.Y << 16), 0, (intptr)event);
   target->WndProc(message);
 }
@@ -102,6 +108,7 @@ void Native::WindowProcedure::OtherMouseDownEvent(NSEvent* event, System::Window
 void Native::WindowProcedure::RightMouseDownEvent(NSEvent* event, System::Windows::Forms::Control& control) {
   System::Drawing::Point location(GetMouseXCoordinateRelativeToClientArea(event, control), GetMouseYCoordinateRelativeToClientArea(event, control));
   ref<System::Windows::Forms::Control> target = GetChildAtPoint(control, location);
+  //System::Diagnostics::Debug::WriteLine(string::Format("WM_RBUTTONDOWN at {0} on {1}", location, target->Name));
   System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)((Native::IWidget*)target->Handle())->Handle(), WM_RBUTTONDOWN, GetMouseButtonState(event), location.X + (location.Y << 16), 0, (intptr)event);
   target->WndProc(message);
 }
@@ -109,6 +116,7 @@ void Native::WindowProcedure::RightMouseDownEvent(NSEvent* event, System::Window
 void Native::WindowProcedure::RightMouseUpEvent(NSEvent* event, System::Windows::Forms::Control& control) {
   System::Drawing::Point location(GetMouseXCoordinateRelativeToClientArea(event, control), GetMouseYCoordinateRelativeToClientArea(event, control));
   ref<System::Windows::Forms::Control> target = GetChildAtPoint(control, location);
+  //System::Diagnostics::Debug::WriteLine(string::Format("WM_RBUTTONUP at {0} on {1}", location, target->Name));
   System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)((Native::IWidget*)target->Handle())->Handle(), WM_RBUTTONUP, GetMouseButtonState(event), location.X + (location.Y << 16), 0, (intptr)event);
   target->WndProc(message);
 }
