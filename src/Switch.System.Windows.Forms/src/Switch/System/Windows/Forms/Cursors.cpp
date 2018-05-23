@@ -132,6 +132,10 @@ property_<Cursor, readonly_> Cursors::UpArrow {
   []() {return Cursor(Native::CursorsApi::UpArrow());}
 };
 
+property_<Cursor, readonly_> Cursors::VIBeam {
+  []() {return Cursor(Native::CursorsApi::VIBeam());}
+};
+
 property_<Cursor, readonly_> Cursors::VSplit {
   []() {return Cursor(Native::CursorsApi::VSplit());}
 };

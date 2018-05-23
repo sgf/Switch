@@ -42,7 +42,7 @@ namespace Native {
       this->RegisterEvent();
     }
     template <typename TParam>
-    Widget(const TParam& param) {
+    explicit Widget(const TParam& param) {
       this->handle = new T(param);
       this->RegisterEvent();
     }
@@ -86,6 +86,13 @@ namespace Native {
 
     void RegisterEvent() override {
       this->handle->signal_event().connect(delegate_(GdkEvent * event)->bool {
+        // ---> Bug on gtkmm we receive GDK_BUTTON_RESS and GTK_BUTTON_RELEASE twice...
+        if ((event->type == GDK_BUTTON_PRESS || event->type == GDK_BUTTON_RELEASE) && this->previousEventType == event->type) {
+          this->previousEventType = GDK_NOTHING;
+          return false;
+        }
+        this->previousEventType = event->type;
+        // <---
         System::Collections::Generic::Dictionary<int32, System::Delegate<int32, GdkEvent&>> events {{GDK_BUTTON_PRESS, {*this, &Widget<T>::GdkButtonPress}}, {GDK_BUTTON_RELEASE, {*this, &Widget<T>::GdkButtonRelease}}, {GDK_DESTROY, {*this, &Widget<T>::GdkDestroy}}, {GDK_ENTER_NOTIFY, {*this, &Widget<T>::GdkEnterNotify}}, {GDK_LEAVE_NOTIFY, {*this, &Widget<T>::GdkLeaveNotify}}, {GDK_MOTION_NOTIFY, {*this, &Widget<T>::GdkMotionNotify}}};
 
         if (events.ContainsKey(event->type))
@@ -117,7 +124,22 @@ namespace Native {
     T* handle = null;
 
   private:
-    int32 GetMouseButtonDown() const {
+     static ref<System::Windows::Forms::Control> GetChildAtPoint(const System::Windows::Forms::Control& control, System::Drawing::Point& point) {
+      ref<System::Windows::Forms::Control> target = control;
+      if (target->Parent != null)
+        point.Offset(-target->Left, -target->Top);
+      for (ref<System::Windows::Forms::Control> child : target->Controls()) {
+        System::Drawing::Point childLocation = point;
+        childLocation.Offset(-child->Left, -child->Top);
+        if (child->Bounds().Contains(childLocation)) {
+          target = GetChildAtPoint(child, point);
+          break;
+        }
+      }
+      return target;
+    }
+
+   int32 GetMouseButtonDown() const {
       switch (this->button) {
       case 0: throw System::Exception(caller_);
       case 1: return WM_LBUTTONDOWN;
@@ -161,38 +183,52 @@ namespace Native {
     }
 
     int32 GdkButtonPress(GdkEvent& event) {
+      System::Drawing::Point location(event.button.x, event.button.y);
+      ref<System::Windows::Forms::Control> target = GetChildAtPoint(System::Windows::Forms::Control::FromHandle((intptr)this).ToObject(), location);
+      //System::Diagnostics::Debug::WriteLine(string::Format("WM_MOUSEDOWN at {0} on {1}", location, target->Name));
       this->button = event.button.button;
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)this, GetMouseButtonDown(), GetMouseButtonState(event), ((int32)event.button.y << 16) + event.button.x, 0, (intptr)&event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create(target->Handle(), GetMouseButtonDown(), GetMouseButtonState(event), ((int32)location.Y << 16) + location.X, 0, (intptr)&event);
       return this->WndProc(message);
     }
 
     int32 GdkButtonRelease(GdkEvent& event) {
+      System::Drawing::Point location(event.button.x, event.button.y);
+      ref<System::Windows::Forms::Control> target = GetChildAtPoint(System::Windows::Forms::Control::FromHandle((intptr)this).ToObject(), location);
+      //System::Diagnostics::Debug::WriteLine(string::Format("WM_MOUSEUP at {0} on {1}", location, target->Name));
       this->button = event.button.button;
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)this, GetMouseButtonUp(), GetMouseButtonState(event), ((int32)event.button.y << 16) + event.button.x, 0, (intptr)&event);
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create(target->Handle(), GetMouseButtonUp(), GetMouseButtonState(event), ((int32)location.Y << 16) + location.X, 0, (intptr)&event);
       //this->button = 0;
       return this->WndProc(message);
     }
 
     int32 GdkDestroy(GdkEvent& event) {
+      //System::Diagnostics::Debug::WriteLine(string::Format("WM_DESTROY on {0}", System::Windows::Forms::Control::FromHandle((intptr)this)->Name));
       System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)this, WM_DESTROY, notUsed, notUsed, 0, (intptr)&event);
       return this->WndProc(message);
-      return 0;
     }
 
     int32 GdkEnterNotify(GdkEvent& event) {
+      //System::Diagnostics::Debug::WriteLine(string::Format("WM_MOUSEENTER on {0}", System::Windows::Forms::Control::FromHandle((intptr)this)->Name));
       System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)this, WM_MOUSEENTER, notUsed, notUsed, 0, (intptr)&event);
       return this->WndProc(message);
     }
 
     int32 GdkLeaveNotify(GdkEvent& event) {
+      //System::Diagnostics::Debug::WriteLine(string::Format("WM_MOUSELEAVE on {0}", System::Windows::Forms::Control::FromHandle((intptr)this)->Name));
       System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)this, WM_MOUSELEAVE, notUsed, notUsed, 0, (intptr)&event);
       return this->WndProc(message);
     }
 
     int32 GdkMotionNotify(GdkEvent& event) {
-      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create((intptr)this, WM_SETCURSOR, (intptr)this, (intptr)0x20000001, 0, (intptr)&event);
+      System::Drawing::Point location(event.button.x, event.button.y);
+      ref<System::Windows::Forms::Control> target = GetChildAtPoint(System::Windows::Forms::Control::FromHandle((intptr)this).ToObject(), location);
+
+      //System::Diagnostics::Debug::WriteLine(string::Format("WM_SETCURSOR {0} on {1}", (const char*)target->Cursor().Handle(), target->Name));
+      System::Windows::Forms::Message message = System::Windows::Forms::Message::Create(target->Handle(), WM_SETCURSOR, target->Handle(), (intptr)0x20000001, 0, (intptr)&event);
       this->WndProc(message);
-      message = System::Windows::Forms::Message::Create((intptr)this, WM_MOUSEMOVE, GetMouseButtonState(event), ((int32)event.button.y << 16) + event.button.x, 0, (intptr)&event);
+
+      //System::Diagnostics::Debug::WriteLine(string::Format("WM_MOUSEMOVE at {0} on {1}", location, target->Name));
+      message = System::Windows::Forms::Message::Create(target->Handle(), WM_MOUSEMOVE, GetMouseButtonState(event), ((int32)event.button.y << 16) + event.button.x, 0, (intptr)&event);
       return this->WndProc(message);
     }
 
@@ -206,6 +242,7 @@ namespace Native {
     int32 button = 0;
     Gtk::RadioButtonGroup radioButtonGroup;
     static const int32 notUsed = 0;
+    GdkEventType previousEventType = GDK_NOTHING;
   };
 }
 #endif

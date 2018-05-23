@@ -17,8 +17,6 @@ namespace ManualTests {
       this->label.TextAlign = ContentAlignment::MiddleCenter;
       this->label.Height = 80;
       this->label.Width = 200;
-      //this->Cursor = Cursors::AppStarting;
-      this->Cursor = Cursors::Cross;
       this->Name = "form1";
       this->Text = "Manual Test application";
       this->StartPosition = FormStartPosition::CenterScreen;
