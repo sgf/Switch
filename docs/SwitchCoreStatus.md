@@ -31,7 +31,7 @@
 
 ## Microsoft::Win32::SafeHandles
 
-| Class                                 | Type          | Status                               |
+| Class                                 | Type          | Status                                |
 |---------------------------------------|---------------|---------------------------------------|
 | CriticalHandleMinusOneIsInvalid       | class         | ![Progress](Pictures/Progress0.png)   |
 | CriticalHandleZeroOrMinusOneIsInvalid | class         | ![Progress](Pictures/Progress0.png)   |

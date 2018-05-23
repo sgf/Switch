@@ -16,27 +16,11 @@
 
 # Switch.System.Drawing (System.Drawing)
 
-## System
-
-| Class                   | Type          | Status                                |
-|-------------------------|---------------|---------------------------------------|
-| AppContextDefaultValues | class         | ![Progress](Pictures/Progress0.png)   |
-| InvariantComparer       | class         | ![Progress](Pictures/Progress0.png)   |
-| LocalAppContext         | class         | ![Progress](Pictures/Progress0.png)   |
-
-## System::ComponentModel
-
-| Class           | Type          | Status                                |
-|-----------------|---------------|---------------------------------------|
-| CompModSwitches | class         | ![Progress](Pictures/Progress0.png)   |
-| CoreSwitches    | class         | ![Progress](Pictures/Progress0.png)   |
-
 ## System::Drawing
 
 | Class                                                                                               | Type          | Status                                |
 |-----------------------------------------------------------------------------------------------------|---------------|---------------------------------------|
 | Bitmap                                                                                              | class         | ![Progress](Pictures/Progress0.png)   |
-| BitmapSelector                                                                                      | class         | ![Progress](Pictures/Progress0.png)   |
 | BitmapSuffixInSameAssemblyAttribute                                                                 | class         | ![Progress](Pictures/Progress0.png)   |
 | BitmapSuffixInSatelliteAssemblyAttribute                                                            | class         | ![Progress](Pictures/Progress0.png)   |
 | [Brush](../src/Switch.System.Drawing/include/Switch/System/Drawing/Brush.hpp)                       | class         | ![Progress](Pictures/Progress75.png)  |
@@ -45,7 +29,6 @@
 | BufferedGraphicsContext                                                                             | class         | ![Progress](Pictures/Progress0.png)   |
 | BufferedGraphicsManager                                                                             | class         | ![Progress](Pictures/Progress0.png)   |
 | [CharacterRange](../src/Switch.System.Drawing/include/Switch/System/Drawing/CharacterRange.hpp)     | struct        | ![Progress](Pictures/Progress100.png) |
-| ClientUtils                                                                                         | class         | ![Progress](Pictures/Progress0.png)   |
 | [Color](../src/Switch.System.Drawing/include/Switch/System/Drawing/Color.hpp)                       | struct        | ![Progress](Pictures/Progress100.png) |
 | ColorConverter                                                                                      | class         | ![Progress](Pictures/Progress0.png)   |
 | ColorTranslator                                                                                     | class         | ![Progress](Pictures/Progress0.png)   |
@@ -56,7 +39,6 @@
 | [FontFamily](../src/Switch.System.Drawing/include/Switch/System/Drawing/FontFamily.hpp)             | class         | ![Progress](Pictures/Progress100.png) |
 | [FontStyle](../src/Switch.System.Drawing/include/Switch/System/Drawing/FontStyle.hpp)               | enumeration   | ![Progress](Pictures/Progress100.png) |
 | [Graphics](../src/Switch.System.Drawing/include/Switch/System/Drawing/Graphics.hpp)                 | class         | ![Progress](Pictures/Progress25.png)  |
-| GraphicsContext                                                                                     | class         | ![Progress](Pictures/Progress0.png)   |
 | [GraphicsUnit](../src/Switch.System.Drawing/include/Switch/System/Drawing/GraphicsUnit.hpp)         | class         | ![Progress](Pictures/Progress100.png) |
 | Icon                                                                                                | class         | ![Progress](Pictures/Progress0.png)   |
 | IconConverter                                                                                       | class         | ![Progress](Pictures/Progress0.png)   |
@@ -65,11 +47,7 @@
 | ImageAnimator                                                                                       | class         | ![Progress](Pictures/Progress0.png)   |
 | ImageConverter                                                                                      | class         | ![Progress](Pictures/Progress0.png)   |
 | ImageFormatConverter                                                                                | class         | ![Progress](Pictures/Progress0.png)   |
-| IntSecurity                                                                                         | class         | ![Progress](Pictures/Progress0.png)   |
 | [KnownColor](../src/Switch.System.Drawing/include/Switch/System/Drawing/KnownColor.hpp)             | enumeration   | ![Progress](Pictures/Progress100.png) |
-| KnownColorTable                                                                                     | class         | ![Progress](Pictures/Progress0.png)   |
-| LocalAppContextSwitches                                                                             | class         | ![Progress](Pictures/Progress0.png)   |
-| NativeMethods                                                                                       | class         | ![Progress](Pictures/Progress0.png)   |
 | [Pen](../src/Switch.System.Drawing/include/Switch/System/Drawing/Pen.hpp)                           | class         | ![Progress](Pictures/Progress75.png)  |
 | Pens                                                                                                | class         | ![Progress](Pictures/Progress0.png)   |
 | [Point](../src/Switch.System.Drawing/include/Switch/System/Drawing/Point.hpp)                       | struct        | ![Progress](Pictures/Progress100.png) |
@@ -100,7 +78,6 @@
 | SystemPens                                                                                          | class         | ![Progress](Pictures/Progress0.png)   |
 | TextureBrush                                                                                        | class         | ![Progress](Pictures/Progress0.png)   |
 | ToolboxBitmapAttribute                                                                              | class         | ![Progress](Pictures/Progress0.png)   |
-| UnsafeNativeMethods                                                                                 | class         | ![Progress](Pictures/Progress0.png)   |
 
 ## System::Drawing::Configuration
 
@@ -137,14 +114,12 @@
 |-------------------------------------------------------------------------------------------------|---------------|---------------------------------------|
 | AdjustableArrowCap                                                                              | class         | ![Progress](Pictures/Progress0.png)   |
 | Blend                                                                                           | class         | ![Progress](Pictures/Progress0.png)   |
-| BrushType                                                                                       | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | ColorBlend                                                                                      | class         | ![Progress](Pictures/Progress0.png)   |
 | CombineMode                                                                                     | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | CompositingMode                                                                                 | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | CompositingQuality                                                                              | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | CoordinateSpace                                                                                 | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | CustomLineCap                                                                                   | class         | ![Progress](Pictures/Progress0.png)   |
-| CustomLineCapType                                                                               | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | DashCap                                                                                         | class         | ![Progress](Pictures/Progress0.png)   |
 | [DashStyle](../src/Switch.System.Drawing/include/Switch/System/Drawing/Drawing2D/DashStyle.hpp) | enumeration   | ![Progress](Pictures/Progress100.png) |
 | FillMode                                                                                        | enumeration   | ![Progress](Pictures/Progress0.png)   |
@@ -170,7 +145,6 @@
 | PixelOffsetMode                                                                                 | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | QualityMode                                                                                     | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | RegionData                                                                                      | class         | ![Progress](Pictures/Progress0.png)   |
-| SafeCustomLineCapHandle                                                                         | class         | ![Progress](Pictures/Progress0.png)   |
 | SmoothingMode                                                                                   | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | WarpMode                                                                                        | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | WrapMode                                                                                        | enumeration   | ![Progress](Pictures/Progress0.png)   |
@@ -188,7 +162,6 @@
 | ColorMatrixFlag                                                                                         | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | ColorMode                                                                                               | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | [ColorPalette](../src/Switch.System.Drawing/include/Switch/System/Drawing/Imaging/ColorPalette.hpp)     | class         | ![Progress](Pictures/Progress75.png)  |
-| EmfPlusFlags                                                                                            | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | EmfPlusRecordType                                                                                       | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | EmfType                                                                                                 | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | Encoder                                                                                                 | class         | ![Progress](Pictures/Progress0.png)   |
@@ -200,48 +173,19 @@
 | ImageAttributes                                                                                         | class         | ![Progress](Pictures/Progress0.png)   |
 | ImageCodecFlags                                                                                         | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | ImageCodecInfo                                                                                          | class         | ![Progress](Pictures/Progress0.png)   |
-| ImageCodecInfoPrivate                                                                                   | class         | ![Progress](Pictures/Progress0.png)   |
 | [ImageFlags](../src/Switch.System.Drawing/include/Switch/System/Drawing/Imaging/ImageFlags.hpp)         | enumeration   | ![Progress](Pictures/Progress100.png) |
 | [ImageFormat](../src/Switch.System.Drawing/include/Switch/System/Drawing/Imaging/ImageFormat.hpp)       | class         | ![Progress](Pictures/Progress75.png)  |
 | ImageLockMode                                                                                           | class         | ![Progress](Pictures/Progress0.png)   |
 | Metafile                                                                                                | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | MetafileFrameUnit                                                                                       | class         | ![Progress](Pictures/Progress0.png)   |
 | MetafileHeader                                                                                          | class         | ![Progress](Pictures/Progress0.png)   |
-| MetafileHeaderEmf                                                                                       | class         | ![Progress](Pictures/Progress0.png)   |
-| MetafileHeaderWmf                                                                                       | class         | ![Progress](Pictures/Progress0.png)   |
 | MetafileType                                                                                            | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | MetaHeader                                                                                              | class         | ![Progress](Pictures/Progress0.png)   |
 | PaletteFlags                                                                                            | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | [PixelFormat](../src/Switch.System.Drawing/include/Switch/System/Drawing/Imaging/PixelFormat.hpp)       | enumeration   | ![Progress](Pictures/Progress100.png) |
 | PlayRecordCallback                                                                                      | delegate      | ![Progress](Pictures/Progress0.png)   |
 | PropertyItem                                                                                            | class         | ![Progress](Pictures/Progress0.png)   |
-| PropertyItemInternal                                                                                    | class         | ![Progress](Pictures/Progress0.png)   |
 | WmfPlaceableFileHeader                                                                                  | class         | ![Progress](Pictures/Progress0.png)   |
-
-## System::Drawing::Internal
-
-| Class                                 | Type          | Status                              |
-|---------------------------------------|---------------|-------------------------------------|
-| ApplyGraphicsProperties               | enumeration   | ![Progress](Pictures/Progress0.png) |
-| DbgUtil                               | class         | ![Progress](Pictures/Progress0.png) |
-| DeviceContext                         | class         | ![Progress](Pictures/Progress0.png) |
-| DeviceContextGraphicsMode             | class         | ![Progress](Pictures/Progress0.png) |
-| DeviceContexts                        | class         | ![Progress](Pictures/Progress0.png) |
-| DeviceContextType                     | enumeration   | ![Progress](Pictures/Progress0.png) |
-| GdiObjectType                         | enumeration   | ![Progress](Pictures/Progress0.png) |
-| GPPOINT                               | class         | ![Progress](Pictures/Progress0.png) |
-| GPPOINTF                              | class         | ![Progress](Pictures/Progress0.png) |
-| GPRECT                                | struct        | ![Progress](Pictures/Progress0.png) |
-| GPRECTF                               | struct        | ![Progress](Pictures/Progress0.png) |
-| GPStream                              | class         | ![Progress](Pictures/Progress0.png) |
-| IntNativeMethods                      | class         | ![Progress](Pictures/Progress0.png) |
-| IntSafeNativeMethods                  | class         | ![Progress](Pictures/Progress0.png) |
-| IntUnsafeNativeMethods                | class         | ![Progress](Pictures/Progress0.png) |
-| ISystemColorTracker                   | interface     | ![Progress](Pictures/Progress0.png) |
-| RegionCombineMode                     | enumeration   | ![Progress](Pictures/Progress0.png) |
-| SystemColorTracker                    | class         | ![Progress](Pictures/Progress0.png) |
-| WindowsGraphics                       | class         | ![Progress](Pictures/Progress0.png) |
-| WindowsRegion                         | class         | ![Progress](Pictures/Progress0.png) |
 
 ## System::Drawing::Printing
 
@@ -251,7 +195,6 @@
 | InvalidPrinterException               | class         | ![Progress](Pictures/Progress0.png) |
 | Margins                               | class         | ![Progress](Pictures/Progress0.png) |
 | MarginsConverter                      | class         | ![Progress](Pictures/Progress0.png) |
-| ModeField                             | enumeration   | ![Progress](Pictures/Progress0.png) |
 | PageSettings                          | class         | ![Progress](Pictures/Progress0.png) |
 | PaperKind                             | enumeration   | ![Progress](Pictures/Progress0.png) |
 | PaperSize                             | class         | ![Progress](Pictures/Progress0.png) |
@@ -278,7 +221,6 @@
 | QueryPageSettingsEventArgs            | class         | ![Progress](Pictures/Progress0.png) |
 | QueryPageSettingsEventHandler         | delegate      | ![Progress](Pictures/Progress0.png) |
 | StandardPrintController               | class         | ![Progress](Pictures/Progress0.png) |
-| TriState                              | struct        | ![Progress](Pictures/Progress0.png) |
 
 ## System::Drawing::Text
 
@@ -290,28 +232,6 @@
 | [InstalledFontCollection](../src/Switch.System.Drawing/include/Switch/System/Drawing/Text/InstalledFontCollection.hpp) | class.        | ![Progress](Pictures/Progress100.png) |
 | PrivateFontCollection                                                                                                  | class         | ![Progress](Pictures/Progress0.png)   |
 | TextRenderingHint                                                                                                      | enumeration   | ![Progress](Pictures/Progress0.png)   |
-
-## System::Internal
-
-| Class                    | Type          | Status                                |
-|--------------------------|---------------|---------------------------------------|
-| DebugHandleTracker       | class         | ![Progress](Pictures/Progress0.png)   |
-| HandleChangeEventHandler | delegate      | ![Progress](Pictures/Progress0.png)   |
-| HandleCollector          | class         | ![Progress](Pictures/Progress0.png)   |
-
-## System::Windows
-
-| Class                   | Type          | Status                                |
-|-------------------------|---------------|---------------------------------------|
-| AppContextDefaultValues | class         | ![Progress](Pictures/Progress0.png)   |
-| InvariantComparer       | class         | ![Progress](Pictures/Progress0.png)   |
-| LocalAppContext         | class         | ![Progress](Pictures/Progress0.png)   |
-
-## System::Windows::Forms
-
-| Class     | Type          | Status                                |
-|-----------|---------------|---------------------------------------|
-| DpiHelper | class         | ![Progress](Pictures/Progress0.png)   |
  
 # See also
 ​
