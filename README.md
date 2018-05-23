@@ -14,7 +14,9 @@
 [![os iOS](https://img.shields.io/badge/os-iOS-004080.svg)](docs/Portability.md)
 [![os android](https://img.shields.io/badge/os-android-004080.svg)](docs/Portability.md)
 [![development status](https://img.shields.io/badge/dev-status-004080.svg)](docs/SwitchStatus.md)
+
 <!--[![HitCount](http://hits.dwyl.io/gammasoft71/switch.svg)](http://hits.dwyl.io/gammasoft71/Switch)-->
+
 <!--[![Coverage Status](https://coveralls.io/repos/github/gammasoft71/Switch/badge.svg?branch=master)](https://coveralls.io/github/gammasoft71/Switch?branch=master)-->
 
 # The Switch framework is...
