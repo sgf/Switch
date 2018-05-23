@@ -34,4 +34,4 @@ See [Switch libraries hierarchy](Libraries.md).
 
 ______________________________________________________________________________________________
 
-© 2010 - 2018 by Gammasoft.
+© 2018 Gammasoft.

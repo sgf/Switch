@@ -26,4 +26,4 @@ Windows Forms is a graphical user interface application programming interface (A
 
 ______________________________________________________________________________________________
 
-© 2010 - 2018 by Gammasoft.
+© 2018 Gammasoft.

@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch MessageBox dialog");
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("MessageBox2");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.MessageBox2");
 AssemblyTrademark_("");
 AssemblyCulture_("");

@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch FontDialog dialog");
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("FontDialog");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.FontDialog");
 AssemblyTrademark_("");
 AssemblyCulture_("");

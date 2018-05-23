@@ -53,4 +53,4 @@ This section explains how to create, configure, debug, secure, and deploy your .
 
 ______________________________________________________________________________________________
 
-© 2010 - 2018 by Gammasoft.
+© 2018 Gammasoft.

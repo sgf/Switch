@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch TabControl and TabPag
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("TabControl");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.TabControl");
 AssemblyTrademark_("");
 AssemblyCulture_("");

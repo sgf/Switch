@@ -73,4 +73,4 @@ For more information see [Switch Reference Guide](https://gammasoft71.github.io/
 
 ______________________________________________________________________________________________
 
-© 2010 - 2018 by Gammasoft.
+© 2018 Gammasoft.

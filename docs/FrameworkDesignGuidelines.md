@@ -15,4 +15,4 @@ This section provides guidelines for designing libraries that extend and interac
 
 ______________________________________________________________________________________________
 
-© 2010 - 2018 by Gammasoft.
+© 2018 Gammasoft.

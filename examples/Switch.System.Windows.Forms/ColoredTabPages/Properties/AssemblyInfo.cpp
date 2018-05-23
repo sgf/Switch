@@ -5,13 +5,13 @@
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-AssemblyTitle_("EnableChangedEvent example");
-AssemblyDescription_("This example shows how to use Switch EnableChanged event");
+AssemblyTitle_("TabControl example");
+AssemblyDescription_("This example shows how to use Switch TabControl and colored TabPage controls");
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
-AssemblyProduct_("EnableChangedEvent");
+AssemblyProduct_("TabControl");
 AssemblyCopyright_("© 2018 by Gammasoft.");
-AssemblyIdentifier_("org.gammasoft.EnableChangedEvent");
+AssemblyIdentifier_("org.gammasoft.TabControl");
 AssemblyTrademark_("");
 AssemblyCulture_("");
 

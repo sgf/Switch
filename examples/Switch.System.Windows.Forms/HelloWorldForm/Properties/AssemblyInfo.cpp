@@ -10,7 +10,7 @@ AssemblyDescription_("The classic first application \"Hello World\"");
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("HelloWorldForm");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.HelloWorldForm");
 AssemblyTrademark_("");
 AssemblyCulture_("");

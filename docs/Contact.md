@@ -4,4 +4,4 @@ To contact Gammasoft please send a mail to [gammasoft71@gmail.com](mailto:gammas
 
 ______________________________________________________________________________________________
 
-© 2010 - 2018 by Gammasoft.
+© 2018 Gammasoft.

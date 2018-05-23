@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to draw color line with Switch Labe
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("Lines");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.Lines");
 AssemblyTrademark_("");
 AssemblyCulture_("");

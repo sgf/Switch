@@ -19,4 +19,4 @@ The external products and libraries included in Switch are listed below:
 
 ______________________________________________________________________________________________
 
-© 2010 - 2018 by Gammasoft.
+© 2018 Gammasoft.

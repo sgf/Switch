@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch GroupBox container an
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("GroupBoxAndCheckBox");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.GroupBoxAndCheckBox");
 AssemblyTrademark_("");
 AssemblyCulture_("");

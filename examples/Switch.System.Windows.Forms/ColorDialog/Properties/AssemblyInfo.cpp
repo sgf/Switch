@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch ColorDialog dialog");
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("ColorDialog");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.ColorDialog");
 AssemblyTrademark_("");
 AssemblyCulture_("");

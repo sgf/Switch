@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch RadioButton control")
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("RadioButton");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.RadioButton");
 AssemblyTrademark_("");
 AssemblyCulture_("");

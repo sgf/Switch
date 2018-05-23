@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch ProgressBar control")
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("ProgressBar");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.ProgressBar");
 AssemblyTrademark_("");
 AssemblyCulture_("");

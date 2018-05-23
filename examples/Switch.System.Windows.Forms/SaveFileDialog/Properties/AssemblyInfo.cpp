@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch SaveFileDialog dialog
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("SaveFileDialog");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.SaveFileDialog");
 AssemblyTrademark_("");
 AssemblyCulture_("");

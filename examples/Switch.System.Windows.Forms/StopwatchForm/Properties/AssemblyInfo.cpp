@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch Stopwatch class, Butt
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("StopwatchForm");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.StopwatchForm");
 AssemblyTrademark_("");
 AssemblyCulture_("");

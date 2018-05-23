@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch Assembly Informations
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("FormWithAssemblyInfo");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.FormWithAssemblyInfo");
 AssemblyTrademark_("");
 AssemblyCulture_("");

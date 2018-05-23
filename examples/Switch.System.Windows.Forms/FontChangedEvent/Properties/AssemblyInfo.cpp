@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch FontChanged event");
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("FontChangedEvent");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.FontChangedEvent");
 AssemblyTrademark_("");
 AssemblyCulture_("");

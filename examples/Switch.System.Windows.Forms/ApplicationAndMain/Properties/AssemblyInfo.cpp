@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch Application class wit
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("ApplicationAndMain");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.ApplicationAndMain");
 AssemblyTrademark_("");
 AssemblyCulture_("");

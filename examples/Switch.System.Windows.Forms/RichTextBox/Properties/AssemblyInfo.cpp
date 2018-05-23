@@ -10,7 +10,7 @@ AssemblyDescription_("This example shows how to use Switch RichTextBox control")
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
 AssemblyProduct_("RichTextBox");
-AssemblyCopyright_("© 2010 - 2018 by Gammasoft");
+AssemblyCopyright_("© 2018 by Gammasoft.");
 AssemblyIdentifier_("org.gammasoft.RichTextBox");
 AssemblyTrademark_("");
 AssemblyCulture_("");
