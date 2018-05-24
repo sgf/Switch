@@ -512,6 +512,37 @@
 | [ProgressBar](../src/Switch.System.Windows.Forms/include/Switch/System/Windows/Forms/ProgressBar.hpp)                                           | class         | ![Progress](Pictures/Progress50.png)  |
 | ProgressBarRenderer                                                                                                                             | class         | ![Progress](Pictures/Progress0.png)   |
 | [ProgressBarStyle](../src/Switch.System.Windows.Forms/include/Switch/System/Windows/Forms/ProgressBarStyle.hpp)                                 | enumeration   | ![Progress](Pictures/Progress100.png) |
+| PropertyGrid                                                                                                                                    | class         | ![Progress](Pictures/Progress0.png)   |
+| PropertyManager                                                                                                                                 | class         | ![Progress](Pictures/Progress0.png)   |
+| PropertySort                                                                                                                                    | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| PropertyTabChangedEventArgs                                                                                                                     | class         | ![Progress](Pictures/Progress0.png)   |
+| PropertyTabChangedEventHandler                                                                                                                  | delegate      | ![Progress](Pictures/Progress0.png)   |
+| PropertyValueChangedEventArgs                                                                                                                   | class         | ![Progress](Pictures/Progress0.png)   |
+| PropertyValueChangedEventHandler                                                                                                                | delegate      | ![Progress](Pictures/Progress0.png)   |
+| QueryAccessibilityHelpEventArgs                                                                                                                 | class         | ![Progress](Pictures/Progress0.png)   |
+| QueryAccessibilityHelpEventHandler                                                                                                              | delegate      | ![Progress](Pictures/Progress0.png)   |
+| QueryContinueDragEventArgs                                                                                                                      | class         | ![Progress](Pictures/Progress0.png)   |
+| QueryContinueDragEventHandler                                                                                                                   | delegate      | ![Progress](Pictures/Progress0.png)   |
+| QuestionEventArgs                                                                                                                               | class         | ![Progress](Pictures/Progress0.png)   |
+| QuestionEventHandler                                                                                                                            | delegate      | ![Progress](Pictures/Progress0.png)   |
+| [RadioButton](../src/Switch.System.Windows.Forms/include/Switch/System/Windows/Forms/RadioButton.hpp)                                           | class         | ![Progress](Pictures/Progress50.png)  |
+| RadioButtonRenderer                                                                                                                             | class         | ![Progress](Pictures/Progress0.png)   |
+| RelatedImageListAttribute                                                                                                                       | class         | ![Progress](Pictures/Progress0.png)   |
+| RetrieveVirtualItemEventArgs                                                                                                                    | class         | ![Progress](Pictures/Progress0.png)   |
+| RetrieveVirtualItemEventHandler                                                                                                                 | delegate      | ![Progress](Pictures/Progress0.png)   |
+| RichTextBox                                                                                                                                     | class         | ![Progress](Pictures/Progress0.png)   |
+| RichTextBoxFinds                                                                                                                                | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| RichTextBoxLanguageOptions                                                                                                                      | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| RichTextBoxScrollBars                                                                                                                           | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| RichTextBoxSelectionAttribute                                                                                                                   | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| RichTextBoxSelectionTypes                                                                                                                       | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| RichTextBoxStreamType                                                                                                                           | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| RichTextBoxWordPunctuations                                                                                                                     | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| RightToLeft                                                                                                                                     | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| RowStyle                                                                                                                                        | class         | ![Progress](Pictures/Progress0.png)   |
+| [SaveFileDialog](../src/Switch.System.Windows.Forms/include/Switch/System/Windows/Forms/SaveFileDialog.hpp)                                     | class         | ![Progress](Pictures/Progress100.png) |
+| [Screen](../src/Switch.System.Windows.Forms/include/Switch/System/Windows/Forms/Screen.hpp)                                                     | class         | ![Progress](Pictures/Progress50.png) |
+| ScreenOrientation                                                                                                                               | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | [...](https://referencesource.microsoft.com/#System.Windows.Forms,namespaces)                                                                   | ...           | ![Progress](Pictures/Progress0.png)   |
 
 ## System::Windows::Forms::ComponentModel::Com2Interop
