@@ -12,7 +12,7 @@ Actualy Switch run on Windows, macOS, Linux, iOS and Android Operating System.
 
 ## macOS 10.11.5 (OS X El Capitan) - 64 bits or later
 
-[![macOS](Pictures/OS/macOS.jpg)](https://apple.com/macos/)
+[![macOS](Pictures/OS/macOS.png)](https://apple.com/macos/)
 
 ## Linux - 32 and 64 bits
 
