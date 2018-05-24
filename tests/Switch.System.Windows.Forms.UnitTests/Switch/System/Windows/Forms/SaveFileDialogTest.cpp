@@ -27,7 +27,7 @@ namespace SwitchUnitTests {
     saveFileDialog.AutoUpgradeEnabled = false;
     saveFileDialog.CheckFileExists = true;
     saveFileDialog.CheckPathExists = true;
-    saveFileDialog.FileDialogCustomPlaceCollection().Add(FileDialogCustomPlace("Directory"));
+    saveFileDialog.FileDialogCustomPlaces().Add(FileDialogCustomPlace("Directory"));
     saveFileDialog.DefaultExt = "cmd";
     saveFileDialog.DereferenceLinks = false;
     saveFileDialog.FileName = "MyFile.txt";
@@ -49,7 +49,7 @@ namespace SwitchUnitTests {
     ASSERT_TRUE(saveFileDialog.AutoUpgradeEnabled);
     ASSERT_FALSE(saveFileDialog.CheckFileExists);
     ASSERT_FALSE(saveFileDialog.CheckPathExists);
-    ASSERT_EQ(0, saveFileDialog.FileDialogCustomPlaceCollection().Count);
+    ASSERT_EQ(0, saveFileDialog.FileDialogCustomPlaces().Count);
     ASSERT_EQ("", saveFileDialog.DefaultExt);
     ASSERT_TRUE(saveFileDialog.DereferenceLinks);
     ASSERT_EQ("", saveFileDialog.FileName);

@@ -5,7 +5,7 @@
 #include <Switch/System/Collections/Generic/List.hpp>
 #include <Switch/System/Drawing/Color.hpp>
 #include <Switch/System/ComponentModel/CancelEventHandler.hpp>
-#include "../../../System/Windows/Forms/FileDialogCustomPlaceCollection.hpp"
+#include "../../../System/Windows/Forms/FileDialogCustomPlacesCollection.hpp"
 #include "../../../System/Windows/Forms/CommonDialog.hpp"
 
 /// @brief The Switch namespace contains all fundamental classes to access Hardware, Os, System, and more.
@@ -96,7 +96,7 @@ namespace Switch {
           };
 
           /// @brief Gets the custom places collection for this FileDialog instance.
-          /// @return System::Windows::Forms::FileDialogCustomPlaceCollection The custom places collection for this FileDialog instance.
+          /// @return System::Windows::Forms::FileDialogCustomPlacesCollection The custom places collection for this FileDialog instance.
           /// @remarks On macOS, Linux and Windows XP, this property does not have any effect.
           /// @par Examples
           /// The following code example demonstrates how to use the CustomPlaces collection. To run this example, paste the following code into a Windows Form and call InitializeDialogAndButton from the form's constructor or Load event-handling method.
@@ -126,9 +126,9 @@ namespace Switch {
           ///   openFileDialog1.ShowDialog();
           /// }
           /// @endcode
-          property_<System::Windows::Forms::FileDialogCustomPlaceCollection&> FileDialogCustomPlaceCollection {
-            get_->System::Windows::Forms::FileDialogCustomPlaceCollection& {return this->fileDialogCustomPlaceCollection;},
-            set_ {this->fileDialogCustomPlaceCollection = value;}
+          property_<FileDialogCustomPlacesCollection&> FileDialogCustomPlaces {
+            get_->FileDialogCustomPlacesCollection& {return this->fileDialogCustomPlaces;},
+            set_ {this->fileDialogCustomPlaces = value;}
           };
 
           /// @brief Gets or sets the default file name extension.
@@ -487,7 +487,7 @@ namespace Switch {
           bool autoUpgradeEnabled = true;
           bool checkFileExists = false;
           bool checkPathExists = false;
-          System::Windows::Forms::FileDialogCustomPlaceCollection fileDialogCustomPlaceCollection;
+          System::Windows::Forms::FileDialogCustomPlacesCollection fileDialogCustomPlaces;
           string defaultExt;
           bool dereferenceLinks = true;
           string fileName;

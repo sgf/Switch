@@ -18,7 +18,7 @@ namespace Switch {
         /// @brief Represents a collection of Windows Vista custom places for the FileDialog class.
         /// @par Library
         /// Switch.System.Windows.Forms
-        using FileDialogCustomPlaceCollection = System::Collections::Generic::List<FileDialogCustomPlace>;
+        using FileDialogCustomPlacesCollection = System::Collections::Generic::List<FileDialogCustomPlace>;
       }
     }
   }

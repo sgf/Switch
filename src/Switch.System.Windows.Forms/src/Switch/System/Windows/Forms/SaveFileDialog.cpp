@@ -13,7 +13,7 @@ void SaveFileDialog::Reset() {
   this->FileDialog::autoUpgradeEnabled = true;
   this->FileDialog::checkFileExists = false;
   this->FileDialog::checkPathExists = false;
-  this->FileDialog::fileDialogCustomPlaceCollection.Clear();
+  this->FileDialog::fileDialogCustomPlaces.Clear();
   this->FileDialog::defaultExt = "";
   this->FileDialog::dereferenceLinks = true;
   this->FileDialog::fileName = "";

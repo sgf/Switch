@@ -20,7 +20,7 @@ namespace SwitchUnitTests {
     ASSERT_TRUE(fileDialog1.AutoUpgradeEnabled);
     ASSERT_FALSE(fileDialog1.CheckFileExists);
     ASSERT_FALSE(fileDialog1.CheckPathExists);
-    ASSERT_EQ(0, fileDialog1.FileDialogCustomPlaceCollection().Count);
+    ASSERT_EQ(0, fileDialog1.FileDialogCustomPlaces().Count);
     ASSERT_EQ("", fileDialog1.DefaultExt);
     ASSERT_TRUE(fileDialog1.DereferenceLinks);
     ASSERT_EQ("", fileDialog1.FileName);
@@ -68,12 +68,12 @@ namespace SwitchUnitTests {
     ASSERT_TRUE(fileDialog1.CheckPathExists);
   }
 
-  TEST(FileDialogTest, FileDialogCustomPlaceCollection) {
+  TEST(FileDialogTest, FileDialogCustomPlaces) {
     FileDialog1 fileDialog1;
 
-    fileDialog1.FileDialogCustomPlaceCollection().Add(FileDialogCustomPlace("directory1"));
+    fileDialog1.FileDialogCustomPlaces().Add(FileDialogCustomPlace("directory1"));
 
-    ASSERT_EQ(FileDialogCustomPlace("directory1").Path, fileDialog1.FileDialogCustomPlaceCollection()[0].Path);
+    ASSERT_EQ(FileDialogCustomPlace("directory1").Path, fileDialog1.FileDialogCustomPlaces()[0].Path);
   }
 
   TEST(FileDialogTest, DefaultExt) {
