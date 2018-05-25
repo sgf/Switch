@@ -54,7 +54,7 @@ intptr Native::CursorsApi::Help() {
 }
 
 intptr Native::CursorsApi::HSplit() {
-  return (intptr)"ns-resize";
+  return (intptr)"col-resize";
 }
 
 intptr Native::CursorsApi::IBeam() {
@@ -142,7 +142,7 @@ intptr Native::CursorsApi::VIBeam() {
 }
 
 intptr Native::CursorsApi::VSplit() {
-  return (intptr)"default";
+  return (intptr)"row-resize";
 }
 
 intptr Native::CursorsApi::WaitCursor() {
