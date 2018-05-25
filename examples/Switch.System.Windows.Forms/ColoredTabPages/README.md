@@ -1,6 +1,6 @@
-# TabControl
+# ColoredTabPages
 
-This example demonstrates the use of System::Windows::Forms::TabControl and System::Windows::Forms::TabPage controls.
+This example demonstrates the use of System::Windows::Forms::TabControl and colored System::Windows::Forms::TabPage controls.
 
 Windows :
 
