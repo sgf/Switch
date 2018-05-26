@@ -50,16 +50,17 @@ namespace Native {
    }
     void RemoveTabPage(NSTabViewItem* item) {[this->handle removeTabViewItem:item];}
     void BackColor(const System::Drawing::Color& color) override {[this->handle SetBackgroundColor:ToNSColor(color)];}
-    System::Drawing::Size ClientSize() const override {return System::Drawing::Size([this->handle frame].size.width, [this->handle frame].size.height);}
-    void ClientSize(const System::Drawing::Size& size) override {[this->handle setFrameSize:NSMakeSize(size.Width, size.Height)];}
+    System::Drawing::Size ClientSize() const override {return System::Drawing::Size([this->handle frame].size.width - 12, [this->handle frame].size.height - 16);}
+    void ClientSize(const System::Drawing::Size& clientSize) override {[this->handle setFrameSize:NSMakeSize(clientSize.Width + 12, clientSize.Height + 16)];}
     void Cursor(const System::Windows::Forms::Cursor& cursor) override {[this->handle setCursor:(NSCursor *)cursor.Handle()];}
     void Enabled(bool enabled) override {}
     void Font(const System::Drawing::Font& font) override {}
     void ForeColor(const System::Drawing::Color& color) override {}
     void IsDefault(bool isDefault) {}
+    void Location(IWidget* parent, const System::Drawing::Point& location) override {[this->handle setFrameOrigin:NSMakePoint(location.X + this->ClientLocation().X - 6, location.Y + this->ClientLocation().Y - 6)];}
     void RemoveParent() override {[this->handle removeFromSuperview];}
-    System::Drawing::Size Size() const override {return System::Drawing::Size([this->handle frame].size.width, [this->handle frame].size.height);}
-    void Size(const System::Drawing::Size& size) override {[this->handle setFrameSize:NSMakeSize(size.Width, size.Height)];}
+    System::Drawing::Size Size() const override {return System::Drawing::Size([this->handle frame].size.width - 12, [this->handle frame].size.height - 16);}
+    void Size(const System::Drawing::Size& size) override {[this->handle setFrameSize:NSMakeSize(size.Width + 12, size.Height + 16)];}
     void Text(const string& text) override {}
     NSView* View() override {return this->handle;}
     void Visible(bool visible) override {[this->handle setHidden:visible ? NO : YES];}

@@ -54,7 +54,7 @@ namespace Native {
     NSObject* Handle() override {return this->handle;}
     System::Drawing::Point ClientLocation() const override {return {0, 0};}
     System::Drawing::Size ClientSize() const override {return this->Size();}
-    void ClientSize(const System::Drawing::Size& size) override {this->Size(size);}
+    void ClientSize(const System::Drawing::Size& clientSize) override {this->Size(clientSize);}
     //Native::LocationOffset LocationOffset() const override {return Native::LocationOffset::None;}
     static NSColor* ToNSColor(const System::Drawing::Color& color) {return [NSColor colorWithCalibratedRed:as<double>(color.R()) / 0xFF green:as<double>(color.G()) / 0xFF blue:as<double>(color.B()) / 0xFF alpha:as<double>(color.A()) / 0xFF];}
     intptr SendMessage(intptr handle, int32 msg, intptr wparam, intptr lparam) override {
@@ -72,9 +72,7 @@ namespace Native {
   public:
     WidgetControl() {}
 
-    void Location(IWidget* parent, const System::Drawing::Point& location) override {
-      [this->handle setFrameOrigin:NSMakePoint(location.X + this->ClientLocation().X, location.Y + this->ClientLocation().X)];
-    }
+    void Location(IWidget* parent, const System::Drawing::Point& location) override {[this->handle setFrameOrigin:NSMakePoint(location.X + this->ClientLocation().X, location.Y + this->ClientLocation().Y)];}
 
     /*
     void Location(IWidget* parent, const System::Drawing::Point& location) override {
