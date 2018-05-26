@@ -5,13 +5,13 @@
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-AssemblyTitle_("TabControl example");
+AssemblyTitle_("ColoredTabPages example");
 AssemblyDescription_("This example shows how to use Switch TabControl and colored TabPage controls");
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
-AssemblyProduct_("TabControl");
+AssemblyProduct_("ColoredTabPages");
 AssemblyCopyright_("© 2018 by Gammasoft.");
-AssemblyIdentifier_("org.gammasoft.TabControl");
+AssemblyIdentifier_("org.gammasoft.ColoredTabPages");
 AssemblyTrademark_("");
 AssemblyCulture_("");
 
