@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
   //button1.BackColor = Color::Green;
   button1.Text = "Click";
   button1.Height = 60;
-  
+
   Form form1;
   form1.BackColor = Color::YellowGreen;
   form1.ClientSize = Drawing::Size {390, 270};
