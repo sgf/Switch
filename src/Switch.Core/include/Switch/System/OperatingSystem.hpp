@@ -31,14 +31,18 @@ namespace Switch {
       }
       /// @endcond
 
-      property_<bool, readonly_> IsWindowsFamilly {
-        get_ {return this->platform == PlatformID::Win32NT || this->platform == PlatformID::Win32S || this->platform == PlatformID::Win32Windows || this->platform == PlatformID::WinCE || this->platform == PlatformID::Xbox;}
+      property_<bool, readonly_> IsAppleFamilly {
+        get_ {return this->platform == PlatformID::MacOSX || this->platform == PlatformID::IOs;}
       };
-
+      
       property_<bool, readonly_> IsUnixFamilly {
         get_ {return this->platform == PlatformID::Unix || this->platform == PlatformID::MacOSX || this->platform == PlatformID::IOs || this->platform == PlatformID::Android;}
       };
 
+      property_<bool, readonly_> IsWindowsFamilly {
+        get_ {return this->platform == PlatformID::Win32NT || this->platform == PlatformID::Win32S || this->platform == PlatformID::Win32Windows || this->platform == PlatformID::WinCE || this->platform == PlatformID::Xbox;}
+      };
+      
       /// @brief Gets a System::PlatformID enumeration value that identifies the operating system platform.
       /// @return PlatformID One of the PlatformID values.
       property_<PlatformID, readonly_> Platform {
