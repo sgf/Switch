@@ -18,7 +18,7 @@ intptr Native::RadioButtonApi::Create(const System::Windows::Forms::RadioButton&
   return (intptr)handle;
 }
 
-System::Drawing::Size Native::ButtonApi::GetDefaultSize() {
+System::Drawing::Size Native::RadioButtonApi::GetDefaultSize() {
   return System::Drawing::Size(104, 24);
 }
 
