@@ -22,7 +22,7 @@ namespace Switch {
         /// @include Panel.cpp
         class system_windows_forms_export_ Panel : public ContainerControl {
         public:
-          Panel() : ContainerControl("", 0, 0, 200, 100) {
+          Panel() {
             this->SetStyle(ControlStyles::UserPaint, false);
           }
 

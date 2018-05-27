@@ -26,7 +26,7 @@ namespace Switch {
         /// @include ProgressBar.cpp
         class system_windows_forms_export_ ProgressBar : public Control {
         public:
-          ProgressBar() : Control("", 0, 0, 100, System::Environment::OSVersion().Platform == System::PlatformID::MacOSX ? 20 : 23) {
+          ProgressBar() {
             this->SetStyle(ControlStyles::UserPaint, false);
             this->TabStop = false;
           }

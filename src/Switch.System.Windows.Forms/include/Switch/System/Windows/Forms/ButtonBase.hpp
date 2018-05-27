@@ -24,10 +24,6 @@ namespace Switch {
           /// @brief Initializes a new instance of the ButtonBase class.
           ButtonBase() {}
 
-          /// @cond
-          ButtonBase(const string& text, int32 left, int32 top, int32 height, int32 width) : Control(text, left, top, height, width) {}
-          /// @endcond
-
         public:
           /// @brief Gets or sets a value indicating whether the ellipsis character (...) appears at the right edge of the control, denoting that the control text extends beyond the specified length of the control.
           /// @return bool true if the additional label text is to be indicated by an ellipsis; otherwise, false. The default is true.

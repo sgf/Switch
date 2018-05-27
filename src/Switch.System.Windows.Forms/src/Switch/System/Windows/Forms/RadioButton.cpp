@@ -13,6 +13,10 @@ void RadioButton::CreateHandle() {
   Native::RadioButtonApi::SetChecked(*this);
 }
 
+System::Drawing::Size RadioButton::GetDefaultSize() const {
+  return Native::RadioButtonApi::GetDefaultSize();
+}
+
 void RadioButton::SetChecked(bool checked) {
   if (this->checked != checked) {
     this->checked = checked;

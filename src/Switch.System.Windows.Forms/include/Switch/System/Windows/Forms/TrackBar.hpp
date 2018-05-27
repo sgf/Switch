@@ -27,7 +27,7 @@ namespace Switch {
         /// @include TrackBar.cpp
         class system_windows_forms_export_ TrackBar : public Control {
         public:
-          TrackBar() : Control("", 0, 0, 104, 45) {
+          TrackBar() {
             this->SetStyle(ControlStyles::UserPaint, false);
             this->TabStop = false;
           }

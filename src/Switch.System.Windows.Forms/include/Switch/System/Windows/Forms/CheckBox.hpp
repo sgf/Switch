@@ -50,7 +50,7 @@ namespace Switch {
           ///   this->Controls().Add(this->checkBox1);
           /// }
           /// @endcode
-          CheckBox() : ButtonBase("", 0, 0, 104, 24) { this->SetStyle(ControlStyles::UserPaint, false); }
+          CheckBox() { this->SetStyle(ControlStyles::UserPaint, false); }
 
           /// @brief Gets or set a value indicating whether the Checked or CheckState values and the CheckBox's appearance are automatically changed when the CheckBox is clicked.
           /// @return bool true if the Checked value or CheckState value and the appearance of the control are automatically changed on the Click event; otherwise, false. The default value is true.

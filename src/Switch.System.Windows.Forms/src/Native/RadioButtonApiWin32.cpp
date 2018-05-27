@@ -18,6 +18,10 @@ intptr Native::RadioButtonApi::Create(const System::Windows::Forms::RadioButton&
   return (intptr)handle;
 }
 
+System::Drawing::Size Native::ButtonApi::GetDefaultSize() {
+  return System::Drawing::Size(104, 24);
+}
+
 void Native::RadioButtonApi::SetChecked(const System::Windows::Forms::RadioButton& radioButton) {
   SendMessage((HWND)radioButton.Handle(), BM_SETCHECK, radioButton.Checked ? BST_CHECKED : BST_UNCHECKED, 0);
 }

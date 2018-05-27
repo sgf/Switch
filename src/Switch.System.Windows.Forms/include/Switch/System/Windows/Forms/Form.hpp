@@ -75,7 +75,7 @@ namespace Switch {
         /// @endcode
         class system_windows_forms_export_ Form : public ContainerControl {
         public:
-          Form() : ContainerControl("", 0, 0, 300, 300) {
+          Form() {
             this->visible = false;
             this->SetStyle(ControlStyles::UserPaint, false);
             //this->BackColor = DefaultBackColor;

@@ -406,7 +406,7 @@ namespace Switch {
           /// }
           /// @endcode
           property_<int32, readonly_> Bottom {
-            get_{ return this->location.Y() + this->size.Height(); }
+            get_{ return this->Location().Y() + this->Size().Height(); }
           };
 
           /// @brief Gets or sets the size and location of the control including its nonclient elements, in pixels, relative to the parent control.
@@ -917,8 +917,10 @@ namespace Switch {
           /// }
           /// @endcode
           property_<int32> Height {
-            get_ { return this->size.Height(); },
-            set_ { this->Size(System::Drawing::Size(this->size.Width(), value)); }
+            get_ { return this->Size().Height(); },
+            set_ {
+              if (!this->size.HasValue) this->size = this->GetDefaultSize();
+              this->Size = System::Drawing::Size(this->Size().Width(), value); }
           };
 
           /// @brief Gets a value indicating whether the control has a handle associated with it.
@@ -1166,7 +1168,7 @@ namespace Switch {
           /// }
           /// @endcode
           property_<int32, readonly_> Right{
-            get_{ return this->location.X() + this->size.Width(); }
+            get_{ return this->Location().X() + this->Size().Width(); }
           };
 
           /// @brief Gets or sets the height and width of the control.
@@ -1207,9 +1209,9 @@ namespace Switch {
           /// }
           /// @endcode
           property_<System::Drawing::Size> Size {
-            get_ { return this->size; },
+            get_ { return this->size.HasValue ? this->size.Value() : this->GetDefaultSize(); },
             set_ {
-              if (this->size != value) {
+              if (!this->size.HasValue || this->size.Value() != value) {
                 this->size = value;
                 this->OnSizeChanged(EventArgs::Empty);
               }
@@ -1423,8 +1425,11 @@ namespace Switch {
           /// }
           /// @endcode
           property_<int32> Width {
-            get_ { return this->size.Width(); },
-            set_ { this->Size(System::Drawing::Size(value, this->size.Height())); }
+            get_ { return this->Size().Width(); },
+            set_ {
+              if (!this->size.HasValue) this->size = this->GetDefaultSize();
+              this->Size(System::Drawing::Size(value, this->Size().Height()));
+            }
           };
 
           /// @brief Forces the creation of the visible control, including the creation of the handle and any visible child controls.
@@ -3774,7 +3779,7 @@ namespace Switch {
           System::Collections::Generic::Dictionary<int32, Action<Message&>> messageActions;
           string name;
           ref<Control> parent;
-          System::Drawing::Size size;
+          Nullable<System::Drawing::Size> size;
           State state = State::Empty;
           ControlStyles style = (ControlStyles)0;
           bool suspendLayout = false;

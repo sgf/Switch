@@ -35,6 +35,8 @@ namespace Switch {
         Size operator-(const Size& sz) const;
         Size& operator+=(const Size& sz);
         Size& operator-=(const Size& sz);
+        bool operator<(const Size& sz) const {return this->height < sz.height || (this->height == sz.height && this->width < sz.width);}
+        bool operator>(const Size& sz) const {return this->height > sz.height || (this->height == sz.height && this->width > sz.width);}
         /// @endcond
 
         /// @brief IInitializes a new instance of the Size class from the specified Point class.

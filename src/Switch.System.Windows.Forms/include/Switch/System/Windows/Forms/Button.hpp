@@ -45,7 +45,7 @@ namespace Switch {
           ///   this->Controls().Add(*this->button1);
           /// }
           /// @endcode
-          Button() : ButtonBase("", 0, 0, 75, 25) {
+          Button() {
             this->SetStyle(ControlStyles::UserPaint, false);
           }
 
@@ -62,7 +62,7 @@ namespace Switch {
           /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
           /// @par Notes to Inheritors
           /// Override GetDefaultsize() method used by DefaultSize property.
-          System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(75, 25); }
+          System::Drawing::Size GetDefaultSize() const override;
 
           /// @cond
           /// @endcond

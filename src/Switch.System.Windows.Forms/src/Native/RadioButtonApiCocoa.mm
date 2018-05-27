@@ -89,6 +89,10 @@ intptr Native::RadioButtonApi::Create(const System::Windows::Forms::RadioButton&
   return (intptr)widget;
 }
 
+System::Drawing::Size Native::ButtonApi::GetDefaultSize() {
+  return System::Drawing::Size(104, 24);
+}
+
 void Native::RadioButtonApi::SetChecked(const System::Windows::Forms::RadioButton& radioButton) {
   ((Native::RadioButton*)radioButton.Handle())->State((int32)radioButton.Checked());
 }

@@ -19,6 +19,10 @@ intptr Native::ButtonApi::Create(const System::Windows::Forms::Button& button) {
   return (intptr)handle;
 }
 
+System::Drawing::Size Native::ButtonApi::GetDefaultSize() {
+  return System::Drawing::Size(75, 25);
+}
+
 void Native::ButtonApi::SetIsDefault(const System::Windows::Forms::ButtonBase& button) {
   SetWindowLong((HWND)button.Handle(), GWL_STYLE, GetWindowLong((HWND)button.Handle(), GWL_STYLE) | (button.IsDefault ? BS_DEFPUSHBUTTON : BS_PUSHBUTTON));
   SetWindowLong((HWND)button.Handle(), GWL_STYLE, GetWindowLong((HWND)button.Handle(), GWL_STYLE) & (button.IsDefault ? ~BS_PUSHBUTTON : ~BS_DEFPUSHBUTTON));

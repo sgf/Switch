@@ -16,6 +16,10 @@ namespace Native {
   };
 }
 
+System::Drawing::Size Native::ButtonApi::GetDefaultSize() {
+  return System::Drawing::Size(75, 25);
+}
+
 intptr Native::ButtonApi::Create(const System::Windows::Forms::Button& button) {
   Native::Button* handle = new Native::Button();
   handle->Move(button.Location().X, button.Location().Y);

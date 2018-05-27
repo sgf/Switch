@@ -26,7 +26,7 @@ namespace Switch {
         /// @include RadioButton.cpp
         class system_windows_forms_export_ RadioButton : public ButtonBase {
         public:
-          RadioButton() : ButtonBase("", 0, 0, 104, 24) { this->SetStyle(ControlStyles::UserPaint, false); }
+          RadioButton() { this->SetStyle(ControlStyles::UserPaint, false); }
 
           property_<bool> AutoCheck {
             get_ {return this->autoCheck;},
@@ -53,7 +53,7 @@ namespace Switch {
 
           /// @brief Gets the default size of the control.
           /// @return Switch::System::Drawing::Size The default Size of the control.
-          System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(104, 24); }
+          System::Drawing::Size GetDefaultSize() const override;
 
           virtual void OnCheckedChanged(const EventArgs& e) {this->CheckedChanged(*this, e);}
 

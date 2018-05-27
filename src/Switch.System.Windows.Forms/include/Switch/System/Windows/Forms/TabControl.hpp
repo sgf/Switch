@@ -85,7 +85,7 @@ namespace Switch {
             ref<TabControl> tabControlContainer;
           };
 
-          TabControl() : ContainerControl("", 0, 0, 200, 100) {
+          TabControl() {
             this->SetStyle(ControlStyles::UserPaint, false);
             this->SetStyle(ControlStyles::EnableNotifyMessage, true);
           }

@@ -12,3 +12,6 @@ void Button::CreateHandle() {
   Native::ButtonApi::SetIsDefault(*this);
 }
 
+System::Drawing::Size Button::GetDefaultSize() const {
+  return Native::ButtonApi::GetDefaultSize();
+}

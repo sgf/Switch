@@ -74,6 +74,7 @@ namespace Native {
   class ButtonApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::Button& button);
+    static System::Drawing::Size GetDefaultSize();
     static void SetIsDefault(const System::Windows::Forms::ButtonBase& button);
   };
 
@@ -237,6 +238,7 @@ namespace Native {
   class RadioButtonApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::RadioButton& radioButton);
+    static System::Drawing::Size GetDefaultSize();
     static void SetChecked(const System::Windows::Forms::RadioButton& radioButton);
     static void SetGroup(const System::Windows::Forms::RadioButton& radioButton);
   };

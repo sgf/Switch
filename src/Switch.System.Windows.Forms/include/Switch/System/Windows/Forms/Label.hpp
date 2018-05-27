@@ -26,7 +26,7 @@ namespace Switch {
         /// @include Label.cpp
         class system_windows_forms_export_ Label : public Control {
         public:
-          Label() : Control("", 0, 0, 100, 23) {
+          Label() {
             this->SetStyle(ControlStyles::UserPaint, false);
             this->TabStop = false;
           }
