@@ -49,7 +49,7 @@
 | ImageFormatConverter                                                                                | class         | ![Progress](Pictures/Progress0.png)   |
 | [KnownColor](../src/Switch.System.Drawing/include/Switch/System/Drawing/KnownColor.hpp)             | enumeration   | ![Progress](Pictures/Progress100.png) |
 | [Pen](../src/Switch.System.Drawing/include/Switch/System/Drawing/Pen.hpp)                           | class         | ![Progress](Pictures/Progress75.png)  |
-| Pens](../src/Switch.System.Drawing/include/Switch/System/Drawing/Pens.hpp)                          | class         | ![Progress](Pictures/Progress100.png) |
+| [Pens](../src/Switch.System.Drawing/include/Switch/System/Drawing/Pens.hpp)                         | class         | ![Progress](Pictures/Progress100.png) |
 | [Point](../src/Switch.System.Drawing/include/Switch/System/Drawing/Point.hpp)                       | struct        | ![Progress](Pictures/Progress100.png) |
 | PointConverter                                                                                      | class         | ![Progress](Pictures/Progress0.png)   |
 | [PointF](../src/Switch.System.Drawing/include/Switch/System/Drawing/PointF.hpp)                     | struct        | ![Progress](Pictures/Progress100.png) |
