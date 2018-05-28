@@ -30,7 +30,7 @@ public:
     mainForm.StartPosition = FormStartPosition::Manual;
     mainForm.Location = System::Drawing::Point(Screen::AllScreens()[0].WorkingArea().Width - mainForm.Width - 20, 20);
     mainForm.Controls().Add(button);
-    mainForm.ShowDialog();
+    Application::Run(mainForm);
   }
 };
 
