@@ -40,4 +40,8 @@ intptr Native::GroupBoxApi::Create(const System::Windows::Forms::GroupBox& group
   return (intptr)handle;
 }
 
+System::Drawing::Size Native::GroupBoxApi::GetDefaultSize() {
+  return System::Drawing::Size(200, 100);
+}
+
 #endif

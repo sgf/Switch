@@ -21,6 +21,10 @@ intptr Native::LabelApi::Create(const System::Windows::Forms::Label& label) {
   return (intptr)handle;
 }
 
+System::Drawing::Size Native::LabelApi::GetDefaultSize() {
+  return System::Drawing::Size(100, 23);
+}
+
 void Native::LabelApi::SetBorderStyle(const System::Windows::Forms::Label& label) {
   SetWindowLongPtr((HWND)label.Handle(), GWL_STYLE, GetWindowLongPtr((HWND)label.Handle(), GWL_STYLE) & ~WS_BORDER);
   SetWindowLongPtr((HWND)label.Handle(), GWL_EXSTYLE, GetWindowLongPtr((HWND)label.Handle(), GWL_EXSTYLE) & ~WS_EX_CLIENTEDGE);

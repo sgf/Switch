@@ -83,5 +83,9 @@ intptr Native::FormApi::Create(System::Windows::Forms::Form& form, bool withClie
   return (intptr)handle;
 }
 
+System::Drawing::Size Native::FormApi::GetDefaultSize() {
+  return System::Drawing::Size(300, 300);
+}
+
 #endif
 

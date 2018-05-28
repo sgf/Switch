@@ -37,6 +37,12 @@ intptr Native::TrackBarApi::Create(const System::Windows::Forms::TrackBar& track
   return (intptr)handle;
 }
 
+System::Drawing::Size Native::TrackBarApi::GetDefaultSize(System::Windows::Forms::Orientation orientation) {
+  if (orientation == System::Windows::Forms::Orientation::Horizontal)
+    return System::Drawing::Size(104, 45);
+  return System::Drawing::Size(45, 104);
+}
+
 void Native::TrackBarApi::SetLargeChange(const System::Windows::Forms::TrackBar& trackBar) {
   SendMessage((HWND)trackBar.Handle(), TBM_SETPAGESIZE, 0, trackBar.LargeChange());
 }

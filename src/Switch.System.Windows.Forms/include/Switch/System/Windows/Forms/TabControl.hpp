@@ -111,7 +111,7 @@ namespace Switch {
 
           /// @brief Gets the default size of the control.
           /// @return Switch::System::Drawing::Size The default Size of the control.
-          System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(200, 100); }
+          System::Drawing::Size GetDefaultSize() const override;
 
           void SetAlignment(TabAlignment alignment);
 

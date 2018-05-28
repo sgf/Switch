@@ -25,6 +25,10 @@ intptr Native::TabControlApi::Create(const System::Windows::Forms::TabControl& t
   return (intptr)handle;
 }
 
+System::Drawing::Size Native::TabControlApi::GetDefaultSize() {
+  return System::Drawing::Size(200, 100);
+}
+
 int32 Native::TabControlApi::GetSelectedTabPageIndex(const System::Windows::Forms::TabControl& tabControl) {
   return TabCtrl_GetCurSel((HWND)tabControl.Handle());
 }

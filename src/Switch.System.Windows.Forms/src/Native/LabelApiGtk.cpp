@@ -39,6 +39,10 @@ intptr Native::LabelApi::Create(const System::Windows::Forms::Label& label) {
   return (intptr)handle;
 }
 
+System::Drawing::Size Native::LabelApi::GetDefaultSize() {
+  return System::Drawing::Size(100, 23);
+}
+
 void Native::LabelApi::SetBorderStyle(const System::Windows::Forms::Label& label) {
 }
 

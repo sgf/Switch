@@ -80,6 +80,10 @@ intptr Native::ProgressBarApi::Create(const System::Windows::Forms::ProgressBar&
   return (intptr)widget;
 }
 
+System::Drawing::Size Native::ProgressBarApi::GetDefaultSize() {
+  return System::Drawing::Size(100, 20);
+}
+
 void Native::ProgressBarApi::SetMaximum(const System::Windows::Forms::ProgressBar& progressBar) {
   ((Native::ProgressBar*)progressBar.Handle())->Maximum(progressBar.Maximum);
 }

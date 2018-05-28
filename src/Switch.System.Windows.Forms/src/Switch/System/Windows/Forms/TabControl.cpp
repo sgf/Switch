@@ -29,6 +29,10 @@ void TabControl::CreateHandle() {
   }
 }
 
+System::Drawing::Size TabControl::GetDefaultSize() const {
+  return Native::TabControlApi::GetDefaultSize();
+}
+
 void TabControl::OnNotifyMessage(const Message& m) {
   int32 selectedIndex = Native::TabControlApi::GetSelectedTabPageIndex(*this);
   for (int32 index = 0; index < this->tabPages.Count; index++)

@@ -27,6 +27,10 @@ intptr Native::ProgressBarApi::Create(const System::Windows::Forms::ProgressBar&
   return (intptr)handle;
 }
 
+System::Drawing::Size Native::ProgressBarApi::GetDefaultSize() {
+  return System::Drawing::Size(100, 23);
+}
+
 void Native::ProgressBarApi::SetMaximum(const System::Windows::Forms::ProgressBar& progressBar) {
   SendMessage((HWND)progressBar.Handle(), PBM_SETRANGE32, progressBar.Minimum(), progressBar.Maximum());
 }

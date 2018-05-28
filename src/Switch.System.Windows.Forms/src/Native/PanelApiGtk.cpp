@@ -50,6 +50,10 @@ intptr Native::PanelApi::Create(const System::Windows::Forms::Panel& panel) {
   return (intptr)handle;
 }
 
+System::Drawing::Size Native::PanelApi::GetDefaultSize() {
+  return System::Drawing::Size(200, 100);
+}
+
 void Native::PanelApi::SetBorderStyle(const System::Windows::Forms::Panel& panel) {
   ((Native::Panel*)panel.Handle())->BorderStyle(panel.BorderStyle);
 }

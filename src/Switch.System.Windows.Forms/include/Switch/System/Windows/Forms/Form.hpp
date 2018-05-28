@@ -158,7 +158,7 @@ namespace Switch {
 
           /// @brief Gets the default size of the control.
           /// @return Switch::System::Drawing::Size The default Size of the control.
-          System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(300, 300); }
+          System::Drawing::Size GetDefaultSize() const override;
 
           virtual void OnFormClosed(const FormClosedEventArgs& e) {
             this->Visible = false;

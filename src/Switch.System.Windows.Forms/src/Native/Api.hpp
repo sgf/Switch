@@ -43,6 +43,7 @@ namespace Switch {
         enum class MessageBoxDefaultButton;
         enum class MessageBoxOptions;
         class OpenFileDialog;
+        enum class Orientation;
         class Panel;
         class ProgressBar;
         class RadioButton;
@@ -207,16 +208,19 @@ namespace Native {
   public:
     static void Close(System::Windows::Forms::Form& form);
     static intptr Create(System::Windows::Forms::Form& form, bool withClientsize);
+    static System::Drawing::Size GetDefaultSize();
   };
 
   class GroupBoxApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::GroupBox& groupBox);
+    static System::Drawing::Size GetDefaultSize();
   };
 
   class LabelApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::Label& label);
+    static System::Drawing::Size GetDefaultSize();
     static void SetBorderStyle(const System::Windows::Forms::Label& label);
     static void SetTextAlign(const System::Windows::Forms::Label& label);
   };
@@ -224,12 +228,14 @@ namespace Native {
   class PanelApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::Panel& panel);
+    static System::Drawing::Size GetDefaultSize();
     static void SetBorderStyle(const System::Windows::Forms::Panel& panel);
   };
 
   class ProgressBarApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::ProgressBar& progressBar);
+    static System::Drawing::Size GetDefaultSize();
     static void SetMaximum(const System::Windows::Forms::ProgressBar& progressBar);
     static void SetMinimum(const System::Windows::Forms::ProgressBar& progressBar);
     static void SetMarquee(const System::Windows::Forms::ProgressBar& progressBar);
@@ -314,6 +320,7 @@ namespace Native {
   class TabControlApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::TabControl& tabControl);
+    static System::Drawing::Size GetDefaultSize();
     static int32 GetSelectedTabPageIndex(const System::Windows::Forms::TabControl& tabControl);
     static System::Drawing::Rectangle GetTabPageRectangle(const System::Windows::Forms::TabControl& tabControl);
     static void SetAlignment(const System::Windows::Forms::TabControl& tabControl);
@@ -336,6 +343,7 @@ namespace Native {
   class TrackBarApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::TrackBar& trackBar);
+    static System::Drawing::Size GetDefaultSize(System::Windows::Forms::Orientation orientation);
     static void SetLargeChange(const System::Windows::Forms::TrackBar& trackBar);
     static void SetMaximum(const System::Windows::Forms::TrackBar& trackBar);
     static void SetMinimum(const System::Windows::Forms::TrackBar& trackBar);

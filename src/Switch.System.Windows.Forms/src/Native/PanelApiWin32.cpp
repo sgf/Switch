@@ -18,6 +18,10 @@ intptr Native::PanelApi::Create(const System::Windows::Forms::Panel& panel) {
   return (intptr)handle;
 }
 
+System::Drawing::Size Native::PanelApi::GetDefaultSize() {
+  return System::Drawing::Size(200, 100);
+}
+
 void Native::PanelApi::SetBorderStyle(const System::Windows::Forms::Panel& panel) {
   SetWindowLongPtr((HWND)panel.Handle(), GWL_STYLE, GetWindowLongPtr((HWND)panel.Handle(), GWL_STYLE) & ~WS_BORDER);
   SetWindowLongPtr((HWND)panel.Handle(), GWL_EXSTYLE, GetWindowLongPtr((HWND)panel.Handle(), GWL_EXSTYLE) & ~WS_EX_CLIENTEDGE);

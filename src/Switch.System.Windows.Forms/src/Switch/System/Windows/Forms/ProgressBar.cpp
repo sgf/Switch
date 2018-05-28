@@ -15,6 +15,10 @@ void ProgressBar::CreateHandle() {
   Native::ProgressBarApi::SetMarquee(*this);
 }
 
+System::Drawing::Size ProgressBar::GetDefaultSize() const {
+  return Native::ProgressBarApi::GetDefaultSize();
+}
+
 void ProgressBar::SetMarqueeAnimationSpeed(int32 marqueeAnimationSpeed) {
   if (marqueeAnimationSpeed < 0)
     throw ArgumentOutOfRangeException(caller_);

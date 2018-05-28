@@ -13,6 +13,10 @@ void Label::CreateHandle() {
   Native::LabelApi::SetTextAlign(*this);
 }
 
+System::Drawing::Size Label::GetDefaultSize() const {
+  return Native::LabelApi::GetDefaultSize();
+}
+
 void Label::SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
   if (this->borderStyle != borderStyle) {
     this->borderStyle = borderStyle;

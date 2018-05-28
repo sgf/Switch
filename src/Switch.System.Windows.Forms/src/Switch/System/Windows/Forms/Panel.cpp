@@ -17,6 +17,10 @@ void Panel::CreateHandle() {
   Native::ControlApi::SetLocation(*this);
 }
 
+System::Drawing::Size Panel::GetDefaultSize() const {
+  return Native::PanelApi::GetDefaultSize();
+}
+
 void Panel::SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle) {
   if (this->borderStyle != borderStyle) {
     this->borderStyle = borderStyle;

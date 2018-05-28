@@ -19,6 +19,10 @@ void TrackBar::CreateHandle() {
   Native::TrackBarApi::SetValue(*this);
 }
 
+System::Drawing::Size TrackBar::GetDefaultSize() const {
+  return Native::TrackBarApi::GetDefaultSize(this->orientation);
+}
+
 void TrackBar::WndProc(Message& message) {
   Control::WndProc(message);
   if (message.Msg == (WM_REFLECT + WM_HSCROLL) || message.Msg == (WM_REFLECT + WM_VSCROLL)) {

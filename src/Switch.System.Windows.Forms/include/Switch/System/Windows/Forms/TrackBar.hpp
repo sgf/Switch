@@ -91,11 +91,7 @@ namespace Switch {
 
           /// @brief Gets the default size of the control.
           /// @return Switch::System::Drawing::Size The default Size of the control.
-          System::Drawing::Size GetDefaultSize() const override {
-            if (this->orientation == Forms::Orientation::Horizontal)
-              return System::Drawing::Size(104, 45);
-            return System::Drawing::Size(45, 104);
-          }
+          System::Drawing::Size GetDefaultSize() const override;
 
           void SetLargeChange(int32 largeChange);
           void SetMaximum(int32 maximum);

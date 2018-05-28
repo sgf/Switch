@@ -78,6 +78,10 @@ intptr Native::TabControlApi::Create(const System::Windows::Forms::TabControl& t
   return (intptr)widget;
 }
 
+System::Drawing::Size Native::TabControlApi::GetDefaultSize() {
+  return System::Drawing::Size(200, 100);
+}
+
 void Native::TabControlApi::SetAlignment(const System::Windows::Forms::TabControl& tabControl) {
 }
 

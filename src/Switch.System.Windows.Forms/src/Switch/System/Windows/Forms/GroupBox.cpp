@@ -15,3 +15,6 @@ void GroupBox::CreateHandle() {
   this->Control::CreateHandle();
 }
 
+System::Drawing::Size GroupBox::GetDefaultSize() const {
+  return Native::GroupBoxApi::GetDefaultSize();
+}

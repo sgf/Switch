@@ -65,7 +65,7 @@ namespace Switch {
 
           /// @brief Gets the default size of the control.
           /// @return Switch::System::Drawing::Size The default Size of the control.
-          System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(100, System::Environment::OSVersion().Platform == System::PlatformID::MacOSX ? 20 : 23); }
+          System::Drawing::Size GetDefaultSize() const override;
 
           void SetMarqueeAnimationSpeed(int32 maximum);
           void SetMaximum(int32 maximum);

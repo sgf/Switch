@@ -50,7 +50,7 @@ namespace Switch {
 
           /// @brief Gets the default size of the control.
           /// @return Switch::System::Drawing::Size The default Size of the control.
-          System::Drawing::Size GetDefaultSize() const override { return System::Drawing::Size(100, 23); }
+          System::Drawing::Size GetDefaultSize() const override;
 
           virtual void SetBorderStyle(System::Windows::Forms::BorderStyle borderStyle);
           virtual void SetTextAlign(System::Drawing::ContentAlignment textAlign);

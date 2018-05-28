@@ -34,6 +34,10 @@ void Form::CreateHandle() {
   this->Control::CreateHandle();
 }
 
+System::Drawing::Size Form::GetDefaultSize() const {
+  return Native::FormApi::GetDefaultSize();
+}
+
 DialogResult Form::ShowDialog() const {
   const_cast<Form*>(this)->Visible = true;
   if (Application::mainForm == null) {
