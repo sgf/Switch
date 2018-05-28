@@ -26,6 +26,10 @@ using namespace System::Windows::Forms;
   if ([self cursor] != nil)
     [self addCursorRect:[self bounds] cursor:[self cursor]];
 }
+
+- (void)sizeToFit {
+
+}
 @end
 
 namespace Native {

@@ -12,6 +12,10 @@ void CheckBox::CreateHandle() {
   Native::CheckBoxApi::SetChecked(*this);
 }
 
+System::Drawing::Size CheckBox::GetDefaultSize() const {
+  return Native::CheckBoxApi::GetDefaultSize();
+}
+
 void CheckBox::SetAutoCheck(bool autoCheck) {
   if (this->autoCheck != autoCheck) {
     this->autoCheck = autoCheck;

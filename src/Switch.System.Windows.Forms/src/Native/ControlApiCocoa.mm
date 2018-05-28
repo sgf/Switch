@@ -32,6 +32,9 @@ using namespace System::Windows::Forms;
   return self;
 }
 
+- (void)sizeToFit {
+}
+
 - (void)resetCursorRects {
   [super resetCursorRects];
   if ([self cursor] != nil)

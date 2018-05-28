@@ -28,6 +28,10 @@ using namespace System::Windows::Forms;
   if ([self cursor] != nil)
     [self addCursorRect:[self bounds] cursor:[self cursor]];
 }
+
+- (void)sizeToFit {
+  
+}
 @end
 
 @interface CocoaForm : NSWindow
@@ -49,6 +53,10 @@ using namespace System::Windows::Forms;
 - (BOOL)windowShouldClose:(id)sender {
   [self widget]->SendMessage((intptr)[self widget]->Handle(), WM_CLOSE, IntPtr::Zero, IntPtr::Zero);
   return NO;
+}
+
+- (void)sizeToFit {
+  
 }
 @end
 

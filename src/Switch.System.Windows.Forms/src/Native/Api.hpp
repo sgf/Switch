@@ -81,6 +81,7 @@ namespace Native {
   class CheckBoxApi static_ {
   public:
     static intptr Create(const System::Windows::Forms::CheckBox& checkBox);
+    static System::Drawing::Size GetDefaultSize();
     static void SetAutoCheck(const System::Windows::Forms::CheckBox& checkBox);
     static void SetChecked(const System::Windows::Forms::CheckBox& checkBox);
   };

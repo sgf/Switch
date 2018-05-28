@@ -90,6 +90,10 @@ intptr Native::CheckBoxApi::Create(const System::Windows::Forms::CheckBox& check
   return (intptr)widget;
 }
 
+System::Drawing::Size Native::CheckBoxApi::GetDefaultSize() {
+  return System::Drawing::Size(104, 24);
+}
+
 void Native::CheckBoxApi::SetAutoCheck(const System::Windows::Forms::CheckBox& checkBox) {
 }
 

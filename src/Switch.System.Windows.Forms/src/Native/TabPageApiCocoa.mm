@@ -47,6 +47,11 @@ using namespace System::Windows::Forms;
   [(CocoaTabPagePanel*)[self view] setDrawsBackground:YES];
   [(CocoaTabPagePanel*)[self view] setBackgroundColor:backgroundColor];
 }
+
+- (void)sizeToFit {
+  
+  
+}
 @end
 
 namespace Native {

@@ -38,6 +38,10 @@ using namespace System::Windows::Forms;
   [self setWantsLayer:YES];
   [[self layer] setBackgroundColor:[backgroundColor CGColor]];
 }
+
+- (void)sizeToFit {
+  
+}
 @end
 
 namespace Native {

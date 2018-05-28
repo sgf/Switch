@@ -19,6 +19,7 @@ namespace Native {
   class IWidget interface_ {
   public:
     virtual void AddChild(IWidget* child) = 0;
+    virtual void AutoSize() = 0;
     virtual void BackColor(const System::Drawing::Color& color) = 0;
     virtual System::Drawing::Point ClientLocation() const = 0;
     virtual System::Drawing::Size ClientSize() const = 0;
@@ -51,6 +52,7 @@ namespace Native {
     }
 
     void AddChild(IWidget* child) override {[this->View() addSubview:child->View()];}
+    virtual void AutoSize() override {[this->handle sizeToFit];}
     NSObject* Handle() override {return this->handle;}
     System::Drawing::Point ClientLocation() const override {return {0, 0};}
     System::Drawing::Size ClientSize() const override {return this->Size();}

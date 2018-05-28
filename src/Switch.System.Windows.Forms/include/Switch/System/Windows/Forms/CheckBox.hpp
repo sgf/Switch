@@ -234,7 +234,7 @@ namespace Switch {
           /// @note To maintain better performance, do not set the Size of a control in its constructor. The preferred method is to override the DefaultSize property.
           /// @par Notes to Inheritors
           /// Override GetDefaultsize() method used by DefaultSize property.
-          System::Drawing::Size GetDefaultSize() const override {return System::Drawing::Size(104, 24);}
+          System::Drawing::Size GetDefaultSize() const override;
 
           /// @brief Raises the CheckedChanged event.
           /// @param e An EventArgs that contains the event data.
