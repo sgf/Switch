@@ -6,11 +6,11 @@ using namespace System::Drawing;
 
 void Pen::Create() {
   this->Destroy();
-  this->pen = Native::PenApi::CreatePen(this->dashStyle, (int32)this->width, as<SolidBrush>(this->brush)().Color);
+  this->data->pen = Native::PenApi::CreatePen(this->data->dashStyle, (int32)this->data->width, as<SolidBrush>(this->data->brush)->Color);
 }
 
 void Pen::Destroy() {
-  if (this->pen != IntPtr::Zero)
-    Native::PenApi::DeletePen(this->pen);
-  this->pen = IntPtr::Zero;
+  if (this->data->pen != IntPtr::Zero)
+    Native::PenApi::DeletePen(this->data->pen);
+  this->data->pen = IntPtr::Zero;
 }

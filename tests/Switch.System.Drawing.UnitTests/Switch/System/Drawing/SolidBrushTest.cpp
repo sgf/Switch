@@ -5,7 +5,7 @@ using namespace System;
 using namespace System::Drawing;
 
 namespace SwitchUnitTests {
-  TEST(SolidBrushTest, Constructor) {
+  TEST(SolidBrushTest, ConstructorWithColor) {
     SolidBrush solidBrush(Color::Green);
 
     ASSERT_EQ(Color::Green, solidBrush.Color);
