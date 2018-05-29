@@ -71,11 +71,11 @@
 | StringFormatFlags                                                                                   | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | StringTrimming                                                                                      | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | StringUnit                                                                                          | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| SystemBrushes                                                                                       | class         | ![Progress](Pictures/Progress0.png)   |
+| [SystemBrushes](../src/Switch.System.Drawing/include/Switch/System/Drawing/SystemBrushes.hpp)       | class         | ![Progress](Pictures/Progress100.png) |
 | [SystemColors](../src/Switch.System.Drawing/include/Switch/System/Drawing/SystemColors.hpp)         | class         | ![Progress](Pictures/Progress100.png) |
 | [SystemFonts](../src/Switch.System.Drawing/include/Switch/System/Drawing/SystemFonts.hpp)           | class         | ![Progress](Pictures/Progress100.png) |
 | SystemIcons                                                                                         | class         | ![Progress](Pictures/Progress0.png)   |
-| SystemPens                                                                                          | class         | ![Progress](Pictures/Progress0.png)   |
+| [SystemPens](../src/Switch.System.Drawing/include/Switch/System/Drawing/SystemPens.hpp)             | class         | ![Progress](Pictures/Progress100.png) |
 | TextureBrush                                                                                        | class         | ![Progress](Pictures/Progress0.png)   |
 | ToolboxBitmapAttribute                                                                              | class         | ![Progress](Pictures/Progress0.png)   |
 
