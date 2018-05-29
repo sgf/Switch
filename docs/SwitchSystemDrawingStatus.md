@@ -67,7 +67,7 @@
 | [SolidBrush](../src/Switch.System.Drawing/include/Switch/System/Drawing/SolidBrush.hpp)             | class         | ![Progress](Pictures/Progress100.png) |
 | [StringAlignment](../src/Switch.System.Drawing/include/Switch/System/Drawing/StringAlignment.hpp)   | enumeration   | ![Progress](Pictures/Progress100.png) |
 | StringDigitSubstitute                                                                               | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| StringFormat                                                                                        | class         | ![Progress](Pictures/Progress0.png)   |
+| [StringFormat](../src/Switch.System.Drawing/include/Switch/System/Drawing/StringFormat.hpp)         | class         | ![Progress](Pictures/Progress25.png)  |
 | StringFormatFlags                                                                                   | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | StringTrimming                                                                                      | enumeration   | ![Progress](Pictures/Progress0.png)   |
 | StringUnit                                                                                          | enumeration   | ![Progress](Pictures/Progress0.png)   |
