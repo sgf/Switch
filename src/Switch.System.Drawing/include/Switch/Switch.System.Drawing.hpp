@@ -34,6 +34,8 @@
 #include "System/Drawing/SizeF.hpp"
 #include "System/Drawing/SolidBrush.hpp"
 #include "System/Drawing/StringAlignment.hpp"
+#include "System/Drawing/SystemBrushes.hpp"
 #include "System/Drawing/SystemColors.hpp"
+#include "System/Drawing/SystemPens.hpp"
 #include "System/Drawing/SystemFonts.hpp"
 #include "SystemDrawingExport.hpp"

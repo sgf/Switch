@@ -18,7 +18,7 @@ namespace Switch {
       /// @par Examples
       /// The following code example demonstrates the how to use a member of the Brushes class to fill a Rectangle. This example should be used with a Windows Form. Paste this code into a form and call this method when handling the form's Paint event, passing e as PaintEventArgs.
       /// @code
-      /// InstanceRectangleIntersection(PaintEventArgs& e) {
+      /// void InstanceRectangleIntersection(PaintEventArgs& e) {
       ///   Rectangle rectangle1(50, 50, 200, 100);
       ///   Rectangle rectangle2(70, 20, 100, 200);
       ///
