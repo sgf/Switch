@@ -1,5 +1,5 @@
 /// @file
-/// @brief Contains Switch::System::Drawing::FontStyle enum.
+/// @brief Contains Switch::System::Drawing::Drawing2D::DashStyle enum.
 #pragma once
 
 #include <Switch/System/Enum.hpp>
@@ -47,7 +47,7 @@ struct EnumRegister<System::Drawing::Drawing2D::DashStyle> {
     values[System::Drawing::Drawing2D::DashStyle::DashDot] = "DashDot";
     values[System::Drawing::Drawing2D::DashStyle::DashDotDot] = "DashDotDot";
     values[System::Drawing::Drawing2D::DashStyle::Custom] = "Custom";
-    flags = true;
+    flags = false;
   }
 };
 /// @endcond

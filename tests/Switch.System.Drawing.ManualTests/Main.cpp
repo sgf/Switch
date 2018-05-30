@@ -1,3 +1,4 @@
+#include <utility>
 #include <Switch/Switch.System.Drawing>
 
 using namespace System;
@@ -8,7 +9,9 @@ namespace ManualTests {
   public:
     // The main entry point for the application.
     static void Main() {
-      Console::WriteLine("Hello, World!");
+      Pen pen(SolidBrush {Color::Green});
+      pen.CompoundArray = {1.0f, 2.0f, 0.0f, 4.0f};
+      Console::WriteLine("pen.Color = {0}", pen.Color);
     }
   };
 }

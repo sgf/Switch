@@ -3,7 +3,11 @@
 #pragma once
 
 #include <Switch/Switch.System>
+#include "System/Drawing/Drawing2D/DashCap.hpp"
 #include "System/Drawing/Drawing2D/DashStyle.hpp"
+#include "System/Drawing/Drawing2D/LineCap.hpp"
+#include "System/Drawing/Drawing2D/PenAlignment.hpp"
+#include "System/Drawing/Drawing2D/PenType.hpp"
 #include "System/Drawing/Imaging/ColorPalette.hpp"
 #include "System/Drawing/Imaging/FrameDimension.hpp"
 #include "System/Drawing/Imaging/ImageFlags.hpp"

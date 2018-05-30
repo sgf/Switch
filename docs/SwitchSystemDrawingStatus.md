@@ -110,44 +110,44 @@
 
 ## System::Drawing::Drawing2D
 
-| Class                                                                                           | Type          | Status                                |
-|-------------------------------------------------------------------------------------------------|---------------|---------------------------------------|
-| AdjustableArrowCap                                                                              | class         | ![Progress](Pictures/Progress0.png)   |
-| Blend                                                                                           | class         | ![Progress](Pictures/Progress0.png)   |
-| ColorBlend                                                                                      | class         | ![Progress](Pictures/Progress0.png)   |
-| CombineMode                                                                                     | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| CompositingMode                                                                                 | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| CompositingQuality                                                                              | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| CoordinateSpace                                                                                 | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| CustomLineCap                                                                                   | class         | ![Progress](Pictures/Progress0.png)   |
-| DashCap                                                                                         | class         | ![Progress](Pictures/Progress0.png)   |
-| [DashStyle](../src/Switch.System.Drawing/include/Switch/System/Drawing/Drawing2D/DashStyle.hpp) | enumeration   | ![Progress](Pictures/Progress100.png) |
-| FillMode                                                                                        | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| FlushIntention                                                                                  | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| GraphicsContainer                                                                               | class         | ![Progress](Pictures/Progress0.png)   |
-| GraphicsPath                                                                                    | class         | ![Progress](Pictures/Progress0.png)   |
-| GraphicsPathIterator                                                                            | class         | ![Progress](Pictures/Progress0.png)   |
-| GraphicsState                                                                                   | class         | ![Progress](Pictures/Progress0.png)   |
-| HatchBrush                                                                                      | class         | ![Progress](Pictures/Progress0.png)   |
-| HatchStyle                                                                                      | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| InterpolationMode                                                                               | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| LinearGradientBrush                                                                             | class         | ![Progress](Pictures/Progress0.png)   |
-| LinearGradientMode                                                                              | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| LineCap                                                                                         | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| LineJoin                                                                                        | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| Matrix                                                                                          | class         | ![Progress](Pictures/Progress0.png)   |
-| MatrixOrder                                                                                     | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| PathData                                                                                        | class         | ![Progress](Pictures/Progress0.png)   |
-| PathGradientBrush                                                                               | class         | ![Progress](Pictures/Progress0.png)   |
-| PathPointType                                                                                   | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| PenAlignment                                                                                    | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| PenType                                                                                         | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| PixelOffsetMode                                                                                 | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| QualityMode                                                                                     | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| RegionData                                                                                      | class         | ![Progress](Pictures/Progress0.png)   |
-| SmoothingMode                                                                                   | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| WarpMode                                                                                        | enumeration   | ![Progress](Pictures/Progress0.png)   |
-| WrapMode                                                                                        | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| Class                                                                                                 | Type          | Status                                |
+|-------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|
+| AdjustableArrowCap                                                                                    | class         | ![Progress](Pictures/Progress0.png)   |
+| Blend                                                                                                 | class         | ![Progress](Pictures/Progress0.png)   |
+| ColorBlend                                                                                            | class         | ![Progress](Pictures/Progress0.png)   |
+| CombineMode                                                                                           | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| CompositingMode                                                                                       | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| CompositingQuality                                                                                    | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| CoordinateSpace                                                                                       | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| CustomLineCap                                                                                         | class         | ![Progress](Pictures/Progress0.png)   |
+| [DashCap](../src/Switch.System.Drawing/include/Switch/System/Drawing/Drawing2D/DashCap.hpp)           | enumeration   | ![Progress](Pictures/Progress100.png) |
+| [DashStyle](../src/Switch.System.Drawing/include/Switch/System/Drawing/Drawing2D/DashStyle.hpp)       | enumeration   | ![Progress](Pictures/Progress100.png) |
+| FillMode                                                                                              | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| FlushIntention                                                                                        | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| GraphicsContainer                                                                                     | class         | ![Progress](Pictures/Progress0.png)   |
+| GraphicsPath                                                                                          | class         | ![Progress](Pictures/Progress0.png)   |
+| GraphicsPathIterator                                                                                  | class         | ![Progress](Pictures/Progress0.png)   |
+| GraphicsState                                                                                         | class         | ![Progress](Pictures/Progress0.png)   |
+| HatchBrush                                                                                            | class         | ![Progress](Pictures/Progress0.png)   |
+| HatchStyle                                                                                            | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| InterpolationMode                                                                                     | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| LinearGradientBrush                                                                                   | class         | ![Progress](Pictures/Progress0.png)   |
+| LinearGradientMode                                                                                    | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| [LineCap](../src/Switch.System.Drawing/include/Switch/System/Drawing/Drawing2D/LineCap.hpp)           | enumeration   | ![Progress](Pictures/Progress100.png) |
+| LineJoin                                                                                              | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| Matrix                                                                                                | class         | ![Progress](Pictures/Progress0.png)   |
+| MatrixOrder                                                                                           | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| PathData                                                                                              | class         | ![Progress](Pictures/Progress0.png)   |
+| PathGradientBrush                                                                                     | class         | ![Progress](Pictures/Progress0.png)   |
+| PathPointType                                                                                         | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| [PenAlignment](../src/Switch.System.Drawing/include/Switch/System/Drawing/Drawing2D/PenAlignment.hpp) | enumeration   | ![Progress](Pictures/Progress100.png) |
+| [PenType](../src/Switch.System.Drawing/include/Switch/System/Drawing/Drawing2D/PenType.hpp)           | enumeration   | ![Progress](Pictures/Progress100.png) |
+| PixelOffsetMode                                                                                       | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| QualityMode                                                                                           | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| RegionData                                                                                            | class         | ![Progress](Pictures/Progress0.png)   |
+| SmoothingMode                                                                                         | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| WarpMode                                                                                              | enumeration   | ![Progress](Pictures/Progress0.png)   |
+| WrapMode                                                                                              | enumeration   | ![Progress](Pictures/Progress0.png)   |
 
 ## System::Drawing::Imaging
 
