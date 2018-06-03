@@ -190,9 +190,7 @@ To build this wonderful application, open "Terminal" and type following lines:
 cd /home/YourName/Projects/SwitchConsole
 mkdir build
 cd build
-export CC=clang
-export CXX=clang++
-cmake ..
+cmake .. -DCMAKE_CXX_COMPILER=clang++
 ```
 
 The makefile was generate, in the same "Terminal" type following lines to build and run your first application:
