@@ -11,7 +11,7 @@ using namespace System::Windows::Forms;
 @property Native::IWidget* widget;
 
 - (IBAction) Click:(id)sender;
-- (id)initWithTitle:(NSString*)title withHeight:(NSInteger)height withIWidget:(Native::IWidget*)iWidget;
+- (instancetype)initWithTitle:(NSString*)title withHeight:(NSInteger)height withIWidget:(Native::IWidget*)iWidget;
 - (void)resetCursorRects;
 - (void)setBackgroundColor:(NSColor*)color;
 - (void)setForeColor:(NSColor*)color;
@@ -24,7 +24,7 @@ using namespace System::Windows::Forms;
   [self widget]->SendMessage((intptr)sender, WM_LBUTTONUP, (intptr)(mouseDownLocation.X() + (mouseDownLocation.Y() << 16)), IntPtr::Zero);
 }
 
-- (id)initWithTitle:(NSString*)title withHeight:(NSInteger)height withIWidget:(Native::IWidget*)iWidget {
+- (instancetype)initWithTitle:(NSString*)title withHeight:(NSInteger)height withIWidget:(Native::IWidget*)iWidget {
   [super init];
   [self setAction:@selector(Click:)];
   [self setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];

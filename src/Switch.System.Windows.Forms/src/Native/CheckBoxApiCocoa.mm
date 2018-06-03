@@ -11,7 +11,7 @@ using namespace System::Windows::Forms;
 @property Native::IWidget* widget;
 
 - (IBAction) Click:(id)sender;
-- (id)initWithTitle:(NSString*)title withIWidget:(Native::IWidget*)iWidget;
+- (instancetype)initWithTitle:(NSString*)title withIWidget:(Native::IWidget*)iWidget;
 - (void)resetCursorRects;
 - (void)setBackgroundColor:(NSColor*)color;
 - (void)setForeColor:(NSColor*)color;
@@ -24,7 +24,7 @@ using namespace System::Windows::Forms;
   [self widget]->SendMessage((intptr)sender, WM_LBUTTONUP, (intptr)(mouseDownLocation.X() + (mouseDownLocation.Y() << 16)), IntPtr::Zero);
 }
 
-- (id)initWithTitle:(NSString*)title withIWidget:(Native::IWidget*)iWidget {
+- (instancetype)initWithTitle:(NSString*)title withIWidget:(Native::IWidget*)iWidget {
   [super init];
   [self setAction:@selector(Click:)];
   [self setAllowsMixedState:YES];
@@ -99,7 +99,7 @@ void Native::CheckBoxApi::SetAutoCheck(const System::Windows::Forms::CheckBox& c
 
 void Native::CheckBoxApi::SetChecked(const System::Windows::Forms::CheckBox& checkBox) {
   if (checkBox.CheckState == System::Windows::Forms::CheckState::Indeterminate)
-    ((Native::CheckBox*)checkBox.Handle())->State(-1);
+    ((Native::CheckBox*)checkBox.Handle())->State(NSControlStateValueMixed);
   else
     ((Native::CheckBox*)checkBox.Handle())->State((int32)checkBox.CheckState());
 }
