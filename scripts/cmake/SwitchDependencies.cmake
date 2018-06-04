@@ -145,7 +145,7 @@ endif ()
 
 #_______________________________________________________________________________
 #                                                        set application version
-if (NOT APPLICATION_VERSION)
+if (NOT APPLICATION_VERSION AND PROJECT_VERSION)
   set(APPLICATION_VERSION "${PROJECT_VERSION}")
   SetSwitchApplicationVersion(${APPLICATION_VERSION})
 endif()
