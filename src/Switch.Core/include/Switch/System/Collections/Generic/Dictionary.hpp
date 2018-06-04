@@ -38,7 +38,7 @@ namespace Switch {
         /// Finally, the example demonstrates the Remove method.
         /// @include Dictionary.cpp
         template<typename TKey, typename TValue, typename TAllocator = Allocator<std::pair<const TKey, TValue>>>
-            class Dictionary : public Object, public Linq::Extension::Enumerable<Dictionary<TKey, TValue, TAllocator>, KeyValuePair<TKey, TValue>>, public IDictionary<TKey, TValue> {
+class Dictionary : public Object, public Linq::Extension::Enumerable<Dictionary<TKey, TValue, TAllocator>, KeyValuePair<TKey, TValue>>, public IDictionary<TKey, TValue> {
 public:
           using Item = KeyValuePair<TKey, TValue>;
 

@@ -99,7 +99,7 @@ void Native::CheckBoxApi::SetAutoCheck(const System::Windows::Forms::CheckBox& c
 
 void Native::CheckBoxApi::SetChecked(const System::Windows::Forms::CheckBox& checkBox) {
   if (checkBox.CheckState == System::Windows::Forms::CheckState::Indeterminate)
-    ((Native::CheckBox*)checkBox.Handle())->State(NSControlStateValueMixed);
+    ((Native::CheckBox*)checkBox.Handle())->State(-1/*NSControlStateValueMixed*/);
   else
     ((Native::CheckBox*)checkBox.Handle())->State((int32)checkBox.CheckState());
 }

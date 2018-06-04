@@ -35,7 +35,7 @@ namespace Switch {
         /// Finally, the example demonstrates the Remove method.
         /// @include SortedDictionary.cpp
         template<typename TKey, typename TValue, typename TAllocator = Allocator<std::pair<const TKey, TValue>>>
-            class SortedDictionary : public Object, public System::Linq::Extension::Enumerable<SortedDictionary<TKey, TValue, TAllocator>, System::Collections::Generic::KeyValuePair<TKey, TValue>>, public IDictionary<TKey, TValue> {
+class SortedDictionary : public Object, public System::Linq::Extension::Enumerable<SortedDictionary<TKey, TValue, TAllocator>, System::Collections::Generic::KeyValuePair<TKey, TValue>>, public IDictionary<TKey, TValue> {
           using Item = System::Collections::Generic::KeyValuePair<TKey, TValue>;
 public:
           /// @brief Represents the collection of keys in a Dictionary<TKey, TValue>. This class cannot be inherited.

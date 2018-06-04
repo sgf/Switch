@@ -108,7 +108,7 @@ IPAddress::IPAddress(const Array<byte>& address, int64 scopeId) : family(Sockets
   Buffer::BlockCopy(address, 0, this->numbers, 0, 16);
 }
 
-IPAddress::IPAddress(byte quadPartAddress1, byte quadPartAddress2, byte quadPartAddress3, byte quadPartAddress4) : address(BitConverter::ToInt32( {quadPartAddress1, quadPartAddress2, quadPartAddress3, quadPartAddress4}, 0)) {
+IPAddress::IPAddress(byte quadPartAddress1, byte quadPartAddress2, byte quadPartAddress3, byte quadPartAddress4) : address(BitConverter::ToInt32({quadPartAddress1, quadPartAddress2, quadPartAddress3, quadPartAddress4}, 0)) {
 }
 
 bool IPAddress::Equals(const IPAddress& value) const {
