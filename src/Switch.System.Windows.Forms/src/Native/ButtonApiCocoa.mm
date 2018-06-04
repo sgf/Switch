@@ -28,7 +28,7 @@ using namespace System::Windows::Forms;
   [super init];
   [self setAction:@selector(Click:)];
   [self setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
-  [self setBezelStyle: height <= 32 ? NSBezelStyleRounded : NSSmallSquareBezelStyle];
+  [self setBezelStyle: height <= 32 ? NSBezelStyleRounded : NSBezelStyleSmallSquare];
   [self setBezelStyle: NSBezelStyleRounded];
   [self setButtonType:NSButtonTypeMomentaryPushIn];
   [self setTarget:self];

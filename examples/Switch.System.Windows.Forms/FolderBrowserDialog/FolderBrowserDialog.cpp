@@ -18,6 +18,7 @@ namespace FolderBrowserDialogExample {
       this->button.Location = System::Drawing::Point(10, 10);
       this->button.Click += delegate_(const object & sender, const EventArgs & e) {
         FolderBrowserDialog folderBrowserDialog;
+        folderBrowserDialog.SelectedPath = Environment::GetFolderPath(Environment::SpecialFolder::Desktop);
         if (folderBrowserDialog.ShowDialog() == DialogResult::OK)
           this->label.Text = string::Format("Path = {0}", folderBrowserDialog.SelectedPath);
       };
