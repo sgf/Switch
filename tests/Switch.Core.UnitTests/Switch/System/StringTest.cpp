@@ -1,4 +1,4 @@
-﻿#include <Switch/System/String.hpp>
+#include <Switch/System/String.hpp>
 #include <gtest/gtest.h>
 #include <Switch/LiteralOperatorConverter.hpp>
 
@@ -163,8 +163,8 @@ namespace SwitchUnitTests {
   }
 
   TEST(StringTest, SubscriptOperatorWithChar32) {
-    Array<char32> chars = {U'こ', U'ん', U'に', U'ち', U'は', U'世', U'界', U'!'};
-    string s = U"こんにちは世界!";
+    Array<char32> chars = {U'T', U'e', U's', U't'};
+    string s = U"Test";
     int i = 0;
     for (char32 c : chars)
       ASSERT_EQ(c, s[i++]);
