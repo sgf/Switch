@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-namespace WindowsApplication1 {
+namespace Examples {
   class Form1 : public System::Windows::Forms::Form {
   private:
     // Constant value was found in the "windows.h" header file.
@@ -47,6 +47,6 @@ namespace WindowsApplication1 {
   };
 }
 
-startup_(WindowsApplication1::Form1);
+startup_(Examples::Form1);
 
 

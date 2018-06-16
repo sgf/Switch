@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Media;
 using namespace System::Windows::Forms;
 
-namespace SystemSoundExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -60,4 +60,4 @@ namespace SystemSoundExample {
   };
 }
 
-startup_(SystemSoundExample::Form1);
+startup_(Examples::Form1);

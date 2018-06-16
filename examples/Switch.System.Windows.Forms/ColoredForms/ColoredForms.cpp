@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-class Program {
+class Examples {
 public:
   // The main entry point for the application.
   static void Main() {
@@ -34,4 +34,4 @@ public:
   }
 };
 
-startup_(Program);
+startup_(Examples);

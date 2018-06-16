@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-namespace GroupBoxExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -31,4 +31,4 @@ namespace GroupBoxExample {
   };
 }
 
-startup_(GroupBoxExample::Form1);
+startup_(Examples::Form1);

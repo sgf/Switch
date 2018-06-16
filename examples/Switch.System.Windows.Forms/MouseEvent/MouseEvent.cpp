@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-namespace MouseEvent {
+namespace Examples {
   class Form1 : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::Panel panel1;
@@ -208,4 +208,4 @@ namespace MouseEvent {
   }
 };
 
-startup_(Form1);
+startup_(Examples::Form1);

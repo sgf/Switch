@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-namespace ColorDialogExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -31,4 +31,4 @@ namespace ColorDialogExample {
   };
 }
 
-startup_(ColorDialogExample::Form1);
+startup_(Examples::Form1);

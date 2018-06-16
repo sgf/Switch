@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::IO;
 using namespace System::Windows::Forms;
 
-namespace OpenFileDialogExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -39,4 +39,4 @@ namespace OpenFileDialogExample {
   };
 }
 
-startup_(OpenFileDialogExample::Form1);
+startup_(Examples::Form1);

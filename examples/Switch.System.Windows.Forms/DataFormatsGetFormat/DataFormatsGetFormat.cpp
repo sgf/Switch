@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-class DataFormat_GetFormat {
+class Examples {
 public:
   static void Main() {
 
@@ -16,4 +16,4 @@ public:
   }
 };
 
-startup_(DataFormat_GetFormat);
+startup_(Examples);

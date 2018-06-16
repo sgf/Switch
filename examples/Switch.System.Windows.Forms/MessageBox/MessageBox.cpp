@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-namespace MessageBoxExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -14,7 +14,7 @@ namespace MessageBoxExample {
 
     Form1() {
       this->buttonShowMessage.Location = System::Drawing::Point(10, 10);
-      this->buttonShowMessage.Width = 100;
+      this->buttonShowMessage.Width = 110;
       this->buttonShowMessage.Text = "MessageBox";
       this->buttonShowMessage.Click += delegate_(const object & sender, const EventArgs & e) {
         System::Windows::Forms::DialogResult result = MessageBox::Show("Hello, World!", "Message", MessageBoxButtons::OKCancel, MessageBoxIcon::Asterisk);
@@ -36,4 +36,4 @@ namespace MessageBoxExample {
   };
 }
 
-startup_(MessageBoxExample::Form1);
+startup_(Examples::Form1);

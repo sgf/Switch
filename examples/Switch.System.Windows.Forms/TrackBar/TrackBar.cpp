@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-namespace TrackBarExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -42,4 +42,4 @@ namespace TrackBarExample {
   };
 }
 
-startup_(TrackBarExample::Form1);
+startup_(Examples::Form1);

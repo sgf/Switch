@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-namespace FormExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -63,4 +63,4 @@ namespace FormExample {
   };
 }
 
-startup_(FormExample::Form1);
+startup_(Examples::Form1);

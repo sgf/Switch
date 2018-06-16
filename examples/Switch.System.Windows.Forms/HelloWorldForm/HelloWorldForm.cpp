@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-namespace HelloWorld {
+namespace Examples {
   class MainForm : public Form {
   public:
     // The main entry point for the application.
@@ -30,4 +30,4 @@ namespace HelloWorld {
   };
 }
 
-startup_(HelloWorld::MainForm);
+startup_(Examples::MainForm);

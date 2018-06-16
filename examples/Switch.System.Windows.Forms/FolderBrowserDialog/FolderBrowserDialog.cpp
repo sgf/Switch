@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::IO;
 using namespace System::Windows::Forms;
 
-namespace FolderBrowserDialogExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -37,4 +37,4 @@ namespace FolderBrowserDialogExample {
   };
 }
 
-startup_(FolderBrowserDialogExample::Form1);
+startup_(Examples::Form1);

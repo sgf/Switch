@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-namespace LabelExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -25,4 +25,4 @@ namespace LabelExample {
   };
 }
 
-startup_(LabelExample::Form1);
+startup_(Examples::Form1);

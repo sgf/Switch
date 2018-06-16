@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-namespace FormExample {
+namespace Examples {
   class FormClick {
   public:
     // The main entry point for the application.
@@ -18,5 +18,5 @@ namespace FormExample {
   };
 }
 
-startup_(FormExample::FormClick);
+startup_(Examples::FormClick);
 

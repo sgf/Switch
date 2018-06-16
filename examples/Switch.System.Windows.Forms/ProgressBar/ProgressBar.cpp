@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-namespace ProgressBarExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -57,4 +57,4 @@ namespace ProgressBarExample {
   };
 }
 
-startup_(ProgressBarExample::Form1);
+startup_(Examples::Form1);

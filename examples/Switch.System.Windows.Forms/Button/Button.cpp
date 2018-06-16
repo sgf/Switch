@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-namespace ButtonExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -49,4 +49,4 @@ namespace ButtonExample {
   };
 }
 
-startup_(ButtonExample::Form1);
+startup_(Examples::Form1);

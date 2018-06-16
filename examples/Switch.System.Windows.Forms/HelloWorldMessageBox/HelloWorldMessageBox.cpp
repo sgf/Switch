@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-namespace HelloWorld {
+namespace Examples {
   class Program {
   public:
     // The main entry point for the application.
@@ -26,4 +26,4 @@ namespace HelloWorld {
   };
 }
 
-startup_(HelloWorld::Program);
+startup_(Examples::Program);

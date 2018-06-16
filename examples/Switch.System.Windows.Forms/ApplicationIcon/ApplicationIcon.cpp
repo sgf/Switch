@@ -1,6 +1,6 @@
 #include <Switch/Switch>
 
-namespace Program {
+namespace Examples {
   class Form1 : public System::Windows::Forms::Form {
   public:
     static void Main() {
@@ -14,4 +14,4 @@ namespace Program {
   };
 }
 
-startup_(Program::Form1);
+startup_(Examples::Form1);

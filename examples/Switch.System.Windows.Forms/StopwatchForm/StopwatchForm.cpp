@@ -5,7 +5,7 @@ using namespace System::Diagnostics;
 using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-namespace StopwatchForm {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -108,4 +108,4 @@ namespace StopwatchForm {
   };
 }
 
-startup_(StopwatchForm::Form1);
+startup_(Examples::Form1);

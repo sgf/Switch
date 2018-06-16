@@ -2,13 +2,14 @@
 
 using namespace System::Windows::Forms;
 
-namespace VStyles {
+namespace Examples {
   class Form1 : public System::Windows::Forms::Form {
   private:
     System::Windows::Forms::Button button1;
 
   public:
     static void Main() {
+      // Comment following line to see the difference (Windows only).
       Application::EnableVisualStyles();
       Application::Run(Form1());
     }
@@ -27,4 +28,4 @@ namespace VStyles {
   };
 }
 
-startup_(VStyles::Form1);
+startup_(Examples::Form1);

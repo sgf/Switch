@@ -2,7 +2,7 @@
 
 using namespace System::Windows::Forms;
 
-namespace SomeControls {
+namespace Examples {
   class MainForm : public Form {
   public:
     // The main entry point for the application.
@@ -71,4 +71,4 @@ namespace SomeControls {
   };
 }
 
-startup_(SomeControls::MainForm);
+startup_(Examples::MainForm);

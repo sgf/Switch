@@ -3,7 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
-namespace ColoredTabPagesExample {
+namespace Examples {
   class Form1 : public Form {
   public:
     // The main entry point for the application.
@@ -43,4 +43,4 @@ namespace ColoredTabPagesExample {
   };
 }
 
-startup_(ColoredTabPagesExample::Form1);
+startup_(Examples::Form1);
