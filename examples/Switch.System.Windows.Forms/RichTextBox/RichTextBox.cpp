@@ -13,7 +13,7 @@ namespace Examples {
     RichTextBox richTextBox2;
     Button button2;
     SaveFileDialog saveFileDialog1;
-    
+
   public:
     Form1() {
       this->SuspendLayout();
@@ -31,7 +31,7 @@ namespace Examples {
       this->richTextBox2.Name = "richTextBox2";
       this->richTextBox2.TabIndex = 3;
       this->richTextBox2.Text =
-      "It will be added to the stream and appear here.";
+        "It will be added to the stream and appear here.";
       this->button2.Location = System::Drawing::Point(104, 200);
       this->button2.Name = "button2";
       this->button2.Size = System::Drawing::Size(88, 32);
@@ -47,27 +47,27 @@ namespace Examples {
       this->Text = "Form1";
       this->ResumeLayout(false);
     }
-    
+
     static void Main() {
       Application::Run(Form1());
     }
-    
+
   private:
     // Declare a new memory stream.
     MemoryStream userInput;
-    
+
     // Save the content of richTextBox1 to the memory stream,
     // appending a LineFeed character.
     void button1_Click(const Object& sender, const EventArgs& e) {
       richTextBox1.SaveFile(userInput, RichTextBoxStreamType::PlainText);
       userInput.WriteByte(13);
-      
+
       // Display the entire contents of the stream,
       // by setting its position to 0, to richTextBox2.
       userInput.Position = 0;
       richTextBox2.LoadFile(userInput, RichTextBoxStreamType::PlainText);
     }
-    
+
     // Shows the use of a SaveFileDialog to save a MemoryStream to a file.
     void button2_Click(const Object& sender, const EventArgs& e) {
       // Set the properties on saveFileDialog1 so the user is
@@ -75,7 +75,7 @@ namespace Examples {
       // or overwrite the file if it does exist.
       saveFileDialog1.CreatePrompt = true;
       saveFileDialog1.OverwritePrompt = true;
-      
+
       // Set the file name to myText.txt, set the type filter
       // to text files, and set the initial directory to the
       // MyDocuments folder.
@@ -85,13 +85,13 @@ namespace Examples {
       saveFileDialog1.DefaultExt = "txt";
       saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
       saveFileDialog1.InitialDirectory =
-      Environment.GetFolderPath(Environment::SpecialFolder::MyDocuments);
-      
+        Environment.GetFolderPath(Environment::SpecialFolder::MyDocuments);
+
       // Call ShowDialog and check for a return value of DialogResult.OK,
       // which indicates that the file was saved.
       DialogResult result = saveFileDialog1.ShowDialog();
       Stream fileStream;
-      
+
       if (result == DialogResult::OK) {
         // Open the file, copy the contents of memoryStream to fileStream,
         // and close fileStream. Set the memoryStream.Position value to 0
@@ -106,4 +106,3 @@ namespace Examples {
 }
 
 startup_(Examples::Form1);
-

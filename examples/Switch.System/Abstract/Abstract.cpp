@@ -2,7 +2,7 @@
 
 using namespace System;
 
-namespace TestReader {
+namespace Examples {
   class TextReader abstract_ {
   public:
     virtual int ReadByte() = 0;
@@ -47,7 +47,7 @@ namespace TestReader {
   };
 }
 
-startup_(TestReader::Program);
+startup_(Examples::Program);
 
 // This code produces the following output:
 //

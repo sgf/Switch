@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::IO;
 using namespace System::Net;
 
-namespace HttpWebRequestExample {
+namespace Examples {
   class Program {
   public:
     /// @brief The main entry point for the application.
@@ -16,7 +16,7 @@ namespace HttpWebRequestExample {
   };
 }
 
-startup_(HttpWebRequestExample::Program);
+startup_(Examples::Program);
 
 // This code produces the following output :
 //

@@ -12,18 +12,18 @@ namespace Examples {
   private:
     RadioButton radioButton1;
     RadioButton radioButton2;
-    
+
   public:
     Form1() {
       InitializeComponent();
     }
-    
+
     static void Main() {
       Application::EnableVisualStyles();
       Application::SetCompatibleTextRenderingDefault(false);
       Application::Run(Form1());
     }
-    
+
   private:
     void InitializeComponent() {
       this->SuspendLayout();
@@ -55,11 +55,11 @@ namespace Examples {
       this->ResumeLayout(false);
       this->PerformLayout();
     }
-    
+
     void radioButton2_CheckedChanged(const object& sender, const EventArgs& e) {
       radioButton1.Enabled = false;
     }
-    
+
     void radioButton1_EnabledChanged(const object& sender, const EventArgs& e) {
       MessageBox::Show("This button has been disabled.");
     }
@@ -67,4 +67,3 @@ namespace Examples {
 }
 
 startup_(Examples::Form1);
-

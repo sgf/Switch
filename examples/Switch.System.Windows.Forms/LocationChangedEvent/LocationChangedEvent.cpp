@@ -11,18 +11,18 @@ namespace Examples {
   class Form1 : public Form {
   private:
     StatusStrip statusStrip1;
-    
+
   public:
     Form1() {
       InitializeComponent();
     }
-    
+
     static void Main() {
       Application::EnableVisualStyles();
       Application::SetCompatibleTextRenderingDefault(false);
       Application::Run(Form1());
     }
-    
+
   private:
     void InitializeComponent() {
       this->SuspendLayout();
@@ -42,9 +42,9 @@ namespace Examples {
       this->Name = "Form1";
       this->ResumeLayout(false);
       this->PerformLayout();
-      
+
     }
-    
+
     void statusStrip1_LocationChanged(const object& sender, const EventArgs& e) {
       MessageBox::Show("The form has been resized.");
     }
@@ -52,4 +52,3 @@ namespace Examples {
 }
 
 startup_(Examples::Form1);
-
