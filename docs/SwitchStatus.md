@@ -19,11 +19,11 @@
 | Library                                                                                      | Status                                                                    |
 |----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
 | [Switch.Core (mscorelib)](SwitchCoreStatus.md)                                               | [![Progress](Pictures/Progress75.png)](SwitchCoreStatus.md)               |
-| Switch.PresentationFramework (PresentationFramework)                                         | [![Progress](Pictures/Progress0.png)]()                                   |
-| Switch.System.Web (System.Web)                                                               | [![Progress](Pictures/Progress0.png)]()                                   |
+| Switch.PresentationFramework (PresentationFramework)                                         | [![Progress](Pictures/Progress0.png)](.)                                   |
+| Switch.System.Web (System.Web)                                                               | [![Progress](Pictures/Progress0.png)](.)                                   |
 | [Switch.System (System)](SwitchSystemStatus.md)                                              | [![Progress](Pictures/Progress75.png)](SwitchSystemStatus.md)             |
 | [Switch.System.Windows.Forms (System.Windows.Forms)](SwitchSystemWindowsFormsStatus.md)      | [![Progress](Pictures/Progress50.png)](SwitchSystemWindowsFormsStatus.md) |
-| Switch.PresentationCore (PresentationCore)                                                   | [![Progress](Pictures/Progress0.png)]()                                   |
+| Switch.PresentationCore (PresentationCore)                                                   | [![Progress](Pictures/Progress0.png)](.)                                   |
 | [Switch.System.ServiceModel (System.ServiceModel)](SwitchSystemServiceModelStatus.md)        | [![Progress](Pictures/Progress25.png)](SwitchSystemServiceModelStatus.md) |
 | Switch.System.Data (System.Data)                                                             | [![Progress](Pictures/Progress0.png)]()                                   |
 | Switch.System.Data.Entity (System.Data.Entity)                                               | [![Progress](Pictures/Progress0.png)]()                                   |
