@@ -5,13 +5,13 @@
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-AssemblyTitle_("MessageBox example");
+AssemblyTitle_("MessageBox2 example");
 AssemblyDescription_("This example shows how to use Switch MessageBox dialog");
 AssemblyConfiguration_("");
 AssemblyCompany_("Gammasoft");
-AssemblyProduct_("MessageBox");
+AssemblyProduct_("MessageBox2");
 AssemblyCopyright_("© 2018 by Gammasoft.");
-AssemblyIdentifier_("org.gammasoft.MessageBox");
+AssemblyIdentifier_("org.gammasoft.MessageBox2");
 AssemblyTrademark_("");
 AssemblyCulture_("");
 

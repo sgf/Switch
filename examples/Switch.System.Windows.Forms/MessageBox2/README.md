@@ -1,5 +1,6 @@
 # MessageBox2
-This example demonstrates the use of System::Windows::Forms::MessageBox control.
+
+This example demonstrates the use of System::Windows::Forms::MessageBox dialog.
 
 Windows :
 
