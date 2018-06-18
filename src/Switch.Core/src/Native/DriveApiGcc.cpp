@@ -53,16 +53,18 @@ System::Array<string> Native::DriveApi::GetDrives() {
   drives.AddRange(ramDrives);
   drives.AddRange(networkDrives);
 
-  for (string drive : Native::DirectoryApi::EnumerateDirectories(AmovibleMountedPoint(), "*")) {
-    struct statfs stat;
-    #if defined(__APPLE__)
-    if (statfs(drive.Data(), &stat) == 0 && string(stat.f_mntonname) != rootDrive)
-    #else
-    if (statfs(drive.Data(), &stat) == 0)
-    #endif
-      drives.Add(drive);
+  System::IO::FileAttributes fileAttributes = (System::IO::FileAttributes)0;
+  if ((Native::DirectoryApi::GetFileAttributes(AmovibleMountedPoint(), fileAttributes) == 0 && (fileAttributes & System::IO::FileAttributes::Directory) == System::IO::FileAttributes::Directory)) {
+    for (string drive : Native::DirectoryApi::EnumerateDirectories(AmovibleMountedPoint(), "*")) {
+      struct statfs stat;
+      #if defined(__APPLE__)
+      if (statfs(drive.Data(), &stat) == 0 && string(stat.f_mntonname) != rootDrive)
+      #else
+      if (statfs(drive.Data(), &stat) == 0)
+      #endif
+        drives.Add(drive);
+    }
   }
-
   return drives.ToArray();
 }
 
