@@ -59,16 +59,20 @@ intptr Native::FormApi::Create(System::Windows::Forms::Form& form, bool withClie
   static bool nextLocation = Convert::ToBoolean(as<Int32>(key.GetValue("NextLocation", 1))); // Strangely, on Windows the first location is used 2 times; this boolean simumate it.
 
   System::Drawing::Rectangle bounds = form.Bounds;
+  if (withClientsize) bounds.Size = System::Drawing::Size::Add(form.ClientSize, {0, SystemInformationApi::GetCaptionHeight()});
   switch (form.StartPosition) {
-  case FormStartPosition::CenterScreen: bounds = System::Drawing::Rectangle((Screen::AllScreens()[0].WorkingArea().Width + Screen::AllScreens()[0].WorkingArea().X - form.Width) / 2, (Screen::AllScreens()[0].WorkingArea().Height + Screen::AllScreens()[0].WorkingArea().Y - form.Height) / 2, form.Width, form.Height); break;
-  case FormStartPosition::Manual: bounds = form.Bounds; break;
+  case FormStartPosition::CenterScreen: bounds = System::Drawing::Rectangle((Screen::AllScreens()[0].WorkingArea().Width + Screen::AllScreens()[0].WorkingArea().X - bounds.Width) / 2, (Screen::AllScreens()[0].WorkingArea().Height + Screen::AllScreens()[0].WorkingArea().Y - bounds.Height) / 2, bounds.Width, bounds.Height); break;
+  case FormStartPosition::Manual: break;
   case FormStartPosition::WindowsDefaultBounds: bounds = System::Drawing::Rectangle(location, location, Screen::AllScreens()[0].WorkingArea().Width / 4 * 3, Screen::AllScreens()[0].WorkingArea().Height / 4 * 3); break;
   case FormStartPosition::CenterParent:
-  case FormStartPosition::WindowsDefaultLocation: bounds = System::Drawing::Rectangle(location, location, form.Width, form.Height); break;
+  case FormStartPosition::WindowsDefaultLocation: bounds = System::Drawing::Rectangle(location, location, bounds.Width, bounds.Height); break;
   default: break;
   }
   form.Location = System::Drawing::Point(bounds.Left, bounds.Top);
-  form.Size = System::Drawing::Size(bounds.Width, bounds.Height);
+  if (withClientsize)
+    form.Size = System::Drawing::Size::Subtract(bounds.Size, {0, SystemInformationApi::GetCaptionHeight()});
+  else
+    form.Size = System::Drawing::Size(bounds.Width, bounds.Height);
 
   if (form.StartPosition == FormStartPosition::WindowsDefaultBounds || form.StartPosition == FormStartPosition::CenterParent || form.StartPosition == FormStartPosition::WindowsDefaultLocation) {
     nextLocation = !(nextLocation == true && location == 20);
